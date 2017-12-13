@@ -83,7 +83,7 @@
                     <li>Jornalismo 
                         <ul id="submenu">
                             <?php foreach($titulo_jornalismo as $info):?>
-                            <li><a href="<?php echo base_url('home/'.strtolower($info['categoriaPt']))?>"><?php echo $info['categoriaPt']?></a></li>
+                            <li><a href="<?php echo base_url('home/noticia?categoria='.strtolower($info['categoriaPt']))?>"><?php echo $info['categoriaPt']?></a></li>
                             <?php endforeach?>
                         </ul>
                     </li>

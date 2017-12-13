@@ -49,60 +49,79 @@ class home extends CI_Controller {
 
     }
 
-    public function esporte() {
-        $dados['jornalismo_impar'] = $this->Novomenina->jornalismo_impar('Esporte');
+    // public function esporte() {
+    //     $dados['jornalismo_impar'] = $this->Novomenina->jornalismo_impar('Esporte');
+    //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
+    //     $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Esporte');
+    //     $dados['viewName'] = 'jornalismo/esporte';
+    //     $this->load->view('Template', $dados);
+    // }
+
+    // public function policial() {
+    //     $dados['jornalismo_impar'] = $this->Novomenina->jornalismo_impar('Policial');
+    //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
+    //     $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Policial');
+    //     $dados['viewName'] = 'jornalismo/policial';
+    //     $this->load->view('Template', $dados);
+    // }
+
+    // public function cultura() {
+    //     $dados['jornalismo_impar'] = $this->Novomenina->jornalismo_impar('Cultura');
+    //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
+    //     $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Cultura');
+    //     $dados['viewName'] = 'jornalismo/cultura';
+    //     $this->load->view('Template', $dados);
+    // }
+
+    // public function descricao_esporte() {
+    //     $id = $_GET['id'];
+    //     $this->Novomenina->cliques($id);
+    //     $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id);
+    //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
+    //     $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Esporte');
+    //     $dados['viewName'] = 'jornalismo/descricao_esporte';
+    //     $this->load->view('Template', $dados);
+    // }
+
+    // public function descricao_cultura() {
+    //     $id = $_GET['id'];
+    //     $this->Novomenina->cliques($id);
+    //     $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id);
+    //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
+    //     $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Cultura');
+    //     $dados['viewName'] = 'jornalismo/descricao_cultura';
+    //     $this->load->view('Template', $dados);
+    // }
+
+    // public function descricao_policial() {
+    //     $id = $_GET['id'];
+    //     $this->Novomenina->cliques($id);
+    //     $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id);
+    //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
+    //     $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Policial');
+    //     $dados['viewName'] = 'jornalismo/descricao_policial';
+    //     $this->load->view('Template', $dados);
+    // }
+
+    public function noticia() {
+        $categoria = $_GET['categoria'];
+        $dados['jornalismo_impar'] = $this->Novomenina->jornalismo_impar($categoria);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
-        $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Esporte');
-        $dados['viewName'] = 'jornalismo/esporte';
+        $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria);
+        $dados['viewName'] = 'jornalismo/noticia';
         $this->load->view('Template', $dados);
     }
 
-    public function policial() {
-        $dados['jornalismo_impar'] = $this->Novomenina->jornalismo_impar('Policial');
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
-        $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Policial');
-        $dados['viewName'] = 'jornalismo/policial';
-        $this->load->view('Template', $dados);
-    }
-
-    public function cultura() {
-        $dados['jornalismo_impar'] = $this->Novomenina->jornalismo_impar('Cultura');
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
-        $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Cultura');
-        $dados['viewName'] = 'jornalismo/cultura';
-        $this->load->view('Template', $dados);
-    }
-
-    public function descricao_esporte() {
+    public function descricao_noticia() {
         $id = $_GET['id'];
+        $categoria = $_GET['categoria'];
         $this->Novomenina->cliques($id);
         $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
-        $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Esporte');
-        $dados['viewName'] = 'jornalismo/descricao_esporte';
+        $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria);
+        $dados['viewName'] = 'jornalismo/descricao_noticia';
         $this->load->view('Template', $dados);
     }
-
-    public function descricao_cultura() {
-        $id = $_GET['id'];
-        $this->Novomenina->cliques($id);
-        $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id);
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
-        $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Cultura');
-        $dados['viewName'] = 'jornalismo/descricao_cultura';
-        $this->load->view('Template', $dados);
-    }
-
-    public function descricao_policial() {
-        $id = $_GET['id'];
-        $this->Novomenina->cliques($id);
-        $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id);
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
-        $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Policial');
-        $dados['viewName'] = 'jornalismo/descricao_policial';
-        $this->load->view('Template', $dados);
-    }
-
     
 
     
