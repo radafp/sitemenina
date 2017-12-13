@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
-    <!-- <link href="<?php echo base_url('/assets/vendor/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet"> -->
+    <link href="<?php echo base_url('/assets/vendor/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
     <link href="<?php echo base_url('/assets/css/base.css')?>" rel="stylesheet">
     <link href="<?php echo base_url('/assets/css/template.css')?>" rel="stylesheet">
     
