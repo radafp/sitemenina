@@ -20,21 +20,12 @@ class home extends CI_Controller {
         $_SESSION['regiao']         = 'bc';
         $regiao                     = 'bc';
         $_SESSION['controller']     = 'balneario_camboriu';
-<<<<<<< HEAD
-        $dados['titulo']            = $this->Novomenina->noticias_turistmo_destaque();
-        $dados['eventos']           = $this->Novomenina->eventos();
-        $dados['programacao']       = $this->Novomenina->programacao();
-        $dados['videos']            = $this->Novomenina->videos();
-        $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo();
-        $dados['outras_noticias']   = $this->Novomenina->outras_noticias();
-=======
         $dados['titulo']            = $this->Novomenina->noticias_turistmo_destaque($regiao);
         $dados['eventos']           = $this->Novomenina->eventos($regiao);
         $dados['programacao']       = $this->Novomenina->programacao($regiao);
         $dados['videos']            = $this->Novomenina->videos($regiao);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($regiao);
         $dados['outras_noticias']   = $this->Novomenina->outras_noticias($regiao);
->>>>>>> 27245e7da394516119d098753a08c4e468415a15
         $this->load->view('Template', $dados);
     }
 
