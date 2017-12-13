@@ -23,6 +23,7 @@ class home extends CI_Controller {
         $dados['eventos']           = $this->Novomenina->eventos();
         $dados['programacao']       = $this->Novomenina->programacao();
         $dados['videos']            = $this->Novomenina->videos();
+        $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo();
         $dados['outras_noticias']   = $this->Novomenina->outras_noticias();
         $this->load->view('Template', $dados);
     }
@@ -41,6 +42,7 @@ class home extends CI_Controller {
 
     public function programacao() {
         $dados['viewName'] = 'programacao';
+        $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo();
         $dados['programacao_impar'] = $this->Novomenina->programacao_impar();
         $dados['programacao_par']   = $this->Novomenina->programacao_par(); 
         $this->load->view('Template', $dados);
