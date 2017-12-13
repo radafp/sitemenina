@@ -1,6 +1,6 @@
 <div class='programacao'>
 <div class='programacoes'>
-    <h2>Ultimas noticias do Esporte</h2><br>
+    <h2>Ultimas noticias</h2><br>
     <div id='prog'>
         <?php foreach($jornalismo_impar as $info):?>
             <div id='esquerda'>
