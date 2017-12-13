@@ -11,8 +11,6 @@
                 </a> 
             </div>
         <?php endforeach?>
-
-        
     </div>
 </div>
 
@@ -29,7 +27,3 @@
 </div>
 </div><br><br><br>
 <?php 
-
-// echo '<pre>'; 
-// var_dump($jornalismo_impar );
-// echo '</pre>';

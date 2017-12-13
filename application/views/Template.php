@@ -29,10 +29,6 @@
     <meta property="og:description" content="<?=isset($description) ? $description : PROJECT_DESCRIPTION;?>" />
     <meta property="og:image" content="<?=isset($imagemFb) ? $imagemFb : base_url('/assets/img/logo-jm-fb.png');?>" />
 
-    <!-- chamando o jquery -->
-    
-
-
     <head>
 	
 	
@@ -87,7 +83,7 @@
                     <li>Jornalismo 
                         <ul id="submenu">
                             <?php foreach($titulo_jornalismo as $info):?>
-                            <a href="<?php echo 'jornalismo/'.$info['categoriaPt']?>"><li><?php echo $info['categoriaPt']?></li></a>
+                            <li><a href="<?php echo base_url('home/'.strtolower($info['categoriaPt']))?>"><?php echo $info['categoriaPt']?></a></li>
                             <?php endforeach?>
                         </ul>
                     </li>
