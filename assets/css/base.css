@@ -1,0 +1,218 @@
+
+/*!
+ * Start Bootstrap - Modern Business HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Global Styles */
+
+html,
+body {
+
+    height: 100%;
+    font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
+    line-height: 1.42857143;
+    background: url('../img/bg_intro.jpg') 
+}
+
+.container{
+  margin: auto;
+  text-align: center;
+}
+
+.backgroundBody_BC {
+  background: url('/img/bg_bl.jpg') no-repeat center center fixed;
+  background-size: cover; /*Css padrão*/
+  -webkit-background-size: cover; /*Css safari e chrome*/
+  -moz-background-size: cover; /*Css firefox*/
+  -ms-background-size: cover; /*Css IE não use mer#^@%#*/
+  -o-background-size: cover; /*Css Opera*/
+}
+.backgroundBody_BL {
+  background: url('../img/bg_bl.jpg') no-repeat center center fixed;
+  background-size: cover; /*Css padrão*/
+  -webkit-background-size: cover; /*Css safari e chrome*/
+  -moz-background-size: cover; /*Css firefox*/
+  -ms-background-size: cover; /*Css IE não use mer#^@%#*/
+  -o-background-size: cover; /*Css Opera*/
+}
+.backgroundBody_LG {
+  background: url('/img/bg_lg.jpg') no-repeat center center fixed;
+  background-size: cover; /*Css padrão*/
+  -webkit-background-size: cover; /*Css safari e chrome*/
+  -moz-background-size: cover; /*Css firefox*/
+  -ms-background-size: cover; /*Css IE não use mer#^@%#*/
+  -o-background-size: cover; /*Css Opera*/
+}
+
+.topo_BC{
+    height: 85px;
+    background-color: #42A3CD;
+    border-bottom: 8px solid #50B3DA;
+}
+.topo_BC button{
+    background-color: #2d82a5;
+    
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 45px;
+    width: 142px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+.topo_BL{
+    height: 85px;
+    background-color: #fbb247;
+    border-bottom: 8px solid #fec677;
+}
+.topo_BL button{
+    background-color: #2d82a5;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 45px;
+    width: 142px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+.topo_LG{
+    height: 85px;
+    background-color: #6aba4f;
+    border-bottom: 8px solid #6dc551; 
+}
+.topo_LG button{
+    background-color: #2d82a5;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 45px;
+    width: 142px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+a, a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+/* -- Header -- */
+.topo{
+  padding: 15px 0;
+}
+
+.topo p{
+  color: #ffffff;
+}
+.topo p span{
+  font-weight: bold;
+}
+
+/* .mainTopo{
+  background-color: #FFFFF;
+  height:290px;
+  width: 100%;
+} */
+/* -- Fim Header -- */
+
+.conteudo{
+  min-height: 350px;
+}
+
+
+/* --- Fotter  --- */
+.redes{
+  padding:100px;
+}
+
+.redes h1{
+  font-family: 'microgrammadmedextregular';
+  font-size: 24px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #333; 
+}
+
+.redes span{
+  display: block;
+  width: 100px;
+  background: #333;
+  height: 3px;
+  margin-top: -5px;
+}
+.redes.redes_BC{
+  background: url('/img/redes_BC.jpg');
+}
+.redes.redes_BL{
+  background: url('/img/redes_BL.jpg');
+}
+.redes.redes_LG{
+  background: url('/img/redes_LG.jpg');
+}
+
+.unidades{
+  background-color: #ffffff;
+  padding: 45px 0;
+}
+.unidades img{
+  max-height: 72px; 
+}
+.unidades h3{
+  font-size: 16px;
+  margin:20px 0;
+}
+
+.rodapeBg_BC{
+  background-color: #42A3CD;
+  height: 80px;
+  padding-top: 30px;
+}
+.rodapeBg_BC p{
+  font-weight: 500;
+  color: #ffffff;
+}
+.rodapeBg_BL{
+  background-color: #fbb247;
+  height: 80px;
+  padding-top: 30px;
+}
+.rodapeBg_BL p{
+  font-weight: 500;
+  color: #ffffff;
+}
+.rodapeBg_LG{
+  background-color: #6aba4f;
+  height: 80px;
+  padding-top: 30px;
+}
+.rodapeBg_LG p{
+  font-weight: 500;
+  color: #ffffff;
+}
+
+
+
+
+
+
+

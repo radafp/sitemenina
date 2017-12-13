@@ -1,0 +1,307 @@
+body, html{
+    border: 0;
+    padding: 0;
+    background-image: url('../img/bg_bc.jpg');
+    background-repeat:no-repeat;
+    background-size: contain;
+}
+
+header{
+    background-color: #42a3cd;
+    width: 100%;
+    max-height: 20vmin;
+}
+
+main div.redes_BC{
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 70vmax;
+    border-radius: 6px;
+    margin:auto;
+    margin-top: 4vmin;
+}
+
+div.logo_menina{
+    background-color: red;
+    width: 75vmin;
+}
+
+div.row h3{
+    color: #ed8e2b;
+    margin-left: 5vmin;
+    margin-top: 5vmin;
+}
+
+main div.menu{
+    margin: auto;
+      
+ 
+}
+main div.menu ul{
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+main div.menu ul li{
+    margin: auto;
+    margin-top: 1vmin;
+    margin-bottom: 2vmin;
+    margin-left: 1vmin;
+    list-style-type: none;
+    width: 8vmax;
+  
+}
+
+/* area de noticias */
+main div.noticias_principais{
+    margin-left: 14.6vmax;
+    margin-top: 3vmax;
+    width: 70%;
+}
+
+main div.noticias_principais div.turismo{
+    width: 45vmax;
+    height: 26vmax;
+    background-color: red;
+    border-radius: 5px;
+}
+
+main div.noticias_principais div.turismo h2{
+    color: white;
+}
+
+main div.noticias_principais div.esporte{
+    width: 23vmax;
+    height: 12vmax;
+    background-color: rebeccapurple;
+    border-radius: 5px;
+    margin-left: 47vmax;
+    margin-top: -26vmax;
+}
+
+main div.noticias_principais div.geral{
+    width: 23vmax;
+    height: 12vmax;
+    background-color: rgb(13, 3, 24);
+    border-radius: 5px;
+    margin-left: 47vmax;
+    margin-top: 2vmax;
+}
+
+/* novidades */
+main div.ultimas_noticias{
+    margin-left: 14.6vmax;
+    width: 70%;
+}
+
+/* promocoes e eventos */
+main div.promocoes_eventos{
+    background-image: url('../img/redes_BC.jpg');
+    background-size: contain;
+    width: 100%;
+    height: 40vmax;
+}
+
+main div.promocoes_eventos div#programacoes{
+    width: 30vmax;
+    margin-left: 14.5vmax;
+}
+
+main div.promocoes_eventos div#programacoes h2{
+    padding-top: 6vmin;
+}
+
+main div.promocoes_eventos div#eventos{
+    width: 45vmax;
+    margin-left: 50vmax;
+    margin-top: -7.4vmax;
+}
+
+main div.promocoes_eventos div#eventos h3{
+    margin-left: 32vmax;
+    margin-top: -18vmax;
+    color: white;
+}
+
+main div.promocoes_eventos div#eventos p{
+    width: 4vmax;
+    margin-left: 32vmax;
+    color: white;
+}
+
+/* programaçao e enquetes */
+main div.programacao_enquete{
+    width: 99vmax;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    /* background: rebeccapurple; */
+
+}
+
+main div.programacao_enquete div#programacao{
+    width: 25vmax;
+    margin-left: 2vmax;
+    margin-top: 2vmin;
+    /* background: red; */
+
+}
+main div.programacao_enquete div#programacao div#programacao1{
+    border: solid 1px silver;
+}
+
+main div.programacao_enquete div#programacao div#programacao1 img{
+    margin-left: 2vmin;
+    margin-top: 2vmin;
+    width: 6vmax;
+}
+
+main div.programacao_enquete div#programacao div#programacao1 h3{
+    margin-left: 8vmax;
+    margin-top: -5vmax;
+    padding-left: 2vmin;
+    font-size: 1.2vmax;
+    color: #c5c5c5;
+}
+
+main div.programacao_enquete div#programacao div#programacao1 p{
+    margin-left: 8vmax;
+    margin-top: 0vmax;
+    padding-left: 2vmin;
+    font-size: 1vmax;
+    color: #c5c5c5;
+}
+
+main div.programacao_enquete div#enquetes{
+    width: 25vmax;
+    margin-left: 57vmin;
+    margin-top: -49.1vmin;
+    flex: 1 2;
+    /* background: #ed8e2b; */
+}
+
+main div.programacao_enquete div#mensagem_dia{
+    width: 25vmax;
+    margin-left: 55vmax;
+    margin-top: -32.1vmax;
+    /* background: #42a3cd; */
+}
+
+/* area de redes sociais */
+main div.rede_social{
+    background-image: url('../img/redes_BC.jpg');
+    width: 100%;
+    height: 26vmax;
+}
+
+main div.rede_social div.face{
+    margin-left: 11vmax;
+    padding-top: 4vmax;
+}
+
+main div.rede_social div.face img{
+    width: 25vmax;
+}
+
+main div.rede_social div.youtube{
+    margin-left: 11vmax;
+    margin-top: .4vmax;
+    background-color: red;
+    width: 25vmax;
+    height: 9.2vmax;
+}
+
+main div.rede_social div.foto1{
+    margin-left: 36.5vmax;
+    margin-top: -18.8vmax;
+    background-color: rgb(105, 31, 31);
+    width: 20vmax;
+    height: 18.8vmax;
+}
+
+main div.rede_social div.foto2{
+    margin-left: 57vmax;
+    margin-top: -18.8vmax;
+    background-color: rgb(143, 110, 110);
+    width: 12vmax;
+    height: 9.2vmax;
+}
+
+main div.rede_social div.foto3{
+    margin-left: 57vmax;
+    margin-top: 0.8vmin;
+    background-color: rgb(141, 140, 140);
+    width: 12vmax;
+    height: 9.2vmax;
+}
+
+main div.rede_social div.foto4{
+    margin-left: 69.5vmax;
+    margin-top: -18.8vmax;
+    background-color: rgb(41, 2, 2);
+    width: 20vmax;
+    height: 18.8vmax;
+}  
+
+
+
+/* inicio do estilo do menu PROGRAMACAO */
+div.programacao{
+    background-color: white;
+    width: 70vmax;
+    border-radius: 6px;
+    margin:auto;
+    margin-top: 3vmax;
+    display: flex;
+    flex-direction: row;
+}
+
+div.programacao div.programacoes{
+    width: 50%;
+}
+
+div.programacao div.programacoes h2{
+    padding-top: 2vmax;
+    margin-left: 2vmax;
+}
+
+div.programacao div.programacoes div#prog div#esquerda{
+    width: 18vmax;
+    margin-left: 2vmax;
+}
+
+div.programacao div.programacoes div#prog div#esquerda img{
+    width: 5vmax;
+}
+
+div.programacao div.programacoes div#prog div#esquerda h3{
+    margin-left: 7vmax;
+    margin-top: -2vmax;
+    font-size: 1.2vmax;
+}
+
+div.programacao div.programacoes div#prog div#direita{
+    width: 18vmax;
+    margin-left: 19vmax;
+}
+
+div.programacao div.programacoes div#prog div#direita img{
+    width: 5vmax;
+}
+
+div.programacao div.programacoes div#prog div#direita h3{
+    margin-left: 7vmax;
+    margin-top: -2vmax;
+    font-size: 1.2vmax;
+}
+
+div.programacao div.playlist{
+    /* background-color: red; */
+    width: 50%;
+}
+
+div.programacao div.playlist h2{
+    padding-top: 2vmax;
+    margin-left: 2vmax;
+}

@@ -1,0 +1,85 @@
+
+/*!
+ * Start Bootstrap - Modern Business HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Global Styles */
+
+html,
+body {
+
+    height: 100%;
+    font-size: 14px;
+    font-family: 'Quicksand', sans-serif;
+    line-height: 1.42857143;
+    background: #f2f2f2;
+}
+body{
+  background: url('../img/bg_intro.jpg') no-repeat center center fixed;
+  background-size: cover; /*Css padrão*/
+  -webkit-background-size: cover; /*Css safari e chrome*/
+  -moz-background-size: cover; /*Css firefox*/
+  -ms-background-size: cover; /*Css IE não use mer#^@%#*/
+  -o-background-size: cover; /*Css Opera*/
+}
+a, a:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.topo-intro{
+    text-align: center;
+}
+.topo-intro p{
+    font-family: 'microgrammadeebolextregular';
+    font-size: 40px;
+    color: #ffffff;
+}
+
+.box-regiao{
+    width: 236px;
+    height:261px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 8px;
+    border:5px solid #F8C66B;
+    background-color: #ffffff;
+}
+.box-regiao .logoRegiao{
+    width: 100%;
+    height: 106px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 18px;
+}
+.box-regiao p{
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.box-regiao a, a:hover{
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 14px;
+    display: block;
+    margin-top: 35px;
+    height: 45px;
+    width: 142px;
+    background-color: #f9c66a;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    -webkit-box-shadow: 0px 3px 10px -2px #666666;
+    -moz-box-shadow: 0px 3px 10px -2px #666666;
+    box-shadow: 0px 3px 10px -2px #666666;
+}
+
+
+

@@ -1,0 +1,110 @@
+/**
+ * Created by 23rd and Walnut
+ * www.23andwalnut.com
+ * User: Saleem El-Amin
+ * Date: 6/8/11
+ * Time: 9:39 AM
+ */
+
+var myPlaylist = [
+
+    {
+        mp3:'audio/1-Moira-Waugh-Small-Back-Room.mp3',
+        oga:'',
+        title:'',
+        artist:'',
+        rating:4,
+        buy:'#',
+        price:'',
+        duration:'4:04',
+        cover:''
+    },
+    {
+        mp3:'audio/2-Baby-Paul-Beautiful-Girl.mp3',
+        oga:'',
+        title:'',
+        artist:'',
+        rating:4,
+        buy:'#',
+        price:'',
+        duration:'3:23',
+        cover:''
+    },
+    {
+        mp3:'audio/3-Heifervescent-When-Stars-Fall-from-Grace.mp3',
+        oga:'',
+        title:'',
+        artist:'',
+        rating:4,
+        buy:'#',
+        price:'',
+        duration:'4:18',
+        cover:''
+    },
+    {
+        mp3:'audio/4-Jeffrey-Philip-Nelson-Better-Memories.mp3',
+        oga:'',
+        title:'',
+        artist:'',
+        rating:4,
+        buy:'#',
+        price:'',
+        duration:'3:35',
+        cover:''
+    },
+    {
+        mp3:'audio/5-Josh-Woodward-Go.mp3',
+        oga:'',
+        title:'',
+        artist:'',
+        rating:4,
+        buy:'#',
+        price:'',
+        duration:'3:46',
+        cover:''
+    },
+    {
+        mp3:'audio/6-Kara-Square-These-Years-and-Still.mp3',
+        oga:'',
+        title:'',
+        artist:'',
+        rating:4,
+        buy:'#',
+        price:'',
+        duration:'2:59',
+        cover:''
+    },
+    {
+        mp3:'audio/7-Melanie-Ungar-What-Is-Love.mp3',
+        oga:'',
+        title:'',
+        artist:'',
+        rating:4,
+        buy:'#',
+        price:'',
+        duration:'3:32',
+        cover:''
+    },
+    {
+        mp3:'audio/8-Chaz-Robinson-Love-Will-Come-Back-Again.mp3',
+        oga:'',
+        title:'',
+        artist:'',
+        rating:4,
+        buy:'#',
+        price:'',
+        duration:'3:56',
+        cover:''
+    },
+    {
+        mp3:'audio/9-Sam-Brown-Who-Cares.mp3',
+        oga:'',
+        title:'',
+        artist:'',
+        rating:4,
+        buy:'#',
+        price:'',
+        duration:'3:08',
+        cover:''
+    }
+];
