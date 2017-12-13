@@ -47,7 +47,7 @@
                         <img src="<?php echo base_url('/assets/img/logoMeninaBC.png')?>" title="Radio Menina Balneário Camboriú">
                     </div>
                     <p>Balneário Camboriú</p>
-                    <a href="Home/balneario_camboriu">Acessar</a>
+                    <a href="home/balneario_camboriu">Acessar</a>
                 </div>
             </div>
             <div class="col-lg-4 mb-4">
