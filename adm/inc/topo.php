@@ -1,0 +1,26 @@
+<!--<div class="left"></div>
+<div class="right"></div>-->
+<div class="topo">
+    <div class="centro">
+        <div class="logoAgencia">
+            <img src="<?=ssl().ADMIN_URL;?>/img/base/topo/logoCliente.png" />
+        </div>
+        <div style="float: left; margin-top: 30px;">
+            <b>Região:</b><br>
+            <?
+                if($_SESSION[ADMIN_SESSION_NAME.'_regiao'] == 'bc')
+                    echo "Balneário Camboriú";
+                if($_SESSION[ADMIN_SESSION_NAME.'_regiao'] == 'bl')
+                    echo "Blumenal";
+                if($_SESSION[ADMIN_SESSION_NAME.'_regiao'] == 'lg')
+                    echo "Lages";
+            ?>
+        </div>
+        <div class="logoCliente">
+            <img src="<?=ssl().ADMIN_URL;?>/img/base/topo/logoAgencia.png" />
+            <p>
+                Gerenciador de <span>conteúdos</span>
+            </p>
+        </div>
+    </div>
+</div>

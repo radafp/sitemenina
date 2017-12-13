@@ -1,0 +1,27 @@
+/* CELULAS DA LISTAGEM */
+
+.divTableLista .divTd:nth-child(1)
+{
+    width: 25px;
+}
+.divTableLista .divTd:nth-child(2)
+{
+    text-align: left;
+    padding-left: 7px;
+    width: 300px;
+}
+.divTableLista .divTd:nth-child(3)
+{
+    width: 300px;
+    text-align: left;
+}
+.divTableLista .divTd:nth-child(4)
+{
+    width: 85px;
+}
+.divTableLista .divTd:nth-child(5)
+{
+    width: 85px;
+}
+
+/* FIM - CELULAS DA LISTAGEM */

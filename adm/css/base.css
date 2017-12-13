@@ -1,0 +1,621 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+html
+{
+    font-family: "titilliumtext25l250_wt";
+}
+div
+{
+    float: left;
+}
+a
+{
+    text-decoration: none;
+    color: #000000;
+}
+input, select, textarea
+{
+    border: none;
+}
+label
+{
+    font-family: "titilliumtext25l250_wt";
+    font-size: 12px;
+}
+.clear
+{
+    clear: both;
+}
+.mestre
+{
+    width: 100%;
+    float: left;
+}
+.centro
+{
+    margin-right: auto;
+    margin-left: auto;
+    width: 960px;
+    clear: both;
+    float: none !important;
+}
+.salvar
+{
+    background: #231F20 !important;
+    color: #FFFFFF;
+    width: 120px !important;
+    height: 35px !important;
+    font-family: "titilliumtext25l250_wt";
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.link
+{
+    background: #231F20 !important;
+    color: #FFFFFF !important;
+    width: 120px !important;
+    text-transform: uppercase !important;
+    font-size: 13px !important;
+    padding: 5px !important;
+}
+/* ---------------------------------------------------------------------------------- */
+
+/* TOPO */
+
+.topo
+{
+    float: none;
+    background: #FFFFFF;
+    height: 110px;
+    position: relative;
+}
+.topo .logoAgencia
+{
+    margin-top: 15px;
+}
+.topo .logoCliente
+{
+    float: right;
+    margin-top: 15px;
+}
+.topo .logoCliente img
+{
+    float: right;
+}
+.topo .logoCliente p
+{
+    clear: both;
+    float: right;
+    font-size: 14px;
+    margin: 10px 0;
+    text-transform: uppercase;
+}
+.topo .logoCliente p span
+{
+    font-weight: bold;
+}
+/* FIM - TOPO */
+
+/* MENU */
+
+.menu
+{
+    position: relative;
+    width: 100%;
+    /*float: none !important;*/
+    background: none repeat scroll 0 0 #E6E6E6;
+}
+.menu ul li{
+    
+}
+.menu ul li
+{
+    display: inline-block;
+    list-style: none;
+    /*width: 100%;
+    height: 50px;*/
+    background: none repeat scroll 0 0 #E6E6E6;
+    color: #231F20;
+    font-size: 13px;
+    font-family: titilliumtext25l250_wt;
+    text-transform: uppercase;
+    padding: 12px;
+    float: left;
+}
+.menu li:hover, .menu .menuAtivo
+{
+    background: none repeat scroll 0 0 #F2F2F2;
+}
+.menu li a
+{
+    /*width: 100%;*/
+    height: 100%;
+    /*display: block;*/
+}
+.menu li a span
+{
+    /*width: 240px;*/
+    display: inline-block;
+    /*float: right;*/
+}
+.menu ul li ul{
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+    margin-left: -10px;
+    margin-top: 12px;
+}
+.menu ul li ul li{
+    background-color: #ccc;
+    height: 30px;
+    margin: 0;
+    padding: 0.7em;
+    width: 100%;
+}
+.submenu{
+    display: none;
+    background-color: #ccc;
+}
+/* FIM - MENU */
+
+
+/* CONTEUDO */
+.conteudo
+{
+    min-height: 600px;
+    position: relative;
+    width: 100%;
+    /*background: none repeat scroll 0 0 #F2F2F2;
+    padding: 10px;*/
+}
+/* FIM - CONTEUDO */
+
+/* BREAD */
+.pagina
+{
+    /*width: 700px;*/
+    padding: 10px;
+    margin-top: 10px;
+}
+.pagina .bread
+{
+    font-size: 15px;
+    font-family: titilliumtext25l250_wt;
+    text-transform: uppercase;
+    color: #212121;
+}
+.pagina .bread span
+{
+    font-weight: bold;
+}
+/* FIM - BREAD */
+
+
+/* TOPO MODULO */
+.pagina .voltar
+{
+    text-transform: uppercase;
+    font-family: titilliumtext25l250_wt;
+    font-size: 13px;
+    color: #231F20;
+    margin-top: 25px;
+}
+.pagina .boxAcoes
+{
+    text-transform: uppercase;
+    font-family: titilliumtext25l250_wt;
+    font-size: 14px;
+    color: #231F20;
+    margin-top: 25px;
+    width: 100%
+}
+.pagina .boxAcoes .selecionarTodos
+{
+    height: 35px;
+    text-align: center;
+    width: 35px;
+    background: #E6E6E6;
+    margin-right: 5px;
+}
+
+.pagina .boxAcoes .selecionarTodos input
+{
+    margin-top: 12px;
+}
+.pagina .boxAcoes .apagarTodos
+{
+    height: 35px;
+    text-align: center;
+    width: 35px;
+    background: #231F20;
+    margin-right: 5px;
+}
+.pagina .boxAcoes .apagarTodos img
+{
+    margin-top: 7px;
+}
+.pagina .boxAcoes .addConteudo
+{
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: #231F20;
+    min-width: 160px;
+}
+.pagina .boxAcoes .printConteudo
+{
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: #231F20;
+    min-width: 160px;
+}
+.pagina .boxAcoes .ordenarTodos
+{
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: #231F20;
+    min-width: 160px;
+    float: right;
+}
+.pagina .boxAcoes .btFiltros
+{
+    background: #231f20 none repeat scroll 0 0;
+    height: 35px;
+    line-height: 35px;
+    min-width: 160px;
+    text-align: center;
+    margin-right: 22px
+}
+.pagina .boxAcoes .btFiltros.ultimo
+{
+    margin-right: 0px
+}
+.pagina .boxAcoes .addConteudo span
+{
+    float: left;
+    color: #FFFFFF;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.pagina .boxAcoes .addConteudo img
+{
+    float: left;
+    margin-top: 6px;
+    margin-left: 10px;
+}
+.linkTopo
+{
+    background: #231F20 !important;
+    color: #FFFFFF !important;
+    width: 150px !important;
+    text-transform: uppercase !important;
+    font-size: 13px !important;
+    padding: 5px !important;
+    height: 25px;
+    line-height: 25px;
+    margin: 0px 5px 0 5px;
+    text-align: center;
+    float: right;
+}
+/* FIM - TOPO MODULO */
+
+/* LISTAGEM */
+.divTableLista
+{
+    display: table;
+    float: left;
+    width: 940px;
+    margin-top: 15px;
+}
+
+.divTableLista .divTr.head 
+{
+    background: transparent !important;
+}
+.divTableLista .divTr.head:hover
+{
+    background: transparent !important;
+}
+.divTableLista .divTr.head .divTd 
+{
+    font-size: 12px !important;
+    font-family: "titilliumtext25l250_wt" !important;
+    text-transform: uppercase !important;
+    border-bottom: 1px solid #231F20;
+    border-right: 0 !important;
+}
+.divTableLista .divTr
+{
+    display: table-row;
+    float: none;
+    margin: 1px 0;
+    background: #E6E6E6;
+}
+.divTableLista .divTr:hover
+{
+    background: #f2f2f2;
+}
+.divTableLista .divTd
+{
+    display: table-cell;
+    float: none;
+    font-size: 13px;
+    font-family: "titilliumtext25l250_wt";
+    text-align: center;
+    vertical-align: middle;
+    border-right: 2px solid #F2F2F2;
+    border-bottom: 2px solid #F2F2F2;
+    padding: 5px;
+    height: 35px;
+}
+.divTableLista .divTd input[type='checkbox']
+{
+    vertical-align: middle;
+}
+.divTableLista .divTd a
+{
+    color: #231F20
+}
+.divTableLista .divTd a:hover
+{
+    color: #666666;
+}
+.divTableLista .divTd:last-child
+{
+    border-right: 0 !important;
+}
+
+.divTableFiltro
+{
+    display: table;
+    float: left;
+    width: 940px;
+    margin-top: 25px;
+}
+
+.divTableFiltro .divTr.head 
+{
+    background: transparent !important;
+}
+.divTableFiltro .divTr.head:hover
+{
+    background: transparent !important;
+}
+.divTableFiltro .divTr.head .divTd 
+{
+    font-size: 15px !important;
+    font-family: "titilliumtext25l250_wt" !important;
+    text-transform: uppercase !important;
+    border-bottom: 1px solid #231F20;
+    border-right: 0 !important;
+}
+.divTableFiltro .divTr
+{
+    display: table-row;
+    float: none;
+    margin: 1px 0;
+    background: #E6E6E6;
+}
+.divTableFiltro .divTd
+{
+    display: table-cell;
+    float: none;
+    font-size: 13px;
+    font-family: "titilliumtext25l250_wt";
+    text-align: center;
+    vertical-align: middle;
+    border-right: 2px solid #F2F2F2;
+    border-bottom: 2px solid #F2F2F2;
+    padding: 5px;
+    height: 35px;
+}
+.divTableFiltro .divTd input[type='checkbox']
+{
+    vertical-align: middle;
+}
+.divTableFiltro .divTd a
+{
+    color: #231F20
+}
+.divTableFiltro .divTd:last-child
+{
+    border-right: 0 !important;
+}
+
+
+
+.divTableFiltro .salvar
+{
+    margin-top: 0 !important;
+}
+/* FIM - LISTAGEM */
+
+/* FORM NOVO EDITA*/
+
+.divTableForm
+{
+    display: table;
+    float: left;
+    width: 900px;
+    margin-top: 25px;
+}
+.divTableForm fieldset{
+    width: 100%;
+}
+.divTableForm fieldset.semborda {
+    border-bottom: 0 none;
+    border-left: 0 none;
+    border-right: 0 none;
+}
+
+.divTableForm .divTr
+{
+    display: table-row;
+    float: none;
+}
+
+.divTableForm .divTd
+{
+    display: table-cell;
+    float: none;
+    font-size: 13px;
+    vertical-align: middle;
+    padding: 5px;
+}
+
+.divTableForm input:not([type='checkbox']):not([type='radio']), .divTableFormFotos input:not([type='checkbox']):not([type='radio']), textarea, select
+{
+    width: 250px;
+    background: #E6E6E6;
+    height: 25px;
+    padding: 5px;
+    font-family: "titilliumtext25l250_wt";
+    font-size: 12px;
+}
+.divTableForm select{
+    width: 250px;
+    background: #E6E6E6;
+    height: 35px;
+    padding: 5px;
+    font-family: "titilliumtext25l250_wt";
+    font-size: 12px;
+}
+.divTableForm input, .divTableFormFotos input
+{
+    vertical-align: middle;
+}
+.divTableForm span, .divTableFormFotos span
+{
+    vertical-align: middle;
+}
+.divTableForm textarea, .divTableFormFotos textarea
+{
+    min-height: 150px;
+}
+.divTableForm select, .divTableFormFotos select
+{
+    width: 260px;
+    padding-top: 8px;
+}
+
+.divTableForm .campoP, .divTableFormFotos .campoP
+{
+    width: 160px !important;    
+}
+.divTableForm .campoM, .divTableFormFotos .campoM
+{
+    width: 300px !important;    
+}
+.divTableForm .campoG, .divTableFormFotos .campoG
+{
+    width: 600px !important;    
+}
+.divTableForm select.campoP, .divTableFormFotos select.campoP
+{
+    width: 170px !important;    
+}
+.divTableForm select.campoM, .divTableFormFotos select.campoM
+{
+    width: 310px !important;    
+}
+.divTableForm select.campoG, .divTableFormFotos select.campoG
+{
+    width: 610px !important;    
+}
+.divTableForm .divTd:nth-child(1)
+{
+    width: 130px;
+    text-align: right;
+}
+.divTableForm .divTd:nth-child(2)
+{
+    text-align: left;
+}
+
+.divTableFormFotos
+{
+    display: table;
+    float: left;
+    width: 100%;
+    margin-top: 25px;
+}
+.divTableFormFotos .divTr
+{
+    display: table-row;
+    float: none;
+}
+
+.divTableFormFotos .divTd
+{
+    display: table-cell;
+    float: none;
+    font-size: 13px;
+    vertical-align: middle;
+    padding: 3px;
+}
+
+.divTableFormFotos .boxFoto
+{
+    background: #f2f2f2 none repeat scroll 0 0;
+    border: 1px solid #e0e0e0;
+    float: left;
+    height: 80px;
+    margin: 5px;
+    padding: 10px 0;
+    width: 48%;
+}
+
+.divTableFormFotos .boxFoto .divTr:nth-child(1)
+{
+    float: left;
+    height: 145px;
+    width: 155px;
+}
+
+.divTableFormFotos .boxFoto .divTd:nth-child(1)
+{
+    width: 100px;
+    text-align: right;
+}
+.divTableFormFotos .boxFoto .divTd:nth-child(2)
+{
+    text-align: left;
+}
+
+.divTableFormFotos .boxFoto .divTd:nth-child(2) img
+{
+    max-height: 60px;
+    max-width: 90px;
+}
+
+.divTd > div#groupDivs
+{
+    margin-left: -75px !important;
+}
+.divTd > div#groupDivs > div
+{
+    display: inline-block;
+    width: 440px;
+    padding: 5px 0px;
+}
+.divTd > div#groupDivs label
+{
+    display: inline-block;
+    vertical-align: middle;
+    width: 65px;
+    text-align: right;
+    padding-right: 10px;
+}
+.divTd > div#groupDivs input[type='file'], .divTd > div#groupDivs input[type='text']
+{
+    width: 350px;
+}
+
+/* FORM NOVO EDITA*/

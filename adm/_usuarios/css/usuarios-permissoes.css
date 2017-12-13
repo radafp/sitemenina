@@ -1,0 +1,89 @@
+.divTableFormPermissoes
+{
+    display: table;
+    float: left;
+    width: 900px;
+    margin-top: 25px;
+}
+.divTableFormPermissoes .divTr
+{
+    clear: both;
+    float: left;
+}
+
+.divTableFormPermissoes .divTd
+{
+    display: table-cell;
+    float: none;
+    font-size: 13px;
+    vertical-align: middle;
+    padding: 5px;
+}
+
+.divTableFormPermissoes input:not([type='checkbox']):not([type='radio']), textarea, select
+{
+    width: 250px;
+    background: #E6E6E6;
+    height: 35px;
+    padding: 5px;
+    height: 35px;
+    font-family: "titilliumtext25l250_wt";
+    font-size: 12px;
+}
+.divTableFormPermissoes input
+{
+    vertical-align: middle;
+}
+.divTableFormPermissoes span
+{
+    vertical-align: middle;
+}
+.divTableFormPermissoes textarea
+{
+    min-height: 150px;
+}
+.divTableFormPermissoes select
+{
+    width: 260px;
+    padding-top: 8px;
+}
+
+.divTableFormPermissoes .campoP
+{
+    width: 160px !important;    
+}
+.divTableFormPermissoes .campoM
+{
+    width: 300px !important;    
+}
+.divTableFormPermissoes .campoG
+{
+    width: 600px !important;    
+}
+.divTableFormPermissoes select.campoP
+{
+    width: 170px !important;    
+}
+.divTableFormPermissoes select.campoM
+{
+    width: 310px !important;    
+}
+.divTableFormPermissoes select.campoG
+{
+    width: 610px !important;    
+}
+.divTableFormPermissoes .divTd:nth-child(1)
+{
+    width: 30px;
+    text-align: right;
+}
+.divTableFormPermissoes .divTd:nth-child(2)
+{
+    text-align: left;
+}
+.boxPermissao
+{
+    margin: 15px;
+    float: left;
+    width: 270px;
+}

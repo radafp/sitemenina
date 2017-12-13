@@ -1,0 +1,1 @@
+<!--<div style="background: rgb(102, 102, 102) none repeat scroll 0% 0%; color: rgb(255, 255, 255); width: 100%; text-align: center; font-size: 12px; height: 35px; padding-top: 12px;">Copyright&copy; Agência Set - 2017 - Proibida a cópia e reutilização sem autorização.</div>-->
