@@ -6,8 +6,6 @@
     <meta name="author" content="Agência Set - Criação de Sites - Santa Catarina - Balneário Camboriú - Agência Digital">
     <title>Nova Menina</title>
         
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/webfontkit/stylesheet.css')?>">
-
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
 
@@ -22,6 +20,7 @@
 
     <!-- Nao encontrei esta imagem no diretorio -->
     <!-- <link rel="icon" href="<?php echo base_url('/assets/img/base/favicon.png')?>"> --> -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/webfontkit/stylesheet.css')?>">
 </head>
 <body>
     <div class="container">

@@ -282,8 +282,10 @@ div.programacao div.programacoes div#prog div#esquerda h3{
 }
 
 div.programacao div.programacoes div#prog div#direita{
-    width: 18vmax;
-    margin-left: 19vmax;
+    width: 30vmax;
+    margin-left: 40vmax;
+    margin-top: -10vmax;
+    text-align: center;
 }
 
 div.programacao div.programacoes div#prog div#direita img{
@@ -296,6 +298,10 @@ div.programacao div.programacoes div#prog div#direita h3{
     font-size: 1.2vmax;
 }
 
+div.programacao div#comentario {
+    margin-top: 20vmax;
+    margin-left: -30vmax;
+}
 div.programacao div.playlist{
     /* background-color: red; */
     width: 50%;

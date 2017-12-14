@@ -61,6 +61,11 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
+    public function descricao_evento($id, $regiao) {
+        $query = $this->db->query("SELECT * FROM eventos WHERE cod = $id and eventos.regiao = '$regiao'");
+        return $query->result_array();
+    }
+
     public function cliques($id, $regiao) {
         $query = $this->db->query("UPDATE noticias SET cliques = cliques + 1 WHERE cod = $id  and noticias.regiao= '$regiao'");
     }
@@ -70,22 +75,9 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
-    public function jornalismo_impar($categoria) {
-        $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt FROM noticias INNER JOIN categorias WHERE categorias.cod = noticias.codCategoria and noticias.destaque = 1 and noticias.mostrar = 1 and categoriaPt = '$categoria' ORDER BY data desc");
-        return $query->result_array();
-    }
-
-    public function descricao_noticia($id) {
-        $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt FROM noticias INNER JOIN categorias WHERE categorias.cod = noticias.codCategoria and noticias.destaque = 1 and noticias.mostrar = 1 and noticias.cod = $id ORDER BY data DESC");
-        return $query->result_array();
-    }
-
-    public function cliques($id) {
-        $query = $this->db->query("UPDATE noticias SET cliques = cliques + 1 WHERE cod = $id; ");
-    }
-
-    public function mais_lidas($categoria) {
-        $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt FROM noticias INNER JOIN categorias WHERE categorias.cod = noticias.codCategoria and noticias.mostrar = 1 and categoriaPt = '$categoria' ORDER BY cliques desc");
+    public function evento_inpar($regiao) {
+        $this->db->where('regiao', "$regiao");
+        $query = $this->db->get('eventos');
         return $query->result_array();
     }
 }
