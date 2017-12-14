@@ -16,22 +16,50 @@
     text-align: center;
     padding:40px 0; 
 }
+.lsbr{
+    height: 145px;  
+}
 .blocoMenu hr{
     width: 95%;
 }
 .blocoMenu .logo{
-   
+    text-align: right;
+    padding-top: 15px;
+}
+.blocoMenu .slogam{
+    margin-top: 40px;
 }
 .blocoMenu .slogam h1{
     font-family: 'microgrammadeebolextregular';
-    font-size: 1em;
-    color: #ffffff;
+    font-size: 1.7em;
+    color: #eb8e31;
 }
 .blocoMenu .selRegiao{
-    
+    margin-top: 55px;
+}
+.blocoMenu .topoRedes{
+    margin-top: 30px;
 }
 .blocoMenu .topoRedes ul li{
     display: inline;
+}
+.blocoMenu .topoRedes ul li a.face{
+    border: 1px solid #6684bf;
+}
+.blocoMenu .topoRedes .face i{
+    color: #6684bf;
+}
+.blocoMenu .topoRedes ul li a.insta{
+    border: 1px solid #ba8ad7;
+}
+.blocoMenu .topoRedes .insta i{
+    color: #ba8ad7;
+}
+.blocoMenu .topoRedes ul li a.youtube{
+    border: 1px solid #e94c44;
+}
+.blocoMenu .topoRedes .youtube i{
+    color: #e94c44;
 }
 
 @media (min-width: 769px) {

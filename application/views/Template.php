@@ -29,8 +29,8 @@
         <!-- for Facebook -->          
         <meta property="og:url" content="<?php echo base_url();?>" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="<?=isset($title) ? $title : PROJECT_TITLE;?>" />
-        <meta property="og:description" content="<?=isset($description) ? $description : PROJECT_DESCRIPTION;?>" />
+        <meta property="og:title" content="<?=isset($title) ? $title : '';?>" />
+        <meta property="og:description" content="<?=isset($description) ? $description : '';?>" />
         <meta property="og:image" content="<?=isset($imagemFb) ? $imagemFb : base_url('/assets/img/logo-jm-fb.png');?>" />
 
     </head>
@@ -67,19 +67,17 @@
 
             </div>
             <!-- /.container fluid -->
-            <!-- Page -->
-            <div class="container">
 
+            <div class="container">
                 <div class="blocoMenu">
 
-                    <!-- Marketing Icons Section -->
-                    <div class="row">
+                    <div class="row lsbr">
 
                         <div class="col-md-2 col-sm-4 btm-30 logo">
                             <img src="<?php echo base_url('/assets/img/logoMenina'.$_SESSION['regiao'].'.png');?>" title="Rádio Menina">
                         </div>
                         <div class="col-md-4 col-sm-4 btm-30 slogam">
-                            <h1>3X MAIS GOSTOSA DE OUVIR</h1>
+                            <h1><?=$_SESSION['slogam'];?></h1>
                         </div>
                         <div class="col-md-3 col-sm-4 btm-30 selRegiao">
                             <form action="" id="formRegiao" method='POST'>
@@ -92,9 +90,9 @@
                         </div>
                         <div class="col-md-3 col-sm-4 btm-30 topoRedes">
                             <ul class="list-inline social">
-                                <li><a href="" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                                <li><a class="face" href="<?=$_SESSION['socialFace'];?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                <li><a class="youtube" href="<?=$_SESSION['socialYoutube'];?>" target="_blank"><i class="fa fa-youtube"></i></a></li>
                             </ul>   
                         </div>
 
@@ -102,7 +100,7 @@
                     <!-- /.row -->
                     <hr>               
                     <!-- Navigation -->
-                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <nav class="navbar navbar-expand-lg navbar-default">
                         <div class="container">
                             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>

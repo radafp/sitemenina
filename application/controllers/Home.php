@@ -19,7 +19,33 @@ class home extends CI_Controller {
     public function regiao() {
         $_SESSION['regiao']         = $_GET['regiao'];
         $regiao                     = $_GET['regiao'];
-        
+        switch($regiao){
+            case 'bc':
+                $_SESSION['slogam'] = "+ DE UM MILHÃO DE AMIGOS";
+                $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninabc";
+                $_SESSION['socialInsta'] = "https://www.instagram.com/meninafm/";
+                $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
+                break;
+            case 'bl': 
+                $_SESSION['slogam'] = "A NÚMERO UM DE BLUMENAL E REGIÃO";
+                $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninablu";
+                $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmblu/";
+                $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
+                break;
+            case 'lg':
+                $_SESSION['slogam'] = "A PRIMEIRA DA FM";
+                $_SESSION['socialFace'] = "https://www.facebook.com/meninafmlages";
+                $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmlages/";
+                $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
+                break;
+            default:
+                $_SESSION['slogam'] = "";
+                $_SESSION['socialFace'] = "";
+                $_SESSION['socialInsta'] = "";
+                $_SESSION['socialYoutube'] = "";
+                break;
+        }
+
         $dados['titulo']            = $this->Novomenina->noticias_turistmo_destaque($regiao);
         $dados['eventos']           = $this->Novomenina->eventos($regiao);
         $dados['programacao']       = $this->Novomenina->programacao($regiao);
