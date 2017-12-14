@@ -8,6 +8,7 @@ class Novomenina_model extends CI_Model{
         $this->load->database();
     }
 
+     // tabela noticias
     public function noticias_turistmo_destaque($regiao) {
         $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt FROM noticias INNER JOIN categorias WHERE categorias.cod = noticias.codCategoria and noticias.destaque = 1 and noticias.mostrar = 1 and noticias.regiao = '$regiao' ORDER BY data desc limit 3");
         return $query->result_array();
@@ -24,6 +25,7 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
+    // TABELA programacao
     public function programacao($regiao) {
         $this->db->where('regiao', '$regiao');
         $query = $this->db->get('programacao');
@@ -46,6 +48,7 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
+    // tabela categorias
     public function titulo_jornalismo($regiao)  {
         $query = $this->db->query("SELECT DISTINCT categorias.categoriaPt, noticias.codCategoria from categorias inner join noticias WHERE categorias.cod = noticias.codCategoria and noticias.regiao = '$regiao' ");
         return $query->result_array();
@@ -78,6 +81,18 @@ class Novomenina_model extends CI_Model{
     public function evento_inpar($regiao) {
         $this->db->where('regiao', "$regiao");
         $query = $this->db->get('eventos');
+        return $query->result_array();
+    }
+
+    // tabela promocoes
+    public function promocoes($regiao) {
+        $this->db->where('regiao', "$regiao");
+        $query = $this->db->get('promocoes');
+        return $query->result_array();
+    }
+
+    public function descricao_promocoes($id, $regiao) {
+        $query = $this->db->query("SELECT * FROM promocoes WHERE cod = $id and promocoes.regiao = '$regiao'");
         return $query->result_array();
     }
 }

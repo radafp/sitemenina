@@ -148,7 +148,17 @@ class home extends CI_Controller {
 
     public function promocoes() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['viewName'] = 'promocoes';
+        $dados['promocoes_impar'] = $this->Novomenina->promocoes($_SESSION['regiao']);
+        $dados['viewName'] = 'promocoes/promocoes';
+        $this->load->view('Template', $dados);
+    }
+
+    public function descricao_promocoes() {
+        $id = $_GET['id'];
+        $regiao = $_GET['regiao'];
+        $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
+        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['viewName'] = 'promocoes/descricao_promocoes';
         $this->load->view('Template', $dados);
     }
 
