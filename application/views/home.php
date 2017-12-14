@@ -4,13 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="author" content="Agência Set - Criação de Sites - Santa Catarina - Balneário Camboriú - Agência Digital">
-        <title>Nova Menina</title>
+        <title>Radio Menina FM - Gostosa de ouvir - Balneário camboriú, Blumenal e Lages</title>
             
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/webfontkit/stylesheet.css')?>">
 
         <!-- Custom styles for this template -->
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
 
+        <!-- custom style icon - fontawesome -->
+        <script src="https://use.fontawesome.com/de47a2b5b4.js"></script>
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -19,10 +21,10 @@
         <!-- bootstrap pelo CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     
-        <link href="http://www.novomenina.web7097.uni5.net/css/intro.css" rel="stylesheet">
+        <link href="<?php echo base_url('/assets/css/intro.css');?>" rel="stylesheet">
 
         <!-- Nao encontrei esta imagem no diretorio -->
-        <!-- <link rel="icon" href="<?php echo base_url('/assets/img/base/favicon.png')?>"> --> -->
+        <!-- <link rel="icon" href="<?php echo base_url('/assets/img/base/favicon.png')?>"> -->
     </head>
     <body>
         <div class="container intro">
