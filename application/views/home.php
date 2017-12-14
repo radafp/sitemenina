@@ -18,10 +18,10 @@
         <!-- bootstrap pelo CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     
-        <link href="http://www.novomenina.web7097.uni5.net/css/intro.css" rel="stylesheet">
+        <link href="<?php echo base_url('/assets/css/intro.css')?>" rel="stylesheet">
 
         <!-- Nao encontrei esta imagem no diretorio -->
-        <!-- <link rel="icon" href="<?php echo base_url('/assets/img/base/favicon.png')?>"> --> -->
+        <!-- <link rel="icon" href="<?php echo base_url('/assets/img/base/favicon.png')?>"> -->
     </head>
     <body>
         <div class="container">
@@ -29,9 +29,7 @@
             <div class="row topo-intro">
                 <div class="col-lg-12 mb-4 mt-5">
                     <img src="<?php echo base_url('/assets/img/logo_portal_menina.png')?>" title="Portal Menina">
-                
                 </div>
-
                 <div class="col-lg-12 mb-4">
                     <p class="slogam">3X MAIS GOSTOSA DE OUVIR!</p>
                 
