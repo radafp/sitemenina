@@ -8,7 +8,7 @@
                         <br><br><img src="<?php echo base_url('/assets/img/logoTVMocinha.png')?>" alt="">
                         <h3><?php echo $info['tituloPt']?></h3>
                         <p><?php echo $info['descricaoPt']?></p>
-                        <span><?php echo 'HORÀRIO:'.$info['dataInicio']?></span>
+                        <span><?php echo 'HORÀRIO:'.date('d/m/Y', strtotime($info['dataInicio']))?></span>
                     </a> 
                 </div>
             <?php endforeach?>
