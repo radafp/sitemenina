@@ -4,11 +4,10 @@
         <div id='prog'>
             <?php foreach($descricao_noticia as $info):?>
             <div id='esquerda'>
-                <p><?php echo $info['categoriaPt']. ' '. $info['data']. '<br><br>'?></p>
-                    <h3><?php echo $info['tituloPt'].'<br>'?></h3>
-                    <img src="<?php echo base_url('/assets/img/logoTVMocinha.png')?>" alt="">
-                    <p><?php echo $info['descricaoPt']?></p>
-                </a> 
+                <p><?php echo $info['categoriaPt']. ' '. date('d/m/Y', strtotime($info['data'])). '<br><br>'?></p>
+                <h3><?php echo $info['tituloPt'].'<br>'?></h3>
+                <img src="<?php echo base_url('/assets/img/logoTVMocinha.png')?>" alt="">
+                <p><?php echo $info['descricaoPt']?></p>
             </div>
             <?php endforeach?>
         </div>

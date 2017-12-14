@@ -43,8 +43,13 @@ class home extends CI_Controller {
 
     public function programacao() {
         $dados['viewName'] = 'programacao';
+<<<<<<< HEAD
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao'] );
         $dados['programacao_impar'] = $this->Novomenina->programacao_impar($_SESSION['regiao'] );
+=======
+        $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['programacao_impar'] = $this->Novomenina->programacao_impar($_SESSION['regiao']);
+>>>>>>> b5e5bf2107f0547e964a39a7c958e8304cc06a88
         $dados['programacao_par']   = $this->Novomenina->programacao_par($_SESSION['regiao'] ); 
         $this->load->view('Template', $dados);
 
@@ -135,7 +140,17 @@ class home extends CI_Controller {
 
     public function eventos() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['viewName'] = 'eventos';
+        $dados['evento_impar']= $this->Novomenina->evento_inpar($_SESSION['regiao']); 
+        $dados['viewName'] = 'eventos/eventos';
+        $this->load->view('Template', $dados);
+    }
+
+    public function descricao_evento() {
+        $id = $_GET['id'];
+        $regiao = $_GET['regiao'];
+        $dados['descricao_evento'] = $this->Novomenina->descricao_evento($id, $regiao);
+        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['viewName'] = 'eventos/descricao_eventos';
         $this->load->view('Template', $dados);
     }
 
