@@ -60,6 +60,16 @@ class home extends CI_Controller {
 
     }
 
+    public function artistico() {
+        // $categoria = $_GET['categoria'];
+        // $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['videos'] = $this->Novomenina->videos($_SESSION['regiao']);
+        $dados['viewName'] = 'artistico/videos';
+        $this->load->view('Template', $dados);
+    }
+
+   
+
     // public function esporte() {
     //     $dados['jornalismo_impar'] = $this->Novomenina->jornalismo_impar('Esporte');
     //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
@@ -134,11 +144,7 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
     
-    public function artistico() {
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['viewName'] = 'artistico';
-        $this->load->view('Template', $dados);
-    }
+    
 
     public function eventos() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);

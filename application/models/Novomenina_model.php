@@ -43,8 +43,7 @@ class Novomenina_model extends CI_Model{
     }
 
     public function videos($regiao)  {
-        $this->db->where('regiao', '$regiao');
-        $query = $this->db->get('videos');
+        $query = $this->db->query("SELECT * FROM videos WHERE videos.regiao = '$regiao' and videos.mostrar = 1");
         return $query->result_array();
     }
 
