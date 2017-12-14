@@ -124,9 +124,6 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
     
-
-    
-
     public function artistico() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['viewName'] = 'artistico';

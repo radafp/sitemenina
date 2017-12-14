@@ -1,26 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Agência Set - Criação de Sites - Santa Catarina - Balneário Camboriú - Agência Digital">
-    <title>Nova Menina</title>
-        
-    <!-- Custom styles for this template -->
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
-=======
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="author" content="Agência Set - Criação de Sites - Santa Catarina - Balneário Camboriú - Agência Digital">
-        <title>Nova Menina</title>
+        <meta name="author" content="Agência Set - Criação de Sites - Santa Catarina - Balneário Camboriú - Agência Digital 47 999907092">
+        <title>Rádio Menina FM </title>
             
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/webfontkit/stylesheet.css')?>">
 
         <!-- Custom styles for this template -->
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
->>>>>>> eb866394216d16fc1296a3f7b055c9655d962c61
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
@@ -29,29 +18,18 @@
         <!-- bootstrap pelo CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     
-        <link href="http://www.novomenina.web7097.uni5.net/css/intro.css" rel="stylesheet">
+        <link href="<?php echo base_url('/assets/css/intro.css')?>" rel="stylesheet">
 
-<<<<<<< HEAD
-    <!-- Nao encontrei esta imagem no diretorio -->
-    <!-- <link rel="icon" href="<?php echo base_url('/assets/img/base/favicon.png')?>"> --> -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/webfontkit/stylesheet.css')?>">
-</head>
-<body>
-    <div class="container">
-=======
         <!-- Nao encontrei esta imagem no diretorio -->
-        <!-- <link rel="icon" href="<?php echo base_url('/assets/img/base/favicon.png')?>"> --> -->
+        <!-- <link rel="icon" href="<?php echo base_url('/assets/img/base/favicon.png')?>"> -->
     </head>
     <body>
         <div class="container">
->>>>>>> eb866394216d16fc1296a3f7b055c9655d962c61
 
             <div class="row topo-intro">
                 <div class="col-lg-12 mb-4 mt-5">
                     <img src="<?php echo base_url('/assets/img/logo_portal_menina.png')?>" title="Portal Menina">
-                
                 </div>
-
                 <div class="col-lg-12 mb-4">
                     <p class="slogam">3X MAIS GOSTOSA DE OUVIR!</p>
                 
