@@ -4,10 +4,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
         <meta name="author" content="Agência Set - Criação de Sites - Santa Catarina - Balneário Camboriú - Agência Digital">
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <title>Nova Menina</title>
+        
+        <title>Radio Menina FM - A mais gosotosa de ouvir</title>
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/webfontkit/stylesheet.css')?>">
 
@@ -30,13 +31,15 @@
         <meta property="og:image" content="<?=isset($imagemFb) ? $imagemFb : base_url('/assets/img/logo-jm-fb.png');?>" />
 
     </head>
-    <body>
+    <body class="backgroundBody_<?=$_SESSION['regiao'];?>">
 
         <header>
         
-            <div class="container-fluid topo_<?php $_SESSION['regiao'];?>">
+            <!-- Content Topo -->
+            <div class="container-fluid mainTopo topo_<?=$_SESSION['regiao'];?>">
 
                 <div class="container">
+
                     <!-- Topo -->
                     <div class="row topo">
 
@@ -46,19 +49,21 @@
                                 <br>Sorry Not Sorry - Demi Lovato
                             </p>
                         </div>
-                        
                         <div class="col-lg-4">
-                            <iframe name="playcolor"  src="http://painelstream.com/mini-player/7038" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
+                            <iframe name="playcolor" src="http://painelstream.com/mini-player/7038" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
                         </div>
-                        
                         <div class="col-lg-4">
                             <button>Tv Mocinha</button>
                         </div>
+                    
                     </div>
-            
+                    <!-- /.row -->
+
                 </div> 
-        
+                <!-- /.container -->
+
             </div>
+            <!-- /.container fluid -->
             <!-- Page -->
             <div class="container">
 
