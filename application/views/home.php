@@ -25,7 +25,7 @@
         <!-- <link rel="icon" href="<?php echo base_url('/assets/img/base/favicon.png')?>"> --> -->
     </head>
     <body>
-        <div class="container">
+        <div class="container intro">
 
 
             <div class="row topo-intro">
@@ -35,8 +35,7 @@
                 </div>
 
                 <div class="col-lg-12 mb-4">
-                    <p class="slogam">3X MAIS GOSTOSA DE OUVIR!</p>
-                
+                    <p class="slogam">GOSTOSA DE OUVIR!</p>
                 </div>
             </div>
 
