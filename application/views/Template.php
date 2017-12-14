@@ -15,6 +15,9 @@
         <!-- Custom styles for this template -->
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
 
+        <!-- custom style icon - fontawesome -->
+        <script src="https://use.fontawesome.com/de47a2b5b4.js"></script>
+
         <!-- Bootstrap core CSS -->
         <link href="<?php echo base_url('/assets/vendor/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
         <link href="<?php echo base_url('/assets/css/base.css')?>" rel="stylesheet">
@@ -72,13 +75,13 @@
                     <!-- Marketing Icons Section -->
                     <div class="row">
 
-                        <div class="col-md-3 col-sm-6 margin-btm-30">
+                        <div class="col-md-2 col-sm-4 btm-30 logo">
                             <img src="<?php echo base_url('/assets/img/logoMenina'.$_SESSION['regiao'].'.png');?>" title="Rádio Menina">
                         </div>
-                        <div class="col-md-3 col-sm-6 margin-btm-30">
+                        <div class="col-md-4 col-sm-4 btm-30 slogam">
                             <h1>3X MAIS GOSTOSA DE OUVIR</h1>
                         </div>
-                        <div class="col-md-3 col-sm-6 margin-btm-30">
+                        <div class="col-md-3 col-sm-4 btm-30 selRegiao">
                             <form action="" id="formRegiao" method='POST'>
                                 <select name="selectRegiao" form="form" id='regiao'>
                                     <option value="bc" <?=$_SESSION['regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
@@ -87,7 +90,7 @@
                                 </select>
                             </form>
                         </div>
-                        <div class="col-md-3 col-sm-6 margin-btm-30">
+                        <div class="col-md-3 col-sm-4 btm-30 topoRedes">
                             <ul class="list-inline social">
                                 <li><a href="" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="" target="_blank"><i class="fa fa-instagram"></i></a></li>
@@ -97,7 +100,7 @@
 
                     </div>
                     <!-- /.row -->
-
+                    <hr>               
                     <!-- Navigation -->
                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                         <div class="container">

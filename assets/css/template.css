@@ -8,6 +8,31 @@
     display: none;
 } 
 
+.blocoMenu{
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    height: 280px;
+    margin: 50px 0;
+    text-align: center;
+    padding:40px 0; 
+}
+.blocoMenu hr{
+    width: 95%;
+}
+.blocoMenu .logo{
+   
+}
+.blocoMenu .slogam h1{
+    font-family: 'microgrammadeebolextregular';
+    font-size: 1em;
+    color: #ffffff;
+}
+.blocoMenu .selRegiao{
+    
+}
+.blocoMenu .topoRedes ul li{
+    display: inline;
+}
 
 @media (min-width: 769px) {
     .mainTopo .topo .tvMocinha{

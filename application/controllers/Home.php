@@ -19,6 +19,7 @@ class home extends CI_Controller {
     public function regiao() {
         $_SESSION['regiao']         = $_GET['regiao'];
         $regiao                     = $_GET['regiao'];
+        
         $dados['titulo']            = $this->Novomenina->noticias_turistmo_destaque($regiao);
         $dados['eventos']           = $this->Novomenina->eventos($regiao);
         $dados['programacao']       = $this->Novomenina->programacao($regiao);
