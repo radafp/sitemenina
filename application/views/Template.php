@@ -43,16 +43,16 @@
                     <!-- Topo -->
                     <div class="row topo">
 
-                        <div class="col-lg-4">
+                        <div class="col-6 col-lg-4">
                             <p>
                                 <span>Nome do programa</span>
                                 <br>Sorry Not Sorry - Demi Lovato
                             </p>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-6 col-lg-4">
                             <iframe name="playcolor" src="http://painelstream.com/mini-player/7038" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-4 tvMocinha">
                             <button>Tv Mocinha</button>
                         </div>
                     
