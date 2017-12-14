@@ -74,13 +74,10 @@ class Novomenina_model extends CI_Model{
         $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt FROM noticias INNER JOIN categorias WHERE categorias.cod = noticias.codCategoria and noticias.mostrar = 1 and categoriaPt = '$categoria'  and noticias.regiao= '$regiao' ORDER BY cliques desc");
         return $query->result_array();
     }
-<<<<<<< HEAD
-=======
 
     public function evento_inpar($regiao) {
         $this->db->where('regiao', "$regiao");
         $query = $this->db->get('eventos');
         return $query->result_array();
     }
->>>>>>> b5e5bf2107f0547e964a39a7c958e8304cc06a88
 }
