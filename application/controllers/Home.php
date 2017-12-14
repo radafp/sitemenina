@@ -45,11 +45,11 @@ class home extends CI_Controller {
 
     
 
-    public function lages() {
-        $dados['viewName'] = 'lages';
-        $_SESSION['regiao'] = 'LG';
-        $this->load->view('Template', $dados);
-    }
+    // public function lages() {
+    //     $dados['viewName'] = 'lages';
+    //     $_SESSION['regiao'] = 'LG';
+    //     $this->load->view('Template', $dados);
+    // }
 
     public function programacao() {
         $dados['viewName'] = 'programacao';

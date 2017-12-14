@@ -79,11 +79,11 @@
                             <h1>3X MAIS GOSTOSA DE OUVIR</h1>
                         </div>
                         <div class="col-md-3 col-sm-6 margin-btm-30">
-                            <form action="" id="formRegiao">
+                            <form action="" id="formRegiao" method='POST'>
                                 <select name="selectRegiao" form="form">
-                                    <option value="BC">Balneário Camboriú</option>
-                                    <option value="BL">Blumenau</option>
-                                    <option value="LG">Lages</option>
+                                    <option value="bc">Balneário Camboriú</option>
+                                    <option value="bl">Blumenau</option>
+                                    <option value="lg">Lages</option>
                                 </select>
                             </form>
                         </div>
