@@ -14,16 +14,11 @@ body {
     font-size: 14px;
     font-family: 'Quicksand', sans-serif;
     line-height: 1.42857143;
-    background: url('../img/bg_intro.jpg') 
-}
-
-.container{
-  margin: auto;
-  text-align: center;
+    background: #f2f2f2;
 }
 
 .backgroundBody_BC {
-  background: url('/img/bg_bl.jpg') no-repeat center center fixed;
+  background: url(/img/bg_bc.jpg) no-repeat center center fixed;
   background-size: cover; /*Css padrão*/
   -webkit-background-size: cover; /*Css safari e chrome*/
   -moz-background-size: cover; /*Css firefox*/
@@ -31,7 +26,7 @@ body {
   -o-background-size: cover; /*Css Opera*/
 }
 .backgroundBody_BL {
-  background: url('../img/bg_bl.jpg') no-repeat center center fixed;
+  background: url(/img/bg_bl.jpg) no-repeat center center fixed;
   background-size: cover; /*Css padrão*/
   -webkit-background-size: cover; /*Css safari e chrome*/
   -moz-background-size: cover; /*Css firefox*/
@@ -39,7 +34,7 @@ body {
   -o-background-size: cover; /*Css Opera*/
 }
 .backgroundBody_LG {
-  background: url('/img/bg_lg.jpg') no-repeat center center fixed;
+  background: url(/img/bg_lg.jpg) no-repeat center center fixed;
   background-size: cover; /*Css padrão*/
   -webkit-background-size: cover; /*Css safari e chrome*/
   -moz-background-size: cover; /*Css firefox*/
@@ -128,12 +123,34 @@ a, a:hover {
 .topo p span{
   font-weight: bold;
 }
-
-/* .mainTopo{
+.mainTopo{
   background-color: #FFFFF;
-  height:290px;
-  width: 100%;
-} */
+}
+
+
+.blocoMenu .social li a {
+    background-color: #ffffff;
+    color: #333333;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    font-size: 18px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    display: inline-block;
+}
+.blocoMenu a, a:hover, a:focus, button, button:focus {
+    text-decoration: none;
+    outline: 0 !important;
+}
+
+.blocoMenu a i {
+    margin-left: 0px;
+}
+
 /* -- Fim Header -- */
 
 .conteudo{
@@ -145,14 +162,13 @@ a, a:hover {
 .redes{
   padding:100px;
 }
-
 .redes h1{
   font-family: 'microgrammadmedextregular';
   font-size: 24px;
   padding-bottom: 30px;
   border-bottom: 1px solid #333; 
+  border-opacity:0.7;
 }
-
 .redes span{
   display: block;
   width: 100px;
@@ -161,13 +177,13 @@ a, a:hover {
   margin-top: -5px;
 }
 .redes.redes_BC{
-  background: url('/img/redes_BC.jpg');
+  background: url(/img/redes_BC.jpg);
 }
 .redes.redes_BL{
-  background: url('/img/redes_BL.jpg');
+  background: url(/img/redes_BL.jpg);
 }
 .redes.redes_LG{
-  background: url('/img/redes_LG.jpg');
+  background: url(/img/redes_LG.jpg);
 }
 
 .unidades{
@@ -209,10 +225,4 @@ a, a:hover {
   font-weight: 500;
   color: #ffffff;
 }
-
-
-
-
-
-
 
