@@ -16,25 +16,33 @@ body {
     line-height: 1.42857143;
     background: #f2f2f2;
 }
-body{
-  background: url('../img/bg_intro.jpg') no-repeat center center fixed;
-  background-size: cover; /*Css padrão*/
-  -webkit-background-size: cover; /*Css safari e chrome*/
-  -moz-background-size: cover; /*Css firefox*/
-  -ms-background-size: cover; /*Css IE não use mer#^@%#*/
-  -o-background-size: cover; /*Css Opera*/
-}
+
 a, a:hover {
     color: #333;
     text-decoration: none;
 }
+body{
+    
+}
 
+.intro{
+    clear: both;
+    background: url('../img/bg_intro_mb.jpg') repeat-y center center;
+    background-size: cover; /*Css padrão*/
+    -webkit-background-size: cover; /*Css safari e chrome*/
+    -moz-background-size: cover; /*Css firefox*/
+    -ms-background-size: cover; /*Css IE não use mer#^@%#*/
+    -o-background-size: cover; /*Css Opera*/
+}
 .topo-intro{
     text-align: center;
 }
+.topo-intro img{
+    max-width: 70%;
+}
 .topo-intro p{
     font-family: 'microgrammadeebolextregular';
-    font-size: 40px;
+    font-size: 2em;
     color: #ffffff;
 }
 
@@ -79,6 +87,23 @@ a, a:hover {
     -webkit-box-shadow: 0px 3px 10px -2px #666666;
     -moz-box-shadow: 0px 3px 10px -2px #666666;
     box-shadow: 0px 3px 10px -2px #666666;
+}
+
+@media (min-width: 769px) {
+    body{
+        background: url('../img/bg_intro.jpg') no-repeat center center fixed;
+        background-size: cover; /*Css padrão*/
+        -webkit-background-size: cover; /*Css safari e chrome*/
+        -moz-background-size: cover; /*Css firefox*/
+        -ms-background-size: cover; /*Css IE não use mer#^@%#*/
+        -o-background-size: cover; /*Css Opera*/
+    }
+    .intro{
+        background: none;
+    }
+    .topo-intro p{
+        font-size: 3em;
+    }
 }
 
 
