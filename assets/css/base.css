@@ -14,32 +14,27 @@ body {
     font-size: 14px;
     font-family: 'Quicksand', sans-serif;
     line-height: 1.42857143;
-    background: url('../img/bg_intro.jpg') 
+    background: #f2f2f2;
 }
 
-.container{
-  margin: auto;
-  text-align: center;
-}
-
-.backgroundBody_BC {
-  background: url('/img/bg_bl.jpg') no-repeat center center fixed;
+.backgroundBody_bc {
+  background: url(../img/bg_bc.jpg) no-repeat center center fixed;
   background-size: cover; /*Css padrão*/
   -webkit-background-size: cover; /*Css safari e chrome*/
   -moz-background-size: cover; /*Css firefox*/
   -ms-background-size: cover; /*Css IE não use mer#^@%#*/
   -o-background-size: cover; /*Css Opera*/
 }
-.backgroundBody_BL {
-  background: url('../img/bg_bl.jpg') no-repeat center center fixed;
+.backgroundBody_bl {
+  background: url(../img/bg_bl.jpg) no-repeat center center fixed;
   background-size: cover; /*Css padrão*/
   -webkit-background-size: cover; /*Css safari e chrome*/
   -moz-background-size: cover; /*Css firefox*/
   -ms-background-size: cover; /*Css IE não use mer#^@%#*/
   -o-background-size: cover; /*Css Opera*/
 }
-.backgroundBody_LG {
-  background: url('/img/bg_lg.jpg') no-repeat center center fixed;
+.backgroundBody_lg {
+  background: url(../img/bg_lg.jpg) no-repeat center center fixed;
   background-size: cover; /*Css padrão*/
   -webkit-background-size: cover; /*Css safari e chrome*/
   -moz-background-size: cover; /*Css firefox*/
@@ -47,12 +42,12 @@ body {
   -o-background-size: cover; /*Css Opera*/
 }
 
-.topo_BC{
+.topo_bc{
     height: 85px;
     background-color: #42A3CD;
     border-bottom: 8px solid #50B3DA;
 }
-.topo_BC button{
+.topo_bc button{
     background-color: #2d82a5;
     
     margin-left: auto;
@@ -69,12 +64,12 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
-.topo_BL{
+.topo_bl{
     height: 85px;
     background-color: #fbb247;
     border-bottom: 8px solid #fec677;
 }
-.topo_BL button{
+.topo_bl button{
     background-color: #2d82a5;
     margin-left: auto;
     margin-right: auto;
@@ -90,12 +85,12 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
-.topo_LG{
+.topo_lg{
     height: 85px;
     background-color: #6aba4f;
     border-bottom: 8px solid #6dc551; 
 }
-.topo_LG button{
+.topo_lg button{
     background-color: #2d82a5;
     margin-left: auto;
     margin-right: auto;
@@ -129,11 +124,29 @@ a, a:hover {
   font-weight: bold;
 }
 
-/* .mainTopo{
-  background-color: #FFFFF;
-  height:290px;
-  width: 100%;
-} */
+.blocoMenu .social li a {
+    background-color: #ffffff;
+    color: #333333;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    font-size: 18px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+    display: inline-block;
+}
+.blocoMenu a, a:hover, a:focus, button, button:focus {
+    text-decoration: none;
+    outline: 0 !important;
+}
+
+.blocoMenu a i {
+    margin-left: 0px;
+}
+
 /* -- Fim Header -- */
 
 .conteudo{
@@ -145,14 +158,13 @@ a, a:hover {
 .redes{
   padding:100px;
 }
-
 .redes h1{
   font-family: 'microgrammadmedextregular';
   font-size: 24px;
   padding-bottom: 30px;
   border-bottom: 1px solid #333; 
+  border-opacity:0.7;
 }
-
 .redes span{
   display: block;
   width: 100px;
@@ -160,14 +172,14 @@ a, a:hover {
   height: 3px;
   margin-top: -5px;
 }
-.redes.redes_BC{
-  background: url('/img/redes_BC.jpg');
+.redes.redes_bc{
+  background: url(../img/redes_BC.jpg);
 }
-.redes.redes_BL{
-  background: url('/img/redes_BL.jpg');
+.redes.redes_bl{
+  background: url(../img/redes_BL.jpg);
 }
-.redes.redes_LG{
-  background: url('/img/redes_LG.jpg');
+.redes.redes_lg{
+  background: url(../img/redes_LG.jpg);
 }
 
 .unidades{
@@ -182,37 +194,31 @@ a, a:hover {
   margin:20px 0;
 }
 
-.rodapeBg_BC{
+.rodapeBg_bc{
   background-color: #42A3CD;
   height: 80px;
   padding-top: 30px;
 }
-.rodapeBg_BC p{
+.rodapeBg_bc p{
   font-weight: 500;
   color: #ffffff;
 }
-.rodapeBg_BL{
+.rodapeBg_bl{
   background-color: #fbb247;
   height: 80px;
   padding-top: 30px;
 }
-.rodapeBg_BL p{
+.rodapeBg_bl p{
   font-weight: 500;
   color: #ffffff;
 }
-.rodapeBg_LG{
+.rodapeBg_lg{
   background-color: #6aba4f;
   height: 80px;
   padding-top: 30px;
 }
-.rodapeBg_LG p{
+.rodapeBg_lg p{
   font-weight: 500;
   color: #ffffff;
 }
-
-
-
-
-
-
 

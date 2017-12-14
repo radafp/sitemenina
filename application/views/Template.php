@@ -4,10 +4,11 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
         <meta name="author" content="Agência Set - Criação de Sites - Santa Catarina - Balneário Camboriú - Agência Digital">
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <title>Nova Menina</title>
+        
+        <title>Radio Menina FM - A mais gosotosa de ouvir</title>
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/webfontkit/stylesheet.css')?>">
 
@@ -30,13 +31,15 @@
         <meta property="og:image" content="<?=isset($imagemFb) ? $imagemFb : base_url('/assets/img/logo-jm-fb.png');?>" />
 
     </head>
-    <body>
+    <body class="backgroundBody_<?=$_SESSION['regiao'];?>">
 
         <header>
         
-            <div class="container-fluid topo_<?php $_SESSION['regiao'];?>">
+            <!-- Content Topo -->
+            <div class="container-fluid mainTopo topo_<?=$_SESSION['regiao'];?>">
 
                 <div class="container">
+
                     <!-- Topo -->
                     <div class="row topo">
 
@@ -46,18 +49,121 @@
                                 <br>Sorry Not Sorry - Demi Lovato
                             </p>
                         </div>
-                        
                         <div class="col-lg-4">
-                            <iframe name="playcolor"  src="http://painelstream.com/mini-player/7038" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
+                            <iframe name="playcolor" src="http://painelstream.com/mini-player/7038" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
                         </div>
-                        
                         <div class="col-lg-4">
                             <button>Tv Mocinha</button>
                         </div>
+                    
                     </div>
-            
+                    <!-- /.row -->
+
                 </div> 
-        
+                <!-- /.container -->
+
+            </div>
+            <!-- /.container fluid -->
+            <!-- Page -->
+            <div class="container">
+
+                <div class="blocoMenu">
+
+                    <!-- Marketing Icons Section -->
+                    <div class="row">
+
+                        <div class="col-md-3 col-sm-6 margin-btm-30">
+                            <img src="<?php echo base_url('/assets/img/logoMenina'.$_SESSION['regiao'].'.png');?>" title="Rádio Menina">
+                        </div>
+                        <div class="col-md-3 col-sm-6 margin-btm-30">
+                            <h1>3X MAIS GOSTOSA DE OUVIR</h1>
+                        </div>
+                        <div class="col-md-3 col-sm-6 margin-btm-30">
+                            <form action="" id="formRegiao">
+                                <select name="selectRegiao" form="form">
+                                    <option value="BC">Balneário Camboriú</option>
+                                    <option value="BL">Blumenau</option>
+                                    <option value="LG">Lages</option>
+                                </select>
+                            </form>
+                        </div>
+                        <div class="col-md-3 col-sm-6 margin-btm-30">
+                            <ul class="list-inline social">
+                                <li><a href="" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                            </ul>   
+                        </div>
+
+                    </div>
+                    <!-- /.row -->
+
+                    <!-- Navigation -->
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                        <div class="container">
+                            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarResponsive">
+                                <ul id="menu" class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="programacao">Programação</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Jornalismo
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                                            <?php foreach($titulo_jornalismo as $info):?>
+                                                <a  class="dropdown-item" href="<?php echo base_url('home/noticia?categoria='.strtolower($info['categoriaPt']))?>"><?php echo $info['categoriaPt']?></a>
+                                            <?php endforeach?>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Artístico
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                                            <a class="dropdown-item" href="top10">Top 10</a>
+                                            <a class="dropdown-item" href="videos">Vídeos</a>
+                                        </div>
+                                    </li>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="promocoes">Promoções</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="eventos">Eventos</a>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Utilidade pública
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                                            <a class="dropdown-item" href="bolsa-de-empregos">Bolsa de empregos</a>
+                                            <a class="dropdown-item" href="documentos-perdidos">Documentos Perdidos</a>
+                                            <a class="dropdown-item" href="campanhas">Campanhas</a>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Quem somos
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
+                                        <a class="dropdown-item" href="historia">História</a>
+                                        <a class="dropdown-item" href="equipe">Equipe</a>
+                                    </div>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="contato">Contato</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+
+                </div><!-- fin blocoMenu -->
             </div>
 
         </header>
@@ -65,11 +171,11 @@
         <main>
             
             <div class="<?php echo 'redes_'.$_SESSION['regiao'];?>">
-                <div class="container">
+                <!-- <div class="container">
                     <div class="row">
                         <img class="logo_menina" src="<?php echo base_url('/assets/img/logoMeninaBC.png')?>" alt="logomeninaBC"><br>
                         <h3>+ DE UM MILHÂO DE AMIGOS</h3><br>
-                    </div> <!-- row -->
+                    </div> <! - - row - ->
                     <hr>
 
                     <div class='menu'>
@@ -92,7 +198,7 @@
                             <li>Contato</li>
                         </ul>
                     </div>
-                </div> <!-- container -->
+                </div>  container -->
             </div>
             <!-- /.container fluid -->
             <!-- <iframe name="playcolor" src="http://painelstream.com/mini-player/7038" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe> -->
