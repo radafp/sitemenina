@@ -80,10 +80,11 @@
                         </div>
                         <div class="col-md-3 col-sm-6 margin-btm-30">
                             <form action="" id="formRegiao" method='POST'>
-                                <select name="selectRegiao" form="form">
-                                    <option value="bc">Balneário Camboriú</option>
-                                    <option value="bl">Blumenau</option>
-                                    <option value="lg">Lages</option>
+                                <select name="selectRegiao" form="form" id='regiao'>
+                                    <option value="">Cidades</option>
+                                    <option value="bc" <?=$_SESSION['regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
+                                    <option value="bl" <?=$_SESSION['regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
+                                    <option value="lg" <?=$_SESSION['regiao'] == 'lg' ? 'selected' : '';?> >Lages</option>
                                 </select>
                             </form>
                         </div>
@@ -334,6 +335,13 @@
                     }
                 });
             });
+
+
+            
         });
+        document.getElementById('formRegiao').onchange = function(e){
+            var regiao = document.querySelector('#regiao');
+            window.location = 'regiao?regiao=' + regiao.value;              
+        }
 	</script>
 </html>	
