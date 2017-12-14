@@ -13,33 +13,43 @@ class home extends CI_Controller {
 
     public function index() {
         $this->load->view('home');
+
     }
 
-    public function balneario_camboriu() {
-        $dados['viewName']          = 'balneario_camboriu';
-        $_SESSION['regiao']         = 'bc';
-        $regiao                     = 'bc';
-        $_SESSION['controller']     = 'balneario_camboriu';
+    public function regiao() {
+        $_SESSION['regiao']         = $_GET['regiao'];
+        $regiao                     = $_GET['regiao'];
         $dados['titulo']            = $this->Novomenina->noticias_turistmo_destaque($regiao);
         $dados['eventos']           = $this->Novomenina->eventos($regiao);
         $dados['programacao']       = $this->Novomenina->programacao($regiao);
         $dados['videos']            = $this->Novomenina->videos($regiao);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($regiao);
         $dados['outras_noticias']   = $this->Novomenina->outras_noticias($regiao);
+        $dados['viewName']          = 'regiao';
         $this->load->view('Template', $dados);
     }
 
-    public function blumenau() {
-        $dados['viewName'] = 'blumenau';
-        $_SESSION['regiao'] = 'BL';
-        $this->load->view('Template', $dados);
-    }
+    // public function balneario_camboriu() {
+    //     $dados['viewName']          = 'balneario_camboriu';
+    //     $_SESSION['regiao']         = 'bc';
+    //     $regiao                     = 'bc';
+    //     $_SESSION['controller']     = 'balneario_camboriu';
+    //     $dados['titulo']            = $this->Novomenina->noticias_turistmo_destaque($regiao);
+    //     $dados['eventos']           = $this->Novomenina->eventos($regiao);
+    //     $dados['programacao']       = $this->Novomenina->programacao($regiao);
+    //     $dados['videos']            = $this->Novomenina->videos($regiao);
+    //     $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($regiao);
+    //     $dados['outras_noticias']   = $this->Novomenina->outras_noticias($regiao);
+    //     $this->load->view('Template', $dados);
+    // }
 
-    public function lages() {
-        $dados['viewName'] = 'lages';
-        $_SESSION['regiao'] = 'LG';
-        $this->load->view('Template', $dados);
-    }
+    
+
+    // public function lages() {
+    //     $dados['viewName'] = 'lages';
+    //     $_SESSION['regiao'] = 'LG';
+    //     $this->load->view('Template', $dados);
+    // }
 
     public function programacao() {
         $dados['viewName'] = 'programacao';
@@ -161,6 +171,40 @@ class home extends CI_Controller {
         $dados['viewName'] = 'promocoes/descricao_promocoes';
         $this->load->view('Template', $dados);
     }
+
+    public function emprego() {
+        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['viewName'] = 'utilidade_publica/emprego';
+        $this->load->view('Template', $dados);
+    }
+
+    public function documentos() {
+        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['viewName'] = 'utilidade_publica/documentos';
+        $this->load->view('Template', $dados);
+    }
+
+    public function achados_e_perdidos() {
+        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['viewName'] = 'utilidade_publica/achados_e_perdidos';
+        $this->load->view('Template', $dados);
+    }
+
+    public function descricao_utilidade() {
+        $id = $_GET['id'];
+        $regiao = $_GET['regiao'];
+        $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
+        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['viewName'] = 'promocoes/descricao_promocoes';
+        $this->load->view('Template', $dados);
+    }
+
+    public function empregos() {
+        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['viewName'] = 'quem_somos';
+        $this->load->view('Template', $dados);
+    }
+        
 
     public function quem_somos() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);

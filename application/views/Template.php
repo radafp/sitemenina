@@ -79,11 +79,11 @@
                             <h1>3X MAIS GOSTOSA DE OUVIR</h1>
                         </div>
                         <div class="col-md-3 col-sm-6 margin-btm-30">
-                            <form action="" id="formRegiao">
+                            <form action="" id="formRegiao" method='POST'>
                                 <select name="selectRegiao" form="form">
-                                    <option value="BC">Balneário Camboriú</option>
-                                    <option value="BL">Blumenau</option>
-                                    <option value="LG">Lages</option>
+                                    <option value="bc">Balneário Camboriú</option>
+                                    <option value="bl">Blumenau</option>
+                                    <option value="lg">Lages</option>
                                 </select>
                             </form>
                         </div>
@@ -180,7 +180,7 @@
 
                     <div class='menu'>
                         <ul id="menu">
-                            <li><a href="balneario_camboriu">Home</a></li>
+                            <li><a href="regiao">Home</a></li>
                             <li><a href="programacao">Programação</a></li>
                             <li>Jornalismo 
                                 <ul id="submenu">
@@ -192,7 +192,7 @@
                             <li><a href="artistico">Artistico</a></li>
                             <li><a href="promocoes">Promoções</a></li>
                             <li><a href="eventos">Eventos</a></li>
-                            <li>Utilidade Pública</li>
+                            <li><a href="utilidade_publica">Utilidade Pública</a></li>
                             <li><a href="quem_somos">Quem Somos</a></li>
                             <li>Comercial</li>
                             <li>Contato</li>
@@ -209,7 +209,7 @@
             </ul> -->
 
             <div id="content">
-                <?php $this->load->view($viewName)?>
+                <?php $this->load->view($viewName); echo $_SESSION['regiao'] ?>
             </div>
 
             <div class='rede_social'> 
