@@ -9,6 +9,7 @@ class home extends CI_Controller {
         $this->load->model('Novomenina_model', 'Novomenina');
         // $this->load->model('Gastos_model', 'Gastos');
         $this->load->helper('url');
+        
     }
 
     public function index() {
@@ -56,28 +57,6 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
-    // public function balneario_camboriu() {
-    //     $dados['viewName']          = 'balneario_camboriu';
-    //     $_SESSION['regiao']         = 'bc';
-    //     $regiao                     = 'bc';
-    //     $_SESSION['controller']     = 'balneario_camboriu';
-    //     $dados['titulo']            = $this->Novomenina->noticias_turistmo_destaque($regiao);
-    //     $dados['eventos']           = $this->Novomenina->eventos($regiao);
-    //     $dados['programacao']       = $this->Novomenina->programacao($regiao);
-    //     $dados['videos']            = $this->Novomenina->videos($regiao);
-    //     $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($regiao);
-    //     $dados['outras_noticias']   = $this->Novomenina->outras_noticias($regiao);
-    //     $this->load->view('Template', $dados);
-    // }
-
-    
-
-    // public function lages() {
-    //     $dados['viewName'] = 'lages';
-    //     $_SESSION['regiao'] = 'LG';
-    //     $this->load->view('Template', $dados);
-    // }
-
     public function programacao() {
         $dados['viewName'] = 'programacao';
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
@@ -95,67 +74,45 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
-   
-
-    // public function esporte() {
-    //     $dados['jornalismo_impar'] = $this->Novomenina->jornalismo_impar('Esporte');
-    //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
-    //     $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Esporte');
-    //     $dados['viewName'] = 'jornalismo/esporte';
-    //     $this->load->view('Template', $dados);
-    // }
-
-    // public function policial() {
-    //     $dados['jornalismo_impar'] = $this->Novomenina->jornalismo_impar('Policial');
-    //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
-    //     $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Policial');
-    //     $dados['viewName'] = 'jornalismo/policial';
-    //     $this->load->view('Template', $dados);
-    // }
-
-    // public function cultura() {
-    //     $dados['jornalismo_impar'] = $this->Novomenina->jornalismo_impar('Cultura');
-    //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
-    //     $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Cultura');
-    //     $dados['viewName'] = 'jornalismo/cultura';
-    //     $this->load->view('Template', $dados);
-    // }
-
-    // public function descricao_esporte() {
-    //     $id = $_GET['id'];
-    //     $this->Novomenina->cliques($id);
-    //     $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id);
-    //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
-    //     $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Esporte');
-    //     $dados['viewName'] = 'jornalismo/descricao_esporte';
-    //     $this->load->view('Template', $dados);
-    // }
-
-    // public function descricao_cultura() {
-    //     $id = $_GET['id'];
-    //     $this->Novomenina->cliques($id);
-    //     $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id);
-    //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
-    //     $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Cultura');
-    //     $dados['viewName'] = 'jornalismo/descricao_cultura';
-    //     $this->load->view('Template', $dados);
-    // }
-
-    // public function descricao_policial() {
-    //     $id = $_GET['id'];
-    //     $this->Novomenina->cliques($id);
-    //     $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id);
-    //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo();
-    //     $dados['mais_lidas'] = $this->Novomenina->mais_lidas('Policial');
-    //     $dados['viewName'] = 'jornalismo/descricao_policial';
-    //     $this->load->view('Template', $dados);
-    // }
-
     public function noticia() {
+        $config = array(
+			"base_url" => base_url('usuarios/p'),
+			"per_page" => 3,
+			"num_links" => 3,
+			"uri_segment" => 3,
+			"total_rows" => $this->Novomenina->CountAll('noticias'),
+			"full_tag_open" => "<ul class='pagination' id='ajaxPagination'>",
+			"full_tag_close" => "</ul>",
+			"first_link" => FALSE,
+			"last_link" => FALSE,
+			"first_tag_open" => "<li>",
+			"first_tag_close" => "</li>",
+			"prev_link" => "Anterior",
+			"prev_tag_open" => "<li class='prev'>",
+			"prev_tag_close" => "</li>",
+			"next_link" => "Próxima",
+			"next_tag_open" => "<li class='next'>",
+			"next_tag_close" => "</li>",
+			"last_tag_open" => "<li>",
+			"last_tag_close" => "</li>",
+			"cur_tag_open" => "<li class='active'><a href='#'>",
+			"cur_tag_close" => "</a></li>",
+			"num_tag_open" => "<li>",
+			"num_tag_close" => "</li>"
+        );
+        
+        $this->pagination->initialize($config);
+        $dados['pagination'] = $this->pagination->create_links();
+
+        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        
         $categoria = $_GET['categoria'];
-        $dados['jornalismo_impar'] = $this->Novomenina->jornalismo_impar($categoria, $_SESSION['regiao']);
+        $dados['jornalismo'] = $this->Novomenina->GetAll_noticias($categoria, $_SESSION['regiao'], 2);
+   
+        // $dados['jornalismo'] = $this->Novomenina->jornalismo_impar($categoria, $_SESSION['regiao']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
+        
         $dados['viewName'] = 'jornalismo/noticia';
         $this->load->view('Template', $dados);
     }
