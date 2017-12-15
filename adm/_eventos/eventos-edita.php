@@ -47,8 +47,9 @@ if($submit != '')
     
     $data = date('Y-m-d');
     $dataInicio = isset($_POST['dataInicio']) ? dataEn($_POST['dataInicio']) : '';
+    $horarioInicio = isset($_POST['horarioInicio']) ? $_POST['horarioInicio'] : '';
     $dataFim = isset($_POST['dataFim']) ? dataEn($_POST['dataFim']) : '';
-
+    $horarioFim = isset($_POST['horarioFim']) ? $_POST['horarioFim'] : '';
     $tituloPt = isset($_POST['tituloPt']) ? $_POST['tituloPt'] : '';
     //$tituloEn = isset($_POST['nomeEn']) ? $_POST['nomeEn'] : '';
     //$cleanTitlePt = cleanTitle($nomePt);
@@ -67,13 +68,13 @@ if($submit != '')
     
     if($erro == 0)
     {
-        $pasta = PROJECT_PATH."arquivos/eventos";
+        $pasta = PROJECT_PATH."assets/arquivos/eventos";
         if($subid == 2) //insert
         {
         	$q = mysql_query("INSERT INTO eventos 
-                            ( dataCadastro, dataInicio,dataFim, tituloPt, cleanTitlePt, descricaoPt, mapa, regiao, mostrar)
+                            ( dataCadastro, dataInicio, horarioInicio, dataFim, horarioFim, tituloPt, cleanTitlePt, descricaoPt, mapa, regiao, mostrar)
                             VALUES
-                            ('$data','$dataInicio', '$dataFim', '$tituloPt', '$cleanTitlePt', '$descricaoPt','$mapa','$regiao', '$mostrar')");
+                            ('$data','$dataInicio','$horarioInicio', '$dataFim','$horarioFim', '$tituloPt', '$cleanTitlePt', '$descricaoPt','$mapa','$regiao', '$mostrar')");
         	
             if($q)
         	{
@@ -143,8 +144,10 @@ if($submit != '')
         {
             $q = mysql_query("UPDATE eventos SET
                             dataAlteracao = '$data',
-                            dataInicial = '$dataInicial',
+                            dataInicio = '$dataInicio',
+                            horarioInicio = '$horarioInicio',
                             dataFim = '$dataFim',
+                            horarioFim = '$horarioFim',
                             tituloPt = '$tituloPt',
                             cleanTitlePt = '$cleanTitlePt',
                             descricaoPt = '$descricaoPt',
@@ -294,7 +297,9 @@ else
         {
             $tp = mysql_fetch_assoc($q); 
             $dataInicio = $tp['dataInicio'];
+            $horarioInicio = $tp['horarioInicio'];
             $dataFim = $tp['dataFim'];
+            $horarioFim = $tp['horarioFim'];
             $tituloPt = $tp['tituloPt'];
             $descricaoPt = $tp['descricaoPt'];
             $mapa = $tp['mapa']; 
@@ -313,7 +318,9 @@ else
     else
     {
         $dataInicio = '';
+        $horarioInicio = '';
         $dataFim = '';
+        $horarioFim = '';
         $tituloPt = '';
         $descricaoPt = '';
         $mapa = '';
@@ -333,6 +340,14 @@ else
         </div>  
         <div class="divTr">
             <div class="divTd">
+                <label>Horário Inicio:</label>
+            </div>
+            <div class="divTd">
+                <input type="text" class="campoP" name="horarioInicio" id="horarioInicio" value="<?=$horarioInicio != '' ? $horarioInicio : '';?>" title="Horário início"/>        
+            </div>
+        </div>  
+        <div class="divTr">
+            <div class="divTd">
                 <label>Data Fim:</label>
             </div>
             <div class="divTd">
@@ -341,7 +356,15 @@ else
         </div> 
         <div class="divTr">
             <div class="divTd">
-                <label>Título (nome):</label>
+                <label>Horário Fim:</label>
+            </div>
+            <div class="divTd">
+                <input type="text" class="campoP" name="horarioFim" id="horarioFim" value="<?=$horarioFim != '' ? $horarioFim : '';?>" title="Horário Fim"/>        
+            </div>
+        </div> 
+        <div class="divTr">
+            <div class="divTd">
+                <label>Título:</label>
             </div>
             <div class="divTd">
                 <input type="text" class="campoG" name="tituloPt" id="tituloPt" value="<?=$tituloPt;?>" title="Título"/>
@@ -374,8 +397,6 @@ else
                 <span>Mostrar</span>
             </div>
         </div>
-        
-        
         <div class="divTr">
             <div class="divTd">
                 <label for="numFotos">N&ordm; de Fotos:</label>
@@ -424,7 +445,7 @@ else
                                 <label>Foto <?=$aux;?>:</label>
                             </div>
                             <div class="divTd">
-                                <img src="http://<?=PROJECT_URL.'/arquivos/eventos/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" style="max-width: 150px;" />
+                                <img src="http://<?=PROJECT_URL.'/assets/arquivos/eventos/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" style="max-width: 150px;" />
                                 <input type="hidden" name="codigos[]" value="<?=$tpFotos['codigo'];?>" />
                             </div>
                         </div>

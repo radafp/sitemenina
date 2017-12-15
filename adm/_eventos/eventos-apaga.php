@@ -26,7 +26,7 @@ if($cods != '')
             {
                 for($a=0;$a<5;$a++)
                 {
-                    $unlink = @unlink(PROJECT_PATH."arquivos/eventos/".$tpArquivosNoticias['arquivo']);
+                    $unlink = @unlink(PROJECT_PATH."assets/arquivos/eventos/".$tpArquivosNoticias['arquivo']);
                     if($unlink)
                     {
                         break;

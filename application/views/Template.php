@@ -111,9 +111,9 @@
                                         <a class="nav-link" href="programacao">Programação</a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Jornalismo
-                                        </a>
+                                        </div>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                             <?php foreach($titulo_jornalismo as $info):?>
                                                 <a  class="dropdown-item" href="<?php echo base_url('home/noticia?categoria='.strtolower($info['categoriaPt']))?>"><?php echo $info['categoriaPt']?></a>
@@ -122,9 +122,9 @@
                                     </li>
                                     <li class="nav-item">
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Artístico
-                                        </a>
+                                        </div>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                             <a class="dropdown-item" href="<?php echo base_url('home/top_10')?>">Top 10</a>
                                             <a class="dropdown-item" href="<?php echo base_url('home/artistico')?>">Vídeos</a>
@@ -138,9 +138,9 @@
                                         <a class="nav-link" href="eventos">Eventos</a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Utilidade pública
-                                        </a>
+                                        </div>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                                             <a class="dropdown-item" href="bolsa-de-empregos">Bolsa de empregos</a>
                                             <a class="dropdown-item" href="documentos-perdidos">Documentos Perdidos</a>
@@ -148,9 +148,9 @@
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Quem somos
-                                    </a>
+                                    </div>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                                         <a class="dropdown-item" href="historia">História</a>
                                         <a class="dropdown-item" href="equipe">Equipe</a>
@@ -170,64 +170,43 @@
         </header>
 
         <main>
-            
-            <div class="<?php echo 'redes_'.$_SESSION['regiao'];?>">
-                <!-- <div class="container">
-                    <div class="row">
-                        <img class="logo_menina" src="<?php echo base_url('/assets/img/logoMeninaBC.png')?>" alt="logomeninaBC"><br>
-                        <h3>+ DE UM MILHÂO DE AMIGOS</h3><br>
-                    </div> <! - - row - ->
-                    <hr>
-
-                    <div class='menu'>
-                        <ul id="menu">
-                            <li><a href="regiao">Home</a></li>
-                            <li><a href="programacao">Programação</a></li>
-                            <li>Jornalismo 
-                                <ul id="submenu">
-                                    <?php foreach($titulo_jornalismo as $info):?>
-                                    <li><a href="<?php echo base_url('home/noticia?categoria='.strtolower($info['categoriaPt']))?>"><?php echo $info['categoriaPt']?></a></li>
-                                    <?php endforeach?>
-                                </ul>
-                            </li>
-                            <li><a href="artistico">Artistico</a></li>
-                            <li><a href="promocoes">Promoções</a></li>
-                            <li><a href="eventos">Eventos</a></li>
-                            <li><a href="utilidade_publica">Utilidade Pública</a></li>
-                            <li><a href="quem_somos">Quem Somos</a></li>
-                            <li>Comercial</li>
-                            <li>Contato</li>
-                        </ul>
-                    </div>
-                </div>  container -->
-            </div>
-            <!-- /.container fluid -->
-            <!-- <iframe name="playcolor" src="http://painelstream.com/mini-player/7038" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe> -->
-            <!-- <ul id="menu">
-                <li><a href="home">Home</a></li>
-                <li><a href="programacao">Programação</a></li>
-                <li><a href="contato.html">Contato</a></li>
-            </ul> -->
 
             <div id="content">
-                <?php $this->load->view($viewName); echo $_SESSION['regiao'] ?>
-            </div>
-
-            <div class='rede_social'> 
-                <div class='face'><img src="<?php echo base_url('/assets/img/ima.png')?>" alt=""></div>
-                <div class='youtube'>d</div>
-                <div class='foto1'>1</div>
-                <div class='foto2'>2</div>
-                <div class='foto3'>3</div>
-                <div class='foto4'>4</div>
+                <?php $this->load->view($viewName);?>
             </div>
             
+            <div class="redes redes_<?=$_SESSION['regiao'];?>">
+
+                <div class="container">
+                    <div class="row">
+                        
+                        <div class="col-md-4">
+                            <div class='face'>
+                                <a href="<?=$_SESSION['socialFace'];?>" target="_blank">
+                                    <img src="<?php echo base_url('/assets/img/linkFaceRodape.png')?>" alt="Curta nossa Fanpage">
+                                </a>
+                            </div>
+                            <div class='youtube'>
+                                <a href="<?=$_SESSION['socialYoutube'];?>" target="_blank">
+                                    <img src="<?php echo base_url('/assets/img/linkYoutubeRodape.png')?>" alt="Inscreva-se no nosso canal">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            
+                        </div>
+
+                    </div> <!-- row -->
+                </div> <!-- container -->
+
+            </div>
+
             <div class="unidades">
                 <div class="container">
                     <div class="row">
                         
                         <div class="col-sm-3">
-                            <img src="<?php echo base_url('assets/img/logoMeninaBC.png')?>" title="Balneário Camboriú">
+                            <img src="<?php echo base_url('assets/img/logoMeninabc.png')?>" title="Balneário Camboriú">
                             <h3>Balneário Camboriú</h3>
                             <p> 
                                 Av. do Estado, 1555 - Edif. Work Center<br>
@@ -238,7 +217,7 @@
                         </div>
                         
                         <div class="col-sm-3">
-                            <img src="<?php echo base_url('assets/img/logoMeninaBL.png')?>" title="Blumenau">
+                            <img src="<?php echo base_url('assets/img/logoMeninabl.png')?>" title="Blumenau">
                             <h3>Blumenau</h3>
                             <p>
                                 Rua 7 de Setembro, 473<br>
@@ -249,7 +228,7 @@
                         </div>
                         
                         <div class="col-sm-3">
-                            <img src="<?php echo base_url('assets/img/logoMeninaLG.png')?>" title="Lages">
+                            <img src="<?php echo base_url('assets/img/logoMeninalg.png')?>" title="Lages">
                             <h3>Lages</h3>
                             <p>
                                 Av. Luís de Camões, 1370<br>
@@ -276,7 +255,7 @@
         </main>
 
 
-        <footer class="rodapeBg_<?php $_SESSION['regiao'];?>">
+        <footer class="rodapeBg_<?=$_SESSION['regiao'];?>">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
@@ -335,9 +314,6 @@
                     }
                 });
             });
-
-
-            
         });
         document.getElementById('formRegiao').onchange = function(e){
             var regiao = document.querySelector('#regiao');

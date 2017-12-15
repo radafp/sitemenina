@@ -18,7 +18,7 @@ body {
 }
 
 .backgroundBody_bc {
-  background: url(../img/bg_bc.jpg) no-repeat center center fixed;
+  background: url(../img/bg_bc.jpg) no-repeat center top;
   background-size: cover; /*Css padrão*/
   -webkit-background-size: cover; /*Css safari e chrome*/
   -moz-background-size: cover; /*Css firefox*/
@@ -70,7 +70,7 @@ body {
     border-bottom: 8px solid #fec677;
 }
 .topo_bl button{
-    background-color: #2d82a5;
+    background-color: #eb8e31;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -91,7 +91,7 @@ body {
     border-bottom: 8px solid #6dc551; 
 }
 .topo_lg button{
-    background-color: #2d82a5;
+    background-color: #27821d;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -147,6 +147,83 @@ a, a:hover {
     margin-left: 0px;
 }
 
+.mainTopo {
+  padding: 0;
+}
+.mainTopo .topo p{
+  font-size: 12px;
+} 
+.mainTopo .topo .tvMocinha{
+  display: none;
+} 
+
+.blocoMenu{
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  height: 280px;
+  margin: 50px 0;
+  text-align: center;
+  padding:40px 0; 
+}
+.lsbr{
+  height: 145px;  
+}
+.blocoMenu hr{
+  width: 95%;
+}
+.blocoMenu .logo{
+  text-align: right;
+  padding-top: 15px;
+}
+.blocoMenu .slogam{
+  margin-top: 40px;
+}
+.blocoMenu .slogam h1{
+  font-family: 'microgrammadeebolextregular';
+  font-size: 1.7em;
+  color: #eb8e31;
+}
+.blocoMenu .selRegiao{
+  margin-top: 55px;
+}
+.blocoMenu .topoRedes{
+  margin-top: 30px;
+}
+.blocoMenu .topoRedes ul li{
+  display: inline;
+}
+.blocoMenu .topoRedes ul li a.face{
+  border: 1px solid #6684bf;
+}
+.blocoMenu .topoRedes .face i{
+  color: #6684bf;
+}
+.blocoMenu .topoRedes ul li a.insta{
+  border: 1px solid #ba8ad7;
+}
+.blocoMenu .topoRedes .insta i{
+  color: #ba8ad7;
+}
+.blocoMenu .topoRedes ul li a.youtube{
+  border: 1px solid #e94c44;
+}
+.blocoMenu .topoRedes .youtube i{
+  color: #e94c44;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-right: 15%;
+  padding-left: 15%;
+  font-weight: bold;
+  color: #5d5d5d
+}
+
+
+@media (min-width: 769px) {
+  .mainTopo .topo .tvMocinha{
+      display:block;
+  }
+}
+
 /* -- Fim Header -- */
 
 .conteudo{
@@ -157,6 +234,15 @@ a, a:hover {
 /* --- Fotter  --- */
 .redes{
   padding:100px;
+}
+.redes.redes_bc{
+  background: url(../img/redes_bc.jpg);
+}
+.redes.redes_bl{
+  background: url(../img/redes_bl.jpg);
+}
+.redes.redes_lg{
+  background: url(../img/redes_lg.jpg);
 }
 .redes h1{
   font-family: 'microgrammadmedextregular';
@@ -172,15 +258,19 @@ a, a:hover {
   height: 3px;
   margin-top: -5px;
 }
-.redes.redes_bc{
-  background: url(../img/redes_BC.jpg);
+.redes .face{
+  margin-bottom: 10px;
 }
-.redes.redes_bl{
-  background: url(../img/redes_BL.jpg);
+.redes .face img{
+  max-width: 100%;
 }
-.redes.redes_lg{
-  background: url(../img/redes_LG.jpg);
+.redes .youtube{
+  margin-bottom: 10px;
 }
+.redes .youtube img{
+  max-width: 100%;
+}
+
 
 .unidades{
   background-color: #ffffff;

@@ -27,8 +27,8 @@ $_CONFIG = array(
 
     'theme' => "oxygen",
 
-    'uploadURL' => "http://" . PROJECT_URL . "/arquivos/conteudo_img",
-    'uploadDir' => PROJECT_PATH . "arquivos/conteudo_img",
+    'uploadURL' => "http://" . PROJECT_URL . "/assets/arquivos/conteudo_img",
+    'uploadDir' => PROJECT_PATH . "assets/arquivos/conteudo_img",
 
     'dirPerms' => 0777,
     'filePerms' => 0777,
