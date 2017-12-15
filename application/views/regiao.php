@@ -1,4 +1,36 @@
-<div class='noticias_principais'>
+<div class="container">
+
+    <div class="row destaques">
+        <?php foreach($titulo as $info):?>
+            <div class="col-xs-6 col-md-4">
+                <a href="#" class="">
+                    <div class="">
+                        <figure class="" style="background-image:url(<?php echo base_url('/assets/img/temp/001.jpg');?>);"></figure>
+                    </div>
+                    <div class="">
+                        <h4 class="">Geral</h4>
+                        <h3 class="">titulo da notícia</h3>
+                    </div>
+                </a>
+            </div>
+        <?php endforeach?>
+    </div> <!-- row -->
+
+    <div class="row outrasNoticias">
+        <h1>Últimas novidades</h1>
+        <?php foreach($outras_noticias as $info):?>
+            <div class='col-xs-12 col-md-3'>
+                <h2><?php echo $info['tituloPt'];?></h2>
+                <p><?php echo date('d/m/Y', strtotime($info['data']));?></p>
+                <span><?php echo $info['categoriaPt'];?></span>
+            </div>
+        <?php endforeach?>
+    </div> <!-- row -->
+
+</div> <!-- container -->
+
+<!--
+    <div class='noticias_principais'>
     <?php foreach($titulo as $info):?>
         <div class='turismo'>
         
@@ -8,19 +40,7 @@
         </div>
     <?php endforeach?>
 </div><br><br><br>
-
-<div class='ultimas_noticias'>
-    <h2>Últimas novidades</h2>
-    <?php foreach($outras_noticias as $info):?>
-        <div class='outras_noticias'>
-            
-            <h2><?php echo $info['tituloPt'];?></h2>
-            <p><?php echo date('d/m/Y', strtotime($info['data']));?></p>
-            <span><?php echo $info['categoriaPt'];?></span>
-            
-        </div>
-    <?php endforeach?>
-</div>
+-->
 
 <div class='promocoes_eventos'>
     <div id='programacoes'>

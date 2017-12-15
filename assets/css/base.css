@@ -217,17 +217,19 @@ a, a:hover {
   color: #5d5d5d
 }
 
-
+.mainTopo .topo .tvMocinha{
+  display:none;   
+}
 @media (min-width: 769px) {
   .mainTopo .topo .tvMocinha{
-      display:block;
+      display:block;   
   }
 }
 
 /* -- Fim Header -- */
 
-.conteudo{
-  min-height: 350px;
+.contenteudo{
+  min-height: 450px;
 }
 
 
@@ -311,4 +313,3 @@ a, a:hover {
   font-weight: 500;
   color: #ffffff;
 }
-
