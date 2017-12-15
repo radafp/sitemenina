@@ -3,8 +3,8 @@
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 <script type="text/javascript">
  $(document).ready(function(){
-                $('#noticia').DataTable();
-                $('#noticia2').DataTable();
+                $('.noticia').DataTable();
+                $('.mais_lidas').DataTable();
             });
 </script>
 <div class='programacao'>
@@ -12,7 +12,7 @@
         <h2>Ultimas noticias</h2><br>
         <div id='prog'>
             <div id='esquerda'>
-                <table id='noticia' data-page-length='2' class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table class='noticia' data-page-length='2' class="table table-striped table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <td>.</td>
@@ -42,7 +42,7 @@
     <h2>As mais lidas</h2>
     
     <div id='direita'>
-        <table id='noticia2' data-page-length='4' class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table class='mais_lidas' data-page-length='4' class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <td>.</td>

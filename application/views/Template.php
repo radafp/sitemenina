@@ -37,14 +37,12 @@
         <meta property="og:image" content="<?=isset($imagemFb) ? $imagemFb : base_url('/assets/img/logo-jm-fb.png');?>" />
 
 
-        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-<script type="text/javascript">
- $(document).ready(function(){
-                alert('caraui');
-                $('#noticia').DataTable();
-            });
-</script>
+        
+        <!-- <script type="text/javascript">
+        $(document).ready(function(){
+                        
+                    });
+        </script> -->
     </head>
     <body class="backgroundBody_<?=$_SESSION['regiao'];?>">
 
@@ -284,7 +282,8 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#noticia').DataTable();
+            $('.mais_lidas').DataTable();
+            $('.noticia').DataTable();
             var content = $('#content');
 
             $('#menu a').click(function( e ){

@@ -1,10 +1,3 @@
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-<script type="text/javascript">
- $(document).ready(function(){
-                $('#noticia2').DataTable();
-            });
-</script>
 <div class='programacao'>
     <div class='programacoes'>
         <h2>Descrição da Notícia</h2><br>
@@ -24,7 +17,7 @@
         <img src="<?php echo base_url('/assets/img/logoTVMocinha.png')?>" alt="" width='300'>
         <h2>As mais lidas</h2>
         <div id='direita'>
-        <table id='noticia2' data-page-length='4' class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <table class='noticia' data-page-length='4' class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <td>.</td>
@@ -45,4 +38,3 @@
         </table>
     </div>
 </div><br><br><br>
-<?php 
