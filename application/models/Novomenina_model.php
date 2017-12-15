@@ -76,10 +76,10 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
-    // public function jornalismo_impar($categoria, $regiao) {
-    //     $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt FROM noticias INNER JOIN categorias WHERE categorias.cod = noticias.codCategoria and noticias.destaque = 1 and noticias.mostrar = 1 and categoriaPt = '$categoria'  and noticias.regiao = '$regiao' ORDER BY data desc");
-    //     return $query->result_array();
-    // }
+    public function jornalismo($categoria, $regiao) {
+        $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt FROM noticias INNER JOIN categorias WHERE categorias.cod = noticias.codCategoria and noticias.destaque = 1 and noticias.mostrar = 1 and categoriaPt = '$categoria'  and noticias.regiao = '$regiao' ORDER BY data desc");
+        return $query->result_array();
+    }
 
     public function descricao_noticia($id, $regiao) {
         $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt FROM noticias INNER JOIN categorias WHERE categorias.cod = noticias.codCategoria and noticias.destaque = 1 and noticias.mostrar = 1 and noticias.cod = $id  and noticias.regiao = '$regiao' ORDER BY data DESC");

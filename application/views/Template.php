@@ -23,6 +23,9 @@
         <link href="<?php echo base_url('/assets/css/base.css')?>" rel="stylesheet">
         <link href="<?php echo base_url('/assets/css/template.css')?>" rel="stylesheet">
         
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+
+
         <!-- icone -->
         <!-- <link rel="icon" href="<?php echo base_url('/assets/img/base/favicon.png')?>"> -->
 
@@ -33,6 +36,15 @@
         <meta property="og:description" content="<?=isset($description) ? $description : '';?>" />
         <meta property="og:image" content="<?=isset($imagemFb) ? $imagemFb : base_url('/assets/img/logo-jm-fb.png');?>" />
 
+
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+<script type="text/javascript">
+ $(document).ready(function(){
+                alert('caraui');
+                $('#noticia').DataTable();
+            });
+</script>
     </head>
     <body class="backgroundBody_<?=$_SESSION['regiao'];?>">
 
@@ -269,9 +281,10 @@
     <script src="<?php echo base_url('/assets/js/popper.min.js')?>"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+            $('#noticia').DataTable();
             var content = $('#content');
 
             $('#menu a').click(function( e ){
@@ -314,6 +327,8 @@
                     }
                 });
             });
+           
+            
         });
         document.getElementById('formRegiao').onchange = function(e){
             var regiao = document.querySelector('#regiao');

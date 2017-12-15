@@ -75,41 +75,9 @@ class home extends CI_Controller {
     }
 
     public function noticia() {
-        $config = array(
-			"base_url" => base_url('usuarios/p'),
-			"per_page" => 3,
-			"num_links" => 3,
-			"uri_segment" => 3,
-			"total_rows" => $this->Novomenina->CountAll('noticias'),
-			"full_tag_open" => "<ul class='pagination' id='ajaxPagination'>",
-			"full_tag_close" => "</ul>",
-			"first_link" => FALSE,
-			"last_link" => FALSE,
-			"first_tag_open" => "<li>",
-			"first_tag_close" => "</li>",
-			"prev_link" => "Anterior",
-			"prev_tag_open" => "<li class='prev'>",
-			"prev_tag_close" => "</li>",
-			"next_link" => "Próxima",
-			"next_tag_open" => "<li class='next'>",
-			"next_tag_close" => "</li>",
-			"last_tag_open" => "<li>",
-			"last_tag_close" => "</li>",
-			"cur_tag_open" => "<li class='active'><a href='#'>",
-			"cur_tag_close" => "</a></li>",
-			"num_tag_open" => "<li>",
-			"num_tag_close" => "</li>"
-        );
-        
-        $this->pagination->initialize($config);
-        $dados['pagination'] = $this->pagination->create_links();
-
-        $offset = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
         $categoria = $_GET['categoria'];
-        $dados['jornalismo'] = $this->Novomenina->GetAll_noticias($categoria, $_SESSION['regiao'], 2);
-   
-        // $dados['jornalismo'] = $this->Novomenina->jornalismo_impar($categoria, $_SESSION['regiao']);
+       
+        $dados['jornalismo'] = $this->Novomenina->jornalismo($categoria, $_SESSION['regiao']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
         
