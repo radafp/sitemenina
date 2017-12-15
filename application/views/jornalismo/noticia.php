@@ -2,7 +2,8 @@
     <div class='programacoes'>
         <h2>Ultimas noticias</h2><br>
         <div id='prog'>
-            <?php foreach($jornalismo_impar as $info):?>
+            <?php if($jornalismo): ?>
+            <?php foreach($jornalismo as $info):?>
                 <div id='esquerda'>
                     <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
                         <img src="<?php echo base_url('/assets/img/logoTVMocinha.png')?>" alt="">
@@ -11,6 +12,11 @@
                     </a> 
                 </div>
             <?php endforeach?>
+
+            <?php echo $pagination; ?>
+            <?php else: ?>
+            <p class="alert alert-info">Página inexistente</p>
+            <?php endif; ?>
         </div>
     </div>
 

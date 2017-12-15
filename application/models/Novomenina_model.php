@@ -8,6 +8,29 @@ class Novomenina_model extends CI_Model{
         $this->load->database();
     }
 
+    public function GetAll_noticias($categoria, $regiao, $limit = null, $offset = null) {
+        // $this->db->where('categoria', $categoria);
+        // $this->db->where('regiao', $regiao);
+        $this->db->order_by('data', 'desc');
+        $this->db->select('*');
+        $this->db->from('noticias');
+        $this->db->join('categorias', "categorias.cod = noticias.codCategoria and categorias.categoriaPt = '$categoria' and noticias.destaque = 1 and noticias.mostrar = 1 and noticias.regiao = '$regiao'");
+    
+        if($limit)
+            $this->db->limit($limit,$offset);
+            $query = $this->db->get();
+            
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        } else {
+            return null;
+        }
+    }
+    
+    public function CountAll($tabela){
+        return $this->db->count_all($tabela);
+    }
+
      // tabela noticias
     public function noticias_turistmo_destaque($regiao) {
         $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt FROM noticias INNER JOIN categorias WHERE categorias.cod = noticias.codCategoria and noticias.destaque = 1 and noticias.mostrar = 1 and noticias.regiao = '$regiao' ORDER BY data desc limit 3");
@@ -53,10 +76,10 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
-    public function jornalismo_impar($categoria, $regiao) {
-        $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt FROM noticias INNER JOIN categorias WHERE categorias.cod = noticias.codCategoria and noticias.destaque = 1 and noticias.mostrar = 1 and categoriaPt = '$categoria'  and noticias.regiao = '$regiao' ORDER BY data desc");
-        return $query->result_array();
-    }
+    // public function jornalismo_impar($categoria, $regiao) {
+    //     $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt FROM noticias INNER JOIN categorias WHERE categorias.cod = noticias.codCategoria and noticias.destaque = 1 and noticias.mostrar = 1 and categoriaPt = '$categoria'  and noticias.regiao = '$regiao' ORDER BY data desc");
+    //     return $query->result_array();
+    // }
 
     public function descricao_noticia($id, $regiao) {
         $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt FROM noticias INNER JOIN categorias WHERE categorias.cod = noticias.codCategoria and noticias.destaque = 1 and noticias.mostrar = 1 and noticias.cod = $id  and noticias.regiao = '$regiao' ORDER BY data DESC");
