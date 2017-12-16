@@ -23,7 +23,7 @@
         <link href="<?php echo base_url('/assets/css/base.css')?>" rel="stylesheet">
         <link href="<?php echo base_url('/assets/css/template.css')?>" rel="stylesheet">
         
-<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 
 
         <!-- icone -->

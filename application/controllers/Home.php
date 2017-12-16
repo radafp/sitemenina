@@ -76,11 +76,9 @@ class home extends CI_Controller {
 
     public function noticia() {
         $categoria = $_GET['categoria'];
-       
         $dados['jornalismo'] = $this->Novomenina->jornalismo($categoria, $_SESSION['regiao']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
-        
         $dados['viewName'] = 'jornalismo/noticia';
         $this->load->view('Template', $dados);
     }

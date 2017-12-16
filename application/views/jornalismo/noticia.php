@@ -5,6 +5,12 @@
  $(document).ready(function(){
                 $('.noticia').DataTable();
                 $('.mais_lidas').DataTable();
+                $(".dataTables_length").hide();
+                $("#DataTables_Table_0_filter").hide();
+                $("thead").hide();
+                $(".dataTables_info").hide();
+                $("#registros_filter").hide();
+                $("#registros_info").hide();
             });
 </script>
 <div class='programacao'>
@@ -12,7 +18,7 @@
         <h2>Ultimas noticias</h2><br>
         <div id='prog'>
             <div id='esquerda'>
-                <table class='noticia' data-page-length='2' class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <table class='noticia' data-page-length='2' class="table table-striped table-bordered" cellspacing="0" width="20%">
                     <thead>
                         <tr>
                             <td>.</td>
