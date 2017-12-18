@@ -32,8 +32,21 @@ class Novomenina_model extends CI_Model{
     }
 
      // tabela noticias
-    public function noticias_turistmo_destaque($regiao) {
-        $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt FROM noticias INNER JOIN categorias WHERE categorias.cod = noticias.codCategoria and noticias.destaque = 1 and noticias.mostrar = 1 and noticias.regiao = '$regiao' ORDER BY data desc limit 3");
+    public function ultimas_noticias($regiao) {
+        $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo
+                                        FROM noticias
+                                    INNER JOIN categorias
+                                        on noticias.codCategoria = categorias.cod
+                                    INNER JOIN arquivos
+                                        WHERE arquivos.codReferencia = noticias.cod
+                                        AND noticias.regiao = 'bc'
+                                        AND noticias.destaque = 1 
+                                        AND noticias.mostrar = 1
+                                        GROUP by noticias.cod
+                                        ORDER by DATA DESC
+                                        LIMIT 3"
+        );
+
         return $query->result_array();
     }
 
@@ -63,13 +76,24 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
-    public function programacao_impar($regiao)  {
-        $query = $this->db->query("SELECT * FROM programacao WHERE cod % 2 != 0 and programacao.regiao = '$regiao' ");
+    public function programacao2($regiao) {
+        $query = $this->db->query("SELECT programacao.*, arquivos.arquivo FROM programacao INNER JOIN arquivos WHERE arquivos.codReferencia = programacao.cod AND programacao.regiao = '$regiao'");
         return $query->result_array();
     }
 
+    // metodo mostrado na div esquerda 
+    public function programacao_impar($regiao)  {
+        $query = $this->db->query("SELECT programacao.*, arquivos.arquivo FROM programacao INNER JOIN arquivos WHERE programacao.cod % 2 != 0 and arquivos.codReferencia = programacao.cod and programacao.regiao = '$regiao' ");
+        return $query->result_array();
+    }
+
+    // public function programacao_par($regiao)  {
+    //     $query = $this->db->query("SELECT * FROM programacao WHERE cod % 2 = 0 and programacao.regiao = '$regiao'");
+    //     return $query->result_array();
+    // }
+
     public function programacao_par($regiao)  {
-        $query = $this->db->query("SELECT * FROM programacao WHERE cod % 2 = 0 and programacao.regiao = '$regiao'");
+        $query = $this->db->query("SELECT programacao.*, arquivos.arquivo FROM programacao INNER JOIN arquivos WHERE programacao.cod % 2 = 0 and arquivos.codReferencia = programacao.cod and programacao.regiao = '$regiao' ");
         return $query->result_array();
     }
 
@@ -90,7 +114,7 @@ class Novomenina_model extends CI_Model{
     }
 
     public function jornalismo_noticias($categoria, $regiao) {
-        $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo 
+        $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.*
                                     FROM noticias 
                                         INNER JOIN categorias, arquivos 
                                     WHERE categorias.cod = noticias.codCategoria 
@@ -103,7 +127,7 @@ class Novomenina_model extends CI_Model{
                                     AND capa = '1' 
                                     AND tipo = '2' 
                                     and noticias.regiao = '$regiao' 
-                                    ORDER BY data DESC LIMIT 1"
+                                    ORDER BY data"
         );
         return $query->result_array();
     }

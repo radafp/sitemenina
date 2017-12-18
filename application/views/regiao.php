@@ -1,22 +1,24 @@
 <div class="container">
 
     <div class="row destaques">
+        <div class="col-xs-6 col-md-4">
+        <?php foreach($noticias_em_destaque as $info):?>
+            <a href="#" class="">
+                <!-- <div class="">
+                    <figure class="" style="background-image:url(<?php echo base_url('/assets/img/temp/001.jpg');?>);"></figure>
+                </div> -->
 
-        <?php foreach($titulo as $info):?>
+                <div class="">
+                    <h4 class=""><?php echo $info['categoriaPt'];?></h4>
+                    <h3 class=""><?php echo $info['tituloPt'];?></h3>
+                    <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
+                </div><br><br>
+                
+            </a>
+            <?php endforeach?>
+        </div>
 
-            <div class="col-xs-6 col-md-4">
-                <a href="#" class="">
-                    <div class="">
-                        <figure class="" style="background-image:url(<?php echo base_url('/assets/img/temp/001.jpg');?>);"></figure>
-                    </div>
-                    <div class="">
-                        <h4 class="">Geral</h4>
-                        <h3 class="">titulo da notícia</h3>
-                    </div>
-                </a>
-            </div>
-
-        <?php endforeach?>
+    
         
     </div> <!-- row -->
 
