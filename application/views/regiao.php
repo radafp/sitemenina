@@ -1,7 +1,9 @@
 <div class="container">
 
     <div class="row destaques">
+
         <?php foreach($titulo as $info):?>
+
             <div class="col-xs-6 col-md-4">
                 <a href="#" class="">
                     <div class="">
@@ -13,7 +15,9 @@
                     </div>
                 </a>
             </div>
+
         <?php endforeach?>
+        
     </div> <!-- row -->
 
     <div class="row outrasNoticias">

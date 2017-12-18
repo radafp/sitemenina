@@ -60,7 +60,7 @@ if($submit != '')
     
     if($erro == 0)
     {
-        $pasta = PROJECT_PATH."arquivos/programacao";
+        $pasta = "../assets/arquivos/programacao";
         if($subid == 2) //insert
         {
         	$q = mysql_query("INSERT INTO programacao 

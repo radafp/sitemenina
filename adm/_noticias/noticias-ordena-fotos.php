@@ -84,7 +84,7 @@ $(document).ready(function()
                     <img src="<?=ssl().ADMIN_URL;?>/img/base/conteudo/ico-ordenacao.png" />
                 </div>
                 <div class="divTd">
-                    <img src="<?=ssl().PROJECT_URL.'/arquivos/noticias/'.$tp['arquivo'];?>" title="<?=$tp['legenda'];?>" style="max-width: 150px;" />
+                    <img src="<?=ssl().PROJECT_URL.'/assets/arquivos/noticias/'.$tp['arquivo'];?>" title="<?=$tp['legenda'];?>" style="max-width: 150px;" />
                 </div>
                 <div class="divTd">
                     <?=$tp['capa'] == 1 ? 'SIM' : 'NÃO';?>

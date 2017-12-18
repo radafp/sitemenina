@@ -69,13 +69,15 @@ if($submit != '')
     
     if($erro == 0)
     {
-        $pasta = PROJECT_PATH."arquivos/noticias";
+        $pasta = "../assets/arquivos/noticias";
         if($subid == 2) //insert
         {
         	$q = mysql_query("INSERT INTO noticias 
                             (codCategoria, dataCadastro, data, tituloPt, subtitulo, cleanTitlePt, descricaoPt, fonte, destaque, regiao, mostrar)
                             VALUES
                             ('$codCategoria','$data', '$dataPost', '$tituloPt', '$subtitulo', '$cleanTitlePt', '$descricaoPt','$fonte','$destaque','$regiao', '$mostrar')");
+
+                            echo mysql_error();
         	
             if($q)
         	{
