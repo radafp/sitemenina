@@ -282,8 +282,8 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('.mais_lidas').DataTable();
-            $('.noticia').DataTable();
+            // $('.mais_lidas').DataTable();
+            // $('.noticia').DataTable();
             var content = $('#content');
 
             $('#menu a').click(function( e ){
