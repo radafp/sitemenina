@@ -37,6 +37,14 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
+    public function fotos_noticias($regiao) {
+        $query = $this->db->query("SELECT arquivo FROM arquivos join noticias
+                                    WHERE codReferencia = noticias.cod AND referencia = 'noticias'
+                                    AND capa = '1' AND tipo = '2'  and noticias.regiao = '$regiao' LIMIT 1");
+        return $query->result_array();
+    }
+    
+
     public function outras_noticias($regiao)  {
         $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt FROM noticias INNER JOIN categorias WHERE categorias.cod = noticias.codCategoria and noticias.destaque = 0 and noticias.mostrar = 1 and noticias.regiao = '$regiao' ORDER BY data desc limit 4;");
         return $query->result_array();
