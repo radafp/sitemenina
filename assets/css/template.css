@@ -1,16 +1,38 @@
 /*-- conteúdos --*/
+
+/*-- região --*/
 .destaques{
     margin-bottom: 50px;
 }
 .outrasNoticias{
     margin-bottom: 50px;
 }
+
 .outrasNoticias h1{
     width: 100%;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 22px;
 }
 .outrasNoticias h1 span{ 
-    border-bottom: 2px solid #c2c2c2;
-    padding-bottom: 5px;
+    border-bottom: 3px solid #27821d;
+    padding-bottom: 20px;
+    font-family: "microgrammadmedextregular";
+    font-size: 28px;
 }
+.outrasNoticias .noticia{
+    padding-left: 0px;
+}
+.outrasNoticias .noticia .categoria{
+    margin: 20px 0;
+}
+.outrasNoticias .noticia .categoria span{
+    padding: 5px 15px;
+    background: #cccccc;
+    border-radius: 5px;
+}
+.outrasNoticias .noticia h2{
+    font-size: 24px;
+    font-family: 'Quicksand', sans-serif;
+} 
 
 /*-- FIM classe região --*/

@@ -1,7 +1,9 @@
 <div class="container">
 
     <div class="row destaques">
+
         <?php foreach($titulo as $info):?>
+
             <div class="col-xs-6 col-md-4">
                 <a href="#" class="">
                     <div class="">
@@ -13,16 +15,20 @@
                     </div>
                 </a>
             </div>
+
         <?php endforeach?>
+        
     </div> <!-- row -->
 
     <div class="row outrasNoticias">
-        <h1>Últimas novidades</h1>
+        <h1><span>Últimas novidades</span></h1>
         <?php foreach($outras_noticias as $info):?>
-            <div class='col-xs-12 col-md-3'>
+            <div class='col-xs-12 col-md-3 noticia'>
+                <div class="categoria">
+                    <span><?php echo $info['categoriaPt'];?></span>
+                </div>
                 <h2><?php echo $info['tituloPt'];?></h2>
                 <p><?php echo date('d/m/Y', strtotime($info['data']));?></p>
-                <span><?php echo $info['categoriaPt'];?></span>
             </div>
         <?php endforeach?>
     </div> <!-- row -->
