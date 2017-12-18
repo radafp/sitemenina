@@ -50,11 +50,13 @@ if($submit != '')
     $data = date('Y-m-d');
     $dataPost = isset($_POST['data']) ? dataEn($_POST['data']) : '';
     $tituloPt = isset($_POST['tituloPt']) ? $_POST['tituloPt'] : '';
+    $subtitulo = isset($_POST['subtitulo']) ? $_POST['subtitulo'] : '';
     //$tituloEn = isset($_POST['nomeEn']) ? $_POST['nomeEn'] : '';
     //$cleanTitlePt = cleanTitle($nomePt);
     $cleanTitlePt = cleanTitle($tituloPt);
     $descricaoPt = isset($_POST['descricaoPt']) ? $_POST['descricaoPt'] : '';
     //$descricaoEn = isset($_POST['descricaoEn']) ? $_POST['descricaoEn'] : '';
+    $fonte = isset($_POST['fonte']) ? $_POST['fonte'] : '';
     $destaque = isset($_POST['destaque']) ? 1 : 0;
     
     $regiao = isset($_SESSION[ADMIN_SESSION_NAME.'_regiao']) ? $_SESSION[ADMIN_SESSION_NAME.'_regiao'] : '';
@@ -71,9 +73,9 @@ if($submit != '')
         if($subid == 2) //insert
         {
         	$q = mysql_query("INSERT INTO noticias 
-                            (codCategoria, dataCadastro, data, tituloPt, cleanTitlePt, descricaoPt, destaque, regiao, mostrar)
+                            (codCategoria, dataCadastro, data, tituloPt, subtitulo, cleanTitlePt, descricaoPt, fonte, destaque, regiao, mostrar)
                             VALUES
-                            ('$codCategoria','$data', '$dataPost', '$tituloPt', '$cleanTitlePt', '$descricaoPt','$destaque','$regiao', '$mostrar')");
+                            ('$codCategoria','$data', '$dataPost', '$tituloPt', '$subtitulo', '$cleanTitlePt', '$descricaoPt','$fonte','$destaque','$regiao', '$mostrar')");
         	
             if($q)
         	{
@@ -146,8 +148,10 @@ if($submit != '')
                             dataAlteracao = '$data',
                             data = '$dataPost',
                             tituloPt = '$tituloPt',
+                            subtitulo = '$subtitulo',
                             cleanTitlePt = '$cleanTitlePt',
                             descricaoPt = '$descricaoPt',
+                            fonte = '$fonte',
                             destaque = '$destaque',
                             mostrar = '$mostrar'
                             WHERE cod = {$cod}");
@@ -296,7 +300,9 @@ else
             $codCategoria = $tp['codCategoria']; 
             $dataPost = $tp['data'];
             $tituloPt = $tp['tituloPt'];
+            $subtitulo = $tp['subtitulo'];
             $descricaoPt = $tp['descricaoPt'];
+            $fonte = $tp['fonte'];
             $destaque = $tp['destaque']; 
             $mostrar = $tp['mostrar'];
 
@@ -316,7 +322,9 @@ else
         $dataPost = '';
         $codCategoria = '';
         $tituloPt = '';
+        $subtitulo = '';
         $descricaoPt = '';
+        $fonte = '';
         $destaque = 0;
         $mostrar = 0;
 
@@ -358,10 +366,18 @@ else
         </div>  
         <div class="divTr">
             <div class="divTd">
-                <label>Nome:</label>
+                <label>Título:</label>
             </div>
             <div class="divTd">
                 <input type="text" class="campoG" name="tituloPt" id="tituloPt" value="<?=$tituloPt;?>" title="Título"/>
+            </div>
+        </div>
+        <div class="divTr">
+            <div class="divTd">
+                <label>Subtítulo:</label>
+            </div>
+            <div class="divTd">
+                <input type="text" class="campoG" name="subtitulo" id="subtitulo" value="<?=$subtitulo;?>" title="Subtítulo"/>
             </div>
         </div>
         <div class="divTr">
@@ -374,6 +390,14 @@ else
                 ?>
                 <!--<textarea id="descricaoPt" name="descricaoPt" class="campoG" title="Descrição"><?=str_replace("<br />", "\n", $descricaoPt);?></textarea>-->
 
+            </div>
+        </div>
+        <div class="divTr">
+            <div class="divTd">
+                <label>Fonte:</label>
+            </div>
+            <div class="divTd">
+                <input type="text" class="campoG" name="fonte" id="fonte" value="<?=$fonte;?>" title="Fonte"/>
             </div>
         </div>
         <div class="divTr">
