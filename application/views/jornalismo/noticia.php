@@ -27,13 +27,11 @@
                             <td>.</td>
                         </tr>
                     </thead>
-        
                     <tbody>
                     <?php foreach($jornalismo as $info):?>
-                    <?php foreach($qFotosNoticias as $info):?>
                         <td>
                             <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
-                            <img src="<?php echo base_url('/assets/img/logoTVMocinha.png')?>" alt="">
+                            <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                             <h3><?php echo $info['tituloPt']?></h3>
                             <p><?php echo $info['categoriaPt'] . ' ' . date('d/m/Y', strtotime($info['data']))?></p>
                             </a> 
