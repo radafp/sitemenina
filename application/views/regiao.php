@@ -1,62 +1,61 @@
-<div class="container">
+ <div class="container">
 
     <div class="row destaques">
-        <div class="col-xs-6 col-md-4">
-        <?php foreach($noticias_em_destaque as $info):?>
-            <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
-                <div class="">
-                    <figure class="" style="background-image:url(<?php echo base_url('/assets/img/temp/001.jpg');?>);"></figure>
-                </div>
-
-                <div class="">
-                    <h4 class=""><?php echo $info['categoriaPt'];?></h4>
-                    <h3 class=""><?php echo $info['tituloPt'];?></h3>
-                    <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
-                </div><br><br>
-                
-            </a>
-            <?php endforeach?>
-        </div>
+        <?php foreach($titulo as $info):?>
+            <div class="col-xs-6 col-md-4">
+                <a href="#" class="">
+                    <div class="">
+                        <figure class="" style="background-image:url(<?php echo base_url('/assets/img/temp/001.jpg');?>);"></figure>
+                    </div>
+                    <div class="">
+                        <h4 class="">Geral</h4>
+                        <h3 class="">titulo da notícia</h3>
+                    </div>
+                </a>
+            </div>
+        <?php endforeach?>
     </div> <!-- row -->
 
     <div class="row outrasNoticias">
-        <h1><span>Últimas novidades</span></h1>
-        <?php foreach($ultimas_noticias as $info):?>
-        <div class='col-xs-12 col-md-3 noticia'>
-            <div class="categoria">
-            <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
-                <!-- <img src="" alt=""> -->
+        <h1>Últimas novidades</h1>
+        <?php foreach($outras_noticias as $info):?>
+            <div class='col-xs-12 col-md-3'>
+                <h2><?php echo $info['tituloPt'];?></h2>
+                <p><?php echo date('d/m/Y', strtotime($info['data']));?></p>
                 <span><?php echo $info['categoriaPt'];?></span>
             </div>
-            <h2><?php echo $info['tituloPt'];?></h2>
-            <p><?php echo $info['descricaoPt']?></p>
-            <p><?php echo date('d/m/Y', strtotime($info['data']));?></p>
-        </div>
-    <?php endforeach?>
-        
+        <?php endforeach?>
     </div> <!-- row -->
 
 </div> <!-- container -->
 
+<!--
+    <div class='noticias_principais'>
+    <?php foreach($titulo as $info):?>
+        <div class='turismo'>
+        
+            <h2><?php echo $info['tituloPt'];?></h2>
+            <p><?php echo date('d/m/Y', strtotime($info['dataCadastro']));?></p>
+        
+        </div>
+    <?php endforeach?>
+</div><br><br><br>
+-->
+
 <div class='promocoes_eventos'>
     <div id='programacoes'>
         <h2>Promoções</h2>
-        <?php foreach($promocoes as $info):?>
-            <h3><?php echo $info['tituloPt']?></h3>
-            <p><?php echo 'inicio: '. date('d/m/Y', strtotime($info['dataInicio']))?></p>
-            <p>Fim: <?php echo date('d/m/Y', strtotime($info['dataFim']))?></p>
-        <?php endforeach?>
-
-        
+        <img src="" alt="">
+        <h3>Titulo Promoção</h3>
     </div>
 
     <div id='eventos'>
         <h2>Eventos</h2><br>
         <?php foreach($eventos as $info):?>
-            <span><?php echo $info['mapa'];?></span> 
-            <h3><?php echo $info['tituloPt']?></h3>
-            <p><?php echo 'inicio: '. date('d/m/Y', strtotime($info['dataInicio']))?></p>
-            <p>Fim: <?php echo date('d/m/Y', strtotime($info['dataFim']))?></p>
+        <span><?php echo $info['mapa'];?></span> 
+        <h3><?php echo $info['tituloPt']?></h3>
+        <p><?php echo 'inicio: '. date('d/m/Y', strtotime($info['dataInicio']))?></p>
+        <p>Fim: <?php echo date('d/m/Y', strtotime($info['dataFim']))?></p>
         <?php endforeach?>
     </div><br>
     
