@@ -12,6 +12,7 @@
                     <h4 class=""><?php echo $info['categoriaPt'];?></h4>
                     <h3 class=""><?php echo $info['tituloPt'];?></h3>
                     <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
+                    <p><?php echo $info['data']?></p>
                 </div><br><br>
                 
             </a>
@@ -25,11 +26,11 @@
         <div class='col-xs-12 col-md-3 noticia'>
             <div class="categoria">
             <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
-                <span><?php echo $info['categoriaPt'];?></span>
-            </div>
-            <h2><?php echo $info['tituloPt'];?></h2>
-            <p><?php echo $info['descricaoPt']?></p>
-            <p><?php echo date('d/m/Y', strtotime($info['data']));?></p>
+                <span><?php echo $info['categoriaPt'];?></span><br><br>
+                <h2><?php echo $info['tituloPt'];?></h2>
+                <p><?php echo $info['descricaoPt']?></p>
+                <p><?php echo date('d/m/Y', strtotime($info['data']));?></p>
+            </a>
         </div>
     <?php endforeach?>
         

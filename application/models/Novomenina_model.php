@@ -128,6 +128,19 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
+    // metodo mostrado na div esquerda 
+    public function programacao_par($regiao)  {
+        $query = $this->db->query("SELECT programacao.*, arquivos.arquivo 
+                                    FROM programacao 
+                                        INNER JOIN arquivos 
+                                    WHERE programacao.cod % 2 = 0 
+                                    and arquivos.codReferencia = programacao.cod 
+                                    and programacao.regiao = '$regiao'
+                                    GROUP by programacao.cod"
+        );
+        return $query->result_array();
+    }
+
     // public function programacao_par($regiao)  {
     //     $query = $this->db->query("SELECT * FROM programacao WHERE cod % 2 = 0 and programacao.regiao = '$regiao'");
     //     return $query->result_array();
@@ -172,24 +185,9 @@ class Novomenina_model extends CI_Model{
         );
         return $query->result_array();
     }
-    public function descricao_noticia($id, $regiao) {
-        $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo
-                                        FROM noticias 
-                                    INNER JOIN categorias, arquivos
-                                        WHERE categorias.cod = noticias.codCategoria 
-                                        and arquivos.codReferencia = noticias.cod 
-                                        and noticias.destaque = 0
-                                        and noticias.mostrar = 1 
-                                        and noticias.cod = $id  
-                                        and noticias.regiao = '$regiao' 
-                                        ORDER BY data DESC");
-        return $query->result_array();
-    }
+    
 
-    public function descricao_eventos($id, $regiao) {
-        $query = $this->db->query("SELECT * FROM eventos WHERE cod = $id and eventos.regiao = '$regiao'");
-        return $query->result_array();
-    }
+    
 
     public function cliques($id, $regiao) {
         $query = $this->db->query("UPDATE noticias SET cliques = cliques + 1 WHERE cod = $id  and noticias.regiao= '$regiao'");
@@ -210,6 +208,18 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
+    // eventos da pagina de eventos
+    public function eventos($regiao) {
+        $query = $this->db->query("SELECT eventos.*, arquivos.arquivo
+                                    FROM eventos 
+                                    INNER JOIN arquivos 
+                                    ON eventos.cod = arquivos.codReferencia 
+                                    and eventos.regiao = 'bc' 
+                                    GROUP BY eventos.cod
+                                    ORDER BY eventos.dataCadastro"
+        );
+        return $query->result_array();
+    }
 
     // limite de 2 eventos para mostrar na home
     public function eventos_home($regiao) {
@@ -225,24 +235,9 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
-    // eventos da pagina de eventos
-    public function eventos($regiao) {
-        $query = $this->db->query("SELECT eventos.*, arquivos.arquivo
-                                    FROM eventos 
-                                    INNER JOIN arquivos 
-                                    ON eventos.cod = arquivos.codReferencia 
-                                    and eventos.regiao = 'bc' 
-                                    GROUP BY eventos.cod
-                                    ORDER BY eventos.dataCadastro"
-        );
-        return $query->result_array();
-    }
 
     // tabela promocoes puchadas na home
     public function promocoes_home($regiao, $limit = null) {
-        // $this->db->where('regiao', "$regiao");
-        // $query = $this->db->get('promocoes');
-        // return $query->result_array();
         $query = $this->db->query("SELECT promocoes.*, arquivos.arquivo
                                         FROM promocoes 
                                     INNER JOIN arquivos 
@@ -257,9 +252,6 @@ class Novomenina_model extends CI_Model{
 
     // tabela promocoes puchadas na home
     public function promocoes($regiao, $limit = null) {
-        // $this->db->where('regiao', "$regiao");
-        // $query = $this->db->get('promocoes');
-        // return $query->result_array();
         $query = $this->db->query("SELECT promocoes.*, arquivos.arquivo
                                         FROM promocoes 
                                     INNER JOIN arquivos 
@@ -270,6 +262,45 @@ class Novomenina_model extends CI_Model{
         );
         return $query->result_array();
     }
+
+    public function descricao_programacao($id, $regiao, $limit = null) {
+        $query = $this->db->query("SELECT programacao.*, arquivos.arquivo
+                                        FROM programacao
+                                    INNER JOIN arquivos 
+                                        ON programacao.cod = arquivos.codReferencia 
+                                        and programacao.regiao = '$regiao'
+                                        AND programacao.cod = $id
+                                        GROUP BY programacao.cod
+                                        ORDER BY programacao.dataCadastro DESC"
+        );
+        return $query->result_array();
+    }
+    
+    
+    
+    public function descricao_noticia($id, $regiao, $categoria) {
+        $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo 
+                                        FROM noticias 
+                                    INNER JOIN categorias, arquivos 
+                                        WHERE arquivos.codReferencia  = noticias.cod 
+                                        AND noticias.codCategoria = categorias.cod 
+                                        AND noticias.cod = $id
+                                        AND categorias.categoriaPt = '$categoria' 
+                                        AND arquivos.codReferencia = noticias.cod 
+                                        AND noticias.regiao = '$regiao' 
+                                        AND noticias.mostrar = 1 
+                                        LIMIT 1"
+        );
+        return $query->result_array();
+       
+        
+    }
+
+    public function descricao_eventos($id, $regiao) {
+        $query = $this->db->query("SELECT * FROM eventos WHERE cod = $id and eventos.regiao = '$regiao'");
+        return $query->result_array();
+    }
+
     public function descricao_promocoes($id, $regiao) {
         $query = $this->db->query("SELECT * FROM promocoes WHERE cod = $id and promocoes.regiao = '$regiao'");
         return $query->result_array();
