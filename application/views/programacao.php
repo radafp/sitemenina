@@ -5,11 +5,6 @@
     <button>SEMANAL</button>
     <button>SÁBADO</button>
     <button>DOMINGO</button><br><br>
-    <?php 
-    echo "<pre>";
-    var_dump($programacao_impar);
-    echo"</pre>";
-    ?>
     <div id='prog'>
         <?php foreach($programacao_impar as $info):?>
             <div id='esquerda'>

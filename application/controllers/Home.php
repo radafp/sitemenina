@@ -47,12 +47,13 @@ class home extends CI_Controller {
                 break;
         }
 
-        $dados['noticias_em_destaque']  = $this->Novomenina->ultimas_noticias($regiao);
+        $dados['noticias_em_destaque']  = $this->Novomenina->noticias_em_destaque($regiao);
         $dados['eventos']               = $this->Novomenina->eventos($regiao);
         $dados['programacao']           = $this->Novomenina->programacao($regiao);
         $dados['videos']                = $this->Novomenina->videos($regiao);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($regiao);
-        $dados['outras_noticias']       = $this->Novomenina->outras_noticias($regiao);
+        $dados['ultimas_noticias']      = $this->Novomenina->ultimas_noticias($regiao);
+        $dados['promocoes']      = $this->Novomenina->promocoes($regiao);
         $dados['viewName']              = 'regiao';
         $this->load->view('Template', $dados);
     }
@@ -76,10 +77,10 @@ class home extends CI_Controller {
 
     public function noticia() {
         $categoria = $_GET['categoria'];
-        $dados['foto_noticia'] = $this->Novomenina->fotos_noticias($_SESSION['regiao']);
         $dados['jornalismo'] = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         // $dados['qFotosNoticias'] = $this->Novomenina->fotos_noticias($_SESSION['regiao']);
+        $dados['outras_noticias'] = $this->Novomenina->outras_noticias($_SESSION['regiao']); 
         $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
         $dados['viewName'] = 'jornalismo/noticia';
         $this->load->view('Template', $dados);
