@@ -1,8 +1,13 @@
 <div class='programacao'>
     <div class='programacoes'>
         <h2>Eventos</h2><br>
+        <!-- <?php 
+        echo "<pre>";
+        var_dump($eventos);
+        echo "</pre>";
+        ?> -->
         <div id='prog'>
-            <?php foreach($evento_impar as $info):?>
+            <?php foreach($eventos as $info):?>
                 <div id='esquerda'>
                     <a href="<?php echo base_url('home/descricao_evento?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
                         <br><br><img src="<?php echo base_url('/assets/img/logoTVMocinha.png')?>" alt="">

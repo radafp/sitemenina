@@ -1,4 +1,4 @@
-<div class='noticias_principais'>
+<!-- <div class='noticias_principais'>
     <?php foreach($titulo as $info):?>
         <div class='turismo'>
         
@@ -70,4 +70,4 @@
         <iframe width="560" height="315" src="https://www.youtube.com/embed/fV67QiJnoqY" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
         <?php endforeach?>
     </div>
-</div><br><br>
+</div><br><br> -->

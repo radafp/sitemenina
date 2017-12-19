@@ -6,7 +6,7 @@
             <div id='esquerda'>
                 <p><?php echo $info['categoriaPt']. ' '. date('d/m/Y', strtotime($info['data'])). '<br><br>'?></p>
                 <h3><?php echo $info['tituloPt'].'<br>'?></h3>
-                <img src="<?php echo base_url('/assets/img/logoTVMocinha.png')?>" alt="">
+                <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                 <p><?php echo $info['descricaoPt']?></p>
             </div>
             <?php endforeach?>
@@ -14,7 +14,6 @@
     </div>
 
     <div class='playlist'><br><br>
-        <img src="<?php echo base_url('/assets/img/logoTVMocinha.png')?>" alt="" width='300'>
         <h2>As mais lidas</h2>
         <div id='direita'>
         <table class='noticia' data-page-length='4' class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -28,7 +27,7 @@
             <?php foreach($mais_lidas as $info):?>
                 <tr>
                     <td>
-                        <img src="<?php echo base_url('/assets/img/logoTVMocinha.png')?>" alt="">
+                        <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                         <p><?php echo $info['categoriaPt']?></p>
                         <h3><?php echo $info['tituloPt']?></h3>
                     </td>
