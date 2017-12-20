@@ -60,11 +60,11 @@ class home extends CI_Controller {
 
     public function programacao() {
         
-        // $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        // $dados['programacao_impar'] = $this->Novomenina->programacao_impar($_SESSION['regiao']);
-        // $dados['programacao_par']   = $this->Novomenina->programacao_par($_SESSION['regiao'] ); 
-        // $dados['viewName'] = 'programacao/programacao';
-        // $this->load->view('Template', $dados);
+        $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['programacao_impar'] = $this->Novomenina->programacao_impar($_SESSION['regiao']);
+        $dados['programacao_par']   = $this->Novomenina->programacao_par($_SESSION['regiao'] ); 
+        $dados['viewName'] = 'programacao/programacao';
+        $this->load->view('Template', $dados);
         echo ' que merda';
 
     }
@@ -92,7 +92,7 @@ class home extends CI_Controller {
         $id = $_GET['id'];
         $categoria = $_GET['categoria'];
         $this->Novomenina->cliques($id, $_SESSION['regiao']);
-        $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id, $_SESSION['regiao']);
+        $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id, $_SESSION['regiao'], $categoria);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
         $dados['viewName'] = 'jornalismo/descricao_noticia';
@@ -136,7 +136,7 @@ class home extends CI_Controller {
     public function descricao_programacao() {
         $id = $_GET['id'];
         $regiao = $_SESSION['regiao'];
-        $dados['descricao_programacao'] = $this->Novomenina->descricao_promocoes($id, $regiao);
+        $dados['descricao_programacao'] = $this->Novomenina->descricao_programacao($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['viewName'] = 'programacao/descricao_programacao';
         $this->load->view('Template', $dados);

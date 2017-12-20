@@ -1,6 +1,7 @@
  <div class="container">
 
     <div class="row destaques">
+<<<<<<< HEAD
         <?php foreach($titulo as $info):?>
             <div class="col-xs-6 col-md-4">
                 <a href="#" class="">
@@ -14,6 +15,25 @@
                 </a>
             </div>
         <?php endforeach?>
+=======
+        <div class="col-xs-6 col-md-4">
+        <?php foreach($noticias_em_destaque as $info):?>
+            <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                <div class="">
+                    <figure class="" style="background-image:url(<?php echo base_url('/assets/img/temp/001.jpg');?>);"></figure>
+                </div>
+
+                <div class="">
+                    <h4 class=""><?php echo $info['categoriaPt'];?></h4>
+                    <h3 class=""><?php echo $info['tituloPt'];?></h3>
+                    <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
+                    <p><?php echo $info['data']?></p>
+                </div><br><br>
+                
+            </a>
+            <?php endforeach?>
+        </div>
+>>>>>>> 928bd8b5c7b4c8df63ccf2ccd1ed2dbb7361af8d
     </div> <!-- row -->
 
     <div class="row outrasNoticias">
@@ -22,9 +42,20 @@
         <div class='col-xs-12 col-md-3 noticia'>
             <div class="categoria">
             <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+<<<<<<< HEAD
                 <span><?php echo $info['categoriaPt'];?></span>
             </div>
         <?php endforeach?>
+=======
+                <span><?php echo $info['categoriaPt'];?></span><br><br>
+                <h2><?php echo $info['tituloPt'];?></h2>
+                <p><?php echo $info['descricaoPt']?></p>
+                <p><?php echo date('d/m/Y', strtotime($info['data']));?></p>
+            </a>
+        </div>
+    <?php endforeach?>
+        
+>>>>>>> 928bd8b5c7b4c8df63ccf2ccd1ed2dbb7361af8d
     </div> <!-- row -->
 
 </div> <!-- container -->
