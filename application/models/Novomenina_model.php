@@ -186,9 +186,6 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
     
-
-    
-
     public function cliques($id, $regiao) {
         $query = $this->db->query("UPDATE noticias SET cliques = cliques + 1 WHERE cod = $id  and noticias.regiao= '$regiao'");
     }
@@ -291,7 +288,23 @@ class Novomenina_model extends CI_Model{
                                         AND noticias.mostrar = 1 
                                         LIMIT 1"
         );
-        return $query->result_array();
+        if ($query->num_rows() > 0) {
+            return $query->result_array();
+        } else {
+            $query1 = $this->db->query(
+                "SELECT noticias.*, categorias.categoriaPt
+                    FROM noticias 
+                INNER JOIN categorias
+                    ON noticias.codCategoria = categorias.cod 
+                    AND noticias.cod = $id
+                    AND categorias.categoriaPt = '$categoria' 
+                    AND noticias.regiao = '$regiao' 
+                    AND noticias.mostrar = 1 
+                    LIMIT 1"
+            );
+            return $query1->result_array();
+        }
+        
        
         
     }

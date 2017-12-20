@@ -59,13 +59,11 @@ class home extends CI_Controller {
     }
 
     public function programacao() {
-        
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['programacao_impar'] = $this->Novomenina->programacao_impar($_SESSION['regiao']);
         $dados['programacao_par']   = $this->Novomenina->programacao_par($_SESSION['regiao'] ); 
         $dados['viewName'] = 'programacao/programacao';
         $this->load->view('Template', $dados);
-        echo ' que merda';
 
     }
 
@@ -99,8 +97,6 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
     
-    
-
     public function eventos() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['eventos']= $this->Novomenina->eventos($_SESSION['regiao']); 
