@@ -5,16 +5,17 @@
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 <script type="text/javascript">
- $(document).ready(function(){
-    $('.noticia').DataTable();
-    $('.mais_lidas').DataTable();
-    $(".dataTables_length").hide();
-    $("#DataTables_Table_0_filter").hide();
-    $("thead").hide();
-    $(".dataTables_info").hide();
-    $("#registros_filter").hide();
-    $("#registros_info").hide();
-});
+    $(document).ready(function()
+    {
+        $('.noticia').DataTable();
+        $('.mais_lidas').DataTable();
+        $(".dataTables_length").hide();
+        $("#DataTables_Table_0_filter").hide();
+        $("thead").hide();
+        $(".dataTables_info").hide();
+        $("#registros_filter").hide();
+        $("#registros_info").hide();
+    });
 </script>
 <div class='programacao'>
     <div class='programacoes'>
@@ -32,6 +33,7 @@
                     echo "<pre>";
                     var_dump($jornalismo);
                     echo"</pre>";
+                    echo count($jornalismo)."teste";
                     ?> -->
                     <?php foreach($jornalismo as $info):?>
                         <td>
