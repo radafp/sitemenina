@@ -1,20 +1,23 @@
- <div class="container">
+<div class="container">
 
     <div class="row destaques">
-    
         <div class="col-xs-6 col-md-4">
-            <?php foreach($noticias_em_destaque as $info):?>
-                <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
-                    <div class="">
-                        <h4 class=""><?php echo $info['categoriaPt'];?></h4>
-                        <h3 class=""><?php echo $info['tituloPt'];?></h3>
-                        <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
-                        <p><?php echo $info['data']?></p>
-                    </div>
-                </a>
+        <?php foreach($noticias_em_destaque as $info):?>
+            <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                <div class="">
+                    <figure class="" style="background-image:url(<?php echo base_url('/assets/img/temp/001.jpg');?>);"></figure>
+                </div>
+
+                <div class="">
+                    <h4 class=""><?php echo $info['categoriaPt'];?></h4>
+                    <h3 class=""><?php echo $info['tituloPt'];?></h3>
+                    <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
+                    <p><?php echo $info['data']?></p>
+                </div><br><br>
+                
+            </a>
             <?php endforeach?>
         </div>
-        
     </div> <!-- row -->
 
     <div class="row outrasNoticias">
@@ -23,9 +26,14 @@
         <div class='col-xs-12 col-md-3 noticia'>
             <div class="categoria">
             <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
-                <span><?php echo $info['categoriaPt'];?></span>
-            </div>
-        <?php endforeach?>
+                <span><?php echo $info['categoriaPt'];?></span><br><br>
+                <h2><?php echo $info['tituloPt'];?></h2>
+                <p><?php echo $info['descricaoPt']?></p>
+                <p><?php echo date('d/m/Y', strtotime($info['data']));?></p>
+            </a>
+        </div>
+    <?php endforeach?>
+        
     </div> <!-- row -->
 
 </div> <!-- container -->
@@ -35,13 +43,15 @@
         <h2>Promoções</h2>
         <a href="/home/promocoes">Ver mais</a>
         <?php foreach($promocoes_home as $info):?>
-            <a href="<?php echo base_url('home/descricao_promocoes?id='.$info['cod'])?>">
-                <img src="<?php echo base_url('/assets/arquivos/programacao/'.$info['arquivo'])?>" alt="">
-                <h3><?php echo $info['tituloPt']?></h3>
-                <p><?php echo 'inicio: '. date('d/m/Y', strtotime($info['dataInicio']))?></p>
-                <p>Fim: <?php echo date('d/m/Y', strtotime($info['dataFim']))?></p>
-            </a>
+        <a href="<?php echo base_url('home/descricao_promocoes?id='.$info['cod'])?>">
+            <img src="<?php echo base_url('/assets/arquivos/programacao/'.$info['arquivo'])?>" alt="">
+            <h3><?php echo $info['tituloPt']?></h3>
+            <p><?php echo 'inicio: '. date('d/m/Y', strtotime($info['dataInicio']))?></p>
+            <p>Fim: <?php echo date('d/m/Y', strtotime($info['dataFim']))?></p>
+        </a>
         <?php endforeach?>
+
+        
     </div>
 
     <div id='eventos'>
@@ -89,7 +99,8 @@
     <div id='mensagem_dia'>
         <h2>Mensagem do dia</h2><br><br>
         <?php foreach($videos as $info):?>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/fV67QiJnoqY" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+        
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/fV67QiJnoqY" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
         <?php endforeach?>
     </div>
 </div><br><br>
