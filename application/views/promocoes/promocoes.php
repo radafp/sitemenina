@@ -12,8 +12,6 @@
                     <button>Participar</button>
                 </div>
             <?php endforeach?>
-
-            
         </div>
     </div>
 

@@ -50,7 +50,6 @@
     </div>
 
 <div class='playlist'><br><br>
-    <img src="<?php echo base_url('/assets/img/logoTVMocinha.png')?>" alt="" width='300'>
     <h2>As mais lidas</h2>
     
     <div id='direita'>
@@ -65,9 +64,11 @@
             <?php foreach($mais_lidas as $info):?>
                 <tr>
                     <td>
-                        <img src="<?php echo base_url('/assets/img/logoTVMocinha.png')?>" alt="">
-                        <p><?php echo $info['categoriaPt']?></p>
-                        <h3><?php echo $info['tituloPt']?></h3>
+                        <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                            <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
+                            <p><?php echo $info['categoriaPt']?></p>
+                            <h3><?php echo $info['tituloPt']?></h3>
+                        </a> 
                     </td>
                 </tr>
             <?php endforeach?>    

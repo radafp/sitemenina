@@ -17,45 +17,45 @@
     </div> <!-- row -->
 
     <div class="row outrasNoticias">
-        <h1>Últimas novidades</h1>
-        <?php foreach($outras_noticias as $info):?>
-            <div class='col-xs-12 col-md-3'>
-                <h2><?php echo $info['tituloPt'];?></h2>
-                <p><?php echo date('d/m/Y', strtotime($info['data']));?></p>
+        <h1><span>Últimas novidades</span></h1>
+        <?php foreach($ultimas_noticias as $info):?>
+        <div class='col-xs-12 col-md-3 noticia'>
+            <div class="categoria">
+            <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
                 <span><?php echo $info['categoriaPt'];?></span>
             </div>
         <?php endforeach?>
     </div> <!-- row -->
 
 </div> <!-- container -->
-
-<!--
-    <div class='noticias_principais'>
-    <?php foreach($titulo as $info):?>
-        <div class='turismo'>
-        
-            <h2><?php echo $info['tituloPt'];?></h2>
-            <p><?php echo date('d/m/Y', strtotime($info['dataCadastro']));?></p>
-        
-        </div>
-    <?php endforeach?>
-</div><br><br><br>
--->
-
+<!-- <?php var_dump($promocoes)?> -->
 <div class='promocoes_eventos'>
     <div id='programacoes'>
         <h2>Promoções</h2>
-        <img src="" alt="">
-        <h3>Titulo Promoção</h3>
+        <a href="/home/promocoes">Ver mais</a>
+        <?php foreach($promocoes_home as $info):?>
+        <a href="<?php echo base_url('home/descricao_promocoes?id='.$info['cod'])?>">
+            <img src="<?php echo base_url('/assets/arquivos/programacao/'.$info['arquivo'])?>" alt="">
+            <h3><?php echo $info['tituloPt']?></h3>
+            <p><?php echo 'inicio: '. date('d/m/Y', strtotime($info['dataInicio']))?></p>
+            <p>Fim: <?php echo date('d/m/Y', strtotime($info['dataFim']))?></p>
+        </a>
+        <?php endforeach?>
+
+        
     </div>
 
     <div id='eventos'>
         <h2>Eventos</h2><br>
-        <?php foreach($eventos as $info):?>
-        <span><?php echo $info['mapa'];?></span> 
-        <h3><?php echo $info['tituloPt']?></h3>
-        <p><?php echo 'inicio: '. date('d/m/Y', strtotime($info['dataInicio']))?></p>
-        <p>Fim: <?php echo date('d/m/Y', strtotime($info['dataFim']))?></p>
+        <a href="/home/eventos">Ver mais</a>
+        <?php foreach($eventos_home as $info):?>
+            <a href="<?php echo base_url('home/descricao_eventos?id='.$info['cod'])?>">
+                <img src="<?php echo base_url('/assets/arquivos/eventos/'.$info['arquivo'])?>" alt="">
+                <span><?php echo $info['mapa'];?></span> 
+                <h3><?php echo $info['tituloPt']?></h3>
+                <p><?php echo 'inicio: '. date('d/m/Y', strtotime($info['dataInicio']))?></p>
+                <p>Fim: <?php echo date('d/m/Y', strtotime($info['dataFim']))?></p>
+            </a>
         <?php endforeach?>
     </div><br>
     
@@ -64,13 +64,17 @@
 <div class='programacao_enquete'>
     <div id='programacao'>
         <h2>Programação</h2><br><br>
-        <?php foreach($programacao as $info):?>
-        <div id='programacao1'>
-            <img src="<?php echo base_url('/assets/img/logoMeninaBC.png')?>" alt="">
-            <h3><?php echo $info['cleanTitle']?></h3>
-            <p><?php echo $info['programacao'].' '. $info['horario']?></p><br><br>
-        </div>
+        <a href="/home/programacao">Ver mais</a>
+        <?php foreach($programacao_home as $info):?>
+            <a href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'])?>">
+                <div id='programacao1'>
+                    <img src="<?php echo base_url('/assets/arquivos/programacao/'.$info['arquivo'])?>" alt="">
+                    <h3><?php echo $info['cleanTitle']?></h3>
+                    <p><?php echo $info['programacao'].' '. $info['horario']?></p><br><br>
+                </div>
+            </a>
         <?php endforeach?>
+        </
     </div>
     
     <div id='enquetes'>
