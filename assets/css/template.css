@@ -4,6 +4,16 @@
 .destaques{
     margin-bottom: 50px;
 }
+.destaquePrincipal{
+    width: 50%;
+    float: left;
+    height:40em; 
+}
+.destaque{
+    float: left;
+    width: 50%;
+    height:20em;
+}
 .outrasNoticias{
     margin-bottom: 50px;
 }
