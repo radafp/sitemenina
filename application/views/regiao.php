@@ -23,7 +23,7 @@
                     <div class="" >
                         <h4 class=""><?=$info['categoriaPt'];?></h4>
                         <h3 class=""><?=$info['tituloPt'];?></h3>
-                        <p><?=$info['data']?></p>
+                        <p><?= date('d/m/Y', strtotime($info['data']))?></p>
                         <p>Cod.:<?=$info['cod']?></p>
                     </div>
                 </a>

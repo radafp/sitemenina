@@ -173,7 +173,7 @@ class Novomenina_model extends CI_Model{
                                     INNER JOIN categorias, arquivos 
                                         WHERE categorias.cod = noticias.codCategoria 
                                         and noticias.mostrar = 1 
-                                        and categoriaPt = 'cultura' 
+                                        and categoriaPt = '$categoria' 
                                         and noticias.regiao = 'bc' 
                                         and arquivos.codReferencia = noticias.cod 
                                         and referencia = 'noticias' 
