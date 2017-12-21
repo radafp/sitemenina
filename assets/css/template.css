@@ -45,4 +45,20 @@
     font-family: 'Quicksand', sans-serif;
 } 
 
+.promocaoEventos{
+
+}
+.promocaoEventos{
+    padding:100px;
+}
+.promocaoEventos.promocaoEventos_bc{
+    background: url(../img/redes_bc.jpg);
+}
+.promocaoEventos.promocaoEventos_bl{
+    background: url(../img/redes_bl.jpg);
+}
+.promocaoEventos.promocaoEventos_lg{
+    background: url(../img/redes_lg.jpg);
+}
+
 /*-- FIM classe região --*/
