@@ -51,12 +51,12 @@ class Novomenina_model extends CI_Model{
     }
 
 
-     // tabela noticias mostradas na home
+    // método utilizado na listagem de outras notícias da Home
     public function ultimas_noticias($regiao) {
         $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt
                                         FROM noticias
                                     INNER JOIN categorias
-                                        on noticias.codCategoria = categorias.cod
+                                        ON noticias.codCategoria = categorias.cod
                                         AND noticias.regiao = '$regiao'
                                         AND noticias.destaque = 0
                                         AND noticias.mostrar = 1
@@ -66,7 +66,6 @@ class Novomenina_model extends CI_Model{
         );
         return $query->result_array();
     }
-
 
     public function outras_noticias($regiao)  {
         $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo

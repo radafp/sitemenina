@@ -4,6 +4,16 @@
 .destaques{
     margin-bottom: 50px;
 }
+.destaquePrincipal{
+    width: 50%;
+    float: left;
+    height:40em; 
+}
+.destaque{
+    float: left;
+    width: 50%;
+    height:20em;
+}
 .outrasNoticias{
     margin-bottom: 50px;
 }
@@ -34,5 +44,21 @@
     font-size: 24px;
     font-family: 'Quicksand', sans-serif;
 } 
+
+.promocaoEventos{
+
+}
+.promocaoEventos{
+    padding:100px;
+}
+.promocaoEventos.promocaoEventos_bc{
+    background: url(../img/redes_bc.jpg);
+}
+.promocaoEventos.promocaoEventos_bl{
+    background: url(../img/redes_bl.jpg);
+}
+.promocaoEventos.promocaoEventos_lg{
+    background: url(../img/redes_lg.jpg);
+}
 
 /*-- FIM classe região --*/
