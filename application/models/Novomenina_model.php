@@ -35,13 +35,14 @@ class Novomenina_model extends CI_Model{
      public function noticias_em_destaque($regiao) {
         $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo
                                         FROM noticias
-                                    INNER JOIN categorias
-                                        on noticias.codCategoria = categorias.cod
-                                    INNER JOIN arquivos
-                                        WHERE arquivos.codReferencia = noticias.cod
+                                    INNER JOIN categorias, arquivos
+                                        WHERE noticias.codCategoria = categorias.cod
+                                        AND arquivos.codReferencia = noticias.cod
                                         AND noticias.regiao = '$regiao'
                                         AND noticias.destaque = 1 
                                         AND noticias.mostrar = 1
+                                        AND arquivos.tipo = 2
+                                        AND arquivos.referencia = 'noticias'
                                         GROUP by noticias.cod
                                         ORDER by DATA DESC
                                         LIMIT 3"
@@ -167,20 +168,19 @@ class Novomenina_model extends CI_Model{
     }
 
     public function jornalismo_noticias($categoria, $regiao) {
-        $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.*
-                                    FROM noticias 
-                                        INNER JOIN categorias, arquivos 
-                                    WHERE categorias.cod = noticias.codCategoria 
-                                    and noticias.destaque = 1 
-                                    and noticias.mostrar = 1 
-                                    and categoriaPt = '$categoria' 
-                                    and noticias.regiao = '$regiao' 
-                                    and arquivos.codReferencia = noticias.cod 
-                                    and referencia = 'noticias' 
-                                    AND capa = '1' 
-                                    AND tipo = '2' 
-                                    and noticias.regiao = '$regiao' 
-                                    ORDER BY data"
+        $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo
+                                        FROM noticias 
+                                    INNER JOIN categorias, arquivos 
+                                        WHERE categorias.cod = noticias.codCategoria 
+                                        and noticias.mostrar = 1 
+                                        and categoriaPt = 'cultura' 
+                                        and noticias.regiao = 'bc' 
+                                        and arquivos.codReferencia = noticias.cod 
+                                        and referencia = 'noticias' 
+                                        AND arquivos.capa = '1' 
+                                        AND arquivos.tipo = '2' 
+                                        GROUP BY noticias.cod
+                                        ORDER BY DATA"
         );
         return $query->result_array();
     }
@@ -200,6 +200,7 @@ class Novomenina_model extends CI_Model{
                                         and noticias.regiao= '$regiao'
                                         GROUP BY noticias.cod
                                         ORDER BY cliques desc
+                                        LIMIT 4
         ");
         return $query->result_array();
     }
