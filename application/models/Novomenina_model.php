@@ -35,13 +35,14 @@ class Novomenina_model extends CI_Model{
      public function noticias_em_destaque($regiao) {
         $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo
                                         FROM noticias
-                                    INNER JOIN categorias
-                                        on noticias.codCategoria = categorias.cod
-                                    INNER JOIN arquivos
-                                        WHERE arquivos.codReferencia = noticias.cod
+                                    INNER JOIN categorias, arquivos
+                                        WHERE noticias.codCategoria = categorias.cod
+                                        AND arquivos.codReferencia = noticias.cod
                                         AND noticias.regiao = '$regiao'
                                         AND noticias.destaque = 1 
                                         AND noticias.mostrar = 1
+                                        AND arquivos.tipo = 2
+                                        AND arquivos.referencia = 'noticias'
                                         GROUP by noticias.cod
                                         ORDER by DATA DESC
                                         LIMIT 3"
