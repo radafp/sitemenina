@@ -84,7 +84,7 @@
                     <div class="row lsbr">
 
                         <div class="col-md-2 col-sm-4 btm-30 logo">
-                            <img src="<?php echo base_url('/assets/img/logoMenina'.$_SESSION['regiao'].'.png');?>" title="Rádio Menina">
+                            <a href="<?php echo base_url('/home/regiao?regiao='.$_SESSION['regiao'])?>"> <img src="<?php echo base_url('/assets/img/logoMenina'.$_SESSION['regiao'].'.png');?>" title="Rádio Menina"></a>
                         </div>
                         <div class="col-md-4 col-sm-4 btm-30 slogam">
                             <h1><?=$_SESSION['slogam'];?></h1>

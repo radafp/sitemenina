@@ -14,7 +14,9 @@
     $("thead").hide();
     $(".dataTables_info").hide();
     $("#registros_filter").hide();
-    
+
+    // barra de pesquisa das noticias
+    $('#DataTables_Table_1_filter').hide();
     $("#registros_info").hide();
     
     var count = $("#count_dados").html();
@@ -64,27 +66,27 @@
     <h2>As mais lidas</h2>
     
     <div id='direita'>
-        <table class='mais_lidas' data-page-length='4' class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <!-- <table class='mais_lidas' data-page-length='4' class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <td>.</td>
                 </tr>
             </thead>
             
-            <tbody>
+            <tbody> -->
             <?php foreach($mais_lidas as $info):?>
-                <tr>
-                    <td>
+                <!-- <tr>
+                    <td> -->
                         <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
                             <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                             <p><?php echo $info['categoriaPt']?></p>
                             <h3><?php echo $info['tituloPt']?></h3>
                         </a> 
-                    </td>
-                </tr>
+                    <!-- </td>
+                </tr> -->
             <?php endforeach?>    
-            </tbody>
-        </table>
+            <!-- </tbody>
+        </table> -->
     </div>
 </div>
 </div><br><br><br>
