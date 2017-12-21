@@ -9,12 +9,10 @@
 
 html,
 body {
-
     height: 100%;
     font-size: 14px;
     font-family: 'Quicksand', sans-serif;
     line-height: 1.42857143;
-    background: #f2f2f2;
 }
 
 .backgroundBody_bc {

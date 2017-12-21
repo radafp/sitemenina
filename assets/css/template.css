@@ -1,6 +1,29 @@
 /*-- conteúdos --*/
 
 /*-- região --*/
+.tituloPadrao1{
+    width: 100%;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 22px;
+}
+.tituloPadrao1 span{
+    border-bottom: 3px solid #27821d;
+    padding-bottom: 20px;
+    font-family: "microgrammadmedextregular";
+    font-size: 28px;
+}
+.tituloPadrao2{
+    width: 100%;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 22px;
+}
+.tituloPadrao2 span{
+    border-bottom: 3px solid #27821d;
+    padding-bottom: 20px;
+    font-family: "microgrammadmedextregular";
+    font-size: 28px;
+}
+
 .destaques{
     margin-bottom: 50px;
 }
@@ -17,18 +40,6 @@
 .outrasNoticias{
     margin-bottom: 50px;
 }
-
-.outrasNoticias h1{
-    width: 100%;
-    border-bottom: 1px solid #cccccc;
-    padding-bottom: 22px;
-}
-.outrasNoticias h1 span{ 
-    border-bottom: 3px solid #27821d;
-    padding-bottom: 20px;
-    font-family: "microgrammadmedextregular";
-    font-size: 28px;
-}
 .outrasNoticias .noticia{
     padding-left: 0px;
 }
@@ -44,20 +55,27 @@
     font-size: 24px;
     font-family: 'Quicksand', sans-serif;
 } 
+.publicidade{
+    margin: 50px 0;
+}
+.publicidade img{
+    margin-left: auto;
+    margin-right: auto;
+}
 
-.promocaoEventos{
+.promocoesEventos{
 
 }
-.promocaoEventos{
+.promocoesEventos{
     padding:100px;
 }
-.promocaoEventos.promocaoEventos_bc{
+.promocoesEventos.promocoesEventos_bc{
     background: url(../img/redes_bc.jpg);
 }
-.promocaoEventos.promocaoEventos_bl{
+.promocoesEventos.promocoesEventos_bl{
     background: url(../img/redes_bl.jpg);
 }
-.promocaoEventos.promocaoEventos_lg{
+.promocoesEventos.promocoesEventos_lg{
     background: url(../img/redes_lg.jpg);
 }
 
