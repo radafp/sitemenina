@@ -1,23 +1,26 @@
 <div class="container">
-
     <div class="row destaques">
-        <div class="col-xs-6 col-md-4">
-        <?php foreach($noticias_em_destaque as $info):?>
-            <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
-                <div class="">
-                    <figure class="" style="background-image:url(<?php echo base_url('/assets/img/temp/001.jpg');?>);"></figure>
-                </div>
+        <?php 
+        $x=0;
+        foreach($noticias_em_destaque as $info):
+            $x = $x+1;
+            if($x==1)
+                $classe = "destaquePrincipal";
+            else
+                $classe = "destaque"
+            ?>
 
-                <div class="">
-                    <h4 class=""><?php echo $info['categoriaPt'];?></h4>
-                    <h3 class=""><?php echo $info['tituloPt'];?></h3>
-                    <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
-                    <p><?php echo $info['data']?></p>
-                </div><br><br>
-                
-            </a>
-            <?php endforeach?>
-        </div>
+            <div class="<?=$classe;?>" style="background: url(<?=base_url('/assets/arquivos/noticias/'.$info['arquivo']);?>) no-repeat center center">
+                <a href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                    <div class="" >
+                        <h4 class=""><?=$info['categoriaPt'];?></h4>
+                        <h3 class=""><?=$info['tituloPt'];?></h3>
+                        <p><?=$info['data']?></p>
+                    </div>
+                </a>
+            </div>
+
+        <?php endforeach; ?>
     </div> <!-- row -->
 
     <div class="row outrasNoticias">
