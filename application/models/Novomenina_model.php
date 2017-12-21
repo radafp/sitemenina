@@ -39,7 +39,7 @@ class Novomenina_model extends CI_Model{
                                         WHERE noticias.codCategoria = categorias.cod
                                         AND arquivos.codReferencia = noticias.cod
                                         AND noticias.regiao = '$regiao'
-                                        AND noticias.destaque = 1 
+                          git statu              AND noticias.destaque = 1 
                                         AND noticias.mostrar = 1
                                         AND arquivos.tipo = 2
                                         AND arquivos.referencia = 'noticias'
