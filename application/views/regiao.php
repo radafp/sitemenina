@@ -2,6 +2,11 @@
     <div class="row destaques">
         <?php 
         $x=0;
+        /*
+        echo "<pre>";
+        var_dump($noticias_em_destaque);
+        echo "</pre>";
+        */
         foreach($noticias_em_destaque as $info):
             $x = $x+1;
             if($x==1)
