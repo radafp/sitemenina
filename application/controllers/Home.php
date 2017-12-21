@@ -20,7 +20,7 @@ class home extends CI_Controller {
     public function regiao() {
         $_SESSION['regiao']         = $_GET['regiao'];
         $regiao                     = $_GET['regiao'];
-        switch($regiao){
+        switch($_SESSION['regiao']){
             case 'bc':
                 $_SESSION['slogam'] = "+ DE UM MILHÃO DE AMIGOS";
                 $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninabc";
@@ -79,9 +79,11 @@ class home extends CI_Controller {
         $categoria = $_GET['categoria'];
         $dados['jornalismo'] = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        // $dados['qFotosNoticias'] = $this->Novomenina->fotos_noticias($_SESSION['regiao']);
         $dados['outras_noticias'] = $this->Novomenina->outras_noticias($_SESSION['regiao']); 
         $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
+        // $dados = json_encode($dados['jornalismo']);
+        $count = count($dados['jornalismo']);
+        $dados['count'] = $count;
         $dados['viewName'] = 'jornalismo/noticia';
         $this->load->view('Template', $dados);
     }
