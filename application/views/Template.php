@@ -116,7 +116,7 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="collapse navbar-collapse" id="navbarResponsive">
-                                <ul class="menu" class="navbar-nav">
+                                <ul id="menu" class="navbar-nav">
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?php echo base_url('home/programacao')?>">Programação</a>
                                     </li>
@@ -282,9 +282,10 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+
             var content = $('#content');
 
-            $('.menu a').click(function( e ){
+            $('#menu a').click(function( e ){
                 e.preventDefault();
 
                 var href = $( this ).attr('href');
@@ -304,25 +305,25 @@
                 });
 
             });
-            // $('.link_programacao').click(function( e ){
-            //     e.preventDefault();
+            $('# a').click(function( e ){
+                e.preventDefault();
 
-            //     var href = $( this ).attr('href');
-            //     $.ajax({
-            //         url: href,
-            //         success: function( response ){
-            //             //forçando o parser
-            //             var data = $( '<div>'+response+'</div>' ).find('#content').html();
+                var href = $( this ).attr('href');
+                $.ajax({
+                    url: href,
+                    success: function( response ){
+                        //forçando o parser
+                        var data = $( '<div>'+response+'</div>' ).find('#content').html();
 
-            //             //apenas atrasando a troca, para mostrarmos o loading
-            //             window.setTimeout( function(){
-            //                 content.fadeOut('fast', function(){
-            //                     content.html( data ).fadeIn();
-            //                 });
-            //             },100);
-            //         }
-            //     });
-            // });
+                        //apenas atrasando a troca, para mostrarmos o loading
+                        window.setTimeout( function(){
+                            content.fadeOut('fast', function(){
+                                content.html( data ).fadeIn();
+                            });
+                        },100);
+                    }
+                });
+            });
            
             
         });
