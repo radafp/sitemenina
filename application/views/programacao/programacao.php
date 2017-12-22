@@ -6,7 +6,7 @@
     $(document).ready(function(){
 
         var content = $('#content');
-        $('#rada a, #esquerda a').click(function( e ){
+        $('.link_descricao').click(function( e ){
             e.preventDefault();
 
             var href = $( this ).attr('href');
@@ -30,15 +30,13 @@
 <div class='programacao'>
     <div class='programacoes'>
         <h2>Programações</h2>
-        <div id='rada'>
-            <a href="<?php echo base_url('home/programacao?programacao=Semanal')?>">SEMANAL</a>
-            <a href="<?php echo base_url('home/programacao?programacao=Sabado')?>">SÁBADO</a>
-            <a href="<?php echo base_url('home/programacao?programacao=Domingo')?>">DOMINGO</a>
-        </div>
+        <a class='link_descricao' href="<?php echo base_url('home/programacao?programacao=Semanal')?>">SEMANAL</a>
+        <a class='link_descricao' href="<?php echo base_url('home/programacao?programacao=Sabado')?>">SÁBADO</a>
+        <a class='link_descricao' href="<?php echo base_url('home/programacao?programacao=Domingo')?>">DOMINGO</a>
         <div id='prog'>
             <?php foreach($programacao_impar as $info):?>
                 <div id='esquerda'>
-                <a href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
+                <a class='link_descricao' href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
                     <h1><?= 'ATENCÂO!!!!!'. $info['programacao']?></hi>
                     <img src="<?php echo base_url('assets/arquivos/programacao/'.$info["arquivo"])?>" alt="">
                     <h3><?php echo $info['titulo']?></h3>
