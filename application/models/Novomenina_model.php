@@ -154,6 +154,13 @@ class Novomenina_model extends CI_Model{
                 AND programacao.programacao = '$programacao'
                 GROUP by programacao.cod
         ");
+
+        /*
+        SELECT programacao.*, (SELECT a.arquivo FROM arquivos AS a WHERE a.codReferencia = programacao.cod AND a.referencia = 'programacao' AND a.tipo = 2 ORDER BY a.capa DESC LIMIT 1) 
+        AS arquivo FROM programacao WHERE programacao = 'Sabado' AND regiao = 'bc' AND mostrar = 1 GROUP BY programacao.cod
+        */
+
+
         return $query->result_array();
     }
 
