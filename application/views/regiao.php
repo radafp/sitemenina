@@ -15,18 +15,18 @@
             if($x==2) echo'<div class="col-xs-12 col-md-4 destaque">'; 
             ?>
             <div class="<?=$classe;?> <?=$x==3 ? 'ultima' : '';?>" style="background: url(<?=base_url('/assets/arquivos/noticias/'.$info['arquivo']);?>) no-repeat center center; background-size: 100%;">
-                <a href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                <a href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']));?>">
                     <div class="<?=$classeInf;?>" >
                         <h3 class=""><?=$info['tituloPt'];?></h3>
                         <h4 class=""><?=$info['categoriaPt'];?></h4>
-                        <p><?= date('d/m/Y', strtotime($info['data']))?></p>
+                        <p><?=date('d/m/Y', strtotime($info['data']));?></p>
                     </div>
                 </a>
             </div>
             <? 
             if($x==1) echo'</div>';
             if($x==3) echo'</div>'; 
-        endforeach; 
+        endforeach
         ?>
     </div> <!-- row -->
 
