@@ -2,11 +2,9 @@
 <div class='programacao'>
 <div class='programacoes'>
     <h2>Programações</h2>
-    <div class='menu'>
-        <a href="<?php echo base_url('home/programacao?programacao=Semanal')?>">SEMANAL</a>
-        <a href="<?php echo base_url('home/programacao?programacao=Sabado')?>">SÁBADO</a>
-        <a href="<?php echo base_url('home/programacao?programacao=Domingo')?>">DOMINGO<br><br></a>
-    </div>
+        <a id='link_programacao' href="<?php echo base_url('home/programacao?programacao=Semanal')?>">SEMANAL</a>
+        <a id='link_programacao' href="<?php echo base_url('home/programacao?programacao=Sabado')?>">SÁBADO</a>
+        <a id='link_programacao' href="<?php echo base_url('home/programacao?programacao=Domingo')?>">DOMINGO<br><br></a>
     <div id='prog'>
         <?php foreach($programacao_impar as $info):?>
             <div id='esquerda'>
