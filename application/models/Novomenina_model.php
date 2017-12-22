@@ -102,6 +102,8 @@ class Novomenina_model extends CI_Model{
     //     return $query->result_array();
     // }
 
+    // |====================== PROGRAMACAO =======================
+
     // metodo mostrado na div esquerda 
     public function programacao_home($regiao)  {
         $query = $this->db->query("SELECT programacao.*, arquivos.arquivo 
@@ -142,15 +144,25 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
-    // public function programacao_par($regiao)  {
-    //     $query = $this->db->query("SELECT * FROM programacao WHERE cod % 2 = 0 and programacao.regiao = '$regiao'");
-    //     return $query->result_array();
-    // }
+    public function programacao_programacao($regiao, $programacao)  {
+        $query = $this->db->query(
+            "SELECT programacao.*, arquivos.arquivo 
+                FROM programacao 
+            INNER JOIN arquivos
+                ON arquivos.codReferencia = programacao.cod 
+                and programacao.regiao = '$regiao'
+                AND programacao.programacao = '$programacao'
+                GROUP by programacao.cod
+        ");
+        return $query->result_array();
+    }
 
     // public function programacao_par($regiao)  {
     //     $query = $this->db->query("SELECT programacao.*, arquivos.arquivo FROM programacao INNER JOIN arquivos WHERE programacao.cod % 2 = 0 and arquivos.codReferencia = programacao.cod and programacao.regiao = '$regiao' ");
     //     return $query->result_array();
     // }
+
+    // ============================== END =================================
 
     public function videos($regiao)  {
         $query = $this->db->query("SELECT * FROM videos WHERE videos.regiao = '$regiao' and videos.mostrar = 1");

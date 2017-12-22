@@ -2,29 +2,31 @@
 <div class='programacao'>
 <div class='programacoes'>
     <h2>Programações</h2>
-    <button>SEMANAL</button>
-    <button>SÁBADO</button>
-    <button>DOMINGO</button><br><br>
+    <a href="<?php echo base_url('home/programacao?programacao=Semanal')?>"><button>SEMANAL</button></a>
+    <a href="<?php echo base_url('home/programacao?programacao=Sabado')?>"><button>SÁBADO</button></a>
+    <a href="<?php echo base_url('home/programacao?programacao=Domingo')?>"><button>DOMINGO</button><br><br></a>
     <div id='prog'>
         <?php foreach($programacao_impar as $info):?>
             <div id='esquerda'>
             <a href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
+                <h1><?= 'ATENCÂO!!!!!'. $info['programacao']?></hi>
                 <img src="<?php echo base_url('assets/arquivos/programacao/'.$info["arquivo"])?>" alt="">
                 <h3><?php echo $info['titulo']?></h3>
                 <p><?php echo $info['descricao']?></p>
                 <span><?php echo 'HORÀRIO:'.$info['horario'].'<br>APRESENTADOR:'. $info['apresentador']?></span>
+                <p>------------------------------------------------------------</p>
             </a>
             </div>
         <?php endforeach?>
 
-        <?php foreach($programacao_par as $info):?>
+        <!-- <?php foreach($programacao_par as $info):?> -->
             <div id='direita'>
-            <a href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
+            <!-- <a href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
                 <h3><?php echo $info['titulo']?></h3>
                 <p><?php echo $info['descricao']?></p>
-                <span><?php echo 'HORÀRIO:'.$info['horario'].'<br>APRESENTADOR:'. $info['apresentador']?></span>
+                <span><?php echo 'HORÀRIO:'.$info['horario'].'<br>APRESENTADOR:'. $info['apresentador']?></span> -->
             </div>
-        <?php endforeach?>
+        <!-- <?php endforeach?> -->
     </div>
 </div>
 

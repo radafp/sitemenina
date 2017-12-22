@@ -59,13 +59,26 @@ class home extends CI_Controller {
     }
 
     public function programacao() {
+        if(isset($_GET['programacao'])) {
+            $programacao = $_GET['programacao'];
+            $dados['programacao_impar'] = $this->Novomenina->programacao_programacao($_SESSION['regiao'], $programacao);
+        }else{
+            $dados['programacao_impar'] = $this->Novomenina->programacao_impar($_SESSION['regiao']);
+        }
+        
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['programacao_impar'] = $this->Novomenina->programacao_impar($_SESSION['regiao']);
-        $dados['programacao_par']   = $this->Novomenina->programacao_par($_SESSION['regiao'] ); 
+        $dados['programacao_par']   = $this->Novomenina->programacao_par($_SESSION['regiao']); 
         $dados['viewName'] = 'programacao/programacao';
         $this->load->view('Template', $dados);
 
     }
+
+    // public function programacao_programacao() {
+    //     $programacao = $_GET['programacao'];
+    //     $dados['programacao_programacao'] = $this->Novomenina->programacao_programacao($_SESSION['regiao'], $programacao);
+    //     $dados['viewName'] = 'programacao/programacao_programacao';
+    //     $this->load->view('Template', $dados);
+    // }
 
     public function artistico() {
         // $categoria = $_GET['categoria'];
