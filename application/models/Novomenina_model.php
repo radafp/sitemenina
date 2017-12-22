@@ -145,7 +145,9 @@ class Novomenina_model extends CI_Model{
     }
 
     public function programacao_programacao($regiao, $programacao)  {
-        $query = $this->db->query(
+        $query1 = $this->db->query("SELECT * FROM programacao WHERE programacao = '$programacao' AND regiao = '$regiao' GROUP by cod"); 
+        
+        $query2 = $this->db->query(
             "SELECT programacao.*, arquivos.arquivo 
                 FROM programacao 
             INNER JOIN arquivos
@@ -154,7 +156,15 @@ class Novomenina_model extends CI_Model{
                 AND programacao.programacao = '$programacao'
                 GROUP by programacao.cod
         ");
-        return $query->result_array();
+
+        $count1 = $query1->num_rows();
+        $count2 = $query2->num_rows();
+        if($count1 == $count2) {
+            return $query2->result_array();
+        }else{
+            return $query1->result_array();
+        } 
+        
     }
 
     // public function programacao_par($regiao)  {
