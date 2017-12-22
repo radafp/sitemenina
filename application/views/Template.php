@@ -63,7 +63,7 @@
                             </p>
                         </div>
                         <div class="col-6 col-lg-4">
-                            <!--<iframe name="playcolor" src="http://painelstream.com/mini-player/7038" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>-->
+                            <iframe name="playcolor" src="http://painelstream.com/mini-player/7038" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
                         </div>
                         <div class="col-lg-4 tvMocinha">
                             <button>Tv Mocinha</button>
@@ -116,7 +116,7 @@
                                 <span class="navbar-toggler-icon"></span>
                             </button>
                             <div class="collapse navbar-collapse" id="navbarResponsive">
-                                <ul id="menu" class="navbar-nav">
+                                <ul class="menu" class="navbar-nav">
                                     <li class="nav-item">
                                         <a class="nav-link" href="<?php echo base_url('home/programacao')?>">Programação</a>
                                     </li>
@@ -282,11 +282,9 @@
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            // $('.mais_lidas').DataTable();
-            // $('.noticia').DataTable();
             var content = $('#content');
 
-            $('#menu a').click(function( e ){
+            $('.menu a').click(function( e ){
                 e.preventDefault();
 
                 var href = $( this ).attr('href');
@@ -306,26 +304,25 @@
                 });
 
             });
-            $('#submenu a').live('click', function( e ){
-                e.preventDefault();
-                content.html( '<img src="loading.gif" />' );
+            // $('.link_programacao').click(function( e ){
+            //     e.preventDefault();
 
-                var href = $( this ).attr('href');
-                $.ajax({
-                    url: href,
-                    success: function( response ){
-                        //forçando o parser
-                        var data = $( '<div>'+response+'</div>' ).find('#content').html();
+            //     var href = $( this ).attr('href');
+            //     $.ajax({
+            //         url: href,
+            //         success: function( response ){
+            //             //forçando o parser
+            //             var data = $( '<div>'+response+'</div>' ).find('#content').html();
 
-                        //apenas atrasando a troca, para mostrarmos o loading
-                        window.setTimeout( function(){
-                            content.fadeOut('slow', function(){
-                                content.html( data ).fadeIn();
-                            });
-                        }, 200 );
-                    }
-                });
-            });
+            //             //apenas atrasando a troca, para mostrarmos o loading
+            //             window.setTimeout( function(){
+            //                 content.fadeOut('fast', function(){
+            //                     content.html( data ).fadeIn();
+            //                 });
+            //             },100);
+            //         }
+            //     });
+            // });
            
             
         });

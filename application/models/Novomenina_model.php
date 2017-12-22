@@ -145,26 +145,38 @@ class Novomenina_model extends CI_Model{
     }
 
     public function programacao_programacao($regiao, $programacao)  {
-        $query1 = $this->db->query("SELECT * FROM programacao WHERE programacao = '$programacao' AND regiao = '$regiao' GROUP by cod"); 
-        
-        $query2 = $this->db->query(
-            "SELECT programacao.*, arquivos.arquivo 
+        $query = $this->db->query(
+            "SELECT programacao.*, 
+                (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                        WHERE a.codReferencia = programacao.cod 
+                        AND a.referencia = 'programacao' 
+                        AND a.tipo = 2 
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+            AS arquivo 
                 FROM programacao 
-            INNER JOIN arquivos
-                ON arquivos.codReferencia = programacao.cod 
-                and programacao.regiao = '$regiao'
-                AND programacao.programacao = '$programacao'
-                GROUP by programacao.cod
-        ");
+                    WHERE programacao.programacao = '$programacao' 
+                    AND programacao.regiao = '$regiao' 
+                    AND programacao.mostrar = 1 
+                GROUP BY programacao.cod
+        "); 
+        return $query->result_array();
 
-        $count1 = $query1->num_rows();
-        $count2 = $query2->num_rows();
-        if($count1 == $count2) {
-            return $query2->result_array();
-        }else{
-            return $query1->result_array();
-        } 
-        
+        // $query2 = $this->db->query(
+        //     "SELECT programacao.*, arquivos.arquivo 
+        //         FROM programacao 
+        //     INNER JOIN arquivos
+        //         ON arquivos.codReferencia = programacao.cod 
+        //         and programacao.regiao = '$regiao'
+        //         AND programacao.programacao = '$programacao'
+        //         GROUP by programacao.cod
+        // ");
+
+        /*
+        SELECT programacao.*, (SELECT a.arquivo FROM arquivos AS a WHERE a.codReferencia = programacao.cod AND a.referencia = 'programacao' AND a.tipo = 2 ORDER BY a.capa DESC LIMIT 1) 
+        AS arquivo FROM programacao WHERE programacao = 'Sabado' AND regiao = 'bc' AND mostrar = 1 GROUP BY programacao.cod
+        */
     }
 
     // public function programacao_par($regiao)  {
