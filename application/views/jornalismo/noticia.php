@@ -7,6 +7,28 @@
 <script type="text/javascript">
 
     $(document).ready(function(){
+
+        var content = $('#content');
+        $('.link_descricao').click(function( e ){
+            e.preventDefault();
+
+            var href = $( this ).attr('href');
+            $.ajax({
+                url: href,
+                success: function( response ){
+                    //forçando o parser
+                    var data = $( '<div>'+response+'</div>' ).find('#content').html();
+
+                    //apenas atrasando a troca, para mostrarmos o loading
+                    window.setTimeout( function(){
+                        content.fadeOut('fast', function(){
+                            content.html( data ).fadeIn();
+                        });
+                    },100);
+                }
+            });
+        });
+
         $('.noticia').DataTable();
         $('.mais_lidas').DataTable();
         $(".dataTables_length").hide();
@@ -21,10 +43,7 @@
             $('#DataTables_Table_0_paginate').hide();
         } 
     });
-
 </script>
-
-
 <div class="container">
     <div class="conteudoInternas">
 
@@ -54,7 +73,7 @@
                     <?php foreach($jornalismo as $info):?>
                         <tr>
                             <td>
-                                <a href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                                <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
                                     <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                                     <h3><?php echo $info['tituloPt']?></h3>
                                     <p><?php echo $info['categoriaPt'] . ' ' . date('d/m/Y', strtotime($info['data']))?></p>
