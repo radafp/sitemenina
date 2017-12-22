@@ -42,6 +42,7 @@ class Novomenina_model extends CI_Model{
                                         AND noticias.destaque = 1 
                                         AND noticias.mostrar = 1
                                         AND arquivos.tipo = 2
+                                        AND arquivos.capa = 1
                                         AND arquivos.referencia = 'noticias'
                                         GROUP by noticias.cod
                                         ORDER by DATA DESC
