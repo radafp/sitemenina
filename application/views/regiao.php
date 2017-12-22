@@ -2,34 +2,32 @@
     <div class="row destaques">
         <?php 
         $x=0;
-        /*
-        echo "<pre>";
-        var_dump($noticias_em_destaque);
-        echo "</pre>";
-        */
-        //echo count($noticias_em_destaque);
-
         foreach($noticias_em_destaque as $info):
-
             $x = $x+1;
-            if($x==1)
-                $classe = "destaquePrincipal";
-            else
-                $classe = "destaque"
+            if($x==1){
+                $classe = "noticiaPrincipal";
+                $classeInf = "infPrincipal"; 
+            }else{ 
+                $classe = "noticia";
+                $classeInf = "inf";
+            }
+            if($x==1) echo'<div class="col-xs-12 col-md-8 destaquePrincipal">';
+            if($x==2) echo'<div class="col-xs-12 col-md-4 destaque">'; 
             ?>
-
-            <div class="<?=$classe;?>" style="background: url(<?=base_url('/assets/arquivos/noticias/'.$info['arquivo']);?>) no-repeat center center">
+            <div class="<?=$classe;?> <?=$x==3 ? 'ultima' : '';?>" style="background: url(<?=base_url('/assets/arquivos/noticias/'.$info['arquivo']);?>) no-repeat center center; background-size: 100%;">
                 <a href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
-                    <div class="" >
-                        <h4 class=""><?=$info['categoriaPt'];?></h4>
+                    <div class="<?=$classeInf;?>" >
                         <h3 class=""><?=$info['tituloPt'];?></h3>
+                        <h4 class=""><?=$info['categoriaPt'];?></h4>
                         <p><?= date('d/m/Y', strtotime($info['data']))?></p>
-                        <p>Cod.:<?=$info['cod']?></p>
                     </div>
                 </a>
             </div>
-
-        <?php endforeach; ?>
+            <? 
+            if($x==1) echo'</div>';
+            if($x==3) echo'</div>'; 
+        endforeach; 
+        ?>
     </div> <!-- row -->
 
     <div class="row outrasNoticias">

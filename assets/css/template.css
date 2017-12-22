@@ -27,16 +27,38 @@
 .destaques{
     margin-bottom: 50px;
 }
+
 .destaquePrincipal{
-    width: 50%;
+    padding-left: 0px; 
+}
+.destaquePrincipal .noticiaPrincipal{
+    height: 35rem;
+    border-radius: 8px;
+}
+.destaquePrincipal .noticiaPrincipal .infPrincipal{
+    margin-top: 33%;
     float: left;
-    height:40em; 
+    padding: 50px;
+    color: #ffffff;
+    font-size: 2rem;
 }
 .destaque{
-    float: left;
-    width: 50%;
-    height:20em;
+    padding-right: 0px;
 }
+.destaque .noticia{
+    height: 16.4rem;
+    border-radius: 8px;
+}
+.destaque .noticia .inf{
+    margin-top: 33%;
+    float: left;
+    padding: 10px;
+    color: #ffffff;
+}
+.destaque .noticia.ultima{
+    margin-top: 30px;
+}
+
 .outrasNoticias{
     margin-bottom: 50px;
 }
