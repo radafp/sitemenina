@@ -5,35 +5,8 @@
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 <script type="text/javascript">
-<<<<<<< HEAD
- $(document).ready(function(){
-    
-    $('.noticia').DataTable();
-    $('.mais_lidas').DataTable();
-    $(".dataTables_length").hide();
-    $("#DataTables_Table_0_filter").hide();
-    $("thead").hide();
-    $(".dataTables_info").hide();
-    $("#registros_filter").hide();
-<<<<<<< HEAD
 
-    // barra de pesquisa das noticias
-    $('#DataTables_Table_1_filter').hide();
-=======
-    
->>>>>>> cbd168bfaff8cd9810479b3fe49c3d8917bff9db
-    $("#registros_info").hide();
-    
-    var count = $("#count_dados").html();
-    if(count < 10) {
-        $('#DataTables_Table_0_paginate').hide();
-    }
-    // alert(paginas);
-    // 
-});
-=======
-    $(document).ready(function()
-    {
+    $(document).ready(function(){
         $('.noticia').DataTable();
         $('.mais_lidas').DataTable();
         $(".dataTables_length").hide();
@@ -42,9 +15,23 @@
         $(".dataTables_info").hide();
         $("#registros_filter").hide();
         $("#registros_info").hide();
+        
+        var count = $("#count_dados").html();
+        if(count < 10) {
+            $('#DataTables_Table_0_paginate').hide();
+        } 
     });
->>>>>>> deb5fad8b385a93a4343de8ad7bc4bb20c76d67b
+
 </script>
+
+
+<div class="container">
+    <div class="conteudoInternas">
+
+
+    </div><!-- fin conteudoInternas -->
+</div> <!-- container -->
+
 <div class='programacao'>
     <div class='programacoes'>
         <h2>Ultimas noticias</h2><br>
