@@ -114,6 +114,7 @@ $(document).ready(function()
                     <input class="checks" name="cod[]" value="<?=$tp['cod'];?>" type="checkbox" />
                 </div>
                 <div class="divTd">
+                    <span style="background: #<?=$tp['cor']?>; display:block; width:20px; height:20px; float:left; margin-right:15px; border:1px solid #cccccc"></span>
                     <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>"><?=$tp['categoriaPt'];?></a>
                 </div>
                 <div class="divTd">

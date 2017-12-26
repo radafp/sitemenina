@@ -34,6 +34,8 @@
 <script type="text/javascript" src="<?=ssl().ADMIN_URL;?>/js/jquery.fancybox.pack.js"></script>
 <script type="text/javascript" src="<?=ssl().ADMIN_URL;?>/js/adicionarInputs.js"></script>
 
+<script type="text/javascript" src="<?=ssl().ADMIN_URL;?>/js/jscolor.js"></script>
+
 <?php
     if(isset($modulos[$id][$subid]['js']) && count($modulos[$id][$subid]['js']) > 0)
     {

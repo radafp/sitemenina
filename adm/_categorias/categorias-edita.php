@@ -50,6 +50,8 @@ if($submit != '')
     //$categoriaEn = isset($_POST['categoriaEn']) ? $_POST['categoriaEn'] : '';
     $cleanTitlePt = cleanTitle($categoriaPt);
     //$cleanTitleEn = cleanTitle($categoriaEn);
+    $cor = isset($_POST['cor']) ? $_POST['cor'] : '';
+    $corTexto = isset($_POST['corTexto']) ? $_POST['corTexto'] : '';
     $regiao = $_SESSION[ADMIN_SESSION_NAME.'_regiao'];
     $mostrar = isset($_POST['mostrar']) ? $_POST['mostrar'] : 0;
 
@@ -62,9 +64,9 @@ if($submit != '')
     if($subid == 2) //insert
     {
     	$q = mysql_query("INSERT INTO categorias 
-                        (dataCadastro, categoriaPt, cleanTitlePt, regiao, mostrar)
+                        (dataCadastro, categoriaPt, cleanTitlePt, regiao, cor, corTexto, mostrar)
                         VALUES
-                        ('{$data}', '{$categoriaPt}', '{$cleanTitlePt}', '{$regiao}', '{$mostrar}')");
+                        ('{$data}','{$categoriaPt}','{$cleanTitlePt}','{$regiao}','{$cor}','{$corTexto}','{$mostrar}')");
     	
         if($q)
     	{
@@ -87,6 +89,9 @@ if($submit != '')
                             dataAlteracao = '{$data}',
                             categoriaPt = '{$categoriaPt}',
                             cleanTitlePt = '{$cleanTitlePt}',
+                            cor = '{$cor}',
+                            corTexto = '{$corTexto}',
+                            regiao = '{$regiao}',
                             mostrar = '{$mostrar}'
                             WHERE cod = {$cod}"); 
                                     
@@ -117,6 +122,8 @@ else
         {
             $tp = mysql_fetch_assoc($q);
             $categoriaPt = $tp['categoriaPt'];
+            $cor = $tp['cor'];
+            $corTexto = $tp['corTexto'];
             $mostrar = $tp['mostrar'];
         }
         else
@@ -131,6 +138,8 @@ else
     else
     {
         $categoriaPt = '';
+        $cor = '';
+        $corTexto = '';
         $mostrar = 0;
     }
 }
@@ -144,6 +153,26 @@ else
             </div>
             <div class="divTd">
                 <input type="text" class="campoG" name="categoriaPt" id="categoriaPt" value="<?=$categoriaPt;?>" title="Categoria (Pt)"/>
+            </div>
+        </div>
+        <div class="divTr">
+            <div class="divTd">
+                <label>Cor:</label>
+            </div>
+            <div class="divTd">
+                <span style="display: block;height: 25px;">Clique no campo para selecionar a cor</span>
+                <input type="text" class="jscolor campoP" name="cor" id="cor" value="<?=$cor;?>" title="Cor" style="border:1px solid #cccccc;background-color: #<?=$cor;?>"> Código RGB Hexadecimal: (Ex.: Branco = #FFFFFF) 
+            </div>
+        </div>
+        <div class="divTr">
+            <div class="divTd">
+                <label>Cor texto:</label>
+            </div>
+            <div class="divTd">
+                <select id="corTexto" name="corTexto" class="campoP" title="Cor texto">
+                    <option <?=$corTexto == "#333333" ? "selected='true'" : '' ;?> value="#333333">Preto</option>
+                    <option <?=$corTexto == "#ffffff" ? "selected='true'" : '' ;?> value="#ffffff">Branco</option>
+                </select>
             </div>
         </div>
         <div class="divTr">
