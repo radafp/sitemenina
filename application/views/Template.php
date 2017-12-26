@@ -118,7 +118,7 @@
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul id="menu" class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="<?php echo base_url('home/programacao')?>">Programação</a>
+                                        <a class="nav-link" href="<?php echo base_url('balneario-camboriu/programacao')?>">Programação</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

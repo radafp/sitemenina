@@ -50,7 +50,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'home';
-$route['http://localhost:8080/home/regiao?regiao=bc'] = 'home/';
-$route['home/'] = 'http://localhost:8080/home/regiao?regiao=bc';
+$route['balneario-camboriu/programacao'] = 'home/programacao';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
