@@ -29,9 +29,22 @@
 }
 
 .destaques{
-    margin-bottom: 50px;
+    /*margin-bottom: 50px;*/
 }
-
+.destaques .fundoFoto{
+    background-color: rgba(51,51,51,0.6);
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+.destaques h1.categoria{
+    float: left;
+    background: #cccccc;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-right: 10px;
+}
 .destaquePrincipal{
     padding-left: 0px; 
 }
@@ -40,9 +53,9 @@
     border-radius: 8px;
 }
 .destaquePrincipal .noticiaPrincipal .infPrincipal{
-    margin-top: 33%;
+    margin-top: 45%;
     float: left;
-    padding: 50px;
+    padding: 25px;
     color: #ffffff;
     font-size: 2rem;
 }
@@ -54,7 +67,7 @@
     border-radius: 8px;
 }
 .destaque .noticia .inf{
-    margin-top: 33%;
+    margin-top: 25%;
     float: left;
     padding: 10px;
     color: #ffffff;
