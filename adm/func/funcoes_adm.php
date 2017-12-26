@@ -1,6 +1,4 @@
 <?
-
-
 function verifica_regiao($usuario,$regiao)
 {
     require_once '../configRoot.php';

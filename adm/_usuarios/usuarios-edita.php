@@ -1,25 +1,5 @@
 <?php
-$acessoLiberado = false;
-if(!isset($acesso))
-{
-    $acesso = "usuarios-edita";
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-        $acessoLiberado = true;
-    }
-    elseif(verifica_permissao($cod_user, $nivel, "usuarios-visualiza"))
-    {
-        $acessoLiberado = true;
-    }
-}
-else
-{
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-        $acessoLiberado = true;
-    }
-}
-if(!$acessoLiberado)
+if(!verifica_permissao($cod_user, $nivel, 'usuarios'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -47,9 +27,11 @@ if($submit != '')
     $nome = isset($_POST['nome']) ? $_POST['nome'] : "";
     $email = isset($_POST['email']) ? $_POST['email'] : "";
     $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : "";
-    $bc = isset($_POST['bc']) ? $_POST['bc'] : 0;
-    $bl = isset($_POST['bl']) ? $_POST['bl'] : 0;
-    $lg = isset($_POST['lg']) ? $_POST['lg'] : 0;
+
+    $regioes = isset($_POST['regioes']) ? $_POST['regioes'] : '';
+    echo "<pre>";
+        var_dump($regioes);
+    echo "</pre>";
     
     $md5 = new md5;
     $senha =  isset($_POST['senha']) ? $_POST['senha'] : "";
@@ -85,10 +67,8 @@ if($submit != '')
                                     `nome` = '{$nome}',
                                     `email` = '{$email}',
                                     `login` = '{$usuario}',
-                                    `senha` = '{$senha_cript}',
-                                    `bc` = '{$bc}',
-                                    `bl` = '{$bl}',
-                                    `lg` = '{$lg}'
+                                    `senha` = '{$senha_cript}'
+                                    `re` = '{$senha_cript}'
                                   WHERE
                                     `cod` = $cod", $conexao); 
                                     
@@ -236,19 +216,12 @@ else
             </div>
         </div>
     </div>
-    <?
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-    ?>
-        <div class="divTr">
-            <div class="divTd">&nbsp;</div>
-            <div class="divTd">
-                <input type="submit" value="Salvar" name="submit" class="salvar" />
-            </div>
+    <div class="divTr">
+        <div class="divTd">&nbsp;</div>
+        <div class="divTd">
+            <input type="submit" value="Salvar" name="submit" class="salvar" />
         </div>
-    <?
-    }
-    ?>
+    </div>
     
 </form>
 <script type="text/javascript">

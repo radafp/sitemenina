@@ -119,14 +119,6 @@ require_once '../configRoot.php';
                             <label>Senha: </label>
         					<input type="password" name="senha" id="senha" title="Senha" />
                         </div>
-                        <div class="inputbloco">
-                            <label>Região: </label>
-                            <select id="regiao" name="regiao" class="campoM" title="Região">
-                                <option value="bc">Balneário Camboriú</option>
-                                <option value="bl">Blumenal</option>
-                                <option value="lg">Lages</option>
-                            </select>
-                        </div>
                         <div class="submitbloco">
         					<input name="submit" type="submit" value="Enviar" />
                         </div>
