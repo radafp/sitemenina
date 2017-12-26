@@ -50,6 +50,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'home';
+
 $route['balneario-camboriu/programacao'] = 'home/programacao';
+$route['blumenal/programacao'] = 'home/programacao';
+$route['lages/programacao'] = 'home/programacao';
+
+$route['balneario-camboriu/noticias'] = 'home/noticia';
+$route['blumenal/noticias'] = 'home/noticia';
+$route['lages/noticias'] = 'home/noticia';
+
+$route['balneario-camboriu/promocoes'] = 'home/promocoes';
+$route['blumenal/promocoes'] = 'home/promocoes';
+$route['lages/promocoes'] = 'home/promocoes';
+
+$route['balneario-camboriu/eventos'] = 'home/eventos';
+$route['blumenal/eventos'] = 'home/eventos';
+$route['lages/eventos'] = 'home/eventos';
+
+
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
