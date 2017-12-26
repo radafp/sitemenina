@@ -353,4 +353,15 @@ class Novomenina_model extends CI_Model{
         $query = $this->db->query("SELECT * FROM promocoes WHERE cod = $id and promocoes.regiao = '$regiao'");
         return $query->result_array();
     }
+
+    public function cidade($regiao) {
+        if($regiao == 'bc') {
+            return 'balneario-camboriu';
+        }if($regiao == 'bl') {
+            return 'blumenal';
+        }if($regiao == 'lg') {
+            return 'lages';
+        }
+    }
+    
 }
