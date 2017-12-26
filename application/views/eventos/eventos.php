@@ -12,7 +12,7 @@
                     <a href="<?php echo base_url('home/descricao_evento?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
                         <br><br><img src="<?php echo base_url('/assets/img/logoTVMocinha.png')?>" alt="">
                         <h3><?php echo $info['tituloPt']?></h3>
-                        <p><?php echo $info['descricaoPt']?></p>
+                        <!-- <p><?php echo $info['descricaoPt']?></p> -->
                         <span><?php echo 'HORÀRIO:'.date('d/m/Y', strtotime($info['dataInicio']))?></span>
                     </a> 
                 </div>
@@ -20,8 +20,8 @@
         </div>
     </div>
     <div id='direita' >
-                    <img src="<?php echo base_url('/assets/img/logoTVMocinha.png')?>" alt="">
-                </div>
+
+    </div>
     <div id='comentario'>
         
     </div>
