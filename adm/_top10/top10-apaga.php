@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'artistico-apaga'))
+if(!verifica_permissao($cod_user, $nivel, 'artistico'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -9,7 +9,7 @@ if(!verifica_permissao($cod_user, $nivel, 'artistico-apaga'))
 }
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
-require_once ADMIN_PATH."/_videos/func/funcoes.php";
+require_once ADMIN_PATH."/_top10/func/funcoes.php";
 
 $cods = isset($_GET['cod']) ? $_GET['cod'] : '';
 if($cods != '')
@@ -18,28 +18,28 @@ if($cods != '')
     $erros = 0;
     foreach($cods as $k => $codVideo)
     {
-        $qVideos = mysql_query("SELECT * FROM videos WHERE cod = '$codVideo'");
-        while($tpVideos = mysql_fetch_assoc($qVideos))
+        $q = mysql_query("SELECT * FROM top10 WHERE cod = '$codVideo'");
+        while($tp = mysql_fetch_assoc($q))
         {
                     
-            /** EXCLUIR VIDEOS */
-            $sqlDelVideos = "DELETE FROM videos WHERE cod = '{$tpVideos['cod']}' LIMIT 1";
+            /** EXCLUIR */
+            $sqlDel = "DELETE FROM top10 WHERE cod = '{$tp['cod']}' LIMIT 1";
             for($a=0;$a<5;$a++)
             {
-                $qDelVideos = mysql_query($sqlDelVideos);
-                if($qDelVideos)
+                $qDel = mysql_query($sqlDel);
+                if($qDel)
                 {
                     break;
                 }
             }
-            if(!$qDelVideos)
+            if(!$qDel)
             {
                 $erros++;
             }
-            /** FIM - EXCLUIR VIDEOS */
+            /** FIM - EXCLUIR */
         }
     }
-    reordenarVideos();
+    reordenarTop10();
     if($erros > 0)
     {
         ?>

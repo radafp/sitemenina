@@ -10,7 +10,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
     {
 		$i = $x+1;
 		$cod = $ordem[$x];
-		$sqlOrdem = "UPDATE videos SET ordem = '$i' WHERE cod = '$cod'";
+		$sqlOrdem = "UPDATE top10 SET ordem = '$i' WHERE cod = '$cod'";
         
         for($a=0;$a<5;$a++)
         {
