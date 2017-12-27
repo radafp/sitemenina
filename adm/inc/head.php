@@ -23,7 +23,7 @@
 
 <!-- jQuery -->
 <script type="text/javascript" src="<?=ssl().ADMIN_URL;?>/js/jquery.1.8.0.min.js"></script>
-<script type="text/javascript" src="<?=ssl().PROJECT_URL;?>/js/jquery.ui.min.js"></script>
+<script type="text/javascript" src="<?=ssl().PROJECT_URL;?>/assets/js/jquery.ui.min.js"></script>
 <script type="text/javascript" src="<?=ssl().ADMIN_URL;?>/js/jquery.maskedinput.js"></script>
 <script type="text/javascript" src="<?=ssl().ADMIN_URL;?>/js/jquery.maskMoney.js"></script>
 
@@ -178,11 +178,11 @@
         })
         /* final tratamento submenu */
 
-        /* troca de região */
+        /* troca de região
         document.getElementById('formRegiao').onchange = function(e){
             var regiao = document.querySelector('#regiao');
             window.location = 'regiao?regiao=' + regiao.value;              
-        }
+        } */
 
     });	
 

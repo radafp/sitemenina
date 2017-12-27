@@ -1,25 +1,5 @@
 <?php
-$acessoLiberado = false;
-if(!isset($acesso))
-{
-    $acesso = "noticias-edita";
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-        $acessoLiberado = true;
-    }
-    elseif(verifica_permissao($cod_user, $nivel, "noticias-visualiza"))
-    {
-        $acessoLiberado = true;
-    }
-}
-else
-{
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-        $acessoLiberado = true;
-    }
-}
-if(!$acessoLiberado)
+if(!verifica_permissao($cod_user, $nivel, 'jornalismo'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -36,15 +16,6 @@ $submit = isset($_POST['submit']) ? $_POST['submit'] : '';
 
 if($submit != '')
 {
-    if(!verifica_permissao($cod_user, $nivel, $acesso))
-    {
-    	echo "<script>
-    	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
-    	       document.location.replace('".ssl().ADMIN_URL."/principal.php');";
-    	echo " </script>";
-    	die();
-    }
-    
     $codCategoria = isset($_POST['codCategoria']) ? $_POST['codCategoria'] : '';
     
     $data = date('Y-m-d');
@@ -62,7 +33,6 @@ if($submit != '')
     $regiao = isset($_SESSION[ADMIN_SESSION_NAME.'_regiao']) ? $_SESSION[ADMIN_SESSION_NAME.'_regiao'] : '';
     
     $mostrar = isset($_POST['mostrar']) ? 1 : 0;
-    
     
     $msg = array();
     $erro = 0;
@@ -453,7 +423,7 @@ else
                 </div>
                 <div class="divTd">&nbsp;</div>
             </div>
-            <div class="drag">
+            <div class="drag" style="width:100%">
             <?php
                 $aux = 0;
                 while($tpFotos = mysql_fetch_assoc($qFotos))
@@ -466,7 +436,7 @@ else
                                 <label>Foto <?=$aux;?>:</label>
                             </div>
                             <div class="divTd">
-                                <img src="http://<?=PROJECT_URL.'/arquivos/noticias/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" />
+                                <img src="http://<?=PROJECT_URL.'/assets/arquivos/noticias/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" />
                                 <input type="hidden" name="codigos[]" value="<?=$tpFotos['codigo'];?>" />
                             </div>
                         </div>
@@ -503,19 +473,13 @@ else
         }
         ?>
     </div>
-    <?
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-    ?>
-        <div class="divTr">
-            <div class="divTd">&nbsp;</div>
-            <div class="divTd">
-                <input type="submit" value="Salvar" name="submit" class="salvar" />
-            </div>
+    <div class="divTr">
+        <div class="divTd">&nbsp;</div>
+        <div class="divTd">
+            <input type="submit" value="Salvar" name="submit" class="salvar" />
         </div>
-    <?
-    }
-    ?>
+    </div>
+
 </form>
 
 <script type="text/javascript">
