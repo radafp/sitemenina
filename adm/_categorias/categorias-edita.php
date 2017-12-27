@@ -1,25 +1,5 @@
 <?php
-$acessoLiberado = false;
-if(!isset($acesso))
-{
-    $acesso = "categorias-edita";
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-        $acessoLiberado = true;
-    }
-    elseif(verifica_permissao($cod_user, $nivel, "categorias-visualiza"))
-    {
-        $acessoLiberado = true;
-    }
-}
-else
-{
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-        $acessoLiberado = true;
-    }
-}
-if(!$acessoLiberado)
+if(!verifica_permissao($cod_user, $nivel, 'jornalismo'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -36,15 +16,7 @@ $submit = isset($_POST['submit']) ? $_POST['submit'] : '';
 
 if($submit != '')
 {
-    if(!verifica_permissao($cod_user, $nivel, $acesso))
-    {
-    	echo "<script>
-    	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
-    	       document.location.replace('".ssl().ADMIN_URL."/principal.php');";
-    	echo " </script>";
-    	die();
-    }
-    
+
     $data = date('Y-m-d');
     $categoriaPt = isset($_POST['categoriaPt']) ? $_POST['categoriaPt'] : '';
     //$categoriaEn = isset($_POST['categoriaEn']) ? $_POST['categoriaEn'] : '';
@@ -57,9 +29,6 @@ if($submit != '')
 
     $msg = array();
     $erro = 0;
-    
-
-    $pasta = PROJECT_PATH."arquivos/categorias";
     
     if($subid == 2) //insert
     {
@@ -185,19 +154,13 @@ else
         </div>
 
     </div>
-    <?
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-    ?>
-        <div class="divTr">
-            <div class="divTd">&nbsp;</div>
-            <div class="divTd">
-                <input type="submit" value="Salvar" name="submit" class="salvar" />
-            </div>
+    <div class="divTr">
+        <div class="divTd">&nbsp;</div>
+        <div class="divTd">
+            <input type="submit" value="Salvar" name="submit" class="salvar" />
         </div>
-    <?
-    }
-    ?>
+    </div>
+
 </form>
 <script type="text/javascript">
     $(document).ready(function()

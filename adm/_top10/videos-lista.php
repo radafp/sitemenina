@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'jornalismo'))
+if(!verifica_permissao($cod_user, $nivel, 'artistico-lista'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -9,7 +9,7 @@ if(!verifica_permissao($cod_user, $nivel, 'jornalismo'))
 }
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
-require_once ADMIN_PATH."_categorias/inc/topo-categorias-lista.php";
+require_once ADMIN_PATH."_videos/inc/topo-videos-lista.php";
 ?>
 <script>
 $(document).ready(function()
@@ -26,7 +26,7 @@ $(document).ready(function()
         {
             type: "POST",
             async: false,
-            url: "http://"+ADMIN_URL+"/_categorias/ajax/ajaxMostrarLista.php", //URL de destino
+            url: "http://"+ADMIN_URL+"/_videos/ajax/ajaxMostrarLista.php", //URL de destino
             data:
             {
                 cod: _cod,
@@ -66,7 +66,7 @@ $(document).ready(function()
         });
         if(_gets.length > 0)
         {
-            _confirm = confirm('Todos os registros selecionados serão excluídos.\nTem certeza que deseja excluir os registros selecionados?');
+            _confirm = confirm('Tem certeza que deseja excluir o(s) registro(s) selecionado(s)?');
             if(_confirm)
             {
                 _url = _link+'&'+_gets.join('&');
@@ -79,6 +79,7 @@ $(document).ready(function()
         }
         return false;
     });
+
     $(".selecionarTodos > input[type='checkbox']").change(function()
     {
         if($(this).is(':checked'))
@@ -95,34 +96,58 @@ $(document).ready(function()
 <div class="divTableLista clear">
     <div class="divTr head">
         <div class="divTd">&nbsp;</div>
-        <div class="divTd">Categoria</div>
+        <div class="divTd">Thumbnail</div>
+        <div class="divTd">Titulo</div>
+        <!--<div class="divTd">Ordem</div>-->
         <div class="divTd">Mostrar</div>
     </div>
     <?
+
     $regiao = isset($_SESSION[ADMIN_SESSION_NAME.'_regiao']) ? $_SESSION[ADMIN_SESSION_NAME.'_regiao'] : '';
-    
-    $q = mysql_query("SELECT * FROM categorias WHERE regiao = '{$regiao}' ORDER BY categoriaPt ASC", $conexao);
+
+    $q = mysql_query("SELECT * FROM videos WHERE regiao = '{$regiao}' ORDER BY cod desc", $conexao);
     $n = mysql_num_rows($q);
 
     if ($n>0)
     {
     	while($tp = mysql_fetch_assoc($q))
     	{
-        ?>
+    	?>
             <div class="divTr">
                 <div class="divTd">
                     <input class="checks" name="cod[]" value="<?=$tp['cod'];?>" type="checkbox" />
                 </div>
                 <div class="divTd">
-                    <span style="background: #<?=$tp['cor']?>; display:block; width:20px; height:20px; float:left; margin-right:15px; border:1px solid #cccccc"></span>
-                    <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>"><?=$tp['categoriaPt'];?></a>
+                    <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
+                        <? 
+                        $imagemCapa = '';                
+                        $output = array();
+                        $url = $tp['link'];
+                        preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $output);
+                        $imagemCapa = ssl().'img.youtube.com/vi/' . $output[0] . '/0.jpg';
+                        ?>
+                        <img src="<?=$imagemCapa;?>" style="max-width:100px">
+                    </a>
                 </div>
                 <div class="divTd">
-                    <input type="checkbox" class="mostrar" value="<?=$tp['cod'];?>" <?=$tp['mostrar'] == 1 ? "checked='checked'" : "";?> />
+                    <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
+                        <?=$tp['titulo'];?>
+                    </a>
+                </div>
+                <!--
+                <div class="divTd">
+                    <?=$tp['ordem'];?>
+                </div>
+                -->
+                <div class="divTd">
+                    <input type="checkbox" class="mostrar" value="<?=$tp['cod'];?>" <?=$tp['mostrar'] == 1 || $subid == 2 ? "checked='checked'" : "";?> />
                 </div>
             </div>
         <?
         }
+        ?>
+
+    <?
     }
     else
     {

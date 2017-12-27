@@ -178,11 +178,12 @@
         })
         /* final tratamento submenu */
 
-        /* troca de região
-        document.getElementById('formRegiao').onchange = function(e){
+        /* troca de região */
+        $('#formRegiao').onchange = function(e){
+            alert('teste');
             var regiao = document.querySelector('#regiao');
-            window.location = 'regiao?regiao=' + regiao.value;              
-        } */
+            window.location = 'principal.php';              
+        } 
 
     });	
 

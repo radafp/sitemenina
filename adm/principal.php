@@ -11,7 +11,10 @@ anti_injection();
 
 $cod_user = isset($_SESSION[ADMIN_SESSION_NAME.'_cod_user']) ? $_SESSION[ADMIN_SESSION_NAME.'_cod_user'] : '';	
 $user = isset($_SESSION[ADMIN_SESSION_NAME.'_user']) ? $_SESSION[ADMIN_SESSION_NAME.'_user'] : '';
-$nivel = isset($_SESSION[ADMIN_SESSION_NAME.'_nivel']) ? $_SESSION[ADMIN_SESSION_NAME.'_nivel'] : '';;
+$nivel = isset($_SESSION[ADMIN_SESSION_NAME.'_nivel']) ? $_SESSION[ADMIN_SESSION_NAME.'_nivel'] : '';
+
+$regiao = isset($_POST['regiao']) ? $_POST['regiao'] : $_SESSION[ADMIN_SESSION_NAME.'_regiao'];
+$_SESSION[ADMIN_SESSION_NAME.'_regiao'] = $regiao;
 
 $id = (isset($_GET['id'])) ? $_GET['id'] : '' ;
 $subid = (isset($_GET['subid'])) ? $_GET['subid'] : '' ;
