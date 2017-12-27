@@ -1,44 +1,4 @@
-<script src="<?php echo base_url('/assets/js/popper.min.js')?>"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-<script type="text/javascript">
-
-    $(document).ready(function(){
-
-        var content = $('#content');
-        $('.link_descricao').click(function( e ){
-            e.preventDefault();
-
-            var href = $( this ).attr('href');
-            $.ajax({
-                url: href,
-                success: function( response ){
-                    //forçando o parser
-                    var data = $( '<div>'+response+'</div>' ).find('#content').html();
-
-                    //apenas atrasando a troca, para mostrarmos o loading
-                    window.setTimeout( function(){
-                        content.fadeOut('fast', function(){
-                            content.html( data ).fadeIn();
-                        });
-                    },100);
-                }
-            });
-        });
-
-        var link_descricao= document.querySelector(".link_descricao");
-        link_descricao.addEventListener('click', function() {
-            window.history.pushState(null, 'Programação', $(this).attr('href'));
-        })
-
-
-    });
-</script>
-
-<div class="container">
+z<div class="container">
     <div class="row destaques">
         <?php 
         $x=0; 

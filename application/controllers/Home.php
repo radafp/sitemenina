@@ -104,16 +104,15 @@ class home extends CI_Controller {
     }
 
     public function noticia() {
-        $categoria = $_SESSION['categoria'];
-        $dados['jornalismo'] = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao']);
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $categoria                  = $_SESSION['categoria'];
+        $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao']);
+        $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         // $dados['outras_noticias'] = $this->Novomenina->outras_noticias($_SESSION['regiao']); 
-        $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
+        $dados['mais_lidas']        = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
         $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        // $dados = json_encode($dados['jornalismo']);
-        $count = count($dados['jornalismo']);
-        $dados['count'] = $count;
-        $dados['viewName'] = 'jornalismo/noticia';
+        $count                      = count($dados['jornalismo']);
+        $dados['count']             = $count;
+        $dados['viewName']          = 'jornalismo/noticia';
         $this->load->view('Template', $dados);
     }
 
