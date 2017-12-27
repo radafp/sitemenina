@@ -15,48 +15,48 @@ if($cods != '')
 {
     $cods = is_array($cods) ? $cods : array($cods);
     $erros = 0;
-    foreach($cods as $k => $codNoticia)
+    foreach($cods as $k => $cod)
     {
-        /** EXCLUIR ARQUIVOS - NOTICIAS */
-        $qNoticias = mysql_query("SELECT * FROM eventos WHERE cod = '{$codNoticia}'");
-        while($tpNoticias = mysql_fetch_assoc($qNoticias))
+        /** EXCLUIR ARQUIVOS */
+        $q = mysql_query("SELECT * FROM eventos WHERE cod = '{$cod}'");
+        while($tp = mysql_fetch_assoc($q))
         {
-            $qArquivosNoticias = mysql_query("SELECT * FROM arquivos WHERE codReferencia = '{$tpNoticias['cod']}' AND referencia = 'eventos'");
-            while($tpArquivosNoticias = mysql_fetch_assoc($qArquivosNoticias))
+            $qArquivos = mysql_query("SELECT * FROM arquivos WHERE codReferencia = '{$tp['cod']}' AND referencia = 'eventos'");
+            while($tpArquivos = mysql_fetch_assoc($qArquivos))
             {
                 for($a=0;$a<5;$a++)
                 {
-                    $unlink = @unlink(PROJECT_PATH."assets/arquivos/eventos/".$tpArquivosNoticias['arquivo']);
+                    $unlink = @unlink(PROJECT_PATH."assets/arquivos/eventos/".$tpArquivos['arquivo']);
                     if($unlink)
                     {
                         break;
                     }
                 }
-                $sqlDelArquivosNoticias = "DELETE FROM arquivos WHERE cod = '{$tpArquivosNoticias['cod']}'";
+                $sqlDelArquivos = "DELETE FROM arquivos WHERE cod = '{$tpArquivos['cod']}'";
                 for($a=0;$a<5;$a++)
                 {
-                    $qDelArquivosNoticias = mysql_query($sqlDelArquivosNoticias);
-                    if($qDelArquivosNoticias)
+                    $qDelArquivos = mysql_query($sqlDelArquivos);
+                    if($qDelArquivos)
                     {
                         break;
                     }
                 }
             }
-            $sqlDelNoticias = "DELETE FROM eventos WHERE cod = '{$tpNoticias['cod']}'";
+            $sqlDel = "DELETE FROM eventos WHERE cod = '{$tp['cod']}'";
             for($a=0;$a<5;$a++)
             {
-                $qDelNoticias = mysql_query($sqlDelNoticias);
-                if($qDelNoticias)
+                $qDel = mysql_query($sqlDel);
+                if($qDel)
                 {
                     break;
                 }
             }
-            if(!$qDelNoticias)
+            if(!$qDel)
             {
                 $erros++;
             }
         }
-        /** FIM - EXCLUIR ARQUIVOS - NOTICIAS */
+        /** FIM - EXCLUIR ARQUIVOS */
     }
     
     if($erros > 0)

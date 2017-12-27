@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'utilidadePublica-lista'))
+if(!verifica_permissao($cod_user, $nivel, 'utilidadePublica'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')

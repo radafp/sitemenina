@@ -23,7 +23,7 @@ if($submit != '')
     $descricao = isset($_POST['descricao']) ? $_POST['descricao'] : '';
     $horario = isset($_POST['horario']) ? $_POST['horario'] : '';
     $apresentador = isset($_POST['apresentador']) ? $_POST['apresentador'] : '';
-    $regiao = $_SESSION[ADMIN_SESSION_NAME.'_regiao'];
+    $regiao = isset($_SESSION[ADMIN_SESSION_NAME.'_regiao']) ? $_SESSION[ADMIN_SESSION_NAME.'_regiao'] : '';
     $mostrar = isset($_POST['mostrar']) ? 1 : 0;
     
     $msg = array();

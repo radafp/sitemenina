@@ -39,10 +39,9 @@ if($submit != '')
     
     if($erro == 0)
     {
-        $pasta = PROJECT_PATH."arquivos/promocoes";
-        $pastaRegulamento = PROJECT_PATH."arquivos/regulamentos";
+        $pasta = PROJECT_PATH."assets/arquivos/promocoes";
+        $pastaRegulamento = PROJECT_PATH."assets/arquivos/regulamentos";
 
-        
         if($subid == 2) //insert
         {
         	$q = mysql_query("INSERT INTO promocoes 
@@ -178,7 +177,6 @@ if($submit != '')
                                         
             if($q)
         	{
-
                 if($regulamento != '')
                 {
                     $ext = strtolower(strrev($_FILES['arquivo']['name']));
