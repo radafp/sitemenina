@@ -14,24 +14,13 @@ $submit = isset($_POST['submit']) ? $_POST['submit'] : '';
 
 if($submit != '')
 {
-    if(!verifica_permissao($cod_user, $nivel, $acesso))
-    {
-    	echo "<script>
-    	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
-    	       document.location.replace('".ssl().ADMIN_URL."/principal.php');";
-    	echo " </script>";
-    	die();
-    }
-    
     $data = date('Y-m-d');
     $nome = isset($_POST['nome']) ? $_POST['nome'] : "";
     $email = isset($_POST['email']) ? $_POST['email'] : "";
     $usuario = isset($_POST['usuario']) ? $_POST['usuario'] : "";
-
-    $regioes = isset($_POST['regioes']) ? $_POST['regioes'] : '';
-    echo "<pre>";
-        var_dump($regioes);
-    echo "</pre>";
+    $bc = isset($_POST['bc']) ? $_POST['bc'] : 0;
+    $bl = isset($_POST['bl']) ? $_POST['bl'] : 0;
+    $lg = isset($_POST['lg']) ? $_POST['lg'] : 0;
     
     $md5 = new md5;
     $senha =  isset($_POST['senha']) ? $_POST['senha'] : "";
@@ -67,8 +56,10 @@ if($submit != '')
                                     `nome` = '{$nome}',
                                     `email` = '{$email}',
                                     `login` = '{$usuario}',
-                                    `senha` = '{$senha_cript}'
-                                    `re` = '{$senha_cript}'
+                                    `senha` = '{$senha_cript}',
+                                    `bc` = '{$bc}',
+                                    `bl` = '{$bl}',
+                                    `lg` = '{$lg}'
                                   WHERE
                                     `cod` = $cod", $conexao); 
                                     
@@ -222,7 +213,6 @@ else
             <input type="submit" value="Salvar" name="submit" class="salvar" />
         </div>
     </div>
-    
 </form>
 <script type="text/javascript">
 

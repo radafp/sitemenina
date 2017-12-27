@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'usuarios-lista'))
+if(!verifica_permissao($cod_user, $nivel, 'usuarios'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -57,7 +57,7 @@ require_once ADMIN_INC_PATH."topoModulo.php";
         <div class="divTd">&nbsp;</div>
         <div class="divTd">Usuário</div>
         <?php
-        if(verifica_permissao($cod_user, $nivel, 'permissoes-edita'))
+        if(verifica_permissao($cod_user, $nivel, 'usuarios'))
         {
         ?>
             <div class="divTd">&nbsp;</div>
@@ -86,7 +86,7 @@ require_once ADMIN_INC_PATH."topoModulo.php";
             </div>
             
             <?php
-            if(verifica_permissao($cod_user, $nivel, 'permissoes-edita'))
+            if(verifica_permissao($cod_user, $nivel, 'usuarios'))
             {
             ?>
                 <div class="divTd">
