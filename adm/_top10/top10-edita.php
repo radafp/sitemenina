@@ -1,25 +1,5 @@
 <?php
-$acessoLiberado = false;
-if(!isset($acesso))
-{
-    $acesso = "artistico-edita";
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-        $acessoLiberado = true;
-    }
-    elseif(verifica_permissao($cod_user, $nivel, "artistico-visualiza"))
-    {
-        $acessoLiberado = true;
-    }
-}
-else
-{
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-        $acessoLiberado = true;
-    }
-}
-if(!$acessoLiberado)
+if(!verifica_permissao($cod_user, $nivel, 'artistico'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -29,29 +9,17 @@ if(!$acessoLiberado)
 }
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
-require_once ADMIN_PATH."_videos/func/funcoes.php";
+require_once ADMIN_PATH."_top10/func/funcoes.php";
 
 $submit = isset($_POST['submit']) ? $_POST['submit'] : '';
 
 if($submit != '')
-{
-    if(!verifica_permissao($cod_user, $nivel, $acesso))
-    {
-    	echo "<script>
-    	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
-    	       document.location.replace('".ssl().ADMIN_URL."/principal.php');";
-    	echo " </script>";
-    	die();
-    }
-    
+{ 
     $data = date('Y-m-d');
     $titulo = isset($_POST['titulo']) ? $_POST['titulo'] : '';
     $cleanTitle = cleanTitle($titulo);
-
     $link = isset($_POST['link']) ? $_POST['link'] : '';
-
     $regiao = $_SESSION[ADMIN_SESSION_NAME.'_regiao'];
-   
     $mostrar = isset($_POST['mostrar']) ? $_POST['mostrar'] : 0;
     $msg = array();
     $erro = 0;
@@ -60,7 +28,7 @@ if($submit != '')
     {
         if($subid == 2) //insert
         {
-        	$q = mysql_query("INSERT INTO videos 
+        	$q = mysql_query("INSERT INTO top10 
                             (dataCadastro, titulo, link, regiao, mostrar)
                             VALUES
                             ('{$data}', '{$titulo}', '{$link}', '{$regiao}', '{$mostrar}')");
@@ -72,11 +40,11 @@ if($submit != '')
 
                 $cleanTitle = $cleanTitle.'-'.$cod;
 
-                $qClean = mysql_query("UPDATE videos SET
+                $qClean = mysql_query("UPDATE top10 SET
                                 cleanTitle = '{$cleanTitle}'
                                 WHERE cod = {$cod}"); 
 
-        	    reordenarVideos();
+        	    reordenarTop10();
                 
         		echo "<script>
         		          alert('Cadastro efetuado com sucesso.');
@@ -95,7 +63,7 @@ if($submit != '')
         {
             $cleanTitle = $cleanTitle.'-'.$cod;
 
-            $q = mysql_query("UPDATE videos SET
+            $q = mysql_query("UPDATE top10 SET
                                 dataAlteracao = '{$data}',
                                 titulo = '{$titulo}',
                                 link = '{$link}',
@@ -132,7 +100,7 @@ else
 {
     if($subid == 3)
     {
-        $q = mysql_query("SELECT * FROM videos WHERE cod = $cod LIMIT 1",$conexao);
+        $q = mysql_query("SELECT * FROM top10 WHERE cod = $cod LIMIT 1",$conexao);
         $n = mysql_num_rows($q);
         if($n > 0)
         {
@@ -208,19 +176,12 @@ else
             </div>
         </div>
     </div>
-    <?
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-    ?>
-        <div class="divTr">
-            <div class="divTd">&nbsp;</div>
-            <div class="divTd">
-                <input type="submit" value="Salvar" name="submit" class="salvar" />
-            </div>
+    <div class="divTr">
+        <div class="divTd">&nbsp;</div>
+        <div class="divTd">
+            <input type="submit" value="Salvar" name="submit" class="salvar" />
         </div>
-    <?
-    }
-    ?>
+    </div>
     
 </form>
 <script type="text/javascript">

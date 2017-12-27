@@ -43,7 +43,7 @@
                     <span>Artístico</span>
                 </a>
                 <ul class="submenu">
-                    <!--<li><a href="<?=ssl().ADMIN_URL."/principal.php?id=20&subid=1";?>">Top 10</a></li>-->
+                    <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=20&subid=1";?>">Top 10</a></li>
                     <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=21&subid=1";?>">Vídeos</a></li>
                 </ul>  
             </li>

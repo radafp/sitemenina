@@ -42,6 +42,8 @@ if($submit != '')
         $pasta = "../assets/arquivos/noticias";
         if($subid == 2) //insert
         {
+
+
         	$q = mysql_query("INSERT INTO noticias 
                             (codCategoria, dataCadastro, data, tituloPt, subtitulo, cleanTitlePt, descricaoPt, fonte, destaque, regiao, mostrar)
                             VALUES

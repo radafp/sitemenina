@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'videos-ordena'))
+if(!verifica_permissao($cod_user, $nivel, 'artistico'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -28,7 +28,7 @@ $(document).ready(function()
         {
             type: "POST",
             async: false,
-            url: "http://"+ADMIN_URL+"/_videos/ajax/ajaxOrdena.php", //URL de destino
+            url: "http://"+ADMIN_URL+"/_top10/ajax/ajaxOrdena.php", //URL de destino
             data:
             {
                 ordem : ordem
@@ -64,7 +64,7 @@ $(document).ready(function()
 </div>
 <div class="divTableLista clear drag" style="margin-top: 0;">
     <?
-    $q = mysql_query("SELECT * FROM videos ORDER BY ordem", $conexao);
+    $q = mysql_query("SELECT * FROM top10 ORDER BY ordem", $conexao);
     //echo mysql_error();
     $n = mysql_num_rows($q);
     if($n>0)

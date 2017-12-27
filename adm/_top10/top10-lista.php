@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'artistico-lista'))
+if(!verifica_permissao($cod_user, $nivel, 'artistico'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -9,7 +9,7 @@ if(!verifica_permissao($cod_user, $nivel, 'artistico-lista'))
 }
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
-require_once ADMIN_PATH."_videos/inc/topo-videos-lista.php";
+require_once ADMIN_PATH."_top10/inc/topo-top10-lista.php";
 ?>
 <script>
 $(document).ready(function()
@@ -26,7 +26,7 @@ $(document).ready(function()
         {
             type: "POST",
             async: false,
-            url: "http://"+ADMIN_URL+"/_videos/ajax/ajaxMostrarLista.php", //URL de destino
+            url: "http://"+ADMIN_URL+"/_top10/ajax/ajaxMostrarLista.php", //URL de destino
             data:
             {
                 cod: _cod,
@@ -105,7 +105,7 @@ $(document).ready(function()
 
     $regiao = isset($_SESSION[ADMIN_SESSION_NAME.'_regiao']) ? $_SESSION[ADMIN_SESSION_NAME.'_regiao'] : '';
 
-    $q = mysql_query("SELECT * FROM videos WHERE regiao = '{$regiao}' ORDER BY cod desc", $conexao);
+    $q = mysql_query("SELECT * FROM top10 WHERE regiao = '{$regiao}' ORDER BY cod desc", $conexao);
     $n = mysql_num_rows($q);
 
     if ($n>0)

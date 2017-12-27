@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'produtos-ordena'))
+if(!verifica_permissao($cod_user, $nivel, 'eventos'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -7,7 +7,6 @@ if(!verifica_permissao($cod_user, $nivel, 'produtos-ordena'))
 	echo " </script>";
 	die();
 }
-
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
 ?>
