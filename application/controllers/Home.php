@@ -21,19 +21,23 @@ class home extends CI_Controller {
         $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
         
         $regiao = isset($uri[0]) && !empty($uri[0]) ? $uri[0] : '';// regiao
-        if($regiao == 'balneario-camboriu')
+        if($regiao == 'balneario-camboriu') {
             $_SESSION['regiao'] =  'bc';
-        if($regiao == 'blumenal')
+            $_SESSION['city']   = 'balneario-camboriu';
+        }if($regiao == 'blumenal') {
             $_SESSION['regiao'] =  'bl';
-        if($regiao == 'lages')
-            $_SESSION['regiao'] =  'lg';
-        
+            $_SESSION['city']   = 'blumenal';
+        }if($regiao == 'lages') {
+            $_SESSION['regiao'] = 'lg';
+            $_SESSION['city']   = 'lages';
+        };
+
         $codigoSecao = isset($uri[1]) && !empty($uri[1]) ? $uri[1] : ''; //menu
         //echo $codigoSecao;
         $codigoConteudo = isset($uri[2]) && !empty($uri[2]) ? $uri[2] : ''; //codigo
 
         // $dados['cidade']            = $this->Novomenina->cidade($regiao);
-        $dados['cidade'] = $regiao;
+        $dados['cidade'] = $_SESSION['city'];
         switch($_SESSION['regiao']){
             case 'bc':
                 $_SESSION['slogam'] = "+ DE UM MILHÃO DE AMIGOS";
