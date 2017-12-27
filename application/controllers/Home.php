@@ -18,12 +18,22 @@ class home extends CI_Controller {
     }
 
     public function regiao() {
-
+        $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
         
-        $_SESSION['regiao']         = $_GET['regiao'];
-        $regiao                     = $_GET['regiao'];
-        $dados['cidade']            = $this->Novomenina->cidade($regiao);
+        $regiao = isset($uri[0]) && !empty($uri[0]) ? $uri[0] : '';// regiao
+        if($regiao == 'balneario-camboriu')
+            $_SESSION['regiao'] =  'bc';
+        if($regiao == 'blumenal')
+            $_SESSION['regiao'] =  'bl';
+        if($regiao == 'lages')
+            $_SESSION['regiao'] =  'lg';
+        
+        $codigoSecao = isset($uri[1]) && !empty($uri[1]) ? $uri[1] : ''; //menu
+        //echo $codigoSecao;
+        $codigoConteudo = isset($uri[2]) && !empty($uri[2]) ? $uri[2] : ''; //codigo
 
+        // $dados['cidade']            = $this->Novomenina->cidade($regiao);
+        $dados['cidade'] = $regiao;
         switch($_SESSION['regiao']){
             case 'bc':
                 $_SESSION['slogam'] = "+ DE UM MILHÃO DE AMIGOS";
@@ -51,13 +61,13 @@ class home extends CI_Controller {
                 break;
         }
 
-        $dados['noticias_em_destaque']  = $this->Novomenina->noticias_em_destaque($regiao);
-        $dados['ultimas_noticias']      = $this->Novomenina->ultimas_noticias($regiao);
-        $dados['programacao_home']      = $this->Novomenina->programacao_home($regiao);
-        $dados['eventos_home']          = $this->Novomenina->eventos_home($regiao);
-        $dados['videos']                = $this->Novomenina->videos($regiao);
-        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($regiao);
-        $dados['promocoes_home']        = $this->Novomenina->promocoes_home($regiao);
+        $dados['noticias_em_destaque']  = $this->Novomenina->noticias_em_destaque($_SESSION['regiao']);
+        $dados['ultimas_noticias']      = $this->Novomenina->ultimas_noticias($_SESSION['regiao']);
+        $dados['programacao_home']      = $this->Novomenina->programacao_home($_SESSION['regiao']);
+        $dados['eventos_home']          = $this->Novomenina->eventos_home($_SESSION['regiao']);
+        $dados['videos']                = $this->Novomenina->videos($_SESSION['regiao']);
+        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['promocoes_home']        = $this->Novomenina->promocoes_home($_SESSION['regiao']);
         $dados['viewName']              = 'regiao';
         $this->load->view('Template', $dados);
     }

@@ -86,7 +86,7 @@
                     <div class="row lsbr">
 
                         <div class="col-md-2 col-sm-4 btm-30 logo">
-                            <a id='logo' href="<?php echo base_url('/home/regiao?regiao='.$_SESSION['regiao'])?>"> <img src="<?php echo base_url('/assets/img/logoMenina'.$_SESSION['regiao'].'.png');?>" title="Rádio Menina"></a>
+                            <a id='logo' href="<?php echo base_url($cidade)?>"> <img src="<?php echo base_url('/assets/img/logoMenina'.$_SESSION['regiao'].'.png');?>" title="Rádio Menina"></a>
                         </div>
                         <div class="col-md-4 col-sm-4 btm-30 slogam">
                             <h1><?=$_SESSION['slogam'];?></h1>
@@ -94,9 +94,9 @@
                         <div class="col-md-3 col-sm-4 btm-30 selRegiao">
                             <form action="" id="formRegiao" method='POST'>
                                 <select name="selectRegiao" form="form" id='regiao'>
-                                    <option value="bc" <?=$_SESSION['regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
-                                    <option value="bl" <?=$_SESSION['regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
-                                    <option value="lg" <?=$_SESSION['regiao'] == 'lg' ? 'selected' : '';?> >Lages</option>
+                                    <option value="/balneario-camboriu" <?=$_SESSION['regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
+                                    <option value="/blumenal" <?=$_SESSION['regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
+                                    <option value="/lages" <?=$_SESSION['regiao'] == 'lg' ? 'selected' : '';?> >Lages</option>
                                 </select>
                             </form>
                         </div>
@@ -194,12 +194,12 @@
                         
                         <div class="col-md-4">
                             <div class='face'>
-                                <a href="<?=$_SESSION['socialFace'];?>" target="_blank">
+                                <a class="link_descricao" href="<?=$_SESSION['socialFace'];?>" target="_blank">
                                     <img src="<?php echo base_url('/assets/img/linkFaceRodape.png')?>" alt="Curta nossa Fanpage">
                                 </a>
                             </div>
                             <div class='youtube'>
-                                <a href="<?=$_SESSION['socialYoutube'];?>" target="_blank">
+                                <a class="link_descricao" href="<?=$_SESSION['socialYoutube'];?>" target="_blank">
                                     <img src="<?php echo base_url('/assets/img/linkYoutubeRodape.png')?>" alt="Inscreva-se no nosso canal">
                                 </a>
                             </div>
@@ -271,7 +271,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <p class="text-center">©2017 Copyright - Rádio Menina FM - Todos direitos reservados</p>		        
+                        <p class="link_descricao" class="text-center">©2017 Copyright - Rádio Menina FM - Todos direitos reservados</p>		        
                     </div>
                 </div>
             </div>
@@ -287,7 +287,7 @@
 
             var content = $('#content');
 
-            $('#menu a').click(function( e ){
+            $('#menu a, .link_descricao, #logo').click(function( e ){
                 e.preventDefault();
 
                 var href = $( this ).attr('href');
@@ -327,10 +327,12 @@
             })
 
             link_promocoes.addEventListener('click', function() {
+                alert('Promoções');
                 window.history.pushState(null, 'Promoções', $(this).attr('href'));
             })
 
             link_eventos.addEventListener('click', function() {
+                alert('Eventos');
                 window.history.pushState(null, 'Eventos', $(this).attr('href'));
             })
             
@@ -360,7 +362,7 @@
         });
         document.getElementById('formRegiao').onchange = function(e){
             var regiao = document.querySelector('#regiao');
-            window.location = 'regiao?regiao=' + regiao.value;              
+            window.location = regiao.value;              
         }
 	</script>
 </html>	

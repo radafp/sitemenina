@@ -51,6 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 
+$route['balneario-camboriu'] = 'home/regiao/?regiao=bc';
+$route['blumenal'] = 'home/regiao/?regiao=bl';
+$route['lages'] = 'home/regiao/?regiao=lg';
+
 $route['balneario-camboriu/programacao'] = 'home/programacao';
 $route['blumenal/programacao'] = 'home/programacao';
 $route['lages/programacao'] = 'home/programacao';
