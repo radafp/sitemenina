@@ -1,25 +1,5 @@
 <?php
-$acessoLiberado = false;
-if(!isset($acesso))
-{
-    $acesso = "programacao-edita";
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-        $acessoLiberado = true;
-    }
-    elseif(verifica_permissao($cod_user, $nivel, "programacao-visualiza"))
-    {
-        $acessoLiberado = true;
-    }
-}
-else
-{
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-        $acessoLiberado = true;
-    }
-}
-if(!$acessoLiberado)
+if(!verifica_permissao($cod_user, $nivel, 'programacao'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -36,15 +16,6 @@ $submit = isset($_POST['submit']) ? $_POST['submit'] : '';
 
 if($submit != '')
 {
-    if(!verifica_permissao($cod_user, $nivel, $acesso))
-    {
-    	echo "<script>
-    	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
-    	       document.location.replace('".ssl().ADMIN_URL."/principal.php');";
-    	echo " </script>";
-    	die();
-    }
-    
     $data = date('Y-m-d');
     $programacao = isset($_POST['programacao']) ? $_POST['programacao'] : '';
     $titulo = isset($_POST['titulo']) ? $_POST['titulo'] : '';
@@ -394,8 +365,8 @@ else
             ?>
                     <div class="boxFoto">
                         <div class="divTr clear">
-                            <div class="divTd">
-                                <img src="http://<?=PROJECT_URL.'/arquivos/programacao/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" />
+                            <div class="divTd" style="border: 1px solid #cccccc">
+                                <img src="http://<?=PROJECT_URL.'/assets/arquivos/programacao/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" />
                                 <input type="hidden" name="codigos[]" value="<?=$tpFotos['codigo'];?>" />
                             </div>
                         </div>
@@ -408,19 +379,12 @@ else
         }
         ?>
     </div>
-    <?
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-    ?>
-        <div class="divTr">
-            <div class="divTd">&nbsp;</div>
-            <div class="divTd">
-                <input type="submit" value="Salvar" name="submit" class="salvar" />
-            </div>
+    <div class="divTr">
+        <div class="divTd">&nbsp;</div>
+        <div class="divTd">
+            <input type="submit" value="Salvar" name="submit" class="salvar" />
         </div>
-    <?
-    }
-    ?>
+    </div>
 </form>
 <script type="text/javascript">
     $(document).ready(function()

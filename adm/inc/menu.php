@@ -1,7 +1,7 @@
 <div class="menu">
     <ul class="centro">
         <?
-        if(verifica_permissao($cod_user, $nivel, 'usuarios-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'usuarios'))
         {
         ?>
             <li class="<?=$id == 1 ? "menuAtivo" : "";?>" >
@@ -11,7 +11,7 @@
             </li>
         <?
         }
-        if(verifica_permissao($cod_user, $nivel, 'programacao-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'programacao'))
         {
         ?>
             <li class="<?=$id == 10 ? "menuAtivo" : "";?>" >
@@ -21,7 +21,7 @@
             </li>
         <?
         }
-        if(verifica_permissao($cod_user, $nivel, 'jornalismo-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'jornalismo'))
         {
         ?>
             <li class="<?=$id == 15 || $id == 16 ? "menuAtivo" : "";?> jornalismo" >
@@ -35,7 +35,7 @@
             </li>
         <?
         }
-        if(verifica_permissao($cod_user, $nivel, 'artistico-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'artistico'))
         {
         ?>
             <li class="<?=$id == 20 ? "menuAtivo" : "";?> artistico" >
@@ -49,7 +49,7 @@
             </li>
         <?
         }
-        if(verifica_permissao($cod_user, $nivel, 'promocoes-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'promocoes'))
         {
         ?>
             <li class="<?=$id == 25 ? "menuAtivo" : "";?>" >
@@ -59,7 +59,7 @@
             </li>
         <?
         }
-        if(verifica_permissao($cod_user, $nivel, 'eventos-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'eventos'))
         {
         ?>
             <li class="<?=$id == 30 ? "menuAtivo" : "";?>" >

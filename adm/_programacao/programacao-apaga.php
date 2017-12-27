@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'programacao-apaga'))
+if(!verifica_permissao($cod_user, $nivel, 'programacao'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')

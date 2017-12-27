@@ -117,10 +117,10 @@ class home extends CI_Controller {
     }
     
     public function eventos() {
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        $dados['eventos']= $this->Novomenina->eventos($_SESSION['regiao']); 
-        $dados['viewName'] = 'eventos/eventos';
+        $dados['eventos']           = $this->Novomenina->eventos($_SESSION['regiao']); 
+        $dados['viewName']          = 'eventos/eventos';
         $this->load->view('Template', $dados);
     }
 
@@ -136,7 +136,7 @@ class home extends CI_Controller {
 
     public function promocoes() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['promocoes_impar'] = $this->Novomenina->promocoes($_SESSION['regiao']);
+        $dados['promocoes_impar'] = $this->Novomenina->promocoes_home($_SESSION['regiao']);
         $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['viewName'] = 'promocoes/promocoes';
         $this->load->view('Template', $dados);

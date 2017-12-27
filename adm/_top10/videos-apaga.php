@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'jornalismo'))
+if(!verifica_permissao($cod_user, $nivel, 'artistico-apaga'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -9,38 +9,37 @@ if(!verifica_permissao($cod_user, $nivel, 'jornalismo'))
 }
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
-require_once ADMIN_PATH."/_categorias/func/funcoes.php";
+require_once ADMIN_PATH."/_videos/func/funcoes.php";
 
 $cods = isset($_GET['cod']) ? $_GET['cod'] : '';
-
 if($cods != '')
 {
     $cods = is_array($cods) ? $cods : array($cods);
     $erros = 0;
-    foreach($cods as $k => $codCategoria)
+    foreach($cods as $k => $codVideo)
     {
-        $qCategorias = mysql_query("SELECT * FROM categorias WHERE cod = '{$codCategoria}'");
-        while($tpCategorias = mysql_fetch_assoc($qCategorias))
+        $qVideos = mysql_query("SELECT * FROM videos WHERE cod = '$codVideo'");
+        while($tpVideos = mysql_fetch_assoc($qVideos))
         {
-            
-            /** EXCLUIR CATEGORIA */
-            $sqlDelCategoria = "DELETE FROM categorias WHERE cod = '{$tpCategorias['cod']}' LIMIT 1";
+                    
+            /** EXCLUIR VIDEOS */
+            $sqlDelVideos = "DELETE FROM videos WHERE cod = '{$tpVideos['cod']}' LIMIT 1";
             for($a=0;$a<5;$a++)
             {
-                $qDelCategoria = mysql_query($sqlDelCategoria);
-                if($qDelCategoria)
+                $qDelVideos = mysql_query($sqlDelVideos);
+                if($qDelVideos)
                 {
                     break;
                 }
             }
-            if(!$qDelCategoria)
+            if(!$qDelVideos)
             {
                 $erros++;
             }
-            /** FIM - EXCLUIR CATEGORIA */                    
+            /** FIM - EXCLUIR VIDEOS */
         }
-            
     }
+    reordenarVideos();
     if($erros > 0)
     {
         ?>
