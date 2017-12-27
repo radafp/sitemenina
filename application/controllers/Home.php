@@ -18,9 +18,12 @@ class home extends CI_Controller {
     }
 
     public function regiao() {
+
+        
         $_SESSION['regiao']         = $_GET['regiao'];
         $regiao                     = $_GET['regiao'];
         $dados['cidade']            = $this->Novomenina->cidade($regiao);
+
         switch($_SESSION['regiao']){
             case 'bc':
                 $_SESSION['slogam'] = "+ DE UM MILHÃO DE AMIGOS";

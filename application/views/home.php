@@ -49,6 +49,7 @@
                         </div>
                         <p>Balneário Camboriú</p>
                         <a href="home/regiao?regiao=bc">Acessar</a>
+                        <!--<a href="home/regiao?regiao=bc">Acessar</a>-->
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4">

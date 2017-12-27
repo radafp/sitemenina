@@ -178,14 +178,23 @@
         })
         /* final tratamento submenu */
 
-        /* troca de região */
-        $('#formRegiao').onchange = function(e){
+
+        $('#formRegiao').change(function(){
+            var parametro = $(this).find(':selected').val();
+            //alert(window.location.href); 
+            location.href = 'principal.php?regiao=' + parametro;
+        });
+
+
+        /*$('#formRegiao').on('change', function() {
             alert('teste');
+        //$('#formRegiao').change = function(e){
             var regiao = document.querySelector('#regiao');
-            window.location = 'principal.php';              
-        } 
+            window.location = 'regiao?regiao=' + regiao.value;              
+        )}*/
 
     });	
+    
 
         
 
