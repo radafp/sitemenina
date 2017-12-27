@@ -381,6 +381,18 @@ class Novomenina_model extends CI_Model{
     public function cliques($id, $regiao) {
         $query = $this->db->query("UPDATE noticias SET cliques = cliques + 1 WHERE cod = $id  and noticias.regiao= '$regiao'");
     }
+    // ================================ PAGINAS DE ARTISTICO ================================
+    // |                                                                                    |
+    // |                          TODAS AS PAGINAS SOBRE ARTISTIC                           |
+    // |                                                                                    |
+    // ======================================================================================
+
+    public function top_10() {
+        $query = $this->db->query(
+            "SELECT top10.* from top10 
+        ");
+        return $query->result_array();
+    }
 
 
     // ================================ PAGINAS DE PROMOÇÕES ====================================

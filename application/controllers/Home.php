@@ -94,12 +94,19 @@ class home extends CI_Controller {
     //     $this->load->view('Template', $dados);
     // }
 
-    public function artistico() {
-        // $categoria = $_GET['categoria'];
-        // $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['videos'] = $this->Novomenina->videos($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        $dados['viewName'] = 'artistico/videos';
+    // public function artistico() {
+    //     $categoria                  = $_GET['categoria'];
+    //     $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+    //     $dados['videos']            = $this->Novomenina->videos($_SESSION['regiao']);
+    //     $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
+    //     $dados['viewName']          = 'artistico/videos';
+    //     $this->load->view('Template', $dados);
+    // }
+
+    public function top_10() {
+        $dados['top_10'] = $this->Novomenina->top_10();
+
+        $dados['viewName']          = 'artistico/top_10';
         $this->load->view('Template', $dados);
     }
 

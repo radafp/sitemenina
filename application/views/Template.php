@@ -137,9 +137,9 @@
                                         <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Artístico
                                         </div>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                                            <a id='link_top_10' class="dropdown-item" href="<?php echo base_url('home/top_10')?>">Top 10</a>
-                                            <a id='link_artistico' class="dropdown-item" href="<?php echo base_url('home/artistico')?>">Vídeos</a>
+                                        <div id='link_artistico' class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                                            <a  class="dropdown-item" href="<?php echo base_url($cidade.'/top-10')?>">Top 10</a>
+                                            <a  class="dropdown-item" href="<?php echo base_url($cidade.'/videos')?>">Vídeos</a>
                                         </div>
                                     </li>
                                     </li>
@@ -311,6 +311,7 @@
             var logo = document.querySelector('#logo');
             var link_programacao = document.querySelector('#link_programacao');
             var link_jornalismo = document.querySelector('#link_jornalismo a');
+            var link_artistico = document.querySelector('#link_artistico a');
             var link_promocoes = document.querySelector('#link_promocoes');
             var link_eventos = document.querySelector('#link_eventos');
         
@@ -324,6 +325,11 @@
 
             link_jornalismo.addEventListener('click', function() {
                 window.history.pushState(null, 'Jornalismo', $(this).attr('href'));
+            })
+            
+            link_artistico.addEventListener('click', function() {
+                alert('Promoções');
+                window.history.pushState(null, 'Artistico', $(this).attr('href'));
             })
 
             link_promocoes.addEventListener('click', function() {
