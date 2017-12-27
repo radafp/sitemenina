@@ -69,18 +69,17 @@
             </li>
         <?
         }
-        /*
-        if(verifica_permissao($cod_user, $nivel, 'utilidadePublica-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'utilidadePublica'))
         {
         ?>
-            <li class="<?=($id == 35 || $id == 36 || $id == 37) ? "menuAtivo" : "";?> utilidaePublica" >
+            <li class="<?=($id == 35 || $id == 36 || $id == 37) ? "menuAtivo" : "";?> utilidadePublica" >
                 <a style="cursor: pointer;">
                     <span>Util. Pública</span>
                 </a>
                 <ul class="submenu">
                     <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=35&subid=1";?>">Bolsa de empregos</a></li>
                     <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=36&subid=1";?>">Achados e perdidos</a></li>
-                    <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=37&subid=1";?>">Campanhas</a></li>
+                    <!--<li><a href="<?=ssl().ADMIN_URL."/principal.php?id=37&subid=1";?>">Campanhas</a></li>-->
                 </ul>  
             </li>
         <?
