@@ -360,7 +360,8 @@
         });
         document.getElementById('formRegiao').onchange = function(e){
             var regiao = document.querySelector('#regiao');
-            window.location = 'regiao?regiao=' + regiao.value;              
+            // window.location = 'regiao?regiao=' + regiao.value;
+            window.history.pushState(null, 'Home', '/regiao?regiao=' + regiao.value);        
         }
 	</script>
 </html>	
