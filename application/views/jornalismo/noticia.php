@@ -47,7 +47,6 @@
 <div class="container">
     <div class="conteudoInternas">
 
-
     </div><!-- fin conteudoInternas -->
 </div> <!-- container -->
 
@@ -73,7 +72,7 @@
                     <?php foreach($jornalismo as $info):?>
                         <tr>
                             <td>
-                                <a class="link_descricao" href="<?php echo base_url($_SESSION['cidade'].'/descricao-noticia');?>">
+                                <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao-noticia');?>">
                                     <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                                     <h3><?php echo $info['tituloPt']?></h3>
                                     <p><?php echo $info['categoriaPt'] . ' ' . date('d/m/Y', strtotime($info['data']))?></p>

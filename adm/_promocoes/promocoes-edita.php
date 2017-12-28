@@ -18,14 +18,15 @@ if($submit != '')
 {
     $data = date('Y-m-d');
     $dataInicio = isset($_POST['dataInicio']) ? dataEn($_POST['dataInicio']) : '';
+    $horaInicio = isset($_POST['horaInicio']) ? dataEn($_POST['horaInicio']) : '';
+    
     $dataFim = isset($_POST['dataFim']) ? dataEn($_POST['dataFim']) : '';
+    $horaFim = isset($_POST['horaFim']) ? dataEn($_POST['horaFim']) : '';
     
     $tituloPt = isset($_POST['tituloPt']) ? $_POST['tituloPt'] : '';
-    //$tituloEn = isset($_POST['nomeEn']) ? $_POST['nomeEn'] : '';
-    //$cleanTitlePt = cleanTitle($nomePt);
     $cleanTitlePt = cleanTitle($tituloPt);
+
     $descricaoPt = isset($_POST['descricaoPt']) ? $_POST['descricaoPt'] : '';
-    //$descricaoEn = isset($_POST['descricaoEn']) ? $_POST['descricaoEn'] : '';
 
     $regulamento = isset($_FILES['arquivo']['name']) ? $_FILES['arquivo']['name'] : '';
     
@@ -228,8 +229,8 @@ if($submit != '')
                                 if(move_uploaded_file($_FILES['arquivo']['tmp_name'],$pastaRegulamento.'/'.$nome_arq))
                                 {
 
-                                    $sqlRegulamento = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, arquivo, codigo)
-                                                        VALUES ('$data', 'promocoes', '{$cod}', '{$nome_arq}', '$codigo')";
+                                    $sqlRegulamento = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, arquivo)
+                                                        VALUES ('$data', 'promocoes', '{$cod}', '{$nome_arq}')";
                                     for($b=0;$b<5;$b++)
                                     {
                                         $qRegulamento = mysql_query($sqlRegulamento);
@@ -488,7 +489,7 @@ else
                         <label>Regulamento cadastrado:</label>
                     </div>
                     <div class="divTd">
-                        <a href="<?="http://".PROJECT_URL."/arquivos/regulamentos/".$tpRegulamento['arquivo'];?>" target="_blanck">Abrir o arquivo</a>
+                        <a href="<?="http://".PROJECT_URL."/assets/arquivos/regulamentos/".$tpRegulamento['arquivo'];?>" target="_blanck">Abrir o arquivo</a>
                     </div>
                 </div>
                 <?
@@ -552,7 +553,7 @@ else
                                 <label>Foto <?=$aux;?>:</label>
                             </div>
                             <div class="divTd">
-                                <img src="http://<?=PROJECT_URL.'/arquivos/promocoes/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" style="max-width: 150px;" />
+                                <img src="http://<?=PROJECT_URL.'/assets/arquivos/promocoes/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" style="max-width: 150px;" />
                                 <input type="hidden" name="codigos[]" value="<?=$tpFotos['codigo'];?>" />
                             </div>
                         </div>

@@ -7,7 +7,7 @@
     padding-bottom: 22px;
 }
 .tituloPadrao1 span{
-    border-bottom: 3px solid #27821d;
+    border-bottom: 3px solid #6BBA4F;
     padding-bottom: 20px;
     font-family: "microgrammadmedextregular";
     font-size: 28px;
@@ -16,12 +16,24 @@
     width: 100%;
     border-bottom: 1px solid #cccccc;
     padding-bottom: 22px;
+    color: #ffffff;
 }
 .tituloPadrao2 span{
-    border-bottom: 3px solid #27821d;
+    border-bottom: 3px solid #6BBA4F;
     padding-bottom: 20px;
     font-family: "microgrammadmedextregular";
-    font-size: 28px;
+    font-size: 24px;
+}
+.tituloPadrao3{
+    width: 100%;
+    border-bottom: 1px solid #cccccc;
+    padding-bottom: 22px;
+}
+.tituloPadrao3 span{
+    border-bottom: 3px solid #6BBA4F;
+    padding-bottom: 22px;
+    font-family: "microgrammadmedextregular";
+    font-size: 20px;
 }
 
 .destaques{
@@ -108,12 +120,8 @@
     margin-left: auto;
     margin-right: auto;
 }
-
 .promocoesEventos{
-
-}
-.promocoesEventos{
-    padding:100px;
+    padding:60px 0;
 }
 .promocoesEventos.promocoesEventos_bc{
     background: url(../img/redes_bc.jpg);
@@ -124,5 +132,13 @@
 .promocoesEventos.promocoesEventos_lg{
     background: url(../img/redes_lg.jpg);
 }
-
+.promocoesEventos .foto{
+    border: 1px solid #fff;
+    padding: 5px;
+    overflow: hidden;
+    max-width: 240px;
+}
+.promocoesEventos .foto img{
+    max-width: 100%;
+}
 /*-- FIM classe região --*/

@@ -69,12 +69,16 @@
             <div class="col-xs-12 col-md-6">
 
                 <div id='programacoes'>
-                    <h1 class="tituloPadrao1">
+                    <h1 class="tituloPadrao2">
                         <span>Promoções</span>
                     </h1>
                     <?php foreach($promocoes_home as $info): ?>
                         <a class="link_descricao" href="<?=base_url('home/descricao_promocoes?id='.$info['cod']);?>">
-                            <img src="<?=base_url('/assets/arquivos/programacao/'.$info['arquivo']);?>" alt="">
+                            <? if($info['arquivo']!='') { ?>
+                                <div class="foto">
+                                    <img src="<?=base_url('/assets/arquivos/promocoes/'.$info['arquivo']);?>" alt="">
+                                </div>
+                            <? } ?>    
                             <h3><?=$info['tituloPt']?></h3>
                             <p><?='inicio: '. date('d/m/Y', strtotime($info['dataInicio']));?></p>
                             <p>Fim: <?=date('d/m/Y', strtotime($info['dataFim']));?></p>
@@ -87,13 +91,16 @@
             <div class="col-xs-12 col-md-6">
                 
                 <div id='eventos'>
-                    <h1 class="tituloPadrao1">
+                    <h1 class="tituloPadrao2">
                         <span>Eventos</span>
                     </h1>
                     <?php foreach($eventos_home as $info): ?>
                         <a class="link_descricao" href="<?=base_url('home/descricao_eventos?id='.$info['cod']);?>">
-                            <img src="<?=base_url('/assets/arquivos/eventos/'.$info['arquivo']);?>" alt="">
-                            <span><?=$info['mapa'];?></span> 
+                            <? if($info['arquivo']!=''){ ?>
+                                <div class="foto">
+                                    <img src="<?=base_url('/assets/arquivos/eventos/'.$info['arquivo']);?>" alt="">
+                                </div>
+                            <? } ?> 
                             <h3><?=$info['tituloPt'];?></h3>
                             <p><?='inicio: '. date('d/m/Y', strtotime($info['dataInicio']));?></p>
                             <p>Fim: <?=date('d/m/Y', strtotime($info['dataFim']));?></p>
@@ -123,7 +130,7 @@
 <div class="container">
     <div class="row">
             <div class='col-xs-12 col-md-4'>
-                <h1 class="tituloPadrao2">
+                <h1 class="tituloPadrao3">
                     <span>Programação</span>
                 </h1>
                 <?php foreach($programacao_home as $info):?>
@@ -138,7 +145,7 @@
                 <a href="/home/programacao">Ver mais</a>
             </div>
             <div class='col-xs-12 col-md-4'>
-                <h1 class="tituloPadrao2">
+                <h1 class="tituloPadrao3">
                     <span>Enquete</span>
                 </h1>
                 <form action="/action_page.php">
@@ -149,7 +156,7 @@
                 </form>
             </div>
             <div class='col-xs-12 col-md-4'>
-                <h1 class="tituloPadrao2">
+                <h1 class="tituloPadrao3">
                     <span>Mensagem do Dia</span>
                 </h1>
                 <?php foreach($videos as $info):?>
