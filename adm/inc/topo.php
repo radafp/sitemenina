@@ -9,9 +9,28 @@
             <b>Editando conteúdos da Região:</b><br>
             <form action="" id="formRegiao" method='POST'>
                 <select name="selectRegiao" form="form" id='regiao' style="font-size:16px;height:40px;">
-                    <option value="bc" <?=$_SESSION[ADMIN_SESSION_NAME.'_regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
-                    <option value="bl" <?=$_SESSION[ADMIN_SESSION_NAME.'_regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
-                    <option value="lg" <?=$_SESSION[ADMIN_SESSION_NAME.'_regiao'] == 'lg' ? 'selected' : '';?> >Lages</option>
+                    <?
+                    $qPermissaoRegiao = mysql_query("SELECT bc,bl,lg FROM usuarios WHERE cod = '{$_SESSION[ADMIN_SESSION_NAME.'_cod_user']}'");
+                    $tpPermissaoRegiao = mysql_fetch_assoc($qPermissaoRegiao);    
+                    if($tpPermissaoRegiao['bc'] == 1)
+                    {
+                    ?>
+                        <option value="bc" <?=$_SESSION[ADMIN_SESSION_NAME.'_regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
+                    <?
+                    }
+                    if($tpPermissaoRegiao['bl'] == 1)
+                    {
+                    ?>
+                        <option value="bl" <?=$_SESSION[ADMIN_SESSION_NAME.'_regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
+                    <?
+                    }
+                    if($tpPermissaoRegiao['lg'] == 1)
+                    {
+                    ?>
+                        <option value="lg" <?=$_SESSION[ADMIN_SESSION_NAME.'_regiao'] == 'lg' ? 'selected' : '';?> >Lages</option>
+                    <?
+                    }
+                    ?>
                 </select>
             </form>
         </div>
