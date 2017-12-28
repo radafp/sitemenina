@@ -587,6 +587,43 @@ class Novomenina_model extends CI_Model{
         }
     }
     
+
+    // ================================ PAGINAS DE EVENTOS ====================================
+    // |                                                                                      |
+    // |                          TODAS AS PAGINAS SOBRE EVENTOS                              |
+    // |                                                                                      |
+    // ========================================================================================
+     
+    public function empregos($regiao) {
+        // $query = $this->db->query("SELECT eventos.*, arquivos.arquivo
+        //                             FROM eventos 
+        //                             INNER JOIN arquivos 
+        //                             ON eventos.cod = arquivos.codReferencia 
+        //                             and eventos.regiao = 'bc' 
+        //                             GROUP BY eventos.cod
+        //                             ORDER BY eventos.dataCadastro 
+        //                             LIMIT 2"
+        // );
+        // return $query->result_array();
+        $query = $this->db->query(
+            "SELECT empregos.*, 
+                (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                        WHERE a.codReferencia = empregos.cod 
+                        AND a.referencia = 'empregos' 
+                        AND a.tipo = 2 
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+            AS arquivo 
+                FROM empregos 
+                    WHERE empregos.regiao = '$regiao' 
+                    AND empregos.mostrar = 1 
+                GROUP BY empregos.cod
+                ORDER BY empregos.dataCadastro DESC
+        "); 
+        return $query->result_array();
+    }
+
      // public function GetAll_noticias($categoria, $regiao, $limit = null, $offset = null) {
     //     // $this->db->where('categoria', $categoria);
     //     // $this->db->where('regiao', $regiao);

@@ -151,9 +151,9 @@
                                         Utilidade pública
                                         </div>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                            <a id='link_bolsa_de_emprego' class="dropdown-item" href="bolsa-de-empregos">Bolsa de empregos</a>
-                                            <a id='link_documentos_perdidos' class="dropdown-item" href="documentos-perdidos">Documentos Perdidos</a>
-                                            <a id='link_campanhas' class="dropdown-item" href="campanhas">Campanhas</a>
+                                            <a id='link_bolsa_de_emprego' class="dropdown-item" href="<?php echo base_url($cidade.'/bolsa-de-empregos')?>">Bolsa de empregos</a>
+                                            <a id='link_documentos_perdidos' class="dropdown-item" href="<?php echo base_url($cidade.'/documentos-perdidos')?>">Documentos Perdidos</a>
+                                            <a id='link_campanhas' class="dropdown-item" href="<?php echo base_url($cidade.'/campanhas')?>">Campanhas</a>
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -313,6 +313,7 @@
             var link_artistico = document.querySelector('#link_artistico a');
             var link_promocoes = document.querySelector('#link_promocoes');
             var link_eventos = document.querySelector('#link_eventos');
+            var link_bolsa_de_emprego = document.querySelector('#link_bolsa_de_emprego');
         
             logo.addEventListener('click', function() {
                 window.history.pushState(null, 'Home', $(this).attr('href'));
@@ -339,30 +340,12 @@
                 alert('Eventos');
                 window.history.pushState(null, 'Eventos', $(this).attr('href'));
             })
-            
 
-
-            // $.ajax({
-            //     url: href,
-            //     success: function( response ){
-            //         //forçando o parser
-            //         var response = $( '<div>'+response+'</div>' );
-                            
-            //         var data = response.find('#link_menu').html();
-            
-            //         //apenas atrasando a troca, para mostrarmos o loading
-            //         window.setTimeout( function(){
-            //             content.fadeOut('slow', function(){
-            //                 content.html( data ).fadeIn();
-                                        
-            //                 var title = response.find('title').text();
-            //                 window.history.pushState( , title, href );
-            //                 document.title = title;
-            //             });
-            //         }, 500 );
-            //     }
-            // });
-            
+            link_bolsa_de_emprego.addEventListener('click', function() {
+                alert('Eventos');
+                window.history.pushState(null, 'Bolsa-de-Empregos', $(this).attr('href'));
+            })
+                        
         });
         document.getElementById('formRegiao').onchange = function(e){
             var regiao = document.querySelector('#regiao');
