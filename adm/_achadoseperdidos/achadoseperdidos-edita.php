@@ -28,11 +28,11 @@ if($submit != '')
     
     if($erro == 0)
     {
-        $pasta = PROJECT_PATH."assets/arquivos/empregos";
+        $pasta = PROJECT_PATH."assets/arquivos/achadoseperdidos";
         
         if($subid == 2) //insert
         {
-        	$q = mysql_query("INSERT INTO empregos 
+        	$q = mysql_query("INSERT INTO achadoseperdidos 
                             (dataCadastro, dataPublicacao, descricao, telefone, regiao, mostrar)
                             VALUES
                             ('$data','$dataPublicacao','$descricao','$telefone','$regiao','$mostrar')");
@@ -51,7 +51,7 @@ if($submit != '')
                     $fileM = insere_foto($foto, $foto_temp, $pasta,'200','140');
             
                     $sqlM = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, tipo, arquivo, codigo)
-                            VALUES ('$data', 'empregos', '{$cod}', '2', '{$fileM}', '$codigo')";
+                            VALUES ('$data', 'achadoseperdidos', '{$cod}', '2', '{$fileM}', '$codigo')";
                     for($b=0;$b<5;$b++)
                     {
                         $qM = mysql_query($sqlM);
@@ -76,7 +76,7 @@ if($submit != '')
         }
         elseif($subid == 3) //update
         {
-            $q = mysql_query("UPDATE empregos SET 
+            $q = mysql_query("UPDATE achadoseperdidos SET 
                             dataAlteracao = '$data',
                             dataPublicacao = '$dataPublicacao',
                             descricao = '$descricao',
@@ -95,7 +95,7 @@ if($submit != '')
                 if($foto != '')
                 {
                     $qFotosBanco = mysql_query("SELECT cod, arquivo, codigo FROM arquivos WHERE codReferencia = '$cod'
-                                            AND referencia = 'empregos' AND tipo = '2'");
+                                            AND referencia = 'achadoseperdidos' AND tipo = '2'");
                     $nFotosBanco = mysql_num_rows($qFotosBanco);
                     
                     // apaga foto que existe no banco e deleta da pasta arquivos
@@ -103,7 +103,7 @@ if($submit != '')
                     {
                         $tpUnlink = mysql_fetch_assoc($qFotosBanco);
                         @unlink($pasta.DIRECTORY_SEPARATOR.$tpUnlink['arquivo']);
-                        $qDelete = mysql_query("DELETE FROM arquivos WHERE codigo = '{$tpUnlink['codigo']}' AND referencia = 'empregos'");
+                        $qDelete = mysql_query("DELETE FROM arquivos WHERE codigo = '{$tpUnlink['codigo']}' AND referencia = 'achadoseperdidos'");
                     }
 
                     $foto_temp = $_FILES['foto']['tmp_name'];
@@ -117,7 +117,7 @@ if($submit != '')
                     $fileM = insere_foto($foto, $foto_temp, $pasta,'200','140');
             
                     $sqlM = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, tipo, arquivo, codigo)
-                            VALUES ('$data', 'empregos', '{$cod}', '2', '{$fileM}', '$codigo')";
+                            VALUES ('$data', 'achadoseperdidos', '{$cod}', '2', '{$fileM}', '$codigo')";
                     for($b=0;$b<5;$b++)
                     {
                         $qM = mysql_query($sqlM);
@@ -153,7 +153,7 @@ else
 {
     if($subid == 3)
     {
-        $q = mysql_query("SELECT * FROM empregos WHERE cod = $cod LIMIT 1",$conexao);
+        $q = mysql_query("SELECT * FROM achadoseperdidos WHERE cod = $cod LIMIT 1",$conexao);
         $n = mysql_num_rows($q);
         if($n > 0)
         {
@@ -228,7 +228,7 @@ else
     </div>
     <div class="divTableForm clear">    
         <?php
-        $qFotos = mysql_query("SELECT * FROM arquivos WHERE codReferencia = '$cod' AND tipo = '2' AND referencia = 'empregos' ORDER BY ordem ASC");
+        $qFotos = mysql_query("SELECT * FROM arquivos WHERE codReferencia = '$cod' AND tipo = '2' AND referencia = 'achadoseperdidos' ORDER BY ordem ASC");
         $nFotos = mysql_num_rows($qFotos);
         if($nFotos > 0)
         {
@@ -242,7 +242,7 @@ else
                     <div class="boxFoto">
                         <div class="divTr clear">
                             <div class="divTd">
-                                <img src="http://<?=PROJECT_URL.'/assets/arquivos/empregos/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" />
+                                <img src="http://<?=PROJECT_URL.'/assets/arquivos/achadoseperdidos/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" />
                                 <input type="hidden" name="codigos[]" value="<?=$tpFotos['codigo'];?>" />
                             </div>
                         </div>

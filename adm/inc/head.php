@@ -155,9 +155,9 @@
         /* final tratamento submenu */
 
         /* Tratamento submenu Utilidade publica*/
-        if($("li.utilidaePublica").children("ul").hasClass("submenu"))
+        if($("li.utilidadePublica").children("ul").hasClass("submenu"))
         {
-            $("li.utilidaePublica").mouseover(function(){
+            $("li.utilidadePublica").mouseover(function(){
                 
                 var tamanhoViewport = $(window).width();
                 if (tamanhoViewport > 768) 

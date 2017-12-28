@@ -25,7 +25,7 @@ $(document).ready(function()
         {
             type: "POST",
             async: false,
-            url: "http://"+ADMIN_URL+"/_empregos/ajax/ajaxMostrarLista.php", //URL de destino
+            url: "http://"+ADMIN_URL+"/_achadoseperdidos/ajax/ajaxMostrarLista.php", //URL de destino
             data:
             {
                 cod: _cod,
@@ -102,7 +102,7 @@ $(document).ready(function()
 
     $regiao = isset($_SESSION[ADMIN_SESSION_NAME.'_regiao']) ? $_SESSION[ADMIN_SESSION_NAME.'_regiao'] : '';
 
-    $q = mysql_query("SELECT * FROM empregos WHERE regiao = '{$regiao}' ORDER BY dataPublicacao DESC ", $conexao);
+    $q = mysql_query("SELECT * FROM achadoseperdidos WHERE regiao = '{$regiao}' ORDER BY dataPublicacao DESC ", $conexao);
     $n = mysql_num_rows($q);
 
     if ($n>0)
@@ -110,7 +110,7 @@ $(document).ready(function()
     	while($tp = mysql_fetch_assoc($q))
     	{
 
-            $qFotos = mysql_query("SELECT cod, arquivo FROM arquivos WHERE codReferencia = '{$tp['cod']}' AND tipo = '2' AND referencia = 'empregos'");
+            $qFotos = mysql_query("SELECT cod, arquivo FROM arquivos WHERE codReferencia = '{$tp['cod']}' AND tipo = '2' AND referencia = 'achadoseperdidos'");
             $nFotos = mysql_num_rows($qFotos);
 
             if($nFotos > 0)
