@@ -124,7 +124,7 @@
                                         </div>
                                         <div id='link_jornalismo' class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                             <?php foreach($titulo_jornalismo as $info):?>
-                                                <a  class="dropdown-item" <?php echo $_SESSION['categoria'] = $info['categoriaPt'] ;?> href="<?php echo base_url($_SESSION['city'].'/noticias')?>"><?php echo $info['categoriaPt']?></a>
+                                                <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'])?>"><?php echo $info['categoriaPt']?></a>
                                             <?php endforeach?>
                                         </div>
                                     </li>

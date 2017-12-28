@@ -83,7 +83,6 @@ class home extends CI_Controller {
         }else{
             $dados['programacao_impar'] = $this->Novomenina->programacao_impar($_SESSION['regiao']);
         }
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['programacao_par']   = $this->Novomenina->programacao_par($_SESSION['regiao']); 
         $dados['viewName'] = 'programacao/programacao';
@@ -109,12 +108,10 @@ class home extends CI_Controller {
 
     
     public function noticia() {
-        $categoria                  = $_SESSION['categoria'];
+        $categoria                  = $_GET['categoria'];
         $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao']);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        // $dados['outras_noticias'] = $this->Novomenina->outras_noticias($_SESSION['regiao']); 
         $dados['mais_lidas']        = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $count                      = count($dados['jornalismo']);
         $dados['count']             = $count;
         $dados['viewName']          = 'jornalismo/noticia';
@@ -125,7 +122,6 @@ class home extends CI_Controller {
         $id = $_GET['id'];
         $categoria = $_GET['categoria'];
         $this->Novomenina->cliques($id, $_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id, $_SESSION['regiao'], $categoria);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
@@ -142,7 +138,6 @@ class home extends CI_Controller {
     public function bolsa_de_empregos() {
         $dados['empregos']          = $this->Novomenina->empregos($_SESSION['regiao']);
         // $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         // $dados['eventos']           = $this->Novomenina->eventos($_SESSION['regiao']); 
         $dados['viewName']          = 'utilidade_publica/bolsa_de_empregos';
         $this->load->view('Template', $dados);
@@ -153,7 +148,6 @@ class home extends CI_Controller {
         $regiao = $_SESSION['regiao'];
         $dados['descricao_eventos'] = $this->Novomenina->descricao_eventos($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['viewName'] = 'eventos/descricao_eventos';
         $this->load->view('Template', $dados);
     }
@@ -161,7 +155,6 @@ class home extends CI_Controller {
     public function promocoes() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['promocoes_impar'] = $this->Novomenina->promocoes_home($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['viewName'] = 'promocoes/promocoes';
         $this->load->view('Template', $dados);
     }
@@ -171,7 +164,6 @@ class home extends CI_Controller {
         $regiao = $_SESSION['regiao'];
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['viewName'] = 'promocoes/descricao_promocoes';
         $this->load->view('Template', $dados);
     }
@@ -181,7 +173,6 @@ class home extends CI_Controller {
         $regiao = $_SESSION['regiao'];
         $dados['descricao_programacao'] = $this->Novomenina->descricao_programacao($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['viewName'] = 'programacao/descricao_programacao';
         $this->load->view('Template', $dados);
     }
@@ -189,20 +180,17 @@ class home extends CI_Controller {
     public function emprego() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['viewName'] = 'utilidade_publica/emprego';
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $this->load->view('Template', $dados);
     }
 
     public function documentos() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['viewName'] = 'utilidade_publica/documentos';
         $this->load->view('Template', $dados);
     }
 
     public function achados_e_perdidos() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['viewName'] = 'utilidade_publica/achados_e_perdidos';
         $this->load->view('Template', $dados);
     }
@@ -212,14 +200,12 @@ class home extends CI_Controller {
         $regiao = $_GET['regiao'];
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['viewName'] = 'promocoes/descricao_promocoes';
         $this->load->view('Template', $dados);
     }
 
     public function empregos() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['viewName'] = 'quem_somos';
         $this->load->view('Template', $dados);
     }
@@ -227,7 +213,6 @@ class home extends CI_Controller {
 
     public function quem_somos() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['viewName'] = 'quem_somos';
         $this->load->view('Template', $dados);
     }

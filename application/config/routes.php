@@ -51,6 +51,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 
+$uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
+        
+$count = count($uri);
+
+echo 'cont da url: '.$count;
+switch($count){
+    case 1:
+        echo '<br>cidade: '.$uri[0];
+        break;
+    case 2:
+        echo '<br>cidade: '.$uri[0];
+        echo '<br>view: '.$uri[1];
+        break;
+    case 3:
+        echo '<br>cidade: '.$uri[0];
+        echo '<br>view: '.$uri[1];
+        echo '<br>categoria: '.$uri[2];
+        break;
+}
+
+
+// echo '<br>cont da url: '.$count;
+$regiao = isset($uri[0]) && !empty($uri[0]) ? $uri[0] : '';// regiao
+$codigoSecao = isset($uri[1]) && !empty($uri[1]) ? $uri[1] : ''; //menu
+//echo $codigoSecao;
+$codigoConteudo = isset($uri[2]) && !empty($uri[2]) ? $uri[2] : ''; //codigo
+
+
+// $regiao.'/noticias/?categoria='.$categoria;
+
+
+
 $route['balneario-camboriu'] = 'home/regiao/?regiao=bc';
 $route['blumenal'] = 'home/regiao/?regiao=bl';
 $route['lages'] = 'home/regiao/?regiao=lg';
