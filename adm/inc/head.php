@@ -23,7 +23,7 @@
 
 <!-- jQuery -->
 <script type="text/javascript" src="<?=ssl().ADMIN_URL;?>/js/jquery.1.8.0.min.js"></script>
-<script type="text/javascript" src="<?=ssl().PROJECT_URL;?>/js/jquery.ui.min.js"></script>
+<script type="text/javascript" src="<?=ssl().PROJECT_URL;?>/assets/js/jquery.ui.min.js"></script>
 <script type="text/javascript" src="<?=ssl().ADMIN_URL;?>/js/jquery.maskedinput.js"></script>
 <script type="text/javascript" src="<?=ssl().ADMIN_URL;?>/js/jquery.maskMoney.js"></script>
 
@@ -155,9 +155,9 @@
         /* final tratamento submenu */
 
         /* Tratamento submenu Utilidade publica*/
-        if($("li.utilidaePublica").children("ul").hasClass("submenu"))
+        if($("li.utilidadePublica").children("ul").hasClass("submenu"))
         {
-            $("li.utilidaePublica").mouseover(function(){
+            $("li.utilidadePublica").mouseover(function(){
                 
                 var tamanhoViewport = $(window).width();
                 if (tamanhoViewport > 768) 
@@ -178,7 +178,23 @@
         })
         /* final tratamento submenu */
 
+
+        $('#formRegiao').change(function(){
+            var parametro = $(this).find(':selected').val();
+            //alert(window.location.href); 
+            location.href = 'principal.php?regiao=' + parametro;
+        });
+
+
+        /*$('#formRegiao').on('change', function() {
+            alert('teste');
+        //$('#formRegiao').change = function(e){
+            var regiao = document.querySelector('#regiao');
+            window.location = 'regiao?regiao=' + regiao.value;              
+        )}*/
+
     });	
+    
 
         
 

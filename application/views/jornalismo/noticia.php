@@ -47,7 +47,6 @@
 <div class="container">
     <div class="conteudoInternas">
 
-
     </div><!-- fin conteudoInternas -->
 </div> <!-- container -->
 
@@ -62,18 +61,12 @@
                             <td>.</td>
                         </tr>
                     </thead>
-                    <tbody>
-                    <!-- <?php 
-                    echo "<pre>";
-                    var_dump($jornalismo);
-                    echo"</pre>";
-                    echo count($jornalismo)."teste";
-                    ?> -->
+                    <tbody class="link_descricao">
                     <div id='count_dados' style="display:none"><?php echo $count;?></div>
                     <?php foreach($jornalismo as $info):?>
                         <tr>
                             <td>
-                                <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                                <a href="<?php echo base_url($_SESSION['city'].'/descricao-noticia');?>">
                                     <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                                     <h3><?php echo $info['tituloPt']?></h3>
                                     <p><?php echo $info['categoriaPt'] . ' ' . date('d/m/Y', strtotime($info['data']))?></p>

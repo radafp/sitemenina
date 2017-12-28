@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'utilidadePublica-apaga'))
+if(!verifica_permissao($cod_user, $nivel, 'utilidadePublica'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -15,48 +15,48 @@ if($cods != '')
 {
     $cods = is_array($cods) ? $cods : array($cods);
     $erros = 0;
-    foreach($cods as $k => $codProgramacao)
+    foreach($cods as $k => $cod)
     {
-        /** EXCLUIR ARQUIVOS - Programacao */
-        $qProgramacao = mysql_query("SELECT * FROM empregos WHERE cod = '{$codProgramacao}'");
-        while($tpProgramacao = mysql_fetch_assoc($qProgramacao))
+        /** EXCLUIR ARQUIVOS  */
+        $q = mysql_query("SELECT * FROM empregos WHERE cod = '{$cod}'");
+        while($tp = mysql_fetch_assoc($q))
         {
-            $qArquivosProgramacao = mysql_query("SELECT * FROM arquivos WHERE codReferencia = '{$tpProgramacao['cod']}' AND referencia = 'empregos'");
-            while($tpArquivosProgramacao = mysql_fetch_assoc($qArquivosProgramacao))
+            $qArquivos = mysql_query("SELECT * FROM arquivos WHERE codReferencia = '{$tp['cod']}' AND referencia = 'empregos'");
+            while($tpArquivos = mysql_fetch_assoc($qArquivos))
             {
                 for($a=0;$a<5;$a++)
                 {
-                    $unlink = @unlink(PROJECT_PATH."arquivos/empregos/".$tpArquivosProgramacao['arquivo']);
+                    $unlink = @unlink(PROJECT_PATH."assets/arquivos/empregos/".$tpArquivos['arquivo']);
                     if($unlink)
                     {
                         break;
                     }
                 }
-                $sqlDelArquivosProgramacao = "DELETE FROM arquivos WHERE cod = '{$tpArquivosProgramacao['cod']}'";
+                $sqlDelArquivos = "DELETE FROM arquivos WHERE cod = '{$tpArquivos['cod']}'";
                 for($a=0;$a<5;$a++)
                 {
-                    $qDelArquivosProgramacao = mysql_query($sqlDelArquivosProgramacao);
-                    if($qDelArquivosProgramacao)
+                    $qDelArquivos = mysql_query($sqlDelArquivos);
+                    if($qDelArquivos)
                     {
                         break;
                     }
                 }
             }
-            $sqlDelProgramacao = "DELETE FROM empregos WHERE cod = '{$tpProgramacao['cod']}'";
+            $sqlDel = "DELETE FROM empregos WHERE cod = '{$tp['cod']}'";
             for($a=0;$a<5;$a++)
             {
-                $qDelProgramacao = mysql_query($sqlDelProgramacao);
-                if($qDelProgramacao)
+                $qDel = mysql_query($sqlDel);
+                if($qDel)
                 {
                     break;
                 }
             }
-            if(!$qDelProgramacao)
+            if(!$qDel)
             {
                 $erros++;
             }
         }
-        /** FIM - EXCLUIR ARQUIVOS - Programacao */
+        /** FIM - EXCLUIR ARQUIVOS */
     }
     
     if($erros > 0)

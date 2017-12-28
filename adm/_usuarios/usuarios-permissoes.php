@@ -1,5 +1,5 @@
 <?php
-$acesso = isset($acesso) ? $acesso : "usuarios-permissoes";
+$acesso = isset($acesso) ? $acesso : "usuarios";
 if(!verifica_permissao($cod_user, $nivel, $acesso))
 {
 	echo "<script>
@@ -73,7 +73,7 @@ else
     <div class="divTableFormPermissoes clear">      
         <?php
         $aux = 0;
-        $qPermissoes = mysql_query("SELECT * FROM tabelas GROUP BY id ORDER BY nome",$conexao);
+        $qPermissoes = mysql_query("SELECT * FROM tabelas ORDER BY id",$conexao);
         while($tpPermissoes = mysql_fetch_assoc($qPermissoes))
         {
             $aux++;
@@ -81,7 +81,7 @@ else
             $titulo = trim($titulo[0]);
         ?>
             <div class="boxPermissao">
-                <h4><?=$titulo;?></h4>
+                <!--<h4><?=$titulo;?></h4>-->
                 <?
                 $qPermissoesModulos = mysql_query("SELECT * FROM tabelas WHERE id = '{$tpPermissoes['id']}' ORDER BY nome",$conexao);
                 while($tpPermissoesModulos = mysql_fetch_assoc($qPermissoesModulos))

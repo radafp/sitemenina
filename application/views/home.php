@@ -48,7 +48,7 @@
                             <img src="<?php echo base_url('/assets/img/logoMeninabc.png')?>" title="Radio Menina Balneário Camboriú">
                         </div>
                         <p>Balneário Camboriú</p>
-                        <a href="home/regiao?regiao=bc">Acessar</a>
+                        <a href="balneario-camboriu">Acessar</a>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4">
@@ -57,7 +57,7 @@
                             <img src="<?php echo base_url('/assets/img/logoMeninabl.png')?>" title="Radio Menina Blumenau">
                         </div>
                         <p>Blumenau</p>
-                        <a href="home/regiao?regiao=bl">Acessar</a>
+                        <a href="blumenal">Acessar</a>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4">
@@ -66,7 +66,7 @@
                             <img src="<?php echo base_url('/assets/img/logoMeninalg.png')?>" title="Radio Menina Lages">
                         </div>
                         <p>Lages</p>
-                        <a href="home/regiao?regiao=lg" name='lages'>Acessar</a>
+                        <a href="lages" name='lages'>Acessar</a>
                     </div>
                 </div>
             </div>                    

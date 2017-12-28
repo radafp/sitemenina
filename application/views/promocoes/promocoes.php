@@ -10,6 +10,7 @@
 
         var content = $('#content');
         $('.link_descricao').click(function( e ){
+            alert("test");
             e.preventDefault();
 
             var href = $( this ).attr('href');

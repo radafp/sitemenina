@@ -4,20 +4,20 @@
  * codeToMessage()
  *
  * Retorna a mensagem de erro gerada
- * pelo método uploadArquivo.
+ * pelo mï¿½todo uploadArquivo.
  *
  * Pode-se escolher o idioma da
- * mensagem de erro no parâmetro $idioma.
+ * mensagem de erro no parï¿½metro $idioma.
  *
  * @author Luis Fernando Gomes
  * @copyright 9/2009
  * @version 1.1
  *
- * Histórico:
+ * Histï¿½rico:
  *
- * Data			| Versão | Modificação
+ * Data			| Versï¿½o | Modificaï¿½ï¿½o
  * ------------------------------------------------------------------------------------------------
- * 09/03/2010	|  1.1 	 | Adicionado parâmetro $tipoRetorno.
+ * 09/03/2010	|  1.1 	 | Adicionado parï¿½metro $tipoRetorno.
  * ------------------------------------------------------------------------------------------------
  *
  * @param integer $code
@@ -34,21 +34,21 @@ function codeToMessage($code, $tipoRetorno = 'js', $idioma = 'pt-br')
             $message['en-us']['js'] = 'There is no error, the file uploaded with success.';
             $message['en-us']['html'] = 'There is no error, the file uploaded with success.';
             $message['pt-br']['js'] = 'N\u00E3o h\u00E1 nenhum erro, o arquivo enviado com sucesso.';
-            $message['pt-br']['html'] = 'Não há nenhum erro, o arquivo enviado com sucesso.';
+            $message['pt-br']['html'] = 'Nï¿½o hï¿½ nenhum erro, o arquivo enviado com sucesso.';
             break;
         case UPLOAD_ERR_INI_SIZE:
             /** 1 **/
             $message['en-us']['js'] = 'The uploaded file exceeds the upload_max_filesize directive in php.ini';
             $message['en-us']['html'] = 'The uploaded file exceeds the upload_max_filesize directive in php.ini';
             $message['pt-br']['js'] = 'O arquivo no upload \u00E9 maior do que o limite definido em upload_max_filesize no php.ini.';
-            $message['pt-br']['html'] = 'O arquivo no upload é maior do que o limite definido em upload_max_filesize no php.ini.';
+            $message['pt-br']['html'] = 'O arquivo no upload ï¿½ maior do que o limite definido em upload_max_filesize no php.ini.';
             break;
         case UPLOAD_ERR_FORM_SIZE:
             /** 2 **/
             $message['en-us']['js'] = 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form';
             $message['en-us']['html'] = 'The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form';
             $message['pt-br']['js'] = 'O arquivo ultrapassa o limite de tamanho em MAX_FILE_SIZE que foi especificado no formul\u00E1rio HTML.';
-            $message['pt-br']['html'] = 'O arquivo ultrapassa o limite de tamanho em MAX_FILE_SIZE que foi especificado no formulário HTML.';
+            $message['pt-br']['html'] = 'O arquivo ultrapassa o limite de tamanho em MAX_FILE_SIZE que foi especificado no formulï¿½rio HTML.';
             break;
         case UPLOAD_ERR_PARTIAL:
             /** 3 **/
@@ -62,14 +62,14 @@ function codeToMessage($code, $tipoRetorno = 'js', $idioma = 'pt-br')
             $message['en-us']['js'] = 'No file was uploaded';
             $message['en-us']['html'] = 'No file was uploaded';
             $message['pt-br']['js'] = 'N\u00E3o foi feito o upload do arquivo.';
-            $message['pt-br']['html'] = 'Não foi feito o upload do arquivo.';
+            $message['pt-br']['html'] = 'Nï¿½o foi feito o upload do arquivo.';
             break;
         case UPLOAD_ERR_NO_TMP_DIR:
             /** 6 **/
             $message['en-us']['js'] = 'Missing a temporary folder. Introduced in PHP 4.3.10 and PHP 5.0.3.';
             $message['en-us']['html'] = 'Missing a temporary folder. Introduced in PHP 4.3.10 and PHP 5.0.3.';
             $message['pt-br']['js'] = 'Faltando uma pasta tempor\u00E1ria. Introduzido no PHP 5.0.3.';
-            $message['pt-br']['html'] = 'Faltando uma pasta temporária. Introduzido no PHP 5.0.3.';
+            $message['pt-br']['html'] = 'Faltando uma pasta temporï¿½ria. Introduzido no PHP 5.0.3.';
             break;
         case UPLOAD_ERR_CANT_WRITE:
             /** 7 **/
@@ -83,28 +83,28 @@ function codeToMessage($code, $tipoRetorno = 'js', $idioma = 'pt-br')
             $message['en-us']['js'] = 'File upload stopped by extension. Introduced in PHP 5.2.0.';
             $message['en-us']['html'] = 'File upload stopped by extension. Introduced in PHP 5.2.0.';
             $message['pt-br']['js'] = 'O upload do arquivo foi interrompido por extens\u00E3o. Introduzido no PHP 5.2.0.';
-            $message['pt-br']['html'] = 'O upload do arquivo foi interrompido por extensão. Introduzido no PHP 5.2.0.';
+            $message['pt-br']['html'] = 'O upload do arquivo foi interrompido por extensï¿½o. Introduzido no PHP 5.2.0.';
             break;
 
         case 9:
             $message['en-us']['js'] = '';
             $message['en-us']['html'] = '';
             $message['pt-br']['js'] = 'O arquivo falhou na verifica\u00E7\u00E3o de valida\u00E7\u00E3o b\u00E1sica.';
-            $message['pt-br']['html'] = 'O arquivo falhou na verificação de validação básica.';
+            $message['pt-br']['html'] = 'O arquivo falhou na verificaï¿½ï¿½o de validaï¿½ï¿½o bï¿½sica.';
             break;
 
         case 10:
             $message['en-us']['js'] = '';
             $message['en-us']['html'] = '';
             $message['pt-br']['js'] = 'O arquivo no upload \u00E9 maior do que o limite definido pelo administrador.';
-            $message['pt-br']['html'] = 'O arquivo no upload é maior do que o limite definido pelo administrador.';
+            $message['pt-br']['html'] = 'O arquivo no upload ï¿½ maior do que o limite definido pelo administrador.';
             break;
 
         case 11:
             $message['en-us']['js'] = '';
             $message['en-us']['html'] = '';
             $message['pt-br']['js'] = 'O arquivo n\u00E3o possui uma extens\u00E3o permitida pelo administrador.';
-            $message['pt-br']['html'] = 'O arquivo não possui uma extensão permitida pelo administrador.';
+            $message['pt-br']['html'] = 'O arquivo nï¿½o possui uma extensï¿½o permitida pelo administrador.';
             break;
 
         case 12:
@@ -125,7 +125,7 @@ function codeToMessage($code, $tipoRetorno = 'js', $idioma = 'pt-br')
             $message['en-us']['js'] = '';
             $message['en-us']['html'] = '';
             $message['pt-br']['js'] = 'O diret\u00E13rio de destino n\u00E3o \u00E9 um diret\u00E13rio ou possui permiss\u00E3o de escrita.';
-            $message['pt-br']['html'] = 'O diretório de destino não é um diretório ou possui permissão de escrita.';
+            $message['pt-br']['html'] = 'O diretï¿½rio de destino nï¿½o ï¿½ um diretï¿½rio ou possui permissï¿½o de escrita.';
             break;
 
         default:
@@ -160,12 +160,12 @@ function codeToMessage($code, $tipoRetorno = 'js', $idioma = 'pt-br')
 /**
  * uploadArquivo()
  *
- * Método que faz upload de um arquivo e retorna
+ * Mï¿½todo que faz upload de um arquivo e retorna
  * o nome do arquivo armazenado em caso de sucesso
- * ou código de erro em caso de falha.
+ * ou cï¿½digo de erro em caso de falha.
  *
- * Para interpretar o código de erro usa-se a
- * função codeToMessage().
+ * Para interpretar o cï¿½digo de erro usa-se a
+ * funï¿½ï¿½o codeToMessage().
  *
  * exemplo:
  * $extensoesPermitidas = array("doc", "pdf");
@@ -185,29 +185,29 @@ function codeToMessage($code, $tipoRetorno = 'js', $idioma = 'pt-br')
  * @copyright 9/2009
  * @version 1.1
  *
- * Histórico:
+ * Histï¿½rico:
  *
- * Data			| Versão | Modificação
+ * Data			| Versï¿½o | Modificaï¿½ï¿½o
  * ------------------------------------------------------------------------------------------------
- * 29/09/2009	|  1.1 	 | Substituido a função ereg por preg_match.
+ * 29/09/2009	|  1.1 	 | Substituido a funï¿½ï¿½o ereg por preg_match.
  * 				|   	 | ------------------------------------------------------------------------
  * 				|   	 | Consertado bug de redimensionamento.
  * 				|   	 | ------------------------------------------------------------------------
  * 12/04/2010	|   	 | Consertado bug de upload de imagens com formato diferente de jpg.
  * ------------------------------------------------------------------------------------------------
  *
- * @param string $campoDoForm 					o nome do campo de formulário de upload de arquivo
+ * @param string $campoDoForm 					o nome do campo de formulï¿½rio de upload de arquivo
  * @param string $chaveMulti 					a chave do do array $_FILES do arqivo a fazer upload
  * @param string $caminhoNoServidor 			o caminho relativo para o qual armazenar o arquivo (sem barra final)
  * @param string $nomeFinalDoArquivo 			o nome final desejado por no arquivo
- * @param integer $tamanhoMaximo 				o tamanho máximo do arquivo (medido em bytes)
- * @param array $extensoesPermitidas 			uma matriz contendo todos as extensões permitidas de arquivo
- * @param integer $larguraMaxima				limite de largura de uma imagem (use null para valor padrão)
- * @param integer $alturaMaxima					limite de altura de uma imagem (use null para valor padrão)
+ * @param integer $tamanhoMaximo 				o tamanho mï¿½ximo do arquivo (medido em bytes)
+ * @param array $extensoesPermitidas 			uma matriz contendo todos as extensï¿½es permitidas de arquivo
+ * @param integer $larguraMaxima				limite de largura de uma imagem (use null para valor padrï¿½o)
+ * @param integer $alturaMaxima					limite de altura de uma imagem (use null para valor padrï¿½o)
  * @param string $orientacao					permite somente imegens verticais ou horizontais ('V' para vertical ou 'H' para horizontal)
  * @param integer $raio							tamanho da borda da imagem
  * @param string $bgcolor						cor da borda da imagem hexadecimal (ex. #3FE5AA)
- * @return string | false 						nome do arquivo armazenado em caso de sucesso ou código de erro em caso de falha.
+ * @return string | false 						nome do arquivo armazenado em caso de sucesso ou cï¿½digo de erro em caso de falha.
  */
 function uploadArquivo($campoDoForm = '', $chaveMulti = -1, $caminhoNoServidor = '', $nomeFinalDoArquivo = '', $tamanhoMaximo = null, $extensoesPermitidas = array(), $larguraMaxima = 500, $alturaMaxima = 500, $orientacao = '', $raio = 0, $bgcolor = '')
 {
@@ -334,7 +334,7 @@ function uploadArquivo($campoDoForm = '', $chaveMulti = -1, $caminhoNoServidor =
         }
     }
 
-    /** Teste pra saber se são multiplos arquivos **/
+    /** Teste pra saber se sï¿½o multiplos arquivos **/
     if ($chaveMulti > -1) {
         $array = formatFilesArray($_FILES[$campoDoForm]);
 
@@ -358,7 +358,7 @@ function uploadArquivo($campoDoForm = '', $chaveMulti = -1, $caminhoNoServidor =
     }
 
     if ((!is_uploaded_file($tmp_name)) || ($size == 0)) {
-        /** arquivo falhou nas verificações de validação básica **/
+        /** arquivo falhou nas verificaï¿½ï¿½es de validaï¿½ï¿½o bï¿½sica **/
         return 9;
     }
 
@@ -368,7 +368,7 @@ function uploadArquivo($campoDoForm = '', $chaveMulti = -1, $caminhoNoServidor =
 
     if ((is_array($extensoesPermitidas)) && (!empty($extensoesPermitidas))) {
         $pattern = '/';
-        /** Monta a expressão regular **/
+        /** Monta a expressï¿½o regular **/
         foreach ($extensoesPermitidas as $ext) {
             $pattern .= '(' . $ext . ')';
             if (next($extensoesPermitidas)) {
@@ -380,7 +380,7 @@ function uploadArquivo($campoDoForm = '', $chaveMulti = -1, $caminhoNoServidor =
         $ext = end($arrName);
         if (!preg_match($pattern, $ext)) {
             //die("morri:".$pattern .":". end(explode(".", $name)));
-            /** Não é uma extensão permitida **/
+            /** Nï¿½o ï¿½ uma extensï¿½o permitida **/
             return 11;
         }
     }
@@ -397,7 +397,7 @@ function uploadArquivo($campoDoForm = '', $chaveMulti = -1, $caminhoNoServidor =
         chmod($path, 0777);
         //echo(basename($path)) . '<br />';
     } else {
-        return 15; // não conseguiu copiar
+        return 15; // nï¿½o conseguiu copiar
     }
 
     /** se for imagem **/
@@ -536,7 +536,7 @@ function insere_foto($file_name, $arquivo_temporario, $caminho, $largura_max, $a
 
     $tempStrFoto = explode(".", $foto);
     $nomeFotoSemEspaco = str_replace(" ","",$tempStrFoto[0]);
-    $foto = $nomeFotoSemEspaco . "_" . rand(1, $hoje) . "." . $ext;
+    $foto = mg_removerAcentos($nomeFotoSemEspaco) . "_" . rand(1, $hoje) . "." . $ext;
 
     //echo $foto;
     $diret = $caminho;
@@ -552,7 +552,7 @@ function insere_foto($file_name, $arquivo_temporario, $caminho, $largura_max, $a
         if ($fileerr != 0) {
             echo " <script language=\"JavaScript1.2\"> \n";
             echo " <!-- \n";
-            echo " alert('Erro no envio da imagem. Foto não enviada.'); \n";
+            echo " alert('Erro no envio da imagem. Foto nï¿½o enviada.'); \n";
             //echo " location.replace('fotos_lista.php'); \n";
             echo " //--> \n";
             echo " </script> \n";

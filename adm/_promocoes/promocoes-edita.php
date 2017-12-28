@@ -1,25 +1,5 @@
 <?php
-$acessoLiberado = false;
-if(!isset($acesso))
-{
-    $acesso = "promocoes-edita";
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-        $acessoLiberado = true;
-    }
-    elseif(verifica_permissao($cod_user, $nivel, "promocoes-visualiza"))
-    {
-        $acessoLiberado = true;
-    }
-}
-else
-{
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-        $acessoLiberado = true;
-    }
-}
-if(!$acessoLiberado)
+if(!verifica_permissao($cod_user, $nivel, 'promocoes'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -36,26 +16,17 @@ $submit = isset($_POST['submit']) ? $_POST['submit'] : '';
 
 if($submit != '')
 {
-    if(!verifica_permissao($cod_user, $nivel, $acesso))
-    {
-    	echo "<script>
-    	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
-    	       document.location.replace('".ssl().ADMIN_URL."/principal.php');";
-    	echo " </script>";
-    	die();
-    }
-
-    
     $data = date('Y-m-d');
     $dataInicio = isset($_POST['dataInicio']) ? dataEn($_POST['dataInicio']) : '';
+    $horaInicio = isset($_POST['horaInicio']) ? dataEn($_POST['horaInicio']) : '';
+    
     $dataFim = isset($_POST['dataFim']) ? dataEn($_POST['dataFim']) : '';
+    $horaFim = isset($_POST['horaFim']) ? dataEn($_POST['horaFim']) : '';
     
     $tituloPt = isset($_POST['tituloPt']) ? $_POST['tituloPt'] : '';
-    //$tituloEn = isset($_POST['nomeEn']) ? $_POST['nomeEn'] : '';
-    //$cleanTitlePt = cleanTitle($nomePt);
     $cleanTitlePt = cleanTitle($tituloPt);
+
     $descricaoPt = isset($_POST['descricaoPt']) ? $_POST['descricaoPt'] : '';
-    //$descricaoEn = isset($_POST['descricaoEn']) ? $_POST['descricaoEn'] : '';
 
     $regulamento = isset($_FILES['arquivo']['name']) ? $_FILES['arquivo']['name'] : '';
     
@@ -69,10 +40,9 @@ if($submit != '')
     
     if($erro == 0)
     {
-        $pasta = PROJECT_PATH."arquivos/promocoes";
-        $pastaRegulamento = PROJECT_PATH."arquivos/regulamentos";
+        $pasta = PROJECT_PATH."assets/arquivos/promocoes";
+        $pastaRegulamento = PROJECT_PATH."assets/arquivos/regulamentos";
 
-        
         if($subid == 2) //insert
         {
         	$q = mysql_query("INSERT INTO promocoes 
@@ -208,7 +178,6 @@ if($submit != '')
                                         
             if($q)
         	{
-
                 if($regulamento != '')
                 {
                     $ext = strtolower(strrev($_FILES['arquivo']['name']));
@@ -260,8 +229,8 @@ if($submit != '')
                                 if(move_uploaded_file($_FILES['arquivo']['tmp_name'],$pastaRegulamento.'/'.$nome_arq))
                                 {
 
-                                    $sqlRegulamento = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, arquivo, codigo)
-                                                        VALUES ('$data', 'promocoes', '{$cod}', '{$nome_arq}', '$codigo')";
+                                    $sqlRegulamento = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, arquivo)
+                                                        VALUES ('$data', 'promocoes', '{$cod}', '{$nome_arq}')";
                                     for($b=0;$b<5;$b++)
                                     {
                                         $qRegulamento = mysql_query($sqlRegulamento);
@@ -520,7 +489,7 @@ else
                         <label>Regulamento cadastrado:</label>
                     </div>
                     <div class="divTd">
-                        <a href="<?="http://".PROJECT_URL."/arquivos/regulamentos/".$tpRegulamento['arquivo'];?>" target="_blanck">Abrir o arquivo</a>
+                        <a href="<?="http://".PROJECT_URL."/assets/arquivos/regulamentos/".$tpRegulamento['arquivo'];?>" target="_blanck">Abrir o arquivo</a>
                     </div>
                 </div>
                 <?
@@ -584,7 +553,7 @@ else
                                 <label>Foto <?=$aux;?>:</label>
                             </div>
                             <div class="divTd">
-                                <img src="http://<?=PROJECT_URL.'/arquivos/promocoes/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" style="max-width: 150px;" />
+                                <img src="http://<?=PROJECT_URL.'/assets/arquivos/promocoes/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" style="max-width: 150px;" />
                                 <input type="hidden" name="codigos[]" value="<?=$tpFotos['codigo'];?>" />
                             </div>
                         </div>
@@ -621,19 +590,12 @@ else
         }
         ?>
     </div>
-    <?
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-    ?>
-        <div class="divTr">
-            <div class="divTd">&nbsp;</div>
-            <div class="divTd">
-                <input type="submit" value="Salvar" name="submit" class="salvar" />
-            </div>
+    <div class="divTr">
+        <div class="divTd">&nbsp;</div>
+        <div class="divTd">
+            <input type="submit" value="Salvar" name="submit" class="salvar" />
         </div>
-    <?
-    }
-    ?>
+    </div>
 </form>
 
 <script type="text/javascript">

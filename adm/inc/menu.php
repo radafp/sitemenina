@@ -1,7 +1,7 @@
 <div class="menu">
     <ul class="centro">
         <?
-        if(verifica_permissao($cod_user, $nivel, 'usuarios-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'usuarios'))
         {
         ?>
             <li class="<?=$id == 1 ? "menuAtivo" : "";?>" >
@@ -11,7 +11,7 @@
             </li>
         <?
         }
-        if(verifica_permissao($cod_user, $nivel, 'programacao-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'programacao'))
         {
         ?>
             <li class="<?=$id == 10 ? "menuAtivo" : "";?>" >
@@ -21,7 +21,7 @@
             </li>
         <?
         }
-        if(verifica_permissao($cod_user, $nivel, 'jornalismo-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'jornalismo'))
         {
         ?>
             <li class="<?=$id == 15 || $id == 16 ? "menuAtivo" : "";?> jornalismo" >
@@ -35,7 +35,7 @@
             </li>
         <?
         }
-        if(verifica_permissao($cod_user, $nivel, 'artistico-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'artistico'))
         {
         ?>
             <li class="<?=$id == 20 ? "menuAtivo" : "";?> artistico" >
@@ -43,13 +43,13 @@
                     <span>Artístico</span>
                 </a>
                 <ul class="submenu">
-                    <!--<li><a href="<?=ssl().ADMIN_URL."/principal.php?id=20&subid=1";?>">Top 10</a></li>-->
+                    <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=20&subid=1";?>">Top 10</a></li>
                     <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=21&subid=1";?>">Vídeos</a></li>
                 </ul>  
             </li>
         <?
         }
-        if(verifica_permissao($cod_user, $nivel, 'promocoes-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'promocoes'))
         {
         ?>
             <li class="<?=$id == 25 ? "menuAtivo" : "";?>" >
@@ -59,7 +59,7 @@
             </li>
         <?
         }
-        if(verifica_permissao($cod_user, $nivel, 'eventos-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'eventos'))
         {
         ?>
             <li class="<?=$id == 30 ? "menuAtivo" : "";?>" >
@@ -69,18 +69,17 @@
             </li>
         <?
         }
-        /*
-        if(verifica_permissao($cod_user, $nivel, 'utilidadePublica-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'utilidadePublica'))
         {
         ?>
-            <li class="<?=($id == 35 || $id == 36 || $id == 37) ? "menuAtivo" : "";?> utilidaePublica" >
+            <li class="<?=($id == 35 || $id == 36 || $id == 37) ? "menuAtivo" : "";?> utilidadePublica" >
                 <a style="cursor: pointer;">
                     <span>Util. Pública</span>
                 </a>
                 <ul class="submenu">
                     <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=35&subid=1";?>">Bolsa de empregos</a></li>
                     <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=36&subid=1";?>">Achados e perdidos</a></li>
-                    <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=37&subid=1";?>">Campanhas</a></li>
+                    <!--<li><a href="<?=ssl().ADMIN_URL."/principal.php?id=37&subid=1";?>">Campanhas</a></li>-->
                 </ul>  
             </li>
         <?

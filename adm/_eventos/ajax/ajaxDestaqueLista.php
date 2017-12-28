@@ -7,7 +7,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
     
     $cod = isset($_POST['cod']) ? $_POST['cod'] : '';
     $destaque = isset($_POST['destaque']) ? $_POST['destaque'] : '';
-    $sql = "UPDATE noticias SET destaque = '$destaque' WHERE cod = '$cod'";
+    $sql = "UPDATE eventos SET destaque = '$destaque' WHERE cod = '$cod'";
     $query = mysql_query($sql);
     if($query)
     {

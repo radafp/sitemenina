@@ -38,7 +38,7 @@
             <div id='esquerda'>
                 <p><?php echo $info['categoriaPt']. ' '. date('d/m/Y', strtotime($info['data'])). '<br><br>'?></p>
                 <h3><?php echo $info['tituloPt'].'<br>'?></h3>
-                <img src="<?php if(isset($info['arquivo'])) {echo base_url('/assets/arquivos/noticias/'.$info['arquivo']);}?>" alt="">
+                <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo']);?>" alt="">
                 <p><?php echo $info['descricaoPt']?></p>
             </div>
             <?php endforeach?>

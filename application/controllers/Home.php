@@ -18,9 +18,26 @@ class home extends CI_Controller {
     }
 
     public function regiao() {
-        $_SESSION['regiao']         = $_GET['regiao'];
-        $regiao                     = $_GET['regiao'];
-        $dados['cidade']            = $this->Novomenina->cidade($regiao);
+        $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
+        
+        $regiao = isset($uri[0]) && !empty($uri[0]) ? $uri[0] : '';// regiao
+        if($regiao == 'balneario-camboriu') {
+            $_SESSION['regiao'] =  'bc';
+            $_SESSION['city']   = 'balneario-camboriu';
+        }if($regiao == 'blumenal') {
+            $_SESSION['regiao'] =  'bl';
+            $_SESSION['city']   = 'blumenal';
+        }if($regiao == 'lages') {
+            $_SESSION['regiao'] = 'lg';
+            $_SESSION['city']   = 'lages';
+        };
+
+        $codigoSecao = isset($uri[1]) && !empty($uri[1]) ? $uri[1] : ''; //menu
+        //echo $codigoSecao;
+        $codigoConteudo = isset($uri[2]) && !empty($uri[2]) ? $uri[2] : ''; //codigo
+
+        // $dados['cidade']            = $this->Novomenina->cidade($regiao);
+        $dados['cidade'] = $_SESSION['city'];
         switch($_SESSION['regiao']){
             case 'bc':
                 $_SESSION['slogam'] = "+ DE UM MILHÃO DE AMIGOS";
@@ -48,13 +65,13 @@ class home extends CI_Controller {
                 break;
         }
 
-        $dados['noticias_em_destaque']  = $this->Novomenina->noticias_em_destaque($regiao);
-        $dados['ultimas_noticias']      = $this->Novomenina->ultimas_noticias($regiao);
-        $dados['programacao_home']      = $this->Novomenina->programacao_home($regiao);
-        $dados['eventos_home']          = $this->Novomenina->eventos_home($regiao);
-        $dados['videos']                = $this->Novomenina->videos($regiao);
-        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($regiao);
-        $dados['promocoes_home']        = $this->Novomenina->promocoes_home($regiao);
+        $dados['noticias_em_destaque']  = $this->Novomenina->noticias_em_destaque($_SESSION['regiao']);
+        $dados['ultimas_noticias']      = $this->Novomenina->ultimas_noticias($_SESSION['regiao']);
+        $dados['programacao_home']      = $this->Novomenina->programacao_home($_SESSION['regiao']);
+        $dados['eventos_home']          = $this->Novomenina->eventos_home($_SESSION['regiao']);
+        $dados['videos']                = $this->Novomenina->videos($_SESSION['regiao']);
+        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['promocoes_home']        = $this->Novomenina->promocoes_home($_SESSION['regiao']);
         $dados['viewName']              = 'regiao';
         $this->load->view('Template', $dados);
     }
@@ -81,26 +98,26 @@ class home extends CI_Controller {
     //     $this->load->view('Template', $dados);
     // }
 
-    public function artistico() {
-        // $categoria = $_GET['categoria'];
-        // $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['videos'] = $this->Novomenina->videos($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        $dados['viewName'] = 'artistico/videos';
-        $this->load->view('Template', $dados);
-    }
+    // public function artistico() {
+    //     $categoria                  = $_GET['categoria'];
+    //     $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+    //     $dados['videos']            = $this->Novomenina->videos($_SESSION['regiao']);
+    //     $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
+    //     $dados['viewName']          = 'artistico/videos';
+    //     $this->load->view('Template', $dados);
+    // }
 
+    
     public function noticia() {
-        $categoria = $_SESSION['categoria'];
-        $dados['jornalismo'] = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao']);
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $categoria                  = $_SESSION['categoria'];
+        $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao']);
+        $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         // $dados['outras_noticias'] = $this->Novomenina->outras_noticias($_SESSION['regiao']); 
-        $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
+        $dados['mais_lidas']        = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
         $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        // $dados = json_encode($dados['jornalismo']);
-        $count = count($dados['jornalismo']);
-        $dados['count'] = $count;
-        $dados['viewName'] = 'jornalismo/noticia';
+        $count                      = count($dados['jornalismo']);
+        $dados['count']             = $count;
+        $dados['viewName']          = 'jornalismo/noticia';
         $this->load->view('Template', $dados);
     }
 
@@ -115,12 +132,19 @@ class home extends CI_Controller {
         $dados['viewName'] = 'jornalismo/descricao_noticia';
         $this->load->view('Template', $dados);
     }
-    
-    public function eventos() {
-        $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+
+    public function top_10() {
+        $dados['top_10']   = $this->Novomenina->top_10();
+        $dados['viewName'] = 'artistico/top_10';
+        $this->load->view('Template', $dados);
+    }
+
+    public function bolsa_de_empregos() {
+        $dados['empregos']          = $this->Novomenina->empregos($_SESSION['regiao']);
+        // $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        $dados['eventos']           = $this->Novomenina->eventos($_SESSION['regiao']); 
-        $dados['viewName']          = 'eventos/eventos';
+        // $dados['eventos']           = $this->Novomenina->eventos($_SESSION['regiao']); 
+        $dados['viewName']          = 'utilidade_publica/bolsa_de_empregos';
         $this->load->view('Template', $dados);
     }
 

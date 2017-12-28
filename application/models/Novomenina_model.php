@@ -41,6 +41,7 @@ class Novomenina_model extends CI_Model{
                     WHERE programacao.regiao = '$regiao' 
                     AND programacao.mostrar = 1 
                 GROUP BY programacao.cod
+                LIMIT 3;
         "); 
         return $query->result_array();
     }
@@ -144,7 +145,7 @@ class Novomenina_model extends CI_Model{
         // return $query->result_array();
 
         $query = $this->db->query(
-            "SELECT noticias.*, categorias.categoriaPt,
+            "SELECT noticias.*, categorias.categoriaPt, categorias.cor, categorias.corTexto,
                 (SELECT a.arquivo 
                     FROM arquivos AS a 
                         WHERE a.codReferencia = noticias.cod 
@@ -184,7 +185,7 @@ class Novomenina_model extends CI_Model{
         // return $query->result_array();
 
         $query = $this->db->query(
-            "SELECT noticias.*, categorias.categoriaPt,
+            "SELECT noticias.*, categorias.categoriaPt, categorias.cor, categorias.corTexto,
                 (SELECT a.arquivo 
                     FROM arquivos AS a 
                         WHERE a.codReferencia = noticias.cod 
@@ -381,6 +382,18 @@ class Novomenina_model extends CI_Model{
     public function cliques($id, $regiao) {
         $query = $this->db->query("UPDATE noticias SET cliques = cliques + 1 WHERE cod = $id  and noticias.regiao= '$regiao'");
     }
+    // ================================ PAGINAS DE ARTISTICO ================================
+    // |                                                                                    |
+    // |                          TODAS AS PAGINAS SOBRE ARTISTIC                           |
+    // |                                                                                    |
+    // ======================================================================================
+
+    public function top_10() {
+        $query = $this->db->query(
+            "SELECT top10.* from top10 
+        ");
+        return $query->result_array();
+    }
 
 
     // ================================ PAGINAS DE PROMOÇÕES ====================================
@@ -575,6 +588,43 @@ class Novomenina_model extends CI_Model{
         }
     }
     
+
+    // ================================ PAGINAS DE EVENTOS ====================================
+    // |                                                                                      |
+    // |                          TODAS AS PAGINAS SOBRE EVENTOS                              |
+    // |                                                                                      |
+    // ========================================================================================
+     
+    public function empregos($regiao) {
+        // $query = $this->db->query("SELECT eventos.*, arquivos.arquivo
+        //                             FROM eventos 
+        //                             INNER JOIN arquivos 
+        //                             ON eventos.cod = arquivos.codReferencia 
+        //                             and eventos.regiao = 'bc' 
+        //                             GROUP BY eventos.cod
+        //                             ORDER BY eventos.dataCadastro 
+        //                             LIMIT 2"
+        // );
+        // return $query->result_array();
+        $query = $this->db->query(
+            "SELECT empregos.*, 
+                (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                        WHERE a.codReferencia = empregos.cod 
+                        AND a.referencia = 'empregos' 
+                        AND a.tipo = 2 
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+            AS arquivo 
+                FROM empregos 
+                    WHERE empregos.regiao = '$regiao' 
+                    AND empregos.mostrar = 1 
+                GROUP BY empregos.cod
+                ORDER BY empregos.dataCadastro DESC
+        "); 
+        return $query->result_array();
+    }
+
      // public function GetAll_noticias($categoria, $regiao, $limit = null, $offset = null) {
     //     // $this->db->where('categoria', $categoria);
     //     // $this->db->where('regiao', $regiao);

@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'programacao-lista'))
+if(!verifica_permissao($cod_user, $nivel, 'programacao'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -96,7 +96,7 @@ $(document).ready(function()
         <div class="divTd">&nbsp;</div>
         <div class="divTd">Logo</div>
         <div class="divTd">Nome do Programa</div>
-        <div class="divTd">Programacao</div>
+        <div class="divTd">Programação</div>
         <div class="divTd">Horário</div>
         <div class="divTd">Mostrar</div>
     </div>
@@ -130,12 +130,12 @@ $(document).ready(function()
                     {
                     ?>
                         <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
-                            <img src="<?=ssl().PROJECT_URL;?>/arquivos/programacao/<?=$tpFoto['arquivo'];?>" style="max-width: 80px;">
+                            <img src="<?=ssl().PROJECT_URL;?>/assets/arquivos/programacao/<?=$tpFoto['arquivo'];?>" style="max-width: 80px;">
                         </a>
                     <?
                     }else{
                     ?>
-                        <img src="<?=ssl().PROJECT_URL;?>/arquivos/programacao/placeholder.jpg" style="max-width: 80px;">
+                        <img src="<?=ssl().PROJECT_URL;?>/assets/arquivos/programacao/placeholder.jpg" style="max-width: 80px;">
                     <?
                     }
                     ?>

@@ -25,7 +25,6 @@
         
         <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 
-
         <!-- icone -->
         <!-- <link rel="icon" href="<?php echo base_url('/assets/img/base/favicon.png')?>"> -->
 
@@ -36,15 +35,12 @@
         <meta property="og:description" content="<?=isset($description) ? $description : '';?>" />
         <meta property="og:image" content="<?=isset($imagemFb) ? $imagemFb : base_url('/assets/img/logo-jm-fb.png');?>" />
 
-
-        
         <!-- <script type="text/javascript">
         $(document).ready(function(){
                         
                     });
         </script> -->
     </head>
-    <div id='cidade'><?= $cidade; ?></div> 
         
     <body class="backgroundBody_<?=$_SESSION['regiao'];?>">
 
@@ -86,7 +82,7 @@
                     <div class="row lsbr">
 
                         <div class="col-md-2 col-sm-4 btm-30 logo">
-                            <a id='logo' href="<?php echo base_url('/home/regiao?regiao='.$_SESSION['regiao'])?>"> <img src="<?php echo base_url('/assets/img/logoMenina'.$_SESSION['regiao'].'.png');?>" title="Rádio Menina"></a>
+                            <a id='logo' href="<?php echo base_url($_SESSION['city'])?>"> <img src="<?php echo base_url('/assets/img/logoMenina'.$_SESSION['regiao'].'.png');?>" title="Rádio Menina"></a>
                         </div>
                         <div class="col-md-4 col-sm-4 btm-30 slogam">
                             <h1><?=$_SESSION['slogam'];?></h1>
@@ -94,9 +90,9 @@
                         <div class="col-md-3 col-sm-4 btm-30 selRegiao">
                             <form action="" id="formRegiao" method='POST'>
                                 <select name="selectRegiao" form="form" id='regiao'>
-                                    <option value="bc" <?=$_SESSION['regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
-                                    <option value="bl" <?=$_SESSION['regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
-                                    <option value="lg" <?=$_SESSION['regiao'] == 'lg' ? 'selected' : '';?> >Lages</option>
+                                    <option value="/balneario-camboriu" <?=$_SESSION['regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
+                                    <option value="/blumenal" <?=$_SESSION['regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
+                                    <option value="/lages" <?=$_SESSION['regiao'] == 'lg' ? 'selected' : '';?> >Lages</option>
                                 </select>
                             </form>
                         </div>
@@ -120,7 +116,7 @@
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul id="menu" class="navbar-nav">
                                     <li class="nav-item">
-                                        <a id='link_programacao' class="nav-link" href="<?php echo base_url($cidade.'/programacao')?>">Programação</a>
+                                        <a id='link_programacao' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/programacao')?>">Programação</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -128,7 +124,7 @@
                                         </div>
                                         <div id='link_jornalismo' class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                             <?php foreach($titulo_jornalismo as $info):?>
-                                                <a  class="dropdown-item" <?php echo $_SESSION['categoria'] = $info['categoriaPt'] ;?> href="<?php echo base_url($cidade.'/noticias')?>"><?php echo $info['categoriaPt']?></a>
+                                                <a  class="dropdown-item" <?php echo $_SESSION['categoria'] = $info['categoriaPt'] ;?> href="<?php echo base_url($_SESSION['city'].'/noticias')?>"><?php echo $info['categoriaPt']?></a>
                                             <?php endforeach?>
                                         </div>
                                     </li>
@@ -137,26 +133,26 @@
                                         <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Artístico
                                         </div>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                                            <a id='link_top_10' class="dropdown-item" href="<?php echo base_url('home/top_10')?>">Top 10</a>
-                                            <a id='link_artistico' class="dropdown-item" href="<?php echo base_url('home/artistico')?>">Vídeos</a>
+                                        <div id='link_artistico' class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
+                                            <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/top-10')?>">Top 10</a>
+                                            <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/videos')?>">Vídeos</a>
                                         </div>
                                     </li>
                                     </li>
                                     <li class="nav-item">
-                                        <a id='link_promocoes' class="nav-link" href="<?php echo base_url($cidade.'/promocoes')?>">Promoções</a>
+                                        <a id='link_promocoes' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/promocoes')?>">Promoções</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a id='link_eventos' class="nav-link" href="<?php echo base_url($cidade.'/eventos')?>">Eventos</a>
+                                        <a id='link_eventos' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/eventos')?>">Eventos</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Utilidade pública
                                         </div>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                            <a id='link_bolsa_de_emprego' class="dropdown-item" href="bolsa-de-empregos">Bolsa de empregos</a>
-                                            <a id='link_documentos_perdidos' class="dropdown-item" href="documentos-perdidos">Documentos Perdidos</a>
-                                            <a id='link_campanhas' class="dropdown-item" href="campanhas">Campanhas</a>
+                                            <a id='link_bolsa_de_emprego' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos')?>">Bolsa de empregos</a>
+                                            <a id='link_documentos_perdidos' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/documentos-perdidos')?>">Documentos Perdidos</a>
+                                            <a id='link_campanhas' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/campanhas')?>">Campanhas</a>
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -194,12 +190,12 @@
                         
                         <div class="col-md-4">
                             <div class='face'>
-                                <a href="<?=$_SESSION['socialFace'];?>" target="_blank">
+                                <a class="link_descricao" href="<?=$_SESSION['socialFace'];?>" target="_blank">
                                     <img src="<?php echo base_url('/assets/img/linkFaceRodape.png')?>" alt="Curta nossa Fanpage">
                                 </a>
                             </div>
                             <div class='youtube'>
-                                <a href="<?=$_SESSION['socialYoutube'];?>" target="_blank">
+                                <a class="link_descricao" href="<?=$_SESSION['socialYoutube'];?>" target="_blank">
                                     <img src="<?php echo base_url('/assets/img/linkYoutubeRodape.png')?>" alt="Inscreva-se no nosso canal">
                                 </a>
                             </div>
@@ -271,7 +267,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <p class="text-center">©2017 Copyright - Rádio Menina FM - Todos direitos reservados</p>		        
+                        <p class="link_descricao" class="text-center">©2017 Copyright - Rádio Menina FM - Todos direitos reservados</p>		        
                     </div>
                 </div>
             </div>
@@ -287,7 +283,7 @@
 
             var content = $('#content');
 
-            $('#menu a').click(function( e ){
+            $('#menu a, .link_descricao, #logo').click(function( e ){
                 e.preventDefault();
 
                 var href = $( this ).attr('href');
@@ -310,20 +306,29 @@
             
             var logo = document.querySelector('#logo');
             var link_programacao = document.querySelector('#link_programacao');
+            <?php if(count($titulo_jornalismo) != 0):?>
             var link_jornalismo = document.querySelector('#link_jornalismo a');
+            <?php endif?>
+            var link_artistico = document.querySelector('#link_artistico a');
             var link_promocoes = document.querySelector('#link_promocoes');
             var link_eventos = document.querySelector('#link_eventos');
+            var link_bolsa_de_emprego = document.querySelector('#link_bolsa_de_emprego');
         
             logo.addEventListener('click', function() {
                 window.history.pushState(null, 'Home', $(this).attr('href'));
             })
 
             link_programacao.addEventListener('click', function() {
+                alert('teste');
                 window.history.pushState(null, 'Programação', $(this).attr('href'));
             })
-
+            
             link_jornalismo.addEventListener('click', function() {
                 window.history.pushState(null, 'Jornalismo', $(this).attr('href'));
+            })
+            
+            link_artistico.addEventListener('click', function() {
+                window.history.pushState(null, 'Artistico', $(this).attr('href'));
             })
 
             link_promocoes.addEventListener('click', function() {
@@ -331,37 +336,19 @@
             })
 
             link_eventos.addEventListener('click', function() {
+                alert('Eventos');
                 window.history.pushState(null, 'Eventos', $(this).attr('href'));
             })
-            
 
-
-            // $.ajax({
-            //     url: href,
-            //     success: function( response ){
-            //         //forçando o parser
-            //         var response = $( '<div>'+response+'</div>' );
-                            
-            //         var data = response.find('#link_menu').html();
-            
-            //         //apenas atrasando a troca, para mostrarmos o loading
-            //         window.setTimeout( function(){
-            //             content.fadeOut('slow', function(){
-            //                 content.html( data ).fadeIn();
-                                        
-            //                 var title = response.find('title').text();
-            //                 window.history.pushState( , title, href );
-            //                 document.title = title;
-            //             });
-            //         }, 500 );
-            //     }
-            // });
-            
+            link_bolsa_de_emprego.addEventListener('click', function() {
+                alert('Eventos');
+                window.history.pushState(null, 'Bolsa-de-Empregos', $(this).attr('href'));
+            })
+                        
         });
         document.getElementById('formRegiao').onchange = function(e){
             var regiao = document.querySelector('#regiao');
-            // window.location = 'regiao?regiao=' + regiao.value;
-            window.history.pushState(null, 'Home', '/regiao?regiao=' + regiao.value);        
+            window.location = regiao.value;              
         }
 	</script>
 </html>	

@@ -307,6 +307,9 @@ label
 /* FIM - TOPO MODULO */
 
 /* LISTAGEM */
+.drag{
+    width: 100%;
+}
 .divTableLista
 {
     display: table;
@@ -566,7 +569,7 @@ label
     background: #f2f2f2 none repeat scroll 0 0;
     border: 1px solid #e0e0e0;
     float: left;
-    height: 80px;
+    min-height: 80px;
     margin: 5px;
     padding: 10px 0;
     width: 48%;
@@ -575,8 +578,8 @@ label
 .divTableFormFotos .boxFoto .divTr:nth-child(1)
 {
     float: left;
-    height: 145px;
-    width: 155px;
+    /*height: 145px;*/
+    max-width: 170px;
 }
 
 .divTableFormFotos .boxFoto .divTd:nth-child(1)

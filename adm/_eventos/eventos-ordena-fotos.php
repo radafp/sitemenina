@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'produtos-ordena'))
+if(!verifica_permissao($cod_user, $nivel, 'eventos'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -7,7 +7,6 @@ if(!verifica_permissao($cod_user, $nivel, 'produtos-ordena'))
 	echo " </script>";
 	die();
 }
-
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
 ?>
@@ -29,7 +28,7 @@ $(document).ready(function()
         {
             type: "POST",
             async: false,
-            url: "http://"+ADMIN_URL+"/_noticias/ajax/ajaxOrdenaFotos.php", //URL de destino
+            url: "http://"+ADMIN_URL+"/_eventos/ajax/ajaxOrdenaFotos.php", //URL de destino
             data:
             {
                 ordem : ordem,
@@ -69,7 +68,7 @@ $(document).ready(function()
 </div>
 <div class="divTableLista clear drag" style="margin-top: 0;">
     <?
-    $q = mysql_query("SELECT * FROM arquivos WHERE codReferencia = '$cod' AND tipo = '2' AND referencia = 'noticias' ORDER BY ordem ASC", $conexao);
+    $q = mysql_query("SELECT * FROM arquivos WHERE codReferencia = '$cod' AND tipo = '2' AND referencia = 'eventos' ORDER BY ordem ASC", $conexao);
     //echo mysql_error();
     $n = mysql_num_rows($q);
     if($n>0)
@@ -84,7 +83,7 @@ $(document).ready(function()
                     <img src="<?=ssl().ADMIN_URL;?>/img/base/conteudo/ico-ordenacao.png" />
                 </div>
                 <div class="divTd">
-                    <img src="<?=ssl().PROJECT_URL.'/arquivos/noticias/'.$tp['arquivo'];?>" title="<?=$tp['legenda'];?>" style="max-width: 150px;" />
+                    <img src="<?=ssl().PROJECT_URL.'/assets/arquivos/eventos/'.$tp['arquivo'];?>" title="<?=$tp['legenda'];?>" style="max-width: 150px;" />
                 </div>
                 <div class="divTd">
                     <?=$tp['capa'] == 1 ? 'SIM' : 'NÃO';?>

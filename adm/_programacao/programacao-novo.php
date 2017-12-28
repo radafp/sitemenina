@@ -1,7 +1,7 @@
 <?php
 if(isset($modulos[$id][3]['include']) && file_exists($modulos[$id][3]['include']))
 {
-    $acesso = "programacao-novo";
+    $acesso = "programacao";
     require_once $modulos[$id][3]['include'];
 }
 else

@@ -51,6 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 
+$route['balneario-camboriu'] = 'home/regiao/?regiao=bc';
+$route['blumenal'] = 'home/regiao/?regiao=bl';
+$route['lages'] = 'home/regiao/?regiao=lg';
+
 $route['balneario-camboriu/programacao'] = 'home/programacao';
 $route['blumenal/programacao'] = 'home/programacao';
 $route['lages/programacao'] = 'home/programacao';
@@ -58,6 +62,10 @@ $route['lages/programacao'] = 'home/programacao';
 $route['balneario-camboriu/noticias'] = 'home/noticia';
 $route['blumenal/noticias'] = 'home/noticia';
 $route['lages/noticias'] = 'home/noticia';
+
+$route['balneario-camboriu/top-10'] = 'home/top_10';
+$route['blumenal/top-10'] = 'home/top_10';
+$route['lages/top-10'] = 'home/top_10';
 
 $route['balneario-camboriu/promocoes'] = 'home/promocoes';
 $route['blumenal/promocoes'] = 'home/promocoes';
@@ -67,6 +75,9 @@ $route['balneario-camboriu/eventos'] = 'home/eventos';
 $route['blumenal/eventos'] = 'home/eventos';
 $route['lages/eventos'] = 'home/eventos';
 
+$route['balneario-camboriu/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
+$route['blumenal/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
+$route['lages/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
 
 
 $route['404_override'] = '';
