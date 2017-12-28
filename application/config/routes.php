@@ -64,8 +64,8 @@ $route['blumenal/noticias'] = 'home/noticia';
 $route['lages/noticias'] = 'home/noticia';
 
 $route['balneario-camboriu/top-10'] = 'home/top_10';
-$route['blumenal/noticias'] = 'home/noticia';
-$route['lages/noticias'] = 'home/noticia';
+$route['blumenal/top-10'] = 'home/top_10';
+$route['lages/top-10'] = 'home/top_10';
 
 $route['balneario-camboriu/promocoes'] = 'home/promocoes';
 $route['blumenal/promocoes'] = 'home/promocoes';

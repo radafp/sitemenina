@@ -310,7 +310,9 @@
             
             var logo = document.querySelector('#logo');
             var link_programacao = document.querySelector('#link_programacao');
+            <?php if(count($titulo_jornalismo) != 0):?>
             var link_jornalismo = document.querySelector('#link_jornalismo a');
+            <?php endif?>
             var link_artistico = document.querySelector('#link_artistico a');
             var link_promocoes = document.querySelector('#link_promocoes');
             var link_eventos = document.querySelector('#link_eventos');
@@ -320,20 +322,19 @@
             })
 
             link_programacao.addEventListener('click', function() {
+                alert('teste');
                 window.history.pushState(null, 'Programação', $(this).attr('href'));
             })
-
+            
             link_jornalismo.addEventListener('click', function() {
                 window.history.pushState(null, 'Jornalismo', $(this).attr('href'));
             })
             
             link_artistico.addEventListener('click', function() {
-                alert('Promoções');
                 window.history.pushState(null, 'Artistico', $(this).attr('href'));
             })
 
             link_promocoes.addEventListener('click', function() {
-                alert('Promoções');
                 window.history.pushState(null, 'Promoções', $(this).attr('href'));
             })
 
