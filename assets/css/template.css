@@ -25,19 +25,18 @@
 }
 
 .destaques{
-    /*margin-bottom: 50px;*/
+    margin-bottom: 50px;
 }
 .destaques .fundoFoto{
     background-color: rgba(51,51,51,0.6);
     width: 100%;
     height: 100%;
-    border-radius: 8px;
+    border-radius: 3px;
 }
 .destaques h1.categoria{
     float: left;
-    background: #cccccc;
-    padding: 8px;
-    border-radius: 8px;
+    padding: 4px 8px;
+    border-radius: 3px;
     font-size: 13px;
     margin-right: 10px;
 }
@@ -46,7 +45,7 @@
 }
 .destaquePrincipal .noticiaPrincipal{
     height: 35rem;
-    border-radius: 8px;
+    border-radius: 3px;
 }
 .destaquePrincipal .noticiaPrincipal .infPrincipal{
     margin-top: 45%;
@@ -55,12 +54,18 @@
     color: #ffffff;
     font-size: 2rem;
 }
+.destaquePrincipal .noticiaPrincipal .infPrincipal h3{
+    font-size: 2rem;
+}
+.destaquePrincipal .noticiaPrincipal .infPrincipal p{
+    font-size: 16px;
+}
 .destaque{
     padding-right: 0px;
 }
 .destaque .noticia{
     height: 16.4rem;
-    border-radius: 8px;
+    border-radius: 3px;
 }
 .destaque .noticia .inf{
     margin-top: 25%;
@@ -75,20 +80,26 @@
 .outrasNoticias{
     margin-bottom: 50px;
 }
+
 .outrasNoticias .noticia{
     padding-left: 0px;
 }
-.outrasNoticias .noticia .categoria{
-    margin: 20px 0;
+.outrasNoticias .noticia .wrapCategoria{
+    margin: 20px 0px;
 }
-.outrasNoticias .noticia .categoria span{
+.outrasNoticias .noticia .wrapCategoria .categoria{
     padding: 5px 15px;
-    background: #cccccc;
-    border-radius: 5px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;  
 }
 .outrasNoticias .noticia h2{
-    font-size: 24px;
+    font-size: 20px;
     font-family: 'Quicksand', sans-serif;
+}
+.outrasNoticias .noticia .dataNoticia{
+    color: #666666;
 } 
 .publicidade{
     margin: 50px 0;

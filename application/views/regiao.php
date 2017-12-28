@@ -1,4 +1,4 @@
-z<div class="container">
+<div class="container">
     <div class="row destaques">
         <?php 
         $x=0; 
@@ -19,8 +19,8 @@ z<div class="container">
                 <a class="link_descricao" href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']));?>">
                     <div class="fundoFoto">
                         <div class="<?=$classeInf;?>" >
-                            <h3 class=""><?=$info['tituloPt'];?></h3>
-                            <h1 class="categoria"><?=$info['categoriaPt'];?></h1>
+                            <h3><?=$info['tituloPt'];?></h3>
+                            <h1 class="categoria" style="background-color: #<?=$info['cor'];?>; color: <?=isset($info['corTexto']) != '' ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></h1>
                             <p><?= date('d/m/Y', strtotime($info['data']));?></p>
                         </div>
                     </div> 
@@ -42,11 +42,12 @@ z<div class="container">
 
             <div class='col-xs-12 col-md-4 noticia'>
                 <a class="link_descricao" href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']));?>">
-                    <span><?=$info['categoriaPt'];?></span><br><br>
+                    <div class="wrapCategoria">
+                        <span class="categoria" style="background-color:#<?=$info['cor'];?>; color:<?=isset($info['corTexto']) != '' ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></span>
+                    </div>
                     <h2><?=$info['tituloPt'];?></h2>
                     <p><?=$info['subtitulo'];?></p>
-                    <p><?=date('d/m/Y', strtotime($info['data']));?></p>
-                    <p>Cod.:<?=$info['cod'];?></p>
+                    <p class="dataNoticia"><?=date('d/m/Y', strtotime($info['data']));?></p>
                 </a>
             </div>
 

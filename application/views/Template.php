@@ -25,7 +25,6 @@
         
         <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 
-
         <!-- icone -->
         <!-- <link rel="icon" href="<?php echo base_url('/assets/img/base/favicon.png')?>"> -->
 
@@ -36,8 +35,6 @@
         <meta property="og:description" content="<?=isset($description) ? $description : '';?>" />
         <meta property="og:image" content="<?=isset($imagemFb) ? $imagemFb : base_url('/assets/img/logo-jm-fb.png');?>" />
 
-
-        
         <!-- <script type="text/javascript">
         $(document).ready(function(){
                         
