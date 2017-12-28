@@ -75,6 +75,9 @@ $route['balneario-camboriu/eventos'] = 'home/eventos';
 $route['blumenal/eventos'] = 'home/eventos';
 $route['lages/eventos'] = 'home/eventos';
 
+$route['balneario-camboriu/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
+$route['blumenal/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
+$route['lages/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
 
 
 $route['404_override'] = '';

@@ -62,12 +62,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <!-- <?php 
-                    echo "<pre>";
-                    var_dump($jornalismo);
-                    echo"</pre>";
-                    echo count($jornalismo)."teste";
-                    ?> -->
                     <div id='count_dados' style="display:none"><?php echo $count;?></div>
                     <?php foreach($jornalismo as $info):?>
                         <tr>

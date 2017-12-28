@@ -107,13 +107,7 @@ class home extends CI_Controller {
     //     $this->load->view('Template', $dados);
     // }
 
-    public function top_10() {
-        $dados['top_10'] = $this->Novomenina->top_10();
-
-        $dados['viewName']          = 'artistico/top_10';
-        $this->load->view('Template', $dados);
-    }
-
+    
     public function noticia() {
         $categoria                  = $_SESSION['categoria'];
         $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao']);
@@ -138,12 +132,19 @@ class home extends CI_Controller {
         $dados['viewName'] = 'jornalismo/descricao_noticia';
         $this->load->view('Template', $dados);
     }
-    
-    public function eventos() {
-        $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+
+    public function top_10() {
+        $dados['top_10']   = $this->Novomenina->top_10();
+        $dados['viewName'] = 'artistico/top_10';
+        $this->load->view('Template', $dados);
+    }
+
+    public function bolsa_de_empregos() {
+        $dados['empregos']          = $this->Novomenina->empregos($_SESSION['regiao']);
+        // $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        $dados['eventos']           = $this->Novomenina->eventos($_SESSION['regiao']); 
-        $dados['viewName']          = 'eventos/eventos';
+        // $dados['eventos']           = $this->Novomenina->eventos($_SESSION['regiao']); 
+        $dados['viewName']          = 'utilidade_publica/bolsa_de_empregos';
         $this->load->view('Template', $dados);
     }
 
