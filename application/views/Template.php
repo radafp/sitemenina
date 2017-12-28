@@ -41,8 +41,6 @@
                     });
         </script> -->
     </head>
-    <div id='cidade'><?= $cidade; ?></div> 
-        
     <body class="backgroundBody_<?=$_SESSION['regiao'];?>">
 
         <header>
@@ -125,7 +123,7 @@
                                         </div>
                                         <div id='link_jornalismo' class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                             <?php foreach($titulo_jornalismo as $info):?>
-                                                <a  class="dropdown-item" <?php echo $_SESSION['categoria'] = $info['categoriaPt'] ;?> href="<?php echo base_url($cidade.'/noticias')?>"><?php echo $info['categoriaPt']?></a>
+                                                <a  class="dropdown-item" href="<?php echo base_url($cidade.'/noticias')?>/<?=$info['categoriaPt'];?>"><?php echo $info['categoriaPt']?></a>
                                             <?php endforeach?>
                                         </div>
                                     </li>
@@ -302,8 +300,8 @@
                         },100);
                     }
                 });
-
             });
+            
             
             var logo = document.querySelector('#logo');
             var link_programacao = document.querySelector('#link_programacao');
@@ -345,11 +343,13 @@
                 alert('Eventos');
                 window.history.pushState(null, 'Bolsa-de-Empregos', $(this).attr('href'));
             })
+            
                         
         });
         document.getElementById('formRegiao').onchange = function(e){
             var regiao = document.querySelector('#regiao');
             window.location = regiao.value;              
         }
+    
 	</script>
 </html>	
