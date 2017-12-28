@@ -9,7 +9,7 @@
 
 
         var content = $('#content');
-        $('.link_descricao').click(function( e ){
+        $('.link_eventos').click(function( e ){
             e.preventDefault();
 
             var href = $( this ).attr('href');
@@ -59,7 +59,7 @@
                     <tr>
                         <td>
                             <div id='esquerda'>
-                                <a class='link_descricao' href="<?php echo base_url('home/descricao_eventos?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
+                                <a class='link_eventos' href="<?php echo base_url('home/descricao_eventos?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
                                     <img src="<?php echo base_url('/assets/arquivos/evetos/'.$info['arquivo'])?>" alt="">
                                     <h3><?php echo $info['tituloPt']?></h3>
                                     <!-- <p><?php echo $info['descricaoPt']?></p> -->

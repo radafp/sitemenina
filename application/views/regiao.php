@@ -1,3 +1,34 @@
+<script src="<?php echo base_url('/assets/js/popper.min.js')?>"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        var content = $('#content');
+
+        $('.link').click(function( e ){
+            e.preventDefault();
+
+            var href = $( this ).attr('href');
+            $.ajax({
+                url: href,
+                success: function( response ){
+                    //forçando o parser
+                    var data = $( '<div>'+response+'</div>' ).find('#content').html();
+
+                    //apenas atrasando a troca, para mostrarmos o loading
+                    window.setTimeout( function(){
+                        content.fadeOut('fast', function(){
+                            content.html( data ).fadeIn();
+                        });
+                    },100);
+                }
+            });
+
+        });
+    })
+</script> 
 <div class="container">
     <div class="row destaques">
         <?php 
@@ -16,7 +47,7 @@
             ?>
             <div class="<?=$classe;?> <?=$x==3 ? 'ultima' : '';?>" style="background: url(<?=base_url('/assets/arquivos/noticias/'.$info['arquivo']);?>) no-repeat center center; background-size: 100%;">
                 
-                <a class="link_descricao" href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']));?>">
+                <a class="link" href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']));?>">
                     <div class="fundoFoto">
                         <div class="<?=$classeInf;?>" >
                             <h3><?=$info['tituloPt'];?></h3>
@@ -41,7 +72,7 @@
         <?php foreach($ultimas_noticias as $info):?>
 
             <div class='col-xs-12 col-md-4 noticia'>
-                <a class="link_descricao" href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']));?>">
+                <a class="link" href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']));?>">
                     <div class="wrapCategoria">
                         <span class="categoria" style="background-color:#<?=$info['cor'];?>; color:<?=isset($info['corTexto']) != '' ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></span>
                     </div>
@@ -73,7 +104,7 @@
                         <span>Promoções</span>
                     </h1>
                     <?php foreach($promocoes_home as $info): ?>
-                        <a class="link_descricao" href="<?=base_url('home/descricao_promocoes?id='.$info['cod']);?>">
+                        <a class="link" href="<?=base_url('home/descricao_promocoes?id='.$info['cod']);?>">
                             <img src="<?=base_url('/assets/arquivos/programacao/'.$info['arquivo']);?>" alt="">
                             <h3><?=$info['tituloPt']?></h3>
                             <p><?='inicio: '. date('d/m/Y', strtotime($info['dataInicio']));?></p>
@@ -91,7 +122,7 @@
                         <span>Eventos</span>
                     </h1>
                     <?php foreach($eventos_home as $info): ?>
-                        <a class="link_descricao" href="<?=base_url('home/descricao_eventos?id='.$info['cod']);?>">
+                        <a class="link" href="<?=base_url('home/descricao_eventos?id='.$info['cod']);?>">
                             <img src="<?=base_url('/assets/arquivos/eventos/'.$info['arquivo']);?>" alt="">
                             <span><?=$info['mapa'];?></span> 
                             <h3><?=$info['tituloPt'];?></h3>
@@ -127,7 +158,7 @@
                     <span>Programação</span>
                 </h1>
                 <?php foreach($programacao_home as $info):?>
-                    <a class="link_descricao" href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'])?>">
+                    <a class="link" href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'])?>">
                         <div id='programacao1'>
                             <img src="<?php echo base_url('/assets/arquivos/programacao/'.$info['arquivo'])?>" alt="">
                             <h3><?php echo $info['cleanTitle']?></h3>

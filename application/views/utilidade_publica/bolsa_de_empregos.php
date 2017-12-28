@@ -6,29 +6,6 @@
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 <script type="text/javascript">
      $(document).ready(function(){
-
-
-        var content = $('#content');
-        $('.link_descricao').click(function( e ){
-            e.preventDefault();
-
-            var href = $( this ).attr('href');
-            $.ajax({
-                url: href,
-                success: function( response ){
-                    //forçando o parser
-                    var data = $( '<div>'+response+'</div>' ).find('#content').html();
-
-                    //apenas atrasando a troca, para mostrarmos o loading
-                    window.setTimeout( function(){
-                        content.fadeOut('fast', function(){
-                            content.html( data ).fadeIn();
-                        });
-                    },100);
-                }
-            });
-        });
-
         $('.noticia').DataTable();
         $('.mais_lidas').DataTable();
         $(".dataTables_length").hide();
