@@ -132,13 +132,18 @@
 .promocoesEventos.promocoesEventos_lg{
     background: url(../img/redes_lg.jpg);
 }
-.promocoesEventos .foto{
+.promocoesEventos .wrapFoto{
     border: 1px solid #fff;
-    padding: 5px;
+    padding: 7px;
+    margin-right: 15px;
+    float: left;
+}
+.promocoesEventos .wrapFoto .foto{
     overflow: hidden;
     max-width: 240px;
+    max-height: 180px;
 }
-.promocoesEventos .foto img{
+.promocoesEventos .wrapFoto .foto img{
     max-width: 100%;
 }
 /*-- FIM classe região --*/

@@ -68,15 +68,17 @@
         <div class="row">
             <div class="col-xs-12 col-md-6">
 
-                <div id='programacoes'>
+                <div id='promocoes'>
                     <h1 class="tituloPadrao2">
                         <span>Promoções</span>
                     </h1>
                     <?php foreach($promocoes_home as $info): ?>
                         <a class="link_descricao" href="<?=base_url('home/descricao_promocoes?id='.$info['cod']);?>">
                             <? if($info['arquivo']!='') { ?>
-                                <div class="foto">
-                                    <img src="<?=base_url('/assets/arquivos/promocoes/'.$info['arquivo']);?>" alt="">
+                                <div class="wrapFoto">
+                                    <div class="foto">
+                                        <img src="<?=base_url('/assets/arquivos/promocoes/'.$info['arquivo']);?>" alt="">
+                                    </div>
                                 </div>
                             <? } ?>    
                             <h3><?=$info['tituloPt']?></h3>
@@ -97,8 +99,10 @@
                     <?php foreach($eventos_home as $info): ?>
                         <a class="link_descricao" href="<?=base_url('home/descricao_eventos?id='.$info['cod']);?>">
                             <? if($info['arquivo']!=''){ ?>
-                                <div class="foto">
-                                    <img src="<?=base_url('/assets/arquivos/eventos/'.$info['arquivo']);?>" alt="">
+                                <div class="wrapFoto">
+                                    <div class="foto">
+                                        <img src="<?=base_url('/assets/arquivos/eventos/'.$info['arquivo']);?>" alt="">
+                                    </div>
                                 </div>
                             <? } ?> 
                             <h3><?=$info['tituloPt'];?></h3>
