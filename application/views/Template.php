@@ -150,7 +150,7 @@
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                                             <a id='link_bolsa_de_emprego' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos')?>">Bolsa de empregos</a>
                                             <a id='link_documentos_perdidos' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/documentos-perdidos')?>">Documentos Perdidos</a>
-                                            <a id='link_campanhas' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/campanhas')?>">Campanhas</a>
+                                            <!-- <a id='link_campanhas' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/campanhas')?>">Campanhas</a> -->
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown">
