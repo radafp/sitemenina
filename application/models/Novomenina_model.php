@@ -281,58 +281,57 @@ class Novomenina_model extends CI_Model{
     // }
 
     // metodo sendo usado na action de descricao da noticia no home controller
-    public function descricao_noticia($id, $regiao, $categoria) {
-        $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo 
-                                        FROM noticias 
-                                    INNER JOIN categorias, arquivos 
-                                        WHERE arquivos.codReferencia  = noticias.cod 
-                                        AND noticias.codCategoria = categorias.cod 
-                                        AND noticias.cod = $id
-                                        AND categorias.categoriaPt = '$categoria' 
-                                        AND arquivos.codReferencia = noticias.cod 
-                                        AND noticias.regiao = '$regiao' 
-                                        AND noticias.mostrar = 1 
-                                        LIMIT 1"
-        );
-        if ($query->num_rows() > 0) {
-            return $query->result_array();
-        } else {
-            $query1 = $this->db->query(
-                "SELECT noticias.*, categorias.categoriaPt
-                    FROM noticias 
-                INNER JOIN categorias
-                    ON noticias.codCategoria = categorias.cod 
-                    AND noticias.cod = $id
-                    AND categorias.categoriaPt = '$categoria' 
-                    AND noticias.regiao = '$regiao' 
-                    AND noticias.mostrar = 1 
-                    LIMIT 1"
-            );
-            return $query1->result_array();
-        }
-        // $query = $this->db->query(
-        //     "SELECT noticias.*, categorias.categoriaPt,
-        //         (SELECT a.arquivo 
-        //             FROM arquivos AS a 
-        //                 WHERE a.codReferencia = noticias.cod 
-        //                 AND a.referencia = 'noticias' 
-        //                 AND a.tipo = 2 
-        //                 AND a.capa = 1
-        //             ORDER BY a.capa 
-        //             DESC LIMIT 1) 
-        //     AS arquivo 
-        //         FROM noticias
+    public function descricao_noticia($id, $regiao) {
+        // $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo 
+        //                                 FROM noticias 
+        //                             INNER JOIN categorias, arquivos 
+        //                                 WHERE arquivos.codReferencia  = noticias.cod 
+        //                                 AND noticias.codCategoria = categorias.cod 
+        //                                 AND noticias.cod = $id
+        //                                 AND categorias.categoriaPt = '$categoria' 
+        //                                 AND arquivos.codReferencia = noticias.cod 
+        //                                 AND noticias.regiao = '$regiao' 
+        //                                 AND noticias.mostrar = 1 
+        //                                 LIMIT 1"
+        // );
+        // if ($query->num_rows() > 0) {
+        //     return $query->result_array();
+        // } else {
+        //     $query1 = $this->db->query(
+        //         "SELECT noticias.*, categorias.categoriaPt
+        //             FROM noticias 
         //         INNER JOIN categorias
-        //             WHERE noticias.codCategoria = categorias.cod
+        //             ON noticias.codCategoria = categorias.cod 
+        //             AND noticias.cod = $id
+        //             AND categorias.categoriaPt = '$categoria' 
         //             AND noticias.regiao = '$regiao' 
-        //             AND categoriaPt = '$categoria' 
         //             AND noticias.mostrar = 1 
-        //             AND noticias.destaque = 1 
-        //         GROUP BY noticias.cod
-        //         ORDER BY cliques desc
-        //         LIMIT 4
-        // "); 
-        // return $query->result_array();
+        //             LIMIT 1"
+        //     );
+        //     return $query1->result_array();
+        // }
+        $query = $this->db->query(
+            "SELECT noticias.*, categorias.categoriaPt,
+                (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                        WHERE a.codReferencia = noticias.cod 
+                        AND a.referencia = 'noticias' 
+                        AND a.tipo = 2 
+                        AND a.capa = 1
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+            AS arquivo 
+                FROM noticias
+                INNER JOIN categorias
+                    WHERE noticias.codCategoria = categorias.cod
+                    AND noticias.cod = $id
+                    AND noticias.regiao = '$regiao'
+                    AND noticias.mostrar = 1 
+                GROUP BY noticias.cod
+                ORDER BY cliques desc
+                LIMIT 1
+        "); 
+        return $query->result_array();
     }
 
 

@@ -281,8 +281,8 @@
 
             var content = $('#content');
             var logo = document.querySelector('#logo');
-
-            $('#menu a, #logo').click(function( e ){
+            $('#menu a,  #logo').click(function( e ){
+                
                 e.preventDefault();
 
                 var href = $( this ).attr('href');
@@ -302,7 +302,7 @@
                 });
                 window.history.pushState(null, 'Home', $(this).attr('href'));
             });
-                                  
+                                         
         });
         
         document.getElementById('formRegiao').onchange = function(e){
