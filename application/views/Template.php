@@ -181,7 +181,7 @@
                 <?php $this->load->view($viewName);?>
             </div>
             
-            <div class="redes redes_<?=$_SESSION['regiao'];?>">
+           <div class="redes redes_<?=$_SESSION['regiao'];?>">
 
                 <div class="container">
                     <div class="row">
@@ -258,7 +258,7 @@
                 </div>
             </div> <!-- container -->
     
-        </main>
+        </main> 
 
 
         <footer class="rodapeBg_<?=$_SESSION['regiao'];?>">

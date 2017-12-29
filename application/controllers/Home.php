@@ -205,15 +205,14 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
-    // public function descricao_programacao() {
-    //     $id = $_GET['id'];
-    //     $regiao = $_SESSION['regiao'];
-    //     $dados['descricao_programacao'] = $this->Novomenina->descricao_programacao($id, $regiao);
-    //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-    //     $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-    //     $dados['viewName'] = 'programacao/descricao_programacao';
-    //     $this->load->view('Template', $dados);
-    // }
+    public function descricao_programacao() {
+        $id = $_GET['id'];
+        $regiao = $_SESSION['regiao'];
+        $dados['descricao_programacao'] = $this->Novomenina->descricao_programacao($id, $regiao);
+        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['viewName'] = 'programacao/descricao_programacao';
+        $this->load->view('Template', $dados);
+    }
 
     public function descricao_utilidade() {
         $id = $_GET['id'];

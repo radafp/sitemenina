@@ -137,7 +137,7 @@
                 </h1>
                 <div class="wrapProgramacao">
                     <?php foreach($programacao_home as $info):?>
-                        <a class="link_descricao" href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'])?>">
+                    <a class='link_programacao' href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
                             <div class='programacao'>
                                 <div class="foto">
                                     <img src="<?php echo base_url('/assets/arquivos/programacao/'.$info['arquivo'])?>" alt="">
