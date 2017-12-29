@@ -127,7 +127,7 @@ class home extends CI_Controller {
         $categoria = $_GET['categoria'];
         $this->Novomenina->cliques($id, $_SESSION['regiao']);
         $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id, $_SESSION['regiao'], $categoria);
+        $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id, $_SESSION['regiao']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
         $dados['viewName'] = 'jornalismo/descricao_noticia';
