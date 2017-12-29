@@ -139,7 +139,9 @@
                     <?php foreach($programacao_home as $info):?>
                         <a class="link_descricao" href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'])?>">
                             <div class='programacao'>
-                                <img src="<?php echo base_url('/assets/arquivos/programacao/'.$info['arquivo'])?>" alt="">
+                                <div class="foto">
+                                    <img src="<?php echo base_url('/assets/arquivos/programacao/'.$info['arquivo'])?>" alt="">
+                                </div>    
                                 <h3><?php echo $info['cleanTitle']?></h3>
                                 <p><?php echo $info['programacao'].' '. $info['horario']?></p><br><br>
                             </div>

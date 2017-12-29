@@ -159,5 +159,24 @@
     max-width: 100%;
 }
 
+.wrapProgramacao{
+    border: 1px solid #cccccc;
+    position: relative;
+    float: left;
+}
+.wrapProgramacao .programacao{
+    border-bottom: 1px solid #cccccc;
+    float: left;
+    width: 100%;
+}
+.wrapProgramacao .programacao .foto{
+    max-width: 100px;
+    max-height: 70px;
+    overflow: hidden;
+    float: left;
+}
+.wrapProgramacao .programacao .foto img{ 
+    max-width: 100%;
+}
 
 /*-- FIM classe região --*/
