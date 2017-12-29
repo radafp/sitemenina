@@ -67,52 +67,50 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-6">
-
-                <div id='promocoes'>
-                    <h1 class="tituloPadrao2">
-                        <span>Promoções</span>
-                    </h1>
-                    <?php foreach($promocoes_home as $info): ?>
-                        <a class="link_descricao" href="<?=base_url('home/descricao_promocoes?id='.$info['cod']);?>">
-                            <? if($info['arquivo']!='') { ?>
-                                <div class="wrapFoto">
-                                    <div class="foto">
-                                        <img src="<?=base_url('/assets/arquivos/promocoes/'.$info['arquivo']);?>" alt="">
-                                    </div>
+                
+                <h1 class="tituloPadrao2">
+                    <span>Promoções</span>
+                </h1>
+                <?php foreach($promocoes_home as $info): ?>
+                <div class='promocaoEvento'>
+                    <a class="link_descricao" href="<?=base_url('home/descricao_promocoes?id='.$info['cod']);?>">
+                        <? if($info['arquivo']!='') { ?>
+                            <div class="wrapFoto">
+                                <div class="foto">
+                                    <img src="<?=base_url('/assets/arquivos/promocoes/'.$info['arquivo']);?>" alt="">
                                 </div>
-                            <? } ?>    
-                            <h3><?=$info['tituloPt']?></h3>
-                            <p><?='inicio: '. date('d/m/Y', strtotime($info['dataInicio']));?></p>
-                            <p>Fim: <?=date('d/m/Y', strtotime($info['dataFim']));?></p>
-                        </a>
-                    <?php endforeach; ?>
-                    <a href="/home/promocoes">Ver mais</a>
+                            </div>
+                        <? } ?>    
+                        <h3><?=$info['tituloPt']?></h3>
+                        <?=isset($info['dataInicio']) ? '<p>Inicio: '. date('d/m/Y', strtotime($info['dataInicio'])).'</p>' : '';?>
+                        <?=isset($info['dataFim']) ? '<p>Fim: '. date('d/m/Y', strtotime($info['dataFim'])).'</p>' : '';?>
+                    </a>
                 </div>
-
+                <?php endforeach; ?>
+                <a href="/home/promocoes">Ver mais promoções</a>
+                
             </div>
             <div class="col-xs-12 col-md-6">
-                
-                <div id='eventos'>
-                    <h1 class="tituloPadrao2">
-                        <span>Eventos</span>
-                    </h1>
-                    <?php foreach($eventos_home as $info): ?>
-                        <a class="link_descricao" href="<?=base_url('home/descricao_eventos?id='.$info['cod']);?>">
-                            <? if($info['arquivo']!=''){ ?>
-                                <div class="wrapFoto">
-                                    <div class="foto">
-                                        <img src="<?=base_url('/assets/arquivos/eventos/'.$info['arquivo']);?>" alt="">
-                                    </div>
+                <h1 class="tituloPadrao2">
+                    <span>Eventos</span>
+                </h1>
+                <?php foreach($eventos_home as $info): ?>
+                <div class='promocaoEvento'>
+                    <a class="link_descricao" href="<?=base_url('home/descricao_eventos?id='.$info['cod']);?>">
+                        <? if($info['arquivo']!=''){ ?>
+                            <div class="wrapFoto">
+                                <div class="foto">
+                                    <img src="<?=base_url('/assets/arquivos/eventos/'.$info['arquivo']);?>" alt="">
                                 </div>
-                            <? } ?> 
-                            <h3><?=$info['tituloPt'];?></h3>
-                            <p><?='inicio: '. date('d/m/Y', strtotime($info['dataInicio']));?></p>
-                            <p>Fim: <?=date('d/m/Y', strtotime($info['dataFim']));?></p>
-                        </a>
-                    <?php endforeach; ?>
-                    <a href="/home/eventos">Ver mais</a>
+                            </div>
+                        <? } ?> 
+                        <h3><?=$info['tituloPt'];?></h3>
+                        <?=isset($info['dataInicio']) ? '<p>Inicio: '. date('d/m/Y', strtotime($info['dataInicio'])).'</p>' : '';?>
+                        <?=isset($info['dataFim']) ? '<p>Fim: '. date('d/m/Y', strtotime($info['dataFim'])).'</p>' : '';?>
+                    </a>
                 </div>
-
+                <?php endforeach; ?>
+                <a href="/home/eventos">Ver mais</a>
             </div>
 
         </div> <!-- row -->
