@@ -48,16 +48,16 @@
     <div class='programacoes'>
         <h2>Eventos</h2><br>
         <div id='prog'>
-            <table class='noticia' data-page-length='10' class="table table-striped table-bordered" cellspacing="0" width="20%">
+            <!-- <table class='noticia' data-page-length='10' class="table table-striped table-bordered" cellspacing="0" width="20%">
                 <thead>
                     <tr>
                         <td>.</td>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody> -->
                     <?php foreach($eventos as $info):?>
-                    <tr>
-                        <td>
+                    <!-- <tr>
+                        <td> -->
                             <div id='esquerda'>
                                 <a class='link_eventos' href="<?php echo base_url('home/descricao_eventos?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
                                     <img src="<?php echo base_url('/assets/arquivos/evetos/'.$info['arquivo'])?>" alt="">
@@ -66,11 +66,34 @@
                                     <span><?php echo 'HORÀRIO:'.date('d/m/Y', strtotime($info['dataInicio']))?></span>
                                 </a> 
                             </div>
-                        </td>
-                    </tr>
+                        <!-- </td>
+                    </tr> -->
                     <?php endforeach?>
-                </tbody> 
-            </table>
+                    <?php 
+                        if($p < 4) {
+                            $anterior = 0;
+                        }else{
+                            $anterior = $p-4;
+                        }
+                        
+                        if($p < $count) {
+                            $proximo = $p+4;
+                            
+                        }else{
+                            $proximo = $count;
+                        }
+                        
+                        // $total_paginas = $count / 4; 
+                        echo $count."<br>".$proximo;
+                    ?>
+                    
+                    <a class='link_eventos' href="<?php echo base_url("/balneario-camboriu/eventos?p=$anterior")?>">Anterior</a>
+                    <span></span>
+                    <a class='link_eventos' href="<?php echo base_url("/balneario-camboriu/eventos?p=$proximo")?>">Proximo</a>
+                    
+                    
+                <!-- </tbody> 
+            </table> -->
         </div>
     </div>
     <div id='direita' >

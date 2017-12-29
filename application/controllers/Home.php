@@ -108,7 +108,7 @@ class home extends CI_Controller {
 
     
     public function noticia() {
-        $categoria                  = $_GET['categoria'];
+        $categoria                  = $_SESSION['categoria'];
         $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao']);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas']        = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
@@ -140,6 +140,22 @@ class home extends CI_Controller {
         // $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         // $dados['eventos']           = $this->Novomenina->eventos($_SESSION['regiao']); 
         $dados['viewName']          = 'utilidade_publica/bolsa_de_empregos';
+        $this->load->view('Template', $dados);
+    }
+
+    public function eventos() {
+        // $id = $_GET['id'];
+        $regiao = $_SESSION['regiao'];
+        if(isset($_GET['p'])) {
+            $p = $_GET['p'];
+        }else{
+            $p = 0;
+        }
+        $dados['p'] = $p;
+        $dados['count']             = count($this->Novomenina->count_eventos($regiao));
+        $dados['eventos']           = $this->Novomenina->eventos($regiao, $p);
+        $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['viewName']          = 'eventos/eventos';
         $this->load->view('Template', $dados);
     }
 
