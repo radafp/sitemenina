@@ -549,7 +549,7 @@ class Novomenina_model extends CI_Model{
                     WHERE eventos.regiao = '$regiao' 
                     AND eventos.mostrar = 1 
                 GROUP BY eventos.cod
-                ORDER BY eventos.dataCadastro DESC
+                ORDER BY eventos.dataInicio ASC
                 LIMIT 2
         "); 
         return $query->result_array();
