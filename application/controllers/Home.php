@@ -153,7 +153,16 @@ class home extends CI_Controller {
 
     public function top_10() {
         $dados['top_10']   = $this->Novomenina->top_10();
+        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['viewName'] = 'artistico/top_10';
+        $this->load->view('Template', $dados);
+    }
+
+    public function videos() {
+        $regiao = $_SESSION['regiao'];
+        $dados['videos']   = $this->Novomenina-> videos($regiao);
+        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['viewName'] = 'artistico/videos';
         $this->load->view('Template', $dados);
     }
 
@@ -161,6 +170,7 @@ class home extends CI_Controller {
         $dados['empregos']          = $this->Novomenina->empregos($_SESSION['regiao']);
         // $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
+        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         // $dados['eventos']           = $this->Novomenina->eventos($_SESSION['regiao']); 
         $dados['viewName']          = 'utilidade_publica/bolsa_de_empregos';
         $this->load->view('Template', $dados);

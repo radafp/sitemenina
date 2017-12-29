@@ -388,10 +388,16 @@ class Novomenina_model extends CI_Model{
 
     public function top_10() {
         $query = $this->db->query(
-            "SELECT top10.* from top10 
+            "SELECT top10.* from top10 WHERE mostrar = 1 LIMIT 10 
         ");
         return $query->result_array();
     }
+
+    public function videos($regiao)  {
+        $query = $this->db->query("SELECT * FROM videos WHERE videos.regiao = '$regiao' and videos.mostrar = 1");
+        return $query->result_array();
+    }
+
 
 
     // ================================ PAGINAS DE PROMOÇÕES ====================================
@@ -646,9 +652,5 @@ class Novomenina_model extends CI_Model{
     }
 
 
-    public function videos($regiao)  {
-        $query = $this->db->query("SELECT * FROM videos WHERE videos.regiao = '$regiao' and videos.mostrar = 1");
-        return $query->result_array();
-    }
-
+    
 }
