@@ -46,7 +46,7 @@
         <h2>Ultimas noticias</h2><br>
         <div id='prog'>
             <div id='esquerda'>
-                <table class='noticia' data-page-length='2' class="table table-striped table-bordered" cellspacing="0" width="20%">
+                <table class='noticia' data-page-length='1' class="table table-striped table-bordered" cellspacing="0" width="20%">
                     <thead>
                         <tr>
                             <td>.</td>
