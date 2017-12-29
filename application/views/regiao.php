@@ -129,21 +129,23 @@
     </div>
 </div> <!-- container -->
 
-<div class="container">
+<div class="container progEnqMsg">
     <div class="row">
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
                     <span>Programação</span>
                 </h1>
-                <?php foreach($programacao_home as $info):?>
-                    <a class="link_descricao" href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'])?>">
-                        <div id='programacao1'>
-                            <img src="<?php echo base_url('/assets/arquivos/programacao/'.$info['arquivo'])?>" alt="">
-                            <h3><?php echo $info['cleanTitle']?></h3>
-                            <p><?php echo $info['programacao'].' '. $info['horario']?></p><br><br>
-                        </div>
-                    </a>
-                <?php endforeach;?> 
+                <div class="wrapProgramacao">
+                    <?php foreach($programacao_home as $info):?>
+                        <a class="link_descricao" href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'])?>">
+                            <div class='programacao'>
+                                <img src="<?php echo base_url('/assets/arquivos/programacao/'.$info['arquivo'])?>" alt="">
+                                <h3><?php echo $info['cleanTitle']?></h3>
+                                <p><?php echo $info['programacao'].' '. $info['horario']?></p><br><br>
+                            </div>
+                        </a>
+                    <?php endforeach;?> 
+                </div>
                 <a href="/home/programacao">Ver mais</a>
             </div>
             <div class='col-xs-12 col-md-4'>
@@ -162,7 +164,7 @@
                     <span>Mensagem do Dia</span>
                 </h1>
                 <?php foreach($videos as $info):?>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/fV67QiJnoqY" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                    <iframe style="width: 100%; max-height:250px" src="https://www.youtube.com/embed/fV67QiJnoqY" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
                 <?php endforeach?>
             </div>
     </div> <!-- row -->
