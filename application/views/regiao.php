@@ -134,7 +134,7 @@
                     <span>Programação</span>
                 </h1>
                 <?php foreach($programacao_home as $info):?>
-                    <a class="VAICAIRAI" href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'])?>">
+                    <a class="link_programacao" href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'])?>">
                         <div id='programacao1'>
                             <img src="<?php echo base_url('/assets/arquivos/programacao/'.$info['arquivo'])?>" alt="">
                             <h3><?php echo $info['cleanTitle']?></h3>
@@ -174,7 +174,7 @@
 
         var content = $('#content');
 
-        $('.VAICAIRAI').click(function( e ){
+        $('.link_programacao').click(function( e ){
             e.preventDefault();
 
             var href = $( this ).attr('href');

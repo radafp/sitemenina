@@ -51,6 +51,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 
+$uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
+
+$nParametros = count($uri);
+
+if($nParametros==1)
+{
+    $cidade = $uri[0]; 
+}
+elseif($nParametros==2)
+{
+    $cidade = $uri[0];
+    $view = $uri[1]; 
+}
+elseif($nParametros==2)
+{
+    $cidade = $uri[0];
+    $view = $uri[1]; 
+    $paremetro = $uri[2];
+}
+
 $route['balneario-camboriu'] = 'home/regiao/?regiao=bc';
 $route['blumenal'] = 'home/regiao/?regiao=bl';
 $route['lages'] = 'home/regiao/?regiao=lg';

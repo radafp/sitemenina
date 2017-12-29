@@ -109,7 +109,9 @@ class home extends CI_Controller {
 
     
     public function noticia() {
-        $categoria                  = $_GET['categoria'];
+        
+
+        $categoria                  = $_SESSION['categoria'];
         $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao']);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         // $dados['outras_noticias'] = $this->Novomenina->outras_noticias($_SESSION['regiao']); 

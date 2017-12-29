@@ -41,7 +41,6 @@
                     });
         </script> -->
     </head>
-        
     <body class="backgroundBody_<?=$_SESSION['regiao'];?>">
 
         <header>
@@ -274,7 +273,7 @@
         </footer>
     </body>
 
-    <script src="<?php echo base_url('/assets/js/popper.min.js')?>"></script>
+    <!--<script src="<?php echo base_url('/assets/js/popper.min.js')?>"></script>-->
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -301,13 +300,22 @@
                         },100);
                     }
                 });
-                window.history.pushState(null, 'Jornalismo', $(this).attr('href'));
+                window.history.pushState(null, 'Home', $(this).attr('href'));
+            });
+            
+            
+            var logo = document.querySelector('#logo');
+                   
+            logo.addEventListener('click', function() {
+                window.history.pushState(null, 'Home', $(this).attr('href'));
+            })
 
-            });                        
+                                  
         });
         document.getElementById('formRegiao').onchange = function(e){
             var regiao = document.querySelector('#regiao');
             window.location = regiao.value;              
         }
+    
 	</script>
 </html>	
