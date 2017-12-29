@@ -24,6 +24,8 @@
                 }
             });
         });
+
+
         $('.noticia').DataTable();
         $('.mais_lidas').DataTable();
         $(".dataTables_length").hide();
@@ -31,7 +33,12 @@
         $("thead").hide();
         $(".dataTables_info").hide();
         $("#registros_filter").hide();
-        $("#registros_info").hide();  
+        $("#registros_info").hide(); 
+        var count_dados = document.querySelector('#count_dados').innerHTML;
+
+        if(count_dados < 10) {
+            $("#DataTables_Table_0_paginate").hide(); 
+        }
     });
     
 </script>
@@ -46,7 +53,7 @@
         <h2>Ultimas noticias</h2><br>
         <div id='prog'>
             <div id='esquerda'>
-                <table class='noticia' data-page-length='1' class="table table-striped table-bordered" cellspacing="0" width="20%">
+                <table class='noticia' data-page-length='10' class="table table-striped table-bordered" cellspacing="0" width="20%">
                     <thead>
                         <tr>
                             <td>.</td>
