@@ -24,7 +24,7 @@ body {
   -o-background-size: cover; /*Css Opera*/
 }
 .backgroundBody_bl {
-  background: url(../img/bg_bl.jpg) no-repeat center center fixed;
+  background: url(../img/bg_bl.jpg) no-repeat center top;
   background-size: cover; /*Css padrão*/
   -webkit-background-size: cover; /*Css safari e chrome*/
   -moz-background-size: cover; /*Css firefox*/
@@ -32,7 +32,7 @@ body {
   -o-background-size: cover; /*Css Opera*/
 }
 .backgroundBody_lg {
-  background: url(../img/bg_lg.jpg) no-repeat center center fixed;
+  background: url(../img/bg_lg.jpg) no-repeat center top;
   background-size: cover; /*Css padrão*/
   -webkit-background-size: cover; /*Css safari e chrome*/
   -moz-background-size: cover; /*Css firefox*/
@@ -209,11 +209,15 @@ a, a:hover {
   color: #e94c44;
 }
 .navbar-expand-lg .navbar-nav .nav-link {
-  padding-right: 15%;
-  padding-left: 15%;
   font-weight: bold;
   color: #5d5d5d
 }
+/*
+.nav-item{
+  padding-right: 15%;
+  padding-left: 15%;
+}
+*/
 
 .mainTopo .topo .tvMocinha{
   display:none;   

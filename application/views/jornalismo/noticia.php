@@ -1,15 +1,11 @@
-<script src="<?php echo base_url('/assets/js/popper.min.js')?>"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 <script type="text/javascript">
-
     $(document).ready(function(){
 
         var content = $('#content');
-        $('.link_descricao').click(function( e ){
+        $('.link_programacao').click(function( e ){
             e.preventDefault();
 
             var href = $( this ).attr('href');
@@ -29,6 +25,7 @@
             });
         });
 
+
         $('.noticia').DataTable();
         $('.mais_lidas').DataTable();
         $(".dataTables_length").hide();
@@ -36,13 +33,14 @@
         $("thead").hide();
         $(".dataTables_info").hide();
         $("#registros_filter").hide();
-        $("#registros_info").hide();
-        
-        var count = $("#count_dados").html();
-        if(count < 10) {
-            $('#DataTables_Table_0_paginate').hide();
-        } 
+        $("#registros_info").hide(); 
+        var count_dados = document.querySelector('#count_dados').innerHTML;
+
+        if(count_dados < 10) {
+            $("#DataTables_Table_0_paginate").hide(); 
+        }
     });
+    
 </script>
 <div class="container">
     <div class="conteudoInternas">
@@ -66,11 +64,11 @@
                     <?php foreach($jornalismo as $info):?>
                         <tr>
                             <td>
-                                <a href="<?php echo base_url($_SESSION['city'].'/descricao-noticia');?>">
-                                    <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
-                                    <h3><?php echo $info['tituloPt']?></h3>
-                                    <p><?php echo $info['categoriaPt'] . ' ' . date('d/m/Y', strtotime($info['data']))?></p>
-                                </a> 
+                            <a class="link_programacao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                                <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
+                                <h3><?php echo $info['tituloPt']?></h3>
+                                <p><?php echo $info['categoriaPt'] . ' ' . date('d/m/Y', strtotime($info['data']))?></p>
+                            </a> 
                             </td>
                         </tr>
                     <?php endforeach?>    
@@ -108,3 +106,4 @@
     </div>
 </div>
 </div><br><br><br>
+

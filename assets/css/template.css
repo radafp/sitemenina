@@ -123,6 +123,18 @@
 .promocoesEventos{
     padding:60px 0;
 }
+.promocoesEventos a, .promocoesEventos a:hover{
+    color: #ffffff;
+    text-decoration: none;
+}
+.promocoesEventos .promocaoEvento{
+    margin-bottom:25px;
+    float: left;
+    width: 100%;
+}
+.promocoesEventos .promocaoEvento h3{
+    font-size: 20px;
+}
 .promocoesEventos.promocoesEventos_bc{
     background: url(../img/redes_bc.jpg);
 }
@@ -132,13 +144,39 @@
 .promocoesEventos.promocoesEventos_lg{
     background: url(../img/redes_lg.jpg);
 }
-.promocoesEventos .foto{
+.promocoesEventos .wrapFoto{
     border: 1px solid #fff;
-    padding: 5px;
+    padding: 7px;
+    margin-right: 15px;
+    float: left;
+}
+.promocoesEventos .wrapFoto .foto{
     overflow: hidden;
     max-width: 240px;
+    max-height: 180px;
 }
-.promocoesEventos .foto img{
+.promocoesEventos .wrapFoto .foto img{
     max-width: 100%;
 }
+
+.wrapProgramacao{
+    border: 1px solid #cccccc;
+    position: relative;
+    float: left;
+}
+.wrapProgramacao .programacao{
+    border-bottom: 1px solid #cccccc;
+    float: left;
+    width: 100%;
+}
+.wrapProgramacao .programacao .foto{
+    max-width: 100px;
+    max-height: 70px;
+    overflow: hidden;
+    float: left;
+}
+.wrapProgramacao .programacao .foto img{ 
+    max-width: 100%;
+}
+
 /*-- FIM classe região --*/

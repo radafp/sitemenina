@@ -87,6 +87,10 @@ $route['balneario-camboriu/top-10'] = 'home/top_10';
 $route['blumenal/top-10'] = 'home/top_10';
 $route['lages/top-10'] = 'home/top_10';
 
+$route['balneario-camboriu/videos'] = 'home/videos';
+$route['blumenal/videos'] = 'home/videos';
+$route['lages/videos'] = 'home/videos';
+
 $route['balneario-camboriu/promocoes'] = 'home/promocoes';
 $route['blumenal/promocoes'] = 'home/promocoes';
 $route['lages/promocoes'] = 'home/promocoes';
@@ -99,6 +103,21 @@ $route['balneario-camboriu/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
 $route['blumenal/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
 $route['lages/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
 
+$route['balneario-camboriu/documentos-perdidos'] = 'home/documentos_perdidos';
+$route['blumenal/documentos-perdidos'] = 'home/documentos_perdidos';
+$route['lages/documentos-perdidos'] = 'home/documentos_perdidos';
+
+$route['balneario-camboriu/historia'] = 'home/historia';
+$route['blumenal/historia'] = 'home/historia';
+$route['lages/historia'] = 'home/historia';
+
+$route['balneario-camboriu/equipe'] = 'home/equipe';
+$route['blumenal/equipe'] = 'home/equipe';
+$route['lages/equipe'] = 'home/equipe';
+
+$route['balneario-camboriu/contato'] = 'home/contato';
+$route['blumenal/contato'] = 'home/contato';
+$route['lages/contato'] = 'home/contato';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

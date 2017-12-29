@@ -32,34 +32,35 @@
         $(".dataTables_info").hide();
         $("#registros_filter").hide();
         $("#registros_info").hide();  
-        
     });
     
 </script>
 <div class='programacao'>
     <div class='programacoes'>
-        <h2>Videos</h2><br><br>
+        <h2>Documentos Perdidos</h2><br><br>
         <div id='prog'>
-            <div id='esquerda'>
-                <table class='noticia' data-page-length='2' class="table table-striped table-bordered" cellspacing="0" width="20%">
-                    <thead>
-                        <tr>
-                            <td>.</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach($videos as $info):?>
-                        <tr>
-                            <td>
-                                <p><?php echo $info["titulo"].'<br>'. $info['link']?></p>
-                            </td>
-                        </tr>
-                        <?php endforeach?>    
-                    </tbody> 
-                </table>
-            </div>
+            <table class='noticia' data-page-length='10' class="table table-striped table-bordered" cellspacing="0" width="20%">
+                <thead>
+                    <tr>
+                        <td>.</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($documentos_perdidos as $info):?>
+                    <tr>
+                        <td>
+                            <div id='esquerda'>
+                                <img src="<?php echo base_url('/assets/arquivos/empregos/'.$info['arquivo'])?>" alt="">
+                                <h3><?php echo $info['descricao']?></h3>
+                                <p><?php echo $info['telefone']?></p>
+                                <span><?php echo 'Publicado :'.$info['dataPublicacao'];?></span><br>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach?>
+                </tbody> 
+            </table>
         </div>
     </div>
 
 </div><br><br><br>
-</div>

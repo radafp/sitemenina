@@ -9,7 +9,6 @@
         
         <title>Radio Menina FM - A mais gosotosa de ouvir</title>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/webfontkit/stylesheet.css')?>">
 
         <!-- Custom styles for this template -->
@@ -123,7 +122,7 @@
                                         </div>
                                         <div id='link_jornalismo' class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                             <?php foreach($titulo_jornalismo as $info):?>
-                                                <a  class="dropdown-item" href="<?php echo base_url("home/noticias/?categoria=").$info['categoriaPt'];?>"><?php echo $info['categoriaPt']?></a>
+                                                <a class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'])?>"><?php echo $info['categoriaPt']?></a>
                                             <?php endforeach?>
                                         </div>
                                     </li>
@@ -151,7 +150,7 @@
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                                             <a id='link_bolsa_de_emprego' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos')?>">Bolsa de empregos</a>
                                             <a id='link_documentos_perdidos' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/documentos-perdidos')?>">Documentos Perdidos</a>
-                                            <a id='link_campanhas' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/campanhas')?>">Campanhas</a>
+                                            <!-- <a id='link_campanhas' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/campanhas')?>">Campanhas</a> -->
                                         </div>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -159,12 +158,12 @@
                                         Quem somos
                                     </div>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                        <a id='link_historia' class="dropdown-item" href="historia">História</a>
-                                        <a id='link_equipe' class="dropdown-item" href="equipe">Equipe</a>
+                                        <a id='link_historia' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/historia')?>">História</a>
+                                        <a id='link_equipe' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/equipe')?>">Equipe</a>
                                     </div>
                                     </li>
                                     <li class="nav-item">
-                                        <a id='link_contato' class="nav-link" href="contato">Contato</a>
+                                        <a id='link_contato' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/contato')?>">Contato</a>
                                     </li>
                                 </ul>
                             </div>
@@ -273,16 +272,16 @@
         </footer>
     </body>
 
-    <script src="<?php echo base_url('/assets/js/popper.min.js')?>"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js');?>"></script>
+    <script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
 
             var content = $('#content');
-
-            $('#menu a, .link_descricao, #logo').click(function( e ){
+            var logo = document.querySelector('#logo');
+            $('#menu a,  #logo').click(function( e ){
+                
                 e.preventDefault();
 
                 var href = $( this ).attr('href');
@@ -300,52 +299,11 @@
                         },100);
                     }
                 });
-            });
-            
-            
-            var logo = document.querySelector('#logo');
-            var link_programacao = document.querySelector('#link_programacao');
-            <?php if(count($titulo_jornalismo) != 0):?>
-            var link_jornalismo = document.querySelector('#link_jornalismo a');
-            <?php endif?>
-            var link_artistico = document.querySelector('#link_artistico a');
-            var link_promocoes = document.querySelector('#link_promocoes');
-            var link_eventos = document.querySelector('#link_eventos');
-            var link_bolsa_de_emprego = document.querySelector('#link_bolsa_de_emprego');
-        
-            logo.addEventListener('click', function() {
                 window.history.pushState(null, 'Home', $(this).attr('href'));
-            })
-
-            link_programacao.addEventListener('click', function() {
-                alert('teste');
-                window.history.pushState(null, 'Programação', $(this).attr('href'));
-            })
-            
-            link_jornalismo.addEventListener('click', function() {
-                window.history.pushState(null, 'Jornalismo', $(this).attr('href'));
-            })
-            
-            link_artistico.addEventListener('click', function() {
-                window.history.pushState(null, 'Artistico', $(this).attr('href'));
-            })
-
-            link_promocoes.addEventListener('click', function() {
-                window.history.pushState(null, 'Promoções', $(this).attr('href'));
-            })
-
-            link_eventos.addEventListener('click', function() {
-                alert('Eventos');
-                window.history.pushState(null, 'Eventos', $(this).attr('href'));
-            })
-
-            link_bolsa_de_emprego.addEventListener('click', function() {
-                alert('Eventos');
-                window.history.pushState(null, 'Bolsa-de-Empregos', $(this).attr('href'));
-            })
-            
-                        
+            });
+                                         
         });
+        
         document.getElementById('formRegiao').onchange = function(e){
             var regiao = document.querySelector('#regiao');
             window.location = regiao.value;              
