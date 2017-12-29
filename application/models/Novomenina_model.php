@@ -41,6 +41,7 @@ class Novomenina_model extends CI_Model{
                     WHERE programacao.regiao = '$regiao' 
                     AND programacao.mostrar = 1 
                 GROUP BY programacao.cod
+                LIMIT 3
         "); 
         return $query->result_array();
     }

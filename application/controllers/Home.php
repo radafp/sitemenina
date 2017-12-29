@@ -77,6 +77,7 @@ class home extends CI_Controller {
     }
 
     public function programacao() {
+        // link de progrmacao semanal/sabado/domingo
         if(isset($_GET['programacao'])) {
             $programacao = $_GET['programacao'];
             $dados['programacao_impar'] = $this->Novomenina->programacao_programacao($_SESSION['regiao'], $programacao);
