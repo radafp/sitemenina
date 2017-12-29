@@ -123,13 +123,14 @@
 .promocoesEventos{
     padding:60px 0;
 }
+.promocoesEventos a, .promocoesEventos a:hover{
+    color: #ffffff;
+    text-decoration: none;
+}
 .promocoesEventos .promocaoEvento{
     margin-bottom:25px;
     float: left;
     width: 100%;
-}
-.promocoesEventos .promocaoEvento a, .promocoesEventos .promocaoEvento a:hover{
-    color: #ffffff;
 }
 .promocoesEventos .promocaoEvento h3{
     font-size: 20px;
