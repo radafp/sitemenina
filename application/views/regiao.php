@@ -110,7 +110,7 @@
                     </a>
                 </div>
                 <?php endforeach; ?>
-                <a href="/home/eventos">Ver mais</a>
+                <a href="/home/eventos">Ver mais eventos</a>
             </div>
 
         </div> <!-- row -->
