@@ -158,12 +158,12 @@
                                         Quem somos
                                     </div>
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                        <a id='link_historia' class="dropdown-item" href="historia">História</a>
-                                        <a id='link_equipe' class="dropdown-item" href="equipe">Equipe</a>
+                                        <a id='link_historia' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/historia')?>">História</a>
+                                        <a id='link_equipe' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/equipe')?>">Equipe</a>
                                     </div>
                                     </li>
                                     <li class="nav-item">
-                                        <a id='link_contato' class="nav-link" href="contato">Contato</a>
+                                        <a id='link_contato' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/contato')?>">Contato</a>
                                     </li>
                                 </ul>
                             </div>

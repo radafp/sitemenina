@@ -107,5 +107,17 @@ $route['balneario-camboriu/documentos-perdidos'] = 'home/documentos_perdidos';
 $route['blumenal/documentos-perdidos'] = 'home/documentos_perdidos';
 $route['lages/documentos-perdidos'] = 'home/documentos_perdidos';
 
+$route['balneario-camboriu/historia'] = 'home/historia';
+$route['blumenal/historia'] = 'home/historia';
+$route['lages/historia'] = 'home/historia';
+
+$route['balneario-camboriu/equipe'] = 'home/equipe';
+$route['blumenal/equipe'] = 'home/equipe';
+$route['lages/equipe'] = 'home/equipe';
+
+$route['balneario-camboriu/contato'] = 'home/contato';
+$route['blumenal/contato'] = 'home/contato';
+$route['lages/contato'] = 'home/contato';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

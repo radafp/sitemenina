@@ -230,11 +230,21 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }   
 
-    public function quem_somos() {
+    public function historia() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        $dados['viewName'] = 'quem_somos';
+        $dados['viewName'] = 'quem_somos/historia';
         $this->load->view('Template', $dados);
     }
 
+    public function equipe() {
+        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['viewName'] = 'quem_somos/equipe';
+        $this->load->view('Template', $dados);
+    }
+
+    public function contato() {
+        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['viewName'] = 'contato';
+        $this->load->view('Template', $dados);
+    }
  }
