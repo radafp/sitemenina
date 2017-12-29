@@ -103,6 +103,9 @@ $route['balneario-camboriu/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
 $route['blumenal/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
 $route['lages/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
 
+$route['balneario-camboriu/documentos-perdidos'] = 'home/documentos_perdidos';
+$route['blumenal/documentos-perdidos'] = 'home/documentos_perdidos';
+$route['lages/documentos-perdidos'] = 'home/documentos_perdidos';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

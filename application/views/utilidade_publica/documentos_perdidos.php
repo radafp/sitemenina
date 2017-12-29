@@ -37,7 +37,7 @@
 </script>
 <div class='programacao'>
     <div class='programacoes'>
-        <h2>Empregos</h2><br><br>
+        <h2>Documentos Perdidos</h2><br><br>
         <div id='prog'>
             <table class='noticia' data-page-length='10' class="table table-striped table-bordered" cellspacing="0" width="20%">
                 <thead>
@@ -46,7 +46,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($empregos as $info):?>
+                    <?php foreach($documentos_perdidos as $info):?>
                     <tr>
                         <td>
                             <div id='esquerda'>
