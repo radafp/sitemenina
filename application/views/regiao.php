@@ -16,7 +16,7 @@
             ?>
             <div class="<?=$classe;?> <?=$x==3 ? 'ultima' : '';?>" style="background: url(<?=base_url('/assets/arquivos/noticias/'.$info['arquivo']);?>) no-repeat center center; background-size: 100%;">
                 
-                <a class="link" href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']));?>">
+                <a class="link_descricao" href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']));?>">
                     <div class="fundoFoto">
                         <div class="<?=$classeInf;?>" >
                             <h3><?=$info['tituloPt'];?></h3>
@@ -41,7 +41,7 @@
         <?php foreach($ultimas_noticias as $info):?>
 
             <div class='col-xs-12 col-md-4 noticia'>
-                <a class="link" href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']));?>">
+                <a class="link_descricao" href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']));?>">
                     <div class="wrapCategoria">
                         <span class="categoria" style="background-color:#<?=$info['cor'];?>; color:<?=isset($info['corTexto']) != '' ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></span>
                     </div>
@@ -136,7 +136,7 @@
                     <span>Programação</span>
                 </h1>
                 <?php foreach($programacao_home as $info):?>
-                    <a class="link_programacao" href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'])?>">
+                    <a class="link_descricao" href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'])?>">
                         <div id='programacao1'>
                             <img src="<?php echo base_url('/assets/arquivos/programacao/'.$info['arquivo'])?>" alt="">
                             <h3><?php echo $info['cleanTitle']?></h3>
@@ -176,7 +176,7 @@
 
         var content = $('#content');
 
-        $('.link_programacao').click(function( e ){
+        $('.link_descricao').click(function( e ){
             e.preventDefault();
 
             var href = $( this ).attr('href');
