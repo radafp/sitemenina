@@ -1,4 +1,4 @@
-<script src="<?php echo base_url('/assets/js/popper.min.js')?>"></script>
+<!-- <script src="<?php echo base_url('/assets/js/popper.min.js')?>"></script> -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
@@ -39,9 +39,9 @@
         $("#registros_info").hide();
         
         var count = $("#count_dados").html();
-        if(count < 10) {
-            $('#DataTables_Table_0_paginate').hide();
-        } 
+        // if(count < 10) {
+            // $('#DataTables_Table_0_paginate').hide();
+        // } 
     });
 </script>
 <div class="container">
@@ -55,7 +55,7 @@
         <h2>Ultimas noticias</h2><br>
         <div id='prog'>
             <div id='esquerda'>
-                <table class='noticia' data-page-length='10' class="table table-striped table-bordered" cellspacing="0" width="20%">
+                <table class='noticia' data-page-length='2' class="table table-striped table-bordered" cellspacing="0" width="20%">
                     <thead>
                         <tr>
                             <td>.</td>

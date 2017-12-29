@@ -240,8 +240,7 @@ class Novomenina_model extends CI_Model{
                     WHERE noticias.codCategoria = categorias.cod
                     AND noticias.regiao = '$regiao' 
                     AND categoriaPt = '$categoria' 
-                    AND noticias.mostrar = 1 
-                    AND noticias.destaque = 1 
+                    AND noticias.mostrar = 1  
                 GROUP BY noticias.cod
                 ORDER by DATA DESC
         "); 
@@ -514,7 +513,6 @@ class Novomenina_model extends CI_Model{
                     AND eventos.mostrar = 1 
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataCadastro DESC
-                LIMIT 4
         "); 
         return $query->result_array();
     }
