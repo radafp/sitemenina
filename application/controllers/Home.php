@@ -121,6 +121,7 @@ class home extends CI_Controller {
         $dados['count']             = $count;
         $dados['viewName']          = 'jornalismo/noticia';
         $this->load->view('Template', $dados);
+        
     }
 
     public function descricao_noticia() {
@@ -132,6 +133,22 @@ class home extends CI_Controller {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
         $dados['viewName'] = 'jornalismo/descricao_noticia';
+        $this->load->view('Template', $dados);
+    }
+
+    public function eventos() {
+        // $id = $_GET['id'];
+        $regiao = $_SESSION['regiao'];
+        // if(isset($_GET['p'])) {
+        //     $p = $_GET['p'];
+        // }else{
+        //     $p = 0;
+        // }
+        // $dados['p'] = $p;
+        // $dados['count']             = count($this->Novomenina->count_eventos($regiao));
+        $dados['eventos']           = $this->Novomenina->eventos($regiao);
+        $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['viewName']          = 'eventos/eventos';
         $this->load->view('Template', $dados);
     }
 

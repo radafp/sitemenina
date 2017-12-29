@@ -1,34 +1,3 @@
-<script src="<?php echo base_url('/assets/js/popper.min.js')?>"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-
-        var content = $('#content');
-
-        $('.link').click(function( e ){
-            e.preventDefault();
-
-            var href = $( this ).attr('href');
-            $.ajax({
-                url: href,
-                success: function( response ){
-                    //forçando o parser
-                    var data = $( '<div>'+response+'</div>' ).find('#content').html();
-
-                    //apenas atrasando a troca, para mostrarmos o loading
-                    window.setTimeout( function(){
-                        content.fadeOut('fast', function(){
-                            content.html( data ).fadeIn();
-                        });
-                    },100);
-                }
-            });
-
-        });
-    })
-</script> 
 <div class="container">
     <div class="row destaques">
         <?php 
@@ -169,7 +138,7 @@
                     <span>Programação</span>
                 </h1>
                 <?php foreach($programacao_home as $info):?>
-                    <a class="link" href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'])?>">
+                    <a class="link_programacao" href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'])?>">
                         <div id='programacao1'>
                             <img src="<?php echo base_url('/assets/arquivos/programacao/'.$info['arquivo'])?>" alt="">
                             <h3><?php echo $info['cleanTitle']?></h3>
@@ -201,3 +170,33 @@
     </div> <!-- row -->
 
 </div> <!-- container -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        var content = $('#content');
+
+        $('.link_programacao').click(function( e ){
+            e.preventDefault();
+
+            var href = $( this ).attr('href');
+            $.ajax({
+                url: href,
+                success: function( response ){
+                    //forçando o parser
+                    var data = $( '<div>'+response+'</div>' ).find('#content').html();
+
+                    //apenas atrasando a troca, para mostrarmos o loading
+                    window.setTimeout( function(){
+                        content.fadeOut('fast', function(){
+                            content.html( data ).fadeIn();
+                        });
+                    },100);
+                }
+            });
+
+        });
+    })
+</script> 
