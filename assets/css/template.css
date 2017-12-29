@@ -123,15 +123,15 @@
 .promocoesEventos{
     padding:60px 0;
 }
-.promocoesEventos .promocao, .promocoesEventos .evento{
+.promocoesEventos .promocaoEvento{
     margin-bottom:25px;
     float: left;
     width: 100%;
 }
-.promocoesEventos .promocao a, .promocoesEventos .promocao a:hover, .promocoesEventos .evento a, .promocoesEventos .evento a:hover{
+.promocoesEventos .promocaoEvento a, .promocoesEventos .promocaoEvento a:hover{
     color: #ffffff;
 }
-.promocoesEventos .promocao h3{
+.promocoesEventos .promocaoEvento h3{
     font-size: 20px;
 }
 .promocoesEventos.promocoesEventos_bc{
