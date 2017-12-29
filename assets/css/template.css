@@ -182,3 +182,18 @@
 }
 
 /*-- FIM classe região --*/
+
+
+/*----------  CSS páginas internas ---------------------------*/ 
+
+/* css global */
+.blocoConteudo{
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 3px;
+    margin: 50px -15px;
+    text-align: center;
+    padding: 40px 0;
+}
+
+
+/* fim css global */
