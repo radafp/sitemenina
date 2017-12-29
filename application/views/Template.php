@@ -280,8 +280,9 @@
         $(document).ready(function(){
 
             var content = $('#content');
+            var logo = document.querySelector('#logo');
 
-            $('#menu a, .link_descricao, #logo').click(function( e ){
+            $('#menu a, #logo').click(function( e ){
                 e.preventDefault();
 
                 var href = $( this ).attr('href');
@@ -301,16 +302,9 @@
                 });
                 window.history.pushState(null, 'Home', $(this).attr('href'));
             });
-            
-            
-            var logo = document.querySelector('#logo');
-                   
-            logo.addEventListener('click', function() {
-                window.history.pushState(null, 'Home', $(this).attr('href'));
-            })
-
                                   
         });
+        
         document.getElementById('formRegiao').onchange = function(e){
             var regiao = document.querySelector('#regiao');
             window.location = regiao.value;              
