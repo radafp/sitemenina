@@ -592,9 +592,9 @@ class Novomenina_model extends CI_Model{
     }
     
 
-    // ================================ PAGINAS DE EVENTOS ====================================
+    // ================================ PAGINAS DE ULTILIDADES ================================
     // |                                                                                      |
-    // |                          TODAS AS PAGINAS SOBRE EVENTOS                              |
+    // |                          TODAS AS PAGINAS SOBRE ULTILIDADES                          |
     // |                                                                                      |
     // ========================================================================================
      
@@ -624,6 +624,36 @@ class Novomenina_model extends CI_Model{
                     AND empregos.mostrar = 1 
                 GROUP BY empregos.cod
                 ORDER BY empregos.dataCadastro DESC
+        "); 
+        return $query->result_array();
+    }
+
+    public function documentos_perdidos($regiao) {
+        // $query = $this->db->query("SELECT eventos.*, arquivos.arquivo
+        //                             FROM eventos 
+        //                             INNER JOIN arquivos 
+        //                             ON eventos.cod = arquivos.codReferencia 
+        //                             and eventos.regiao = 'bc' 
+        //                             GROUP BY eventos.cod
+        //                             ORDER BY eventos.dataCadastro 
+        //                             LIMIT 2"
+        // );
+        // return $query->result_array();
+        $query = $this->db->query(
+            "SELECT achadoseperdidos.*, 
+                (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                        WHERE a.codReferencia = achadoseperdidos.cod 
+                        AND a.referencia = 'achadoseperdidos' 
+                        AND a.tipo = 2 
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+            AS arquivo 
+                FROM achadoseperdidos 
+                    WHERE achadoseperdidos.regiao = '$regiao' 
+                    AND achadoseperdidos.mostrar = 1 
+                GROUP BY achadoseperdidos.cod
+                ORDER BY achadoseperdidos.dataCadastro DESC
         "); 
         return $query->result_array();
     }

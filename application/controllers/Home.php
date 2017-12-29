@@ -166,15 +166,7 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
-    public function bolsa_de_empregos() {
-        $dados['empregos']          = $this->Novomenina->empregos($_SESSION['regiao']);
-        // $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        // $dados['eventos']           = $this->Novomenina->eventos($_SESSION['regiao']); 
-        $dados['viewName']          = 'utilidade_publica/bolsa_de_empregos';
-        $this->load->view('Template', $dados);
-    }
+    
 
     public function descricao_eventos() {
         $id = $_GET['id'];
@@ -204,36 +196,15 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
-    public function descricao_programacao() {
-        $id = $_GET['id'];
-        $regiao = $_SESSION['regiao'];
-        $dados['descricao_programacao'] = $this->Novomenina->descricao_programacao($id, $regiao);
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        $dados['viewName'] = 'programacao/descricao_programacao';
-        $this->load->view('Template', $dados);
-    }
-
-    public function emprego() {
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['viewName'] = 'utilidade_publica/emprego';
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        $this->load->view('Template', $dados);
-    }
-
-    public function documentos() {
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        $dados['viewName'] = 'utilidade_publica/documentos';
-        $this->load->view('Template', $dados);
-    }
-
-    public function achados_e_perdidos() {
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        $dados['viewName'] = 'utilidade_publica/achados_e_perdidos';
-        $this->load->view('Template', $dados);
-    }
+    // public function descricao_programacao() {
+    //     $id = $_GET['id'];
+    //     $regiao = $_SESSION['regiao'];
+    //     $dados['descricao_programacao'] = $this->Novomenina->descricao_programacao($id, $regiao);
+    //     $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+    //     $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
+    //     $dados['viewName'] = 'programacao/descricao_programacao';
+    //     $this->load->view('Template', $dados);
+    // }
 
     public function descricao_utilidade() {
         $id = $_GET['id'];
@@ -245,13 +216,19 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
-    public function empregos() {
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        $dados['viewName'] = 'quem_somos';
+    public function bolsa_de_empregos() {
+        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['empregos']          = $this->Novomenina->empregos($_SESSION['regiao']);
+        $dados['viewName']          = 'utilidade_publica/bolsa_de_empregos';
         $this->load->view('Template', $dados);
     }
-        
+
+    public function documentos_perdidos() {
+        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['documentos_perdidos']   = $this->Novomenina->documentos_perdidos($_SESSION['regiao']);
+        $dados['viewName']              = 'utilidade_publica/documentos_perdidos';
+        $this->load->view('Template', $dados);
+    }   
 
     public function quem_somos() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
