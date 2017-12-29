@@ -367,8 +367,7 @@ class Novomenina_model extends CI_Model{
                     WHERE noticias.codCategoria = categorias.cod
                     AND noticias.regiao = '$regiao' 
                     AND categoriaPt = '$categoria' 
-                    AND noticias.mostrar = 1 
-                    AND noticias.destaque = 1 
+                    AND noticias.mostrar = 1  
                 GROUP BY noticias.cod
                 ORDER BY cliques desc
                 LIMIT 4
@@ -494,7 +493,7 @@ class Novomenina_model extends CI_Model{
      
 
     // eventos da pagina de eventos
-    public function eventos($regiao, $p) {
+    public function eventos($regiao) {
         // $query = $this->db->query("SELECT eventos.*, arquivos.arquivo
         //                             FROM eventos 
         //                             INNER JOIN arquivos 

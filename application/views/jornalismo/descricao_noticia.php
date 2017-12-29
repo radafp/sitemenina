@@ -45,27 +45,15 @@
     <div class='playlist'><br><br>
         <h2>As mais lidas</h2>
         <div id='direita'>
-        <table class='noticia' data-page-length='4' class="table table-striped table-bordered" cellspacing="0" width="100%">
-            <thead>
-                <tr>
-                    <td>.</td>
-                </tr>
-            </thead>
-            
-            <tbody>
+        
             <?php foreach($mais_lidas as $info):?>
-                <tr>
-                    <td>
+             
                     <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
                         <p><?php echo $info['categoriaPt']. ' '. date('d/m/Y', strtotime($info['data'])). '<br><br>'?></p>
                         <h3><?php echo $info['tituloPt'].'<br>'?></h3>
                         <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                     </a>
                         <!-- <p><?php echo $info['descricaoPt']?></p> -->
-                    </td>
-                </tr>
             <?php endforeach?>    
-            </tbody>
-        </table>
     </div>
 </div><br><br><br>
