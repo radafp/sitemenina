@@ -203,6 +203,7 @@ class Novomenina_model extends CI_Model{
                     AND noticias.destaque = 0 
                 GROUP BY noticias.cod
                 ORDER by DATA DESC
+                LIMIT 3
         "); 
         return $query->result_array();
     }
