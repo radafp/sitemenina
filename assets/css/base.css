@@ -24,7 +24,7 @@ body {
   -o-background-size: cover; /*Css Opera*/
 }
 .backgroundBody_bl {
-  background: url(../img/bg_bl.jpg) no-repeat center center fixed;
+  background: url(../img/bg_bl.jpg) no-repeat center top;
   background-size: cover; /*Css padrão*/
   -webkit-background-size: cover; /*Css safari e chrome*/
   -moz-background-size: cover; /*Css firefox*/
@@ -32,7 +32,7 @@ body {
   -o-background-size: cover; /*Css Opera*/
 }
 .backgroundBody_lg {
-  background: url(../img/bg_lg.jpg) no-repeat center center fixed;
+  background: url(../img/bg_lg.jpg) no-repeat center top;
   background-size: cover; /*Css padrão*/
   -webkit-background-size: cover; /*Css safari e chrome*/
   -moz-background-size: cover; /*Css firefox*/
