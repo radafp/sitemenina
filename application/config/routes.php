@@ -69,7 +69,7 @@ elseif($nParametros==2)
     $cidade = $uri[0];
     $view = $uri[1]; 
     $paremetro = $uri[2];
-}
+};
 
 $route['balneario-camboriu'] = 'home/regiao/?regiao=bc';
 $route['blumenal'] = 'home/regiao/?regiao=bl';

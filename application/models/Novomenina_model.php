@@ -367,8 +367,7 @@ class Novomenina_model extends CI_Model{
                     WHERE noticias.codCategoria = categorias.cod
                     AND noticias.regiao = '$regiao' 
                     AND categoriaPt = '$categoria' 
-                    AND noticias.mostrar = 1 
-                    AND noticias.destaque = 1 
+                    AND noticias.mostrar = 1  
                 GROUP BY noticias.cod
                 ORDER BY cliques desc
                 LIMIT 4
@@ -580,17 +579,34 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
     
-
-    public function cidade($regiao) {
-        if($regiao == 'bc') {
-            return 'balneario-camboriu';
-        }if($regiao == 'bl') {
-            return 'blumenal';
-        }if($regiao == 'lg') {
-            return 'lages';
-        }
+    public function count_eventos($regiao) {
+        // $query = $this->db->query("SELECT eventos.*, arquivos.arquivo
+        //                             FROM eventos 
+        //                             INNER JOIN arquivos 
+        //                             ON eventos.cod = arquivos.codReferencia 
+        //                             and eventos.regiao = 'bc' 
+        //                             GROUP BY eventos.cod
+        //                             ORDER BY eventos.dataCadastro"
+        // );
+        // return $query->result_array();
+        $query = $this->db->query(
+            "SELECT eventos.*, 
+                (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                        WHERE a.codReferencia = eventos.cod 
+                        AND a.referencia = 'eventos' 
+                        AND a.tipo = 2 
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+            AS arquivo 
+                FROM eventos 
+                    WHERE eventos.regiao = '$regiao' 
+                    AND eventos.mostrar = 1 
+                GROUP BY eventos.cod
+                ORDER BY eventos.dataCadastro DESC
+        "); 
+        return $query->result_array();
     }
-    
 
     // ================================ PAGINAS DE ULTILIDADES ================================
     // |                                                                                      |

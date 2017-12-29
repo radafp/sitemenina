@@ -84,7 +84,6 @@ class home extends CI_Controller {
         }else{
             $dados['programacao_impar'] = $this->Novomenina->programacao_impar($_SESSION['regiao']);
         }
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['programacao_par']   = $this->Novomenina->programacao_par($_SESSION['regiao']); 
         $dados['viewName'] = 'programacao/programacao';
@@ -113,9 +112,7 @@ class home extends CI_Controller {
         $categoria                  = $_GET['categoria'];
         $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao']);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        // $dados['outras_noticias'] = $this->Novomenina->outras_noticias($_SESSION['regiao']); 
         $dados['mais_lidas']        = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $count                      = count($dados['jornalismo']);
         $dados['count']             = $count;
         $dados['viewName']          = 'jornalismo/noticia';
@@ -127,7 +124,6 @@ class home extends CI_Controller {
         $id = $_GET['id'];
         $categoria = $_GET['categoria'];
         $this->Novomenina->cliques($id, $_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id, $_SESSION['regiao']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
@@ -158,6 +154,22 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
+    // public function eventos() {
+    //     // $id = $_GET['id'];
+    //     $regiao = $_SESSION['regiao'];
+    //     if(isset($_GET['p'])) {
+    //         $p = $_GET['p'];
+    //     }else{
+    //         $p = 0;
+    //     }
+    //     $dados['p'] = $p;
+    //     $dados['count']             = count($this->Novomenina->count_eventos($regiao));
+    //     $dados['eventos']           = $this->Novomenina->eventos($regiao, $p);
+    //     $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+    //     $dados['viewName']          = 'eventos/eventos';
+    //     $this->load->view('Template', $dados);
+    // }
+
     public function videos() {
         $regiao = $_SESSION['regiao'];
         $dados['videos']   = $this->Novomenina-> videos($regiao);
@@ -173,7 +185,6 @@ class home extends CI_Controller {
         $regiao = $_SESSION['regiao'];
         $dados['descricao_eventos'] = $this->Novomenina->descricao_eventos($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['viewName'] = 'eventos/descricao_eventos';
         $this->load->view('Template', $dados);
     }
@@ -181,7 +192,6 @@ class home extends CI_Controller {
     public function promocoes() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['promocoes_impar'] = $this->Novomenina->promocoes_home($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['viewName'] = 'promocoes/promocoes';
         $this->load->view('Template', $dados);
     }
@@ -191,7 +201,6 @@ class home extends CI_Controller {
         $regiao = $_SESSION['regiao'];
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
         $dados['viewName'] = 'promocoes/descricao_promocoes';
         $this->load->view('Template', $dados);
     }
