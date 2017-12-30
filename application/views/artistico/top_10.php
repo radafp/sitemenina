@@ -1,14 +1,31 @@
-<div class='programacao'>
-    <div class='programacoes'>
-        <h2>TOP 10</h2><br><br>
-        <div id='prog'>
-            <?php foreach($top_10 as $info):?>
-                <div id='esquerda'>
-                    <h3><?php echo $info['titulo']?></h3>
-                    <p><?php echo $info['link']?></p>
-                    <!-- <span><?php echo 'Início:'.$info['dataInicio']. "<br>Fim:". $info['dataFim']?></span><br> -->
+<div class="container">
+    <div class="blocoConteudo">
+        <div class="row">
+
+            <div class="col-xs-12 col-md-8 contLeft">
+
+                <h1 class="tituloPadrao1">
+                    <span>TOP 10</span>
+                </h1>
+                <div>
+                    <?php foreach($top_10 as $info):?>
+                        <div id='esquerda' style="width:70%; float:left">
+                            <h3><?php echo $info['titulo']?></h3>
+                            <p>Artista<?//php echo $info['link']?></p>
+                        </div>
+                        <div id='direita' style="width:30%; float:right">
+                           <img src="<?php echo base_url('/assets/img/play-top10.png')?>" title="">
+                           <span style="display:block; float:left">Ouvir</span>
+                        </div>
+                    <?php endforeach?>
                 </div>
-            <?php endforeach?>
-        </div>
+
+            </div> <!-- contLeft -->
+            <div class="col-xs-12 col-md-4 contRight">
+                Publicidade 
+            </div> <!-- contRight -->
+
+        </div>  <!-- row --> 
     </div>
-</div><br><br><br>
+</div> <!-- container --> 
+

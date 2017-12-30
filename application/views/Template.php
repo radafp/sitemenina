@@ -177,7 +177,7 @@
 
         <main>
 
-            <div id="content" class="conteudo">
+            <div id="content">
                 <?php $this->load->view($viewName);?>
             </div>
             

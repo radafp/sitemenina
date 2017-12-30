@@ -29,56 +29,47 @@
 <div class="container">
     <div class="blocoConteudo">
         <div class="row">
-        
-            <div class="col-xs-12 col-md-9">
-                <div class='programacao'>
-                    <div class='programacoes'>
-                        <h1 class="tituloPadrao1">
-                            <span>Programações</span>
-                        </h1>
-                        <ul>
-                            <li>
-                                <a class='link_descricao' href="<?php echo base_url('home/programacao?programacao=Semanal')?>">SEMANAL</a>
-                            </li>
-                            <li>
-                                <a class='link_descricao' href="<?php echo base_url('home/programacao?programacao=Sabado')?>">SÁBADO</a>
-                            </li>
-                            <li>
-                                <a class='link_descricao' href="<?php echo base_url('home/programacao?programacao=Domingo')?>">DOMINGO</a>
-                            </li>
-                        </ul>   
-                        <div id='prog'>
-                            <?php foreach($programacao_impar as $info):?>
-                                <div id='esquerda'>
-                                <a class='link_programacao' href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
-                                
-                                    <img src="<?php echo base_url('assets/arquivos/programacao/'.$info["arquivo"])?>" alt="">
-                                    <h3><?php echo $info['titulo']?></h3>
-                                    <p><?php echo $info['descricao']?></p>
-                                    <span><?php echo 'HORÀRIO:'.$info['horario'].'<br>APRESENTADOR:'. $info['apresentador']?></span>
-                                    <p><?= 'ATENCÂO!!!!!'. $info['programacao']?></p>
-                                    <p>------------------------------------------------------------</p>
-                                </a>
-                                </div>
-                            <?php endforeach?>
 
-                            <!-- <?php foreach($programacao_par as $info):?> -->
-                                <div id='direita'>
-                                <!-- <a href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
-                                    <h3><?php echo $info['titulo']?></h3>
-                                    <p><?php echo $info['descricao']?></p>
-                                    <span><?php echo 'HORÀRIO:'.$info['horario'].'<br>APRESENTADOR:'. $info['apresentador']?></span> -->
-                                </div>
-                            <!-- <?php endforeach?> -->
+            <div class="col-xs-12 col-md-8 contLeft">
+
+                <h1 class="tituloPadrao1">
+                    <span>Programação</span>
+                </h1>
+                <ul>
+                    <li>
+                        <a class='link_descricao' href="<?php echo base_url('home/programacao?programacao=Semanal')?>">SEMANAL</a>
+                    </li>
+                    <li>
+                        <a class='link_descricao' href="<?php echo base_url('home/programacao?programacao=Sabado')?>">SÁBADO</a>
+                    </li>
+                    <li>
+                        <a class='link_descricao' href="<?php echo base_url('home/programacao?programacao=Domingo')?>">DOMINGO</a>
+                    </li>
+                </ul>   
+                <div id='prog'>
+                    <?php foreach($programacao_impar as $info):?>
+                        <div id='esquerda'>
+                            <a class='link_programacao' href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
+                            
+                                <img src="<?php echo base_url('assets/arquivos/programacao/'.$info["arquivo"])?>" alt="">
+                                <h3><?php echo $info['titulo']?></h3>
+                                <!-- <p><?php echo $info['descricao']?></p> -->
+                                <span><?php echo 'HORÀRIO:'.$info['horario'].'<br>APRESENTADOR:'. $info['apresentador']?></span>
+                                <p><?= 'ATENCÂO!!!!!'. $info['programacao']?></p>
+                                <p>------------------------------------------------------------</p>
+                            </a>
                         </div>
-                    </div>
+                    <?php endforeach?>
                 </div>
-            </div> 
-            <div class="col-xs-12 col-md-3">
-                <div class='playlist'>
-                    <h2>Playlist Radio Menina</h2>
-                </div>
-            </div> 
+
+            </div> <!-- contLeft -->
+            <div class="col-xs-12 col-md-4 contRight">
+
+                <h1 class="tituloPadrao3">
+                    <span>Playlist Radio Menina</span>
+                </h1>
+
+            </div> <!-- contRight -->
 
         
         </div>  <!-- row --> 

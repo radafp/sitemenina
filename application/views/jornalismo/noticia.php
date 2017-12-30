@@ -43,67 +43,54 @@
     
 </script>
 <div class="container">
-    <div class="conteudoInternas">
+    <div class="blocoConteudo">
+        <div class="row">
 
-    </div><!-- fin conteudoInternas -->
-</div> <!-- container -->
+            <div class="col-xs-12 col-md-8 contLeft">
 
-<div class='programacao'>
-    <div class='programacoes'>
-        <h2>Ultimas noticias</h2><br>
-        <div id='prog'>
-            <div id='esquerda'>
-                <table class='noticia' data-page-length='10' class="table table-striped table-bordered" cellspacing="0" width="20%">
-                    <thead>
-                        <tr>
-                            <td>.</td>
-                        </tr>
-                    </thead>
-                    <tbody class="link_descricao">
-                    <div id='count_dados' style="display:none"><?php echo $count;?></div>
-                    <?php foreach($jornalismo as $info):?>
-                        <tr>
-                            <td>
-                            <a class="link_programacao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
-                                <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
-                                <h3><?php echo $info['tituloPt']?></h3>
-                                <p><?php echo $info['categoriaPt'] . ' ' . date('d/m/Y', strtotime($info['data']))?></p>
-                            </a> 
-                            </td>
-                        </tr>
-                    <?php endforeach?>    
-                    </tbody> 
-                </table>
-            </div>  
-        </div>
+                <h1 class="tituloPadrao1">
+                    <span>Notícias</span>
+                </h1>
+                <div id='prog'>
+                    <div id='esquerda'>
+                        <table class='noticia' data-page-length='10' class="table table-striped table-bordered" cellspacing="0" width="20%">
+                            <thead>
+                                <tr>
+                                    <td>.</td>
+                                </tr>
+                            </thead>
+                            <tbody class="link_descricao">
+                            <div id='count_dados' style="display:none"><?php echo $count;?></div>
+                            <?php foreach($jornalismo as $info):?>
+                                <tr>
+                                    <td>
+                                    <a class="link_programacao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                                        <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
+                                        <h3><?php echo $info['tituloPt']?></h3>
+                                        <p><?php echo $info['categoriaPt'] . ' ' . date('d/m/Y', strtotime($info['data']))?></p>
+                                    </a> 
+                                    </td>
+                                </tr>
+                            <?php endforeach?>    
+                            </tbody> 
+                        </table>
+                    </div>  
+                </div>
+
+            </div> <!-- contLeft -->
+            <div class="col-xs-12 col-md-4 contRight">
+                <?php foreach($mais_lidas as $info):?>
+
+                    <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                        <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
+                        <p><?php echo $info['categoriaPt']?></p>
+                        <h3><?php echo $info['tituloPt']?></h3>
+                    </a> 
+
+                <?php endforeach?>    
+            </div> <!-- contRight -->
+
+        </div>  <!-- row --> 
     </div>
-
-<div class='playlist'><br><br>
-    <h2>As mais lidas</h2>
-    
-    <div id='direita'>
-        <!-- <table class='mais_lidas' data-page-length='4' class="table table-striped table-bordered" cellspacing="0" width="100%">
-            <thead>
-                <tr>
-                    <td>.</td>
-                </tr>
-            </thead>
-            
-            <tbody> -->
-            <?php foreach($mais_lidas as $info):?>
-                <!-- <tr>
-                    <td> -->
-                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
-                            <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
-                            <p><?php echo $info['categoriaPt']?></p>
-                            <h3><?php echo $info['tituloPt']?></h3>
-                        </a> 
-                    <!-- </td>
-                </tr> -->
-            <?php endforeach?>    
-            <!-- </tbody>
-        </table> -->
-    </div>
-</div>
-</div><br><br><br>
+</div> <!-- container --> 
 

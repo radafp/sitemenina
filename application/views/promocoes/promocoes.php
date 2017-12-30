@@ -27,22 +27,33 @@
         });
     });
 </script>
+<div class="container">
+    <div class="blocoConteudo">
+        <div class="row">
 
-<div class='programacao'>
-    <div class='programacoes'>
-        <h2>Promoções</h2><br><br>
-        <div id='prog'>
-            <?php foreach($promocoes_impar as $info):?>
-                <div id='esquerda'>
-                <a class='link_descricao' href="<?php echo base_url('home/descricao_promocoes?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
-                <img src="<?php echo base_url('assets/arquivos/programacao/'.$info["arquivo"])?>" alt="" width='680px'>
-                    <h3><?php echo $info['tituloPt']?></h3>
-                    <!-- <p><?php echo $info['descricao']?></p> -->
-                    <span><?php echo 'Início:'.$info['dataInicio']. "<br>Fim:". $info['dataFim']?></span><br>
-                    <button>Participar</button>
+            <div class="col-xs-12 col-md-8 contLeft">
+
+                <h1 class="tituloPadrao1">
+                    <span>Promoções</span>
+                </h1>
+                <div id='prog'>
+                    <?php foreach($promocoes_impar as $info):?>
+                        <div id='esquerda'>
+                        <a class='link_descricao' href="<?php echo base_url('home/descricao_promocoes?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
+                        <img src="<?php echo base_url('assets/arquivos/programacao/'.$info["arquivo"])?>" alt="" width='680px'>
+                            <h3><?php echo $info['tituloPt']?></h3>
+                            <!-- <p><?php echo $info['descricao']?></p> -->
+                            <span><?php echo 'Início:'.$info['dataInicio']. "<br>Fim:". $info['dataFim']?></span><br>
+                            <button>Participar</button>
+                        </div>
+                    <?php endforeach?>
                 </div>
-            <?php endforeach?>
-        </div>
-    </div>
+                
+            </div> <!-- contLeft -->
+            <div class="col-xs-12 col-md-4 contRight">
+                Publicidade 
+            </div> <!-- contRight -->
 
-</div><br><br><br>
+        </div>  <!-- row --> 
+    </div>
+</div> <!-- container --> 

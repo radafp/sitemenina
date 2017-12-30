@@ -41,39 +41,45 @@
         } 
     });
 </script>
-<div class='programacao'>
-    <div class='programacoes'>
-        <h2>Eventos</h2><br>
-        <div id='prog'>
-            <table class='noticia' data-page-length='10' class="table table-striped table-bordered" cellspacing="0" width="20%">
-                <thead>
-                    <tr>
-                        <td>.</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach($eventos as $info):?>
-                    <tr>
-                        <td>
-                            <div id='esquerda'>
-                                <a class='link_eventos' href="<?php echo base_url('home/descricao_eventos?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
-                                    <img src="<?php echo base_url('/assets/arquivos/evetos/'.$info['arquivo'])?>" alt="">
-                                    <h3><?php echo $info['tituloPt']?></h3>
-                                    <!-- <p><?php echo $info['descricaoPt']?></p> -->
-                                    <span><?php echo 'HORÀRIO:'.date('d/m/Y', strtotime($info['dataInicio']))?></span>
-                                </a> 
-                            </div>
-                        </td>
-                    </tr>
-                    <?php endforeach?>
-                </tbody> 
-            </table>
-        </div>
-    </div>
-    <div id='direita' >
+<div class="container">
+<div class="blocoConteudo">
+    <div class="row">
 
+        <div class="col-xs-12 col-md-8 contLeft">
+
+            <h1 class="tituloPadrao1">
+                <span>Eventos</span>
+            </h1>
+            <div id='prog'>
+                <table class='noticia' data-page-length='10' class="table table-striped table-bordered" cellspacing="0" width="20%">
+                    <thead>
+                        <tr>
+                            <td>.</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($eventos as $info):?>
+                        <tr>
+                            <td>
+                                <div id='esquerda'>
+                                    <a class='link_eventos' href="<?php echo base_url('home/descricao_eventos?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
+                                        <img src="<?php echo base_url('/assets/arquivos/evetos/'.$info['arquivo'])?>" alt="">
+                                        <h3><?php echo $info['tituloPt']?></h3>
+                                        <!-- <p><?php echo $info['descricaoPt']?></p> -->
+                                        <span><?php echo 'HORÀRIO:'.date('d/m/Y', strtotime($info['dataInicio']))?></span>
+                                    </a> 
+                                </div>
+                            </td>
+                        </tr>
+                        <?php endforeach?>
+                    </tbody> 
+                </table>
+            </div>
+            </div> <!-- contLeft -->
+            <div class="col-xs-12 col-md-4 contRight">
+                Publicidade 
+            </div> <!-- contRight -->
+
+        </div>  <!-- row --> 
     </div>
-    <div id='comentario'>
-        
-    </div>
-</div><br><br><br>
+</div> <!-- container --> 

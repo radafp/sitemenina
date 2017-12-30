@@ -2,7 +2,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
-
     $(document).ready(function(){
 
         var content = $('#content');
@@ -27,33 +26,38 @@
         });
     });
 </script>
-<div class='programacao'>
-    <div class='programacoes'>
-        <h2>Descrição da Notícia</h2><br>
-        <div id='prog'>
-            <?php foreach($descricao_noticia as $info):?>
-            <div id='esquerda'>
-                <p><?php echo $info['categoriaPt']. ' '. date('d/m/Y', strtotime($info['data'])). '<br><br>'?></p>
-                <h3><?php echo $info['tituloPt'].'<br>'?></h3>
-                <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo']);?>" alt="">
-                <p><?php echo $info['descricaoPt']?></p>
-            </div>
-            <?php endforeach?>
-        </div>
-    </div>
+<div class="container">
+    <div class="blocoConteudo">
+        <div class="row">
 
-    <div class='playlist'><br><br>
-        <h2>As mais lidas</h2>
-        <div id='direita'>
-        
-            <?php foreach($mais_lidas as $info):?>
-             
-                    <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+            <div class="col-xs-12 col-md-8 contLeft">
+
+                <div id='prog'>
+                    <?php foreach($descricao_noticia as $info):?>
+                    <div id='esquerda'>
                         <p><?php echo $info['categoriaPt']. ' '. date('d/m/Y', strtotime($info['data'])). '<br><br>'?></p>
                         <h3><?php echo $info['tituloPt'].'<br>'?></h3>
+                        <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo']);?>" alt="">
+                        <p><?php echo $info['descricaoPt']?></p>
+                    </div>
+                    <?php endforeach?>
+                </div>
+                
+            </div> <!-- contLeft -->
+            <div class="col-xs-12 col-md-4 contRight">
+                <?php foreach($mais_lidas as $info):?>
+
+                    <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
                         <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
-                    </a>
-                        <!-- <p><?php echo $info['descricaoPt']?></p> -->
-            <?php endforeach?>    
+                        <p><?php echo $info['categoriaPt']?></p>
+                        <h3><?php echo $info['tituloPt']?></h3>
+                    </a> 
+
+                <?php endforeach?>    
+            </div> <!-- contRight -->
+
+        </div>  <!-- row --> 
     </div>
-</div><br><br><br>
+</div> <!-- container --> 
+    
+    

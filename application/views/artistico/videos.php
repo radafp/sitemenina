@@ -36,30 +36,31 @@
     });
     
 </script>
-<div class='programacao'>
-    <div class='programacoes'>
-        <h2>Videos</h2><br><br>
-        <div id='prog'>
-            <div id='esquerda'>
-                <table class='noticia' data-page-length='2' class="table table-striped table-bordered" cellspacing="0" width="20%">
-                    <thead>
-                        <tr>
-                            <td>.</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach($videos as $info):?>
-                        <tr>
-                            <td>
-                                <p><?php echo $info["titulo"].'<br>'. $info['link']?></p>
-                            </td>
-                        </tr>
-                        <?php endforeach?>    
-                    </tbody> 
-                </table>
-            </div>
-        </div>
-    </div>
+<div class="container">
+    <div class="blocoConteudo">
+        <div class="row">
 
-</div><br><br><br>
-</div>
+            <div class="col-xs-12 col-md-8 contLeft">
+
+                <h1 class="tituloPadrao1">
+                    <span>TOP 10</span>
+                </h1>
+                <div id='prog'>
+
+                    <?php foreach($videos as $info): ?>
+                        <div style="width:45%;float:left">
+                            <iframe style="width: 100%; max-height:250px" src="<?=$info['link']?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>          
+                            <p><?php echo $info["titulo"];?></p>
+                        </div>
+                    <?php endforeach; ?> 
+
+                </div>
+
+            </div> <!-- contLeft -->
+            <div class="col-xs-12 col-md-4 contRight">
+                Publicidade 
+            </div> <!-- contRight -->
+
+        </div>  <!-- row --> 
+    </div>
+</div> <!-- container --> 
