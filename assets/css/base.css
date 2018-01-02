@@ -191,19 +191,19 @@ a, a:hover {
   display: inline;
 }
 .blocoMenu .topoRedes ul li a.face{
-  border: 1px solid #6684bf;
+  border: 2px solid #6684bf;
 }
 .blocoMenu .topoRedes .face i{
   color: #6684bf;
 }
 .blocoMenu .topoRedes ul li a.insta{
-  border: 1px solid #ba8ad7;
+  border: 2px solid #ba8ad7;
 }
 .blocoMenu .topoRedes .insta i{
   color: #ba8ad7;
 }
 .blocoMenu .topoRedes ul li a.youtube{
-  border: 1px solid #e94c44;
+  border: 2px solid #e94c44;
 }
 .blocoMenu .topoRedes .youtube i{
   color: #e94c44;

@@ -203,3 +203,78 @@
 
 /* css programação */
 
+
+.blocoMenuProgramacao{
+    width: 100%;
+    margin: 35px 0;
+    float: left;
+}
+.blocoMenuProgramacao .menuProgramacao{
+    position: relative;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.blocoMenuProgramacao .menuProgramacao .ativo{
+    background: #EC9136 !important;
+}
+.blocoMenuProgramacao .menuProgramacao a, .menuProgramacao a:hover{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: bold;
+}
+.blocoMenuProgramacao .menuProgramacao .semanal{
+    width: 128px;
+    float: left;
+    background: #F2B576;
+    text-align: center;
+    padding: 15px 0;
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px;
+    display: inline;
+}
+.blocoMenuProgramacao .menuProgramacao .sabado{
+    width: 128px;
+    float: left;
+    background: #F2B576;
+    text-align: center;
+    padding: 15px 0;
+    display: inline;
+}
+.blocoMenuProgramacao .menuProgramacao .domingo{
+    width: 128px;
+    float: left;
+    background: #F2B576;
+    text-align: center;
+    padding: 15px 0;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    display: inline;
+}
+
+.blocoProgramacao{
+    width: 100%;
+    margin: 35px 0;
+    float: left;
+}
+
+.blocoProgramacao .linhaPrograma{
+    width: 100%;
+    float: left;
+}
+
+.blocoProgramacao .linhaPrograma .programa{
+    width: 49.5%;
+    float: left;
+}
+.blocoProgramacao .linhaPrograma .programaRight{
+    width: 49.5%;
+    float: right;
+}
+.blocoProgramacao .linhaPrograma .conexaoPrograma{
+    float: left;
+}
+.blocoProgramacao .linhaPrograma .conexaoProgramaRight{
+    float: right;
+}
