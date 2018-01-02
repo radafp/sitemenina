@@ -579,34 +579,34 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
     
-    public function count_eventos($regiao) {
-        // $query = $this->db->query("SELECT eventos.*, arquivos.arquivo
-        //                             FROM eventos 
-        //                             INNER JOIN arquivos 
-        //                             ON eventos.cod = arquivos.codReferencia 
-        //                             and eventos.regiao = 'bc' 
-        //                             GROUP BY eventos.cod
-        //                             ORDER BY eventos.dataCadastro"
-        // );
-        // return $query->result_array();
-        $query = $this->db->query(
-            "SELECT eventos.*, 
-                (SELECT a.arquivo 
-                    FROM arquivos AS a 
-                        WHERE a.codReferencia = eventos.cod 
-                        AND a.referencia = 'eventos' 
-                        AND a.tipo = 2 
-                    ORDER BY a.capa 
-                    DESC LIMIT 1) 
-            AS arquivo 
-                FROM eventos 
-                    WHERE eventos.regiao = '$regiao' 
-                    AND eventos.mostrar = 1 
-                GROUP BY eventos.cod
-                ORDER BY eventos.dataCadastro DESC
-        "); 
-        return $query->result_array();
-    }
+    // public function count_eventos($regiao) {
+    //     // $query = $this->db->query("SELECT eventos.*, arquivos.arquivo
+    //     //                             FROM eventos 
+    //     //                             INNER JOIN arquivos 
+    //     //                             ON eventos.cod = arquivos.codReferencia 
+    //     //                             and eventos.regiao = 'bc' 
+    //     //                             GROUP BY eventos.cod
+    //     //                             ORDER BY eventos.dataCadastro"
+    //     // );
+    //     // return $query->result_array();
+    //     $query = $this->db->query(
+    //         "SELECT eventos.*, 
+    //             (SELECT a.arquivo 
+    //                 FROM arquivos AS a 
+    //                     WHERE a.codReferencia = eventos.cod 
+    //                     AND a.referencia = 'eventos' 
+    //                     AND a.tipo = 2 
+    //                 ORDER BY a.capa 
+    //                 DESC LIMIT 1) 
+    //         AS arquivo 
+    //             FROM eventos 
+    //                 WHERE eventos.regiao = '$regiao' 
+    //                 AND eventos.mostrar = 1 
+    //             GROUP BY eventos.cod
+    //             ORDER BY eventos.dataCadastro DESC
+    //     "); 
+    //     return $query->result_array();
+    // }
 
     // ================================ PAGINAS DE ULTILIDADES ================================
     // |                                                                                      |
@@ -695,6 +695,29 @@ class Novomenina_model extends CI_Model{
     
     public function CountAll($tabela){
         return $this->db->count_all($tabela);
+    }
+
+    // metodo usado na pagina inicial
+    public function enquetes($regiao) {
+        $query = $this->db->query(
+            "SELECT 
+            enquetesPerguntas.cod as cod_perg,
+            enquetesRespostas.cod as cod_resp,
+            enquetesPerguntas.dataCadastro,
+            enquetesPerguntas.pergunta,
+            enquetesRespostas.codPergunta,
+            enquetesRespostas.resposta
+            from enquetesPerguntas
+        Inner join enquetesRespostas
+            WHERE enquetesRespostas.codPergunta = enquetesPerguntas.cod
+            AND enquetesPerguntas.mostrar = 1
+            AND enquetesPerguntas.regiao = '$regiao'
+            and enquetesPerguntas.dataCadastro = 
+            (SELECT MAX(enquetesPerguntas.dataCadastro) 
+                 FROM enquetesPerguntas 
+             WHERE enquetesPerguntas.dataCadastro <= curdate())"
+        );
+        return $query->result_array();
     }
 
 
