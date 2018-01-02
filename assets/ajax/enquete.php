@@ -1,3 +1,4 @@
+teste
 <?php
 if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'))
 {
@@ -7,9 +8,22 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
     $codResposta = isset($_POST['codResposta']) ? $_POST['codResposta'] : '';
     $mostrar = isset($_POST['mostrar']) ? $_POST['mostrar'] : '';
 
-    $sql = $this->db->query("INSERT INTO enquetesStatus SET 
-        (date, ip, codPergunta, codReposta) VALUES 
-        ('curdate()', $ip, $codPergunta, $codResposta)"
+    $query = $this->db->quert(
+        "SELECT enquetesPerguntas.cod as cod_perg,
+                enquetesRespostas.cod as cod_resp
+            from enquetesPerguntas
+        INNER JOIN enquetesRespostas
+            WHERE enquetesPerguntas.cod = enquetesRespostas.codPergunta
+            AND enquetesRespostas.cod = '$codResposta'
+    ");
+
+    foreach($query as $info) {
+        $codPergunta = $info['cod_perg']; 
+    }
+
+    $sql = $this->db->query("INSERT INTO enquetesStatus
+        (data, ip, codPergunta, codResposta) VALUES 
+        (curdate(), 'dasddasd', '$codPergunta', '$codResposta')"
     );
 
     // $query = mysql_query($sql);

@@ -153,16 +153,19 @@
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
                     <span>Enquete</span>
-
+                    
+                    <!-- pegar a pergunta sem repetir  -->
                     <?php foreach($enquetes as $info):?>
                     <?php $pergunta = $info['pergunta']?>
                     <?php endforeach?>
-                    <form action="" method='POST'>
+
                     <h3><?= $pergunta?></h3>
-                    <?php foreach($enquetes as $info):?>
+                    
+                    <form action="" method='POST'>
+                        <?php foreach($enquetes as $info):?>
                         <input class='respostas' type="radio" name="resposta" value="<?= $info['cod_resp']?>"><p><?= $info['resposta']?></p>    
-                    <?php endforeach?>
-                    <input type="submit" value="Submit">
+                        <?php endforeach?>
+                        <input type="submit" value="Submit">
                     </form>
                 </h1>
 
@@ -206,24 +209,20 @@
             });
         });
 
-        $('$enquete').submit(function(e) {
-            e.preventDefault();
-
-            $(".respostas").click(function()
-        {
+      
+        $(".respostas").click(function() {
             _obj = $(this);
-            _mostrar = _obj.is(':checked') ? '1' : '0';
-            _cod = _obj.val();
+            // _mostrar = _obj.is(':checked') ? '1' : '0';
+            _codResposta = _obj.val();
 
             $.ajax(
             {
                 type: "POST",
                 async: false,
-                url: "http://"+ADMIN_URL+"/_enquetes/ajax/ajaxMostrarLista.php", //URL de destino
+                url: "http://"+<?= base_url('/assets/ajax/enquete.php');?>",
                 data:
                 {
-                    cod: _cod,
-                    mostrar: _mostrar
+                    cod: _codResposta
                 },
                 dataType: "json"
             })
