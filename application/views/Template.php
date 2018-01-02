@@ -53,10 +53,12 @@
                     <div class="row topo">
 
                         <div class="col-6 col-lg-4">
-                            <p>
+                            <!--
+                                <p>
                                 <span>Nome do programa</span>
                                 <br>Sorry Not Sorry - Demi Lovato
                             </p>
+                            -->
                         </div>
                         <div class="col-6 col-lg-4">
                             <iframe name="playcolor" src="http://painelstream.com/mini-player/7038" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
@@ -83,7 +85,7 @@
                             <a id='logo' href="<?php echo base_url($_SESSION['city'])?>"> <img src="<?php echo base_url('/assets/img/logoMenina'.$_SESSION['regiao'].'.png');?>" title="Rádio Menina"></a>
                         </div>
                         <div class="col-md-4 col-sm-4 btm-30 slogam">
-                            <h1><?=$_SESSION['slogam'];?></h1>
+                            <span><?=$_SESSION['slogam'];?></span>
                         </div>
                         <div class="col-md-3 col-sm-4 btm-30 selRegiao">
                             <form action="" id="formRegiao" method='POST'>

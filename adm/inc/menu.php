@@ -21,6 +21,16 @@
             </li>
         <?
         }
+        if(verifica_permissao($cod_user, $nivel, 'enquetes'))
+        {
+        ?>
+            <li class="<?=$id == 45 ? "menuAtivo" : "";?>" >
+                <a href="<?=ssl().ADMIN_URL."/principal.php?id=45&subid=1";?>">
+                    <span>Enquetes</span>
+                </a>
+            </li>
+        <?
+        }
         if(verifica_permissao($cod_user, $nivel, 'jornalismo'))
         {
         ?>
@@ -84,8 +94,7 @@
             </li>
         <?
         }
-        /*
-        if(verifica_permissao($cod_user, $nivel, 'publicidade-lista'))
+        if(verifica_permissao($cod_user, $nivel, 'publicidade'))
         {
         ?>
             <li class="<?=$id == 40 ? "menuAtivo" : "";?>" >
@@ -95,6 +104,7 @@
             </li>
         <?
         }
+        /*
         if(verifica_permissao($cod_user, $nivel, 'mailing-lista'))
         {
         ?>

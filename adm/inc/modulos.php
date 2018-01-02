@@ -979,6 +979,7 @@ $modulos = array
     ),#fim - id
 
     //Campanhas
+    /*
     37 => array #id
     (
         1 => array #subid
@@ -1074,23 +1075,23 @@ $modulos = array
             ),
         ), #fim - subid
     ),#fim - id
-
+    */
     40 => array #id
     (
         1 => array #subid
         (
-            'include' => ADMIN_PATH."_banners/banners-lista.php",
+            'include' => ADMIN_PATH."_publicidade/publicidade-lista.php",
             'css' => array
                     (
-                        ssl().ADMIN_URL.'/_banners/css/banners-lista.css',
+                        ssl().ADMIN_URL.'/_publicidade/css/publicidade-lista.css',
                     ),
             'js' => array
                     (
-                        //ssl().ADMIN_URL.'/_banners/js/banners-lista.js',
+                        //ssl().ADMIN_URL.'/_publicidade/js/publicidade-lista.js',
                     ),
             'configLayout' => array
             (
-                'bread' => '<span>Banners</span>',
+                'bread' => '<span>Publicidade</span>',
                 'tituloNovoConteudo' => 'Novo banner',
                 'urlApagarConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=4",
                 'urlNovoConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=2",
@@ -1099,62 +1100,158 @@ $modulos = array
         ), #fim - subid
         2 => array #subid
         (
-            'include' => ADMIN_PATH."_banners/banners-novo.php",
+            'include' => ADMIN_PATH."_publicidade/publicidade-novo.php",
             'css' => array
                     (
-                        ssl().ADMIN_URL.'/_banners/css/banners-novo-edita.css',
+                        ssl().ADMIN_URL.'/_publicidade/css/publicidade-novo-edita.css',
                     ),
             'js' => array
                     (
-                        //ssl().ADMIN_URL.'/_banners/js/banners-novo-edita.js',
+                        //ssl().ADMIN_URL.'/_publicidade/js/publicidade-novo-edita.js',
                     ),
             'configLayout' => array
             (
-                'bread' => 'Banners > <span>Novo banner</span> ',
+                'bread' => 'Publicidade > <span>Novo banner</span> ',
                 'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
             ),
         ), #fim - subid
         3 => array #subid
         (
-            'include' => ADMIN_PATH."_banners/banners-edita.php",
+            'include' => ADMIN_PATH."_publicidade/publicidade-edita.php",
             'css' => array
                     (
-                        ssl().ADMIN_URL.'/_banners/css/banners-novo-edita.css',
+                        ssl().ADMIN_URL.'/_publicidade/css/publicidade-novo-edita.css',
                     ),
             'js' => array
                     (
-                        //ssl().ADMIN_URL.'/_banners/js/banners-novo-edita.js',
+                        //ssl().ADMIN_URL.'/_publicidade/js/publicidade-novo-edita.js',
                     ),
             'configLayout' => array
             (
-                'bread' => 'Banners > <span>Editando banner</span> ',
+                'bread' => 'Publicidade > <span>Editando banner</span> ',
                 'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
             ),
         ), #fim - subid
         4 => array #subid
         (
-            'include' => ADMIN_PATH."_banners/banners-apaga.php",
+            'include' => ADMIN_PATH."_publicidade/publicidade-apaga.php",
         ), #fim - subid
         5 => array #subid
         (
-            'include' => ADMIN_PATH."_banners/banners-ordena.php",
+            'include' => ADMIN_PATH."_publicidade/publicidade-ordena.php",
             'css' => array
                     (
-                        ssl().ADMIN_URL.'/_banners/css/banners-ordena.css',
+                        ssl().ADMIN_URL.'/_publicidade/css/publicidade-ordena.css',
                     ),
             'js' => array
                     (
-                        //ssl().ADMIN_URL.'/_banners/js/banners-ordena.js',
+                        //ssl().ADMIN_URL.'/_publicidade/js/publicidade-ordena.js',
                     ),
             'configLayout' => array
             (
-                'bread' => 'Banners > <span>ordenando banners</span> ',
+                'bread' => 'Publicidade > <span>ordenando banners</span> ',
+                'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
+            ),
+        ), #fim - subid
+        
+        
+    ),#fim - id
+    45 => array #id
+    (
+        1 => array #subid
+        (
+            'include' => ADMIN_PATH."_enquetes/enquetes-lista.php",
+            'css' => array
+                    (
+                        ssl().ADMIN_URL.'/_enquetes/css/enquetes-lista.css',
+                    ),
+            'js' => array
+                    (
+                        //ssl().ADMIN_URL.'/_enquetes/js/enquetes-lista.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => '<span>Enquetes</span>',
+                'tituloNovoConteudo' => 'Nova enquete',
+                'urlApagarConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=4",
+                'urlNovoConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=2",
+            ),
+            
+        ), #fim - subid
+        2 => array #subid
+        (
+            'include' => ADMIN_PATH."_enquetes/enquetes-novo.php",
+            'css' => array
+                    (
+                        ssl().ADMIN_URL.'/_enquetes/css/enquetes-novo-edita.css',
+                    ),
+            'js' => array
+                    (
+                        ssl().ADMIN_URL.'/_enquetes/js/enquetes-novo-edita.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => 'Enquetes > <span>Nova enquete</span> ',
+                'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
+            ),
+        ), #fim - subid
+        3 => array #subid
+        (
+            'include' => ADMIN_PATH."_enquetes/enquetes-edita.php",
+            'css' => array
+                    (
+                        ssl().ADMIN_URL.'/_enquetes/css/enquetes-novo-edita.css',
+                    ),
+            'js' => array
+                    (
+                        ssl().ADMIN_URL.'/_enquetes/js/enquetes-novo-edita.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => 'Enquetes > <span>Editando enquete</span> ',
+                'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
+            ),
+        ), #fim - subid
+        4 => array #subid
+        (
+            'include' => ADMIN_PATH."_enquetes/enquetes-apaga.php",
+        ), #fim - subid
+        5 => array #subid
+        (
+            'include' => ADMIN_PATH."_enquetes/enquetes-ordena.php",
+            'css' => array
+                    (
+                        ssl().ADMIN_URL.'/_enquetes/css/enquetes-ordena.css',
+                    ),
+            'js' => array
+                    (
+                        //ssl().ADMIN_URL.'/_enquetes/js/enquetes-ordena.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => 'Enquetes > <span>ordenando enquete</span> ',
+                'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
+            ),
+        ), #fim - subid
+        6 => array #subid
+        (
+            'include' => ADMIN_PATH."_enquetes/enquetes-respostas-apaga.php",
+            'css' => array
+                    (
+                        //ssl().ADMIN_URL.'/_enquetes/css/enquetes-ordena-fotos.css',
+                    ),
+            'js' => array
+                    (
+                        //ssl().ADMIN_URL.'/_enquetes/js/enquetes-ordena-fotos.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => 'Achados e perdidos > <span>ordenando itens</span> ',
                 'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
             ),
         ), #fim - subid
         
     ),#fim - id
-
     // mailing
     900 => array #id
     (
