@@ -52,18 +52,18 @@
                     <!-- Topo -->
                     <div class="row topo">
 
-                        <div class="col-6 col-lg-4">
-                            <!--
+                        <!--<div class="col-6 col-lg-4">
+                            
                                 <p>
                                 <span>Nome do programa</span>
                                 <br>Sorry Not Sorry - Demi Lovato
                             </p>
-                            -->
+                            
+                        </div>-->
+                        <div class="col-6 col-lg-6">
+                            <iframe class="playerRadio" name="playcolor" src="http://painelstream.com/mini-player/7544" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
                         </div>
-                        <div class="col-6 col-lg-4">
-                            <iframe name="playcolor" src="http://painelstream.com/mini-player/7038" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
-                        </div>
-                        <div class="col-lg-4 tvMocinha">
+                        <div class="col-lg-6 tvMocinha">
                             <button>Tv Mocinha</button>
                         </div>
                     
@@ -88,13 +88,15 @@
                             <span><?=$_SESSION['slogam'];?></span>
                         </div>
                         <div class="col-md-3 col-sm-4 btm-30 selRegiao">
-                            <form action="" id="formRegiao" method='POST'>
-                                <select name="selectRegiao" form="form" id='regiao'>
-                                    <option value="/balneario-camboriu" <?=$_SESSION['regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
-                                    <option value="/blumenal" <?=$_SESSION['regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
-                                    <option value="/lages" <?=$_SESSION['regiao'] == 'lg' ? 'selected' : '';?> >Lages</option>
-                                </select>
-                            </form>
+                            <div>
+                                <form action="" id="formRegiao" method='POST'>
+                                    <select name="selectRegiao" form="form" id='regiao'>
+                                        <option value="/balneario-camboriu" <?=$_SESSION['regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
+                                        <option value="/blumenal" <?=$_SESSION['regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
+                                        <option value="/lages" <?=$_SESSION['regiao'] == 'lg' ? 'selected' : '';?> >Lages</option>
+                                    </select>
+                                </form>
+                            </div>
                         </div>
                         <div class="col-md-3 col-sm-4 btm-30 topoRedes">
                             <ul class="list-inline social">

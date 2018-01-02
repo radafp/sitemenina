@@ -40,6 +40,10 @@ body {
   -o-background-size: cover; /*Css Opera*/
 }
 
+.playerRadio .texto-padrao{
+ color: crimson;
+}
+
 .topo_bc{
     height: 85px;
     background-color: #42A3CD;
@@ -127,7 +131,7 @@ a, a:hover {
     color: #333333;
     width: 38px;
     height: 38px;
-    line-height: 38px;
+    line-height: 35px;
     text-align: center;
     font-size: 18px;
     -webkit-border-radius: 50%;
