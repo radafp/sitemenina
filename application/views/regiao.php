@@ -153,13 +153,24 @@
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
                     <span>Enquete</span>
+                    
+                    <!-- pegar a pergunta sem repetir  -->
+                    <?php foreach($enquetes as $info):?>
+                    <?php $pergunta = $info['pergunta']?>
+                    <?php endforeach?>
+
+                    <h3><?= $pergunta?></h3>
+                    
+                    <form action="" method='POST'>
+                        <?php foreach($enquetes as $info):?>
+                        <input class='respostas' type="radio" name="resposta" value="<?= $info['cod_resp']?>"><p><?= $info['resposta']?></p>    
+                        <?php endforeach?>
+                        <input type="submit" value="Submit">
+                    </form>
                 </h1>
-                <form action="/action_page.php">
-                    <input type="checkbox" name="vehicle" value="Bike"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.<br><br><br>
-                    <input type="checkbox" name="vehicle" value="Car" checked>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's<br><br><br>
-                    <input type="checkbox" name="vehicle" value="Car" checked>simply dummy text of theypesetting industry.he industry's<br><br><br>
-                    <input type="submit" value="Submit">
-                </form>
+
+                    
+               
             </div>
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
@@ -196,7 +207,32 @@
                     },100);
                 }
             });
-
         });
+
+      
+        $(".respostas").click(function() {
+            _obj = $(this);
+            // _mostrar = _obj.is(':checked') ? '1' : '0';
+            _codResposta = _obj.val();
+
+            $.ajax(
+            {
+                type: "POST",
+                async: false,
+                url: "http://"+<?= base_url('/assets/ajax/enquete.php');?>",
+                data:
+                {
+                    cod: _codResposta
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { //Se ocorrer tudo certo
+                
+                
+            });
+        }); 
+
+        })
     })
 </script> 
