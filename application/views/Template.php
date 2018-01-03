@@ -106,7 +106,10 @@
                                 <li><a class="face" href="<?=$_SESSION['socialFace'];?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank"><i class="fa fa-instagram"></i></a></li>
                                 <li><a class="youtube" href="<?=$_SESSION['socialYoutube'];?>" target="_blank"><i class="fa fa-youtube"></i></a></li>
-                            </ul>   
+                            </ul>  
+                            <div class="whats">
+                                <i class="fa fa-whatsapp"></i>
+                            </div>
                         </div>
 
                     </div>

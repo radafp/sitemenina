@@ -35,7 +35,7 @@
                 <h1 class="tituloPadrao1">
                     <span>Programação</span>
                 </h1>
-                <?
+                <?php
                 $menuAtivoProgramacao =  isset($_SESSION['menuAtivoProgramacao']) ? $_SESSION['menuAtivoProgramacao'] : 'Semanal';
                 ?>
                 <div class="blocoMenuProgramacao">

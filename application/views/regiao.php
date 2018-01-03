@@ -153,7 +153,10 @@
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
                     <span>Enquete</span>
+<<<<<<< HEAD
                     <!-- <?php echo $count?> -->
+=======
+>>>>>>> 7d21c49e3229b62dadf686f80f6bdbfc52a2cf0e
                     <!-- pegar a pergunta sem repetir  -->
                     <?php foreach($enquetes as $info):?>
                     <?php $pergunta = $info['pergunta']?>
@@ -167,7 +170,11 @@
                                 <input class='resposta' type="radio" name="resposta" value="<?= $info['cod_resp']?>"><p><?= $info['resposta']?></p>    
                             </div>
                         <?php endforeach?>
+<<<<<<< HEAD
                         <a id='enviar_resp' href="" value="Submit">Enviar</a>
+=======
+                        <a id='enviar_resp' value="Submit">Enviar</a>
+>>>>>>> 7d21c49e3229b62dadf686f80f6bdbfc52a2cf0e
                     </form>
                 </h1>
 
@@ -217,6 +224,7 @@
         $("#enviar_resp").click(function(e) {
             _obj = $('.resposta');
             // _mostrar = _obj.is(':checked') ? '1' : '0';
+            
             _codResposta = _obj.val();
             alert(_codResposta);
             e.preventDefault();

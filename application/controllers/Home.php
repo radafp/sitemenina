@@ -73,7 +73,10 @@ class home extends CI_Controller {
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['promocoes_home']        = $this->Novomenina->promocoes_home($_SESSION['regiao']);
         $dados['enquetes']              = $this->Novomenina->enquetes($_SESSION['regiao']);
+<<<<<<< HEAD
         // $dados['count'] = count($dados['enquetes']);
+=======
+>>>>>>> 7d21c49e3229b62dadf686f80f6bdbfc52a2cf0e
         $dados['viewName']              = 'regiao';
         $this->load->view('Template', $dados);
     }
@@ -81,7 +84,11 @@ class home extends CI_Controller {
     public function programacao() {
         // link de progrmacao semanal/sabado/domingo
         if(isset($_GET['programacao'])) {
+<<<<<<< HEAD
             $_SESSION['menuAtivoProgramacao'] = isset($_GET['programacao'])? $_GET['programacao'] : '';
+=======
+            $_SESSION['menuAtivoProgramacao'] = isset($_GET['programacao']) ? $_GET['programacao'] : '';
+>>>>>>> 7d21c49e3229b62dadf686f80f6bdbfc52a2cf0e
             $programacao = $_GET['programacao'];
             $dados['programacao_impar'] = $this->Novomenina->programacao_programacao($_SESSION['regiao'], $programacao);
         }else{
