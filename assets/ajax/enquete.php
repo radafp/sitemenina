@@ -35,7 +35,7 @@
             $stmt = $conn->prepare(
                 "INSERT INTO enquetesStatus 
                 (dataCadastro, ip, codPergunta, codResposta) VALUES 
-                ($datacadastro, $ip, $cod_perg, $cod)"
+                ('$datacadastro', '$ip', '$cod_perg', '$cod')"
             );
             $stmt->execute();
         }catch(PDOException $e) {
