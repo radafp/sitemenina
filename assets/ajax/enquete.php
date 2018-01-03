@@ -11,7 +11,7 @@ if($conn) {
     echo 'nao';
 }
 
-$codResposta = isset($_POST['codResposta']) ? $_POST['codResposta'] : 'Vazio';
+$codResposta = isset($_POST['cod']) ? $_POST['cod'] : 'Vazio';
 echo $codResposta;
 $query = $conn->query(
     "SELECT enquetesPerguntas.cod as cod_perg,
