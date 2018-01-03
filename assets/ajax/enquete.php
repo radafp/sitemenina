@@ -1,3 +1,4 @@
+
 <?php
 //if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'))
 ////{
@@ -17,12 +18,30 @@
     $ip = $_SERVER["REMOTE_ADDR"];
 
     // CRIAR SELECT PRA PEGAR CÓDIGO DA PERGUNTA 
-
-
-
-    //CRIAR SELECR PARA INSERIR VALORES NA TABELA enquetesStatus
-
+    $array = array();
+    $query = $this->dbase->query(
+        "SELECT enquetesPerguntas.cod as cod_perg 
+            FROM `enquetesPerguntas` 
+        INNER JOIN enquetesRespostas
+            WHERE enquetesRespostas.codPergunta = enquetesPerguntas.cod
+            AND enquetesRespostas.cod = $cod"
+    );
+    $array = $query->fetchAll(\PDO::FETCH_ASSOC);
     
-    
+
+    foreach($array as $info) {
+        $cod_perg = $info['cod_perg'];
+        try{
+            $stmt = $this->dbase->prepare(
+                "INSERT INTO enquetesStatus 
+                (dataCadastro, ip, codPergunta, codResposta) VALUES 
+                ($datacadastro, $ip, $cod_perg, $cod)"
+            );
+            $stmt->execute();
+        }catch(PDOException $e) {
+            die($e->getMessage());
+        }
+    }
+    //CRIAR SELECR PARA INSERIR VALORES NA TABELA enquetesStatus   
 //}
 ?>
