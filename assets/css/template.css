@@ -158,29 +158,67 @@
 .promocoesEventos .wrapFoto .foto img{
     max-width: 100%;
 }
-
-.wrapProgramacao{
+.progEnqMsg{
+    margin-bottom: 50px
+} 
+.progEnqMsg h3{
+    font-size: 16px;
+    margin: 15px 0;
+}
+.progEnqMsg .btVerMais{
+    font-weight: bold;
+    color: #a8a9aa;
+    text-decoration: none;
+    margin-top: 8px;
+    float: left;
+} 
+.progEnqMsg .wrapProgramacao{
     border: 1px solid #cccccc;
     position: relative;
     float: left;
+    width: 100%;
 }
-.wrapProgramacao .programacao{
+.progEnqMsg .wrapProgramacao .programacao{
     border-bottom: 1px solid #cccccc;
     float: left;
     width: 100%;
+    padding: 15px;
 }
-.wrapProgramacao .programacao .foto{
+.progEnqMsg .wrapProgramacao .programacao .foto{
     max-width: 100px;
     max-height: 70px;
     overflow: hidden;
     float: left;
-    margin-right: 10px;
-    padding: 15px;
+    margin-right: 15px;
+    text-align: center; 
 }
-.wrapProgramacao .programacao .foto img{ 
-    max-height: 100%;
+.progEnqMsg .wrapProgramacao .programacao .foto img{ 
+    max-height: 70px;
+}
+.progEnqMsg .wrapProgramacao .programacao h3{ 
+    font-size: 16px;
+    argin-top: 5px;
+}
+.progEnqMsg .wrapProgramacao .programacao p{ 
+    color: #666666;
 }
 
+.progEnqMsg .wrapEnquete{
+    border: 1px solid #cccccc;
+    position: relative;
+    float: left;
+    width: 100%;
+}
+.progEnqMsg .wrapEnquete .respostas{
+    border-bottom: 1px solid #cccccc;
+    float: left;
+    width: 100%;
+    padding: 15px;
+}
+.progEnqMsg .wrapEnquete .respostas .resposta{
+    float: left;
+    margin-right: 15px;
+}
 /*-- FIM classe região --*/
 
 
@@ -203,3 +241,78 @@
 
 /* css programação */
 
+
+.blocoMenuProgramacao{
+    width: 100%;
+    margin: 35px 0;
+    float: left;
+}
+.blocoMenuProgramacao .menuProgramacao{
+    position: relative;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.blocoMenuProgramacao .menuProgramacao .ativo{
+    background: #EC9136 !important;
+}
+.blocoMenuProgramacao .menuProgramacao a, .menuProgramacao a:hover{
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: bold;
+}
+.blocoMenuProgramacao .menuProgramacao .semanal{
+    width: 128px;
+    float: left;
+    background: #F2B576;
+    text-align: center;
+    padding: 15px 0;
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px;
+    display: inline;
+}
+.blocoMenuProgramacao .menuProgramacao .sabado{
+    width: 128px;
+    float: left;
+    background: #F2B576;
+    text-align: center;
+    padding: 15px 0;
+    display: inline;
+}
+.blocoMenuProgramacao .menuProgramacao .domingo{
+    width: 128px;
+    float: left;
+    background: #F2B576;
+    text-align: center;
+    padding: 15px 0;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    display: inline;
+}
+
+.blocoProgramacao{
+    width: 100%;
+    margin: 35px 0;
+    float: left;
+}
+
+.blocoProgramacao .linhaPrograma{
+    width: 100%;
+    float: left;
+}
+
+.blocoProgramacao .linhaPrograma .programa{
+    width: 49.5%;
+    float: left;
+}
+.blocoProgramacao .linhaPrograma .programaRight{
+    width: 49.5%;
+    float: right;
+}
+.blocoProgramacao .linhaPrograma .conexaoPrograma{
+    float: left;
+}
+.blocoProgramacao .linhaPrograma .conexaoProgramaRight{
+    float: right;
+}

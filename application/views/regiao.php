@@ -194,18 +194,18 @@
                 </h1>
                 <div class="wrapProgramacao">
                     <?php foreach($programacao_home as $info):?>
-                    <a class="link_descricao" href="<?=base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
+                        <a class='link_descricao' href="<?=base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']));?>">
                             <div class='programacao'>
                                 <div class="foto">
-                                    <img src="<?php echo base_url('/assets/arquivos/programacao/'.$info['arquivo'])?>" alt="">
+                                    <img src="<?=base_url('/assets/arquivos/programacao/'.$info['arquivo']);?>" alt="">
                                 </div>    
-                                <h3><?php echo $info['cleanTitle']?></h3>
-                                <p><?php echo $info['programacao'].' '. $info['horario']?></p><br><br>
+                                <h3><?=$info['titulo'];?></h3>
+                                <p><?=$info['horario'];?></p>
                             </div>
                         </a>
                     <?php endforeach;?> 
                 </div>
-                <a href="/home/programacao">Ver mais</a>
+                <a id="link_descricao" class="btVerMais" href="<?php echo base_url($_SESSION['city'].'/programacao')?>">Ver a programação completa</a>
             </div>
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
@@ -220,7 +220,9 @@
                     
                     <form action="" method='POST'>
                         <?php foreach($enquetes as $info):?>
-                        <input class='respostas' type="radio" name="resposta" value="<?= $info['cod_resp']?>"><p><?= $info['resposta']?></p>    
+                            <div class="respostas">
+                                <input class='resposta' type="radio" name="resposta" value="<?= $info['cod_resp']?>"><p><?= $info['resposta']?></p>    
+                            </div>
                         <?php endforeach?>
                         <a id='enviar_resp' href='#' value="Submit">Enviar</a>
                     </form>

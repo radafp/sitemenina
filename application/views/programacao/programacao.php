@@ -35,31 +35,49 @@
                 <h1 class="tituloPadrao1">
                     <span>Programação</span>
                 </h1>
-                <ul>
-                    <li>
-                        <a class='link_descricao' href="<?php echo base_url('home/programacao?programacao=Semanal')?>">SEMANAL</a>
-                    </li>
-                    <li>
-                        <a class='link_descricao' href="<?php echo base_url('home/programacao?programacao=Sabado')?>">SÁBADO</a>
-                    </li>
-                    <li>
-                        <a class='link_descricao' href="<?php echo base_url('home/programacao?programacao=Domingo')?>">DOMINGO</a>
-                    </li>
-                </ul>   
-                <div id='prog'>
-                    <?php foreach($programacao_impar as $info):?>
-                        <div id='esquerda'>
-                            <a class='link_programacao' href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
+                <?
+                $menuAtivoProgramacao =  isset($_SESSION['menuAtivoProgramacao']) ? $_SESSION['menuAtivoProgramacao'] : 'Semanal';
+                ?>
+                <div class="blocoMenuProgramacao">
+                    <ul class="menuProgramacao">
+                        <li class="semanal<?=($menuAtivoProgramacao == 'Semanal') ? ' ativo' : '';?>">
+                            <a class='link_programacao' href="<?php echo base_url('home/programacao?programacao=Semanal')?>">SEMANAL</a>
+                        </li>
+                        <li class="sabado<?=($menuAtivoProgramacao == 'Sabado') ? ' ativo' : '';?>">
+                            <a class='link_programacao' href="<?php echo base_url('home/programacao?programacao=Sabado')?>">SÁBADO</a>
+                        </li>
+                        <li class="domingo<?=($menuAtivoProgramacao == 'Domingo') ? ' ativo' : '';?>">
+                            <a class='link_programacao' href="<?php echo base_url('home/programacao?programacao=Domingo')?>">DOMINGO</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="blocoProgramacao">
+                    <?php 
+                    $i=0;
+                    foreach($programacao_impar as $info):
+                        $classeAdicionalPrograma = (($i%2) == 0) ? '' : ' programaRight';
+                        $classeAdicionalConexaoPrograma = (($i%2) == 0) ? '' : ' conexaoProgramaRight';
+                        ?>
                             
-                                <img src="<?php echo base_url('assets/arquivos/programacao/'.$info["arquivo"])?>" alt="">
-                                <h3><?php echo $info['titulo']?></h3>
-                                <!-- <p><?php echo $info['descricao']?></p> -->
-                                <span><?php echo 'HORÀRIO:'.$info['horario'].'<br>APRESENTADOR:'. $info['apresentador']?></span>
-                                <p><?= 'ATENCÂO!!!!!'. $info['programacao']?></p>
-                                <p>------------------------------------------------------------</p>
-                            </a>
+                        <div class="linhaPrograma">
+                            <div class="programa<?=$classeAdicionalPrograma;?>">        
+                                <a class='link_programacao' href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">  
+                                    <div class="foto">
+                                        <img src="<?php echo base_url('assets/arquivos/programacao/'.$info["arquivo"])?>" alt="">
+                                    </div>
+                                    <h3><?php echo $info['titulo']?></h3>
+                                    <span><?php echo 'HORÀRIO:'.$info['horario'].'<br>APRESENTADOR:'. $info['apresentador']?></span>
+                                </a>
+                            </div>
+                            <div class="conexaoPrograma<?=$classeAdicionalConexaoPrograma;?>">
+                                <img src="<?php echo base_url('assets/img/conexaoProgramas.png');?>" alt="">
+                            </div>
                         </div>
-                    <?php endforeach?>
+                        
+                        <?php 
+                        $i = $i + 1;
+                    endforeach;
+                    ?>
                 </div>
 
             </div> <!-- contLeft -->
