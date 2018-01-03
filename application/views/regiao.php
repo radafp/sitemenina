@@ -137,7 +137,7 @@
                 </h1>
                 <div class="wrapProgramacao">
                     <?php foreach($programacao_home as $info):?>
-                        <a class='link_programacao' href="<?=base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']));?>">
+                        <a class='link_descricao' href="<?=base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']));?>">
                             <div class='programacao'>
                                 <div class="foto">
                                     <img src="<?=base_url('/assets/arquivos/programacao/'.$info['arquivo']);?>" alt="">
@@ -156,7 +156,7 @@
                 </h1>
                 <!-- pegar a pergunta sem repetir  -->
                 <?php foreach($enquetes as $info):?>
-                <?php $pergunta = $info['pergunta']?>
+                    <?php $pergunta = $info['pergunta']?>
                 <?php endforeach?>
                 <h3><?=$pergunta?></h3>
                 <form action="" method='POST'>
@@ -232,6 +232,5 @@
             });
         }); 
 
-        })
     })
 </script> 
