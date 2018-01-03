@@ -19,7 +19,7 @@
 
     // CRIAR SELECT PRA PEGAR CÓDIGO DA PERGUNTA 
     $array = array();
-    $query = $this->dbase->query(
+    $query = $conn->query(
         "SELECT enquetesPerguntas.cod as cod_perg 
             FROM `enquetesPerguntas` 
         INNER JOIN enquetesRespostas
@@ -32,7 +32,7 @@
     foreach($array as $info) {
         $cod_perg = $info['cod_perg'];
         try{
-            $stmt = $this->dbase->prepare(
+            $stmt = $conn->prepare(
                 "INSERT INTO enquetesStatus 
                 (dataCadastro, ip, codPergunta, codResposta) VALUES 
                 ($datacadastro, $ip, $cod_perg, $cod)"
