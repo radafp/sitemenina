@@ -2,7 +2,9 @@ teste
 
 
 <?php
-
+echo 'post vindo: ';
+var_dump($_POST);
+echo '<br>';
 $conn = new PDO('mysql:host=mysql03-farm70.uni5.net;dbname=novomenina', 'novomenina', 'agEncia445');
 
 if($conn) {

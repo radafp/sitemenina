@@ -161,7 +161,7 @@
 
                     <h3><?= $pergunta?></h3>
                     
-                    <form action="" method='POST'>
+                    <form action="<?php echo base_url('/home/enquete_dados')?>" method='POST'>
                         <?php foreach($enquetes as $info):?>
                             <div class="respostas">
                                 <input class='resposta' type="radio" name="resposta" value="<?= $info['cod_resp']?>"><p><?= $info['resposta']?></p>    
@@ -222,18 +222,43 @@
             $.ajax( {
                 type: "POST",
                 async: false,
-                url: '/assets/ajax/enquete.php',
+                url: 'http://localhost:8080/home/enquete_dados',
                 data:
                 {
                     cod: _codResposta
                 },
-                dataType: "json"
+                dataType: "json",
+                success: function(resp) {
+                    alert(resp);
+                }
+                
             })
             .done(function(_json)
             { //Se ocorrer tudo certo
                 
                 alert($_POST['cod']);
             });
+
+            // var request = $.ajax({
+            //     method : "POST",
+            //     // url : "http://localhost:8080/home/ajax/enquete.php",
+            //     url : 'http://localhost:8080/home/enquete_dados';
+            //     data:{
+            //         // variavel recebendo o valor de name que esta no form
+            //         _codResposta = $("input[name='resposta']:checked").val();
+            //     }
+            //     dataType : "json",
+            //     success: function(resp) {
+            //         alert(resp);
+            //     }
+            // })
+
+            // request.done(function(e) {
+            //     console.log(e);
+            //     for(var info in e) {
+            //         $(":input[name=" + info + "]").val(e[info]);
+            //     }
+            // })
         }); 
     })
 </script> 

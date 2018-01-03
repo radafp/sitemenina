@@ -74,6 +74,7 @@ class home extends CI_Controller {
         $dados['promocoes_home']        = $this->Novomenina->promocoes_home($_SESSION['regiao']);
         $dados['enquetes']              = $this->Novomenina->enquetes($_SESSION['regiao']);
         $dados['count'] = count($dados['enquetes']);
+        var_dump($_POST);
         $dados['viewName']              = 'regiao';
         $this->load->view('Template', $dados);
     }
@@ -257,5 +258,10 @@ class home extends CI_Controller {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['viewName'] = 'contato';
         $this->load->view('Template', $dados);
+    }
+
+    public function enquete_dados() {
+        $resposta = $this->input->post('resposta');
+        echo $resposta;
     }
  }
