@@ -393,7 +393,12 @@ class Novomenina_model extends CI_Model{
     }
 
     public function videos_home($regiao)  {
-        $query = $this->db->query("SELECT * FROM videos WHERE videos.regiao = '$regiao' and videos.mostrar = 1 LIMIT 1");
+        $query = $this->db->query(
+            "SELECT * FROM videos 
+                WHERE videos.regiao = '$regiao' 
+                AND videos.mostrar = 1 
+                AND videos.mensagemDoDia = 1
+                LIMIT 1");
         return $query->result_array();
     }
 

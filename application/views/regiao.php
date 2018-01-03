@@ -153,7 +153,7 @@
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
                     <span>Enquete</span>
-                    <?php echo $count?>
+                    <!-- <?php echo $count?> -->
                     <!-- pegar a pergunta sem repetir  -->
                     <?php foreach($enquetes as $info):?>
                     <?php $pergunta = $info['pergunta']?>
@@ -161,13 +161,13 @@
 
                     <h3><?= $pergunta?></h3>
                     
-                    <form action="<?php echo base_url('/home/enquete_dados')?>" method='POST'>
+                    <form class='form_enquete' role='form' action="<?php base_url();?>/home/enquete_dados" method='POST'>
                         <?php foreach($enquetes as $info):?>
                             <div class="respostas">
                                 <input class='resposta' type="radio" name="resposta" value="<?= $info['cod_resp']?>"><p><?= $info['resposta']?></p>    
                             </div>
                         <?php endforeach?>
-                        <a id='enviar_resp' href='#' value="Submit">Enviar</a>
+                        <a id='enviar_resp' href="" value="Submit">Enviar</a>
                     </form>
                 </h1>
 
@@ -214,20 +214,20 @@
         });
 
       
-        $("#enviar_resp").click(function() {
+        $("#enviar_resp").click(function(e) {
             _obj = $('.resposta');
             // _mostrar = _obj.is(':checked') ? '1' : '0';
             _codResposta = _obj.val();
             alert(_codResposta);
+            e.preventDefault();
             $.ajax( {
+                url: $('.form_enquete').attr('action'),
                 type: "POST",
-                async: false,
-                url: 'http://localhost:8080/home/enquete_dados',
-                data:
-                {
-                    cod: _codResposta
-                },
-                dataType: "json",
+                // async: false,
+                // data: {
+                //     cod: _codResposta
+                // },
+                data : $('.form_enquete').serialize(),
                 success: function(resp) {
                     alert(resp);
                 }
