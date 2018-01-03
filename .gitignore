@@ -1,5 +1,7 @@
 # lembre de colocar o nome da pasta sem o ponto na frente
 # Para ignorar todos arquivos e sub-pastas localizados na pasta metadata/plugins/
-application/config/config.php
+*application/config/config.php
+*application/config/database.php
+application/config/database.php
 # Para ignorar todos os arquivos e sub-pastas da pasta metadata/
 

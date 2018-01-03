@@ -1,3 +1,60 @@
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        var content = $('#content');
+
+        $('.link_descricao').click(function( e ){
+            e.preventDefault();
+
+            var href = $( this ).attr('href');
+            $.ajax({
+                url: href,
+                success: function( response ){
+                    //forçando o parser
+                    var data = $( '<div>'+response+'</div>' ).find('#content').html();
+
+                    //apenas atrasando a troca, para mostrarmos o loading
+                    window.setTimeout( function(){
+                        content.fadeOut('fast', function(){
+                            content.html( data ).fadeIn();
+                        });
+                    },100);
+                }
+            });
+        });
+
+      
+        $("#enviar_resp").click(function() {
+
+            _obj = $('.respostas');
+            // _mostrar = _obj.is(':checked') ? '1' : '0';
+            _codResposta = _obj.val();
+
+            $.ajax(
+            {
+                type: "POST",
+                async: false,
+                url: "<?= base_url('/assets/ajax/enquete.php');?>",
+                data:
+                {
+                    cod: _codResposta
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { //Se ocorrer tudo certo
+                
+                
+            });
+        }); 
+
+    })
+</script> 
+
+
 <div class="container">
     <div class="row destaques">
         <?php 
@@ -16,7 +73,7 @@
             ?>
             <div class="<?=$classe;?> <?=$x==3 ? 'ultima' : '';?>" style="background: url(<?=base_url('/assets/arquivos/noticias/'.$info['arquivo']);?>) no-repeat center center; background-size: 100%;">
                 
-                <a class="link_descricao" href="<?=base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']));?>">
+                <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']));?>">
                     <div class="fundoFoto">
                         <div class="<?=$classeInf;?>" >
                             <h3><?=$info['tituloPt'];?></h3>
@@ -148,28 +205,31 @@
                         </a>
                     <?php endforeach;?> 
                 </div>
-                <a id="link_programacao" class="btVerMais" href="<?php echo base_url($_SESSION['city'].'/programacao')?>">Ver a programação completa</a>
+                <a id="link_descricao" class="btVerMais" href="<?php echo base_url($_SESSION['city'].'/programacao')?>">Ver a programação completa</a>
             </div>
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
                     <span>Enquete</span>
-                </h1>
-                <!-- pegar a pergunta sem repetir  -->
-                <?php foreach($enquetes as $info):?>
+                    <?php var_dump($enquetes)?>
+                    <!-- pegar a pergunta sem repetir  -->
+                    <?php foreach($enquetes as $info):?>
                     <?php $pergunta = $info['pergunta']?>
-                <?php endforeach?>
-                <h3><?=$pergunta?></h3>
-                <form action="" method='POST'>
-                    <div class="wrapEnquete"> 
+                    <?php endforeach?>
+
+                    <h3><?= $pergunta?></h3>
+                    
+                    <form action="" method='POST'>
                         <?php foreach($enquetes as $info):?>
                             <div class="respostas">
                                 <input class='resposta' type="radio" name="resposta" value="<?= $info['cod_resp']?>"><p><?= $info['resposta']?></p>    
                             </div>
                         <?php endforeach?>
-                    </div>
-                    <input type="submit" value="Responder">
-                </form>
-                
+                        <a id='enviar_resp' value="Submit">Enviar</a>
+                    </form>
+                </h1>
+
+                    
+               
             </div>
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
@@ -182,55 +242,3 @@
     </div> <!-- row -->
 
 </div> <!-- container -->
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-
-        var content = $('#content');
-
-        $('.link_descricao').click(function( e ){
-            e.preventDefault();
-
-            var href = $( this ).attr('href');
-            $.ajax({
-                url: href,
-                success: function( response ){
-                    //forçando o parser
-                    var data = $( '<div>'+response+'</div>' ).find('#content').html();
-
-                    //apenas atrasando a troca, para mostrarmos o loading
-                    window.setTimeout( function(){
-                        content.fadeOut('fast', function(){
-                            content.html( data ).fadeIn();
-                        });
-                    },100);
-                }
-            });
-        });
-
-      
-        $(".respostas").click(function() {
-            _obj = $(this);
-            // _mostrar = _obj.is(':checked') ? '1' : '0';
-            _codResposta = _obj.val();
-
-            $.ajax(
-            {
-                type: "POST",
-                async: false,
-                url: "http://"+<?= base_url('/assets/ajax/enquete.php');?>",
-                data:
-                {
-                    cod: _codResposta
-                },
-                dataType: "json"
-            })
-            .done(function(_json)
-            { //Se ocorrer tudo certo
-                
-                
-            });
-        }); 
-
-    })
-</script> 

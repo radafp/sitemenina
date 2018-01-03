@@ -105,7 +105,7 @@ $(document).ready(function()
 
     $regiao = isset($_SESSION[ADMIN_SESSION_NAME.'_regiao']) ? $_SESSION[ADMIN_SESSION_NAME.'_regiao'] : '';
 
-    $q = mysql_query("SELECT * FROM videos WHERE regiao = '{$regiao}' ORDER BY cod desc", $conexao);
+    $q = mysql_query("SELECT * FROM videos WHERE regiao = '{$regiao}' ORDER BY cod desc LIMIT 0,100", $conexao);
     $n = mysql_num_rows($q);
 
     if ($n>0)
