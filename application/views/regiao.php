@@ -217,6 +217,7 @@
         $("#enviar_resp").click(function() {
             _obj = $('.resposta');
             // _mostrar = _obj.is(':checked') ? '1' : '0';
+            
             _codResposta = _obj.val();
             alert(_codResposta);
             $.ajax( {
