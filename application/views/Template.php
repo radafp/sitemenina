@@ -34,6 +34,9 @@
         <meta property="og:description" content="<?=isset($description) ? $description : '';?>" />
         <meta property="og:image" content="<?=isset($imagemFb) ? $imagemFb : base_url('/assets/img/logo-jm-fb.png');?>" />
 
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
+        
+
         <!-- <script type="text/javascript">
         $(document).ready(function(){
                         
@@ -64,7 +67,7 @@
                             <iframe class="playerRadio" name="playcolor" src="http://painelstream.com/mini-player/7544" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
                         </div>
                         <div class="col-lg-6 tvMocinha">
-                            <button>Tv Mocinha</button>
+                            <a class="btTvMocinha" href="http://radiomeninabc.portalmenina.com.br/ao-vivo/tv-mocinha-balneario-camboriu" data-toggle="lightbox" data-width="695" data-height="445">Tv Mocinha</a>
                         </div>
                     
                     </div>
@@ -88,7 +91,7 @@
                             <span><?=$_SESSION['slogam'];?></span>
                         </div>
                         <div class="col-md-3 col-sm-4 btm-30 selRegiao">
-                            <div>
+                            <div class="wrapFormRegiao">
                                 <form action="" id="formRegiao" method='POST'>
                                     <select name="selectRegiao" form="form" id='regiao'>
                                         <option value="/balneario-camboriu" <?=$_SESSION['regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
@@ -278,6 +281,7 @@
 
     <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js');?>"></script>
     <script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
@@ -306,6 +310,11 @@
                 window.history.pushState(null, 'Home', $(this).attr('href'));
             });
                                          
+        });
+
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
         });
         
         document.getElementById('formRegiao').onchange = function(e){

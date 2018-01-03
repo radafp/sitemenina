@@ -49,14 +49,9 @@ body {
     background-color: #42A3CD;
     border-bottom: 8px solid #50B3DA;
 }
-.topo_bc button{
+.topo_bc .btTvMocinha{
     background-color: #2d82a5;
-    
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    height: 45px;
-    width: 142px;
+    float: right;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
@@ -65,19 +60,16 @@ body {
     border: none;
     font-weight: bold;
     cursor: pointer;
+    padding: 10px 25px;
 }
 .topo_bl{
     height: 85px;
     background-color: #fbb247;
     border-bottom: 8px solid #fec677;
 }
-.topo_bl button{
+.topo_bl .btTvMocinha{
     background-color: #eb8e31;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    height: 45px;
-    width: 142px;
+    float: right;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
@@ -86,19 +78,16 @@ body {
     border: none;
     font-weight: bold;
     cursor: pointer;
+    padding: 10px 25px;
 }
 .topo_lg{
     height: 85px;
     background-color: #6aba4f;
     border-bottom: 8px solid #6dc551; 
 }
-.topo_lg button{
+.topo_lg .btTvMocinha{
     background-color: #27821d;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    height: 45px;
-    width: 142px;
+    float: right;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
@@ -107,6 +96,7 @@ body {
     border: none;
     font-weight: bold;
     cursor: pointer;
+    padding: 10px 25px;
 }
 
 a, a:hover {
@@ -178,18 +168,30 @@ a, a:hover {
   padding-top: 15px;
 }
 .blocoMenu .slogam{
-  margin-top: 40px;
+  margin-top: 30px;
 }
 .blocoMenu .slogam span{
   font-family: 'microgrammadeebolextregular';
   font-size: 1.7em;
   color: #eb8e31;
 }
-.blocoMenu .selRegiao{
-  margin-top: 55px;
+.blocoMenu .wrapFormRegiao{
+  padding: 10px;
+  background: #ffffff;
+  width: 80%;
+  border-radius: 80px;
+  float: right;
+  border: 2px solid #e1e1e1;
+}
+.blocoMenu .selRegiao .wrapFormRegiao {
+  margin-top: 35px;
+}
+.blocoMenu .selRegiao .wrapFormRegiao select{
+  width: 95%;
+  border: none;
 }
 .blocoMenu .topoRedes{
-  margin-top: 30px;
+  margin-top: 35px;
 }
 .blocoMenu .topoRedes ul li{
   display: inline;
