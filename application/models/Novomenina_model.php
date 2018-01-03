@@ -392,8 +392,8 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
-    public function videos($regiao)  {
-        $query = $this->db->query("SELECT * FROM videos WHERE videos.regiao = '$regiao' and videos.mostrar = 1");
+    public function videos_home($regiao)  {
+        $query = $this->db->query("SELECT * FROM videos WHERE videos.regiao = '$regiao' and videos.mostrar = 1 LIMIT 1");
         return $query->result_array();
     }
 
@@ -710,7 +710,6 @@ class Novomenina_model extends CI_Model{
             from enquetesPerguntas
         Inner join enquetesRespostas
             WHERE enquetesRespostas.codPergunta = enquetesPerguntas.cod
-            AND enquetesPerguntas.mostrar = 1
             AND enquetesPerguntas.regiao = '$regiao'
             and enquetesPerguntas.dataCadastro = 
             (SELECT MAX(enquetesPerguntas.dataCadastro) 

@@ -1,60 +1,3 @@
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-
-        var content = $('#content');
-
-        $('.link_descricao').click(function( e ){
-            e.preventDefault();
-
-            var href = $( this ).attr('href');
-            $.ajax({
-                url: href,
-                success: function( response ){
-                    //forçando o parser
-                    var data = $( '<div>'+response+'</div>' ).find('#content').html();
-
-                    //apenas atrasando a troca, para mostrarmos o loading
-                    window.setTimeout( function(){
-                        content.fadeOut('fast', function(){
-                            content.html( data ).fadeIn();
-                        });
-                    },100);
-                }
-            });
-        });
-
-      
-        $("#enviar_resp").click(function() {
-
-            _obj = $('.respostas');
-            // _mostrar = _obj.is(':checked') ? '1' : '0';
-            _codResposta = _obj.val();
-
-            $.ajax(
-            {
-                type: "POST",
-                async: false,
-                url: "<?= base_url('/assets/ajax/enquete.php');?>",
-                data:
-                {
-                    cod: _codResposta
-                },
-                dataType: "json"
-            })
-            .done(function(_json)
-            { //Se ocorrer tudo certo
-                
-                
-            });
-        }); 
-
-    })
-</script> 
-
-
 <div class="container">
     <div class="row destaques">
         <?php 
@@ -210,7 +153,7 @@
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
                     <span>Enquete</span>
-                    <?php var_dump($enquetes)?>
+                    <?php echo $count?>
                     <!-- pegar a pergunta sem repetir  -->
                     <?php foreach($enquetes as $info):?>
                     <?php $pergunta = $info['pergunta']?>
@@ -235,10 +178,62 @@
                 <h1 class="tituloPadrao3">
                     <span>Mensagem do Dia</span>
                 </h1>
-                <?php foreach($videos as $info):?>
+                <?php foreach($videos_home as $info):?>
                     <iframe style="width: 100%; max-height:250px" src="https://www.youtube.com/embed/fV67QiJnoqY" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
                 <?php endforeach?>
             </div>
     </div> <!-- row -->
 
 </div> <!-- container -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        var content = $('#content');
+
+        $('.link_descricao').click(function( e ){
+            e.preventDefault();
+
+            var href = $( this ).attr('href');
+            $.ajax({
+                url: href,
+                success: function( response ){
+                    //forçando o parser
+                    var data = $( '<div>'+response+'</div>' ).find('#content').html();
+
+                    //apenas atrasando a troca, para mostrarmos o loading
+                    window.setTimeout( function(){
+                        content.fadeOut('fast', function(){
+                            content.html( data ).fadeIn();
+                        });
+                    },100);
+                }
+            });
+        });
+
+      
+        $("#enviar_resp").click(function() {
+            _obj = $('.resposta');
+            // _mostrar = _obj.is(':checked') ? '1' : '0';
+            _codResposta = _obj.val();
+            alert(_codResposta);
+            $.ajax( {
+                type: "POST",
+                async: false,
+                url: '/assets/ajax/enquete.php',
+                data:
+                {
+                    cod: _codResposta
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { //Se ocorrer tudo certo
+                
+                alert($_POST['cod']);
+            });
+        }); 
+    })
+</script> 
