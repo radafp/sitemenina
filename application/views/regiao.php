@@ -153,10 +153,6 @@
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
                     <span>Enquete</span>
-<<<<<<< HEAD
-                    <!-- <?php echo $count?> -->
-=======
->>>>>>> 7d21c49e3229b62dadf686f80f6bdbfc52a2cf0e
                     <!-- pegar a pergunta sem repetir  -->
                     <?php foreach($enquetes as $info):?>
                     <?php $pergunta = $info['pergunta']?>
@@ -170,11 +166,7 @@
                                 <input class='resposta' type="radio" name="resposta" value="<?= $info['cod_resp']?>"><p><?= $info['resposta']?></p>    
                             </div>
                         <?php endforeach?>
-<<<<<<< HEAD
-                        <a id='enviar_resp' href="" value="Submit">Enviar</a>
-=======
                         <a id='enviar_resp' value="Submit">Enviar</a>
->>>>>>> 7d21c49e3229b62dadf686f80f6bdbfc52a2cf0e
                     </form>
                 </h1>
 
@@ -222,51 +214,25 @@
 
       
         $("#enviar_resp").click(function(e) {
-            _obj = $('.resposta');
-            // _mostrar = _obj.is(':checked') ? '1' : '0';
-            
-            _codResposta = _obj.val();
-            alert(_codResposta);
-            e.preventDefault();
-            $.ajax( {
-                url: $('.form_enquete').attr('action'),
+            _obj = $(this);
+            _codResposta = $("input[name='resposta']:checked").val();
+
+            $.ajax(
+            {
                 type: "POST",
-                // async: false,
-                // data: {
-                //     cod: _codResposta
-                // },
-                data : $('.form_enquete').serialize(),
-                success: function(resp) {
-                    alert(resp);
-                }
-                
+                async: false,
+                url: "<?= base_url('/assets/ajax/enquete.php');?>",
+                data:
+                {
+                    cod: _codResposta,
+                },
+                dataType: "json"
             })
             .done(function(_json)
-            { //Se ocorrer tudo certo
-                
-                alert($_POST['cod']);
+            { 
+                //Se ocorrer tudo certo
+                // DEPOIS COLOCAMSO ESSE CÒDIGO
             });
-
-            // var request = $.ajax({
-            //     method : "POST",
-            //     // url : "http://localhost:8080/home/ajax/enquete.php",
-            //     url : 'http://localhost:8080/home/enquete_dados';
-            //     data:{
-            //         // variavel recebendo o valor de name que esta no form
-            //         _codResposta = $("input[name='resposta']:checked").val();
-            //     }
-            //     dataType : "json",
-            //     success: function(resp) {
-            //         alert(resp);
-            //     }
-            // })
-
-            // request.done(function(e) {
-            //     console.log(e);
-            //     for(var info in e) {
-            //         $(":input[name=" + info + "]").val(e[info]);
-            //     }
-            // })
         }); 
     })
 </script> 
