@@ -88,7 +88,6 @@
                 </div>
                 <?php endforeach; ?>
                 <a href="/home/promocoes">Ver mais promoções</a>
-                
             </div>
             <div class="col-xs-12 col-md-6">
                 <h1 class="tituloPadrao2">
@@ -136,7 +135,10 @@
                     <span>Programação</span>
                 </h1>
                 <div class="wrapProgramacao">
-                    <?php foreach($programacao_home as $info):?>
+                    <?php 
+                    $nProgramacao = count($programacao_home);
+                    foreach($programacao_home as $info):
+                    ?>
                         <a class='link_descricao' href="<?=base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']));?>">
                             <div class='programacao'>
                                 <div class="foto">
@@ -148,41 +150,92 @@
                         </a>
                     <?php endforeach;?> 
                 </div>
-                <a id="link_descricao" class="btVerMais" href="<?php echo base_url($_SESSION['city'].'/programacao')?>">Ver a programação completa</a>
+                <?php
+                if($nProgramacao>3)
+                {
+                ?>
+                    <a class="link_descricao btVerMais" href="<?php echo base_url($_SESSION['city'].'/programacao')?>">Ver a programação completa</a>
+                <?php
+                }
+                ?>
             </div>
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
                     <span>Enquete</span>
                 </h1>
                 <!-- pegar a pergunta sem repetir  -->
-                <?php foreach($enquetes as $info):?>
-                <?php $pergunta = $info['pergunta']?>
-                <?php endforeach?>
-
-                <h3><?= $pergunta?></h3>
+                <?php 
+                $nEnquetes = count($enquetes);
+                foreach($enquetes as $info):
+                    $pergunta = $info['pergunta'];
+                endforeach; 
                 
-                <form class='form_enquete' role='form' action="<?php base_url();?>/home/enquete_dados" method='POST'>
-                    <?php foreach($enquetes as $info):?>
-                        <div class="respostas">
-                            <input class='resposta' type="radio" name="resposta" value="<?= $info['cod_resp']?>"><p><?= $info['resposta']?></p>    
+                if($nEnquetes>0)
+                {
+                ?>
+                    <h3><?= $pergunta?></h3>
+                    <form class='form_enquete' role='form' action="<?php base_url();?>/home/enquete_dados" method='POST'>
+                        <div class="wrapEnquete">
+                        
+                            <?php foreach($enquetes as $info):?>
+                                <div class="respostas">
+                                    <input class='resposta' type="radio" name="resposta" value="<?= $info['cod_resp']?>"><p><?= $info['resposta']?></p>    
+                                </div>    
+                            <?php endforeach?>
+                            <div id="resposta" class="msgRetornoResposta" style="display:none"></div>
+            
                         </div>
-                    <?php endforeach?>
-                    <a id='enviar_resp' value="Submit">Enviar</a>
-                </form>
-                
+                        <a class="btEnviarResposta" id='enviar_resp' value="">Enviar resposta</a>
+                    </form>
+                <?php
+                }else{
+                    ?>
+                    <div class="wrapSemEnquete">
+                        <p>Em breve publicaremos uma nova enquete.</p> 
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
                     <span>Mensagem do Dia</span>
                 </h1>
-                <?php foreach($videos_home as $info):?>
-                    <iframe style="width: 100%; max-height:250px" src="https://www.youtube.com/embed/fV67QiJnoqY" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-                <?php endforeach?>
+                <div class="wrapMensagemDoDia">
+                    <?php foreach($videos_home as $info):
+                        $codVideo = explode('=',$info['link']);
+                        if($codVideo[1] != '')
+                        {
+                        ?>   
+                            <? 
+                            $imagemCapa = '';                
+                            $output = array();
+                            $url = $info['link'];
+                            preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $output);
+                            $imagemCapa = 'https://img.youtube.com/vi/' . $output[0] . '/0.jpg';
+                            ?>
+                            <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="440">
+                                <img src="<?=$imagemCapa;?>" style="max-width:100%">  
+                                <div class="btPlayYoutube">
+                                    <img src="<?php echo base_url('/assets/img/playYoutube.png');?>">
+                                </div>
+                            </a> 
+                            <!-- <iframe style="width: 100%; max-height:250px" src="" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe> -->
+                        <?
+                        }else{
+                        ?>
+                            <p>Nenhuma mensagem cadastrada.</p>   
+                        <?
+                        }
+                        ?>
+                    <?php endforeach?>
+                </div>
             </div>
     </div> <!-- row -->
 
 </div> <!-- container -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
@@ -214,24 +267,39 @@
         $("#enviar_resp").click(function(e) {
             _obj = $(this);
             _codResposta = $("input[name='resposta']:checked").val();
-
-            $.ajax(
+            var booleanVlaueIsChecked = false;
+            if (!_codResposta) {
+                booleanVlaueIsChecked = true;
+                alert('Você deve selecionar pelo menos uma resposta.');
+            }
+            else
             {
-                type: "POST",
-                async: false,
-                url: "<?= base_url('/assets/ajax/enquete.php');?>",
-                data:
+                $.ajax(
                 {
-                    cod: _codResposta,
-                },
-                dataType: "json"
-            })
-            .done(function(_json)
-            { 
-                //Se ocorrer tudo certo
-                // DEPOIS COLOCAMSO ESSE CÒDIGO
-                $("#caixaTexto").html("Este é o novo texto heehe!");
-            });
+                    type: "POST",
+                    async: false,
+                    url: "<?= base_url('/assets/ajax/enquete.php');?>",
+                    data:
+                    {
+                        cod: _codResposta,
+                    },
+                    dataType: "json"
+                })
+                .done(function(_json)
+                { 
+                    window.setTimeout( function(){
+                        $('.respostas').fadeOut('fast', function(){
+                            $("#resposta").html("Obrigado por particilar!").fadeIn();
+                        });
+                    },100);
+                    window.setTimeout( function(){
+                        $('#resposta').fadeOut('fast', function(){
+                            $(".respostas").fadeIn();
+                        });
+                    },3500);
+                });
+            }
+
         }); 
     })
 </script> 

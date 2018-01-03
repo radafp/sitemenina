@@ -106,10 +106,32 @@
                                 <li><a class="face" href="<?=$_SESSION['socialFace'];?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank"><i class="fa fa-instagram"></i></a></li>
                                 <li><a class="youtube" href="<?=$_SESSION['socialYoutube'];?>" target="_blank"><i class="fa fa-youtube"></i></a></li>
-                            </ul>  
-                            <div class="whats">
-                                <i class="fa fa-whatsapp"></i>
-                            </div>
+                            </ul>
+                            <?php
+                            switch($_SESSION['regiao']){
+                                case 'bc':  
+                                ?>
+                                    <div>
+                                        <a class="whatsapp">
+                                            <i class="fa fa-whatsapp"></i>
+                                            <span>(47) 99174-1005</span>
+                                        </a>
+                                    </div>
+                                <?php
+                                break;
+                                case 'bl':
+                                ?>
+                                    <div>
+                                        <a class="whatsapp">
+                                            <i class="fa fa-whatsapp"></i>
+                                            <span>99128-1070</span>
+                                        </a>
+                                    </div>
+                                <?php
+                                break;
+                            }
+                                        
+                            ?>
                         </div>
 
                     </div>
@@ -269,9 +291,21 @@
             </div> <!-- container -->
     
         </main> 
+        <?
+        switch($_SESSION['regiao']){
+            case 'bc':
+                $regiaoAlterna = 'lg';
+                break;
+            case 'bl':
+                $regiaoAlterna = 'bc';
+                break;
+            case 'lg':
+                $regiaoAlterna = 'bl'; 
+                break;
+        }
+        ?>
 
-
-        <footer class="rodapeBg_<?=$_SESSION['regiao'];?>">
+        <footer class="rodapeBg_<?=$regiaoAlterna;?>">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">

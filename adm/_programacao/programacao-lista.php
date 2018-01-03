@@ -104,7 +104,7 @@ $(document).ready(function()
 
     $regiao = isset($_SESSION[ADMIN_SESSION_NAME.'_regiao']) ? $_SESSION[ADMIN_SESSION_NAME.'_regiao'] : '';
 
-    $q = mysql_query("SELECT * FROM programacao WHERE regiao = '{$regiao}' ORDER BY programacao,horario DESC ", $conexao);
+    $q = mysql_query("SELECT * FROM programacao WHERE regiao = '{$regiao}' ORDER BY programacao,horario ASC ", $conexao);
     $n = mysql_num_rows($q);
 
     if ($n>0)

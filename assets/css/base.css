@@ -116,7 +116,7 @@ a, a:hover {
   font-weight: bold;
 }
 
-.blocoMenu .social li a {
+.blocoMenu .topoRedes a {
     background-color: #ffffff;
     color: #333333;
     width: 38px;
@@ -124,10 +124,10 @@ a, a:hover {
     line-height: 35px;
     text-align: center;
     font-size: 18px;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    border-radius: 50%;
+    -webkit-border-radius: 80px;
+    -moz-border-radius: 80px;
+    -ms-border-radius: 80px;
+    border-radius: 80px;
     display: inline-block;
 }
 .blocoMenu a, a:hover, a:focus, button, button:focus {
@@ -218,6 +218,22 @@ a, a:hover {
   font-weight: bold;
   color: #5d5d5d
 }
+
+.blocoMenu .topoRedes a.whatsapp{
+  border: 2px solid #67C15E;
+  margin-right: 10px;
+  width: 60%;
+}
+.blocoMenu .topoRedes .whatsapp i{
+  color: #67C15E;
+}
+.blocoMenu .topoRedes .whatsapp span{
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 5px;
+  color: #666666;
+}
+
 /*
 .nav-item{
   padding-right: 15%;
