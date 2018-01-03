@@ -153,25 +153,23 @@
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
                     <span>Enquete</span>
-                    <!-- pegar a pergunta sem repetir  -->
-                    <?php foreach($enquetes as $info):?>
-                    <?php $pergunta = $info['pergunta']?>
-                    <?php endforeach?>
-
-                    <h3><?= $pergunta?></h3>
-                    
-                    <form class='form_enquete' role='form' action="<?php base_url();?>/home/enquete_dados" method='POST'>
-                        <?php foreach($enquetes as $info):?>
-                            <div class="respostas">
-                                <input class='resposta' type="radio" name="resposta" value="<?= $info['cod_resp']?>"><p><?= $info['resposta']?></p>    
-                            </div>
-                        <?php endforeach?>
-                        <a id='enviar_resp' value="Submit">Enviar</a>
-                    </form>
                 </h1>
+                <!-- pegar a pergunta sem repetir  -->
+                <?php foreach($enquetes as $info):?>
+                <?php $pergunta = $info['pergunta']?>
+                <?php endforeach?>
 
-                    
-               
+                <h3><?= $pergunta?></h3>
+                
+                <form class='form_enquete' role='form' action="<?php base_url();?>/home/enquete_dados" method='POST'>
+                    <?php foreach($enquetes as $info):?>
+                        <div class="respostas">
+                            <input class='resposta' type="radio" name="resposta" value="<?= $info['cod_resp']?>"><p><?= $info['resposta']?></p>    
+                        </div>
+                    <?php endforeach?>
+                    <a id='enviar_resp' value="Submit">Enviar</a>
+                </form>
+                
             </div>
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
@@ -232,6 +230,7 @@
             { 
                 //Se ocorrer tudo certo
                 // DEPOIS COLOCAMSO ESSE CÒDIGO
+                $("#caixaTexto").html("Este é o novo texto heehe!");
             });
         }); 
     })
