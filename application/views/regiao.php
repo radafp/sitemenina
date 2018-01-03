@@ -153,7 +153,6 @@
             <div class='col-xs-12 col-md-4'>
                 <h1 class="tituloPadrao3">
                     <span>Enquete</span>
-                    <?php echo $count?>
                     <!-- pegar a pergunta sem repetir  -->
                     <?php foreach($enquetes as $info):?>
                     <?php $pergunta = $info['pergunta']?>
