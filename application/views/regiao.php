@@ -58,9 +58,20 @@
 
 <div class="container">
     <div class="row publicidade">
-        <?php foreach($banner_tipo1 as $info):?>
+        <?php 
+            $banners = array();
+            foreach($banner_tipo1 as $info):
+                $banners[] = array(
+                    "cod" => $info['cod'],
+                    "link" => $info['link'],
+                    "arquivo" => $info['arquivo'],
+                );
+            endforeach;
+            echo "<pre>";
+                var_dump($banners);
+            echo "</pre>";
+        ?>
         <a href=<?= $info['link']?> target='__blank'><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
-        <?php endforeach?>
     </div>
 </div> <!-- container -->
 
