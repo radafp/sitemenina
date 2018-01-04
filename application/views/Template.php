@@ -291,7 +291,7 @@
             </div> <!-- container -->
     
         </main> 
-        <?
+        <?php
         switch($_SESSION['regiao']){
             case 'bc':
                 $regiaoAlterna = 'lg';

@@ -58,7 +58,9 @@
 
 <div class="container">
     <div class="row publicidade">
-        <img src="<?=base_url('/assets/img/temp/banner_home1.jpg');?>" title="Publicidade">
+        <?php foreach($banner as $info):?>
+        <img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade">
+        <?php endforeach?>
     </div>
 </div> <!-- container -->
 

@@ -725,6 +725,50 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
-
-    
+    public function banners($regiao, $tituloPagina, $codTipo, $limit = null) {
+        if(isset($limit) && $limit != null) {
+            $sql = "SELECT 
+                        publicidades.tituloPagina,
+                        publicidades.codTipo,
+                        publicidades.link,
+                        publicidades.pixel, 
+                    (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                    WHERE a.codReferencia = publicidades.cod 
+                    AND a.referencia = 'publicidade' 
+                    AND a.tipo = 2 
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+                    AS arquivo 
+                    FROM publicidades 
+                    WHERE publicidades.regiao = 'bc' 
+                    AND publicidades.mostrar = 1
+                    AND publicidades.tituloPagina = 'regiao'
+                    AND publicidades.codTipo = 1
+                    GROUP BY publicidades.cod
+                    LIMIT $limit";
+        }else{
+            $sql = "SELECT 
+                        publicidades.tituloPagina,
+                        publicidades.codTipo,
+                        publicidades.link,
+                        publicidades.pixel, 
+                    (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                    WHERE a.codReferencia = publicidades.cod 
+                    AND a.referencia = 'publicidade' 
+                    AND a.tipo = 2 
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+                    AS arquivo 
+                    FROM publicidades 
+                    WHERE publicidades.regiao = 'bc' 
+                    AND publicidades.mostrar = 1
+                    AND publicidades.tituloPagina = 'regiao'
+                    AND publicidades.codTipo = 1
+                    GROUP BY publicidades.cod";
+        }
+        $query = $this->db->query($sql); 
+        return $query->result_array();
+    }
 }
