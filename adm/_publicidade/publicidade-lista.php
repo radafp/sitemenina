@@ -104,11 +104,16 @@ $(document).ready(function()
 
     $regiao = isset($_SESSION[ADMIN_SESSION_NAME.'_regiao']) ? $_SESSION[ADMIN_SESSION_NAME.'_regiao'] : '';
 
+    //$q = mysql_query("SELECT * FROM programacao WHERE regiao = '{$regiao}' ORDER BY programacao,horario ASC ", $conexao);
+
     $q = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p
                     INNER JOIN publiTipos AS pt ON pt.cod = p.codTipo
                     INNER JOIN publiPaginas AS pp ON pp.cod = p.codPagina
+                    WHERE p.regiao = '$regiao'
                     ORDER BY p.codPagina, pt.cod");
     $n = mysql_num_rows($q);
+
+    echo mysql_error();
 
     if ($n>0)
     {
