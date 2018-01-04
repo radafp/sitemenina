@@ -46,6 +46,7 @@ $cod = (isset($_GET['cod'])) ? $_GET['cod'] : '' ;
             require_once ADMIN_INC_PATH."topo.php";
 		    require_once ADMIN_INC_PATH."menu.php";
             require_once ADMIN_FUNC_PATH."formatting.php";
+            //require_once "../func/funcoes.php";
             ?>
             <div class="conteudo">
                 <div class="centro">
