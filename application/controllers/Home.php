@@ -185,11 +185,11 @@ class home extends CI_Controller {
     //     $this->load->view('Template', $dados);
     // }
 
-    public function videos() {
+    public function videos_home() {
         $regiao = $_SESSION['regiao'];
-        $dados['videos']   = $this->Novomenina-> videos($regiao);
+        $dados['videos']   = $this->Novomenina-> videos_home($regiao);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['viewName'] = 'artistico/videos';
+        $dados['viewName'] = 'artistico/videos_home';
         $this->load->view('Template', $dados);
     }
 
