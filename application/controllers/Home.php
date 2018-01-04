@@ -92,6 +92,8 @@ class home extends CI_Controller {
 
     public function programacao() {
         // link de progrmacao semanal/sabado/domingo
+        $_SESSION['menuAtivoProgramacao'] = isset($_GET['programacao']) ? $_GET['programacao'] : 'Semanal';
+        
         if(isset($_GET['programacao'])) {
             $_SESSION['menuAtivoProgramacao'] = isset($_GET['programacao']) ? $_GET['programacao'] : 'Semanal';
             $programacao = $_GET['programacao'];
