@@ -88,7 +88,6 @@ class home extends CI_Controller {
         $dados['enquetes']              = $this->Novomenina->enquetes($_SESSION['regiao']);
         $dados['banner_tipo1']      = $this->Novomenina->banners($_SESSION['regiao'], 'regiao', '1');
         $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'regiao', '2');
-        
         $dados['viewName']              = 'regiao';
         $this->load->view('Template', $dados);
     }

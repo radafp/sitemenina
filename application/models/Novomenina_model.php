@@ -741,10 +741,10 @@ class Novomenina_model extends CI_Model{
                     DESC LIMIT 1) 
                     AS arquivo 
                     FROM publicidades 
-                    WHERE publicidades.regiao = 'bc' 
+                    WHERE publicidades.regiao = '$regiao' 
                     AND publicidades.mostrar = 1
-                    AND publicidades.tituloPagina = 'regiao'
-                    AND publicidades.codTipo = 1
+                    AND publicidades.tituloPagina = '$tituloPagina'
+                    AND publicidades.codTipo = '$codTipo'
                     GROUP BY publicidades.cod
                     LIMIT $limit";
         }else{
@@ -762,10 +762,10 @@ class Novomenina_model extends CI_Model{
                     DESC LIMIT 1) 
                     AS arquivo 
                     FROM publicidades 
-                    WHERE publicidades.regiao = 'bc' 
+                    WHERE publicidades.regiao = '$regiao' 
                     AND publicidades.mostrar = 1
-                    AND publicidades.tituloPagina = 'regiao'
-                    AND publicidades.codTipo = 1
+                    AND publicidades.tituloPagina = '$tituloPagina'
+                    AND publicidades.codTipo = '$codTipo'
                     GROUP BY publicidades.cod";
         }
         $query = $this->db->query($sql); 
