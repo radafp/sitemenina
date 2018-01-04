@@ -716,10 +716,11 @@ class Novomenina_model extends CI_Model{
         Inner join enquetesRespostas
             WHERE enquetesRespostas.codPergunta = enquetesPerguntas.cod
             AND enquetesPerguntas.regiao = '$regiao'
-            and enquetesPerguntas.dataCadastro = 
+            AND enquetesPerguntas.dataCadastro = 
             (SELECT MAX(enquetesPerguntas.dataCadastro) 
                  FROM enquetesPerguntas 
-             WHERE enquetesPerguntas.dataCadastro <= curdate())"
+             WHERE enquetesPerguntas.dataCadastro <= curdate())
+            AND enquetesPerguntas.mostrar = 1"
         );
         return $query->result_array();
     }

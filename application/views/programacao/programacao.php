@@ -66,7 +66,10 @@
                                         <img src="<?php echo base_url('assets/arquivos/programacao/'.$info["arquivo"])?>" alt="">
                                     </div>
                                     <h3><?php echo $info['titulo']?></h3>
-                                    <span><?php echo 'HORÀRIO:'.$info['horario'].'<br>APRESENTADOR:'. $info['apresentador']?></span>
+                                    <div class="infos">
+                                        <p><?php echo 'HORÁRIO: '.$info['horario'];?></p>
+                                        <p><?php echo 'APRESENTADOR: '. $info['apresentador'];?></p>
+                                    </div>
                                 </a>
                             </div>
                             <div class="conexaoPrograma<?=$classeAdicionalConexaoPrograma;?>">

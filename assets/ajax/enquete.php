@@ -1,7 +1,7 @@
 
 <?php
-//if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'))
-////{
+if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'))
+{
 
     try
     {
@@ -12,8 +12,7 @@
         echo 'Erro ao conectar com o MySQL: ' . $e->getMessage();
     }
     
-    $cod = isset($_POST['cod']) ? $_POST['cod'] : 19;
-    
+    $cod = isset($_POST['cod']) ? $_POST['cod'] : '';
     $datacadastro = date('Y-m-d');
     $ip = $_SERVER["REMOTE_ADDR"];
 
@@ -42,6 +41,7 @@
             die($e->getMessage());
         }
     }
-    //CRIAR SELECR PARA INSERIR VALORES NA TABELA enquetesStatus   
-//}
+
+    die(json_encode($json));
+}
 ?>
