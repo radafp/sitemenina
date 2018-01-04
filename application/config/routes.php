@@ -87,9 +87,9 @@ $route['balneario-camboriu/top-10'] = 'home/top_10';
 $route['blumenal/top-10'] = 'home/top_10';
 $route['lages/top-10'] = 'home/top_10';
 
-$route['balneario-camboriu/videos_home'] = 'home/videos_home';
-$route['blumenal/videos_home'] = 'home/videos_home';
-$route['lages/videos_home'] = 'home/videos_home';
+$route['balneario-camboriu/videos'] = 'home/videos_home';
+$route['blumenal/videos'] = 'home/videos_home';
+$route['lages/videos'] = 'home/videos_home';
 
 $route['balneario-camboriu/promocoes'] = 'home/promocoes';
 $route['blumenal/promocoes'] = 'home/promocoes';
