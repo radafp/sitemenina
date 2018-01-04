@@ -1,1 +1,19 @@
-Contato
+<div class="container">  
+    <div class="blocoConteudo">
+        <div class="row">
+
+            <div class="col-12 contLeft">
+
+                <h1 class="tituloPadrao1">
+                    <span>Contato</span>
+                </h1>
+
+                <div>
+                    Form
+                </div>
+
+            </div> <!-- contLeft -->
+
+        </div>  <!-- row --> 
+    </div>
+</div> <!-- container --> 

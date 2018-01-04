@@ -58,7 +58,7 @@
 
 <div class="container">
     <div class="row publicidade">
-        <img src="<?=base_url('/assets/img/temp/banner_home1.jpg');?>" title="Publicidade">       
+        <img src="<?=base_url('/assets/img/temp/banner_home1.jpg');?>" title="Publicidade">
     </div>
 </div> <!-- container -->
 
