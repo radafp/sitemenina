@@ -285,7 +285,6 @@
 
 /* css programação */
 
-
 .blocoMenuProgramacao{
     width: 100%;
     margin: 35px 0;
@@ -334,21 +333,17 @@
     border-bottom-right-radius: 80px;
     display: inline;
 }
-
 .blocoProgramacao{
     width: 100%;
     margin: 35px 0;
     float: left;
 }
-
 .blocoProgramacao .linhaPrograma{
     width: 100%;
     float: left;
 }
-
 .blocoProgramacao .linhaPrograma .programa{
     float: left;
-    
     width: 46.58%;
     border: 1px solid #F3F3F3;
     padding: 15px;
@@ -382,7 +377,6 @@
     width: 46.57%;
     margin-left: 15px;
     margin-right: 0;
-
 }
 .blocoProgramacao .linhaPrograma .conexaoPrograma{
     float: left;
@@ -390,3 +384,9 @@
 .blocoProgramacao .linhaPrograma .conexaoProgramaRight{
     float: right;
 }
+/* fim menu programacao */
+
+/* menu programacao descricao */
+
+
+/* fim menu programacao descricao */

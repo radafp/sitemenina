@@ -7,17 +7,19 @@
                 <h1 class="tituloPadrao1">
                     <span>Programação</span>
                 </h1>
-                <div class="programacaoDescricao">
+                <div class="blocoProgramacaoDescricao">
+                    
                     <?php foreach($descricao_programacao as $info):?>
-                    <div id='esquerda'>
-                        <div class="foto">
-                            <img src="<?php echo base_url('assets/arquivos/programacao/'.$info["arquivo"])?>" alt="">
+                        <div id='esquerda'>
+                            <div class="foto">
+                                <img src="<?php echo base_url('assets/arquivos/programacao/'.$info["arquivo"])?>" alt="">
+                            </div>
+                            <h3><?php echo $info['titulo']?></h3>
+                            <p><?php echo $info['descricao']?></p>
+                            <span><?php echo 'HORÀRIO:'.$info['horario'].'<br>APRESENTADOR:'. $info['apresentador']?></span>
                         </div>
-                        <h3><?php echo $info['titulo']?></h3>
-                        <p><?php echo $info['descricao']?></p>
-                        <span><?php echo 'HORÀRIO:'.$info['horario'].'<br>APRESENTADOR:'. $info['apresentador']?></span>
-                    </div>
                     <?php endforeach?>
+                    
                 </div>
 
             </div> <!-- contLeft -->

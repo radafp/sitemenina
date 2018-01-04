@@ -42,7 +42,7 @@
                 </h1>
                 <?php
                 $menuAtivoProgramacao =  isset($_SESSION['menuAtivoProgramacao']) ? $_SESSION['menuAtivoProgramacao'] : 'Semanal';
-                echo $menuAtivoProgramacao;
+                //echo $menuAtivoProgramacao;
                 ?>
                 <div class="blocoMenuProgramacao">
                     <ul class="menuProgramacao">
