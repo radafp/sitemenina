@@ -357,7 +357,8 @@
         document.getElementById('formRegiao').onchange = function(e){
             var regiao = document.querySelector('#regiao');
             window.location = regiao.value;              
-        }
-    
+        };
+
+        
 	</script>
 </html>	
