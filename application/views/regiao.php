@@ -123,7 +123,7 @@
     <div class="row publicidade">
         <div class="col-xs-12 col-md-6">
             <?php foreach($banner_tipo2 as $info):?>
-                <a class='registra_click_publicidade' codPublicidade="<?= $info['cod'];?>" href=<?= $info['link']?> target='__blank'><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
+                <a id="teste" class='registra_click_publicidade' data-codPublicidade="<?= $info['cod'];?>" href=""><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
             <?php endforeach?>
         </div>    
         <!-- <div class="col-xs-12 col-md-6">
@@ -308,6 +308,23 @@
                 });
             }
 
+        }); 
+
+        $("#teste").click(function(e) {
+            // _obj = $(this);
+            // _codPublicidade = _obj.data('codPublicidade');
+            alert('dasdas');
+            // $.ajax(
+            // {
+            //     type: "POST",
+            //     async: false,
+            //     url: "<?= base_url('/assets/ajax/publicidade.php');?>",
+            //     data:
+            //     {
+            //         cod: _codPublicidade,
+            //     },
+            //     dataType: "json"
+            // })
         }); 
     })
 </script> 
