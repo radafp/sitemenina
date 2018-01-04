@@ -97,7 +97,7 @@ class home extends CI_Controller {
             $programacao = $_GET['programacao'];
             $dados['programacao_impar'] = $this->Novomenina->programacao_programacao($_SESSION['regiao'], $programacao);
         }else{
-            $dados['programacao_impar'] = $this->Novomenina->programacao_impar($_SESSION['regiao']);
+            $dados['programacao_impar'] = $this->Novomenina->programacao_programacao($_SESSION['regiao'], 'Semanal');
         }
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['programacao_par']   = $this->Novomenina->programacao_par($_SESSION['regiao']); 

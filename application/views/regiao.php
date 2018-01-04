@@ -202,30 +202,29 @@
                     <span>Mensagem do Dia</span>
                 </h1>
                 <div class="wrapMensagemDoDia">
-                    <?php foreach($videos_home as $info):
+                    <?php foreach($videos_home as $info):?>
+                    <?php 
                         $codVideo = explode('=',$info['link']);
-                        if($codVideo[1] != '')
-                        {
-                        ?>   
-                            <? 
+                        if($codVideo[1] != '') { 
                             $imagemCapa = '';                
                             $output = array();
                             $url = $info['link'];
                             preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $output);
                             $imagemCapa = 'https://img.youtube.com/vi/' . $output[0] . '/0.jpg';
-                            ?>
-                            <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="440">
-                                <img src="<?=$imagemCapa;?>" style="max-width:100%">  
-                                <div class="btPlayYoutube">
-                                    <img src="<?php echo base_url('/assets/img/playYoutube.png');?>">
-                                </div>
-                            </a> 
+                            
+                        ?>
+                        <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="440">
+                            <img src="<?=$imagemCapa;?>" style="max-width:100%">  
+                            <div class="btPlayYoutube">
+                                <img src="<?php echo base_url('/assets/img/playYoutube.png');?>">
+                            </div>
+                        </a> 
                             <!-- <iframe style="width: 100%; max-height:250px" src="" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe> -->
-                        <?
+                        <?php
                         }else{
                         ?>
                             <p>Nenhuma mensagem cadastrada.</p>   
-                        <?
+                        <?php
                         }
                         ?>
                     <?php endforeach?>
