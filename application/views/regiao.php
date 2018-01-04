@@ -59,7 +59,7 @@
 <div class="container">
     <div class="row publicidade">
         <?php foreach($banner as $info):?>
-        <img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade">
+        <a href=<?= $info['link']?>><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
         <?php endforeach?>
     </div>
 </div> <!-- container -->
