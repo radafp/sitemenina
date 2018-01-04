@@ -346,6 +346,23 @@
                 });
                 window.history.pushState(null, 'Home', $(this).attr('href'));
             });
+
+            $(".registra_click_publicidade").click(function(e) {
+                _obj = $(this);
+                _codPublicidade = _obj.data('codPublicidade');
+                
+                $.ajax(
+                {
+                    type: "POST",
+                    async: false,
+                    url: "<?= base_url('/assets/ajax/publicidade.php');?>",
+                    data:
+                    {
+                        cod: _codPublicidade,
+                    },
+                    dataType: "json"
+                })
+            }); 
                                          
         });
 
@@ -357,7 +374,8 @@
         document.getElementById('formRegiao').onchange = function(e){
             var regiao = document.querySelector('#regiao');
             window.location = regiao.value;              
-        }
-    
+        };
+
+        
 	</script>
 </html>	

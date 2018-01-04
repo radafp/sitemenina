@@ -728,6 +728,7 @@ class Novomenina_model extends CI_Model{
     public function banners($regiao, $tituloPagina, $codTipo, $limit = null) {
         if(isset($limit) && $limit != null) {
             $sql = "SELECT 
+                        publicidades.cod,
                         publicidades.tituloPagina,
                         publicidades.codTipo,
                         publicidades.link,
@@ -749,6 +750,7 @@ class Novomenina_model extends CI_Model{
                     LIMIT $limit";
         }else{
             $sql = "SELECT 
+                        publicidades.cod,
                         publicidades.tituloPagina,
                         publicidades.codTipo,
                         publicidades.link,
