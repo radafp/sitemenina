@@ -21,6 +21,12 @@ if($submit != '')
     $tipoArquivo = isset($_POST['extensao'])? $_POST['extensao'] : '' ;
 	$link = isset($_POST['link'])? $_POST['link'] : '' ;
     $pagina = isset($_POST['pagina'])? $_POST['pagina'] : '' ;
+    
+    $sqlPubliPaginas = mysql_query("SELECT * FROM publiPaginas WHERE cod = '$pagina'");
+    $tpPubliPaginas = mysql_fetch_assoc($sqlPubliPaginas);
+
+    $tituloPagina = $tpPubliPaginas['tituloPagina'];
+
     $tipo = isset($_POST['tipo'])? $_POST['tipo'] : '' ;
     $dataInicio = isset($_POST['dataInicio']) ? dataEn($_POST['dataInicio']) : '' ;
     $dataFim = isset($_POST['dataFim']) ? dataEn($_POST['dataFim']) : '' ;
@@ -86,9 +92,9 @@ if($submit != '')
         if($subid == 2) //insert
         {
             
-        	$q = mysql_query("INSERT INTO publicidades (link,  codPagina,  codTipo, tipoArquivo, dataInicio, dataFim, pixel, regiao, mostrar)
+        	$q = mysql_query("INSERT INTO publicidades (link,  codPagina, tituloPagina,  codTipo, tipoArquivo, dataInicio, dataFim, pixel, regiao, mostrar)
                             VALUES(
-                            '{$link}', '{$pagina}', '{$tipo}', '{$tipoArquivo}','{$dataInicio}', '{$dataFim}', '{$pixel}', '{$regiao}', '{$mostrar}')");
+                            '{$link}', '{$pagina}', '{$tituloPagina}', '{$tipo}', '{$tipoArquivo}','{$dataInicio}', '{$dataFim}', '{$pixel}', '{$regiao}', '{$mostrar}')");
         	
             echo mysql_error();
             if($q)
@@ -133,6 +139,7 @@ if($submit != '')
                     link = '{$link}',
                     tipoArquivo = '{$tipoArquivo}',
                     codPagina = '{$pagina}',
+                    tituloPagina = '{$tituloPagina}',
                     codTipo = '{$tipo}',
                     dataInicio = '{$dataInicio}',
                     dataFim = '{$dataFim}',
