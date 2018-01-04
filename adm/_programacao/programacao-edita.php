@@ -39,50 +39,30 @@ if($submit != '')
                             VALUES
                             ('$data', '$cleanTitle', '$programacao', '$titulo', '$descricao','$horario','$apresentador','$regiao','$mostrar')");
         	
-            echo mysql_error();
+            //echo mysql_error();
             if($q)
         	{
         		$cod = mysql_insert_id();
-                $qtdFotos = count(isset($_FILES['fotos']['name']) ? $_FILES['fotos']['name'] : array());
-                for ($a=0;$a<$qtdFotos;$a++)
-                {
-                    $foto = isset($_FILES['fotos']['name'][$a]) ? $_FILES['fotos']['name'][$a] : '';
-                    $foto_temp = $_FILES['fotos']['tmp_name'][$a];
-                    $legenda = isset($_POST['legendas'][$a]) ? $_POST['legendas'][$a] : '';
-        
-                    if($foto != "")
+  
+                $foto = isset($_FILES['foto']['name']) ? $_FILES['foto']['name'] : '';
+                $foto_temp = isset($_FILES['foto']['tmp_name']) ? $_FILES['foto']['tmp_name'] : '';
+    
+                if($foto != "")
+                {               
+                    $codigo = rand(1,999999).date('dmYHis');
+                    $fileM = insere_foto($foto, $foto_temp, $pasta,'200','140');
+            
+                    $sqlM = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, tipo, arquivo, codigo)
+                            VALUES ('$data', 'programacao', '{$cod}', '2', '{$fileM}', '$codigo')";
+                    for($b=0;$b<5;$b++)
                     {
-                        if($qtdFotos == 1)
+                        $qM = mysql_query($sqlM);
+                        if($qM)
                         {
-                            $capa = 1;
+                            break;
                         }
-                        elseif ($qtdFotos > 1 && $a == 0)
-                        {
-                            $capa = 1;
-                        }
-                        else
-                        {
-                            $capa = 0;
-                        }                    
-                        $codigo = rand(1,999999).date('dmYHis');
-
-        				$fileM = insere_foto($foto, $foto_temp, $pasta,'200','140');
-        		
-        				
-                        $sqlM = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, tipo, arquivo, legenda, codigo, capa)
-                                VALUES ('$data', 'programacao', '{$cod}', '2', '{$fileM}', '$legenda', '$codigo', '$capa')";
-    					for($b=0;$b<5;$b++)
-                        {
-                            $qM = mysql_query($sqlM);
-                            if($qM)
-                            {
-                                break;
-                            }
-                        }
-                        
-					}
-        		}
-                
+                    }
+                }
                 echo "<script>
         		          alert('Cadastro efetuado com sucesso.');
         		          document.location.replace('http://".ADMIN_URL."/principal.php?id=$id&subid=1')
@@ -113,103 +93,48 @@ if($submit != '')
                                         
             if($q)
         	{
-        	    $qtdFotos = count(isset($_FILES['fotos']['name']) ? $_FILES['fotos']['name'] : array());
-                $qFotosBanco = mysql_query("SELECT cod FROM arquivos WHERE codReferencia = '$cod'
-                                            AND referencia = 'programacao' AND tipo = '2'");
-                $nFotosBanco = mysql_num_rows($qFotosBanco);
-                
-                
-                for($c=0;$c<$nFotosBanco;$c++)
+        	    $foto = isset($_FILES['foto']['name']) ? $_FILES['foto']['name'] : '';
+                /*
+                echo "<pre>";
+                    var_dump($foto);
+                echo "</pre>"; 
+                */
+                if($foto != '')
                 {
-                    $codigo = isset($_POST['codigos'][$c]) ? $_POST['codigos'][$c] : '' ;
-                    $legenda = isset($_POST['legendasFotos'][$c]) ? $_POST['legendasFotos'][$c] : '' ;
-                    $qLegenda = mysql_query("UPDATE arquivos SET legenda = '$legenda'
-                                            WHERE codReferencia = '$cod' AND
-                                            codigo = '$codigo' AND referencia = 'programacao'");
-                }
-                
-                // marca a foto de capa
-                if($nFotosBanco > 0)
-                {
-                    $qCapa = mysql_query("UPDATE arquivos SET capa = '0'
-                                          WHERE codReferencia = '$cod' AND referencia = 'programacao'");
-                    for ($e=0;$e<$nFotosBanco;$e++)
+                    $qFotosBanco = mysql_query("SELECT cod, arquivo, codigo FROM arquivos WHERE codReferencia = '$cod'
+                                            AND referencia = 'empregos' AND tipo = '2'");
+                    $nFotosBanco = mysql_num_rows($qFotosBanco);
+                    
+                    // apaga foto que existe no banco e deleta da pasta arquivos
+                    if($nFotosBanco>0)
                     {
-                        $codigo = isset($_POST['capaFotos'][$e]) ? $_POST['capaFotos'][$e] : '';
-                        if($codigo != '')
-                        {
-                            $qCapa = mysql_query("UPDATE arquivos SET capa = '1' WHERE codReferencia = '$cod'
-                                                  AND codigo = '$codigo' AND referencia = 'programacao'");
-                        }
-                    }
-                }
-                
-
-                // verifica e apaga fotos marcadas para excluir
-                for ($i=0; $i < $nFotosBanco; $i++)
-                {
-                    $codigo = isset($_POST['apagarFotos'][$i]) ? $_POST['apagarFotos'][$i] : '' ;
-        
-                    $qUnlink = mysql_query("SELECT arquivo FROM arquivos WHERE codigo='$codigo' AND referencia = 'programacao'");
-                    while($tpUnlink = mysql_fetch_assoc($qUnlink))
-                    {
+                        $tpUnlink = mysql_fetch_assoc($qFotosBanco);
                         @unlink($pasta.DIRECTORY_SEPARATOR.$tpUnlink['arquivo']);
+                        $qDelete = mysql_query("DELETE FROM arquivos WHERE codigo = '{$tpUnlink['codigo']}' AND referencia = 'empregos'");
                     }
-                    $qDelete = mysql_query("DELETE FROM arquivos WHERE codigo = '$codigo' AND referencia = 'programacao'");
-        			
-					$qCapas = mysql_query("SELECT cod FROM arquivos WHERE codReferencia = '$cod' AND referencia = 'programacao' AND capa = '1'");
-					$nCapas = mysql_num_rows($qCapas);
-					
-					if($nCapas == 0)
-					{
-						$qCapa = mysql_query("SELECT codigo FROM arquivos WHERE codReferencia = '$cod' AND referencia = 'programacao' AND capa = '0' LIMIT 1");
-						$tpCapa = mysql_fetch_assoc($qCapa);
-						$qMarcaCapa = mysql_query("UPDATE arquivos SET capa = '1' WHERE codReferencia = '$cod'
-                                                   AND codigo = '{$tpCapa['codigo']}' AND referencia = 'programacao'");
-					}
-                }
-                
-                $qFotosBanco = mysql_query("SELECT cod FROM arquivos WHERE codReferencia = '$cod' AND referencia = 'programacao'");
-                $nFotosBanco = mysql_num_rows($qFotosBanco);
-                for($a=0;$a<$qtdFotos;$a++)
-                {
-                    $foto = isset($_FILES['fotos']['name'][$a]) ? $_FILES['fotos']['name'][$a] : '';
-                    $foto_temp = $_FILES['fotos']['tmp_name'][$a];
-                    $legenda = isset($_POST['legendas'][$a]) ? $_POST['legendas'][$a] : '';
-        
-                    if ($foto != "")
+
+                    $foto_temp = $_FILES['foto']['tmp_name'];
+                    /*
+                    echo "<pre>";
+                        var_dump($foto_temp);
+                    echo "</pre>";
+                    */
+
+                    $codigo = rand(1,999999).date('dmYHis');
+                    $fileM = insere_foto($foto, $foto_temp, $pasta,'200','140');
+            
+                    $sqlM = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, tipo, arquivo, codigo)
+                            VALUES ('$data', 'empregos', '{$cod}', '2', '{$fileM}', '$codigo')";
+                    for($b=0;$b<5;$b++)
                     {
-                        if ($nFotosBanco > 0)
+                        $qM = mysql_query($sqlM);
+                        if($qM)
                         {
-                            $capa = 0;
+                            break;
                         }
-                        elseif ($qtdFotos == 1 && $nFotosBanco < 1)
-                        {
-                            $capa = 1;
-                        }
-                        elseif ($qtdFotos > 1 && $a == 0)
-                        {
-                            $capa = 1;
-                        }
-                        else
-                        {
-                            $capa = 0;
-                        }              
-                        $codigo = rand(1,999999).date('dmYHis');
-        				$fileM = insere_foto($foto, $foto_temp, $pasta,'200','140');
-        		
-                        $sqlM = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, tipo, arquivo, legenda, codigo, capa)
-                                VALUES ('$data', 'programacao', '{$cod}', '2', '{$fileM}', '$legenda', '$codigo', '$capa')";
-    					for($b=0;$b<5;$b++)
-                        {
-                            $qM = mysql_query($sqlM);
-                            if($qM)
-                            {
-                                break;
-                            }
-                        }
-					}
-        		}
+                    }
+                    
+                }
                 echo "<script>
                           alert('Cadastro atualizado com sucesso.');
                           document.location.replace('http://".ADMIN_URL."/principal.php?id=$id&subid=1')
