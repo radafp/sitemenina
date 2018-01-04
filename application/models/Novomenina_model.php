@@ -47,17 +47,17 @@ class Novomenina_model extends CI_Model{
     }
 
     // metodo mostrado na div esquerda 
-    public function programacao_impar($regiao)  {
-        $query = $this->db->query("SELECT programacao.*, arquivos.arquivo 
-                                    FROM programacao 
-                                        INNER JOIN arquivos 
-                                    WHERE programacao.cod % 2 != 0 
-                                    and arquivos.codReferencia = programacao.cod 
-                                    and programacao.regiao = '$regiao'
-                                    GROUP by programacao.cod"
-        );
-        return $query->result_array();
-    }
+    // public function programacao_impar($regiao)  {
+    //     $query = $this->db->query("SELECT programacao.*, arquivos.arquivo 
+    //                                 FROM programacao 
+    //                                     INNER JOIN arquivos 
+    //                                 WHERE programacao.cod % 2 != 0 
+    //                                 and arquivos.codReferencia = programacao.cod 
+    //                                 and programacao.regiao = '$regiao'
+    //                                 GROUP by programacao.cod"
+    //     );
+    //     return $query->result_array();
+    // }
 
     // metodo mostrado na div esquerda 
     public function programacao_par($regiao)  {
