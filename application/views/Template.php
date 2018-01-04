@@ -35,13 +35,53 @@
         <meta property="og:image" content="<?=isset($imagemFb) ? $imagemFb : base_url('/assets/img/logo-jm-fb.png');?>" />
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
+
+        <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js');?>"></script>
+        <script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
         
-        
-        <!-- <script type="text/javascript">
-        $(document).ready(function(){
-                        
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                var content = $('#content');
+                var logo = document.querySelector('#logo');
+                $('#menu a,  #logo').click(function( e ){
+                    
+                    e.preventDefault();
+
+                    var href = $( this ).attr('href');
+                    $.ajax({
+                        url: href,
+                        success: function( response ){
+                            //forçando o parser
+                            var data = $( '<div>'+response+'</div>' ).find('#content').html();
+
+                            //apenas atrasando a troca, para mostrarmos o loading
+                            window.setTimeout( function(){
+                                content.fadeOut('fast', function(){
+                                    content.html( data ).fadeIn();
+                                });
+                            },100);
+                        }
                     });
-        </script> -->
+                    window.history.pushState(null, 'Home', $(this).attr('href'));
+                });
+                
+                $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                    event.preventDefault();
+                    $(this).ekkoLightbox();
+                });
+                
+                document.getElementById('formRegiao').onchange = function(e){
+                    var regiao = document.querySelector('#regiao');
+                    window.location = regiao.value;              
+                };
+                 
+            });
+        </script>
+        
     </head>
     <body class="backgroundBody_<?=$_SESSION['regiao'];?>">
 
@@ -220,12 +260,12 @@
                         
                         <div class="col-md-4">
                             <div class='face'>
-                                <a class="link_descricao" href="<?=$_SESSION['socialFace'];?>" target="_blank">
+                                <a  href="<?=$_SESSION['socialFace'];?>" target="_blank">
                                     <img src="<?php echo base_url('/assets/img/linkFaceRodape.png')?>" alt="Curta nossa Fanpage">
                                 </a>
                             </div>
                             <div class='youtube'>
-                                <a class="link_descricao" href="<?=$_SESSION['socialYoutube'];?>" target="_blank">
+                                <a href="<?=$_SESSION['socialYoutube'];?>" target="_blank">
                                     <img src="<?php echo base_url('/assets/img/linkYoutubeRodape.png')?>" alt="Inscreva-se no nosso canal">
                                 </a>
                             </div>
@@ -314,51 +354,6 @@
                 </div>
             </div>
         </footer>
+
     </body>
-
-    <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-
-            var content = $('#content');
-            var logo = document.querySelector('#logo');
-            $('#menu a,  #logo').click(function( e ){
-                
-                e.preventDefault();
-
-                var href = $( this ).attr('href');
-                $.ajax({
-                    url: href,
-                    success: function( response ){
-                        //forçando o parser
-                        var data = $( '<div>'+response+'</div>' ).find('#content').html();
-
-                        //apenas atrasando a troca, para mostrarmos o loading
-                        window.setTimeout( function(){
-                            content.fadeOut('fast', function(){
-                                content.html( data ).fadeIn();
-                            });
-                        },100);
-                    }
-                });
-                window.history.pushState(null, 'Home', $(this).attr('href'));
-            });
-                                         
-        });
-
-        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-            event.preventDefault();
-            $(this).ekkoLightbox();
-        });
-        
-        document.getElementById('formRegiao').onchange = function(e){
-            var regiao = document.querySelector('#regiao');
-            window.location = regiao.value;              
-        };
-
-        
-	</script>
 </html>	
