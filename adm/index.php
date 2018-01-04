@@ -62,9 +62,11 @@ require_once '../configRoot.php';
             			
             			//$_SESSION['token_'.$nome_site] = $uia_master_cript;
             			//$verifica = mysql_query("UPDATE usuarios SET token = '".$uia_master_cript."' WHERE cod = ".$recoba['cod']);
-            			echo "<pre>";
+                        /*
+                        echo "<pre>";
                             print_r($_SESSION);
                         echo "</pre>";
+                        */
                         
                         //redireciona1("http://".ADMIN_URL."/teste.php");
             			

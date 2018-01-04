@@ -263,8 +263,7 @@ else
                 <label>Logo do Programa:</label>
             </div>
             <div class="divTd">
-                
-                <input class="foto" name="fotos[]" id="fotos[]" type="file" title="Logo do Programa">
+                <input class="foto" name="foto" id="foto" type="file" title="Logo do Programa">
             </div>
         </div>
 

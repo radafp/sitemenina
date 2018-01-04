@@ -86,9 +86,9 @@ if($submit != '')
         if($subid == 2) //insert
         {
             
-        	$q = mysql_query("INSERT INTO publicidades (link, pixel, codPagina,  codTipo, tipoArquivo, dataInicio, dataFim, mostrar)
+        	$q = mysql_query("INSERT INTO publicidades (link,  codPagina,  codTipo, tipoArquivo, dataInicio, dataFim, pixel, regiao, mostrar)
                             VALUES(
-                            '{$link}', '{$pixel}', '{$pagina}', '{$tipo}', '{$tipoArquivo}','{$dataInicio}', '{$dataFim}', '{$mostrar}')");
+                            '{$link}', '{$pagina}', '{$tipo}', '{$tipoArquivo}','{$dataInicio}', '{$dataFim}', '{$pixel}', '{$regiao}', '{$mostrar}')");
         	
             echo mysql_error();
             if($q)
@@ -137,6 +137,7 @@ if($submit != '')
                     dataInicio = '{$dataInicio}',
                     dataFim = '{$dataFim}',
                     pixel = '{$pixel}',
+                    regiao = '{$regiao}',
                     mostrar = '{$mostrar}'
                     WHERE cod = {$cod}");
             //echo mysql_error(); 
