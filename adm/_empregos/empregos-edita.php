@@ -25,7 +25,7 @@ if($submit != '')
     
     $msg = array();
     $erro = 0;
-    
+           
     if($erro == 0)
     {
         $pasta = PROJECT_PATH."assets/arquivos/empregos";
@@ -88,10 +88,26 @@ if($submit != '')
                                         
             if($q)
         	{
+                // apaga foto marcada para apagar
+                $codFotoApagar = isset($_POST['apagarFoto']) ? $_POST['apagarFoto'] : '' ;
+        
+                if($codFotoApagar != '')
+                {
+                    $qUnlink = mysql_query("SELECT arquivo FROM arquivos WHERE codigo='$codFotoApagar' AND referencia = 'empregos'");
+                    while($tpUnlink = mysql_fetch_assoc($qUnlink))
+                    {
+                        @unlink($pasta.DIRECTORY_SEPARATOR.$tpUnlink['arquivo']);
+                    }
+                    $qDelete = mysql_query("DELETE FROM arquivos WHERE codigo = '$codFotoApagar' AND referencia = 'empregos'");
+                }
+                    
+
                 $foto = isset($_FILES['foto']['name']) ? $_FILES['foto']['name'] : '';
+                /*
                 echo "<pre>";
                     var_dump($foto);
                 echo "</pre>"; 
+                */
                 if($foto != '')
                 {
                     $qFotosBanco = mysql_query("SELECT cod, arquivo, codigo FROM arquivos WHERE codReferencia = '$cod'
@@ -247,6 +263,14 @@ else
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="divTr clear">
+                <div class="divTd">
+                    <label>Apagar Foto:</label>
+                </div>
+                <div class="divTd">
+                    <input type="checkbox" name="apagarFoto" title="Apagar Foto" value="<?=$tpFotos['codigo'];?>" />
                 </div>
             </div>
         <?php

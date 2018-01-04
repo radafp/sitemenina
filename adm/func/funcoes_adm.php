@@ -26,30 +26,4 @@ function verifica_regiao($usuario,$regiao)
     }
     return $libera;
 }
-
-function remEscape($string)
-{
-    return stripcslashes($string);
-}
-
-function escape($string)
-{
-    global $conexao;
-    if(!get_magic_quotes_gpc())
-    {
-        if (function_exists('mysql_real_escape_string'))
-        {
-            return mysql_real_escape_string($string, $conexao);
-        }
-        elseif(function_exists('mysql_escape_string'))
-        {
-            return mysql_escape_string($string);
-        }
-        return addslashes($string);
-    }
-    else
-    {
-        return $string;
-    }
-}
 ?>
