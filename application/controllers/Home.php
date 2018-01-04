@@ -86,7 +86,9 @@ class home extends CI_Controller {
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['promocoes_home']        = $this->Novomenina->promocoes_home($_SESSION['regiao']);
         $dados['enquetes']              = $this->Novomenina->enquetes($_SESSION['regiao']);
-        $dados['banner']                = $this->Novomenina->banners($_SESSION['regiao'], 'regiao', '1');
+        $dados['banner_tipo1']      = $this->Novomenina->banners($_SESSION['regiao'], 'regiao', '1');
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'regiao', '2');
+        
         $dados['viewName']              = 'regiao';
         $this->load->view('Template', $dados);
     }
@@ -102,8 +104,10 @@ class home extends CI_Controller {
         }else{
             $dados['programacao_impar'] = $this->Novomenina->programacao_programacao($_SESSION['regiao'], 'Semanal');
         }
-        $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         // $dados['programacao_par']   = $this->Novomenina->programacao_par($_SESSION['regiao']); 
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'programacao', '3');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'programacao', '2');        
         $dados['viewName'] = 'programacao/programacao';
         $this->load->view('Template', $dados);
 
@@ -133,6 +137,8 @@ class home extends CI_Controller {
         $dados['mais_lidas']        = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
         $count                      = count($dados['jornalismo']);
         $dados['count']             = $count;
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2'); 
         $dados['viewName']          = 'jornalismo/noticia';
         $this->load->view('Template', $dados);
         
@@ -145,6 +151,8 @@ class home extends CI_Controller {
         $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id, $_SESSION['regiao']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_noticia', '3');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_noticia', '2'); 
         $dados['viewName'] = 'jornalismo/descricao_noticia';
         $this->load->view('Template', $dados);
     }
@@ -161,6 +169,8 @@ class home extends CI_Controller {
         // $dados['count']             = count($this->Novomenina->count_eventos($regiao));
         $dados['eventos']           = $this->Novomenina->eventos($regiao);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '3');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '2'); 
         $dados['viewName']          = 'eventos/eventos';
         $this->load->view('Template', $dados);
     }
@@ -168,6 +178,8 @@ class home extends CI_Controller {
     public function top_10() {
         $dados['top_10']   = $this->Novomenina->top_10();
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'top_10', '3');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'top_10', '2'); 
         $dados['viewName'] = 'artistico/top_10';
         $this->load->view('Template', $dados);
     }
@@ -192,6 +204,8 @@ class home extends CI_Controller {
         $regiao = $_SESSION['regiao'];
         $dados['videos']   = $this->Novomenina-> videos_home($regiao);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'videos_home', '3');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'videos_home', '2'); 
         $dados['viewName'] = 'artistico/videos_home';
         $this->load->view('Template', $dados);
     }
@@ -203,6 +217,8 @@ class home extends CI_Controller {
         $regiao = $_SESSION['regiao'];
         $dados['descricao_eventos'] = $this->Novomenina->descricao_eventos($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_eventos', '3');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_eventos', '2'); 
         $dados['viewName'] = 'eventos/descricao_eventos';
         $this->load->view('Template', $dados);
     }
@@ -210,6 +226,8 @@ class home extends CI_Controller {
     public function promocoes() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['promocoes_impar'] = $this->Novomenina->promocoes_home($_SESSION['regiao']);
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'promocoes', '3');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'promocoes', '2'); 
         $dados['viewName'] = 'promocoes/promocoes';
         $this->load->view('Template', $dados);
     }
@@ -219,6 +237,8 @@ class home extends CI_Controller {
         $regiao = $_SESSION['regiao'];
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_promocoes', '3');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_promocoes', '2'); 
         $dados['viewName'] = 'promocoes/descricao_promocoes';
         $this->load->view('Template', $dados);
     }
@@ -228,6 +248,8 @@ class home extends CI_Controller {
         $regiao = $_SESSION['regiao'];
         $dados['descricao_programacao'] = $this->Novomenina->descricao_programacao($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_programacao', '3');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_programacao', '2'); 
         $dados['viewName'] = 'programacao/descricao_programacao';
         $this->load->view('Template', $dados);
     }
@@ -238,6 +260,8 @@ class home extends CI_Controller {
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_utilidade', '3');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_utilidade', '2'); 
         $dados['viewName'] = 'promocoes/descricao_promocoes';
         $this->load->view('Template', $dados);
     }
@@ -246,12 +270,16 @@ class home extends CI_Controller {
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['empregos']          = $this->Novomenina->empregos($_SESSION['regiao']);
         $dados['viewName']          = 'utilidade_publica/bolsa_de_empregos';
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'bolsa_de_empregos', '3');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'bolsa_de_empregos', '2'); 
         $this->load->view('Template', $dados);
     }
 
     public function documentos_perdidos() {
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['documentos_perdidos']   = $this->Novomenina->documentos_perdidos($_SESSION['regiao']);
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '3');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '2'); 
         $dados['viewName']              = 'utilidade_publica/documentos_perdidos';
         $this->load->view('Template', $dados);
     }   
@@ -274,57 +302,57 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
-    public function enquete_dados() {
+    // public function enquete_dados() {
 
-        try
-        {
-            $conn = new PDO('mysql:host=mysql03-farm70.uni5.net;dbname=novomenina', 'novomenina', 'agEncia445');
-        }
-        catch ( PDOException $e )
-        {
-            echo 'Erro ao conectar com o MySQL: ' . $e->getMessage();
-        }
+    //     try
+    //     {
+    //         $conn = new PDO('mysql:host=mysql03-farm70.uni5.net;dbname=novomenina', 'novomenina', 'agEncia445');
+    //     }
+    //     catch ( PDOException $e )
+    //     {
+    //         echo 'Erro ao conectar com o MySQL: ' . $e->getMessage();
+    //     }
 
-        if($conn) {
-            echo 'conextado';
-        }else{
-            echo 'ta por fora';
-        }
+    //     if($conn) {
+    //         echo 'conextado';
+    //     }else{
+    //         echo 'ta por fora';
+    //     }
 
-        $cod = isset($_POST['cod']) ? $_POST['cod'] : 19;
+    //     $cod = isset($_POST['cod']) ? $_POST['cod'] : 19;
         
-        $datacadastro = date('Y-m-d');
+    //     $datacadastro = date('Y-m-d');
         
-        $ip = $_SERVER["REMOTE_ADDR"];
+    //     $ip = $_SERVER["REMOTE_ADDR"];
         
-        // CRIAR SELECT PRA PEGAR CÓDIGO DA PERGUNTA 
-        $array = array();
-        $query = $conn->query(
-            "SELECT enquetesPerguntas.cod as cod_perg 
-                FROM `enquetesPerguntas` 
-            INNER JOIN enquetesRespostas
-                WHERE enquetesRespostas.codPergunta = enquetesPerguntas.cod
-                AND enquetesRespostas.cod = $cod"
-        );
-        $array = $query->fetchAll(\PDO::FETCH_ASSOC);
+    //     // CRIAR SELECT PRA PEGAR CÓDIGO DA PERGUNTA 
+    //     $array = array();
+    //     $query = $conn->query(
+    //         "SELECT enquetesPerguntas.cod as cod_perg 
+    //             FROM `enquetesPerguntas` 
+    //         INNER JOIN enquetesRespostas
+    //             WHERE enquetesRespostas.codPergunta = enquetesPerguntas.cod
+    //             AND enquetesRespostas.cod = $cod"
+    //     );
+    //     $array = $query->fetchAll(\PDO::FETCH_ASSOC);
         
         
 
-        foreach($array as $info) {
-            $cod_perg = $info['cod_perg'];
+    //     foreach($array as $info) {
+    //         $cod_perg = $info['cod_perg'];
             
-            try{
-                $stmt = $conn->prepare(
-                    "INSERT INTO enquetesStatus 
-                    (dataCadastro, ip, codPergunta, codResposta) VALUES 
-                    ('$datacadastro', '$ip', '$cod_perg', '$cod')"
-                );
-                $stmt->execute();
+    //         try{
+    //             $stmt = $conn->prepare(
+    //                 "INSERT INTO enquetesStatus 
+    //                 (dataCadastro, ip, codPergunta, codResposta) VALUES 
+    //                 ('$datacadastro', '$ip', '$cod_perg', '$cod')"
+    //             );
+    //             $stmt->execute();
 
-                // var_dump($stmt);
-            }catch(PDOException $e) {
-                die($e->getMessage());
-            }
-        }
-    }
+    //             // var_dump($stmt);
+    //         }catch(PDOException $e) {
+    //             die($e->getMessage());
+    //         }
+    //     }
+    // }
  }

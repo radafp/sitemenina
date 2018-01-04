@@ -58,8 +58,8 @@
 
 <div class="container">
     <div class="row publicidade">
-        <?php foreach($banner as $info):?>
-        <a href=<?= $info['link']?>><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
+        <?php foreach($banner_tipo1 as $info):?>
+        <a href=<?= $info['link']?> target='__blank'><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
         <?php endforeach?>
     </div>
 </div> <!-- container -->
@@ -122,11 +122,13 @@
 <div class="container">
     <div class="row publicidade">
         <div class="col-xs-12 col-md-6">
-            <img src="<?=base_url('/assets/img/temp/banner_home2.jpg');?>" title="Publicidade">  
+            <?php foreach($banner_tipo2 as $info):?>
+                <a href=<?= $info['link']?> target='__blank'><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
+            <?php endforeach?>
         </div>    
-        <div class="col-xs-12 col-md-6">
+        <!-- <div class="col-xs-12 col-md-6">
             <img src="<?=base_url('/assets/img/temp/banner_home2.jpg');?>" title="Publicidade">  
-        </div>
+        </div> -->
     </div>
 </div> <!-- container -->
 

@@ -57,9 +57,14 @@
                         </div>
                     <?php endforeach?>
                 </div>       
-
+                <?php foreach($banner_tipo2 as $info):?>
+                    <a href=<?= $info['link']?> target='__blank'><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
+                <?php endforeach?>
             </div> <!-- contLeft -->
             <div class="col-xs-12 col-md-4 contRight">
+                <?php foreach($banner_tipo3 as $info):?>
+                    <a href=<?= $info['link']?> target='__blank'><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
+                <?php endforeach?>
                 Publicidade 
             </div> <!-- contRight -->
 
