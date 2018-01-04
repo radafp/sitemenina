@@ -93,7 +93,20 @@ if($submit != '')
                                         
             if($q)
         	{
-        	    $foto = isset($_FILES['foto']['name']) ? $_FILES['foto']['name'] : '';
+        	    // apaga foto marcada para apagar
+                $codFotoApagar = isset($_POST['apagarFoto']) ? $_POST['apagarFoto'] : '' ;
+        
+                if($codFotoApagar != '')
+                {
+                    $qUnlink = mysql_query("SELECT arquivo FROM arquivos WHERE codigo='$codFotoApagar' AND referencia = 'programacao'");
+                    while($tpUnlink = mysql_fetch_assoc($qUnlink))
+                    {
+                        @unlink($pasta.DIRECTORY_SEPARATOR.$tpUnlink['arquivo']);
+                    }
+                    $qDelete = mysql_query("DELETE FROM arquivos WHERE codigo = '$codFotoApagar' AND referencia = 'programacao'");
+                }
+                
+                $foto = isset($_FILES['foto']['name']) ? $_FILES['foto']['name'] : '';
                 /*
                 echo "<pre>";
                     var_dump($foto);
@@ -102,7 +115,7 @@ if($submit != '')
                 if($foto != '')
                 {
                     $qFotosBanco = mysql_query("SELECT cod, arquivo, codigo FROM arquivos WHERE codReferencia = '$cod'
-                                            AND referencia = 'empregos' AND tipo = '2'");
+                                            AND referencia = 'programacao' AND tipo = '2'");
                     $nFotosBanco = mysql_num_rows($qFotosBanco);
                     
                     // apaga foto que existe no banco e deleta da pasta arquivos
@@ -110,7 +123,7 @@ if($submit != '')
                     {
                         $tpUnlink = mysql_fetch_assoc($qFotosBanco);
                         @unlink($pasta.DIRECTORY_SEPARATOR.$tpUnlink['arquivo']);
-                        $qDelete = mysql_query("DELETE FROM arquivos WHERE codigo = '{$tpUnlink['codigo']}' AND referencia = 'empregos'");
+                        $qDelete = mysql_query("DELETE FROM arquivos WHERE codigo = '{$tpUnlink['codigo']}' AND referencia = 'programacao'");
                     }
 
                     $foto_temp = $_FILES['foto']['tmp_name'];
@@ -124,7 +137,7 @@ if($submit != '')
                     $fileM = insere_foto($foto, $foto_temp, $pasta,'200','140');
             
                     $sqlM = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, tipo, arquivo, codigo)
-                            VALUES ('$data', 'empregos', '{$cod}', '2', '{$fileM}', '$codigo')";
+                            VALUES ('$data', 'programacao', '{$cod}', '2', '{$fileM}', '$codigo')";
                     for($b=0;$b<5;$b++)
                     {
                         $qM = mysql_query($sqlM);
@@ -262,10 +275,6 @@ else
                 <span>Mostrar</span>
             </div>
         </div>
-        
-        
-       
-        
     </div>
     <div class="divTableForm clear">    
         <?php
@@ -273,32 +282,30 @@ else
         $nFotos = mysql_num_rows($qFotos);
         if($nFotos > 0)
         {
+            $tpFotos = mysql_fetch_assoc($qFotos);
         ?>
-            <br />
-            <div class="">
+            <div class="divTr">
                 <div class="divTd">
-                    <label style="font-weight: bold;">Logo Atual</label>
+                    <label style="font-weight: bold;">Imagem atual</label>
                 </div>
-                <div class="divTd">&nbsp;</div>
-            </div>
-            <div class="drag">
-            <?php
-                $aux = 0;
-                while($tpFotos = mysql_fetch_assoc($qFotos))
-                {
-                    $aux++;
-            ?>
+                <div class="divTd">
                     <div class="boxFoto">
                         <div class="divTr clear">
-                            <div class="divTd" style="border: 1px solid #cccccc">
+                            <div class="divTd">
                                 <img src="http://<?=PROJECT_URL.'/assets/arquivos/programacao/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" />
                                 <input type="hidden" name="codigos[]" value="<?=$tpFotos['codigo'];?>" />
                             </div>
                         </div>
                     </div>
-        <?php
-                }
-        ?>
+                </div>
+            </div>
+            <div class="divTr clear">
+                <div class="divTd">
+                    <label>Apagar Foto:</label>
+                </div>
+                <div class="divTd">
+                    <input type="checkbox" name="apagarFoto" title="Apagar Foto" value="<?=$tpFotos['codigo'];?>" />
+                </div>
             </div>
         <?php
         }
@@ -352,41 +359,6 @@ else
 
         $("#horario").mask("99:99");       
         
-        /*
-        $('input#numFotos').val(Contador . init(1, 1, 10))
-        .keyup(function()
-        {
-            if(window.mg_dalay)
-            {
-                window.clearTimeout(window.mg_dalay);
-            }
-    
-            window.mg_dalay = window.setTimeout(function(){
-                var num = $('input#numFotos').val();
-                if (num >= Contador . valorMinimo && num <= Contador . valorMaximo) {
-                    Contador . contador = num;
-                } else {
-                    $('input#numFotos').val(Contador . contador);
-                }
-                adicionarInputs($('div#groupDivs').get(0), Contador . contador, 'Foto', 'file', 'fotos[]', 2, 'Legenda', 'text', 'legendas[]');
-            }, 700);
-        });
-        adicionarInputs($('div#groupDivs').get(0), Contador . contador, 'Foto', 'file', 'fotos[]', 2, 'Legenda', 'text', 'legendas[]');
-    
-        $('#maisFotos').click(function()
-        {
-    		var num = Contador . aumenta();
-            $('input#numFotos').val(num);
-            adicionarInputs($('div#groupDivs').get(0), num, 'Foto', 'file', 'fotos[]', 2, 'Legenda', 'text', 'legendas[]');
-    	});
-    
-        $('#menosFotos').click(function()
-        {
-    		var num = Contador . diminui();
-            $('input#numFotos').val(num);
-            adicionarInputs($('div#groupDivs').get(0), num, 'Foto', 'file', 'fotos[]', 2, 'Legenda', 'text', 'legendas[]');
-    	});
-        */
     });
     
 
