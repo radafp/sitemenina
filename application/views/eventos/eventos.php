@@ -26,6 +26,8 @@
                     },100);
                 }
             });
+
+            window.history.pushState(null, 'Home', $(this).attr('href'));
         });
 
         $('.noticia').DataTable();
@@ -97,6 +99,7 @@
 
                     echo '<br>GET:' . $_GET['p'];
 
+                    $_SESSION['pag'] = $_GET['p'];
                         if($p >= 0) {
                             $anterior = $p - 4;
                             // $dados['anterior'] = $anterior;
@@ -120,9 +123,9 @@
                     echo '<br>proc: '.$proxima;
                 ?>
                 <br><br>
-                <a class='link_eventos' id='paginacao' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$anterior);?>">Anterior</a>
+                <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$anterior);?>">Anterior</a>
                 <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/')?>">Googler</a>
-                <a class='link_eventos' id='paginacao' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$proxima);?>">Proximo</a>
+                <a class='link_eventos paginacao' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$proxima);?>">Proximo</a>
                 <?= '<br>Total de Páginas: '. $paginas?>
 
 
