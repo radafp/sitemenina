@@ -16,7 +16,7 @@ class Novomenina_model extends CI_Model{
     // ===========================================================================================
 
     // metodo mostrado na div esquerda 
-    public function programacao_home($regiao)  {
+    public function programacao_home($regiao, $hora_atua, $hora_add, $dia)  {
         // $query = $this->db->query("SELECT programacao.*, arquivos.arquivo 
         //                             FROM programacao 
         //                                 INNER JOIN arquivos 
@@ -38,8 +38,10 @@ class Novomenina_model extends CI_Model{
                     DESC LIMIT 1) 
             AS arquivo 
                 FROM programacao 
-                    WHERE programacao.regiao = '$regiao' 
-                    AND programacao.mostrar = 1 
+                    WHERE programacao.regiao = '$regiao'
+                    AND programacao.programacao = '$dia'
+                    AND programacao.mostrar = 1
+					AND programacao.horario BETWEEN '$hora_atua' AND '$hora_add' 			
                 GROUP BY programacao.cod
                 LIMIT 3
         "); 

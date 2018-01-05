@@ -84,7 +84,13 @@
                     var regiao = document.querySelector('#regiao');
                     window.location = regiao.value;              
                 };
+
+                var pr =  $('.playerRadio').contents();
+                pr.find('html').css('background', 'red') {
+                    alert('test');
+                });
                  
+                var x = $(".playerRadio").css("color", 'blue');
             });
         </script>
         

@@ -45,6 +45,28 @@ class home extends CI_Controller {
             };
         }
 
+        $data = date('d');
+        
+        $dia =  substr("$data", 8, 9);
+        $diasemana = date("w", mktime(0,$dia) );
+            
+        switch($diasemana) {		
+            case"0": $diasemana = "Domingo";
+                break;		
+            case"1": $diasemana = "Semanal"; 
+                break;
+            case"2": $diasemana = "Semanal";
+                break;		
+            case"3": $diasemana = "Semanal";  
+                break;		
+            case"4": $diasemana = "Semanal";  
+                break;		
+            case"5": $diasemana = "Semanal";   
+                break;		
+            case"6": $diasemana = "Sabado";
+                break;	
+        }
+
         $codigoSecao = isset($uri[1]) && !empty($uri[1]) ? $uri[1] : ''; //menu
         //echo $codigoSecao;
         $codigoConteudo = isset($uri[2]) && !empty($uri[2]) ? $uri[2] : ''; //codigo
@@ -78,16 +100,22 @@ class home extends CI_Controller {
                 break;
         }
 
+        $hora = date('H');
+        $hora_atual = $hora.':00:00';
+        
+        $hora_num = date('H')+3;
+        $hora_add = $hora_num.':00:00';
+
         $dados['noticias_em_destaque']  = $this->Novomenina->noticias_em_destaque($_SESSION['regiao']);
         $dados['ultimas_noticias']      = $this->Novomenina->ultimas_noticias($_SESSION['regiao']);
-        $dados['programacao_home']      = $this->Novomenina->programacao_home($_SESSION['regiao']);
+        $dados['programacao_home']      = $this->Novomenina->programacao_home($_SESSION['regiao'], $hora_atual, $hora_add, $diasemana);
         $dados['eventos_home']          = $this->Novomenina->eventos_home($_SESSION['regiao']);
         $dados['videos_home']           = $this->Novomenina->videos_home($_SESSION['regiao']);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['promocoes_home']        = $this->Novomenina->promocoes_home($_SESSION['regiao']);
         $dados['enquetes']              = $this->Novomenina->enquetes($_SESSION['regiao']);
-        $dados['banner_tipo1']      = $this->Novomenina->banners($_SESSION['regiao'], 'regiao', '1');
-        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'regiao', '2');
+        $dados['banner_tipo1']          = $this->Novomenina->banners($_SESSION['regiao'], 'regiao', '1');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'regiao', '2');
         $dados['viewName']              = 'regiao';
         $this->load->view('Template', $dados);
     }
