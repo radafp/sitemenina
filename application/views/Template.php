@@ -249,6 +249,7 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                                         <a id='link_historia' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/historia')?>">História</a>
                                         <a id='link_equipe' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/equipe')?>">Equipe</a>
+                                        <a id='link_equipe' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/midia')?>">Midia</a>
                                     </div>
                                     </li>
                                     <li class="nav-item">
