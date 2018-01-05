@@ -187,13 +187,25 @@ class home extends CI_Controller {
     public function eventos() {
         // $id = $_GET['id'];
         $regiao = $_SESSION['regiao'];
+        
         if(isset($_GET['p'])) {
             $p = $_GET['p'];
         }else{
-            $p = 1;
+            $p = 0;
         }
+        echo 'p'.$p;
+
+        
+        
         $dados['p'] = $p;
-        // $dados['count']             = count($this->Novomenina->count_eventos($regiao));
+        $dados['count']   = count($this->Novomenina-> CountAll('eventos', $_SESSION['regiao']));
+        $dados['paginas'] = ceil($dados['count'] / 10); 
+        for($q=0; $q<$dados['paginas'];$q++) {
+            $dados['pagina'] = $p=0;
+        }
+
+        
+        
         $dados['eventos']           = $this->Novomenina->eventos($regiao, $p);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '3');
