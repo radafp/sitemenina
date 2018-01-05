@@ -390,6 +390,37 @@
 .blocoProgramacao .linhaPrograma .conexaoProgramaRight{
     float: right;
 }
+
+.blocoProgramacaoDescricao{
+    width: 100%;
+    float: left;
+    margin-bottom: 30px;
+}
+.blocoProgramacaoDescricao .foto{
+    max-height: 150px;
+    max-width: 200px;
+    overflow: hidden;
+    float: left;
+    margin-right: 30px;
+ }
+ .blocoProgramacaoDescricao .foto img{
+    max-height: 150px;
+}
+.blocoProgramacaoDescricao  h3{
+    font-size: 18px;
+    margin-top: 15px
+}
+.blocoProgramacaoDescricao p{
+    color: #333333;
+}
+.blocoProgramacaoDescricao .infos{
+    clear: both;
+    padding-top: 20px;
+ }
+ .blocoProgramacaoDescricao .infos p{
+    color: #999999;
+    font-weight: 500;
+ }
 /* fim menu programacao */
 
 /* menu programacao descricao */
