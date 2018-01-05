@@ -12,37 +12,33 @@
             <div class="row">
                 <div class="col-xs-12 col-md-8">
 
-                    <form name="sentMessage" id="contactForm" method="post" novalidate="">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row control-group">
-                                    <div class="form-group col-xs-12 controls">
-                                        <input type="text" class="form-control" placeholder="Nome" id="name" required="" data-validation-required-message="Por favor digite seu nome." aria-invalid="false">
-                                        <p class="help-block"></p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12">
-                                <div class="row control-group">
-                                    <div class="form-group col-xs-12 controls">
-                                        <input type="email" class="form-control" placeholder="E-mail" id="email" required="" data-validation-required-message="Por favor digite seu e-mail.">
-                                        <p class="help-block"></p>
-                                    </div>
-                                </div> 
-                            </div>
+                    <?php if(isset($email_enviado)) { ?>
+                        <div id="mensagem_enviada"><?php echo $email_enviado ?></div>
+                    <?php } ?>
+                    <form id="form_contato" action="<?php echo $action ?>" method="post">
+                        <div class="campo">
+                            <label for="nome">Nome: </label><input type="text" name="nome" id="nome" />
                         </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 controls">
-                                <textarea rows="5" class="form-control" placeholder="Mensagem" id="message" required="" data-validation-required-message="Por favor digite uma mensagem."></textarea>
-                                <p class="help-block"></p>
-                            </div>
+                        <div class="campo">
+                            <label for="email">E-mail: </label><input type="text" name="email" id="email" />
                         </div>
-                        <div id="success"></div>
-                        <div class="row">
-                            <div class="form-group col-xs-12">
-                                <button type="submit" class="btn btn-yellow btn-lg">Enviar</button>
-                            </div>
+                        <div class="campo">
+                            <label for="telefone">Telefone: </label><input type="text" name="telefone" id="telefone" />
+                        </div>
+                        <div class="campo">
+                            <label for="cidade">Cidade: </label><input type="text" name="cidade" id="cidade" />
+                        </div>
+                        <div class="campo">
+                            <label for="estado">Estado: </label><input type="text" name="estado" id="estado" />
+                        </div>
+                        <div class="campo">
+                            <label for="assunto">Assunto: </label><input type="text" name="assunto" id="assunto" />
+                        </div>
+                        <div class="campo">
+                            <label for="mensagem">Mensagem: </label><textarea name="mensagem" id="mensagem" rows="5" cols="40"></textarea>
+                        </div>
+                        <div class="campo">
+                            <label>&nbsp;</label><button type="submit" id="enviar">Enviar</button>
                         </div>
                     </form>
 
