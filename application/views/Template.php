@@ -47,6 +47,10 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
         <!-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
+
+        <!--cantact form script-->
+        <script src="<?php echo base_url('assets/js/contact_me.js');?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('assets/js/jqBootstrapValidation.js');?>" type="text/javascript"></script>
         
         <script type="text/javascript">
             $(document).ready(function(){
