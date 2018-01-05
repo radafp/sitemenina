@@ -91,24 +91,33 @@
                 <?php endforeach?>
                 <?php
                     
-                    echo '$p'.$p;
-                    echo 'proc: '.$proxima;
+                    echo '$p: '.$p;
+                    echo '<br>count: '.$count;
+                    
 
                     echo '<br>GET:' . $_GET['p'];
 
-                    if($p >= 0) {
-                        $anterior = $p - 4;
-                        // $dados['anterior'] = $anterior;
-                    }
-                    if($p <= $count) {
-                        $proxima = $p + 4;
-                        // $dados['proxima'] = $proxima;
-                    }
+                        if($p >= 0) {
+                            $anterior = $p - 4;
+                            // $dados['anterior'] = $anterior;
+                        }
+                        if($p <= $count) {
+                            $proxima = $p + 4;
+                            // $dados['proxima'] = $proxima;
+                        }
+                        
+                        if($anterior <= 0) {
+                            $anterior = 0;
+                        }
+                        if($proxima >= $count){
+                            $proxima = $count;
+                        }
+                        
+                    
+                    
 
-                    if($p = $count) {
-                        $proxima = $count;
-                        // $dados['proxima'] = $proxima;
-                    }
+                    
+                    echo '<br>proc: '.$proxima;
                 ?>
                 <br><br>
                 <a class='link_eventos' id='paginacao' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$anterior);?>">Anterior</a>

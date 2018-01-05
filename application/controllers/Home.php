@@ -201,20 +201,7 @@ class home extends CI_Controller {
         $dados['paginas'] = ceil($dados['count'] / 10); 
         for($q=0; $q<$dados['paginas'];$q++) {
             $dados['pagina'] = $p=0;
-        }
-
-        
-        
-        if($p <= 0) {
-            $anterior = $p + 4;
-            $dados['anterior'] = $anterior;
-        }
-        if($p < $dados['count']) {
-            $proxima = $p + 4;
-            $dados['proxima'] = $proxima;
-        }
-
-        
+        }       
         
         
         $dados['eventos']           = $this->Novomenina->eventos($regiao, $p);
