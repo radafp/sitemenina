@@ -5,6 +5,7 @@
     width: 100%;
     border-bottom: 1px solid #cccccc;
     padding-bottom: 22px;
+    margin-bottom: 30px;
 }
 .tituloPadrao1 span{
     border-bottom: 3px solid #6BBA4F;
@@ -17,6 +18,7 @@
     border-bottom: 1px solid #cccccc;
     padding-bottom: 22px;
     color: #ffffff;
+    margin-bottom: 30px;
 }
 .tituloPadrao2 span{
     border-bottom: 3px solid #6BBA4F;
@@ -28,6 +30,7 @@
     width: 100%;
     border-bottom: 1px solid #cccccc;
     padding-bottom: 22px;
+    margin-bottom: 30px;
 }
 .tituloPadrao3 span{
     border-bottom: 3px solid #6BBA4F;
@@ -84,6 +87,9 @@
     float: left;
     padding: 10px;
     color: #ffffff;
+}
+.destaque .noticia .inf h3{
+    font-size: 20px;
 }
 .destaque .noticia.ultima{
     margin-top: 30px;
@@ -494,4 +500,76 @@
     font-weight: 500;
 }
 
+
+.blocoNoticiaDescricao{
+    width: 100%;
+    float: left;
+    margin-bottom: 30px;
+}
+.blocoNoticiaDescricao .headDescNoticia{
+    width: 100%;
+}
+.blocoNoticiaDescricao .headDescNoticia .categoria{
+    padding: 5px 15px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;  
+    float: left;
+    margin-right: 15px;
+}
+.blocoNoticiaDescricao .headDescNoticia p{
+    font-weight: 500;
+    color: #666666; 
+    padding-top: 3px; 
+}
+.blocoNoticiaDescricao .foto{
+    max-height: 150px;
+    max-width: 200px;
+    overflow: hidden;
+    float: left;
+    margin-right: 30px;
+ }
+ .blocoNoticiaDescricao .foto img{
+    max-height: 150px;
+}
+.blocoNoticiaDescricao  h3{
+    font-size: 22px;
+    margin-top: 15px
+}
+.blocoNoticiaDescricao p{
+    color: #333333;
+}
+.blocoNoticiaDescricao .infos{
+    clear: both;
+    padding-top: 20px;
+ }
+ .blocoNoticiaDescricao .infos p{
+    color: #999999;
+    font-weight: 500;
+ }
+
 /* fim css noticias  */
+
+
+/* css top10  */
+
+
+/* fim css top10  */
+
+
+/* css videos  */
+.blocoVideos{
+    width: 100%;
+
+}
+.blocoVideos  a, .blocoVideos a:hover{
+    display: block;
+    position: relative;
+}
+.blocoVideos .btPlayYoutube{
+    position: absolute;
+    top: 39%;
+    left: 39%;
+}
+/* fim css videos  */
