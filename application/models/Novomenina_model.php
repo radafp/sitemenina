@@ -709,8 +709,11 @@ class Novomenina_model extends CI_Model{
     //     }
     // }
     
-    public function CountAll($tabela){
-        return $this->db->count_all($tabela);
+    public function CountAll($tabela, $regiao){
+        $query = $this->db->query(
+            "SELECT * FROM $tabela WHERE $tabela.regiao = '$regiao' 
+            AND $tabela.mostrar = 1 ");
+        return $query->result_array();
     }
 
     // metodo usado na pagina inicial

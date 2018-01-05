@@ -76,6 +76,7 @@
                         <?php endforeach?>
                     </tbody> 
                 </table> -->
+                
                 <?php foreach($eventos as $info):?>
                 <div id='esquerda'>
                     <a class='link_eventos' href="<?php echo base_url('home/descricao_eventos?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
@@ -84,14 +85,27 @@
                         <!-- <p><?php echo $info['descricaoPt']?></p> -->
                         <span><?php echo 'HORÀRIO:'.date('d/m/Y', strtotime($info['dataInicio']))?></span>
                     </a>
-                    <?php
-                        $proximo = 4;
-                        $anterior = -4;
-
-                    ?>
-                    <a href="<?php echo base_url('/balneario-camboriu/eventos/p='.$p = $proximo);?>">Proximo</a>
+                    
+                    
                 </div>
                 <?php endforeach?>
+                <?php
+                    if($p > 0) {
+                        $pag += 4;
+                    }
+                    if($p <= $count) {
+                        $pag = $p - 4;
+                    }
+                    echo $p;
+                ?>
+                <br><br>
+                <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$pag);?>">Anterior</a>
+                <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/')?>">Googler</a>
+                <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$pag);?>">Proximo</a>
+                <?= '<br>Total de Páginas: '. $paginas?>
+
+
+
                 <?php foreach($banner_tipo2 as $info):?>
                     <a class='registra_click_publicidade' codPublicidade="<?= $info['cod'];?>" href=<?= $info['link']?> target='__blank'><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
                 <?php endforeach?>
