@@ -59,13 +59,18 @@
                 <?php endforeach?>
                 <?php
                     
-                    echo '$p: '.$p;
-                    echo '<br>count: '.$count;
+                    // ech?o '$p: '.$p;
+                    // echo '<br>count: '.$count;
                     
+                    if(isset($_GET['p'])) {
+                        $p = $_GET['p'];
+                    }else{
+                        $p = 0;
+                    }
+                    // echo '<br>p: '.$p;
+                    // echo '<br>GET:' . $_GET['p'];
 
-                    echo '<br>GET:' . $_GET['p'];
-
-                    $_SESSION['pag'] = $_GET['p'];
+                    // $_SESSION['pag'] = $_GET['p'];
                         if($p >= 0) {
                             $anterior = $p - 4;
                             // $dados['anterior'] = $anterior;
@@ -86,12 +91,16 @@
                     
 
                     
-                    echo '<br>proc: '.$proxima;
+                    // echo '<br>proc: '.$proxima;
                 ?>
                 <br><br>
+                <?php if($anterior >= 0):?>
                 <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$anterior);?>">Anterior</a>
-                <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/')?>">Googler</a>
+                <?php endif?>
+
+                <?php if($proxima+4 == $count):?>
                 <a class='link_eventos paginacao' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$proxima);?>">Proximo</a>
+                <?php endif?>
                 <?= '<br>Total de Páginas: '. $paginas?>
 
                 <?php foreach($banner_tipo2 as $info):?>
