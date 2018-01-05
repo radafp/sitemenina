@@ -187,14 +187,14 @@ class home extends CI_Controller {
     public function eventos() {
         // $id = $_GET['id'];
         $regiao = $_SESSION['regiao'];
-        // if(isset($_GET['p'])) {
-        //     $p = $_GET['p'];
-        // }else{
-        //     $p = 0;
-        // }
-        // $dados['p'] = $p;
+        if(isset($_GET['p'])) {
+            $p = $_GET['p'];
+        }else{
+            $p = 1;
+        }
+        $dados['p'] = $p;
         // $dados['count']             = count($this->Novomenina->count_eventos($regiao));
-        $dados['eventos']           = $this->Novomenina->eventos($regiao);
+        $dados['eventos']           = $this->Novomenina->eventos($regiao, $p);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '3');
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '2'); 
@@ -229,7 +229,8 @@ class home extends CI_Controller {
 
     public function videos_home() {
         $regiao = $_SESSION['regiao'];
-        $dados['videos']   = $this->Novomenina-> videos_home($regiao);
+        $dados['videos']                = $this->Novomenina-> videos_home($regiao);
+        $dados['videos_videos']         = $this->Novomenina-> videos($regiao);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'videos_home', '3');
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'videos_home', '2'); 

@@ -10,8 +10,7 @@
                 </h1>
                 <div class="blocoVideos">
 
-                    <?php foreach($videos as $info): ?>
-                    
+                    <?php foreach($videos_videos as $info): ?>
                         <div style="width:45%;float:left">
                             <?
                             $codVideo = explode('=',$info['link']);
