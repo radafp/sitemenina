@@ -740,7 +740,7 @@
     float: left;
     margin-right: 20px;
     margin-bottom: 20px;
-    max-width: 100%;
+    width: 100%;
 }
 .blocoDocumentosPerdidos .documentosPerdidos.ultimo{
     margin-right: 0;
@@ -765,4 +765,31 @@
     margin-top: 15px
 }
 
+
+
+.blocoHistoria{
+    margin: 0 35px;
+}
+.blocoHistoria .ano{
+    height: 34px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+.blocoHistoria .separador{
+    height: 35px;
+    background: url('../img/separadorHorizontal.png') no-repeat center center;
+}
+.blocoHistoria p{
+
+}
+
+
+.blocoEquipe{
+    margin: 0 35px;
+}
+.blocoEquipe .fotoEquipe{
+    margin-left: auto;
+    margin-right: auto;
+}
 
