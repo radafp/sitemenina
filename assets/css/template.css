@@ -5,6 +5,7 @@
     width: 100%;
     border-bottom: 1px solid #cccccc;
     padding-bottom: 22px;
+    margin-bottom: 30px;
 }
 .tituloPadrao1 span{
     border-bottom: 3px solid #6BBA4F;
@@ -17,6 +18,7 @@
     border-bottom: 1px solid #cccccc;
     padding-bottom: 22px;
     color: #ffffff;
+    margin-bottom: 30px;
 }
 .tituloPadrao2 span{
     border-bottom: 3px solid #6BBA4F;
@@ -28,6 +30,7 @@
     width: 100%;
     border-bottom: 1px solid #cccccc;
     padding-bottom: 22px;
+    margin-bottom: 30px;
 }
 .tituloPadrao3 span{
     border-bottom: 3px solid #6BBA4F;
@@ -84,6 +87,9 @@
     float: left;
     padding: 10px;
     color: #ffffff;
+}
+.destaque .noticia .inf h3{
+    font-size: 20px;
 }
 .destaque .noticia.ultima{
     margin-top: 30px;
@@ -494,4 +500,201 @@
     font-weight: 500;
 }
 
+
+.blocoNoticiaDescricao{
+    width: 100%;
+    float: left;
+    margin-bottom: 30px;
+}
+.blocoNoticiaDescricao .headDescNoticia{
+    width: 100%;
+}
+.blocoNoticiaDescricao .headDescNoticia .categoria{
+    padding: 5px 15px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;  
+    float: left;
+    margin-right: 15px;
+}
+.blocoNoticiaDescricao .headDescNoticia p{
+    font-weight: 500;
+    color: #666666; 
+    padding-top: 3px; 
+}
+.blocoNoticiaDescricao .foto{
+    max-height: 150px;
+    max-width: 200px;
+    overflow: hidden;
+    float: left;
+    margin-right: 30px;
+ }
+ .blocoNoticiaDescricao .foto img{
+    max-height: 150px;
+}
+.blocoNoticiaDescricao  h3{
+    font-size: 22px;
+    margin-top: 15px
+}
+.blocoNoticiaDescricao p{
+    color: #333333;
+}
+.blocoNoticiaDescricao .infos{
+    clear: both;
+    padding-top: 20px;
+ }
+ .blocoNoticiaDescricao .infos p{
+    color: #999999;
+    font-weight: 500;
+ }
+
 /* fim css noticias  */
+
+
+/* css top10  */
+.blocoTop10 .top10 {
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+.blocoTop10 .top10 .esquerda{
+    float: left;
+    width: 65%;
+}
+.blocoTop10 .top10 .direita{
+    width: 30%;
+    float: right;
+}
+.blocoTop10 .top10 .esquerda .foto{
+    max-height: 150px;
+    max-width: 200px;
+    overflow: hidden;
+    float: left;
+    margin-right: 30px;
+}
+.blocoTop10 .top10 .esquerda .foto img{
+    max-height: 90px;
+}
+.blocoTop10 .top10 .esquerda  a, .blocoTop10 .top10 .esquerda a:hover{
+    display: block;
+    position: relative;
+}
+.blocoTop10 .top10 .esquerda .foto .btPlayYoutube{
+    position: absolute;
+    top: 35%;
+    left: 35%;
+}
+.blocoTop10 .top10 .esquerda .foto .btPlayYoutube img{
+    max-width: 40px;
+}
+.blocoTop10 .top10 .esquerda h3{
+    font-size: 16px;
+}
+.blocoTop10 .top10 .direita span{
+    display: block;
+    float: left;
+    height: 70px;
+    margin-right: 15px;
+    padding-top: 16px;
+    font-weight: 700;
+    color: #E87E13;
+}
+/* fim css top10  */
+
+
+/* css videos  */
+.blocoVideos{
+    width: 100%;
+
+}
+.blocoVideos .video{
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    max-width: 45%;
+    min-height: 450px;
+    min-height: 315px;
+
+}
+.blocoVideos .video.ultimo{
+    margin-right: 0;
+}
+.blocoVideos .video  a, .blocoVideos .video a:hover{
+    display: block;
+    position: relative;
+}
+.blocoVideos .video .btPlayYoutube{
+    position: absolute;
+    top: 39%;
+    left: 39%;
+}
+.blocoVideos .video p{
+    font-weight: 500;
+    padding-top: 15px;
+
+}
+/* fim css videos  */
+
+/* css promocoes  */
+
+.blocoPromocoes{
+    width: 100%;
+
+}
+.blocoPromocoes .promocao{
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    max-width: 45%;
+    min-height: 450px;
+    min-height: 315px;
+
+}
+.blocoPromocoes .promocao .foto{
+    overflow: hidden;
+    width: 100%;
+    height: 240px;
+}
+.blocoPromocoes .promocao .foto img{
+    max-width: 100%;
+}
+.blocoPromocoes .promocao.ultimo{
+    margin-right: 0;
+}
+.blocoPromocoes .promocao p{
+    font-weight: 500;
+    padding-top: 15px;
+
+}
+.blocoPromocoes .promocao h3{
+    font-size: 16px;
+    padding-top: 15px;
+}
+.blocoPromocoes .promocao span{
+    color: #666666;
+    text-align: right;
+    display: block;
+}
+
+.blocoPromocoesDescricao .foto{
+    max-height: 150px;
+    max-width: 200px;
+    overflow: hidden;
+    float: left;
+    margin-right: 30px;
+ }
+ .blocoPromocoesDescricao .foto img{
+    max-height: 150px;
+}
+.blocoPromocoesDescricao  h3{
+    font-size: 22px;
+    margin-top: 15px
+}
+.blocoPromocoesDescricao p{
+    color: #333333;
+}
+
+/* fim css promocoes  */
+
+

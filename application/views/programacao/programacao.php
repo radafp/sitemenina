@@ -146,7 +146,7 @@
 
         
         </div>  <!-- row --> 
-    </div>
+    </div> 
 </div> <!-- container --> 
 <div class="container">
     <div class="row publicidade">
