@@ -226,7 +226,7 @@ class Novomenina_model extends CI_Model{
         // );
         // return $query->result_array();
         $query = $this->db->query(
-            "SELECT noticias.*, categorias.categoriaPt,
+            "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
                 (SELECT a.arquivo 
                     FROM arquivos AS a 
                         WHERE a.codReferencia = noticias.cod 
@@ -352,7 +352,7 @@ class Novomenina_model extends CI_Model{
         // return $query->result_array();
 
         $query = $this->db->query(
-            "SELECT noticias.*, categorias.categoriaPt,
+            "SELECT noticias.*, categorias.categoriaPt, categorias.cor, categorias.corTexto,
                 (SELECT a.arquivo 
                     FROM arquivos AS a 
                         WHERE a.codReferencia = noticias.cod 
@@ -366,7 +366,6 @@ class Novomenina_model extends CI_Model{
                 INNER JOIN categorias
                     WHERE noticias.codCategoria = categorias.cod
                     AND noticias.regiao = '$regiao' 
-                    AND categoriaPt = '$categoria' 
                     AND noticias.mostrar = 1  
                 GROUP BY noticias.cod
                 ORDER BY cliques desc

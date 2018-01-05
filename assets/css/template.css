@@ -123,6 +123,7 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    margin-bottom: 20px;
 }
 .promocoesEventos{
     padding:60px 0;
@@ -356,6 +357,7 @@
 }
 .blocoProgramacao .linhaPrograma .foto{
    max-height: 120px;
+   max-width: 200px;
    overflow: hidden;
    float: left;
    margin-right: 15px;
@@ -394,3 +396,71 @@
 
 
 /* fim menu programacao descricao */
+
+/* css noticias  */
+.blocoNoticias .noticia{
+    width: 100%;
+    float: left;
+    margin-bottom: 30px;
+}
+.blocoNoticias .noticia .foto{
+    max-height: 150px;
+    max-width: 200px;
+    overflow: hidden;
+    float: left;
+    margin-right: 30px;
+ }
+ .blocoNoticias .noticia .foto img{
+    max-height: 150px;
+}
+.blocoNoticias .noticia  h3{
+    font-size: 18px;
+    margin-top: 15px
+}
+.blocoNoticias .noticia .categoria{
+    padding: 5px 15px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;  
+    float: left;
+    margin-right: 15px;
+}
+.blocoNoticias .noticia  p{
+    color: #999999;
+    font-weight: 500;
+}
+
+.blocoMaisLidas .noticia{
+    width: 100%;
+    float: left;
+    margin-bottom: 15px;
+}
+.blocoMaisLidas .noticia .foto{
+    max-height: 70px;
+    max-width: 90px;
+    overflow: hidden;
+    float: left;
+    margin-right: 15px;
+}
+.blocoMaisLidas .noticia .foto img{
+    max-height: 70px;
+}
+.blocoMaisLidas .noticia  h3{
+    font-size: 14px;
+    margin-top: 15px
+}
+.blocoMaisLidas .noticia .categoria{
+    padding: 5px 15px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;  
+}
+
+.blocoMaisLidas .noticia  p{
+    color: #999999;
+    font-weight: 500;
+}
+
+/* fim css noticias  */
