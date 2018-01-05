@@ -8,16 +8,44 @@
                     <span>TOP 10</span>
                 </h1>
                 <div class="blocoTop10">
-                    <?php foreach($top_10 as $info):?>
-                        <div id='esquerda' style="width:70%; float:left">
-                            <h3><?php echo $info['titulo']?></h3>
-                            <p>Artista<?//php echo $info['link']?></p>
+
+                    <?php foreach($top_10 as $info): ?>
+                        <div class="top10">
+                            <div class="esquerda">
+                                <?
+                                $codVideo = explode('=',$info['link']);
+                                if($codVideo[1] != '') 
+                                { 
+                                    $imagemCapa = '';                
+                                    $output = array();
+                                    $url = $info['link'];
+                                    preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $output);
+                                    $imagemCapa = 'https://img.youtube.com/vi/' . $output[0] . '/0.jpg';
+                                    ?>
+
+                                    <div class="foto">
+                                        <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="445">
+                                            <img src="<?=$imagemCapa;?>" style="max-width:100%">  
+                                            <div class="btPlayYoutube">
+                                                <img src="<?php echo base_url('/assets/img/playYoutube.png');?>">
+                                            </div>
+                                        </a>
+                                    </div> 
+                                    <h3><?php echo $info['titulo']?></h3>
+                                    <p><?//php echo $info['link']?></p>
+                                    <?php
+                                }
+                                ?>
+                            </div>
+                            <div class="direita">
+                                <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="445">
+                                    <img src="<?php echo base_url('/assets/img/play-top10.png')?>" title="">
+                                    <span style="display:block; float:left">Ouvir</span>
+                                </a>
+                            </div>
                         </div>
-                        <div id='direita' style="width:30%; float:right">
-                           <img src="<?php echo base_url('/assets/img/play-top10.png')?>" title="">
-                           <span style="display:block; float:left">Ouvir</span>
-                        </div>
-                    <?php endforeach?>
+                    <?php endforeach; ?>
+                
                 </div>
 
             </div> <!-- contLeft -->

@@ -553,8 +553,53 @@
 
 
 /* css top10  */
-
-
+.blocoTop10 .top10 {
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+.blocoTop10 .top10 .esquerda{
+    float: left;
+    width: 65%;
+}
+.blocoTop10 .top10 .direita{
+    width: 30%;
+    float: right;
+}
+.blocoTop10 .top10 .esquerda .foto{
+    max-height: 150px;
+    max-width: 200px;
+    overflow: hidden;
+    float: left;
+    margin-right: 30px;
+}
+.blocoTop10 .top10 .esquerda .foto img{
+    max-height: 90px;
+}
+.blocoTop10 .top10 .esquerda  a, .blocoTop10 .top10 .esquerda a:hover{
+    display: block;
+    position: relative;
+}
+.blocoTop10 .top10 .esquerda .foto .btPlayYoutube{
+    position: absolute;
+    top: 35%;
+    left: 35%;
+}
+.blocoTop10 .top10 .esquerda .foto .btPlayYoutube img{
+    max-width: 40px;
+}
+.blocoTop10 .top10 .esquerda h3{
+    font-size: 16px;
+}
+.blocoTop10 .top10 .direita span{
+    display: block;
+    float: left;
+    height: 70px;
+    margin-right: 15px;
+    padding-top: 16px;
+    font-weight: 700;
+    color: #E87E13;
+}
 /* fim css top10  */
 
 
@@ -563,13 +608,93 @@
     width: 100%;
 
 }
-.blocoVideos  a, .blocoVideos a:hover{
+.blocoVideos .video{
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    max-width: 45%;
+    min-height: 450px;
+    min-height: 315px;
+
+}
+.blocoVideos .video.ultimo{
+    margin-right: 0;
+}
+.blocoVideos .video  a, .blocoVideos .video a:hover{
     display: block;
     position: relative;
 }
-.blocoVideos .btPlayYoutube{
+.blocoVideos .video .btPlayYoutube{
     position: absolute;
     top: 39%;
     left: 39%;
 }
+.blocoVideos .video p{
+    font-weight: 500;
+    padding-top: 15px;
+
+}
 /* fim css videos  */
+
+/* css promocoes  */
+
+.blocoPromocoes{
+    width: 100%;
+
+}
+.blocoPromocoes .promocao{
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    max-width: 45%;
+    min-height: 450px;
+    min-height: 315px;
+
+}
+.blocoPromocoes .promocao .foto{
+    overflow: hidden;
+    width: 100%;
+    height: 240px;
+}
+.blocoPromocoes .promocao .foto img{
+    max-width: 100%;
+}
+.blocoPromocoes .promocao.ultimo{
+    margin-right: 0;
+}
+.blocoPromocoes .promocao p{
+    font-weight: 500;
+    padding-top: 15px;
+
+}
+.blocoPromocoes .promocao h3{
+    font-size: 16px;
+    padding-top: 15px;
+}
+.blocoPromocoes .promocao span{
+    color: #666666;
+    text-align: right;
+    display: block;
+}
+
+.blocoPromocoesDescricao .foto{
+    max-height: 150px;
+    max-width: 200px;
+    overflow: hidden;
+    float: left;
+    margin-right: 30px;
+ }
+ .blocoPromocoesDescricao .foto img{
+    max-height: 150px;
+}
+.blocoPromocoesDescricao  h3{
+    font-size: 22px;
+    margin-top: 15px
+}
+.blocoPromocoesDescricao p{
+    color: #333333;
+}
+
+/* fim css promocoes  */
+
+

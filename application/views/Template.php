@@ -45,7 +45,7 @@
         <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js');?>"></script>
         <script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
 
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
         <!-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
         
         <script type="text/javascript">
@@ -284,7 +284,22 @@
                             </div>
                         </div>
                         <div class="col-md-8">
-                            
+                            <div>
+                                <img src="<?php echo base_url('/assets/img/temp/insta1_'.$_SESSION['regiao']);?>" alt="">
+                            </div>
+                            <div>
+                                <div>
+                                    <img src="<?php echo base_url('/assets/img/insta_2'.$_SESSION['regiao']);?>" alt="">
+                                </div>
+                                <div>
+                                    <img src="<?php echo base_url('/assets/img/insta_3'.$_SESSION['regiao']);?>" alt="">
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <img src="<?php echo base_url('/assets/img/insta_4'.$_SESSION['regiao']);?>" alt="">
+                                </div>
+                            </div>
                         </div>
 
                     </div> <!-- row -->
