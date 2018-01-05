@@ -11,7 +11,7 @@
 
         <?
             if(!isset($_SESSION['regiao'])){
-                header("Location: http://www.radimenina.com.br");
+                header("Location: http://www.radiomenina.com.br");
             }
         ?>
 
