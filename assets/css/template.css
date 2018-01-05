@@ -697,4 +697,72 @@
 
 /* fim css promocoes  */
 
+/* bolsa de empregos */
+
+.blocoBolsaDeEmpregos{
+    width: 100%;
+}
+.blocoBolsaDeEmpregos .bolsaDeEmpregos{
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.blocoBolsaDeEmpregos .bolsaDeEmpregos.ultimo{
+    margin-right: 0;
+}
+.blocoBolsaDeEmpregos .bolsaDeEmpregos .foto{
+    max-height: 150px;
+    max-width: 200px;
+    overflow: hidden;
+    float: left;
+    margin-right: 30px;
+ }
+ .blocoBolsaDeEmpregos .bolsaDeEmpregos .foto img{
+    max-height: 150px;
+
+}
+.blocoBolsaDeEmpregos .bolsaDeEmpregos p{
+    font-weight: 500;
+    padding-top: 15px;
+}
+.blocoBolsaDeEmpregos .bolsaDeEmpregos  h3{
+    font-size: 16px;
+    margin-top: 15px
+}
+
+/* bolsa de empregos */
+
+.blocoDocumentosPerdidos{
+    width: 100%;
+}
+.blocoDocumentosPerdidos .documentosPerdidos{
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    max-width: 100%;
+}
+.blocoDocumentosPerdidos .documentosPerdidos.ultimo{
+    margin-right: 0;
+}
+.blocoDocumentosPerdidos .documentosPerdidos .foto{
+    max-height: 150px;
+    max-width: 200px;
+    overflow: hidden;
+    float: left;
+    margin-right: 30px;
+ }
+ .blocoDocumentosPerdidos .documentosPerdidos .foto img{
+    max-height: 150px;
+
+}
+.blocoDocumentosPerdidos .documentosPerdidos p{
+    font-weight: 500;
+    padding-top: 15px;
+}
+.blocoDocumentosPerdidos .documentosPerdidos  h3{
+    font-size: 16px;
+    margin-top: 15px
+}
+
 
