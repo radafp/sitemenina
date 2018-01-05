@@ -58,40 +58,29 @@
                 </div>
                 <?php endforeach?>
                 <?php
-                    
-                    // ech?o '$p: '.$p;
-                    // echo '<br>count: '.$count;
-                    
+                  
                     if(isset($_GET['p'])) {
                         $p = $_GET['p'];
                     }else{
                         $p = 0;
                     }
-                    // echo '<br>p: '.$p;
-                    // echo '<br>GET:' . $_GET['p'];
-
-                    // $_SESSION['pag'] = $_GET['p'];
-                        if($p >= 0) {
-                            $anterior = $p - 4;
-                            // $dados['anterior'] = $anterior;
-                        }
-                        if($p <= $count) {
-                            $proxima = $p + 4;
-                            // $dados['proxima'] = $proxima;
-                        }
-                        
-                        if($anterior <= 0) {
-                            $anterior = 0;
-                        }
-                        if($proxima >= $count){
-                            $proxima = $count;
-                        }
-                        
+                
+                    if($p >= 0) {
+                        $anterior = $p - 4;
+                        // $dados['anterior'] = $anterior;
+                    }
+                    if($p <= $count) {
+                        $proxima = $p + 4;
+                        // $dados['proxima'] = $proxima;
+                    }
                     
+                    if($anterior <= 0) {
+                        $anterior = 0;
+                    }
+                    if($proxima >= $count){
+                        $proxima = $count;
+                    }
                     
-
-                    
-                    // echo '<br>proc: '.$proxima;
                 ?>
                 <br><br>
                 <?php if($anterior >= 0):?>

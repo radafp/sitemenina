@@ -9,6 +9,7 @@ class home extends CI_Controller {
         $this->load->model('Novomenina_model', 'Novomenina');
         // $this->load->model('Gastos_model', 'Gastos');
         $this->load->helper('url');
+        $this->load->library('email');
         
     }
 
@@ -343,7 +344,7 @@ class home extends CI_Controller {
         
         // $data['action'] = site_url('contato/enviaEmail');
 
-        $this->load->library('email');
+        
 
         $email = $this->input->post('email', TRUE);
         $nome = $this->input->post('nome', TRUE);
