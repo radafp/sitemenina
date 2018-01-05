@@ -103,7 +103,7 @@ class home extends CI_Controller {
         $hora = date('H');
         $hora_atual = $hora.':00:00';
         
-        $hora_num = date('H')+3;
+        $hora_num = date('H')+12;
         $hora_add = $hora_num.':00:00';
 
         $dados['noticias_em_destaque']  = $this->Novomenina->noticias_em_destaque($_SESSION['regiao']);
