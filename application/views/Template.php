@@ -53,7 +53,7 @@
 
                 var content = $('#content');
                 var logo = document.querySelector('#logo');
-                $('#menu a,  #logo').click(function( e ){
+                $('#menu a,  #logo, #paginacao').click(function( e ){
                     
                     e.preventDefault();
 
