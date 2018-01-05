@@ -87,15 +87,16 @@
                         $i = $i + 1;
                     endforeach;
                     ?>
-                </div>
+                </div> 
 
             </div> <!-- contLeft -->
             <div class="col-xs-12 col-md-4 contRight">
-                <div class="publicidade">
-                    <?php
-                    $nbanners = count($banner_tipo3);
-                    if($nbanners>0)
-                    {
+                
+                <?php
+                $nbanners = count($banner_tipo3);
+                if($nbanners>0)
+                {
+                    echo '<div class="publicidade">';
                         $banners = array();
                         foreach($banner_tipo3 as $info):
                             $banners[] = array(
@@ -131,15 +132,16 @@
                             </div>
                             <?php 
                         }
-                    } 
-                    ?>
-                    <!--
-                    <h1 class="tituloPadrao3">
-                        <span>Playlist Radio Menina</span>
-                        aqui
-                    </h1>
-                    -->
-                </div>
+                    echo '</div>';
+                } 
+                ?>
+                <!--
+                <h1 class="tituloPadrao3">
+                    <span>Playlist Radio Menina</span>
+                    aqui
+                </h1>
+                -->
+                
             </div> <!-- contRight -->
 
         
