@@ -9,6 +9,12 @@
         
         <title>Radio Menina FM - A mais gosotosa de ouvir</title>
 
+        <?
+            if(!isset($_SESSION['regiao'])){
+                header("Location: http://www.radimenina.com.br");
+            }
+        ?>
+
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/webfontkit/stylesheet.css')?>">
 
         <!-- Custom styles for this template -->

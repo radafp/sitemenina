@@ -85,7 +85,7 @@
             ?>
             <div class="wrapBanner">
                 <a class='registra_click_publicidade' href="<?=($bannerPrincipalLink != '') ? $bannerPrincipalLink  : '';?>" target="<?=$bannerPrincipalTarget;?>" rel="<?=$bannerPrincipalCod;?>">
-                    <img src=<?= base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo)?> title="Publicidade">
+                    <img src="<?=base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo);?>" title="Publicidade">
                 </a>
             </div>
         <?php 
