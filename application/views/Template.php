@@ -126,10 +126,10 @@
                                     $codRadio = '7544';
                                     break;
                                 case 'bl':
-                                    $codRadio = '7674';
+                                    $codRadio = '7854';
                                     break;
                                 case 'lg':
-                                    $codRadio = '7854'; 
+                                    $codRadio = '7674'; 
                                     break;
                             }
                             ?>
@@ -262,7 +262,7 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                                         <a id='link_historia' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/historia')?>">História</a>
                                         <a id='link_equipe' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/equipe')?>">Equipe</a>
-                                        <a id='link_equipe' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/midia')?>">Midia</a>
+                                        <a id='link_equipe' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/midia')?>">Comercial</a>
                                     </div>
                                     </li>
                                     <li class="nav-item">

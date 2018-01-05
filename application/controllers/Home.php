@@ -82,7 +82,7 @@ class home extends CI_Controller {
                 $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
                 break;
             case 'bl': 
-                $_SESSION['slogam'] = "A NÚMERO UM DE BLUMENAL E REGIÃO";
+                $_SESSION['slogam'] = "A NÚMERO UM DE BLUMENAU E REGIÃO";
                 $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninablu";
                 $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmblu/";
                 $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
