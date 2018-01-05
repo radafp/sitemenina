@@ -98,7 +98,7 @@
                 <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$anterior);?>">Anterior</a>
                 <?php endif?>
 
-                <?php if($proxima+4 == $count):?>
+                <?php if($proxima+4 <= $count):?>
                 <a class='link_eventos paginacao' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$proxima);?>">Proximo</a>
                 <?php endif?>
                 <?= '<br>Total de Páginas: '. $paginas?>

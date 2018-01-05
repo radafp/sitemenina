@@ -193,9 +193,7 @@ class home extends CI_Controller {
         }else{
             $p = 0;
         }
-        echo 'p'.$p;
-        
-        
+                
         $dados['p'] = $p;
         $dados['count']   = count($this->Novomenina-> CountAll('eventos', $_SESSION['regiao']));
         $dados['paginas'] = ceil($dados['count'] / 4); 
