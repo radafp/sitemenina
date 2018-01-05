@@ -120,8 +120,21 @@
                             </p>
                             
                         </div>-->
+                        <?php
+                            switch($_SESSION['regiao']){
+                                case 'bc':
+                                    $codRadio = '7544';
+                                    break;
+                                case 'bl':
+                                    $codRadio = '7674';
+                                    break;
+                                case 'lg':
+                                    $codRadio = '7854'; 
+                                    break;
+                            }
+                            ?>
                         <div class="col-6 col-lg-6">
-                            <iframe class="playerRadio" name="playcolor" src="http://painelstream.com/mini-player/7544" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
+                            <iframe class="playerRadio" name="playcolor" src="http://painelstream.com/mini-player/<?=$codRadio;?>" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
                         </div>
                         <div class="col-lg-6 tvMocinha">
                             <a class="btTvMocinha" href="http://radiomeninabc.portalmenina.com.br/ao-vivo/tv-mocinha-balneario-camboriu" data-toggle="lightbox" data-width="695" data-height="445">Tv Mocinha</a>

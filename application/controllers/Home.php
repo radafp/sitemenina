@@ -335,6 +335,8 @@ class home extends CI_Controller {
 
     public function midia() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '3');
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '2'); 
         $dados['viewName'] = 'quem_somos/midia';
         $this->load->view('Template', $dados);
     }
@@ -343,11 +345,8 @@ class home extends CI_Controller {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         
         // $data['action'] = site_url('contato/enviaEmail');
-
-        
-
         $email = $this->input->post('email', TRUE);
-        $nome = $this->input->post('nome', TRUE);
+        $nome = $this->input->post('name', TRUE);
         $telefone = $this->input->post('telefone', TRUE);
         $cidade = $this->input->post('cidade', TRUE);
         $estado = $this->input->post('estado', TRUE);
