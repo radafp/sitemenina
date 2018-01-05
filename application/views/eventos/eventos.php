@@ -90,18 +90,13 @@
                 </div>
                 <?php endforeach?>
                 <?php
-                    if($p > 0) {
-                        $pag += 4;
-                    }
-                    if($p <= $count) {
-                        $pag = $p - 4;
-                    }
-                    echo $p;
+                    
+                    echo '$p'.$p;
                 ?>
                 <br><br>
-                <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$pag);?>">Anterior</a>
+                <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$anterior);?>">Anterior</a>
                 <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/')?>">Googler</a>
-                <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$pag);?>">Proximo</a>
+                <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$proxima);?>">Proximo</a>
                 <?= '<br>Total de Páginas: '. $paginas?>
 
 

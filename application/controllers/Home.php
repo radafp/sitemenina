@@ -194,7 +194,6 @@ class home extends CI_Controller {
             $p = 0;
         }
         echo 'p'.$p;
-
         
         
         $dados['p'] = $p;
@@ -205,6 +204,16 @@ class home extends CI_Controller {
         }
 
         
+
+        if($p <= 0) {
+            $anterior = $p + 4;
+        }
+        if($p <= $dados['count']) {
+            $proxima = $p - 4;
+        }
+
+        $dados['anterior'] = $anterior;
+        $dados['proxima'] = $proxima;
         
         $dados['eventos']           = $this->Novomenina->eventos($regiao, $p);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
