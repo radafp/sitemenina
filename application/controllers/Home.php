@@ -344,6 +344,17 @@ class home extends CI_Controller {
     public function contato() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         
+        $config['protocol']  = 'smtp'; // Podendo ser alterado para mail caso você queira enviar com o mail do php.
+        $config['charset'] = 'utf8';
+        $config['wordwrap'] = TRUE;
+        $config['smtp_host'] = 'smtp.gmail.com';
+        $config['smtp_user'] = 'defaltern@gmail.com';
+        $config['smtp_pass'] = '';
+        $config['smtp_timeout'] = 20;
+        $config['mailtype'] = 'html';
+
+        $this->load->library('email', $config);
+
         // $data['action'] = site_url('contato/enviaEmail');
         $email = $this->input->post('email', TRUE);
         $nome = $this->input->post('name', TRUE);
@@ -369,9 +380,9 @@ class home extends CI_Controller {
 
         $em = $this->email->send();
         if ($em) {
-            $data['email_enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
+            $dados['email_enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
         } else {
-            $data['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
+            $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
         }
         // $data['action'] = site_url('contato/enviaEmail');
           

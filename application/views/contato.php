@@ -15,7 +15,7 @@
                     <?php if(isset($email_enviado)) { ?>
                         <div id="mensagem_enviada"><?php echo $email_enviado ?></div>
                     <?php } ?>
-                    <form id="form_contato" action="<?php echo $action ?>" method="post">
+                    <form id="form_contato" action="" method="post">
                         <div class="campo">
                             <label for="nome">Nome: </label><input type="text" name="nome" id="nome" />
                         </div>
