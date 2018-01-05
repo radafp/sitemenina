@@ -18,8 +18,19 @@ if($submit != '')
 {
     $data = date('Y-m-d');
 
+    $codCliente = isset($_POST['cliente'])? $_POST['cliente'] : '' ;
+    $sqlCliente = mysql_query("SELECT * FROM clientes WHERE cod = '{$codCliente}'");
+    $tpCliente = mysql_fetch_assoc($sqlCliente);
+    if($tpCliente['tipoPessoa'] == 'j'){
+        $nomeCliente = $tpCliente['razaoSocial'];
+    }elseif($tpCliente['tipoPessoa'] == 'f'){
+        $nomeCliente = $tpCliente['nome']." ".$tpCliente['sobrenome'];
+    }
+
     $tipoArquivo = isset($_POST['extensao'])? $_POST['extensao'] : '' ;
-	$link = isset($_POST['link'])? $_POST['link'] : '' ;
+    $link = isset($_POST['link'])? $_POST['link'] : '' ;
+    $linkTarget = isset($_POST['linkTarget'])? $_POST['linkTarget'] : '' ;
+
     $pagina = isset($_POST['pagina'])? $_POST['pagina'] : '' ;
     
     $sqlPubliPaginas = mysql_query("SELECT * FROM publiPaginas WHERE cod = '$pagina'");
@@ -92,9 +103,9 @@ if($submit != '')
         if($subid == 2) //insert
         {
             
-        	$q = mysql_query("INSERT INTO publicidades (link,  codPagina, tituloPagina,  codTipo, tipoArquivo, dataInicio, dataFim, pixel, regiao, mostrar)
+        	$q = mysql_query("INSERT INTO publicidades (link, linkTarget, codCliente, empresa,  codPagina, tituloPagina,  codTipo, tipoArquivo, dataInicio, dataFim, pixel, regiao, mostrar)
                             VALUES(
-                            '{$link}', '{$pagina}', '{$tituloPagina}', '{$tipo}', '{$tipoArquivo}','{$dataInicio}', '{$dataFim}', '{$pixel}', '{$regiao}', '{$mostrar}')");
+                            '{$link}','{$linkTarget}', '{$codCliente}', '{$nomeCliente}', '{$pagina}', '{$tituloPagina}', '{$tipo}', '{$tipoArquivo}','{$dataInicio}', '{$dataFim}', '{$pixel}', '{$regiao}', '{$mostrar}')");
         	
             echo mysql_error();
             if($q)
@@ -137,6 +148,9 @@ if($submit != '')
         {
             $q = mysql_query("UPDATE publicidades SET
                     link = '{$link}',
+                    linkTarget = '{$linkTarget}',
+                    codCliente = '{$codCliente}',
+                    empresa = '{$nomeCliente}',
                     tipoArquivo = '{$tipoArquivo}',
                     codPagina = '{$pagina}',
                     tituloPagina = '{$tituloPagina}',
@@ -221,12 +235,14 @@ else
     {
         $sqlPublicidade = mysql_query("SELECT * FROM publicidades WHERE cod = '$cod'");
         $n = mysql_num_rows($sqlPublicidade);
-        
+    
         if($n > 0)
         {   
             $tp = mysql_fetch_assoc($sqlPublicidade);
-        
+            
+            $codCli = $tp['codCliente'];
             $link = $tp['link'];
+            $linkTarget = $tp['linkTarget'];
             $pagina = $tp['codPagina'];
             $tipo = $tp['codTipo'];
             $dataInicio = dataBr($tp['dataInicio']);
@@ -245,7 +261,9 @@ else
     }
     else
     {
+        $codCli = '';
         $link = '';
+        $linkTarget = '';
         $pagina = '';
         $tipo = '';
         $dataInicio = '';
@@ -299,14 +317,57 @@ else
 </script>
 <form name="cadastro" id="cadastro" method="post" action="" enctype="multipart/form-data">
     <div class="divTableForm clear">
+    <div class="divTr">
+            <div class="divTd">
+                <label>Cliente*:</label>
+            </div>
+            <div class="divTd">
+                <select name="cliente" id="cliente" title="Cliente">
+                    <option value="">Selecione</option>
+                    <?php
+                    $sqlCli = mysql_query("SELECT * FROM clientes ORDER BY nome,razaoSocial");
+                    $numCli = mysql_num_rows($sqlCli);
+                    for($x = 0;$x < $numCli;$x++)
+                    {
+                        $tpCli = mysql_fetch_assoc($sqlCli);
+                    ?>
+                        <option value="<?=$tpCli['cod'];?>" <?=$codCli == $tpCli['cod'] ? 'selected="selected"' : '';?>>
+                        <?
+                        if($tpCli['tipoPessoa'] == 'j')
+                        {
+                            echo $tpCli['razaoSocial'];
+                        }
+                        elseif($tpCli['tipoPessoa'] == 'f'){
+                            echo $tpCli['nome']." ".$tpCli['sobrenome'];
+                        }
+                        ?>
+                        </option>
+                    <?php
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
         <div class="divTr">
             <div class="divTd">
-                <label>Link*:</label>
+                <label>Link:</label>
             </div>
             <div class="divTd">
                 <input type="text" name="link" id="link" title="Link" value="<?=$link;?>" />
             </div>
         </div>  
+        <div class="divTr">
+            <div class="divTd">
+                <label>Abrir link:</label>
+            </div>
+            <div class="divTd">
+                <select name="linkTarget" id="linkTarget" title="Target">
+                    <option value="">Selecione</option>
+                    <option value="_top" <?=$linkTarget == '_top' ? 'selected="selected"' : '';?>>Na mesma janela</option>
+                    <option value="_blank" <?=$linkTarget == '_blank' ? 'selected="selected"' : '';?>>Em uma nova janela</option>
+                </select>
+            </div>
+        </div>
         <div class="divTr">
             <div class="divTd">
                 <label>Página*:</label>
@@ -330,7 +391,7 @@ else
         </div>
         <div class="divTr">
             <div class="divTd">
-                <label>Tipo:</label>
+                <label>Tipo*:</label>
             </div>
             <div class="divTd">
                 <select name="tipo" id="tipo" title="Tipo">
@@ -356,7 +417,7 @@ else
                 <label>Data início*:</label>
             </div>
             <div class="divTd">
-                <input type="text" name="dataInicio" id="dataInicio" title="Data de inicio do anúncio" value="<?=$dataInicio;?>" />
+                <input type="text" name="dataInicio" id="dataInicio" title="Data de início do anúncio" value="<?=$dataInicio;?>" />
             </div>
         </div>
         <div class="divTr">
@@ -379,7 +440,7 @@ else
                     <label>Imagem Atual:</label>
                 </div>
                 <div class="divTd">
-                    <img src="http://<?=PROJECT_URL.'/assets/arquivos/publicidade/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" />
+                    <img style="max-width:650px" src="http://<?=PROJECT_URL.'/assets/arquivos/publicidade/'.$tpFotos['arquivo'];?>" title="<?=$tpFotos['legenda'];?>" />
                     <input type="hidden" name="codigo" value="<?=$tpFotos['codigo'];?>" />
                 </div>
             </div>
@@ -388,10 +449,10 @@ else
         ?>
         <div class="divTr">
             <div class="divTd">
-                <label>Imagem:</label>
+                <label>Imagem*:</label>
             </div>
             <div class="divTd">
-                <input class="foto" name="foto" id="foto" type="file" title="foto">
+                <input class="foto" name="foto" id="foto" type="file" title="Imagem">
             </div>
         </div>
         <div class="divTr">
@@ -422,10 +483,18 @@ else
     {
         objValidador = new xform('#cadastro');
 
+        objValidador . adicionar('#cliente');
         objValidador . adicionar('select#pagina');
         objValidador . adicionar('select#tipo');
-        objValidador.adicionar('input#dataInicio','dataBr', true);
-        objValidador.adicionar('input#dataFim','dataBr', true);
+        objValidador . adicionar('#dataInicio','dataBr', false);
+        objValidador . adicionar('#dataFim','dataBr', false);
+        <?
+        if($numFotos == 0){
+        ?>
+            objValidador . adicionar('#foto');
+        <?
+        }
+        ?>
         
     });
 

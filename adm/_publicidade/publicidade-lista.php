@@ -11,6 +11,7 @@ require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
 ?>
 <script>
+    
 $(document).ready(function()
 {
     $(".mostrar").click(function()
@@ -94,6 +95,7 @@ $(document).ready(function()
 <div class="divTableLista clear">
     <div class="divTr head">
         <div class="divTd">&nbsp;</div>
+        <div class="divTd">Cliente</div>
         <div class="divTd">Página</div>
         <div class="divTd">Posição</div>
         <div class="divTd">Data início</div>
@@ -104,8 +106,6 @@ $(document).ready(function()
 
     $regiao = isset($_SESSION[ADMIN_SESSION_NAME.'_regiao']) ? $_SESSION[ADMIN_SESSION_NAME.'_regiao'] : '';
 
-    //$q = mysql_query("SELECT * FROM programacao WHERE regiao = '{$regiao}' ORDER BY programacao,horario ASC ", $conexao);
-
     $q = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p
                     INNER JOIN publiTipos AS pt ON pt.cod = p.codTipo
                     INNER JOIN publiPaginas AS pp ON pp.cod = p.codPagina
@@ -113,16 +113,37 @@ $(document).ready(function()
                     ORDER BY p.codPagina, pt.cod");
     $n = mysql_num_rows($q);
 
-    echo mysql_error();
+    //echo mysql_error();
 
     if ($n>0)
     {
     	while($tp = mysql_fetch_assoc($q))
     	{
-    	?>
+            $qClientes = mysql_query("SELECT * FROM clientes WHERE cod = '{$tp['codCliente']}'");
+            $nClientes = mysql_num_rows($qClientes);
+    	    ?>
             <div class="divTr">
                 <div class="divTd">
                     <input class="checks" name="cod[]" value="<?=$tp['cod'];?>" type="checkbox" />
+                </div>
+                <div class="divTd">                
+                    <?
+                    if($nClientes>0) 
+                    {
+                        $tpCliente = mysql_fetch_assoc($qClientes)
+                        ?>
+                        <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
+                            <?
+                            if($tpCliente['tipoPessoa'] == 'j'){
+                                echo $tpCliente['razaoSocial'];
+                            }elseif($tpCliente['tipoPessoa'] == 'f'){
+                                echo $tpCliente['nome']." ".$tpCliente['sobrenome'];;
+                            }
+                            ?>
+                        </a>
+                        <?
+                    }
+                    ?>
                 </div>
                 <div class="divTd">
                     <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">

@@ -1156,6 +1156,84 @@ $modulos = array
         
         
     ),#fim - id
+    41 => array #id
+    (
+        1 => array #subid
+        (
+            'include' => ADMIN_PATH."_clientes/clientes-lista.php",
+            'css' => array
+                    (
+                        ssl().ADMIN_URL.'/_clientes/css/clientes-lista.css',
+                    ),
+            'js' => array
+                    (
+                        //ssl().ADMIN_URL.'/_clientes/js/clientes-lista.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => '<span>Clientes</span>',
+                'tituloNovoConteudo' => 'Novo Cliente',
+                'urlApagarConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=4",
+                'urlNovoConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=2",
+            ),
+            
+        ), #fim - subid
+        2 => array #subid
+        (
+            'include' => ADMIN_PATH."_clientes/clientes-novo.php",
+            'css' => array
+                    (
+                        ssl().ADMIN_URL.'/_clientes/css/clientes-novo-edita.css',
+                    ),
+            'js' => array
+                    (
+                        //ssl().ADMIN_URL.'/_clientes/js/clientes-novo-edita.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => 'Clientes > <span>Novo Cliente</span> ',
+                'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
+            ),
+        ), #fim - subid
+        3 => array #subid
+        (
+            'include' => ADMIN_PATH."_clientes/clientes-edita.php",
+            'css' => array
+                    (
+                        ssl().ADMIN_URL.'/_clientes/css/clientes-novo-edita.css',
+                    ),
+            'js' => array
+                    (
+                        //ssl().ADMIN_URL.'/_clientes/js/clientes-novo-edita.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => 'Clientes > <span>Editando Cliente</span> ',
+                'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
+            ),
+        ), #fim - subid
+        4 => array #subid
+        (
+            'include' => ADMIN_PATH."_clientes/clientes-apaga.php",
+        ), #fim - subid
+        5 => array #subid
+        (
+            'include' => ADMIN_PATH."_clientes/clientes-ordena.php",
+            'css' => array
+                    (
+                        ssl().ADMIN_URL.'/_clientes/css/clientes-ordena.css',
+                    ),
+            'js' => array
+                    (
+                        //ssl().ADMIN_URL.'/_clientes/js/clientes-ordena.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => 'Clientes > <span>ordenando clientes</span> ',
+                'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
+            ),
+        ), #fim - subid
+    ),#fim - id
     45 => array #id
     (
         1 => array #subid

@@ -31,6 +31,7 @@ switch($_SESSION[ADMIN_SESSION_NAME.'_regiao']){
 $id = (isset($_GET['id'])) ? $_GET['id'] : '' ;
 $subid = (isset($_GET['subid'])) ? $_GET['subid'] : '' ;
 $cod = (isset($_GET['cod'])) ? $_GET['cod'] : '' ;
+echo $cod;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="pt-br" xmlns:fb="http://ogp.me/ns/fb#" xmlns="http://www.w3.org/1999/xhtml">

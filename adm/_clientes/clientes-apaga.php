@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'artistas-apaga'))
+if(!verifica_permissao($cod_user, $nivel, 'publicidade'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -9,57 +9,34 @@ if(!verifica_permissao($cod_user, $nivel, 'artistas-apaga'))
 }
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
-require_once ADMIN_PATH."/_artistas/func/funcoes.php";
 
 $cods = isset($_GET['cod']) ? $_GET['cod'] : '';
 if($cods != '')
 {
     $cods = is_array($cods) ? $cods : array($cods);
     $erros = 0;
-    foreach($cods as $k => $codArtista)
+    foreach($cods as $k => $cod)
     {
-        /** EXCLUIR ARQUIVOS - ARTISTAS */
-        $qArtistas = mysql_query("SELECT * FROM artistas WHERE cod = '{$codArtista}'");
-        while($tpArtistas = mysql_fetch_assoc($qArtistas))
+        /** EXCLUIR ARQUIVOS */
+        $q = mysql_query("SELECT * FROM clientes WHERE cod = '{$cod}'");
+        while($tp = mysql_fetch_assoc($q))
         {
-            $qArquivosArtistas = mysql_query("SELECT * FROM arquivos WHERE codReferencia = '{$tpArtistas['cod']}' AND referencia = 'artistas'");
-            while($tpArquivosArtistas = mysql_fetch_assoc($qArquivosArtistas))
-            {
-                for($a=0;$a<5;$a++)
-                {
-                    $unlink = @unlink(PROJECT_PATH."arquivos/artistas/".$tpArquivosArtistas['arquivo']);
-                    if($unlink)
-                    {
-                        break;
-                    }
-                }
-                $sqlDelArquivosArtistas = "DELETE FROM arquivos WHERE cod = '{$tpArquivosArtistas['cod']}'";
-                for($a=0;$a<5;$a++)
-                {
-                    $qDelArquivosArtistas = mysql_query($sqlDelArquivosArtistas);
-                    if($qDelArquivosArtistas)
-                    {
-                        break;
-                    }
-                }
-            }
-            $sqlDelArtistas = "DELETE FROM artistas WHERE cod = '{$tpArtistas['cod']}'";
+            $sqlDel = "DELETE FROM clientes WHERE cod = '{$tp['cod']}'";
             for($a=0;$a<5;$a++)
             {
-                $qDelArtistas = mysql_query($sqlDelArtistas);
-                if($qDelArtistas)
+                $qDel = mysql_query($sqlDel);
+                if($qDel)
                 {
                     break;
                 }
             }
-            if(!$qDelArtistas)
+            if(!$qDel)
             {
                 $erros++;
             }
         }
-        /** FIM - EXCLUIR ARQUIVOS - ARTISTAS */
+        /** FIM - */
     }
-    reordenarArtistas();
     if($erros > 0)
     {
         ?>

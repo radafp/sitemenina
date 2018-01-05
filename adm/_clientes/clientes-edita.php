@@ -1,27 +1,5 @@
 <?php
-
-$acessoLiberado = false;
-if(!isset($acesso))
-{
-    $acesso = "clientes-edita";
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-        $acessoLiberado = true;
-    }
-    elseif(verifica_permissao($cod_user, $nivel, "clientes-visualiza"))
-    {
-        $acessoLiberado = true;
-    }
-}
-else
-{
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-        $acessoLiberado = true;
-    }
-}
-
-if(!$acessoLiberado)
+if(!verifica_permissao($cod_user, $nivel, 'clientes'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -34,21 +12,11 @@ require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
 require_once ADMIN_PATH."func/fotos.php";
 require_once ADMIN_PATH."func/imprimeTinymce.php";
-require_once ADMIN_PATH."_clientes/func/funcoes.php";
 
 $submit = isset($_POST['submit']) ? $_POST['submit'] : '';
 
 if($submit != '')
 {
-    if(!verifica_permissao($cod_user, $nivel, $acesso))
-    {
-    	echo "<script>
-    	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
-    	       document.location.replace('".ssl().ADMIN_URL."/principal.php');";
-    	echo " </script>";
-    	die();
-    }
-    
     $data = date('Y-m-d');
 
     $tipoPessoa = isset($_POST['tipoPessoa']) ? $_POST['tipoPessoa'] : '';
@@ -76,7 +44,6 @@ if($submit != '')
     $telefoneComercialRamal = isset($_POST['telefoneComercialRamal']) ? $_POST['telefoneComercialRamal'] : '';
     $fax = isset($_POST['fax']) ? $_POST['fax'] : '';
     $faxRamal = isset($_POST['faxRamal']) ? $_POST['faxRamal'] : '';
-    $news = isset($_POST['news']) ? 1 : 0;
     $senha = isset($_POST['senha']) ? $_POST['senha'] : '';
     $obs = isset($_POST['obs']) ? $_POST['obs'] : '';
     $site = isset($_POST['site']) ? $_POST['site'] : '';
@@ -91,10 +58,10 @@ if($submit != '')
         {
         	$q = mysql_query("INSERT INTO clientes 
                             (dataCadastro, tipoPessoa, cnpj, inscricaoEstadual, cpf, rg, razaoSocial, ramoAtividade, nome, sobrenome, dataNascimento, profissao, sexo, email, telefone, celular, whatsapp,
-                            telefoneComercial, telefoneComercialRamal, fax, faxRamal, news, senha, obs, site, situacao)
+                            telefoneComercial, telefoneComercialRamal, fax, faxRamal,  senha, obs, site, situacao)
                             VALUES
                              ('$data', '$tipoPessoa', '$cnpj', '$inscricaoEstadual', '$cpf', '$rg', '$razaoSocial', '$ramoAtividade', '$nome', '$sobrenome', '$dataNascimento', '$profissao', '$sexo', '$email', 
-                            '$telefone', '$celular', '$whatsapp', '$telefoneComercial', '$telefoneComercialRamal', '$fax', '$faxRamal', '$news', '$senha', '$obs', '$site', '$situacao')");
+                            '$telefone', '$celular', '$whatsapp', '$telefoneComercial', '$telefoneComercialRamal', '$fax', '$faxRamal', '$senha', '$obs', '$site', '$situacao')");
         	
             if($q)
             {
@@ -136,14 +103,13 @@ if($submit != '')
                             telefoneComercialRamal = '{$telefoneComercialRamal}', 
                             fax = '{$fax}', 
                             faxRamal = '{$faxRamal}', 
-                            news = '{$news}', 
                             senha = '{$senha}', 
                             obs = '{$obs}', 
                             site = '{$site}', 
                             situacao = '{$situacao}'
                             WHERE cod = {$cod}"); 
 
-            echo mysql_error();
+            //echo mysql_error();
                                         
             if($q)
         	{
@@ -168,8 +134,6 @@ if($submit != '')
 		          alert('".implode("\\n",$msg)."');
               </script>"; 
     }
-    
-    
 }
 else
 {
@@ -206,7 +170,6 @@ else
             $telefoneComercialRamal = $tp['telefoneComercialRamal'];
             $fax = $tp['fax'];
             $faxRamal = $tp['faxRamal'];
-            $news = $tp['news'];
             $senha = $tp['senha'];
             $obs = $tp['obs'];
             $site = $tp['site'];
@@ -223,7 +186,7 @@ else
     }
     else
     {
-        $tipoPessoa = "f";
+        $tipoPessoa = "";
     
         $cnpj = '';
         $inscricaoEstadual = '';
@@ -247,7 +210,6 @@ else
         $telefoneComercialRamal = '';
         $fax = '';
         $faxRamal = '';
-        $news = 0;
         $senha = '';
         $obs = '';
         $site = '';
@@ -364,37 +326,7 @@ else
             </div>
         </div>
     </div>
-    <!--
-    <div class="divTableForm clear">
-        <div class="divTr">
-            <?php
-            if($subid == 3)
-            {
-            ?>
-                <div class="divTd">
-                    <input type="checkbox" name="alterarSenha" id="alterarSenha" title="Alterar senha" />
-                </div>
-                <div class="divTd">
-                    <label class="labelalterarsenha">Alterar senha</label>
-                </div>
-            <?php
-            }
-            ?>
-            <div class="divTd">
-                <label for="senha">Senha <span class="obrigatorio">*</span></label>
-            </div>
-            <div class="divTd">
-                <input <?=$subid == 3 ? "disabled='true'" : '';?> class="menor" type="password" name="senha" id="senha" title="Senha" />
-            </div>
-            <div class="divTd">
-                <label for="confirmarSenha">Confirme a Senha <span class="obrigatorio">*</span></label>
-            </div>
-            <div class="divTd">
-                <input <?=$subid == 3 ? "disabled='true'" : '';?> class="menor" type="password" name="confirmarSenha" id="confirmarSenha" title="Confirme a Senha" />
-            </div>
-        </div>
-    </div>
-    -->
+
     <div class="divTableForm clear">
         <div class="divTr">
             <div class="divTd">
@@ -426,30 +358,13 @@ else
         </div>
         
     </div>
-    <div class="divTableForm clear">
-        <div class="divTr">
-            <div class="divTd">
-                <input value="1" type="checkbox" name="news" checked="checked" id="news" title="" <?=$news == '1' ? 'checked' : '';?> />
-            </div>
-            <div class="divTd">
-                <label class="aceitenews">Aceita receber newsletter.</label>
-            </div>
+
+    <div class="divTr">
+        <div class="divTd">&nbsp;</div>
+        <div class="divTd">
+            <input type="submit" value="Salvar" name="submit" class="salvar" />
         </div>
     </div>
-    <?
-    if(verifica_permissao($cod_user, $nivel, $acesso))
-    {
-    ?>
-        <div class="divTr">
-            <div class="divTd">&nbsp;</div>
-            <div class="divTd">
-                <input type="submit" value="Salvar" name="submit" class="salvar" />
-            </div>
-        </div>
-    <?
-    }
-    ?>
-    
 </form>
 <script type="text/javascript">
     

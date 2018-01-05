@@ -732,6 +732,7 @@ class Novomenina_model extends CI_Model{
                         publicidades.tituloPagina,
                         publicidades.codTipo,
                         publicidades.link,
+                        publicidades.linkTarget,
                         publicidades.pixel, 
                     (SELECT a.arquivo 
                     FROM arquivos AS a 
@@ -754,6 +755,7 @@ class Novomenina_model extends CI_Model{
                         publicidades.tituloPagina,
                         publicidades.codTipo,
                         publicidades.link,
+                        publicidades.linkTarget,
                         publicidades.pixel, 
                     (SELECT a.arquivo 
                     FROM arquivos AS a 

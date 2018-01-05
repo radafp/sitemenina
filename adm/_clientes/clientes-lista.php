@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'clientes-lista'))
+if(!verifica_permissao($cod_user, $nivel, 'clientes'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -9,51 +9,10 @@ if(!verifica_permissao($cod_user, $nivel, 'clientes-lista'))
 }
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
-require_once ADMIN_PATH."_clientes/inc/topo-clientes-lista.php";
 ?>
 <script>
 $(document).ready(function()
 {
-    $(".mostrar").click(function()
-    {
-        _obj = $(this);
-        _mostrar = _obj.is(':checked') ? '1' : '0';
-        _cod = _obj.val();
-        _obj.hide();
-        _obj.parent().prepend("<img class='imgLoad' title='Carregando' src='http://"+ADMIN_URL+"/img/base/conteudo/load.gif' />");
-        
-        $.ajax(
-        {
-            type: "POST",
-            async: false,
-            url: "http://"+ADMIN_URL+"/_clientes/ajax/ajaxMostrarLista.php", //URL de destino
-            data:
-            {
-                cod: _cod,
-                mostrar: _mostrar
-            },
-            dataType: "json"
-        })
-        .done(function(_json)
-        { //Se ocorrer tudo certo
-            
-            if(_json.erro != 0)
-            {
-                _valor = _mostrar == 1 ? 0 : 1;
-                if(_valor == 0)
-                {
-                    _obj.removeAttr("checked");
-                }
-                else
-                {
-                    _obj.attr("checked","true");
-                }
-            }
-            _obj.parent().find('.imgLoad').remove();
-            _obj.show();
-        });
-    }); 
-    
     $('.apagarTodos > a').click(function()
     {
         _link = $(this).data('link');
@@ -120,17 +79,30 @@ $(document).ready(function()
                 </div>
                 <div class="divTd">
                     <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
-                        <?=$tp['nome'];?> <?=$tp['sobrenome'];?>
+                        <?php 
+                        if($tp['tipoPessoa'] == "f"){
+                            echo $tp['nome']." ".$tp['sobrenome'];
+                        }
+                        elseif($tp['tipoPessoa'] == "j"){
+                            echo $tp['razaoSocial'];
+                        }
+                        ?>
                     </a>
                 </div>
                 <div class="divTd">
-                    <?=$tp['telefone'];?>
+                    <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
+                        <?=$tp['telefone'];?>
+                    </a>
                 </div>
                 <div class="divTd">
-                    <?=$tp['celular'];?>
+                    <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
+                        <?=$tp['celular'];?>
+                    </a>
                 </div>
                 <div class="divTd">
-                    <?=$tp['whatsapp'];?>
+                    <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
+                        <?=$tp['whatsapp'];?>
+                    </a>
                 </div>
             </div>
             <?
