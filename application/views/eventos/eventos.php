@@ -56,35 +56,33 @@
                 <?php 
                 endforeach;
 
-                    // ech?o '$p: '.$p;
-                    // echo '<br>count: '.$count;
-                    
+                    ?>
+                    <a href="<?php echo base_url('/balneario-camboriu/eventos/p='.$p = $proximo);?>">Proximo</a>
+                </div>
+                <?php
+                  
                     if(isset($_GET['p'])) {
                         $p = $_GET['p'];
                     }else{
                         $p = 0;
                     }
-                    // echo '<br>p: '.$p;
-                    // echo '<br>GET:' . $_GET['p'];
-
-                    // $_SESSION['pag'] = $_GET['p'];
-                        if($p >= 0) {
-                            $anterior = $p - 4;
-                            // $dados['anterior'] = $anterior;
-                        }
-                        if($p <= $count) {
-                            $proxima = $p + 4;
-                            // $dados['proxima'] = $proxima;
-                        }
-                        
-                        if($anterior <= 0) {
-                            $anterior = 0;
-                        }
-                        if($proxima >= $count){
-                            $proxima = $count;
-                        }
-                        
-                    // echo '<br>proc: '.$proxima;
+                
+                    if($p >= 0) {
+                        $anterior = $p - 4;
+                        // $dados['anterior'] = $anterior;
+                    }
+                    if($p <= $count) {
+                        $proxima = $p + 4;
+                        // $dados['proxima'] = $proxima;
+                    }
+                    
+                    if($anterior <= 0) {
+                        $anterior = 0;
+                    }
+                    if($proxima >= $count){
+                        $proxima = $count;
+                    }
+                    
                 ?>
 
                 <?php if($anterior > 0):?>
@@ -99,7 +97,7 @@
 
                 <?php foreach($banner_tipo2 as $info):?>
                     <a class='registra_click_publicidade' codPublicidade="<?= $info['cod'];?>" href=<?= $info['link']?> target='__blank'><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
-                <?php endforeach?>
+                <?php endforeach;?>
             </div>
             </div> <!-- contLeft -->
             <div class="col-xs-12 col-md-4 contRight">
