@@ -55,8 +55,6 @@
                     <a href="<?php echo base_url('/balneario-camboriu/eventos/p='.$p = $proximo);?>">Proximo</a>
                 </div>
                 <?php endforeach?>
-<<<<<<< HEAD
-=======
                 <?php
                     
                     echo '$p'.$p;
@@ -67,9 +65,6 @@
                 <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$proxima);?>">Proximo</a>
                 <?= '<br>Total de Páginas: '. $paginas?>
 
-
-
->>>>>>> 50536cb6355cb4a9183102621916193641b5d990
                 <?php foreach($banner_tipo2 as $info):?>
                     <a class='registra_click_publicidade' codPublicidade="<?= $info['cod'];?>" href=<?= $info['link']?> target='__blank'><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
                 <?php endforeach?>
