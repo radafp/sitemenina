@@ -198,10 +198,10 @@ class home extends CI_Controller {
         
         $dados['p'] = $p;
         $dados['count']   = count($this->Novomenina-> CountAll('eventos', $_SESSION['regiao']));
-        $dados['paginas'] = ceil($dados['count'] / 10); 
-        for($q=0; $q<$dados['paginas'];$q++) {
-            $dados['pagina'] = $p=0;
-        }       
+        $dados['paginas'] = ceil($dados['count'] / 4); 
+        // for($q=0; $q<$dados['paginas'];$q++) {
+        //     $dados['pagina'] = $p=0;
+        // }       
         
         
         $dados['eventos']           = $this->Novomenina->eventos($regiao, $p);

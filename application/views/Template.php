@@ -57,7 +57,7 @@
 
                 var content = $('#content');
                 var logo = document.querySelector('#logo');
-                $('#menu a,  #logo, #paginacao').click(function( e ){
+                $('#menu a,  #logo').click(function( e ){
                     
                     e.preventDefault();
 
@@ -230,7 +230,7 @@
                                         <a id='link_promocoes' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/promocoes')?>">Promoções</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a id='link_eventos' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/eventos/?p=0')?>">Eventos</a>
+                                        <a id='link_eventos' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/eventos/?p='). 0?>">Eventos</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
