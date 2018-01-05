@@ -54,7 +54,7 @@
                         ?>
                     </div>
                 <?php 
-                endforeach
+                endforeach;
 
                     // ech?o '$p: '.$p;
                     // echo '<br>count: '.$count;
