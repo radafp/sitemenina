@@ -283,22 +283,20 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-8">
-                            <div>
-                                <img src="<?php echo base_url('/assets/img/temp/insta1_'.$_SESSION['regiao']);?>" alt="">
+                        <div class="col-md-8 insta">
+                            <div class="wrapFotoTipo1">
+                                <img src="<?php echo base_url('/assets/img/temp/insta1_'.$_SESSION['regiao']).'.jpg';?>" alt="">
                             </div>
-                            <div>
-                                <div>
-                                    <img src="<?php echo base_url('/assets/img/insta_2'.$_SESSION['regiao']);?>" alt="">
+                            <div class="wrapFotoTipo2">
+                                <div class="fotoTipo2">
+                                    <img src="<?php echo base_url('/assets/img/temp/insta2_'.$_SESSION['regiao']).'.jpg';?>" alt="">
                                 </div>
-                                <div>
-                                    <img src="<?php echo base_url('/assets/img/insta_3'.$_SESSION['regiao']);?>" alt="">
+                                <div class="fotoTipo2">
+                                    <img src="<?php echo base_url('/assets/img/temp/insta3_'.$_SESSION['regiao']).'.jpg';?>" alt="">
                                 </div>
                             </div>
-                            <div>
-                                <div>
-                                    <img src="<?php echo base_url('/assets/img/insta_4'.$_SESSION['regiao']);?>" alt="">
-                                </div>
+                            <div class="wrapFotoTipo1">
+                                <img src="<?php echo base_url('/assets/img/temp/insta4_'.$_SESSION['regiao']).'.jpg';?>" alt="">
                             </div>
                         </div>
 

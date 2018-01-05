@@ -297,6 +297,30 @@ a, a:hover {
   max-width: 100%;
 }
 
+.redes .insta .wrapFotoTipo1{
+  float: left;
+  width: 36.5%;
+  margin-right: 10px;
+  overflow: hidden;
+  height: 300px;
+} 
+.redes .insta .wrapFotoTipo1 img{
+  max-width: 100%
+} 
+.redes .insta .wrapFotoTipo2{
+  width: 17.5%;
+height: 300px;
+float: left;
+overflow: hidden;
+margin-right: 10px;
+}
+.redes .insta .wrapFotoTipo2 .fotoTipo2{
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+.redes .insta .wrapFotoTipo2 .fotoTipo2 img{
+  max-width: 100%;
+}
 
 .unidades{
   background-color: #ffffff;
