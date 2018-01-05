@@ -332,11 +332,55 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
+    public function midia() {
+        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['viewName'] = 'quem_somos/midia';
+        $this->load->view('Template', $dados);
+    }
+
     public function contato() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        
+        // $data['action'] = site_url('contato/enviaEmail');
+
+        $this->load->library('email');
+
+        $email = $this->input->post('email', TRUE);
+        $nome = $this->input->post('nome', TRUE);
+        $telefone = $this->input->post('telefone', TRUE);
+        $cidade = $this->input->post('cidade', TRUE);
+        $estado = $this->input->post('estado', TRUE);
+        $mensagem = $this->input->post('mensagem', TRUE);
+        $assunto = $this->input->post('assunto', TRUE);
+
+        $this->email->from($email, $nome);
+        $this->email->to('dionathan_bass@hotmail.com');
+
+        $this->email->subject($assunto);
+        $this->email->message('<html><head></head><body>
+            Nome:       ' . $nome . ' <br />
+            E-mail:     ' . $email . ' <br />
+            Telefone:   ' . $telefone . ' <br />
+            Cidade:     ' . $cidade . ' <br />
+            Estado:     ' . $estado . ' <br />
+            Assunto:    ' . $assunto . ' <br />
+            Mensagem:   ' . $mensagem . ' <br />
+            </body></html>');
+
+        $em = $this->email->send();
+        if ($em) {
+            $data['email_enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
+        } else {
+            $data['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
+        }
+        // $data['action'] = site_url('contato/enviaEmail');
+          
+        
         $dados['viewName'] = 'contato';
         $this->load->view('Template', $dados);
     }
+    /* End of file contato.php */
+    /* Location: ./system/application/controllers/contato.php */
 
     // public function enquete_dados() {
 
