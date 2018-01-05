@@ -53,7 +53,7 @@
                 <span>Eventos</span>
             </h1>
             <div id='prog'>
-                <table class='noticia' data-page-length='10' class="table table-striped table-bordered" cellspacing="0" width="20%">
+                <!-- <table class='noticia' data-page-length='10' class="table table-striped table-bordered" cellspacing="0" width="20%">
                     <thead>
                         <tr>
                             <td>.</td>
@@ -68,14 +68,30 @@
                                         <img src="<?php echo base_url('/assets/arquivos/evetos/'.$info['arquivo'])?>" alt="">
                                         <h3><?php echo $info['tituloPt']?></h3>
                                         <!-- <p><?php echo $info['descricaoPt']?></p> -->
-                                        <span><?php echo 'HORÀRIO:'.date('d/m/Y', strtotime($info['dataInicio']))?></span>
-                                    </a> 
-                                </div>
+                                        <!-- <span><?php echo 'HORÀRIO:'.date('d/m/Y', strtotime($info['dataInicio']))?></span> -->
+                                    <!-- </a>  -->
+                                <!-- </div>
                             </td>
                         </tr>
                         <?php endforeach?>
                     </tbody> 
-                </table>
+                </table> -->
+                <?php foreach($eventos as $info):?>
+                <div id='esquerda'>
+                    <a class='link_eventos' href="<?php echo base_url('home/descricao_eventos?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
+                        <img src="<?php echo base_url('/assets/arquivos/evetos/'.$info['arquivo'])?>" alt="">
+                        <h3><?php echo $info['tituloPt']?></h3>
+                        <!-- <p><?php echo $info['descricaoPt']?></p> -->
+                        <span><?php echo 'HORÀRIO:'.date('d/m/Y', strtotime($info['dataInicio']))?></span>
+                    </a>
+                    <?php
+                        $proximo = 4;
+                        $anterior = -4;
+
+                    ?>
+                    <a href="<?php echo base_url('/balneario-camboriu/eventos/p='.$p = $proximo);?>">Proximo</a>
+                </div>
+                <?php endforeach?>
                 <?php foreach($banner_tipo2 as $info):?>
                     <a class='registra_click_publicidade' codPublicidade="<?= $info['cod'];?>" href=<?= $info['link']?> target='__blank'><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
                 <?php endforeach?>

@@ -403,6 +403,15 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
+    public function videos($regiao)  {
+        $query = $this->db->query(
+            "SELECT * FROM videos 
+                WHERE videos.regiao = '$regiao' 
+                AND videos.mostrar = 1"
+        );
+        return $query->result_array();
+    }
+
 
 
     // ================================ PAGINAS DE PROMOÇÕES ====================================
@@ -499,7 +508,7 @@ class Novomenina_model extends CI_Model{
      
 
     // eventos da pagina de eventos
-    public function eventos($regiao) {
+    public function eventos($regiao, $limit = null) {
         // $query = $this->db->query("SELECT eventos.*, arquivos.arquivo
         //                             FROM eventos 
         //                             INNER JOIN arquivos 
@@ -524,6 +533,7 @@ class Novomenina_model extends CI_Model{
                     AND eventos.mostrar = 1 
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataCadastro DESC
+                LIMIT $limit, 4
         "); 
         return $query->result_array();
     }

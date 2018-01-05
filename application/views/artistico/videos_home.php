@@ -49,7 +49,7 @@
                 </h1>
                 <div id='prog'>
 
-                    <?php foreach($videos as $info): ?>
+                    <?php foreach($videos_videos as $info): ?>
                         <div style="width:45%;float:left">
                             <iframe style="width: 100%; max-height:250px" src="<?=$info['link']?>" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>          
                             <p><?php echo $info["titulo"];?></p>
