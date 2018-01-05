@@ -59,6 +59,8 @@
 <div class="container">
     <div class="row publicidade">
         <?php 
+        if(count($banner_tipo1)>0)
+        {
             $banners = array();
             foreach($banner_tipo1 as $info):
                 $banners[] = array(
@@ -79,10 +81,16 @@
             $bannerPrincipalLink = $banners[$rand_keys]['link'];
             $bannerPrincipalArquivo = $banners[$rand_keys]['arquivo'];
             $bannerPrincipalTarget = $banners[$rand_keys]['linkTarget'];
+        
+            ?>
+            <div class="wrapBanner">
+                <a class='registra_click_publicidade' href="<?=($bannerPrincipalLink != '') ? $bannerPrincipalLink  : '';?>" target="<?=$bannerPrincipalTarget;?>" rel="<?=$bannerPrincipalCod;?>">
+                    <img src=<?= base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo)?> title="Publicidade">
+                </a>
+            </div>
+        <?php 
+        } 
         ?>
-        <a class='registra_click_publicidade' href="<?=($bannerPrincipalLink != '') ? $bannerPrincipalLink  : '';?>" target="<?=$bannerPrincipalTarget;?>" rel="<?=$bannerPrincipalCod;?>">
-            <img src=<?= base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo)?> title="Publicidade">
-        </a>
     </div>
 </div> <!-- container -->
 
@@ -143,38 +151,45 @@
 
 <div class="container">
     <div class="row publicidade">
-        <div class="col-xs-12 col-md-6">
-            <?php 
-                $banners = array();
-                foreach($banner_tipo2 as $info):
-                    $banners[] = array(
-                        "cod" => isset($info['cod']) ? $info['cod'] : '',
-                        "link" => isset($info['link']) ? $info['link'] : '',
-                        "arquivo" => isset($info['arquivo']) ? $info['arquivo'] : '',
-                        "linkTarget" => isset($info['linkTarget']) ? $info['linkTarget'] : '',
-                    );
-                endforeach;
-                /*
-                echo "<pre>";
-                    var_dump($banners);
-                echo "</pre>";
-                */
+        
+        <?php
+        if(count($banner_tipo2)>0)
+        {
+            $banners = array();
+            foreach($banner_tipo2 as $info):
+                $banners[] = array(
+                    "cod" => isset($info['cod']) ? $info['cod'] : '',
+                    "link" => isset($info['link']) ? $info['link'] : '',
+                    "arquivo" => isset($info['arquivo']) ? $info['arquivo'] : '',
+                    "linkTarget" => isset($info['linkTarget']) ? $info['linkTarget'] : '',
+                );
+            endforeach;
+            /*
+            echo "<pre>";
+                var_dump($banners);
+            echo "</pre>";
+            */
 
-                $rand_keys = array_rand($banners, 2);
-                for($i=0;$i<2;$i++)
-                {
-                    $bannerPrincipalCod = $banners[$rand_keys[$i]]['cod'];
-                    $bannerPrincipalLink = $banners[$rand_keys[$i]]['link'];
-                    $bannerPrincipalArquivo = $banners[$rand_keys[$i]]['arquivo'];
-                    $bannerPrincipalTarget = $banners[$rand_keys[$i]]['linkTarget'];
-                    ?>
+            $rand_keys = array_rand($banners, 2);
+            for($i=0;$i<2;$i++)
+            {
+                $bannerPrincipalCod = $banners[$rand_keys[$i]]['cod'];
+                $bannerPrincipalLink = $banners[$rand_keys[$i]]['link'];
+                $bannerPrincipalArquivo = $banners[$rand_keys[$i]]['arquivo'];
+                $bannerPrincipalTarget = $banners[$rand_keys[$i]]['linkTarget'];
+                ?>
+                <div class="col-xs-12 col-md-6">
+                    <div class="wrapBanner">
                         <a class='registra_click_publicidade' href="<?=($bannerPrincipalLink != '') ? $bannerPrincipalLink  : '';?>" target="<?=$bannerPrincipalTarget;?>" rel="<?=$bannerPrincipalCod;?>">
                             <img src=<?= base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo)?> title="Publicidade">
                         </a>
-                    <?php 
-                }
-            ?>
-        </div>    
+                    </div>
+                </div> 
+                <?php 
+            }
+        } 
+        ?>
+           
     </div>
 </div> <!-- container -->
 

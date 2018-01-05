@@ -117,8 +117,12 @@
     margin: 50px 0;
 }
 .publicidade img{
+    max-width: 100%;
+}
+.publicidade .wrapBanner{
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 .promocoesEventos{
     padding:60px 0;
