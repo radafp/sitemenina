@@ -65,8 +65,8 @@ class home extends CI_Controller {
                 break;	
         }
 
-        $codigoSecao = isset($uri[1]) && !empty($uri[1]) ? $uri[1] : ''; //menu
-        $codigoConteudo = isset($uri[2]) && !empty($uri[2]) ? $uri[2] : ''; //codigo
+        $codigoSecao = addslashes(isset($uri[1]) && !empty($uri[1]) ? $uri[1] : ''); //menu
+        $codigoConteudo = addslashes(isset($uri[2]) && !empty($uri[2]) ? $uri[2] : ''); //codigo
 
         $dados['cidade'] = $_SESSION['city'];
         switch($_SESSION['regiao']){
@@ -118,11 +118,11 @@ class home extends CI_Controller {
 
     public function programacao() {
         // link de progrmacao semanal/sabado/domingo
-        $_SESSION['menuAtivoProgramacao'] = isset($_GET['programacao']) ? $_GET['programacao'] : 'Semanal';
+        $_SESSION['menuAtivoProgramacao'] = addslashes(isset($_GET['programacao']) ? $_GET['programacao'] : 'Semanal');
         
         if(isset($_GET['programacao'])) {
-            $_SESSION['menuAtivoProgramacao'] = isset($_GET['programacao']) ? $_GET['programacao'] : 'Semanal';
-            $programacao = $_GET['programacao'];
+            $_SESSION['menuAtivoProgramacao'] = addslashes(isset($_GET['programacao']) ? $_GET['programacao'] : 'Semanal');
+            $programacao = addslashes($_GET['programacao']);
             $dados['programacao_impar'] = $this->Novomenina->programacao_programacao($_SESSION['regiao'], $programacao);
         }else{
             $dados['programacao_impar'] = $this->Novomenina->programacao_programacao($_SESSION['regiao'], 'Semanal');
@@ -136,7 +136,7 @@ class home extends CI_Controller {
     }
     
     public function noticia() {
-        $categoria                  = $_GET['categoria'];
+        $categoria                  = addslashes($_GET['categoria']);
         // --------------------- PAGINAÇÂO --------------------
         //|                                                    |
         //|                                                    |
@@ -173,8 +173,8 @@ class home extends CI_Controller {
     }
 
     public function descricao_noticia() {
-        $id = $_GET['id'];
-        $categoria = $_GET['categoria'];
+        $id = addslashes($_GET['id']);
+        $categoria = addslashes($_GET['categoria']);
         $this->Novomenina->cliques($id, $_SESSION['regiao']);
         $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id, $_SESSION['regiao']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
@@ -187,7 +187,7 @@ class home extends CI_Controller {
 
     public function eventos() {
         // $id = $_GET['id'];
-        $regiao = $_SESSION['regiao'];
+        $regiao = addslashes($_SESSION['regiao']);
         
         // --------------------- PAGINAÇÂO --------------------
         //|                                                    |
@@ -270,7 +270,7 @@ class home extends CI_Controller {
     
 
     public function descricao_eventos() {
-        $id = $_GET['id'];
+        $id = addslashes($_GET['id']);
         $regiao = $_SESSION['regiao'];
         $dados['descricao_eventos'] = $this->Novomenina->descricao_eventos($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
@@ -314,7 +314,7 @@ class home extends CI_Controller {
     }
 
     public function descricao_promocoes() {
-        $id = $_GET['id'];
+        $id = addslashes($_GET['id']);
         $regiao = $_SESSION['regiao'];
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
@@ -325,7 +325,7 @@ class home extends CI_Controller {
     }
 
     public function descricao_programacao() {
-        $id = $_GET['id'];
+        $id = addslashes($_GET['id']);
         $regiao = $_SESSION['regiao'];
         $dados['descricao_programacao'] = $this->Novomenina->descricao_programacao($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
@@ -336,7 +336,7 @@ class home extends CI_Controller {
     }
 
     public function descricao_utilidade() {
-        $id = $_GET['id'];
+        $id = addslashes($_GET['id']);
         $regiao = $_GET['regiao'];
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
