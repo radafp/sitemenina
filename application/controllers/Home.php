@@ -400,9 +400,9 @@ class home extends CI_Controller {
         $config['smtp_host'] = 'ssl://smtp.googlemail.com';
         $config['smtp_port'] = '465';
         $config['charset'] = 'utf8';
-        $config['smtp_user'] = 'defaltern@gmail.com';
+        $config['smtp_user'] = 'email@gmail.com';
         $config['smtp_from_name'] = 'FROM NAME';
-        $config['smtp_pass'] = 'fodassegmail';
+        $config['smtp_pass'] = 'senhagmail';
         $config['wordwrap'] = TRUE;
         $config['newline'] = "\r\n";
         $config['mailtype'] = 'html'; 
