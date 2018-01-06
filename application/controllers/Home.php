@@ -343,29 +343,75 @@ class home extends CI_Controller {
 
     public function contato() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        
-        $config['protocol']  = 'smtp'; // Podendo ser alterado para mail caso você queira enviar com o mail do php.
-        $config['charset'] = 'utf8';
-        $config['wordwrap'] = TRUE;
-        $config['smtp_host'] = 'smtp.gmail.com';
-        $config['smtp_user'] = 'defaltern@gmail.com';
-        $config['smtp_pass'] = '';
-        $config['smtp_timeout'] = 20;
-        $config['mailtype'] = 'html';
+        $dados['action'] = site_url('home/enviaEmail');
+        // $this->load->library('email');
 
-        $this->load->library('email', $config);
+        if(isset($email)) {
+            echo 'sim';
+        }else{
+            echo 'nao';
+        }
+        // $this->email->set_newline("\r\n");
+    
+        // $config['protocol'] = 'smtp';
+        // $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+        // $config['smtp_port'] = '465';
+        // $config['smtp_user'] = 'defaltern@gmail.com';
+        // $config['smtp_from_name'] = 'FROM NAME';
+        // $config['smtp_pass'] = 'fodassegmail';
+        // $config['wordwrap'] = TRUE;
+        // $config['newline'] = "\r\n";
+        // $config['mailtype'] = 'html';                       
+    
+        // $this->email->initialize($config);
+    
+        // $this->email->from($config['smtp_user'], $config['smtp_from_name']);
+        // $this->email->to('defaltern@gmail.com');
+        // $this->email->cc('dionathan_bass@hotmail.com');
+        // $this->email->subject('teste');
+    
+        // $this->email->message('message');
+    
+        // $em = $this->email->send();
+        // if ($em) {
+        //     $dados['email_enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
+        // } else {
+        //     // $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
+        //     $dados['email_enviado'] = $this->email->print_debugger();
+        // }
+            
+        $dados['viewName'] = 'contato';
+        $this->load->view('Template', $dados);
+    }
 
-        // $data['action'] = site_url('contato/enviaEmail');
+    public function enviaEmail() {
+        $this->load->library('email');
+        $this->email->set_newline("\r\n");
+
         $email = $this->input->post('email', TRUE);
-        $nome = $this->input->post('name', TRUE);
+        $nome = $this->input->post('nome', TRUE);
         $telefone = $this->input->post('telefone', TRUE);
         $cidade = $this->input->post('cidade', TRUE);
         $estado = $this->input->post('estado', TRUE);
         $mensagem = $this->input->post('mensagem', TRUE);
         $assunto = $this->input->post('assunto', TRUE);
 
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+        $config['smtp_port'] = '465';
+        $config['charset'] = 'utf8';
+        $config['smtp_user'] = 'defaltern@gmail.com';
+        $config['smtp_from_name'] = 'FROM NAME';
+        $config['smtp_pass'] = 'fodassegmail';
+        $config['wordwrap'] = TRUE;
+        $config['newline'] = "\r\n";
+        $config['mailtype'] = 'html'; 
+
+        $this->email->initialize($config);
+
         $this->email->from($email, $nome);
-        $this->email->to('dionathan_bass@hotmail.com');
+        $this->email->to('defaltern@gmail.com');
+        $this->email->cc('dionathan_bass@hotmail.com');
 
         $this->email->subject($assunto);
         $this->email->message('<html><head></head><body>
@@ -384,12 +430,13 @@ class home extends CI_Controller {
         } else {
             $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
         }
-        // $data['action'] = site_url('contato/enviaEmail');
-          
-        
+        $dados['action'] = site_url('contato/enviaEmail');
+        // $this->load->view('contato',$dados);
+
         $dados['viewName'] = 'contato';
         $this->load->view('Template', $dados);
     }
+    
     /* End of file contato.php */
     /* Location: ./system/application/controllers/contato.php */
 
