@@ -57,7 +57,7 @@
                 endforeach;
 
                     ?>
-                    <a href="<?php echo base_url('/balneario-camboriu/eventos/p='.$p = $proximo);?>">Proximo</a>
+                    <!-- <a href="<?php echo base_url('/balneario-camboriu/eventos/p='.$p = $proximo);?>">Proximo</a> -->
                 </div>
                 <?php
                   
@@ -66,6 +66,7 @@
                     }else{
                         $p = 0;
                     }
+                    echo $p;
                 
                     if($p >= 0) {
                         $anterior = $p - 4;
@@ -85,13 +86,14 @@
                     
                 ?>
 
-                <?php if($anterior > 0):?>
+                <?php if($p > 0):?>
                     <a class='link_eventos' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$anterior);?>">Anterior</a>
                 <?php endif?>
 
                 <?php if($proxima+4 <= $count):?>
                     <a class='link_eventos paginacao' href="<?php echo base_url('/balneario-camboriu/eventos/?p='.$proxima);?>">Proximo</a>
                 <?php endif?>
+                
                 
                 <?= '<br>Total de Páginas: '. $paginas?>
 

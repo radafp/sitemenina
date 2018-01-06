@@ -202,7 +202,6 @@ class home extends CI_Controller {
         //     $dados['pagina'] = $p=0;
         // }       
         
-        
         $dados['eventos']           = $this->Novomenina->eventos($regiao, $p);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '3');
