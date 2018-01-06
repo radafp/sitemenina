@@ -5,12 +5,9 @@ class home extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        // carreganho o model Tabelas_model e setando um apelido de Tabelas
         $this->load->model('Novomenina_model', 'Novomenina');
-        // $this->load->model('Gastos_model', 'Gastos');
         $this->load->helper('url');
         $this->load->library('email');
-        
     }
 
     public function index() {
@@ -69,10 +66,8 @@ class home extends CI_Controller {
         }
 
         $codigoSecao = isset($uri[1]) && !empty($uri[1]) ? $uri[1] : ''; //menu
-        //echo $codigoSecao;
         $codigoConteudo = isset($uri[2]) && !empty($uri[2]) ? $uri[2] : ''; //codigo
 
-        // $dados['cidade']            = $this->Novomenina->cidade($regiao);
         $dados['cidade'] = $_SESSION['city'];
         switch($_SESSION['regiao']){
             case 'bc':
@@ -133,36 +128,19 @@ class home extends CI_Controller {
             $dados['programacao_impar'] = $this->Novomenina->programacao_programacao($_SESSION['regiao'], 'Semanal');
         }
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        // $dados['programacao_par']   = $this->Novomenina->programacao_par($_SESSION['regiao']); 
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'programacao', '3');
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'programacao', '2');        
         $dados['viewName'] = 'programacao/programacao';
         $this->load->view('Template', $dados);
 
     }
-
-    // public function programacao_programacao() {
-    //     $programacao = $_GET['programacao'];
-    //     $dados['programacao_programacao'] = $this->Novomenina->programacao_programacao($_SESSION['regiao'], $programacao);
-    //     $dados['viewName'] = 'programacao/programacao_programacao';
-    //     $this->load->view('Template', $dados);
-    // }
-
-    // public function artistico() {
-    //     $categoria                  = $_GET['categoria'];
-    //     $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-    //     $dados['videos']            = $this->Novomenina->videos($_SESSION['regiao']);
-    //     $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-    //     $dados['viewName']          = 'artistico/videos';
-    //     $this->load->view('Template', $dados);
-    // }
-
     
     public function noticia() {
         $categoria                  = $_GET['categoria'];
-
-
-        // ____________________ PAGINAÇÂO ______________________
+        // --------------------- PAGINAÇÂO --------------------
+        //|                                                    |
+        //|                                                    |
+        //|___________________________________________________ |
         if(isset($_GET['p'])) {
             $pg = $_GET['p'];
         }else{
@@ -177,14 +155,13 @@ class home extends CI_Controller {
         $dados['pHome'] = $p;
         $dados['total_registros']   = 15;
         $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao'], $p);
-        // dado count é ultilizado para que ocorra corretamente a paginação
         $dados['count']             = count($dados['jornalismo']);
         $dados['paginas']           = ceil($dados['count'] / 15); 
-        
 
-
-
-        // ______________ METODOS DO MODEL _________________________
+        // --------------------- METODOS DO MODEL ------------------
+        //|                                                         |
+        //|                                                         |
+        //|_________________________________________________________|
         
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas']        = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
@@ -212,8 +189,10 @@ class home extends CI_Controller {
         // $id = $_GET['id'];
         $regiao = $_SESSION['regiao'];
         
-
-         // ____________________ PAGINAÇÂO ______________________
+        // --------------------- PAGINAÇÂO --------------------
+        //|                                                    |
+        //|                                                    |
+        //|___________________________________________________ |
         if(isset($_GET['p'])) {
             $pg = $_GET['p'];
         }else{
@@ -231,8 +210,10 @@ class home extends CI_Controller {
         $dados['total_registros']   = 10;
         $dados['paginas']           = ceil($dados['count'] / 10);      
         
-        
-        // ______________ METODOS DO MODEL _________________________
+        // --------------------- METODOS DO MODEL ------------------
+        //|                                                         |
+        //|                                                         |
+        //|_________________________________________________________|
         $dados['eventos']           = $this->Novomenina->eventos($regiao, $p);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '3');
@@ -250,26 +231,13 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
-    // public function eventos() {
-    //     // $id = $_GET['id'];
-    //     $regiao = $_SESSION['regiao'];
-    //     if(isset($_GET['p'])) {
-    //         $p = $_GET['p'];
-    //     }else{
-    //         $p = 0;
-    //     }
-    //     $dados['p'] = $p;
-    //     $dados['count']             = count($this->Novomenina->count_eventos($regiao));
-    //     $dados['eventos']           = $this->Novomenina->eventos($regiao, $p);
-    //     $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-    //     $dados['viewName']          = 'eventos/eventos';
-    //     $this->load->view('Template', $dados);
-    // }
-
     public function videos_home() {
         $regiao = $_SESSION['regiao'];
 
-         // ____________________ PAGINAÇÂO ______________________
+        // --------------------- PAGINAÇÂO --------------------
+        //|                                                    |
+        //|                                                    |
+        //|___________________________________________________ |
          if(isset($_GET['p'])) {
             $pg = $_GET['p'];
         }else{
@@ -283,15 +251,14 @@ class home extends CI_Controller {
                 
         $dados['pHome'] = $p;
         $dados['total_registros']   = 10;
-        $dados['videos_videos']         = $this->Novomenina-> videos($regiao, $p);
-        // dado count é ultilizado para que ocorra corretamente a paginação
-        $dados['count']             = $dados['count']             = count($this->Novomenina-> CountAll('videos', $_SESSION['regiao']));
+        $dados['videos_videos']     = $this->Novomenina-> videos($regiao, $p);
+        $dados['count']             = count($this->Novomenina-> CountAll('videos', $_SESSION['regiao']));
         $dados['paginas']           = ceil($dados['count'] / 10); 
-        
 
-
-
-        // ______________ METODOS DO MODEL _________________________
+        // --------------------- METODOS DO MODEL ------------------
+        //|                                                         |
+        //|                                                         |
+        //|_________________________________________________________|
         $dados['videos']                = $this->Novomenina-> videos_home($regiao);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'videos_home', '3');
@@ -314,7 +281,10 @@ class home extends CI_Controller {
     }
 
     public function promocoes() {
-        // ____________________ PAGINAÇÂO ______________________
+        // --------------------- PAGINAÇÂO --------------------
+        //|                                                    |
+        //|                                                    |
+        //|___________________________________________________ |
         if(isset($_GET['p'])) {
             $pg = $_GET['p'];
         }else{
@@ -329,14 +299,13 @@ class home extends CI_Controller {
         $dados['pHome'] = $p;
         $dados['total_registros']       = 10;
         $dados['promocoes_promocoes']   = $this->Novomenina->promocoes_promocoes($_SESSION['regiao'], $p);
-        // dado count é ultilizado para que ocorra corretamente a paginação
         $dados['count']                 = count($this->Novomenina-> CountAll('promocoes', $_SESSION['regiao']));
         $dados['paginas']               = ceil($dados['count'] / 10); 
         
-
-
-
-        // ______________ METODOS DO MODEL _________________________
+        // --------------------- METODOS DO MODEL ------------------
+        //|                                                         |
+        //|                                                         |
+        //|_________________________________________________________|
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'promocoes', '3');
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'promocoes', '2'); 
@@ -379,7 +348,10 @@ class home extends CI_Controller {
     }
 
     public function bolsa_de_empregos() {
-        // ____________________ PAGINAÇÂO ______________________
+        // --------------------- PAGINAÇÂO --------------------
+        //|                                                    |
+        //|                                                    |
+        //|___________________________________________________ |
         if(isset($_GET['p'])) {
             $pg = $_GET['p'];
         }else{
@@ -393,16 +365,14 @@ class home extends CI_Controller {
                 
         $dados['pHome'] = $p;
         $dados['total_registros']       = 10;
-        
         $dados['empregos']              = $this->Novomenina->empregos($_SESSION['regiao'], $p);
-        // dado count é ultilizado para que ocorra corretamente a paginação
         $dados['count']                 = count($this->Novomenina-> CountAll('empregos', $_SESSION['regiao']));
         $dados['paginas']               = ceil($dados['count'] / 10); 
         
-
-
-
-        // ______________ METODOS DO MODEL _________________________
+        // --------------------- METODOS DO MODEL ------------------
+        //|                                                         |
+        //|                                                         |
+        //|_________________________________________________________|
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'bolsa_de_empregos', '3');
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'bolsa_de_empregos', '2');
@@ -412,7 +382,10 @@ class home extends CI_Controller {
     }
 
     public function documentos_perdidos() {
-        // ____________________ PAGINAÇÂO ______________________
+        // --------------------- PAGINAÇÂO --------------------
+        //|                                                    |
+        //|                                                    |
+        //|___________________________________________________ |
         if(isset($_GET['p'])) {
             $pg = $_GET['p'];
         }else{
@@ -426,17 +399,15 @@ class home extends CI_Controller {
                 
         $dados['pHome'] = $p;
         $dados['total_registros']       = 10;
-        
-        
         $dados['documentos_perdidos']   = $this->Novomenina->documentos_perdidos($_SESSION['regiao'], $p);
-        // dado count é ultilizado para que ocorra corretamente a paginação
         $dados['count']                 = count($this->Novomenina-> CountAll('empregos', $_SESSION['regiao']));
         $dados['paginas']               = ceil($dados['count'] / 10); 
         
 
-
-
-        // ______________ METODOS DO MODEL _________________________
+        // --------------------- METODOS DO MODEL ------------------
+        //|                                                         |
+        //|                                                         |
+        //|_________________________________________________________|
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '3');
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '2'); 
@@ -469,11 +440,6 @@ class home extends CI_Controller {
         $dados['action'] = site_url('home/enviaEmail');
         // $this->load->library('email');
 
-        if(isset($email)) {
-            echo 'sim';
-        }else{
-            echo 'nao';
-        }
         // $this->email->set_newline("\r\n");
     
         // $config['protocol'] = 'smtp';
@@ -554,123 +520,8 @@ class home extends CI_Controller {
             $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
         }
         $dados['action'] = site_url('contato/enviaEmail');
-        // $this->load->view('contato',$dados);
 
         $dados['viewName'] = 'contato';
         $this->load->view('Template', $dados);
     }
-    
-    /* End of file contato.php */
-    /* Location: ./system/application/controllers/contato.php */
-
-    // public function enquete_dados() {
-
-    //     try
-    //     {
-    //         $conn = new PDO('mysql:host=mysql03-farm70.uni5.net;dbname=novomenina', 'novomenina', 'agEncia445');
-    //     }
-    //     catch ( PDOException $e )
-    //     {
-    //         echo 'Erro ao conectar com o MySQL: ' . $e->getMessage();
-    //     }
-
-    //     if($conn) {
-    //         echo 'conextado';
-    //     }else{
-    //         echo 'ta por fora';
-    //     }
-
-    //     $cod = isset($_POST['cod']) ? $_POST['cod'] : 19;
-        
-    //     $datacadastro = date('Y-m-d');
-        
-    //     $ip = $_SERVER["REMOTE_ADDR"];
-        
-    //     // CRIAR SELECT PRA PEGAR CÓDIGO DA PERGUNTA 
-    //     $array = array();
-    //     $query = $conn->query(
-    //         "SELECT enquetesPerguntas.cod as cod_perg 
-    //             FROM `enquetesPerguntas` 
-    //         INNER JOIN enquetesRespostas
-    //             WHERE enquetesRespostas.codPergunta = enquetesPerguntas.cod
-    //             AND enquetesRespostas.cod = $cod"
-    //     );
-    //     $array = $query->fetchAll(\PDO::FETCH_ASSOC);
-        
-        
-
-    //     foreach($array as $info) {
-    //         $cod_perg = $info['cod_perg'];
-            
-    //         try{
-    //             $stmt = $conn->prepare(
-    //                 "INSERT INTO enquetesStatus 
-    //                 (dataCadastro, ip, codPergunta, codResposta) VALUES 
-    //                 ('$datacadastro', '$ip', '$cod_perg', '$cod')"
-    //             );
-    //             $stmt->execute();
-
-    //             // var_dump($stmt);
-    //         }catch(PDOException $e) {
-    //             die($e->getMessage());
-    //         }
-    //     }
-    // }
-
-    // public function publicidades() {
-    //     // if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'))
-    //     // {
-        
-    //         try
-    //         {
-    //             $conn = new PDO('mysql:host=mysql03-farm70.uni5.net;dbname=novomenina', 'novomenina', 'agEncia445');
-    //         }
-    //         catch ( PDOException $e )
-    //         {
-    //             echo 'Erro ao conectar com o MySQL: ' . $e->getMessage();
-    //         }
-            
-                
-    //         $cod = isset($_POST['cod']) ? $_POST['cod'] : '5';
-    //         $datacadastro = date('Y-m-d');
-    //         $ip = $_SERVER["REMOTE_ADDR"];
-            
-            
-    //         // CRIAR SELECT PRA PEGAR CÓDIGO DA PERGUNTA 
-    //         $array = array();
-    //         $query = $conn->query(
-    //             "SELECT publicidades.empresa,
-    //                     publicidades.dataInicio,
-    //                     publicidades.dataFim,
-    //                     publicidades.regiao,
-    //                     publicidades.codTipo
-    //                 FROM `publicidades`
-    //                 WHERE publicidades.cod = $cod"
-    //         );
-    //         $array = $query->fetchAll(\PDO::FETCH_ASSOC);
-            
-            
-    //         foreach($array as $info) {
-    //             $empresa = $info['empresa'];
-    //             $dataInicio = $info['dataInicio'];
-    //             $dataFim = $info['dataFim'];
-    //             $regiao = $info['regiao'];
-    //             $codTipo = $info['codTipo'];
-                
-    //             try{
-    //                 $stmt = $conn->prepare(
-    //                     "INSERT INTO publicidadeStats 
-    //                     (dataCadastro, codPublicidade, codTipo, ip, empresa, dataInicio, dataFim, regiao) VALUES 
-    //                     ('$datacadastro', '$cod', '$codTipo', '$ip', '$empresa', '$dataInicio', '$dataFim', '$regiao')"
-    //                 );
-    //                 $stmt->execute();
-    //                 var_dump($stmt);
-    //             }catch(PDOException $e) {
-    //                 die($e->getMessage());
-    //             }
-    //         }
-        
-    //         // die(json_encode($json));
-    //     }
-    // }
  }

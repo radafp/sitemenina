@@ -3,7 +3,7 @@
 
 
         var content = $('#content');
-        $('.paginacao_noticias').click(function( e ){
+        $('.paginacao_noticias, .link_descricao').click(function( e ){
             e.preventDefault();
 
             var href = $( this ).attr('href');
@@ -55,23 +55,17 @@
                     $p = $_GET['p'];
                 }else{
                     $p = 0;
-                }
-                // echo $p;
-                // echo '<br>PHOME: '.$pHome;
-               
+                }               
 
                 $_SESSION['p'] = 0;
                 if($p >= 0) {
                     $anterior = $p - 1;
                     $_SESSION['p'] = $anterior;
-                    // $dados['anterior'] = $anterior;
                 }
                 if($p <= $count) {
                     $proxima = $p + 1;
                     $_SESSION['p'] = $proxima;
-                    // $dados['proxima'] = $proxima;
                 }
-                // echo '<br>session:'.$_SESSION['p'];
                 
                 if($anterior <= 0) {
                     $anterior = 0;
@@ -80,7 +74,6 @@
                     $proxima = $count;
                 }
                 
-                echo $count
                 ?><br><br>
                 <?php if($count > $total_registros):?>
                     <?php if($p > 1):?>
