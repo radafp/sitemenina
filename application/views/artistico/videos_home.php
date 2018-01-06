@@ -1,4 +1,31 @@
+<script type="text/javascript">
+     $(document).ready(function(){
 
+
+        var content = $('#content');
+        $('.paginacao_videos').click(function( e ){
+            e.preventDefault();
+
+            var href = $( this ).attr('href');
+            $.ajax({
+                url: href,
+                success: function( response ){
+                    //forçando o parser
+                    var data = $( '<div>'+response+'</div>' ).find('#content').html();
+
+                    //apenas atrasando a troca, para mostrarmos o loading
+                    window.setTimeout( function(){
+                        content.fadeOut('fast', function(){
+                            content.html( data ).fadeIn();
+                        });
+                    },100);
+                }
+            });
+
+            window.history.pushState(null, 'Home', $(this).attr('href'));
+        });
+    });
+</script>
 <div class="container">
     <div class="blocoConteudo">
         <div class="row">
@@ -13,32 +40,36 @@
                     <?php
                     $nVideos = count($videos_videos);
                     $i=0;
-                    foreach($videos_videos as $info):
-                        if($i%2 == 0)
+                    ?>
+
+                    <?php foreach($videos_videos as $info):?>
+                    <?php
+                        
+                        if($i%2 == 0) {
                             $classeAdicional = '';
-                        else
+                        }else{
                             $classeAdicional = ' ultimo';
+                        }
+                    ?>
+                    <div class="video <?=$classeAdicional;?>">
+                    
+                    <?php
+                        $codVideo = explode('=',$info['link']);
+                        if($codVideo[1] != ''):  
+                            $imagemCapa = '';                
+                            $output = array();
+                            $url = $info['link'];
+                            preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $output);
+                            $imagemCapa = 'https://img.youtube.com/vi/' . $output[0] . '/0.jpg';
                         ?>
-                        <div class="video <?=$classeAdicional;?>">
-                            <?
-                            $codVideo = explode('=',$info['link']);
-                            if($codVideo[1] != '') { 
-                                $imagemCapa = '';                
-                                $output = array();
-                                $url = $info['link'];
-                                preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $output);
-                                $imagemCapa = 'https://img.youtube.com/vi/' . $output[0] . '/0.jpg';
-                            ?>
-                            <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="440">
-                                <img src="<?=$imagemCapa;?>" style="max-width:100%">  
-                                <div class="btPlayYoutube">
-                                    <img src="<?php echo base_url('/assets/img/playYoutube.png');?>">
-                                </div>
-                            </a> 
-                            <?php
-                            }
-                            ?>
-                            <p><?php echo $info["titulo"];?></p>
+                        <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="440">
+                            <img src="<?=$imagemCapa;?>" style="max-width:100%">  
+                            <div class="btPlayYoutube">
+                                <img src="<?php echo base_url('/assets/img/playYoutube.png');?>">
+                            </div>
+                        </a> 
+                        <?php endif ?>
+                        <p><?php echo $info["titulo"];?></p>
                         </div>
                     <?php 
                     $i++;
@@ -101,6 +132,55 @@
                 -->
                 
             </div> <!-- contRight -->
+
+            <?php
+                  
+                  if(isset($_GET['p'])) {
+                      $p = $_GET['p'];
+                  }else{
+                      $p = 0;
+                  }
+                  // echo $p;
+                  // echo '<br>PHOME: '.$pHome;
+                 
+
+                  $_SESSION['p'] = 0;
+                  if($p >= 0) {
+                      $anterior = $p - 1;
+                      $_SESSION['p'] = $anterior;
+                      // $dados['anterior'] = $anterior;
+                  }
+                  if($p <= $count) {
+                      $proxima = $p + 1;
+                      $_SESSION['p'] = $proxima;
+                      // $dados['proxima'] = $proxima;
+                  }
+                  // echo '<br>session:'.$_SESSION['p'];
+                  
+                  if($anterior <= 0) {
+                      $anterior = 0;
+                  }
+                  if($proxima >= $count){
+                      $proxima = $count;
+                  }
+                  // echo '<br>total de itens: '. $count;
+                  // echo '<br>Total de registros'. $total_registros;
+                  // echo '<br>$proxima'.$anterior;
+                  // echo '<br>$proxima'.$proxima;
+              ?><br><br>
+              <?php if($count > $total_registros):?>
+                  <?php if($p > 1):?>
+                      <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$anterior;?>">Anterior</a>
+                  <?php endif?>
+
+                  <?php if($pHome+10 <= $count):?>
+                      <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$proxima;?>">Proximo</a>
+                  <?php endif?>
+              <?php endif;?>
+              
+              
+              <?= '<br>Total de Páginas: '. $paginas?>
+                 
 
         </div>  <!-- row --> 
     </div>

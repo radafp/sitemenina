@@ -160,13 +160,36 @@ class home extends CI_Controller {
     
     public function noticia() {
         $categoria                  = $_GET['categoria'];
-        $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao']);
+
+
+        // ____________________ PAGINAÇÂO ______________________
+        if(isset($_GET['p'])) {
+            $pg = $_GET['p'];
+        }else{
+            $pg = 0;
+        }
+
+        $p = ($pg - 1) * 10;
+        if($p < 0) {
+            $p = 0;
+        }
+                
+        $dados['pHome'] = $p;
+        $dados['total_registros']   = 15;
+        $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao'], $p);
+        // dado count é ultilizado para que ocorra corretamente a paginação
+        $dados['count']             = count($dados['jornalismo']);
+        $dados['paginas']           = ceil($dados['count'] / 15); 
+        
+
+
+
+        // ______________ METODOS DO MODEL _________________________
+        
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas']        = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
-        $count                      = count($dados['jornalismo']);
-        $dados['count']             = $count;
-        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3');
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2'); 
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3');
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2'); 
         $dados['viewName']          = 'jornalismo/noticia';
         $this->load->view('Template', $dados);
         
@@ -189,23 +212,31 @@ class home extends CI_Controller {
         // $id = $_GET['id'];
         $regiao = $_SESSION['regiao'];
         
+
+         // ____________________ PAGINAÇÂO ______________________
         if(isset($_GET['p'])) {
-            $p = $_GET['p'];
+            $pg = $_GET['p'];
         }else{
+            $pg = 0;
+        }
+
+        $p = ($pg - 1) * 10;
+        if($p < 0) {
             $p = 0;
         }
-                
-        $dados['p'] = $p;
-        $dados['count']   = count($this->Novomenina-> CountAll('eventos', $_SESSION['regiao']));
-        $dados['paginas'] = ceil($dados['count'] / 4); 
-        // for($q=0; $q<$dados['paginas'];$q++) {
-        //     $dados['pagina'] = $p=0;
-        // }       
         
+        
+        $dados['pHome'] = $p;
+        $dados['count']             = count($this->Novomenina-> CountAll('eventos', $_SESSION['regiao']));
+        $dados['total_registros']   = 10;
+        $dados['paginas']           = ceil($dados['count'] / 10);      
+        
+        
+        // ______________ METODOS DO MODEL _________________________
         $dados['eventos']           = $this->Novomenina->eventos($regiao, $p);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '3');
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '2'); 
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '3');
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '2'); 
         $dados['viewName']          = 'eventos/eventos';
         $this->load->view('Template', $dados);
     }
@@ -237,8 +268,31 @@ class home extends CI_Controller {
 
     public function videos_home() {
         $regiao = $_SESSION['regiao'];
+
+         // ____________________ PAGINAÇÂO ______________________
+         if(isset($_GET['p'])) {
+            $pg = $_GET['p'];
+        }else{
+            $pg = 0;
+        }
+
+        $p = ($pg - 1) * 10;
+        if($p < 0) {
+            $p = 0;
+        }
+                
+        $dados['pHome'] = $p;
+        $dados['total_registros']   = 10;
+        $dados['videos_videos']         = $this->Novomenina-> videos($regiao, $p);
+        // dado count é ultilizado para que ocorra corretamente a paginação
+        $dados['count']             = $dados['count']             = count($this->Novomenina-> CountAll('videos', $_SESSION['regiao']));
+        $dados['paginas']           = ceil($dados['count'] / 10); 
+        
+
+
+
+        // ______________ METODOS DO MODEL _________________________
         $dados['videos']                = $this->Novomenina-> videos_home($regiao);
-        $dados['videos_videos']         = $this->Novomenina-> videos($regiao);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'videos_home', '3');
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'videos_home', '2'); 
@@ -260,8 +314,30 @@ class home extends CI_Controller {
     }
 
     public function promocoes() {
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['promocoes_impar'] = $this->Novomenina->promocoes_home($_SESSION['regiao']);
+        // ____________________ PAGINAÇÂO ______________________
+        if(isset($_GET['p'])) {
+            $pg = $_GET['p'];
+        }else{
+            $pg = 0;
+        }
+
+        $p = ($pg - 1) * 10;
+        if($p < 0) {
+            $p = 0;
+        }
+                
+        $dados['pHome'] = $p;
+        $dados['total_registros']       = 10;
+        $dados['promocoes_promocoes']   = $this->Novomenina->promocoes_promocoes($_SESSION['regiao'], $p);
+        // dado count é ultilizado para que ocorra corretamente a paginação
+        $dados['count']                 = count($this->Novomenina-> CountAll('promocoes', $_SESSION['regiao']));
+        $dados['paginas']               = ceil($dados['count'] / 10); 
+        
+
+
+
+        // ______________ METODOS DO MODEL _________________________
+        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'promocoes', '3');
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'promocoes', '2'); 
         $dados['viewName'] = 'promocoes/promocoes';
@@ -303,17 +379,65 @@ class home extends CI_Controller {
     }
 
     public function bolsa_de_empregos() {
+        // ____________________ PAGINAÇÂO ______________________
+        if(isset($_GET['p'])) {
+            $pg = $_GET['p'];
+        }else{
+            $pg = 0;
+        }
+
+        $p = ($pg - 1) * 10;
+        if($p < 0) {
+            $p = 0;
+        }
+                
+        $dados['pHome'] = $p;
+        $dados['total_registros']       = 10;
+        
+        $dados['empregos']              = $this->Novomenina->empregos($_SESSION['regiao'], $p);
+        // dado count é ultilizado para que ocorra corretamente a paginação
+        $dados['count']                 = count($this->Novomenina-> CountAll('empregos', $_SESSION['regiao']));
+        $dados['paginas']               = ceil($dados['count'] / 10); 
+        
+
+
+
+        // ______________ METODOS DO MODEL _________________________
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['empregos']          = $this->Novomenina->empregos($_SESSION['regiao']);
-        $dados['viewName']          = 'utilidade_publica/bolsa_de_empregos';
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'bolsa_de_empregos', '3');
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'bolsa_de_empregos', '2'); 
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'bolsa_de_empregos', '2');
+
+        $dados['viewName']          = 'utilidade_publica/bolsa_de_empregos';
         $this->load->view('Template', $dados);
     }
 
     public function documentos_perdidos() {
+        // ____________________ PAGINAÇÂO ______________________
+        if(isset($_GET['p'])) {
+            $pg = $_GET['p'];
+        }else{
+            $pg = 0;
+        }
+
+        $p = ($pg - 1) * 10;
+        if($p < 0) {
+            $p = 0;
+        }
+                
+        $dados['pHome'] = $p;
+        $dados['total_registros']       = 10;
+        
+        
+        $dados['documentos_perdidos']   = $this->Novomenina->documentos_perdidos($_SESSION['regiao'], $p);
+        // dado count é ultilizado para que ocorra corretamente a paginação
+        $dados['count']                 = count($this->Novomenina-> CountAll('empregos', $_SESSION['regiao']));
+        $dados['paginas']               = ceil($dados['count'] / 10); 
+        
+
+
+
+        // ______________ METODOS DO MODEL _________________________
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['documentos_perdidos']   = $this->Novomenina->documentos_perdidos($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '3');
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '2'); 
         $dados['viewName']              = 'utilidade_publica/documentos_perdidos';

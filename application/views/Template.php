@@ -224,7 +224,7 @@
                                         </div>
                                         <div id='link_jornalismo' class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                             <?php foreach($titulo_jornalismo as $info):?>
-                                                <a class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'])?>"><?php echo $info['categoriaPt']?></a>
+                                                <a class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p='. 1)?>"><?php echo $info['categoriaPt']?></a>
                                             <?php endforeach?>
                                         </div>
                                     </li>
@@ -235,23 +235,23 @@
                                         </div>
                                         <div id='link_artistico' class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                             <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/top-10')?>">Top 10</a>
-                                            <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/videos')?>">Vídeos</a>
+                                            <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/videos/?p='). 1?>">Vídeos</a>
                                         </div>
                                     </li>
                                     </li>
                                     <li class="nav-item">
-                                        <a id='link_promocoes' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/promocoes')?>">Promoções</a>
+                                        <a id='link_promocoes' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/promocoes/?p='). 1?>">Promoções</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a id='link_eventos' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/eventos/?p='). 0?>">Eventos</a>
+                                        <a id='link_eventos' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/eventos/?p='). 1?>">Eventos</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Utilidade pública
                                         </div>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                            <a id='link_bolsa_de_emprego' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos')?>">Bolsa de empregos</a>
-                                            <a id='link_documentos_perdidos' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/documentos-perdidos')?>">Documentos Perdidos</a>
+                                            <a id='link_bolsa_de_emprego' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p='). 1?>">Bolsa de empregos</a>
+                                            <a id='link_documentos_perdidos' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/documentos-perdidos/?p='). 1?>">Documentos Perdidos</a>
                                             <!-- <a id='link_campanhas' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/campanhas')?>">Campanhas</a> -->
                                         </div>
                                     </li>

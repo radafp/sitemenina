@@ -211,7 +211,7 @@ class Novomenina_model extends CI_Model{
     }
 
     // metodo sendo usado no metodo noticias do home controller
-    public function jornalismo_noticias($categoria, $regiao) {
+    public function jornalismo_noticias($categoria, $regiao, $limit = null) {
         // $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo
         //                                 FROM noticias 
         //                             INNER JOIN categorias, arquivos 
@@ -246,6 +246,7 @@ class Novomenina_model extends CI_Model{
                     AND noticias.mostrar = 1  
                 GROUP BY noticias.cod
                 ORDER by DATA DESC
+                LIMIT $limit, 15
         "); 
         return $query->result_array();
     }
@@ -403,11 +404,12 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
-    public function videos($regiao)  {
+    public function videos($regiao, $limit = null)  {
         $query = $this->db->query(
             "SELECT * FROM videos 
                 WHERE videos.regiao = '$regiao' 
-                AND videos.mostrar = 1"
+                AND videos.mostrar = 1
+                LIMIT $limit, 10"
         );
         return $query->result_array();
     }
@@ -421,7 +423,7 @@ class Novomenina_model extends CI_Model{
     // ==========================================================================================
 
 
-    // tabela promocoes puchadas na home
+    // tabela promocoes puxadas na home
     public function promocoes_home($regiao, $limit = null) {
         // $query = $this->db->query("SELECT promocoes.*, arquivos.arquivo
         //                                 FROM promocoes 
@@ -449,6 +451,38 @@ class Novomenina_model extends CI_Model{
                 GROUP BY promocoes.cod
                 ORDER BY promocoes.dataCadastro DESC
                 LIMIT 2
+        "); 
+        return $query->result_array();
+    }
+
+     // tabela promocoes puxadas na view promocoes
+     public function promocoes_promocoes($regiao, $limit = null) {
+        // $query = $this->db->query("SELECT promocoes.*, arquivos.arquivo
+        //                                 FROM promocoes 
+        //                             INNER JOIN arquivos 
+        //                                 ON promocoes.cod = arquivos.codReferencia 
+        //                                 and promocoes.regiao = '$regiao' 
+        //                                 GROUP BY promocoes.cod
+        //                                 ORDER BY promocoes.dataCadastro DESC
+        //                                 LIMIT 2"
+        // );
+        // return $query->result_array();
+        $query = $this->db->query(
+            "SELECT promocoes.*, 
+                (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                        WHERE a.codReferencia = promocoes.cod 
+                        AND a.referencia = 'promocoes' 
+                        AND a.tipo = 2 
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+            AS arquivo 
+                FROM promocoes 
+                    WHERE promocoes.regiao = '$regiao' 
+                    AND promocoes.mostrar = 1 
+                GROUP BY promocoes.cod
+                ORDER BY promocoes.dataCadastro DESC
+                LIMIT $limit, 10
         "); 
         return $query->result_array();
     }
@@ -533,7 +567,7 @@ class Novomenina_model extends CI_Model{
                     AND eventos.mostrar = 1 
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataCadastro DESC
-                LIMIT $limit, 4
+                LIMIT $limit, 10
         "); 
         return $query->result_array();
     }
@@ -630,7 +664,7 @@ class Novomenina_model extends CI_Model{
     // |                                                                                      |
     // ========================================================================================
      
-    public function empregos($regiao) {
+    public function empregos($regiao, $limit = null) {
         // $query = $this->db->query("SELECT eventos.*, arquivos.arquivo
         //                             FROM eventos 
         //                             INNER JOIN arquivos 
@@ -656,11 +690,12 @@ class Novomenina_model extends CI_Model{
                     AND empregos.mostrar = 1 
                 GROUP BY empregos.cod
                 ORDER BY empregos.dataCadastro DESC
+                LIMIT $limit, 10
         "); 
         return $query->result_array();
     }
 
-    public function documentos_perdidos($regiao) {
+    public function documentos_perdidos($regiao, $limit = null) {
         // $query = $this->db->query("SELECT eventos.*, arquivos.arquivo
         //                             FROM eventos 
         //                             INNER JOIN arquivos 
@@ -686,6 +721,7 @@ class Novomenina_model extends CI_Model{
                     AND achadoseperdidos.mostrar = 1 
                 GROUP BY achadoseperdidos.cod
                 ORDER BY achadoseperdidos.dataCadastro DESC
+                LIMIT $limit, 10
         "); 
         return $query->result_array();
     }
@@ -708,11 +744,19 @@ class Novomenina_model extends CI_Model{
     //         return null;
     //     }
     // }
+
+   
     
-    public function CountAll($tabela, $regiao){
-        $query = $this->db->query(
-            "SELECT * FROM $tabela WHERE $tabela.regiao = '$regiao' 
-            AND $tabela.mostrar = 1 ");
+    public function CountAll($tabela, $regiao, $condição = null, $valor = null){
+        if(isset($condicao) && $condicao != null) {
+            $sql = "SELECT * FROM $tabela WHERE $tabela.regiao = '$regiao' 
+                    AND $tabela.mostrar = 1 and $condição = '$valor'"; 
+        }else{
+            $sql = "SELECT * FROM $tabela WHERE $tabela.regiao = '$regiao' 
+            AND $tabela.mostrar = 1";
+        }
+               
+        $query = $this->db->query($sql);
         return $query->result_array();
     }
 

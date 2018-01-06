@@ -1,14 +1,9 @@
-<!-- <script src="<?php base_url('/assets/vendor/jquery/jquery.min.js')?>"></script>
-<script src="<?php base_url('/assets/vendor/bootstrap/js/bootstrap.min.js')?>"></script> -->
-
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script> -->
-<!-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
 <script type="text/javascript">
-    $(document).ready(function(){
+     $(document).ready(function(){
+
 
         var content = $('#content');
-        $('.link_programacao').click(function( e ){
+        $('.paginacao_noticias').click(function( e ){
             e.preventDefault();
 
             var href = $( this ).attr('href');
@@ -26,25 +21,10 @@
                     },100);
                 }
             });
+
+            window.history.pushState(null, 'Home', $(this).attr('href'));
         });
-
-        /*
-        $('.noticia').DataTable();
-        $('.mais_lidas').DataTable();
-        $(".dataTables_length").hide();
-        $("#DataTables_Table_0_filter").hide();
-        $("thead").hide();
-        $(".dataTables_info").hide();
-        $("#registros_filter").hide();
-        $("#registros_info").hide(); 
-        var count_dados = document.querySelector('#count_dados').innerHTML;
-
-        if(count_dados < 10) {
-            $("#DataTables_Table_0_paginate").hide(); 
-        }
-        */
     });
-    
 </script>
 <div class="container">
     <div class="blocoConteudo">
@@ -69,6 +49,51 @@
                     </div> 
                     <?php endforeach?>    
                 </div>
+                <?php
+                 
+                if(isset($_GET['p'])) {
+                    $p = $_GET['p'];
+                }else{
+                    $p = 0;
+                }
+                // echo $p;
+                // echo '<br>PHOME: '.$pHome;
+               
+
+                $_SESSION['p'] = 0;
+                if($p >= 0) {
+                    $anterior = $p - 1;
+                    $_SESSION['p'] = $anterior;
+                    // $dados['anterior'] = $anterior;
+                }
+                if($p <= $count) {
+                    $proxima = $p + 1;
+                    $_SESSION['p'] = $proxima;
+                    // $dados['proxima'] = $proxima;
+                }
+                // echo '<br>session:'.$_SESSION['p'];
+                
+                if($anterior <= 0) {
+                    $anterior = 0;
+                }
+                if($proxima >= $count){
+                    $proxima = $count;
+                }
+                
+                echo $count
+                ?><br><br>
+                <?php if($count > $total_registros):?>
+                    <?php if($p > 1):?>
+                    <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$anterior);?>">Anterior</a>
+                    <?php endif?>
+
+                    <?php if($pHome+10 <= $count):?>
+                    <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$proxima);?>">Proximo</a>
+                    <?php endif?>
+                <?php endif;?>
+                
+                
+                <?= '<br>Total de Páginas: '. $paginas?>
 
             </div> <!-- contLeft -->
             <div class="col-xs-12 col-md-4 contRight">

@@ -1,14 +1,9 @@
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script> -->
-<!-- <script src="<?php base_url('/assets/vendor/jquery/jquery.min.js')?>"></script>
-<script src="<?php base_url('/assets/vendor/bootstrap/js/bootstrap.min.js')?>"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
 <script type="text/javascript">
+     $(document).ready(function(){
 
-    $(document).ready(function(){
 
         var content = $('#content');
-        $('.link_descricao').click(function( e ){
+        $('.paginacao_promocoes').click(function( e ){
             e.preventDefault();
 
             var href = $( this ).attr('href');
@@ -26,6 +21,8 @@
                     },100);
                 }
             });
+
+            window.history.pushState(null, 'Home', $(this).attr('href'));
         });
     });
 </script>
@@ -40,9 +37,9 @@
                 </h1>
                 <div class='blocoPromocoes'>
                     <?php 
-                    $nPromos = count($promocoes_impar);
+                    $nPromos = count($promocoes_promocoes);
                     $i=0;
-                    foreach($promocoes_impar as $info):
+                    foreach($promocoes_promocoes as $info):
                         if($i%2 == 0)
                             $classeAdicional = '';
                         else
@@ -117,6 +114,54 @@
                 -->
                 
             </div> <!-- contRight -->
+            <?php
+                  
+                if(isset($_GET['p'])) {
+                    $p = $_GET['p'];
+                }else{
+                    $p = 0;
+                }
+                // echo $p;
+                // echo '<br>PHOME: '.$pHome;
+                
+
+                $_SESSION['p'] = 0;
+                if($p >= 0) {
+                    $anterior = $p - 1;
+                    $_SESSION['p'] = $anterior;
+                    // $dados['anterior'] = $anterior;
+                }
+                if($p <= $count) {
+                    $proxima = $p + 1;
+                    $_SESSION['p'] = $proxima;
+                    // $dados['proxima'] = $proxima;
+                }
+                // echo '<br>session:'.$_SESSION['p'];
+                
+                if($anterior <= 0) {
+                    $anterior = 0;
+                }
+                if($proxima >= $count){
+                    $proxima = $count;
+                }
+                // echo '<br>total de itens: '. $count;
+                // echo '<br>Total de registros'. $total_registros;
+                // echo '<br>$proxima'.$anterior;
+                // echo '<br>$proxima'.$proxima;
+                ?><br><br>
+
+                <?php if($count > $total_registros):?>
+                    <?php if($p > 1):?>
+                    <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/?p=').$anterior;?>">Anterior</a>
+                    <?php endif?>
+
+                    <?php if($pHome+10 <= $count):?>
+                    <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/?p=').$proxima;?>">Proximo</a>
+                    <?php endif?>
+                <?php endif;?>
+                
+                
+                <?= '<br>Total de Páginas: '. $paginas?>
 
         </div>  <!-- row --> 
     </div>
