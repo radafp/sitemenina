@@ -23,8 +23,6 @@
                     },100);
                 }
             });
-
-            window.history.pushState(null, 'Home', $(this).attr('href'));
         });
     });
 </script>
@@ -70,7 +68,7 @@
                             <label for="mensagem">Mensagem: </label><textarea name="mensagem" id="mensagem" rows="5" cols="40"></textarea>
                         </div>
                         <div class="campo">
-                            <a class='.link_descricao' href="<?php echo $action ?>"><label>&nbsp;</label><button type="submit" id="enviar">Enviar</button></a>
+                            <a class='link_descricao' href="<?php echo $action ?>"><label>&nbsp;</label><button type="submit" id="enviar">Enviar</button></a>
                         </div>
                     </form>
 
