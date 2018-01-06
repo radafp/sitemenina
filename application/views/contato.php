@@ -1,3 +1,31 @@
+<script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js');?>"></script>
+<script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
+<script type="text/javascript">
+     $(document).ready(function(){
+
+
+        var content = $('#content');
+        $('.link_descricao').click(function( e ){
+            e.preventDefault();
+
+            var href = $( this ).attr('href');
+            $.ajax({
+                url: href,
+                success: function( response ){
+                    //forçando o parser
+                    var data = $( '<div>'+response+'</div>' ).find('#content').html();
+
+                    //apenas atrasando a troca, para mostrarmos o loading
+                    window.setTimeout( function(){
+                        content.fadeOut('fast', function(){
+                            content.html( data ).fadeIn();
+                        });
+                    },100);
+                }
+            });
+        });
+    });
+</script>
 <div class="container">  
     <div class="blocoConteudo">
         <div class="row">
@@ -15,6 +43,8 @@
                     <?php if(isset($email_enviado)) { ?>
                         <div id="mensagem_enviada"><?php echo $email_enviado ?></div>
                     <?php } ?>
+
+                    
                     <form id="form_contato" action="<?php echo $action ?>" method="post">
                         <div class="campo">
                             <label for="nome">Nome: </label><input type="text" name="nome" id="nome" />
@@ -38,7 +68,7 @@
                             <label for="mensagem">Mensagem: </label><textarea name="mensagem" id="mensagem" rows="5" cols="40"></textarea>
                         </div>
                         <div class="campo">
-                            <label>&nbsp;</label><button type="submit" id="enviar">Enviar</button>
+                            <a class='link_descricao' href="<?php echo $action ?>"><label>&nbsp;</label><button type="submit" id="enviar">Enviar</button></a>
                         </div>
                     </form>
 

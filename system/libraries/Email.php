@@ -76,7 +76,7 @@ class CI_Email {
 	 *
 	 * @var	string
 	 */
-	public $smtp_host	= '';
+	public $smtp_host	= 'localhost';
 
 	/**
 	 * SMTP Username
