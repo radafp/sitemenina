@@ -567,7 +567,7 @@ class Novomenina_model extends CI_Model{
                     AND eventos.mostrar = 1 
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataCadastro DESC
-                LIMIT $limit, 10
+                LIMIT $limit, 2
         "); 
         return $query->result_array();
     }
