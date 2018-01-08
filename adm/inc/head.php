@@ -178,6 +178,30 @@
         })
         /* final tratamento submenu */
 
+        /* Tratamento submenu Publicidade*/
+        if($("li.publicidade").children("ul").hasClass("submenu"))
+        {
+            $("li.publicidade").mouseover(function(){
+                
+                var tamanhoViewport = $(window).width();
+                if (tamanhoViewport > 768) 
+                {
+                    $(this).find("ul.submenu").show();
+                    
+                    $(this).mouseout(function(){
+                        $(this).find("ul.submenu").hide();
+                    })
+                }
+            })
+        }
+        $("ul.submenu").mouseover(function(){
+            $(this).show();
+            $(this).mouseout(function(){
+                $(this).hide();
+            })
+        })
+        /* final tratamento submenu */
+
 
         $('#formRegiao').change(function(){
             var parametro = $(this).find(':selected').val();

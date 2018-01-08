@@ -19,13 +19,9 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
     // CRIAR SELECT PRA PEGAR CÓDIGO DA PERGUNTA 
     $array = array();
     $query = $conn->query(
-        "SELECT publicidades.empresa,
-                publicidades.dataInicio,
-                publicidades.dataFim,
-                publicidades.regiao,
-                publicidades.codTipo
-            FROM `publicidades`
-            WHERE publicidades.cod = $cod"
+        "SELECT *
+          FROM publicidades
+        WHERE cod = $cod"
     );
     $array = $query->fetchAll(\PDO::FETCH_ASSOC);
     
@@ -34,7 +30,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
         $empresa = $info['empresa'];
         $dataInicio = $info['dataInicio'];
         $dataFim = $info['dataFim'];
-        $regiao = $info['regiao '];
+        $regiao = $info['regiao'];
         $codTipo = $info['codTipo'];
         
         try{

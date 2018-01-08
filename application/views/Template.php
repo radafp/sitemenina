@@ -9,6 +9,12 @@
         
         <title>Radio Menina FM - A mais gosotosa de ouvir</title>
 
+        <?
+            if(!isset($_SESSION['regiao'])){
+                header("Location: http://www.radiomenina.com.br");
+            }
+        ?>
+
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/webfontkit/stylesheet.css')?>">
 
         <!-- Custom styles for this template -->
@@ -35,12 +41,42 @@
         <meta property="og:image" content="<?=isset($imagemFb) ? $imagemFb : base_url('/assets/img/logo-jm-fb.png');?>" />
 
         <link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" rel="stylesheet">
+
+        <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js');?>"></script>
+        <script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+        <!-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
+
+        <!--cantact form script-->
+        <script src="<?php echo base_url('assets/js/contact_me.js');?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('assets/js/jqBootstrapValidation.js');?>" type="text/javascript"></script>
         
-        
-        <!-- <script type="text/javascript">
-        $(document).ready(function(){
-                        
+        <script type="text/javascript">
+            $(document).ready(function(){
+
+                var content = $('#content');
+                var logo = document.querySelector('#logo');
+                $('#menu a, #logo').click(function( e ){
+                    
+                    e.preventDefault();
+
+                    var href = $( this ).attr('href');
+                    $.ajax({
+                        url: href,
+                        success: function( response ){
+                            //forçando o parser
+                            var data = $( '<div>'+response+'</div>' ).find('#content').html();
+
+                            //apenas atrasando a troca, para mostrarmos o loading
+                            window.setTimeout( function(){
+                                content.fadeOut('fast', function(){
+                                    content.html( data ).fadeIn();
+                                });
+                            },100);
+                        }
                     });
+<<<<<<< HEAD
         </script> -->
     <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js');?>"></script>
     <script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
@@ -105,6 +141,31 @@
 
         
 	</script>
+=======
+                    window.history.pushState(null, 'Home', $(this).attr('href'));
+                });
+                
+                $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+                    event.preventDefault();
+                    $(this).ekkoLightbox();
+                });
+                
+                document.getElementById('formRegiao').onchange = function(e){
+                    var regiao = document.querySelector('#regiao');
+                    window.location = regiao.value;              
+                };
+
+                /*var pr =  $('.playerRadio').contents();
+                pr.find('html').css('background', 'red') {
+                    alert('test');
+                });
+                 
+                var x = $(".playerRadio").css("color", 'blue');
+                */
+            });
+        </script>
+        
+>>>>>>> aa6a92db76d91d000b7f2aa484b6fb0539592810
     </head>
     <body class="backgroundBody_<?=$_SESSION['regiao'];?>">
 
@@ -126,8 +187,21 @@
                             </p>
                             
                         </div>-->
+                        <?php
+                            switch($_SESSION['regiao']){
+                                case 'bc':
+                                    $codRadio = '7544';
+                                    break;
+                                case 'bl':
+                                    $codRadio = '7854';
+                                    break;
+                                case 'lg':
+                                    $codRadio = '7674'; 
+                                    break;
+                            }
+                            ?>
                         <div class="col-6 col-lg-6">
-                            <iframe class="playerRadio" name="playcolor" src="http://painelstream.com/mini-player/7544" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
+                            <iframe class="playerRadio" name="playcolor" src="http://painelstream.com/mini-player/<?=$codRadio;?>" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
                         </div>
                         <div class="col-lg-6 tvMocinha">
                             <a class="btTvMocinha" href="http://radiomeninabc.portalmenina.com.br/ao-vivo/tv-mocinha-balneario-camboriu" data-toggle="lightbox" data-width="695" data-height="445">Tv Mocinha</a>
@@ -217,7 +291,7 @@
                                         </div>
                                         <div id='link_jornalismo' class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                             <?php foreach($titulo_jornalismo as $info):?>
-                                                <a class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'])?>"><?php echo $info['categoriaPt']?></a>
+                                                <a class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p='. 1)?>"><?php echo $info['categoriaPt']?></a>
                                             <?php endforeach?>
                                         </div>
                                     </li>
@@ -228,23 +302,23 @@
                                         </div>
                                         <div id='link_artistico' class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                             <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/top-10')?>">Top 10</a>
-                                            <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/videos')?>">Vídeos</a>
+                                            <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/videos/?p='). 1?>">Vídeos</a>
                                         </div>
                                     </li>
                                     </li>
                                     <li class="nav-item">
-                                        <a id='link_promocoes' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/promocoes')?>">Promoções</a>
+                                        <a id='link_promocoes' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/promocoes/?p='). 1?>">Promoções</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a id='link_eventos' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/eventos')?>">Eventos</a>
+                                        <a id='link_eventos' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/eventos/?p='). 1?>">Eventos</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Utilidade pública
                                         </div>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                            <a id='link_bolsa_de_emprego' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos')?>">Bolsa de empregos</a>
-                                            <a id='link_documentos_perdidos' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/documentos-perdidos')?>">Documentos Perdidos</a>
+                                            <a id='link_bolsa_de_emprego' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p='). 1?>">Bolsa de empregos</a>
+                                            <a id='link_documentos_perdidos' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/documentos-perdidos/?p='). 1?>">Documentos Perdidos</a>
                                             <!-- <a id='link_campanhas' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/campanhas')?>">Campanhas</a> -->
                                         </div>
                                     </li>
@@ -255,6 +329,7 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
                                         <a id='link_historia' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/historia')?>">História</a>
                                         <a id='link_equipe' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/equipe')?>">Equipe</a>
+                                        <a id='link_equipe' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/midia')?>">Comercial</a>
                                     </div>
                                     </li>
                                     <li class="nav-item">
@@ -283,18 +358,31 @@
                         
                         <div class="col-md-4">
                             <div class='face'>
-                                <a class="link_descricao" href="<?=$_SESSION['socialFace'];?>" target="_blank">
+                                <a  href="<?=$_SESSION['socialFace'];?>" target="_blank">
                                     <img src="<?php echo base_url('/assets/img/linkFaceRodape.png')?>" alt="Curta nossa Fanpage">
                                 </a>
                             </div>
                             <div class='youtube'>
-                                <a class="link_descricao" href="<?=$_SESSION['socialYoutube'];?>" target="_blank">
+                                <a href="<?=$_SESSION['socialYoutube'];?>" target="_blank">
                                     <img src="<?php echo base_url('/assets/img/linkYoutubeRodape.png')?>" alt="Inscreva-se no nosso canal">
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-8">
-                            
+                        <div class="col-md-8 insta">
+                            <div class="wrapFotoTipo1">
+                                <img src="<?php echo base_url('/assets/img/temp/insta1_'.$_SESSION['regiao']).'.jpg';?>" alt="">
+                            </div>
+                            <div class="wrapFotoTipo2">
+                                <div class="fotoTipo2">
+                                    <img src="<?php echo base_url('/assets/img/temp/insta2_'.$_SESSION['regiao']).'.jpg';?>" alt="">
+                                </div>
+                                <div class="fotoTipo2">
+                                    <img src="<?php echo base_url('/assets/img/temp/insta3_'.$_SESSION['regiao']).'.jpg';?>" alt="">
+                                </div>
+                            </div>
+                            <div class="wrapFotoTipo1">
+                                <img src="<?php echo base_url('/assets/img/temp/insta4_'.$_SESSION['regiao']).'.jpg';?>" alt="">
+                            </div>
                         </div>
 
                     </div> <!-- row -->
@@ -377,5 +465,9 @@
                 </div>
             </div>
         </footer>
+<<<<<<< HEAD
+=======
+
+>>>>>>> aa6a92db76d91d000b7f2aa484b6fb0539592810
     </body>
 </html>	

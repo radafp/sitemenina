@@ -58,9 +58,39 @@
 
 <div class="container">
     <div class="row publicidade">
-        <?php foreach($banner_tipo1 as $info):?>
-        <a class='registra_click_publicidade' codPublicidade="<?= $info['cod'];?>" href="<?= $info['link'];?>" target='__blank'><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
-        <?php endforeach?>
+        <?php 
+        if(count($banner_tipo1)>0)
+        {
+            $banners = array();
+            foreach($banner_tipo1 as $info):
+                $banners[] = array(
+                    "cod" => isset($info['cod']) ? $info['cod'] : '',
+                    "link" => isset($info['link']) ? $info['link'] : '',
+                    "arquivo" => isset($info['arquivo']) ? $info['arquivo'] : '',
+                    "linkTarget" => isset($info['linkTarget']) ? $info['linkTarget'] : '',
+                );
+            endforeach;
+            /*
+            echo "<pre>";
+                var_dump($banners);
+            echo "</pre>";
+            */
+
+            $rand_keys = array_rand($banners, 1);
+            $bannerPrincipalCod = $banners[$rand_keys]['cod'];
+            $bannerPrincipalLink = $banners[$rand_keys]['link'];
+            $bannerPrincipalArquivo = $banners[$rand_keys]['arquivo'];
+            $bannerPrincipalTarget = $banners[$rand_keys]['linkTarget'];
+        
+            ?>
+            <div class="wrapBanner">
+                <a class='registra_click_publicidade' href="<?=($bannerPrincipalLink != '') ? $bannerPrincipalLink  : '';?>" target="<?=$bannerPrincipalTarget;?>" rel="<?=$bannerPrincipalCod;?>">
+                    <img src="<?=base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo);?>" title="Publicidade">
+                </a>
+            </div>
+        <?php 
+        } 
+        ?>
     </div>
 </div> <!-- container -->
 
@@ -121,14 +151,45 @@
 
 <div class="container">
     <div class="row publicidade">
-        <div class="col-xs-12 col-md-6">
-            <?php foreach($banner_tipo2 as $info):?>
-                <a class='registra_click_publicidade' data-codPublicidade="<?= $info['cod'];?>" href=<?= $info['link']?> target='__blank'><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
-            <?php endforeach?>
-        </div>    
-        <!-- <div class="col-xs-12 col-md-6">
-            <img src="<?=base_url('/assets/img/temp/banner_home2.jpg');?>" title="Publicidade">  
-        </div> -->
+        
+        <?php
+        if(count($banner_tipo2)>0)
+        {
+            $banners = array();
+            foreach($banner_tipo2 as $info):
+                $banners[] = array(
+                    "cod" => isset($info['cod']) ? $info['cod'] : '',
+                    "link" => isset($info['link']) ? $info['link'] : '',
+                    "arquivo" => isset($info['arquivo']) ? $info['arquivo'] : '',
+                    "linkTarget" => isset($info['linkTarget']) ? $info['linkTarget'] : '',
+                );
+            endforeach;
+            /*
+            echo "<pre>";
+                var_dump($banners);
+            echo "</pre>";
+            */
+
+            $rand_keys = array_rand($banners, 2);
+            for($i=0;$i<2;$i++)
+            {
+                $bannerPrincipalCod = $banners[$rand_keys[$i]]['cod'];
+                $bannerPrincipalLink = $banners[$rand_keys[$i]]['link'];
+                $bannerPrincipalArquivo = $banners[$rand_keys[$i]]['arquivo'];
+                $bannerPrincipalTarget = $banners[$rand_keys[$i]]['linkTarget'];
+                ?>
+                <div class="col-xs-12 col-md-6">
+                    <div class="wrapBanner">
+                        <a class='registra_click_publicidade' href="<?=($bannerPrincipalLink != '') ? $bannerPrincipalLink  : '';?>" target="<?=$bannerPrincipalTarget;?>" rel="<?=$bannerPrincipalCod;?>">
+                            <img src=<?= base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo)?> title="Publicidade">
+                        </a>
+                    </div>
+                </div> 
+                <?php 
+            }
+        } 
+        ?>
+           
     </div>
 </div> <!-- container -->
 
@@ -243,9 +304,9 @@
 
 <!-- <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script> -->
-<!-- 
-<script src="<?php base_url('/assets/vendor/bootstrap/js/bootstrap.min.js')?>"></script>
-<script src="<?php base_url('/assets/vendor/jquery/jquery.min.js')?>"></script> -->
+ 
+
+
 <script type="text/javascript">
     $(document).ready(function(){
 
@@ -271,7 +332,6 @@
             });
         });
 
-      
         $("#enviar_resp").click(function(e) {
             _obj = $(this);
             _codResposta = $("input[name='resposta']:checked").val();
@@ -309,5 +369,29 @@
             }
 
         }); 
+
+        $(".registra_click_publicidade").click(function(e) {
+            
+            _obj = $(this);
+            _codPublicidade = _obj.attr('rel');
+            
+            $.ajax(
+            {
+                type: "POST",
+                async: false,
+                url: "<?=base_url('/assets/ajax/publicidade.php');?>",
+                data:
+                {
+                    cod: _codPublicidade
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { 
+                
+            });
+        });
+
+        
     })
 </script> 

@@ -97,10 +97,14 @@
         if(verifica_permissao($cod_user, $nivel, 'publicidade'))
         {
         ?>
-            <li class="<?=$id == 40 ? "menuAtivo" : "";?>" >
-                <a href="<?=ssl().ADMIN_URL."/principal.php?id=40&subid=1";?>">
+            <li class="<?=($id == 40 || $id == 41) ? "menuAtivo" : "";?> publicidade" >
+                <a style="cursor: pointer;">
                     <span>Publicidade</span>
                 </a>
+                <ul class="submenu">
+                    <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=41&subid=1";?>">Clientes</a></li>
+                    <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=40&subid=1";?>">Banners</a></li>
+                </ul>  
             </li>
         <?
         }

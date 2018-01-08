@@ -115,6 +115,10 @@ $route['balneario-camboriu/equipe'] = 'home/equipe';
 $route['blumenal/equipe'] = 'home/equipe';
 $route['lages/equipe'] = 'home/equipe';
 
+$route['balneario-camboriu/midia'] = 'home/midia';
+$route['blumenal/midia'] = 'home/midia';
+$route['lages/midia'] = 'home/midia';
+
 $route['balneario-camboriu/contato'] = 'home/contato';
 $route['blumenal/contato'] = 'home/contato';
 $route['lages/contato'] = 'home/contato';
