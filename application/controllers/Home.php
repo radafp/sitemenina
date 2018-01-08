@@ -199,7 +199,7 @@ class home extends CI_Controller {
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 2;
+        $p = ($pg - 1) * 10;
         if($p < 0) {
             $p = 0;
         }
@@ -207,8 +207,8 @@ class home extends CI_Controller {
         
         $dados['pHome'] = $p;
         $dados['count']             = count($this->Novomenina-> CountAll('eventos', $_SESSION['regiao']));
-        $dados['total_registros']   = 2;
-        $dados['paginas']           = ceil($dados['count'] / 2);      
+        $dados['total_registros']   = 10;
+        $dados['paginas']           = ceil($dados['count'] / 10);      
         
         // --------------------- METODOS DO MODEL ------------------
         //|                                                         |

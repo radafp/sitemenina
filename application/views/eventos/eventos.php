@@ -75,12 +75,9 @@
                     if(isset($proxima) && $proxima >= $count){
                         $proxima = $count;
                     }
-                    // echo 'anterior:'.$anterior;
-                    // echo '<br>atuaç:'.$p;
-                    // echo '<br>proximo:'.$proxima;
-                    // echo '<br>proximo:'.$pHome; 
-                    // echo '<br>count: '.$count;
+
                 ?><br><br>
+
                 <?php if($count > $total_registros):?>
                     <?php if($p > 1):?>
                         <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$anterior;?>">Anterior</a>
@@ -89,8 +86,7 @@
                     
                     <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$p;?>"><?=$p;?></a>
                     
-
-                    <?php if($pHome+4 <= $count):?>
+                    <?php if($pHome+10 <= $count):?>
                         <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$proxima;?>"><?=$proxima;?></a>
                         <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$proxima;?>">Proximo</a>
                     <?php endif?>

@@ -143,9 +143,13 @@
                 <?php if($count > $total_registros):?>
                     <?php if($p > 1):?>
                     <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/?p=').$anterior;?>">Anterior</a>
+                    <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/?p=').$anterior;?>"><?=$anterior;?></a>
                     <?php endif?>
 
+                    <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/?p=') .$p;?>"><?=$p;?></a>
+
                     <?php if($pHome+10 <= $count):?>
+                    <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/?p=').$proxima;?>"><?=$proxima;?></a>
                     <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/?p=').$proxima;?>">Proximo</a>
                     <?php endif?>
                 <?php endif;?>

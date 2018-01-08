@@ -106,38 +106,42 @@
             </div> <!-- contRight -->
             <?php
                   
-                    if(isset($_GET['p'])) {
-                        $p = $_GET['p'];
-                    }else{
-                        $p = 0;
-                    }
+                if(isset($_GET['p'])) {
+                    $p = $_GET['p'];
+                }else{
+                    $p = 0;
+                }
 
-                    $_SESSION['p'] = 0;
-                    if($p >= 0) {
-                        $anterior = $p - 1;
-                        $_SESSION['p'] = $anterior;
-                    }
-                    if($p <= $count) {
-                        $proxima = $p + 1;
-                        $_SESSION['p'] = $proxima;
-                    }
-                    
-                    if($anterior <= 0) {
-                        $anterior = 0;
-                    }
-                    if(isset($proxima) && $proxima >= $count){
-                        $proxima = $count;
-                    }
+                $_SESSION['p'] = 0;
+                if($p >= 0) {
+                    $anterior = $p - 1;
+                    $_SESSION['p'] = $anterior;
+                }
+                if($p <= $count) {
+                    $proxima = $p + 1;
+                    $_SESSION['p'] = $proxima;
+                }
+                
+                if($anterior <= 0) {
+                    $anterior = 0;
+                }
+                if(isset($proxima) && $proxima >= $count){
+                    $proxima = $count;
+                }
                 ?><br><br>
-                <?php if($count > $total_registros):?>
-                    <?php if($p > 1):?>
-                        <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p=').$anterior;?>">Anterior</a>
-                    <?php endif?>
+            <?php if($count > $total_registros):?>
+                <?php if($p > 1):?>
+                    <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p=').$anterior;?>">Anterior</a>
+                    <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p=').$anterior;?>"><?=$anterior;?></a>
+                <?php endif?>
 
-                    <?php if($pHome+10 <= $count):?>
-                        <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p=').$proxima;?>">Proximo</a>
-                    <?php endif?>
-                <?php endif;?>
+                <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p=') .$p;?>"><?=$p;?></a>
+
+                <?php if($pHome+10 <= $count):?>
+                    <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p=').$proxima;?>"><?=$proxima;?></a>
+                    <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p=').$proxima;?>">Proximo</a>
+                <?php endif?>
+            <?php endif;?>
                 
                 
                 <?= '<br>Total de Páginas: '. $paginas?>
