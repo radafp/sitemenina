@@ -1,7 +1,6 @@
 <script type="text/javascript">
      $(document).ready(function(){
 
-
         var content = $('#content');
         $('.paginacao_videos').click(function( e ){
             e.preventDefault();
@@ -134,7 +133,7 @@
             </div> <!-- contRight -->
 
             <?php
-                  
+                  echo $count;
                   if(isset($_GET['p'])) {
                       $p = $_GET['p'];
                   }else{
