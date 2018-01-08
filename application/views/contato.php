@@ -38,7 +38,7 @@
         </div>
         <div class="blocoHistoria">
             <div class="row">
-                <div class="col-xs-12 col-md-8">
+                <div class="col-xs-12 col-md-6">
 
                     <?php if(isset($email_enviado)) { ?>
                         <div id="mensagem_enviada"><?php echo $email_enviado ?></div>
@@ -68,55 +68,23 @@
                         <div class="control-group form-group">
                             <div class="controls">
                                 <label>Setor:</label>
-                                <select name="selectRegiao" form="form" id='regiao'>
-                                    <option value="/balneario-camboriu" <?=$_SESSION['regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
-                                    <option value="/blumenal" <?=$_SESSION['regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
-                                    <option value="/lages" <?=$_SESSION['regiao'] == 'lg' ? 'selected' : '';?> >Lages</option>
+                                <select name="setor" class="form-control" id="email" required data-validation-required-message="Por favor, selecione o setor para o qual deseja enviar a mensagem.">
+                                    <option value="comercial">Comercial</option>
+                                    <option value="jornalismo">Jornalismo</option>
                                 </select>
-                                <input type="email" class="form-control" id="email" required data-validation-required-message="Por favor, selecione o setor para o qual deseja enviar a mensagem.">
+                                <!-- <input type="email" class="form-control" id="email" required data-validation-required-message="Por favor, selecione o setor para o qual deseja enviar a mensagem."> -->
                             </div>
                         </div>
                         <div class="control-group form-group">
                             <div class="controls">
                                 <label>Mensagem:</label>
-                                <textarea rows="10" cols="100" class="form-control" id="mensagem" required data-validation-required-message="Por favor, digite sua mensagem." maxlength="999" style="resize:none"></textarea>
+                                <textarea rows="7" cols="100" class="form-control" id="mensagem" required data-validation-required-message="Por favor, digite sua mensagem." maxlength="999" style="resize:none"></textarea>
                             </div>
                         </div>
                         <div id="success"></div>
                         <!-- For success/fail messages -->
                         <button type="submit" class="btn btn-primary" id="enviar">Enviar</button>
                     </form>
-                    <!--
-                        <br><br>
-                    <form id="form_contato" action="<?php echo $action ?>" method="post">
-                        <div class="campo">
-                            <label for="nome">Nome: </label><input type="text" name="nome" id="nome" />
-                        </div>
-                        <div class="campo">
-                            <label for="email">E-mail: </label><input type="text" name="email" id="email" />
-                        </div>
-                        <div class="campo">
-                            <label for="telefone">Telefone: </label><input type="text" name="telefone" id="telefone" />
-                        </div>
-                        <div class="campo">
-                            <label for="cidade">Cidade: </label><input type="text" name="cidade" id="cidade" />
-                        </div>
-                        <div class="campo">
-                            <label for="estado">Estado: </label><input type="text" name="estado" id="estado" />
-                        </div>
-                        <div class="campo">
-                            <label for="assunto">Assunto: </label><input type="text" name="assunto" id="assunto" />
-                        </div>
-                        <div class="campo">
-                            <label for="mensagem">Mensagem: </label><textarea name="mensagem" id="mensagem" rows="5" cols="40"></textarea>
-                        </div>
-                        <div class="campo">
-                            <a class='link_descricao' href="<?php echo $action ?>"><label>&nbsp;</label>
-                            <button type="submit" id="enviar">Enviar</button></a>
-                        </div>
-                        
-                    </form>
-                    -->
 
                 </div>
 

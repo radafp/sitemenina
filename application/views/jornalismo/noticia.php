@@ -1,7 +1,6 @@
 <script type="text/javascript">
      $(document).ready(function(){
 
-
         var content = $('#content');
         $('.paginacao_noticias, .link_descricao').click(function( e ){
             e.preventDefault();
