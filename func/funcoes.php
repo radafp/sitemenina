@@ -119,8 +119,9 @@ function registrarStatsClickImovel($codImovel = 0)
         $sql = "UPDATE statsImoveis SET nClicks = '$nClicks' WHERE cod = {$cod}";
 
         $update = mysql_query($sql,$conexao);
-        if($update)
-            break;
+        if($update) {
+            die;
+        }
     }
 }
 ?>
