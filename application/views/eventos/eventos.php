@@ -26,33 +26,45 @@
         });
     });
 </script>
-<div class="container">
-<div class="blocoConteudo">
-    <div class="row">
+<div class="container"> 
+    <div class="blocoConteudo">
+        <div class="row">
 
-        <div class="col-xs-12 col-md-8 contLeft">
+            <div class="col-xs-12 col-md-8 contLeft">
 
-            <h1 class="tituloPadrao1">
-                <span>Eventos</span>
-            </h1>
-            <div class="blocoEventos">
-                <?php foreach($eventos as $info):?>
-                    <div class="evento">
-                        <a class='link_eventos' href="<?php echo base_url('home/descricao_eventos?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
-                            <img src="<?php echo base_url('/assets/arquivos/evetos/'.$info['arquivo'])?>" alt="">
-                            <h3><?php echo $info['tituloPt']?></h3>
-                            <span><?php echo 'HORÀRIO:'.date('d/m/Y', strtotime($info['dataInicio']))?></span>
-                        </a>
-                        <?php
-                            $proximo = 4;
-                            $anterior = -4;
-                        ?>
-                    </div>
-                <?php endforeach;?>
-                    <!-- <a href="<?php echo base_url('/balneario-camboriu/eventos/p='.$p = $proximo);?>">Proximo</a> -->
+                <h1 class="tituloPadrao1">
+                    <span>Eventos</span>
+                </h1>
+                <div class="blocoEventos">
+                    <?php 
+                    $nEventos = count($eventos);
+                    $i=0;
+                    foreach($eventos as $info):
+                        if($i%2 == 0)
+                            $classeAdicional = '';
+                        else
+                            $classeAdicional = ' ultimo';
+                    ?>
+                        <div class="evento">
+                            <a class='link_eventos' href="<?php echo base_url('home/descricao_eventos?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
+                                <div class="foto">
+                                    <img src="<?php echo base_url('/assets/arquivos/eventos/'.$info['arquivo'])?>" alt="">
+                                </div>  
+                                <h3><?php echo $info['tituloPt']?></h3>
+                                <span><?php echo 'Data:'.date('d/m/Y', strtotime($info['dataInicio']))?></span>
+                            </a>
+                            <?php
+                                $proximo = 4;
+                                $anterior = -4;
+                            ?>
+                        </div>
+                    <?php 
+                    $i++;
+                    endforeach;?>
                 </div>
-                <?php
-                  
+                <div class="paginacao">
+                    <?php
+                    
                     if(isset($_GET['p'])) {
                         $p = $_GET['p'];
                     }else{
@@ -75,33 +87,34 @@
                     if(isset($proxima) && $proxima >= $count){
                         $proxima = $count;
                     }
+                    ?>
 
-                ?><br><br>
-
-                <?php if($count > $total_registros):?>
-                    <?php if($p > 1):?>
-                        <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$anterior;?>">Anterior</a>
-                        <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$anterior;?>"><?=$anterior;?></a>
-                    <?php endif?>
-                    
-                    <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$p;?>"><?=$p;?></a>
-                    
-                    <?php if($pHome+10 <= $count):?>
-                        <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$proxima;?>"><?=$proxima;?></a>
-                        <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$proxima;?>">Proximo</a>
-                    <?php endif?>
-                <?php endif;?>
-                
-                
-                <?= '<br>Total de Páginas: '. $paginas?>
-
-                <?php foreach($banner_tipo2 as $info):?>
-                    <a class='registra_click_publicidade' codPublicidade="<?= $info['cod'];?>" href=<?= $info['link']?> target='__blank'><img src=<?= base_url('/assets/arquivos/publicidade/'.$info['arquivo'])?> title="Publicidade"></a>
-                <?php endforeach;?>
-            </div>
+                    <?php if($count > $total_registros):?>
+                        <?php if($p > 1):?>
+                        <div class='pagina paginahover'>
+                            <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$anterior;?>"><</a>
+                        </div>
+                        <div class='pagina'>
+                            <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$anterior;?>"><?=$anterior;?></a>
+                        </div>    
+                        <?php endif?>
+                        <div class='pagina paginahover'>
+                            <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$p;?>"><?=$p;?></a>
+                        </div>
+                        
+                        <?php if($pHome+10 <= $count):?>
+                            <div class='pagina'>
+                                <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$proxima;?>"><?=$proxima;?></a>
+                            </div>
+                            <div class='pagina paginahover'>
+                                <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$proxima;?>">></a>
+                            </div>
+                        <?php endif?>
+                    <?php endif;?>
+                </div>
             </div> <!-- contLeft -->
             <div class="col-xs-12 col-md-4 contRight">
-                
+                    
                 <?php
                 $nbanners = count($banner_tipo3);
                 if($nbanners>0)
@@ -145,12 +158,6 @@
                     echo '</div>';
                 } 
                 ?>
-                <!--
-                <h1 class="tituloPadrao3">
-                    <span>Playlist Radio Menina</span>
-                    aqui
-                </h1>
-                -->
                 
             </div> <!-- contRight -->
 

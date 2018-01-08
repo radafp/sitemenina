@@ -48,13 +48,16 @@
                     </div> 
                     <?php endforeach?>    
                 </div>
-                <?php
+                <div class="paginacao">
+                    <?php
+                    
                     if(isset($_GET['p'])) {
                         $p = $_GET['p'];
                     }else{
                         $p = 0;
-                        $_SESSION['p'] = 0;
-                    }            
+                    }
+
+                    $_SESSION['p'] = 0;
                     if($p >= 0) {
                         $anterior = $p - 1;
                         $_SESSION['p'] = $anterior;
@@ -63,24 +66,38 @@
                         $proxima = $p + 1;
                         $_SESSION['p'] = $proxima;
                     }
+                    
                     if($anterior <= 0) {
                         $anterior = 0;
                     }
-                    if($proxima >= $count){
+                    if(isset($proxima) && $proxima >= $count){
                         $proxima = $count;
                     }
-                ?>
-                <?php if($count > $total_registros):?>
-                    <?php if($p > 1):?>
-                        <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$anterior);?>">Anterior</a>
+                    ?>
+
+                    <?php if($count > $total_registros):?>
+                        <?php if($p > 1):?>
+                        <div class='pagina paginahover'>
+                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$anterior);?>"><</a>
+                        </div>
+                        <div class='pagina'>
+                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$anterior);?>"><?=$anterior;?></a>
+                        </div>    
+                        <?php endif?>
+                        <div class='pagina paginahover'>
+                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=') .$p;?>"><?=$p;?></a>
+                        </div>
+                        
+                        <?php if($pHome+10 <= $count):?>
+                            <div class='pagina'>
+                                <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$proxima);?>"><?=$proxima;?></a>
+                            </div>
+                            <div class='pagina paginahover'>
+                                <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$proxima);?>">></a>
+                            </div>
+                        <?php endif?>
                     <?php endif;?>
-                    <?php if($pHome+10 <= $count):?>
-                        <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$proxima);?>">Proximo</a>
-                    <?php endif;?>
-                <?php endif;?>
-                
-                
-                <?= '<br>Total de Páginas: '. $paginas?>
+                </div>
 
             </div> <!-- contLeft -->
             <div class="col-xs-12 col-md-4 contRight">
@@ -99,11 +116,7 @@
                                 "linkTarget" => isset($info['linkTarget']) ? $info['linkTarget'] : '',
                             );
                         endforeach;
-                        /*
-                        echo "<pre>";
-                            var_dump($banners);
-                        echo "</pre>";
-                        */
+
                         if($nbanners<4){
                             $numeroListagem = $nbanners;
                         }
@@ -165,12 +178,6 @@
                     "linkTarget" => isset($info['linkTarget']) ? $info['linkTarget'] : '',
                 );
             endforeach;
-            /*
-            echo "<pre>";
-                var_dump($banners);
-            echo "</pre>";
-            */
-
             $rand_keys = array_rand($banners, 2);
             for($i=0;$i<2;$i++)
             {

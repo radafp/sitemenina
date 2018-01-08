@@ -1,8 +1,12 @@
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script> -->
-<!-- <script src="<?php base_url('/assets/vendor/jquery/jquery.min.js')?>"></script>
-<script src="<?php base_url('/assets/vendor/bootstrap/js/bootstrap.min.js')?>"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script> -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.11';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
 <script type="text/javascript">
     $(document).ready(function(){
 
@@ -53,6 +57,22 @@
                         <p><?php echo $info['descricaoPt']?></p>
 
                     <?php endforeach?>
+
+                    <?php
+                    switch($_SESSION['regiao']){
+                        case 'bc':
+                            $linkPluginFace = 'https://www.facebook.com/radiomeninabc';
+                            break;
+                        case 'bl':
+                            $linkPluginFace = 'https://www.facebook.com/radiomeninablu';
+                            break;
+                        case 'lg':
+                            $linkPluginFace = 'https://www.facebook.com/meninafmlages'; 
+                            break;
+                    }
+                    ?>
+
+                    <div class="fb-comments" data-href="<?=$linkPluginFace;?>" data-numposts="4"  data-width="100%"></div>
 
                 </div>
                 
