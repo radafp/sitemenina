@@ -133,37 +133,41 @@
             </div> <!-- contRight -->
 
             <?php
-                  echo $count;
-                  if(isset($_GET['p'])) {
-                      $p = $_GET['p'];
-                  }else{
-                      $p = 0;
-                  }
-                  $_SESSION['p'] = 0;
-                  if($p >= 0) {
-                      $anterior = $p - 1;
-                      $_SESSION['p'] = $anterior;
-                  }
-                  if($p <= $count) {
-                      $proxima = $p + 1;
-                      $_SESSION['p'] = $proxima;
-                  }
-                  
-                  if($anterior <= 0) {
-                      $anterior = 0;
-                  }
-                  if(isset($proxima) && $proxima >= $count){
-                      $proxima = $count;
-                  }
+                if(isset($_GET['p'])) {
+                    $p = $_GET['p'];
+                }else{
+                    $p = 0;
+                }
+                $_SESSION['p'] = 0;
+                if($p >= 0) {
+                    $anterior = $p - 1;
+                    $_SESSION['p'] = $anterior;
+                }
+                if($p <= $count) {
+                    $proxima = $p + 1;
+                    $_SESSION['p'] = $proxima;
+                }
+                
+                if($anterior <= 0) {
+                    $anterior = 0;
+                }
+                if(isset($proxima) && $proxima >= $count){
+                    $proxima = $count;
+                }
               ?><br><br>
               <?php if($count > $total_registros):?>
-                  <?php if($p > 1):?>
-                      <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$anterior;?>">Anterior</a>
-                  <?php endif?>
+                <?php if($p > 1):?>
+                    <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$anterior;?>">Anterior</a>
+                    <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$anterior;?>"><?=$anterior;?></a>
 
-                  <?php if($pHome+10 <= $count):?>
-                      <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$proxima;?>">Proximo</a>
-                  <?php endif?>
+                <?php endif?>
+
+                <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$p;?>"><?=$p;?></a>
+
+                <?php if($pHome+10 <= $count):?>
+                    <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$proxima;?>"><?=$proxima;?></a>
+                    <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$proxima;?>">Proximo</a>
+                <?php endif?>
               <?php endif;?>
               
               

@@ -36,18 +36,6 @@
                 </h1>
                 <div class="blocoNoticias">
                     <?php foreach($jornalismo as $info):?>
-<<<<<<< HEAD
-                        <div class="noticia">
-                            <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
-                                <div class="foto">
-                                    <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
-                                </div>
-                                <h3><?php echo $info['tituloPt']?></h3>
-                                <span class="categoria" style="background-color:#<?=$info['cor'];?>; color:<?=(isset($info['corTexto']) != '') ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></span>
-                                <p><?=date('d/m/Y', strtotime($info['data']));?></p>
-                            </a>
-                        </div> 
-=======
                     <div class="noticia">
                         <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
                             <div class="foto">
@@ -58,7 +46,6 @@
                             <p><?=date('d/m/Y', strtotime($info['data']));?></p>
                         </a>
                     </div> 
->>>>>>> 4fbf7d80343b2bd0bcf4446257e6b3fe574c8c28
                     <?php endforeach?>    
                 </div>
                 <?php
@@ -86,8 +73,13 @@
                 <?php if($count > $total_registros):?>
                     <?php if($p > 1):?>
                         <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$anterior);?>">Anterior</a>
+                        <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$anterior);?>"><?=$anterior;?></a>
                     <?php endif;?>
+
+                    <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$p);?>"><?=$p;?></a>
+
                     <?php if($pHome+10 <= $count):?>
+                        <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$proxima);?>"><?=$proxima;?></a>
                         <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$proxima);?>">Proximo</a>
                     <?php endif;?>
                 <?php endif;?>
