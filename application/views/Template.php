@@ -288,6 +288,13 @@
            <div class="redes redes_<?=$_SESSION['regiao'];?>">
 
                 <div class="container">
+                    <!-- 
+                        <div class="row envieNoticia">
+                        <h2>Envie sua notícia</h2>
+                        <a id='link_contato' class="btEnvieConteudo" href="<?php echo base_url($_SESSION['city'].'/contato')?>">Quero participar</a>
+                        <hr style="width: 100%;padding: 20px 0;">
+                    </div>
+                        -->
                     <div class="row">
                         
                         <div class="col-md-4">

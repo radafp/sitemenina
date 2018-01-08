@@ -256,10 +256,13 @@ a, a:hover {
   min-height: 450px;
 }
 
+.btEnvieConteudo{
+
+}
 
 /* --- Fotter  --- */
 .redes{
-  padding:100px;
+  padding: 60px 100px;
 }
 .redes.redes_bc{
   background: url(../img/redes_bc.jpg);
@@ -274,8 +277,8 @@ a, a:hover {
   font-family: 'microgrammadmedextregular';
   font-size: 24px;
   padding-bottom: 30px;
-  border-bottom: 1px solid #333; 
-  border-opacity:0.7;
+  border-bottom: 1px solid #333333; 
+  border-opacity: 0.7;
 }
 .redes span{
   display: block;
@@ -457,4 +460,44 @@ div.paginanavbloco a.irPagina{
   text-align: center;
   top: 5px;
   width: 14px;
+}
+
+.btEnvieConteudo_bc{
+  background-color: #2d82a5;
+  float: right;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 25px;
+}
+.btEnvieConteudo_bl{
+  background-color: #eb8e31;
+  float: right;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 25px;
+}
+.btEnvieConteudo_lg{
+  background-color: #27821d;
+  float: right;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #ffffff;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 25px;
 }
