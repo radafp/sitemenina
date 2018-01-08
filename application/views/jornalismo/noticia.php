@@ -37,6 +37,7 @@
                 </h1>
                 <div class="blocoNoticias">
                     <?php foreach($jornalismo as $info):?>
+<<<<<<< HEAD
                         <div class="noticia">
                             <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
                                 <div class="foto">
@@ -47,6 +48,18 @@
                                 <p><?=date('d/m/Y', strtotime($info['data']));?></p>
                             </a>
                         </div> 
+=======
+                    <div class="noticia">
+                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                            <div class="foto">
+                                <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
+                            </div>
+                            <h3><?php echo $info['tituloPt']?></h3>
+                            <span class="categoria" style="background-color:#<?=$info['cor'];?>; color:<?=(isset($info['corTexto']) != '') ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></span>
+                            <p><?=date('d/m/Y', strtotime($info['data']));?></p>
+                        </a>
+                    </div> 
+>>>>>>> 4fbf7d80343b2bd0bcf4446257e6b3fe574c8c28
                     <?php endforeach?>    
                 </div>
                 <?php

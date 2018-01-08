@@ -76,6 +76,7 @@
                             },100);
                         }
                     });
+            
                     window.history.pushState(null, 'Home', $(this).attr('href'));
                 });
                 
@@ -398,6 +399,5 @@
                 </div>
             </div>
         </footer>
-
     </body>
 </html>	
