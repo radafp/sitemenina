@@ -76,72 +76,7 @@
                             },100);
                         }
                     });
-<<<<<<< HEAD
-        </script> -->
-    <script src="<?php echo base_url('assets/vendor/jquery/jquery.min.js');?>"></script>
-    <script src="<?php echo base_url('assets/vendor/bootstrap/js/bootstrap.bundle.min.js');?>"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-
-            var content = $('#content');
-            var logo = document.querySelector('#logo');
-            $('#menu a,  #logo').click(function( e ){
-                
-                e.preventDefault();
-
-                var href = $( this ).attr('href');
-                $.ajax({
-                    url: href,
-                    success: function( response ){
-                        //forçando o parser
-                        var data = $( '<div>'+response+'</div>' ).find('#content').html();
-
-                        //apenas atrasando a troca, para mostrarmos o loading
-                        window.setTimeout( function(){
-                            content.fadeOut('fast', function(){
-                                content.html( data ).fadeIn();
-                            });
-                        },100);
-                    }
-                });
-                window.history.pushState(null, 'Home', $(this).attr('href'));
-            });
-
-            $(".registra_click_publicidade").mouseover(function(e) {
-                _obj = $(this);
-                _codPublicidade = _obj.data('codPublicidade');
-                
-                // $.ajax(
-                // {
-                //     type: "POST",
-                //     async: false,
-                //     url: "<?= base_url('/assets/ajax/publicidade.php');?>",
-                //     data:
-                //     {
-                //         cod: _codPublicidade,
-                //     },
-                //     dataType: "json"
-                // })
-                alert(_codPublicidade);
-            }); 
-                                         
-        });
-
-        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
-            event.preventDefault();
-            $(this).ekkoLightbox();
-        });
-        
-        document.getElementById('formRegiao').onchange = function(e){
-            var regiao = document.querySelector('#regiao');
-            window.location = regiao.value;              
-        };
-
-        
-	</script>
-=======
+            
                     window.history.pushState(null, 'Home', $(this).attr('href'));
                 });
                 
@@ -165,7 +100,6 @@
             });
         </script>
         
->>>>>>> aa6a92db76d91d000b7f2aa484b6fb0539592810
     </head>
     <body class="backgroundBody_<?=$_SESSION['regiao'];?>">
 
@@ -465,9 +399,5 @@
                 </div>
             </div>
         </footer>
-<<<<<<< HEAD
-=======
-
->>>>>>> aa6a92db76d91d000b7f2aa484b6fb0539592810
     </body>
 </html>	
