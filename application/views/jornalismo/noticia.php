@@ -73,13 +73,8 @@
                 <?php if($count > $total_registros):?>
                     <?php if($p > 1):?>
                         <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$anterior);?>">Anterior</a>
-                        <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$anterior);?>"><?=$anterior;?></a>
                     <?php endif;?>
-
-                    <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$p);?>"><?=$p;?></a>
-
                     <?php if($pHome+10 <= $count):?>
-                        <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$proxima);?>"><?=$proxima;?></a>
                         <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$proxima);?>">Proximo</a>
                     <?php endif;?>
                 <?php endif;?>
