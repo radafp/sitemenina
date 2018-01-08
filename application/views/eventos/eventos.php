@@ -51,7 +51,7 @@
                                     <img src="<?php echo base_url('/assets/arquivos/eventos/'.$info['arquivo'])?>" alt="">
                                 </div>  
                                 <h3><?php echo $info['tituloPt']?></h3>
-                                <span><?php echo 'Data:'.date('d/m/Y', strtotime($info['dataInicio']))?></span>
+                                <span><?php echo 'Inicio:'.date('d/m/Y', strtotime($info['dataInicio']))?></span>
                             </a>
                             <?php
                                 $proximo = 4;
