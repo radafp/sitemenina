@@ -793,7 +793,59 @@
     margin-right: auto;
 }
 
+
+.blocoContato .btContato_bc{
+    background-color: #2d82a5;
+    float: right;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 25px;
+}
+.blocoContato .btContato_bl{
+    background-color: #eb8e31;
+    float: right;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 25px;
+}
+.blocoContato .btContato_lg{
+    background-color: #27821d;
+    float: right;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 25px;
+}
 .mapaContato{
     margin-top: 50px;
     text-align: center
 }
+
+background-color: #27821d;
+float: right;
+text-align: center;
+text-decoration: none;
+text-transform: uppercase;
+color: #ffffff;
+border-radius: 5px;
+border: none;
+font-weight: bold;
+cursor: pointer;
+padding: 10px 25px;

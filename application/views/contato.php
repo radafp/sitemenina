@@ -80,7 +80,7 @@
                         </div>
                         <div id="success"></div>
                         <!-- For success/fail messages -->
-                        <button type="submit" class="btn btn-primary" id="enviar">Enviar</button>
+                        <button type="submit" class="btn btn-primary btContato_<?=$_SESSION['regiao'];?>" id="enviar">Enviar</button>
                     </form>
 
                 </div>
@@ -90,32 +90,103 @@
                 <h1 class="tituloPadrao3">
                     <span>Contatos</span>
                 </h1> 
-                <p>
-                    Whatsapp
+                <?php if($_SESSION['regiao'] == 'bc'){ ?>
+                    <p>
+                        <b>WhatsApp:</b><br>
+                        <a class="whatsapp">
+                            <i class="fa fa-whatsapp"></i>
+                            <span>Jornalismo/ utilidade pública: (47) 99174.1005</span>
+                        </a><br>
+                        <a class="whatsapp">
+                            <i class="fa fa-whatsapp"></i>
+                            <span>Artístico: (47) 99138-1005</span>
+                        </a>
+                    </p>
+                    <p>
+                        <b>E-mails:</b><br>
+                        <i class="fa fa-envelope" aria-hidden="true"></i> Comercial: comercial@radiomenina.com.br<br>
+                        <i class="fa fa-envelope" aria-hidden="true"></i> Jornalismo/utilidade pública: jornalismo@radiomenina.com.br
+                    </p>
+                    <p>
+                        <b>Telefone:</b><br>
+                        <i class="fa fa-phone" aria-hidden="true"></i>(47) 2103.6000
+                    </p>
+                    <p>
+                        <b>Endereco:</b><br>
+                        Av. do Estado nº 1555 Edif. Work Center<br>
+                        Pioneiros - Balneário Camboriú - SC<br>
+                        CEP: 88331-900 
+                    </p>
+                <?
+                } if($_SESSION['regiao'] == 'bl'){ ?>
 
-                    Jornalismo/ utilidade pública: (47) 99174-1005
-
-                    Artístico: (47) 99138-1005
-
-                    Redes Sociais
-
-                    Facebook: Rádio Menina BC (https://www.facebook.com/radiomeninabc)
-
-                    Instagram: @meninafm
-
-                    Comercial
-
-                    comercial@radiomenina.com.br
-
-                    Jornalismo/utilidade pública
-
-                    jornalismo@radiomenina.com.br
-                </p>
+                    <p>
+                        <b>WhatsApp:</b><br>
+                        <a class="whatsapp">
+                            <i class="fa fa-whatsapp"></i>
+                            <span>Jornalismo/ utilidade pública: (47) 99128.1070</span>
+                        </a><br>
+                        <a class="whatsapp">
+                            <i class="fa fa-whatsapp"></i>
+                            <span>Artístico: (47) 99607.9598</span>
+                        </a>
+                    </p>
+                    <p>
+                        <b>E-mails:</b><br>
+                        <i class="fa fa-envelope" aria-hidden="true"></i> Comercial: opecblu@radiomenina.com.br<br>
+                        <i class="fa fa-envelope" aria-hidden="true"></i> Jornalismo/utilidade pública: jornalismoblu@radiomenina.com.br
+                    </p>
+                    <p>
+                        <b>Telefone:</b><br>
+                        <i class="fa fa-phone" aria-hidden="true"></i>(47) 2102.6500
+                    </p>
+                    <p>
+                        <b>Endereco:</b><br>
+                        Rua 7 de Setembro nº 473<br>
+                        Boa Vista - Blumenau - SC<br>
+                        CEP: 89010-002  
+                    </p>
+                <?php
+                } 
+                if($_SESSION['regiao'] == 'lg'){ 
+                ?> 
+                    <p>
+                        <b>E-mails:</b><br>
+                        <i class="fa fa-envelope" aria-hidden="true"></i> Comercial: comerciallages@radiomenina.com.br<br>
+                        <i class="fa fa-envelope" aria-hidden="true"></i> Jornalismo/utilidade pública: jornalismolages@radiomenina.com.br
+                    </p>
+                    <p>
+                        <b>Telefone:</b><br>
+                        <i class="fa fa-phone" aria-hidden="true"></i>(47) 2102.6500
+                    </p>
+                    <p>
+                        <b>Endereco:</b><br>
+                        Av. Luís de Camões nº 1370<br>
+                        Coral - Lages - SC<br>
+                        CEP: 88523-000  
+                    </p>
+                <?
+                }    
+                ?>
             </div>
         </div>
         <div class="row mapaContato">
             <div class="col-12 mapa">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.3968853302304!2d-48.64014697011674!3d-26.970250310724023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d8c9f603000029%3A0x373f40990bc2ad4!2sAv.+do+Estado%2C+1555+-+Centro%2C+Balne%C3%A1rio+Cambori%C3%BA+-+SC!5e0!3m2!1spt-BR!2sbr!4v1515414682409" width="95%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <?php if($_SESSION['regiao'] == 'bc'){ ?>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.3968853302304!2d-48.64014697011674!3d-26.970250310724023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d8c9f603000029%3A0x373f40990bc2ad4!2sAv.+do+Estado%2C+1555+-+Centro%2C+Balne%C3%A1rio+Cambori%C3%BA+-+SC!5e0!3m2!1spt-BR!2sbr!4v1515414682409" width="95%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <?php
+                } 
+                if($_SESSION['regiao'] == 'bl'){ 
+                ?>    
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2115.225932593099!2d-49.063051484546776!3d-26.923424986706134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94df18eb3118bc41%3A0xd5e3b46275ed8eca!2sR.+Sete+de+Setembro%2C+473+-+Centro%2C+Blumenau+-+SC!5e0!3m2!1spt-BR!2sbr!4v1515414780872" width="95%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <?php
+                } 
+                if($_SESSION['regiao'] == 'lg'){ 
+                ?>     
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.8313857094868!2d-50.30712573044196!3d-27.79849676965969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e0192af2b9834d%3A0xf89fed5d2ae08eb1!2sAv.+Lu%C3%ADs+de+Cam%C3%B5es%2C+1370+-+Conta+Dinheiro%2C+Lages+-+SC!5e0!3m2!1spt-BR!2sbr!4v1515415451042" width="95%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <?
+                }    
+                ?>
             </div>
         </div>
     </div>
