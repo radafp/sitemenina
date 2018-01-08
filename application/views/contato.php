@@ -28,16 +28,14 @@
 </script>
 <div class="container">  
     <div class="blocoConteudo">
-        <div class="row">
 
-            <div class="col-12 contLeft">
-                <h1 class="tituloPadrao1">
-                    <span>Contato</span>
-                </h1>
-            </div>
-        </div>
-        <div class="blocoHistoria">
+        <div class="blocoContato">
             <div class="row">
+                <div class="col-12 contLeft">
+                    <h1 class="tituloPadrao1">
+                        <span>Contato</span>
+                    </h1>
+                </div>
                 <div class="col-xs-12 col-md-6">
 
                     <?php if(isset($email_enviado)) { ?>
@@ -88,8 +86,41 @@
 
                 </div>
 
+                <div class="col-xs-12 col-md-6">
+                    <h1 class="tituloPadrao3">
+                        <span>Contatos</span>
+                    </h1> 
+                    <p>
+                        Whatsapp
+
+                        Jornalismo/ utilidade pública: (47) 99174-1005
+
+                        Artístico: (47) 99138-1005
+
+                        Redes Sociais
+
+                        Facebook: Rádio Menina BC (https://www.facebook.com/radiomeninabc)
+
+                        Instagram: @meninafm
+
+                        Comercial
+
+                        comercial@radiomenina.com.br
+
+                        Jornalismo/utilidade pública
+
+                        jornalismo@radiomenina.com.br
+                    </p>
+                        
+                </div>
+
             </div> <!-- contLeft -->
 
-        </div>  <!-- row --> 
+            <div class="row">
+                <div class="col-12 mapa">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3555.890978071353!2d-48.64106568495376!3d-26.97035158310281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94d8c9f603000029%3A0x373f40990bc2ad4!2sAv.+do+Estado%2C+1555+-+Centro%2C+Balne%C3%A1rio+Cambori%C3%BA+-+SC!5e0!3m2!1spt-BR!2sbr!4v1515408906360" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div> <!-- bloco contato -->
     </div>
 </div> <!-- container --> 
