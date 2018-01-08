@@ -1,4 +1,28 @@
+<script type="text/javascript">
+    $(document).ready(function(){
 
+        var content = $('#content');
+        $('.link_contato').click(function( e ){
+            e.preventDefault();
+
+            var href = $( this ).attr('href');
+            $.ajax({
+                url: href,
+                success: function( response ){
+                    //forçando o parser
+                    var data = $( '<div>'+response+'</div>' ).find('#content').html();
+
+                    //apenas atrasando a troca, para mostrarmos o loading
+                    window.setTimeout( function(){
+                        content.fadeOut('fast', function(){
+                            content.html( data ).fadeIn();
+                        });
+                    },100);
+                }
+            });
+        });
+    });
+</script>
 <div class="container">
     <div class="blocoConteudo">
         <div class="row">
@@ -14,7 +38,7 @@
                     89% da população brasileira é ouvinte de rádio, tornando este veículo de indiscutível relevância, grande geradora de negócios.
                     </p>
                     <p>
-                    Anuncie na rádio. Baixe nosso mídia kit e obtenha os melhores resultados.
+                    Anuncie na rádio. Clique <a class='link_contato' href="<?php echo base_url($_SESSION['city'].'/contato')?>">aqui</a> e solicite mais informações.
                     </p>
                 </div> 
 
@@ -56,7 +80,7 @@
                             ?>
                             <div class="wrapBanner">
                                 <a class='registra_click_publicidade' href="<?=($bannerPrincipalLink != '') ? $bannerPrincipalLink  : '';?>" target="<?=$bannerPrincipalTarget;?>" rel="<?=$bannerPrincipalCod;?>">
-                                    <img src=<?= base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo)?> title="Publicidade">
+                                    <img src=<?=base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo);?> title="Publicidade">
                                 </a>
                             </div>
                             <?php 

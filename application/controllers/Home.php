@@ -486,12 +486,12 @@ class home extends CI_Controller {
         $assunto = $this->input->post('assunto', TRUE);
 
         $config['protocol'] = 'smtp';
-        $config['smtp_host'] = 'ssl://smtp.googlemail.com';
-        $config['smtp_port'] = '465';
+        $config['smtp_host'] = 'smtp.agenciaset.com.br';
+        $config['smtp_port'] = '587';
         $config['charset'] = 'utf8';
-        $config['smtp_user'] = 'email@gmail.com';
-        $config['smtp_from_name'] = 'FROM NAME';
-        $config['smtp_pass'] = 'senhagmail';
+        $config['smtp_user'] = 'webmaster@agenciaset.com.br';
+        $config['smtp_from_name'] = 'Radio Menina';
+        $config['smtp_pass'] = 'agEncia445';
         $config['wordwrap'] = TRUE;
         $config['newline'] = "\r\n";
         $config['mailtype'] = 'html'; 
@@ -499,8 +499,8 @@ class home extends CI_Controller {
         $this->email->initialize($config);
 
         $this->email->from($email, $nome);
-        $this->email->to('defaltern@gmail.com');
-        $this->email->cc('dionathan_bass@hotmail.com');
+        $this->email->to('atendimentoset@gmail.com');
+        //$this->email->cc('dionathan_bass@hotmail.com');
 
         $this->email->subject($assunto);
         $this->email->message('<html><head></head><body>
