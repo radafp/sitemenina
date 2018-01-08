@@ -151,13 +151,12 @@ $(document).ready(function()
     {
     	while($tp = mysql_fetch_assoc($q))
     	{
-
             $qCategoria = mysql_query("SELECT cod, categoriaPt FROM categorias WHERE cod = '{$tp['codCategoria']}' ORDER BY categoriaPt DESC", $conexao);
             $tpCategoria = mysql_fetch_assoc($qCategoria);
 
             $qFotos = mysql_query("SELECT cod FROM arquivos WHERE codReferencia = '{$tp['cod']}' AND tipo = '2' AND referencia = 'noticias'");
             $nFotos = mysql_num_rows($qFotos);
-    	?>
+            ?>
             <div class="divTr">
                 <div class="divTd">
                     <input class="checks" name="cod[]" value="<?=$tp['cod'];?>" type="checkbox" />
@@ -198,16 +197,24 @@ $(document).ready(function()
                     <input type="checkbox" class="mostrar" value="<?=$tp['cod'];?>" <?=$tp['mostrar'] == 1 ? "checked='checked'" : "";?> />
                 </div>
             </div>
-        <?
+            <?
         }
     }
     else
     {
     ?>
-    </div>    
-    <div>
-        Nenhum Registro Encontrado.
-    <?php
+        <div>
+            Nenhum Registro Encontrado.
+        </div>
+    <?
     }
     ?>
+</div>
+
+<div class="divTableLista clear">
+    <div class="divTr">
+        <div class="divTd">
+            <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$p;?>">anterior</a>
+        </div>
+    </div>
 </div>
