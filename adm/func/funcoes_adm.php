@@ -27,7 +27,6 @@ function verifica_regiao($usuario,$regiao)
     return $libera;
 }
 
-<<<<<<< HEAD
 function atualiza_usuarios_stats($cod_usuario, $nome_usuario, $nome_menu, $acao, $regiao)
 {
     require_once '../configRoot.php';
@@ -39,6 +38,4 @@ function atualiza_usuarios_stats($cod_usuario, $nome_usuario, $nome_menu, $acao,
     );
 
 }
-=======
->>>>>>> 7eeb76f54d1f9a6b8d4ac2dedc6744fc82e6cd69
 ?>
