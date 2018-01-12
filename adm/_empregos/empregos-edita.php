@@ -144,6 +144,8 @@ if($submit != '')
                     }
                     
                 }
+                atualiza_usuarios_stats($_SESSION[ADMIN_SESSION_NAME.'_cod_user'], $_SESSION[ADMIN_SESSION_NAME.'_nome'], 'Empregos', 'Inseriu', $_SESSION[ADMIN_SESSION_NAME.'_regiao']);
+                
                 echo "<script>
                           alert('Cadastro atualizado com sucesso.');
                           document.location.replace('http://".ADMIN_URL."/principal.php?id=$id&subid=1')
@@ -173,6 +175,8 @@ else
         $n = mysql_num_rows($q);
         if($n > 0)
         {
+            atualiza_usuarios_stats($_SESSION[ADMIN_SESSION_NAME.'_cod_user'], $_SESSION[ADMIN_SESSION_NAME.'_nome'], 'Empregos', 'Alterou', $_SESSION[ADMIN_SESSION_NAME.'_regiao']);
+            
             $tp = mysql_fetch_assoc($q);
             $dataPublicacao = $tp['dataPublicacao'];
             $descricao = $tp['descricao'];

@@ -32,12 +32,10 @@ function atualiza_usuarios_stats($cod_usuario, $nome_usuario, $nome_menu, $acao,
     require_once '../configRoot.php';
     $conexao = conexao(); 
 
-    $data = now();
-
     $qVerificaRegiao = mysql_query("INSERT INTO usuariosStats 
-        (dataCadastro, codUsuario, nomeUsuario, nomeMenu, acao) VALUES
-        ('$data', $cod_usuario, '$nome_usuario', '$nome_menu', '$acao', '$regiao')",$conexao
+        (dataCadastro, codUsuario, nomeUsuario, nomeMenu, acao, regiao) VALUES
+        (now(), $cod_usuario, '$nome_usuario', '$nome_menu', '$acao', '$regiao')",$conexao
     );
-
+    echo mysql_error();
 }
 ?>

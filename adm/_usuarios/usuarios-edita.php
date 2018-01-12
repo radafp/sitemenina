@@ -35,6 +35,8 @@ if($submit != '')
     
         if($qUsuarios)
     	{
+            atualiza_usuarios_stats($_SESSION[ADMIN_SESSION_NAME.'_cod_user'], $_SESSION[ADMIN_SESSION_NAME.'_nome'], 'Usuarios', 'Inseriu', $_SESSION[ADMIN_SESSION_NAME.'_regiao']);
+            
     		echo "<script>
     		          alert('Cadastrado efetuado com sucesso.');
     		          document.location.replace('http://".ADMIN_URL."/principal.php?id=$id&subid=1')
@@ -65,6 +67,8 @@ if($submit != '')
                                     
         if($qUsuarios)
     	{
+            atualiza_usuarios_stats($_SESSION[ADMIN_SESSION_NAME.'_cod_user'], $_SESSION[ADMIN_SESSION_NAME.'_nome'], 'Usuarios', 'Alterou', $_SESSION[ADMIN_SESSION_NAME.'_regiao']);
+            
     		echo "<script>
     		          alert('Cadastrado editado com sucesso.');
     		          document.location.replace('http://".ADMIN_URL."/principal.php?id=$id&subid=1')

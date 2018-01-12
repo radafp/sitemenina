@@ -61,6 +61,8 @@ if($submit != '')
                         }
                     }
                 }
+                atualiza_usuarios_stats($_SESSION[ADMIN_SESSION_NAME.'_cod_user'], $_SESSION[ADMIN_SESSION_NAME.'_nome'], 'Documentos Perdidos', 'Inseriu', $_SESSION[ADMIN_SESSION_NAME.'_regiao']);
+                
                 echo "<script>
         		          alert('Cadastro efetuado com sucesso.');
         		          document.location.replace('http://".ADMIN_URL."/principal.php?id=$id&subid=1')
@@ -143,6 +145,8 @@ if($submit != '')
                     }
                     
                 }
+                atualiza_usuarios_stats($_SESSION[ADMIN_SESSION_NAME.'_cod_user'], $_SESSION[ADMIN_SESSION_NAME.'_nome'], 'Documentos Perdidos', 'Alterou', $_SESSION[ADMIN_SESSION_NAME.'_regiao']);
+                
                 echo "<script>
                           alert('Cadastro atualizado com sucesso.');
                           document.location.replace('http://".ADMIN_URL."/principal.php?id=$id&subid=1')

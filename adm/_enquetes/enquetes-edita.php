@@ -52,6 +52,7 @@ if($submit != '')
                         $resultado = mysql_query($sql);
                     }
                 }
+                atualiza_usuarios_stats($_SESSION[ADMIN_SESSION_NAME.'_cod_user'], $_SESSION[ADMIN_SESSION_NAME.'_nome'], 'Enquetes', 'Inseriu', $_SESSION[ADMIN_SESSION_NAME.'_regiao']);
                 
                 echo "<script>
         		          alert('Cadastro efetuado com sucesso.');
@@ -93,6 +94,8 @@ if($submit != '')
 
             if($q)
             {
+                atualiza_usuarios_stats($_SESSION[ADMIN_SESSION_NAME.'_cod_user'], $_SESSION[ADMIN_SESSION_NAME.'_nome'], 'Enquetes', 'Alterou', $_SESSION[ADMIN_SESSION_NAME.'_regiao']);
+                
                 echo "<script>
                           alert('Cadastro atualizado com sucesso.');
                           document.location.replace('http://".ADMIN_URL."/principal.php?id=$id&subid=1')

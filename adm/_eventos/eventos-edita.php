@@ -97,6 +97,7 @@ if($submit != '')
                         }
 					}
         		}
+                atualiza_usuarios_stats($_SESSION[ADMIN_SESSION_NAME.'_cod_user'], $_SESSION[ADMIN_SESSION_NAME.'_nome'], 'Eventos', 'Inseriu', $_SESSION[ADMIN_SESSION_NAME.'_regiao']);
                 
                 echo "<script>
         		          alert('Cadastro efetuado com sucesso.');
@@ -234,7 +235,9 @@ if($submit != '')
                             }
                         }
 					}
-        		}
+                }
+                atualiza_usuarios_stats($_SESSION[ADMIN_SESSION_NAME.'_cod_user'], $_SESSION[ADMIN_SESSION_NAME.'_nome'], 'Eventos', 'Alterou', $_SESSION[ADMIN_SESSION_NAME.'_regiao']);
+                
                 echo "<script>
                           alert('Cadastro atualizado com sucesso.');
                           document.location.replace('http://".ADMIN_URL."/principal.php?id=$id&subid=1')
