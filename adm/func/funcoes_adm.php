@@ -26,4 +26,16 @@ function verifica_regiao($usuario,$regiao)
     }
     return $libera;
 }
+
+function atualiza_usuarios_stats($cod_usuario, $nome_usuario, $nome_menu, $acao, $regiao)
+{
+    require_once '../configRoot.php';
+    $conexao = conexao(); 
+
+    $qVerificaRegiao = mysql_query("INSERT INTO usuariosStats 
+        (dataCadastro, codUsuario, nomeUsuario, nomeMenu, acao) VALUES
+        (now(), $cod_usuario, '$nome_usuario', '$nome_menu', '$acao', '$regiao')",$conexao
+    );
+
+}
 ?>
