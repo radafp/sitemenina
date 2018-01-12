@@ -71,6 +71,9 @@ if($cods != '')
     }
     else
     {
+        $count = count($cods);
+        atualiza_usuarios_stats($_SESSION[ADMIN_SESSION_NAME.'_cod_user'], $_SESSION[ADMIN_SESSION_NAME.'_nome'], 'Publicidade', 'Removeu', $_SESSION[ADMIN_SESSION_NAME.'_regiao'], $count);
+        
         ?>
         <script>
             alert("Registro(s) excluído(s) com sucesso!");
