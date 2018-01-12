@@ -26,4 +26,5 @@ function verifica_regiao($usuario,$regiao)
     }
     return $libera;
 }
+
 ?>
