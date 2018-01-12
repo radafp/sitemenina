@@ -55,7 +55,8 @@ require_once '../configRoot.php';
             		if($arshavin == $fuyutsuki)
             		{	
             			$_SESSION[ADMIN_SESSION_NAME.'_cod_user'] = $recoba['cod'];	
-            			$_SESSION[ADMIN_SESSION_NAME.'_user'] = $_POST['user'];
+                        $_SESSION[ADMIN_SESSION_NAME.'_user'] = $_POST['user'];
+                        $_SESSION[ADMIN_SESSION_NAME.'_nome'] = $_POST['nome'];
             			$_SESSION[ADMIN_SESSION_NAME.'_time'] = date('d-m-Y');
             			$_SESSION[ADMIN_SESSION_NAME.'_nivel'] = $recoba['nivel'];
                         $_SESSION[ADMIN_SESSION_NAME.'_regiao'] = $regiao;

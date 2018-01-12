@@ -100,7 +100,7 @@ if($submit != '')
                             }
                         }
 					}
-        		}
+                }
                 
                 echo "<script>
         		          alert('Cadastro efetuado com sucesso.');
