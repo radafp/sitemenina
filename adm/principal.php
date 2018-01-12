@@ -6,6 +6,8 @@ require_once ADMIN_FUNC_PATH.'sessao_verifica.php';
 require_once ADMIN_FUNC_PATH.'verifica.php';
 require_once ADMIN_FUNC_PATH.'permissoes.php';
 require_once ADMIN_FUNC_PATH.'anti-injection.php';
+require_once ADMIN_FUNC_PATH.'funcoes_adm.php';
+
 
 anti_injection();
 
