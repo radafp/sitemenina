@@ -88,7 +88,7 @@
                 </a>
                 <ul class="submenu">
                     <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=35&subid=1";?>">Bolsa de empregos</a></li>
-                    <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=36&subid=1";?>">Achados e perdidos</a></li>
+                    <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=36&subid=1";?>">Documentos perdidos</a></li>
                     <!--<li><a href="<?=ssl().ADMIN_URL."/principal.php?id=37&subid=1";?>">Campanhas</a></li>-->
                 </ul>  
             </li>
