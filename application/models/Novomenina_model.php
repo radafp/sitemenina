@@ -50,7 +50,7 @@ class Novomenina_model extends CI_Model{
 
     // metodo mostrado na div esquerda 
     // public function programacao_impar($regiao)  {
-    //     $query = $this->db->query("SELECT programacao.*, arquivos.arquivo 
+    //     $query = $this->db->query("SELECT programacao.*, arquivos.arquivo  
     //                                 FROM programacao 
     //                                     INNER JOIN arquivos 
     //                                 WHERE programacao.cod % 2 != 0 
@@ -90,6 +90,7 @@ class Novomenina_model extends CI_Model{
                     AND programacao.regiao = '$regiao' 
                     AND programacao.mostrar = 1 
                 GROUP BY programacao.cod
+                ORDER BY programacao.horario ASC
         "); 
         return $query->result_array();
     }
@@ -100,7 +101,8 @@ class Novomenina_model extends CI_Model{
                                         FROM programacao
                                     INNER JOIN arquivos 
                                         ON programacao.cod = arquivos.codReferencia 
-                                        and programacao.regiao = '$regiao'
+                                        AND arquivos.referencia = 'programacao'
+                                        AND programacao.regiao = '$regiao'
                                         AND programacao.cod = $id
                                         GROUP BY programacao.cod
                                         ORDER BY programacao.dataCadastro DESC"
