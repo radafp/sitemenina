@@ -835,4 +835,15 @@ class Novomenina_model extends CI_Model{
         $query = $this->db->query($sql); 
         return $query->result_array();
     }
+
+    // metodo usado para acrescentar numero de visualizações dos banners
+    public function update($tabela, $condicao, $valor, $campo, $id) {
+        // $query =$this->db->query("UPDATE $tabela SET $condicao = $valor WHERE cod = $id");
+        $query =$this->db->query("UPDATE $tabela set $condicao = $valor  WHERE $campo = $id");
+    }
+
+    public function select($tabela, $campo, $condicao, $valor) {
+        $query = $this->db->query("SELECT $campo FROM $tabela WHERE $condicao = $valor");
+        return $query->result_array();
+    }
 }

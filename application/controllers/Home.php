@@ -95,6 +95,7 @@ class home extends CI_Controller {
                 $_SESSION['socialYoutube'] = "";
                 break;
         }
+        
 
         $hora = date('H');
         $hora_atual = $hora.':00:00';
@@ -112,6 +113,15 @@ class home extends CI_Controller {
         $dados['enquetes']              = $this->Novomenina->enquetes($_SESSION['regiao']);
         $dados['banner_tipo1']          = $this->Novomenina->banners($_SESSION['regiao'], 'regiao', '1');
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'regiao', '2');
+
+    
+        // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
+        $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $_SESSION['cod_banner']);
+        foreach($num_impresoes as $info):
+            $valor = $info['nImpressoes'] + 1;
+            $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $_SESSION['cod_banner']);
+        endforeach;
+
         $dados['viewName']              = 'regiao';
         $this->load->view('Template', $dados);
     }
