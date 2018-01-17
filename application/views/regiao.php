@@ -81,6 +81,7 @@
             $bannerPrincipalLink = $banners[$rand_keys]['link'];
             $bannerPrincipalArquivo = $banners[$rand_keys]['arquivo'];
             $bannerPrincipalTarget = $banners[$rand_keys]['linkTarget'];
+            $_SESSION['cod_banner'] = $bannerPrincipalCod;
         
             ?>
             <div class="wrapBanner">

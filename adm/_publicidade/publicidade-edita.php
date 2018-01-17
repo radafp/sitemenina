@@ -132,7 +132,8 @@ if($submit != '')
                     }
                 }
                 atualiza_usuarios_stats($_SESSION[ADMIN_SESSION_NAME.'_cod_user'], $_SESSION[ADMIN_SESSION_NAME.'_nome'], 'Publicidade', 'Inseriu', $_SESSION[ADMIN_SESSION_NAME.'_regiao']);
-                
+                $impressoes  = mysql_query("INSERT INTO publicidadeImpressoes (dataCadastro, codPublicidade	, nImpressoes) VALUES('{$dataInicio}','{$cod}', 0)");
+
                 echo "<script>
         		          alert('Cadastro efetuado com sucesso.');
         		          document.location.replace('http://".ADMIN_URL."/principal.php?id=$id&subid=1')
