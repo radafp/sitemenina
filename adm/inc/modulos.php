@@ -1153,6 +1153,24 @@ $modulos = array
                 'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
             ),
         ), #fim - subid
+
+        6 => array #subid
+        (
+            'include' => ADMIN_PATH."_publicidade/publicidade-relatorio.php",
+            'css' => array
+                    (
+                        ssl().ADMIN_URL.'/_publicidade/css/publicidade-relatorio.css',
+                    ),
+            'js' => array
+                    (
+                        ssl().ADMIN_URL.'/_publicidade/js/publicidade-relatorio.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => 'Publicidade > <span>Relatorios</span> ',
+                'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
+            ),
+        ), #fim - subid
         
         
     ),#fim - id
