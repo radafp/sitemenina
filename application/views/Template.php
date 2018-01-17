@@ -339,7 +339,8 @@
                             <img src="<?php echo base_url('assets/img/logoMeninabc.png')?>" title="Balneário Camboriú">
                             <h3>Balneário Camboriú</h3>
                             <p> 
-                                Av. do Estado, 1555 - Edif. Work Center<br>
+                                Av. do Estado, 1555<br> 
+                                Camboriú Work Center<br>
                                 Pioneiros - Balneário Camboriú - SC<br>
                                 CEP: 88331-900<br><br>
                                 (47) 2103.6000
@@ -372,7 +373,8 @@
                             <img src="<?php echo base_url('assets/img/logoTVMocinha.png')?>" title="TV Mocinha">
                             <h3>TV Mocinha Balneário Camboriú</h3>
                             <p>
-                                Av. do Estado, 1555 - Edif. Work Center<br>
+                                Av. do Estado, 1555<br> 
+                                Camboriú Work Center<br>
                                 Pioneiros - Balneário Camboriú - SC<br>
                                 CEP: 88331-900<br><br>
                                 (47) 2103.6020
