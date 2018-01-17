@@ -104,6 +104,7 @@
                 <ul class="submenu">
                     <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=41&subid=1";?>">Clientes</a></li>
                     <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=40&subid=1";?>">Banners</a></li>
+                    <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=40&subid=6";?>">Relatorios</a></li>
                 </ul>  
             </li>
         <?
