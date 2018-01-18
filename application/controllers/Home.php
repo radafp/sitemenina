@@ -150,11 +150,10 @@ class home extends CI_Controller {
     }
     
     public function noticia() {
-        $categoria                  = addslashes($_GET['categoria']);
+        $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
+
+        
         // --------------------- PAGINAÇÂO --------------------
-        //|                                                    |
-        //|                                                    |
-        //|___________________________________________________ |
         if(isset($_GET['p'])) {
             $pg = $_GET['p'];
         }else{
@@ -165,22 +164,29 @@ class home extends CI_Controller {
         if($p < 0) {
             $p = 0;
         }
-        echo (isset($_POST['busca']))?$_POST['busca']: 'dddd';
-        $dados['pHome'] = $p;
-        $dados['total_registros']   = 15;
-        $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao'], $p);
-        $dados['count']             = count($dados['jornalismo']);
-        $dados['paginas']           = ceil($dados['count'] / 15); 
 
-        // --------------------- METODOS DO MODEL ------------------
-        //|                                                         |
-        //|                                                         |
-        //|_________________________________________________________|
+
+        if(isset($_GET['busca'])) {
+            $busca = $_GET['busca'];
+            $dados['pHome'] = $p;
+            $dados['total_registros']   = 15;
+            $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias_busca($busca, $_SESSION['regiao'], $p);
+            $dados['count']             = count($dados['jornalismo']);
+            $dados['paginas']           = ceil($dados['count'] / 15); 
+        }else{
+            $dados['pHome'] = $p;
+            $dados['total_registros']   = 15;
+            $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao'], $p);
+            $dados['count']             = count($dados['jornalismo']);
+            $dados['paginas']           = ceil($dados['count'] / 15); 
+        }
         
+        // --------------------- METODOS DO MODEL ------------------
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas']        = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
         $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3');
         $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2'); 
+           
         $dados['viewName']          = 'jornalismo/noticia';
         $this->load->view('Template', $dados);
         
@@ -286,8 +292,8 @@ class home extends CI_Controller {
     public function descricao_agenda() {
         $id = addslashes($_GET['id']);
         $regiao = $_SESSION['regiao'];
-        $dados['descricao_eventos'] = $this->Novomenina->descricao_eventos($id, $regiao);
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['descricao_eventos']     = $this->Novomenina->descricao_eventos($id, $regiao);
+        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_eventos', '3');
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_eventos', '2'); 
         $dados['viewName'] = 'agenda/descricao_agenda';
