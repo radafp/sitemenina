@@ -95,9 +95,9 @@ $route['balneario-camboriu/promocoes'] = 'home/promocoes';
 $route['blumenal/promocoes'] = 'home/promocoes';
 $route['lages/promocoes'] = 'home/promocoes';
 
-$route['balneario-camboriu/eventos'] = 'home/eventos';
-$route['blumenal/eventos'] = 'home/eventos';
-$route['lages/eventos'] = 'home/eventos';
+$route['balneario-camboriu/agenda'] = 'home/agenda';
+$route['blumenal/agenda'] = 'home/agenda';
+$route['lages/agenda'] = 'home/agenda';
 
 $route['balneario-camboriu/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
 $route['blumenal/bolsa-de-empregos'] = 'home/bolsa_de_empregos';

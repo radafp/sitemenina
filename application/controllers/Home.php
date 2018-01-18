@@ -232,7 +232,7 @@ class home extends CI_Controller {
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '3');
         $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '2'); 
-        $dados['viewName']          = 'eventos/eventos';
+        $dados['viewName']          = 'agenda/agenda';
         $this->load->view('Template', $dados);
     }
 
