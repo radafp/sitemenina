@@ -119,10 +119,10 @@ class home extends CI_Controller {
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
         if($cod_banner!='')
         {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $_SESSION['cod_banner']);
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $_SESSION['cod_banner']);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner);
             endforeach;
         }
 

@@ -450,7 +450,7 @@ else
         </div> 
         <div class="divTr">
             <div class="divTd">
-                <label>Título:</label>
+                <label>Título*:</label>
             </div>
             <div class="divTd">
                 <input type="text" class="campoG" name="tituloPt" id="tituloPt" value="<?=$tituloPt;?>" title="Título"/>
@@ -640,8 +640,8 @@ else
         });
         $('#dataInicio').mask('99/99/9999');
         $('#dataFim').mask('99/99/9999');
-        objValidadorCadastro . adicionar('#dataInicio');
-        objValidadorCadastro . adicionar('#dataFim');
+        //objValidadorCadastro . adicionar('#dataInicio');
+        //objValidadorCadastro . adicionar('#dataFim');
         objValidadorCadastro . adicionar('#tituloPt');
         //objValidadorCadastro . adicionar('#descricaoEn');
         
