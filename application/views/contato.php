@@ -99,7 +99,7 @@
                         </a><br>
                         <a class="whatsapp">
                             <i class="fa fa-whatsapp"></i>
-                            <span>Artístico: (47) 99138-1005</span>
+                            <span>Artístico: (47) 99138.1005</span>
                         </a>
                     </p>
                     <p>
@@ -113,7 +113,8 @@
                     </p>
                     <p>
                         <b>Endereco:</b><br>
-                        Av. do Estado nº 1555 Edif. Work Center<br>
+                        Av. do Estado nº 1555<br>
+                        Camboriú Work Center<br>
                         Pioneiros - Balneário Camboriú - SC<br>
                         CEP: 88331-900 
                     </p>
