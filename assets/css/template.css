@@ -710,6 +710,7 @@
     margin-right: 20px;
     margin-bottom: 20px;
     max-width: 45%;
+    min-width: 45%;
     min-height: 450px;
     min-height: 315px;
 
@@ -720,7 +721,8 @@
     height: 240px;
 }
 .blocoEventos .evento .foto img{
-    max-width: 100%;
+    max-height: 100%;
+    min-width: 100%;
 }
 .blocoEventos .evento.ultimo{
     margin-right: 0;

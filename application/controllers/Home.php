@@ -283,14 +283,14 @@ class home extends CI_Controller {
 
     
 
-    public function descricao_eventos() {
+    public function descricao_agenda() {
         $id = addslashes($_GET['id']);
         $regiao = $_SESSION['regiao'];
         $dados['descricao_eventos'] = $this->Novomenina->descricao_eventos($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_eventos', '3');
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_eventos', '2'); 
-        $dados['viewName'] = 'eventos/descricao_eventos';
+        $dados['viewName'] = 'agenda/descricao_agenda';
         $this->load->view('Template', $dados);
     }
 

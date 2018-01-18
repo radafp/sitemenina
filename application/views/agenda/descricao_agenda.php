@@ -11,8 +11,11 @@
                     <?php foreach($descricao_eventos as $info):?>
                         <div class="descricaoEvento">
                             <h3><?php echo $info['tituloPt'].'<br>'?></h3>
+                            <div class="foto">
+                                <img src="<?php echo base_url('/assets/arquivos/eventos/'.$info['arquivo']);?>" alt="">
+                            </div>
                             <p><?php echo $info['descricaoPt']?></p>
-                            <p><?php echo 'Início: '. date('d/m/Y', strtotime($info['dataInicio']))?></p>
+                            <p><?php echo 'Data: '. date('d/m/Y', strtotime($info['dataInicio']))?></p>
                             <!--
                                 <button>REGULAMENTO</button>
                             <BUtton>QUERO PARTICIPAR</BUtton>

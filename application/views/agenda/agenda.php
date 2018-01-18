@@ -45,13 +45,13 @@
                         else
                             $classeAdicional = ' ultimo';
                     ?>
-                        <div class="evento">
-                            <a class='link_eventos' href="<?php echo base_url('home/descricao_eventos?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
+                        <div class="evento<?=$classeAdicional;?>">
+                            <a class='link_eventos' href="<?php echo base_url('home/descricao_agenda?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
                                 <div class="foto">
                                     <img src="<?php echo base_url('/assets/arquivos/eventos/'.$info['arquivo'])?>" alt="">
                                 </div>  
                                 <h3><?php echo $info['tituloPt']?></h3>
-                                <span><?php echo 'Início:'.date('d/m/Y', strtotime($info['dataInicio']))?></span>
+                                <span><?php echo 'Data: '.date('d/m/Y', strtotime($info['dataInicio']))?></span>
                             </a>
                             <?php
                                 $proximo = 4;
@@ -60,6 +60,8 @@
                         </div>
                     <?php 
                     $i++;
+                    if($classeAdicional!='')
+                        echo '<br clear="all">';
                     endforeach;?>
                 </div>
                 <div class="paginacao">
@@ -92,22 +94,22 @@
                     <?php if($count > $total_registros):?>
                         <?php if($p > 1):?>
                         <div class='pagina paginahover'>
-                            <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$anterior;?>"><</a>
+                            <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/agenda/?p=') .$anterior;?>"><</a>
                         </div>
                         <div class='pagina'>
-                            <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$anterior;?>"><?=$anterior;?></a>
+                            <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/agenda/?p=') .$anterior;?>"><?=$anterior;?></a>
                         </div>    
                         <?php endif?>
                         <div class='pagina paginahover'>
-                            <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$p;?>"><?=$p;?></a>
+                            <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/agenda/?p=') .$p;?>"><?=$p;?></a>
                         </div>
                         
                         <?php if($pHome+10 <= $count):?>
                             <div class='pagina'>
-                                <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$proxima;?>"><?=$proxima;?></a>
+                                <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/agenda/?p=') .$proxima;?>"><?=$proxima;?></a>
                             </div>
                             <div class='pagina paginahover'>
-                                <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/eventos/?p=') .$proxima;?>">></a>
+                                <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/agenda/?p=') .$proxima;?>">></a>
                             </div>
                         <?php endif?>
                     <?php endif;?>
