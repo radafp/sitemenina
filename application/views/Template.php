@@ -90,6 +90,12 @@
                     window.location = regiao.value;              
                 };
 
+                var buscaNoticia = document.querySelector('#buscaNoticia button');
+                buscaNoticia.addEventListener('click', function() {
+                    var palabra_busca = document.querySelector('#buscaNoticia input');
+                    alert(palabra_busca.value);
+                })
+                
                 /*var pr =  $('.playerRadio').contents();
                 pr.find('html').css('background', 'red') {
                     alert('test');
@@ -203,6 +209,10 @@
                             }
                                         
                             ?>
+                            <form id='buscaNoticia' action="home/noticia" method='POST'>
+                                <input type="text" name='busca'>
+                                <button>Buscar</button>
+                            </form>
                         </div>
 
                     </div>

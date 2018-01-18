@@ -165,7 +165,7 @@ class home extends CI_Controller {
         if($p < 0) {
             $p = 0;
         }
-                
+        echo (isset($_POST['busca']))?$_POST['busca']: 'dddd';
         $dados['pHome'] = $p;
         $dados['total_registros']   = 15;
         $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao'], $p);
@@ -199,7 +199,7 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
-    public function eventos() {
+    public function agenda() {
         // $id = $_GET['id'];
         $regiao = addslashes($_SESSION['regiao']);
         
