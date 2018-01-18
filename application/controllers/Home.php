@@ -122,7 +122,7 @@ class home extends CI_Controller {
             $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $_SESSION['cod_banner']);
         endforeach;
 
-        $dados['viewName']              = 'regiao';
+        $dados['viewName'] = 'regiao';
         $this->load->view('Template', $dados);
     }
 
