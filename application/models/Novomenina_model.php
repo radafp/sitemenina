@@ -41,7 +41,8 @@ class Novomenina_model extends CI_Model{
                     WHERE programacao.regiao = '$regiao'
                     AND programacao.programacao = '$dia'
                     AND programacao.mostrar = 1
-					AND programacao.horario BETWEEN '$hora_atua' AND '$hora_add' 			
+					AND programacao.inicio >= '$hora_atua' 
+                    AND programacao.fim <= '$hora_add' 			
                 GROUP BY programacao.cod
                 LIMIT 3
         "); 
@@ -90,7 +91,7 @@ class Novomenina_model extends CI_Model{
                     AND programacao.regiao = '$regiao' 
                     AND programacao.mostrar = 1 
                 GROUP BY programacao.cod
-                ORDER BY programacao.horario ASC
+                ORDER BY programacao.inicio ASC
         "); 
         return $query->result_array();
     }

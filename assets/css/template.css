@@ -360,13 +360,14 @@
     padding: 15px;
     min-height: 260px;
     margin-right: 15px;
+    text-align: center;
 }
 .blocoProgramacao .linhaPrograma .foto{
-   max-height: 120px;
-   max-width: 200px;
-   overflow: hidden;
-   float: left;
-   margin-right: 15px;
+    max-height: 120px;
+    max-width: 200px;
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: auto;
 }
 .blocoProgramacao .linhaPrograma .foto img{
     max-height: 120px;

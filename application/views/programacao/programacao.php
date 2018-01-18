@@ -71,10 +71,10 @@
                                     <div class="foto">
                                         <img src="<?php echo base_url('assets/arquivos/programacao/'.$info["arquivo"])?>" alt="">
                                     </div>
-                                    <h3><?php echo $info['titulo']?></h3>
+                                    <!--<h3><?php echo $info['titulo']?></h3>-->
                                     <div class="infos">
-                                        <p><?php echo 'HORÁRIO: '.$info['horario'];?></p>
-                                        <p><?php echo 'APRESENTADOR: '. $info['apresentador'];?></p>
+                                        <p><?php echo 'Das '.date('H:i', strtotime($info['inicio'])).' às '.date('H:i', strtotime($info['fim']));?></p>
+                                        <p><?php echo 'Apresentador: '. $info['apresentador'];?></p>
                                     </div>
                                 </a>
                             </div>
