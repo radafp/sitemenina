@@ -245,8 +245,37 @@ class Novomenina_model extends CI_Model{
                 INNER JOIN categorias
                     WHERE noticias.codCategoria = categorias.cod
                     AND noticias.regiao = '$regiao' 
-                    AND categoriaPt = '$categoria' 
-                    AND noticias.mostrar = 1  
+                    AND categoriaPt like '%$categoria%'
+                    AND noticias.mostrar = 1 
+                GROUP BY noticias.cod
+                ORDER by DATA DESC
+                LIMIT $limit, 15
+        "); 
+        return $query->result_array();
+    }
+
+    public function jornalismo_noticias_busca($busca, $regiao, $limit = null) {
+        $query = $this->db->query(
+            "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
+                (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                        WHERE a.codReferencia = noticias.cod 
+                        AND a.referencia = 'noticias' 
+                        AND a.tipo = 2 
+                        AND a.capa = 1
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+            AS arquivo 
+                FROM noticias
+                INNER JOIN categorias
+                    WHERE noticias.codCategoria = categorias.cod
+                    AND noticias.regiao = '$regiao' 
+                    AND noticias.mostrar = 1
+                    AND tituloPt like '%$busca%'
+                    OR noticias.codCategoria = categorias.cod
+                    AND  descricaoPt like '%$busca%'
+                    AND noticias.regiao = '$regiao'
+                    AND noticias.mostrar = 1
                 GROUP BY noticias.cod
                 ORDER by DATA DESC
                 LIMIT $limit, 15

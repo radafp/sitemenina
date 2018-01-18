@@ -57,8 +57,7 @@
 
                 var content = $('#content');
                 var logo = document.querySelector('#logo');
-                $('#menu a, #logo').click(function( e ){
-                    
+                $('#menu a, #logo, .busca').click(function( e ){
                     e.preventDefault();
 
                     var href = $( this ).attr('href');
@@ -93,7 +92,13 @@
                 var buscaNoticia = document.querySelector('#buscaNoticia button');
                 buscaNoticia.addEventListener('click', function() {
                     var palabra_busca = document.querySelector('#buscaNoticia input');
-                    alert(palabra_busca.value);
+                    // alert(palabra_busca.value);
+                    // var link = document.querySelector('.busca').href += palabra_busca.value+'&p=1';
+
+                    var link = document.querySelector('.busca').href = '/balneario-camboriu/noticias?busca='+palabra_busca.value+'&p=1';
+                    // alert(link);
+                    //window.location = "/balneario-camboriu/noticias?categoria=Busca&p=1";
+                    window.history.pushState(null, 'Home', $(this).attr('href'));
                     
                 })
                 
@@ -210,10 +215,11 @@
                             }
                                         
                             ?>
-                            <form id='buscaNoticia' action="home/noticia" method='POST'>
+
+                            <!-- <form id='buscaNoticia' action="busca_noticia" method='POST'>
                                 <input type="text" name='busca'>
-                                <button>Buscar</button>
-                            </form>
+                                <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>"><button id='button'>Buscar</button></a>
+                            </form> -->
                         </div>
 
                     </div>

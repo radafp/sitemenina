@@ -46,7 +46,7 @@
                             $classeAdicional = ' ultimo';
                     ?>
                         <div class="evento">
-                            <a class='link_eventos' href="<?php echo base_url('home/descricao_eventos?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
+                            <a class='link_eventos' href="<?php echo base_url('home/descricao_agenda?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
                                 <div class="foto">
                                     <img src="<?php echo base_url('/assets/arquivos/eventos/'.$info['arquivo'])?>" alt="">
                                 </div>  
