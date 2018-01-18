@@ -243,7 +243,10 @@ class home extends CI_Controller {
     }
 
     public function top_10() {
-        $dados['top_10']   = $this->Novomenina->top_10();
+
+        $regiao = isset($_SESSION['regiao']) ? $_SESSION['regiao'] : '';
+
+        $dados['top_10']   = $this->Novomenina->top_10($regiao);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'top_10', '3');
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'top_10', '2'); 

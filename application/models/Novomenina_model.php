@@ -35,7 +35,7 @@ class Novomenina_model extends CI_Model{
                         AND a.referencia = 'programacao' 
                         AND a.tipo = 2 
                     ORDER BY a.capa 
-                    DESC LIMIT 1) 
+                    DESC LIMIT 1)  
             AS arquivo 
                 FROM programacao 
                     WHERE programacao.regiao = '$regiao'
@@ -419,9 +419,9 @@ class Novomenina_model extends CI_Model{
     // |                                                                                    |
     // ======================================================================================
 
-    public function top_10() {
+    public function top_10($regiao) {
         $query = $this->db->query(
-            "SELECT top10.* from top10 WHERE mostrar = 1 LIMIT 10 
+            "SELECT top10.* from top10 WHERE regiao = '$regiao' AND mostrar = 1 LIMIT 10 
         ");
         return $query->result_array();
     }
@@ -432,6 +432,7 @@ class Novomenina_model extends CI_Model{
                 WHERE videos.regiao = '$regiao' 
                 AND videos.mostrar = 1 
                 AND videos.mensagemDoDia = 1
+                ORDER BY cod desc
                 LIMIT 1");
         return $query->result_array();
     }
@@ -597,8 +598,9 @@ class Novomenina_model extends CI_Model{
                 FROM eventos 
                     WHERE eventos.regiao = '$regiao' 
                     AND eventos.mostrar = 1 
+                    AND eventos.dataInicio >= ".date('Ymd')."
                 GROUP BY eventos.cod
-                ORDER BY eventos.dataCadastro DESC
+                ORDER BY eventos.dataInicio ASC 
                 LIMIT $limit, 10
         "); 
         return $query->result_array();
@@ -806,12 +808,14 @@ class Novomenina_model extends CI_Model{
         Inner join enquetesRespostas
             WHERE enquetesRespostas.codPergunta = enquetesPerguntas.cod
             AND enquetesPerguntas.regiao = '$regiao'
-            AND enquetesPerguntas.dataCadastro = 
+            AND enquetesPerguntas.mostrar = 1"
+        );
+        /*
+        AND enquetesPerguntas.dataCadastro = 
             (SELECT MAX(enquetesPerguntas.dataCadastro) 
                  FROM enquetesPerguntas 
              WHERE enquetesPerguntas.dataCadastro <= curdate())
-            AND enquetesPerguntas.mostrar = 1"
-        );
+        */
         return $query->result_array();
     }
 

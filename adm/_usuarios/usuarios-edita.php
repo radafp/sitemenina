@@ -203,7 +203,7 @@ else
                     Balneário Camboriú<input type="checkbox" name="bc" id="bc" value="1" <?=$bc == '1' ? 'checked' : '';?> style="float: left; margin-top: 4px; margin-right: 10px;"/>
                 </div>
                 <div style="margin-right: 20px;">
-                    Blumenal<input type="checkbox" name="bl" id="bl" value="1" <?=$bl == '1' ? 'checked' : '';?> style="float: left; margin-top: 4px; margin-right: 10px;"/>
+                    Blumenau<input type="checkbox" name="bl" id="bl" value="1" <?=$bl == '1' ? 'checked' : '';?> style="float: left; margin-top: 4px; margin-right: 10px;"/>
                 </div>
                 <div style="margin-right: 20px;">
                     Lages<input type="checkbox" name="lg" id="lg" value="1" <?=$lg == '1' ? 'checked' : '';?> style="float: left; margin-top: 4px; margin-right: 10px;"/>

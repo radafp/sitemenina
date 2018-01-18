@@ -53,6 +53,47 @@ $(document).ready(function()
             _obj.show();
         });
     }); 
+
+    $(".mensagemDoDia").click(function()
+    {
+        _obj = $(this);
+        _mensagemDoDia = _obj.is(':checked') ? '1' : '0';
+        _cod = _obj.val();
+        _obj.hide();
+        _obj.parent().append("<img class='imgLoad' title='Carregando' src='http://"+ADMIN_URL+"/img/base/conteudo/load.gif' />");
+        
+        $.ajax(
+        {
+            type: "POST",
+            async: false,
+            url: "http://"+ADMIN_URL+"/_videos/ajax/ajaxMensagemDoDiaLista.php", //URL de destino
+            data:
+            {
+                cod: _cod,
+                mensagemDoDia: _mensagemDoDia
+            },
+            dataType: "json"
+        })
+
+        .done(function(_json)
+        { //Se ocorrer tudo certo
+            
+            if(_json.erro != 0)
+            {
+                _valor = _mensagemDoDia == 1 ? 0 : 1;
+                if(_valor == 0)
+                {
+                    _obj.removeAttr("checked");
+                }
+                else
+                {
+                    _obj.attr("checked","true");
+                }
+            }
+            _obj.parent().find('.imgLoad').remove();
+            _obj.show();
+        });
+    });
     
     $('.apagarTodos > a').click(function()
     {
@@ -98,7 +139,7 @@ $(document).ready(function()
         <div class="divTd">&nbsp;</div>
         <div class="divTd">Thumbnail</div>
         <div class="divTd">Titulo</div>
-        <!--<div class="divTd">Ordem</div>-->
+        <div class="divTd">Msg. do dia</div>
         <div class="divTd">Mostrar</div>
     </div>
     <?
@@ -162,6 +203,9 @@ $(document).ready(function()
                     <?=$tp['ordem'];?>
                 </div>
                 -->
+                <div class="divTd">
+                    <input type="checkbox" class="mensagemDoDia" value="<?=$tp['cod'];?>" <?=$tp['mensagemDoDia'] == 1 || $subid == 2 ? "checked='checked'" : "";?> />
+                </div>
                 <div class="divTd">
                     <input type="checkbox" class="mostrar" value="<?=$tp['cod'];?>" <?=$tp['mostrar'] == 1 || $subid == 2 ? "checked='checked'" : "";?> />
                 </div>

@@ -95,27 +95,33 @@
                         <b>WhatsApp:</b><br>
                         <a class="whatsapp">
                             <i class="fa fa-whatsapp"></i>
-                            <span>Jornalismo/ utilidade pública: (47) 99174.1005</span>
+                            <span>Jornalismo: (47) 99174.1005</span>
                         </a><br>
                         <a class="whatsapp">
                             <i class="fa fa-whatsapp"></i>
                             <span>Artístico: (47) 99138.1005</span>
                         </a>
+                        <br>
+                        <a class="whatsapp">
+                            <i class="fa fa-whatsapp"></i>
+                            <span>Utilidade pública / Bolsa de empregos: (47) 99138.1964</span>
+                        </a>  
                     </p>
                     <p>
                         <b>E-mails:</b><br>
                         <i class="fa fa-envelope" aria-hidden="true"></i> Comercial: comercial@radiomenina.com.br<br>
-                        <i class="fa fa-envelope" aria-hidden="true"></i> Jornalismo/utilidade pública: jornalismo@radiomenina.com.br
+                        <i class="fa fa-envelope" aria-hidden="true"></i> Jornalismo: jornalismo@radiomenina.com.br<br>
+                        <i class="fa fa-envelope" aria-hidden="true"></i> Utilidade pública / Bolsa de empregos: recepcao@sistemamenina.com.br
                     </p>
                     <p>
                         <b>Telefone:</b><br>
-                        <i class="fa fa-phone" aria-hidden="true"></i>(47) 2103.6000
+                        <i class="fa fa-phone" aria-hidden="true"></i> (47) 2103.6000
                     </p>
                     <p>
                         <b>Endereco:</b><br>
                         Av. do Estado nº 1555<br>
                         Camboriú Work Center<br>
-                        Pioneiros - Balneário Camboriú - SC<br>
+                        Pioneiros - Balneário Camboriú/SC<br>
                         CEP: 88331-900 
                     </p>
                 <?
@@ -139,12 +145,12 @@
                     </p>
                     <p>
                         <b>Telefone:</b><br>
-                        <i class="fa fa-phone" aria-hidden="true"></i>(47) 2102.6500
+                        <i class="fa fa-phone" aria-hidden="true"></i> (47) 2102.6500
                     </p>
                     <p>
                         <b>Endereco:</b><br>
                         Rua 7 de Setembro nº 473<br>
-                        Boa Vista - Blumenau - SC<br>
+                        Boa Vista - Blumenau/SC<br>
                         CEP: 89010-002  
                     </p>
                 <?php
@@ -152,18 +158,26 @@
                 if($_SESSION['regiao'] == 'lg'){ 
                 ?> 
                     <p>
+                        <b>WhatsApp:</b><br>
+                        <a class="whatsapp">
+                            <i class="fa fa-whatsapp"></i>
+                            <span>(49) 99824.0492</span>
+                        </a>
+                    </p>
+                    <p>
                         <b>E-mails:</b><br>
                         <i class="fa fa-envelope" aria-hidden="true"></i> Comercial: comerciallages@radiomenina.com.br<br>
-                        <i class="fa fa-envelope" aria-hidden="true"></i> Jornalismo/utilidade pública: jornalismolages@radiomenina.com.br
+                        <i class="fa fa-envelope" aria-hidden="true"></i> Jornalismo/utilidade pública: jornalismolages@radiomenina.com.br<br>
+                        <i class="fa fa-envelope" aria-hidden="true"></i> Artístico:  artisticolages@radiomenina.com.br
                     </p>
                     <p>
                         <b>Telefone:</b><br>
-                        <i class="fa fa-phone" aria-hidden="true"></i>(47) 2102.6500
+                        <i class="fa fa-phone" aria-hidden="true"></i> (49) 3229.2363
                     </p>
                     <p>
                         <b>Endereco:</b><br>
                         Av. Luís de Camões nº 1370<br>
-                        Coral - Lages - SC<br>
+                        Coral - Lages/SC<br>
                         CEP: 88523-000  
                     </p>
                 <?

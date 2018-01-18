@@ -126,7 +126,7 @@ require_once '../configRoot.php';
                             <label>Região: </label>
                             <select id="regiao" name="regiao" class="campoM" title="Região">
                                 <option value="bc">Balneário Camboriú</option>
-                                <option value="bl">Blumenal</option>
+                                <option value="bl">Blumenau</option>
                                 <option value="lg">Lages</option>
                             </select>
                         </div>

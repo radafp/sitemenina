@@ -197,7 +197,7 @@
                                     <div>
                                         <a class="whatsapp">
                                             <i class="fa fa-whatsapp"></i>
-                                            <span>(47) 99174-1005</span>
+                                            <span>(47) 99174.1005</span>
                                         </a>
                                     </div>
                                 <?php
@@ -207,15 +207,23 @@
                                     <div>
                                         <a class="whatsapp">
                                             <i class="fa fa-whatsapp"></i>
-                                            <span>99128-1070</span>
+                                            <span>(47) 99128.1070</span>
                                         </a>
                                     </div>
                                 <?php
                                 break;
-                            }
-                                        
+                                case 'lg':
+                                ?>
+                                    <div>
+                                        <a class="whatsapp">
+                                            <i class="fa fa-whatsapp"></i>
+                                            <span>(49) 99824.0492</span>
+                                        </a>
+                                    </div>
+                                <?php
+                                break;
+                            }            
                             ?>
-
                             <!-- <form id='buscaNoticia' action="busca_noticia" method='POST'>
                                 <input type="text" name='busca'>
                                 <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>"><button id='button'>Buscar</button></a>
@@ -358,7 +366,7 @@
                             <p> 
                                 Av. do Estado, 1555<br> 
                                 Camboriú Work Center<br>
-                                Pioneiros - Balneário Camboriú - SC<br>
+                                Pioneiros - Balneário Camboriú/SC<br>
                                 CEP: 88331-900<br><br>
                                 (47) 2103.6000
                             </p>
@@ -369,7 +377,7 @@
                             <h3>Blumenau</h3>
                             <p>
                                 Rua 7 de Setembro, 473<br>
-                                Boa Vista - Blumenau - SC<br>
+                                Boa Vista - Blumenau/SC<br>
                                 CEP: 89010-002<br><br>
                                 (47) 2102.6500
                             </p>
@@ -380,9 +388,9 @@
                             <h3>Lages</h3>
                             <p>
                                 Av. Luís de Camões, 1370<br>
-                                Coral - Lages - SC<br>
+                                Coral - Lages/SC<br>
                                 CEP: 88523-000<br><br>
-                                (49) 3222.8222
+                                (49) 3229.2363
                             </p>
                         </div>
                         
@@ -392,7 +400,7 @@
                             <p>
                                 Av. do Estado, 1555<br> 
                                 Camboriú Work Center<br>
-                                Pioneiros - Balneário Camboriú - SC<br>
+                                Pioneiros - Balneário Camboriú/SC<br>
                                 CEP: 88331-900<br><br>
                                 (47) 2103.6020
                             </p>

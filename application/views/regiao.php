@@ -124,11 +124,11 @@
             </div>
             <div class="col-xs-12 col-md-6">
                 <h1 class="tituloPadrao2">
-                    <span>Eventos</span>
+                    <span>Agenda</span>
                 </h1>
                 <?php foreach($eventos_home as $info): ?>
                 <div class='promocaoEvento'>
-                    <a class="link_descricao" href="<?=base_url('home/descricao_eventos?id='.$info['cod']);?>">
+                    <a class="link_descricao" href="<?=base_url('home/descricao_agenda?id='.$info['cod']);?>">
                         <? if($info['arquivo']!=''){ ?>
                             <div class="wrapFoto">
                                 <div class="foto">
@@ -142,7 +142,7 @@
                     </a>
                 </div>
                 <?php endforeach; ?>
-                <a href="/home/eventos">Ver mais eventos</a>
+                <a href="/home/agenda">Ver mais eventos</a>
             </div>
 
         </div> <!-- row -->
