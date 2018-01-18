@@ -90,6 +90,13 @@
                     window.location = regiao.value;              
                 };
 
+                var buscaNoticia = document.querySelector('#buscaNoticia button');
+                buscaNoticia.addEventListener('click', function() {
+                    var palabra_busca = document.querySelector('#buscaNoticia input');
+                    alert(palabra_busca.value);
+                    
+                })
+                
                 /*var pr =  $('.playerRadio').contents();
                 pr.find('html').css('background', 'red') {
                     alert('test');
@@ -203,6 +210,10 @@
                             }
                                         
                             ?>
+                            <form id='buscaNoticia' action="home/noticia" method='POST'>
+                                <input type="text" name='busca'>
+                                <button>Buscar</button>
+                            </form>
                         </div>
 
                     </div>
@@ -244,7 +255,7 @@
                                         <a id='link_promocoes' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/promocoes/?p='). 1?>">Promoções</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a id='link_eventos' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/eventos/?p='). 1?>">Eventos</a>
+                                        <a id='link_eventos' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/agenda/?p='). 1?>">Agenda</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

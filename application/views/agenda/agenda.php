@@ -33,7 +33,7 @@
             <div class="col-xs-12 col-md-8 contLeft">
 
                 <h1 class="tituloPadrao1">
-                    <span>Eventos</span>
+                    <span>Agenda</span>
                 </h1>
                 <div class="blocoEventos">
                     <?php 
