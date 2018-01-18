@@ -17,8 +17,8 @@
                             <h3><?php echo $info['titulo']?></h3>
                             <p><?php echo $info['descricao']?></p>
                             <div class="infos">
-                                <p><?php echo 'HORÁRIO: '.$info['horario'];?></p>
-                                <p><?php echo 'APRESENTADOR: '. $info['apresentador'];?></p>
+                                <!--<p><?php echo 'Início: '.$info['horario'];?></p>-->
+                                <p><?php echo 'Apresentador: '. $info['apresentador'];?></p>
                             </div>
                         </div>
                     <?php endforeach?>

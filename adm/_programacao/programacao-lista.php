@@ -97,7 +97,8 @@ $(document).ready(function()
         <div class="divTd">Logo</div>
         <div class="divTd">Nome do Programa</div>
         <div class="divTd">Programação</div>
-        <div class="divTd">Horário</div>
+        <div class="divTd">Início</div>
+        <div class="divTd">Fim</div>
         <div class="divTd">Mostrar</div>
     </div>
     <?
@@ -106,7 +107,7 @@ $(document).ready(function()
 
     if(isset($_GET['p'])) {
         $pg = $_GET['p'];
-    }else{
+    }else{ 
         $pg = 0;
     }
 
@@ -118,7 +119,7 @@ $(document).ready(function()
     
 
     $limit_por_pag = 30;
-    $q = mysql_query("SELECT * FROM programacao WHERE regiao = '{$regiao}' ORDER BY programacao,horario ASC LIMIT $pag, $limit_por_pag", $conexao);
+    $q = mysql_query("SELECT * FROM programacao WHERE regiao = '{$regiao}' ORDER BY programacao,inicio ASC LIMIT $pag, $limit_por_pag", $conexao);
 
     $rows = mysql_query("SELECT * FROM programacao WHERE regiao = '{$regiao}'", $conexao);
 
@@ -172,7 +173,10 @@ $(document).ready(function()
                     <?=$tp['programacao'];?>
                 </div>
                 <div class="divTd">
-                    <?=$tp['horario'];?>
+                    <?=$tp['inicio'];?>
+                </div>
+                <div class="divTd">
+                    <?=$tp['fim'];?>
                 </div>
                 <div class="divTd">
                     <input type="checkbox" class="mostrar" value="<?=$tp['cod'];?>" <?=$tp['mostrar'] == 1 ? "checked='checked'" : "";?> />

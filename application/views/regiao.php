@@ -217,7 +217,7 @@
                     <?php endforeach;?> 
                 </div>
                 <?php
-                if($nProgramacao>3)
+                if($nProgramacao>=3)
                 {
                 ?>
                     <a class="link_descricao btVerMais" href="<?php echo base_url($_SESSION['city'].'/programacao')?>">Ver a programação completa</a>

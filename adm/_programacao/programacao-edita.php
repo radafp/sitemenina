@@ -21,7 +21,8 @@ if($submit != '')
     $titulo = isset($_POST['titulo']) ? $_POST['titulo'] : '';
     $cleanTitle = cleanTitle($titulo);
     $descricao = isset($_POST['descricao']) ? $_POST['descricao'] : '';
-    $horario = isset($_POST['horario']) ? $_POST['horario'] : '';
+    $inicio = isset($_POST['inicio']) ? $_POST['inicio'] : '';
+    $fim = isset($_POST['fim']) ? $_POST['fim'] : '';
     $apresentador = isset($_POST['apresentador']) ? $_POST['apresentador'] : '';
     $regiao = isset($_SESSION[ADMIN_SESSION_NAME.'_regiao']) ? $_SESSION[ADMIN_SESSION_NAME.'_regiao'] : '';
     $mostrar = isset($_POST['mostrar']) ? 1 : 0;
@@ -35,9 +36,9 @@ if($submit != '')
         if($subid == 2) //insert
         {
         	$q = mysql_query("INSERT INTO programacao 
-                            (dataCadastro, cleanTitle, programacao, titulo, descricao, horario, apresentador, regiao, mostrar)
+                            (dataCadastro, cleanTitle, programacao, titulo, descricao, inicio, fim, apresentador, regiao, mostrar)
                             VALUES
-                            ('$data', '$cleanTitle', '$programacao', '$titulo', '$descricao','$horario','$apresentador','$regiao','$mostrar')");
+                            ('$data', '$cleanTitle', '$programacao', '$titulo', '$descricao','$inicio','$fim','$apresentador','$regiao','$mostrar')");
         	
             //echo mysql_error();
             if($q)
@@ -86,7 +87,8 @@ if($submit != '')
                             programacao = '$programacao',
                             titulo = '$titulo',
                             descricao = '$descricao',
-                            horario = '$horario',
+                            inicio = '$inicio',
+                            fim = '$fim',
                             apresentador = '$apresentador',
                             regiao = '$regiao',
                             mostrar = '$mostrar'
@@ -168,7 +170,7 @@ if($submit != '')
     }
     else
     {
-        echo "<script>
+        echo "<script> 
 		          alert('".implode("\\n",$msg)."');
               </script>"; 
     }
@@ -187,7 +189,8 @@ else
             $programacao = $tp['programacao'];
             $titulo = $tp['titulo'];
             $descricao = $tp['descricao'];
-            $horario = $tp['horario'];
+            $inicio = $tp['inicio'];
+            $fim = $tp['fim'];
             $apresentador = $tp['apresentador'];
             $mostrar = $tp['mostrar'];
         }
@@ -205,7 +208,8 @@ else
         $programacao = '';
         $titulo = '';
         $descricao = '';
-        $horario = '';
+        $inicio = '';
+        $fim = '';
         $apresentador = '';
         $mostrar = 0;
     }
@@ -247,10 +251,18 @@ else
         </div>
         <div class="divTr">
             <div class="divTd">
-                <label>Horário*:</label>
+                <label>Início*:</label>
             </div>
             <div class="divTd">
-                <input type="text" class="campoP" name="horario" id="horario" value="<?=$horario;?>" title="Horário"/>
+                <input type="text" class="campoP" name="inicio" id="inicio" value="<?=$inicio;?>" title="Horário de início"/>
+            </div>
+        </div>
+        <div class="divTr">
+            <div class="divTd">
+                <label>Fim*:</label>
+            </div>
+            <div class="divTd">
+                <input type="text" class="campoP" name="fim" id="fim" value="<?=$fim;?>" title="Horário do fim"/>
             </div>
         </div>
         <div class="divTr">
@@ -357,10 +369,12 @@ else
         });
         objValidadorCadastro . adicionar('#programacao');
         objValidadorCadastro . adicionar('#titulo');
-        objValidadorCadastro . adicionar('#horario');
+        objValidadorCadastro . adicionar('#inicio');
+        objValidadorCadastro . adicionar('#fim');
         objValidadorCadastro . adicionar('#apresentador'); 
 
-        $("#horario").mask("99:99");       
+        $("#inicio").mask("99:99");    
+        $("#fim").mask("99:99");   
         
     });
     

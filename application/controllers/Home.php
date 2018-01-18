@@ -116,11 +116,15 @@ class home extends CI_Controller {
 
     
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
-        $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $_SESSION['cod_banner']);
-        foreach($num_impresoes as $info):
-            $valor = $info['nImpressoes'] + 1;
-            $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $_SESSION['cod_banner']);
-        endforeach;
+        $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
+        if($cod_banner!='')
+        {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $_SESSION['cod_banner']);
+            foreach($num_impresoes as $info):
+                $valor = $info['nImpressoes'] + 1;
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $_SESSION['cod_banner']);
+            endforeach;
+        }
 
         $dados['viewName'] = 'regiao';
         $this->load->view('Template', $dados);
