@@ -52,9 +52,21 @@ $qPublicidades = mysql_query(
     // "SELECT razaoSocial, nome, sobrenome, tipoPessoa, publicidades.codCliente FROM clientes
     //     INNER JOIN publicidades 
     // ON publicidades.codCliente = clientes.cod GROUP BY publicidades.codCliente"
+<<<<<<< HEAD
     "SELECT * FROM `clientes` INNER JOIN publicidades GROUP BY clientes.cod"
 );
 $nPublicidades = mysql_num_rows($qPublicidades);
+=======
+
+
+    "SELECT razaoSocial FROM `clientes` INNER JOIN publicidades"
+);
+$tpRazaoSocial = mysql_fetch_assoc($qPublicidades);
+var_dump($tpRazaoSocial);
+echo '<br> count registros: '.count($tpRazaoSocial) . '<br>';
+
+
+>>>>>>> 0412a20c2b67749f4ab78bb060b6535dc47b0d9c
 ?>
 <a class="linkTopo" href="<?=ssl().ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=5&cod=1&codDepartamento=<?=$codDepartamento;?>&codSecao=<?=$codSecao;?>&codCategoria=<?=$codCategoria;?>">
     Ordenar todos
@@ -76,11 +88,17 @@ $nPublicidades = mysql_num_rows($qPublicidades);
             <div class="divTd">
                 <select id="codDepartamento" name="codDepartamento" class="campoM" title="Departamento">
                     <option value="">Selecione</option>
+<<<<<<< HEAD
                     <?php for($i=0;$i<$nPublicidades;$i++){ 
                         $tpRazaoSocial = mysql_fetch_assoc($qPublicidades);
                         ?>
                         <option value="<?=$tpRazaoSocial['codCliente'];?>"><?=$tpRazaoSocial['razaoSocial'];?></option>
                     <?php } ?>
+=======
+                    <?php foreach($razaoSocial as $info):?>
+                    <option value="<?=$info['codCliente'];?>"><?=$info['razaoSocial'];?></option>
+                    <?php endforeach ?>
+>>>>>>> 0412a20c2b67749f4ab78bb060b6535dc47b0d9c
                 </select>
             </div>
             <div class="divTd">
