@@ -9,6 +9,7 @@ if(!verifica_permissao($cod_user, $nivel, 'publicidade'))
 }
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
+require_once ADMIN_PATH."_publicidade/inc/topo-publicidade-lista.php";
 ?>
 <script>
     
