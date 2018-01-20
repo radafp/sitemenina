@@ -9,7 +9,7 @@ if(!verifica_permissao($cod_user, $nivel, 'publicidade'))
 }
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
-// require_once ADMIN_URL."/_publicidade/inc/";
+require_once ADMIN_INC_PATH."modulos.php";
 require_once ADMIN_PATH."_publicidade/inc/topo-publicidade-lista.php";
 ?>
 <script>
@@ -94,12 +94,164 @@ $(document).ready(function()
     })
 });
 </script>
-<div class="divTableLista clear">
-    Relatório
+<?php
+if(isset($_POST['codPublicidade'])) {
+    $cod = $_POST['codPublicidade'];
 
+    $qRelatoriostipo1 = mysql_query(
+        // "SELECT (publicidadeStats.codPublicidade) as Clicks,
+        //     publiTipos.tipo,
+        //     publicidadeImpressoes.`nImpressoes` as Impressões
+        // FROM publicidadeStats, publiTipos, publicidadeImpressoes
+        //     WHERE publicidadeStats.codPublicidade = $cod
+            //     GROUP BY publicidadeStats.codPublicidade"
+        "SELECT 
+            publicidades.cod,
+            clientes.razaoSocial,
+            publiTipos.tipo,
+            (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
+            nImpressoes
+        FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
+            WHERE clientes.cod = publicidades.codCliente
+            AND publicidades.codTipo = publiTipos.cod
+            AND clientes.cod = $cod
+            GROUP BY clientes.cod"
+    );
+    $nRelatoriostipo1 = mysql_num_rows($qRelatoriostipo1);
+
+    $qRelatoriostipo2 = mysql_query(
+        "SELECT 
+        publicidades.cod,
+        clientes.razaoSocial,
+        publiTipos.tipo,
+        (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
+        nImpressoes
+    FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
+        WHERE clientes.cod = publicidades.codCliente
+        AND publicidades.codTipo = publiTipos.cod
+        AND clientes.cod = 1
+        AND publicidades.codTipo  = 2
+        GROUP BY clientes.cod"
+    );
+    $nRelatoriostipo2 = mysql_num_rows($qRelatoriostipo2);
+
+    $qRelatoriostipo3 = mysql_query(
+        "SELECT 
+        publicidades.cod,
+        clientes.razaoSocial,
+        publiTipos.tipo,
+        (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
+        nImpressoes
+    FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
+        WHERE clientes.cod = publicidades.codCliente
+        AND publicidades.codTipo = publiTipos.cod
+        AND clientes.cod = 1
+        AND publicidades.codTipo  = 3
+        GROUP BY clientes.cod"
+    );
+    $nRelatoriostipo3 = mysql_num_rows($qRelatoriostipo3);
+
+    // if(isset($_POST['dataInicio']) && isset($_POST['dataFim'])) {
+    //     $dataInicio = $_POST['dataInicio'];
+    //     echo $dataInicio;
+    //     $dataFim    = $_POST['dataFim'];
+
+    //     $qRelatoriostipo3 = mysql_query(
+    //         "SELECT 
+    //         publicidades.cod,
+    //         clientes.razaoSocial,
+    //         publiTipos.tipo,
+    //         (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
+    //         nImpressoes
+    //     FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
+    //         WHERE clientes.cod = publicidades.codCliente
+    //         AND publicidades.codTipo = publiTipos.cod
+    //         AND clientes.cod = 1
+    //         AND publicidades.codTipo  = 3
+    //         AND publicidades.dataInicio BETWEEN '$dataInicio' AND '$dataFim'
+    //         GROUP BY clientes.cod"
+    //     );
+    //     $nRelatoriostipo3 = mysql_num_rows($qRelatoriostipo3);
+    // }
+}
+?>
+  
+
+  <!-- 2018-02-01
+  2018-03-01 -->
+ <!-- Clicks = 16
+ tipo = Tipo 1 - Banner principal - Página inicial
+ Impressões = 43
+ codCliente = 1
+
+
+ publicidade 
+    radiomenina : cod = 5
+    razaoSocial : codCliente = (clientes.cod)
+    Tipo        : codTipo = (publiTipos.cod)
+    clicks      : publicidadeStatis(count(codPublicidade = publicidade.cod))
+    nImpressoes : publicidadeImpressoes(publicidadeImpressoes.cidPublicidades = cod)
+
+
+ clientes
+    cod = 1
+    razaoSocial = radiomenina
+
+
+
+publicidadeStatis 
+    codPublicidade = (publicidade)
+    clicks
+    codTipo (publiTipos)
+
+publiTipos
+    tipo
+    cod =  -->
+
+
+<div class="divTableLista clear">
+    <br><br>
+    Página:<hr><br>
+    <?php
+    if(isset($_POST['codPublicidade'])) {
+        $tpRelatoriostipo1 = mysql_fetch_assoc($qRelatoriostipo1);
+        echo $tpRelatoriostipo1['tipo']. ' --> ' . $tpRelatoriostipo1['nImpressoes'] . ' impressões e '. $tpRelatoriostipo1['cliques']. ' cliques';
+    }
+    ?>
+    <br><br>
+    Página:<hr><br>
+    <?php 
+    if(isset($_POST['codPublicidade'])) {
+        $tpRelatoriostipo2 = mysql_fetch_assoc($qRelatoriostipo2);
+        echo $tpRelatoriostipo2['tipo']. ' --> ' . $tpRelatoriostipo2['nImpressoes'] . ' impressões e '. (($tpRelatoriostipo2['cliques'] > 1)? $tpRelatoriostipo2['cliques']. ' cliques': $tpRelatoriostipo2['cliques']. ' clique');
+    }
+    ?>
+    <br>
+    <?php 
+    if(isset($_POST['codPublicidade'])) {
+        $tpRelatoriostipo3 = mysql_fetch_assoc($qRelatoriostipo3);
+        echo $tpRelatoriostipo3['tipo']. ' --> ' . $tpRelatoriostipo3['nImpressoes'] . ' impressões e '. $tpRelatoriostipo3['cliques']. ' cliques';
+    }
+    ?>
+    <!-- SELECT publiTipos.tipo,
+		COUNT(publicidadeStats.codPublicidade) as Clicks, 
+		publicidadeImpressoes.`nImpressoes` as Impressões
+	FROM publiTipos
+INNER JOIN publicidades
+	ON publicidades.codTipo = publiTipos.cod
+INNER JOIN publicidadeStats, publicidadeImpressoes
+	WHERE publicidadeStats.codPublicidade = 5
+	AND publicidadeImpressoes.codPublicidade = 5;
+ -->
+
+    <!-- SELECT (publicidadeStats.codPublicidade) as Clicks,
+	publiTipos.tipo,
+	publicidadeImpressoes.`nImpressoes` as Impressões
+FROM publicidadeStats, publiTipos, publicidadeImpressoes
+	WHERE publicidadeStats.codPublicidade = 5
+	GROUP BY publicidadeStats.codPublicidade -->
 
 <!-- comentado até o final 
-
 
                     <div class="divTr head">
                     <div class="divTd">&nbsp;</div>

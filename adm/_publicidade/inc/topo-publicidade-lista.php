@@ -49,24 +49,15 @@ $codCategoria = '';
 //     }
 // }
 $qPublicidades = mysql_query(
-    // "SELECT razaoSocial, nome, sobrenome, tipoPessoa, publicidades.codCliente FROM clientes
-    //     INNER JOIN publicidades 
-    // ON publicidades.codCliente = clientes.cod GROUP BY publicidades.codCliente"
-<<<<<<< HEAD
-    "SELECT * FROM `clientes` INNER JOIN publicidades GROUP BY clientes.cod"
+    "SELECT razaoSocial, nome, sobrenome, tipoPessoa, publicidades.codCliente FROM clientes
+        INNER JOIN publicidades 
+    ON publicidades.codCliente = clientes.cod GROUP BY publicidades.codCliente"
+
+    // "SELECT * FROM `clientes` INNER JOIN publicidades GROUP BY clientes.cod"
 );
 $nPublicidades = mysql_num_rows($qPublicidades);
-=======
 
 
-    "SELECT razaoSocial FROM `clientes` INNER JOIN publicidades"
-);
-$tpRazaoSocial = mysql_fetch_assoc($qPublicidades);
-var_dump($tpRazaoSocial);
-echo '<br> count registros: '.count($tpRazaoSocial) . '<br>';
-
-
->>>>>>> 0412a20c2b67749f4ab78bb060b6535dc47b0d9c
 ?>
 <a class="linkTopo" href="<?=ssl().ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=5&cod=1&codDepartamento=<?=$codDepartamento;?>&codSecao=<?=$codSecao;?>&codCategoria=<?=$codCategoria;?>">
     Ordenar todos
@@ -74,7 +65,7 @@ echo '<br> count registros: '.count($tpRazaoSocial) . '<br>';
 <a class="linkTopo" href="<?=ssl().ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=5&cod=2&codDepartamento=<?=$codDepartamento;?>&codSecao=<?=$codSecao;?>&codCategoria=<?=$codCategoria;?>">
     Ordenar destaques
 </a>
-<form action="">
+<form action="/adm/principal.php?id=40&subid=6&codDepartamento=1" method='POST'>
     <input type="hidden" name="id" value="<?=$id;?>" />
     <input type="hidden" name="subid" value="<?=$subid;?>" />
     <div class="divTableFiltro clear">
@@ -86,19 +77,13 @@ echo '<br> count registros: '.count($tpRazaoSocial) . '<br>';
         </div>
         <div class="divTr">
             <div class="divTd">
-                <select id="codDepartamento" name="codDepartamento" class="campoM" title="Departamento">
+                <select id="codDepartamento" name="codPublicidade" class="campoM" title="Departamento">
                     <option value="">Selecione</option>
-<<<<<<< HEAD
                     <?php for($i=0;$i<$nPublicidades;$i++){ 
                         $tpRazaoSocial = mysql_fetch_assoc($qPublicidades);
                         ?>
-                        <option value="<?=$tpRazaoSocial['codCliente'];?>"><?=$tpRazaoSocial['razaoSocial'];?></option>
+                        <option name="codPublicidade" value="<?=$tpRazaoSocial['codCliente'];?>"><?=$tpRazaoSocial['razaoSocial'];?></option>
                     <?php } ?>
-=======
-                    <?php foreach($razaoSocial as $info):?>
-                    <option value="<?=$info['codCliente'];?>"><?=$info['razaoSocial'];?></option>
-                    <?php endforeach ?>
->>>>>>> 0412a20c2b67749f4ab78bb060b6535dc47b0d9c
                 </select>
             </div>
             <div class="divTd">
@@ -115,7 +100,7 @@ echo '<br> count registros: '.count($tpRazaoSocial) . '<br>';
                     }
                     ?>
                 </select> -->
-                <input type="date">
+                <input type="date" name='dataInicio'>
                 <span class="carregandoSecao" style="color:#666;display:none;">Aguarde, carregando...</span>
             </div>
             <div class="divTd">
@@ -132,7 +117,7 @@ echo '<br> count registros: '.count($tpRazaoSocial) . '<br>';
                     }
                     ?>
                 </select> -->
-                <input type="date">
+                <input type="date" name='dataFim'>
                 <span class="carregandoCategoria" style="color:#666;display:none;">Aguarde, carregando...</span>
             </div>
             <div class="divTd">
