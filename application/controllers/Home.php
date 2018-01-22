@@ -166,8 +166,9 @@ class home extends CI_Controller {
         }
 
 
-        if(isset($_GET['busca'])) {
+        if(isset($_GET['busca']) && !empty($_GET['busca'])) {
             $busca = $_GET['busca'];
+            echo 'busca: '.$busca;
             $dados['pHome'] = $p;
             $dados['total_registros']   = 15;
             $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias_busca($busca, $_SESSION['regiao'], $p);
