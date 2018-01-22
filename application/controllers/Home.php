@@ -150,8 +150,8 @@ class home extends CI_Controller {
     }
     
     public function noticia() {
-        $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
-
+        $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'todas';
+        echo $categoria;
         
         // --------------------- PAGINAÇÂO --------------------
         if(isset($_GET['p'])) {
@@ -168,18 +168,22 @@ class home extends CI_Controller {
 
         if(isset($_GET['busca']) && !empty($_GET['busca'])) {
             $busca = $_GET['busca'];
-            echo 'busca: '.$busca;
             $dados['pHome'] = $p;
             $dados['total_registros']   = 15;
             $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias_busca($busca, $_SESSION['regiao'], $p);
             $dados['count']             = count($dados['jornalismo']);
             $dados['paginas']           = ceil($dados['count'] / 15); 
         }else{
+
+            
             $dados['pHome'] = $p;
-            $dados['total_registros']   = 15;
+            $dados['total_registros']   = 10;
+            
+            $dados['categoria'] = $categoria;
             $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao'], $p);
-            $dados['count']             = count($dados['jornalismo']);
-            $dados['paginas']           = ceil($dados['count'] / 15); 
+            $dados['count_noticias']    = $this->Novomenina->CountAll_noticias($_SESSION['regiao'], 'categoriaPt', $categoria);
+            $dados['count']             = count($dados['count_noticias']);
+            $dados['paginas']           = ceil($dados['count'] / 10); 
         }
         
         // --------------------- METODOS DO MODEL ------------------
