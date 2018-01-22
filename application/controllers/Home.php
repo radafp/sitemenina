@@ -160,7 +160,7 @@ class home extends CI_Controller {
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 10;
+        $p = ($pg - 1) * 15;
         if($p < 0) {
             $p = 0;
         }
@@ -177,13 +177,13 @@ class home extends CI_Controller {
 
             
             $dados['pHome'] = $p;
-            $dados['total_registros']   = 10;
+            $dados['total_registros']   = 15;
             
             $dados['categoria'] = $categoria;
             $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao'], $p);
             $dados['count_noticias']    = $this->Novomenina->CountAll_noticias($_SESSION['regiao'], 'categoriaPt', $categoria);
             $dados['count']             = count($dados['count_noticias']);
-            $dados['paginas']           = ceil($dados['count'] / 10); 
+            $dados['paginas']           = ceil($dados['count'] / 15); 
         }
         
         // --------------------- METODOS DO MODEL ------------------

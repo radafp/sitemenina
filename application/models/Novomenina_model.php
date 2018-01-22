@@ -254,7 +254,7 @@ class Novomenina_model extends CI_Model{
                     AND noticias.mostrar = 1 
                 GROUP BY noticias.cod
                 ORDER by DATA DESC
-                LIMIT $limit, 10
+                LIMIT $limit, 15
         "); 
         return $query->result_array();
     }
@@ -430,7 +430,7 @@ class Novomenina_model extends CI_Model{
             "SELECT * FROM videos 
                 WHERE videos.regiao = '$regiao' 
                 AND videos.mostrar = 1
-                LIMIT $limit, 10"
+                LIMIT $limit, 15"
         );
         return $query->result_array();
     }
@@ -503,7 +503,7 @@ class Novomenina_model extends CI_Model{
                     AND promocoes.mostrar = 1 
                 GROUP BY promocoes.cod
                 ORDER BY promocoes.dataCadastro DESC
-                LIMIT $limit, 10
+                LIMIT $limit, 15
         "); 
         return $query->result_array();
     }
@@ -589,7 +589,7 @@ class Novomenina_model extends CI_Model{
                     AND eventos.dataInicio >= ".date('Ymd')."
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataInicio ASC 
-                LIMIT $limit, 10
+                LIMIT $limit, 15
         "); 
         return $query->result_array();
     }
@@ -713,7 +713,7 @@ class Novomenina_model extends CI_Model{
                     AND empregos.mostrar = 1 
                 GROUP BY empregos.cod
                 ORDER BY empregos.dataCadastro DESC
-                LIMIT $limit, 10
+                LIMIT $limit, 15
         "); 
         return $query->result_array();
     }
@@ -744,7 +744,7 @@ class Novomenina_model extends CI_Model{
                     AND achadoseperdidos.mostrar = 1 
                 GROUP BY achadoseperdidos.cod
                 ORDER BY achadoseperdidos.dataCadastro DESC
-                LIMIT $limit, 10
+                LIMIT $limit, 15
         "); 
         return $query->result_array();
     }

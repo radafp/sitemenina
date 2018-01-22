@@ -76,11 +76,11 @@
                     ?>
 
                     <?php 
-                    //  echo '<br>$$total_registros: '.$total_registros;
+                     echo '<br>$$total_registros: '.$total_registros;
 
-                    // echo '<br>categoria: '. $categoria;
-                    // echo '<br>$pHome: '.$pHome;
-                    // echo '<br>$count: '.$count . '<br>';
+                    echo '<br>categoria: '. $categoria;
+                    echo '<br>$pHome: '.$pHome;
+                    echo '<br>$count: '.$count . '<br>';
                     
                     ?>
 
@@ -98,7 +98,7 @@
                             <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$categoria.'&p=') .$p;?>"><?=$p;?></a>
                         </div>
                         
-                        <?php if($pHome+10 <= $count):?>
+                        <?php if($pHome+15 <= $count):?>
                             <div class='pagina'>
                                 <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$categoria.'&p=' .$proxima);?>"><?=$proxima;?></a>
                             </div>
