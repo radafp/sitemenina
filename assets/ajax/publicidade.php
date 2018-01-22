@@ -28,6 +28,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
 
     foreach($array as $info) {
         $empresa = $info['empresa'];
+        $codCliente = $info['codCliente'];
         $dataInicio = $info['dataInicio'];
         $dataFim = $info['dataFim'];
         $regiao = $info['regiao'];
@@ -36,8 +37,8 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
         try{
             $stmt = $conn->prepare(
                 "INSERT INTO publicidadeStats 
-                (dataCadastro, codPublicidade, codTipo, ip, empresa, dataInicio, dataFim, regiao) VALUES 
-                ('$datacadastro', '$cod', '$codTipo', '$ip', '$empresa', '$dataInicio', '$dataFim', '$regiao')"
+                (dataCadastro, codPublicidade, codTipo, ip, codCliente, empresa, dataInicio, dataFim, regiao) VALUES 
+                ('$datacadastro', '$cod', '$codTipo', '$ip', '$codCliente', '$empresa', '$dataInicio', '$dataFim', '$regiao')"
             );
             $stmt->execute();
         }catch(PDOException $e) {
