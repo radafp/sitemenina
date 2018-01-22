@@ -224,7 +224,7 @@ class home extends CI_Controller {
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 10;
+        $p = ($pg - 1) * 15;
         if($p < 0) {
             $p = 0;
         }
@@ -232,8 +232,8 @@ class home extends CI_Controller {
         
         $dados['pHome'] = $p;
         $dados['count']             = count($this->Novomenina-> CountAll('eventos', $_SESSION['regiao']));
-        $dados['total_registros']   = 10;
-        $dados['paginas']           = ceil($dados['count'] / 10);      
+        $dados['total_registros']   = 15;
+        $dados['paginas']           = ceil($dados['count'] / 15);      
         
         // --------------------- METODOS DO MODEL ------------------
         //|                                                         |
@@ -272,16 +272,16 @@ class home extends CI_Controller {
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 10;
+        $p = ($pg - 1) * 15;
         if($p < 0) {
             $p = 0;
         }
                 
         $dados['pHome'] = $p;
-        $dados['total_registros']   = 10;
+        $dados['total_registros']   = 15;
         $dados['videos_videos']     = $this->Novomenina-> videos($regiao, $p);
         $dados['count']             = count($this->Novomenina-> CountAll('videos', $_SESSION['regiao']));
-        $dados['paginas']           = ceil($dados['count'] / 10); 
+        $dados['paginas']           = ceil($dados['count'] / 15); 
 
         // --------------------- METODOS DO MODEL ------------------
         //|                                                         |
@@ -319,16 +319,16 @@ class home extends CI_Controller {
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 10;
+        $p = ($pg - 1) * 15;
         if($p < 0) {
             $p = 0;
         }
                 
         $dados['pHome'] = $p;
-        $dados['total_registros']       = 10;
+        $dados['total_registros']       = 15;
         $dados['promocoes_promocoes']   = $this->Novomenina->promocoes_promocoes($_SESSION['regiao'], $p);
         $dados['count']                 = count($this->Novomenina-> CountAll('promocoes', $_SESSION['regiao']));
-        $dados['paginas']               = ceil($dados['count'] / 10); 
+        $dados['paginas']               = ceil($dados['count'] / 15); 
         
         // --------------------- METODOS DO MODEL ------------------
         //|                                                         |
@@ -386,16 +386,16 @@ class home extends CI_Controller {
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 10;
+        $p = ($pg - 1) * 15;
         if($p < 0) {
             $p = 0;
         }
                 
         $dados['pHome'] = $p;
-        $dados['total_registros']       = 10;
+        $dados['total_registros']       = 15;
         $dados['empregos']              = $this->Novomenina->empregos($_SESSION['regiao'], $p);
         $dados['count']                 = count($this->Novomenina-> CountAll('empregos', $_SESSION['regiao']));
-        $dados['paginas']               = ceil($dados['count'] / 10); 
+        $dados['paginas']               = ceil($dados['count'] / 15); 
         
         // --------------------- METODOS DO MODEL ------------------
         //|                                                         |
@@ -420,16 +420,16 @@ class home extends CI_Controller {
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 10;
+        $p = ($pg - 1) * 15;
         if($p < 0) {
             $p = 0;
         }
                 
         $dados['pHome'] = $p;
-        $dados['total_registros']       = 10;
+        $dados['total_registros']       = 15;
         $dados['documentos_perdidos']   = $this->Novomenina->documentos_perdidos($_SESSION['regiao'], $p);
         $dados['count']                 = count($this->Novomenina-> CountAll('empregos', $_SESSION['regiao']));
-        $dados['paginas']               = ceil($dados['count'] / 10); 
+        $dados['paginas']               = ceil($dados['count'] / 15); 
         
 
         // --------------------- METODOS DO MODEL ------------------

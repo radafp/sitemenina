@@ -76,11 +76,11 @@
                     ?>
 
                     <?php 
-                     echo '<br>$$total_registros: '.$total_registros;
+                    //  echo '<br>$$total_registros: '.$total_registros;
 
-                    echo '<br>categoria: '. $categoria;
-                    echo '<br>$pHome: '.$pHome;
-                    echo '<br>$count: '.$count . '<br>';
+                    // echo '<br>categoria: '. $categoria;
+                    // echo '<br>$pHome: '.$pHome;
+                    // echo '<br>$count: '.$count . '<br>';
                     
                     ?>
 
