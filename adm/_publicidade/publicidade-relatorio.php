@@ -7,104 +7,21 @@ if(!verifica_permissao($cod_user, $nivel, 'publicidade'))
 	echo " </script>";
 	die();
 }
+
+$cliente = isset($_GET['cliente']) ? $_GET['cliente'] : '';
+
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
 require_once ADMIN_INC_PATH."modulos.php";
 require_once ADMIN_PATH."_publicidade/inc/topo-publicidade-lista.php";
-?>
-<script>
-    
-$(document).ready(function()
+
+if($cliente) 
 {
-    $(".mostrar").click(function()
-    {
-        _obj = $(this);
-        _mostrar = _obj.is(':checked') ? '1' : '0';
-        _cod = _obj.val();
-        _obj.hide();
-        _obj.parent().prepend("<img class='imgLoad' title='Carregando' src='http://"+ADMIN_URL+"/img/base/conteudo/load.gif' />");
-        
-        $.ajax(
-        {
-            type: "POST",
-            async: false,
-            url: "http://"+ADMIN_URL+"/_publicidade/ajax/ajaxMostrarLista.php", //URL de destino
-            data:
-            {
-                cod: _cod,
-                mostrar: _mostrar
-            },
-            dataType: "json"
-        })
-        .done(function(_json)
-        { //Se ocorrer tudo certo
-            
-            if(_json.erro != 0)
-            {
-                _valor = _mostrar == 1 ? 0 : 1;
-                if(_valor == 0)
-                {
-                    _obj.removeAttr("checked");
-                }
-                else
-                {
-                    _obj.attr("checked","true");
-                }
-            }
-            _obj.parent().find('.imgLoad').remove();
-            _obj.show();
-        });
-    }); 
-    
-    $('.apagarTodos > a').click(function()
-    {
-        _link = $(this).data('link');
-        _gets = new Array();
-        $('input.checks:checked').each(function()
-        {
-            _name = $(this).attr('name');
-            _value = $(this).val();
-            _gets.push(_name+'='+_value); 
-        });
-        if(_gets.length > 0)
-        {
-            _confirm = confirm('Tem certeza que deseja excluir o(s) registro(s) selecionado(s)?');
-            if(_confirm)
-            {
-                _url = _link+'&'+_gets.join('&');
-                document.location.replace(_url);
-            }
-        }
-        else
-        {
-            alert('Nenhum registro selecionado!');
-        }
-        return false;
-    });
-    $(".selecionarTodos > input[type='checkbox']").change(function()
-    {
-        if($(this).is(':checked'))
-        {
-            $('input.checks').attr('checked', 'true');
-        }
-        else
-        {
-            $('input.checks').removeAttr('checked');
-        }
-    })
-});
-</script>
-<?php
-if(isset($_POST['codPublicidade'])) {
-    $cod = $_POST['codPublicidade'];
+    $cod = $cliente;
+    echo $cod;
 
     $qRelatoriostipo1 = mysql_query(
-        // "SELECT (publicidadeStats.codPublicidade) as Clicks,
-        //     publiTipos.tipo,
-        //     publicidadeImpressoes.`nImpressoes` as Impressões
-        // FROM publicidadeStats, publiTipos, publicidadeImpressoes
-        //     WHERE publicidadeStats.codPublicidade = $cod
-            //     GROUP BY publicidadeStats.codPublicidade"
+
         "SELECT 
             publicidades.cod,
             clientes.razaoSocial,
@@ -151,87 +68,31 @@ if(isset($_POST['codPublicidade'])) {
     );
     $nRelatoriostipo3 = mysql_num_rows($qRelatoriostipo3);
 
-    // if(isset($_POST['dataInicio']) && isset($_POST['dataFim'])) {
-    //     $dataInicio = $_POST['dataInicio'];
-    //     echo $dataInicio;
-    //     $dataFim    = $_POST['dataFim'];
-
-    //     $qRelatoriostipo3 = mysql_query(
-    //         "SELECT 
-    //         publicidades.cod,
-    //         clientes.razaoSocial,
-    //         publiTipos.tipo,
-    //         (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
-    //         nImpressoes
-    //     FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
-    //         WHERE clientes.cod = publicidades.codCliente
-    //         AND publicidades.codTipo = publiTipos.cod
-    //         AND clientes.cod = 1
-    //         AND publicidades.codTipo  = 3
-    //         AND publicidades.dataInicio BETWEEN '$dataInicio' AND '$dataFim'
-    //         GROUP BY clientes.cod"
-    //     );
-    //     $nRelatoriostipo3 = mysql_num_rows($qRelatoriostipo3);
-    // }
-}
 ?>
-  
-
-  <!-- 2018-02-01
-  2018-03-01 -->
- <!-- Clicks = 16
- tipo = Tipo 1 - Banner principal - Página inicial
- Impressões = 43
- codCliente = 1
-
-
- publicidade 
-    radiomenina : cod = 5
-    razaoSocial : codCliente = (clientes.cod)
-    Tipo        : codTipo = (publiTipos.cod)
-    clicks      : publicidadeStatis(count(codPublicidade = publicidade.cod))
-    nImpressoes : publicidadeImpressoes(publicidadeImpressoes.cidPublicidades = cod)
-
-
- clientes
-    cod = 1
-    razaoSocial = radiomenina
-
-
-
-publicidadeStatis 
-    codPublicidade = (publicidade)
-    clicks
-    codTipo (publiTipos)
-
-publiTipos
-    tipo
-    cod =  -->
-
-
 <div class="divTableLista clear">
     <br><br>
     Página:<hr><br>
     <?php
-    if(isset($_POST['codPublicidade'])) {
         $tpRelatoriostipo1 = mysql_fetch_assoc($qRelatoriostipo1);
         echo $tpRelatoriostipo1['tipo']. ' --> ' . $tpRelatoriostipo1['nImpressoes'] . ' impressões e '. $tpRelatoriostipo1['cliques']. ' cliques';
-    }
+
     ?>
     <br><br>
     Página:<hr><br>
     <?php 
-    if(isset($_POST['codPublicidade'])) {
+
         $tpRelatoriostipo2 = mysql_fetch_assoc($qRelatoriostipo2);
         echo $tpRelatoriostipo2['tipo']. ' --> ' . $tpRelatoriostipo2['nImpressoes'] . ' impressões e '. (($tpRelatoriostipo2['cliques'] > 1)? $tpRelatoriostipo2['cliques']. ' cliques': $tpRelatoriostipo2['cliques']. ' clique');
-    }
+
     ?>
     <br>
     <?php 
-    if(isset($_POST['codPublicidade'])) {
+
         $tpRelatoriostipo3 = mysql_fetch_assoc($qRelatoriostipo3);
         echo $tpRelatoriostipo3['tipo']. ' --> ' . $tpRelatoriostipo3['nImpressoes'] . ' impressões e '. $tpRelatoriostipo3['cliques']. ' cliques';
-    }
+
+}
+
     ?>
     <!-- SELECT publiTipos.tipo,
 		COUNT(publicidadeStats.codPublicidade) as Clicks, 
