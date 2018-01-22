@@ -447,6 +447,8 @@
     overflow: hidden;
     float: left;
     margin-right: 30px;
+    min-width: 200px;
+    text-align: center;
  }
  .blocoNoticias .noticia .foto img{
     max-height: 150px;

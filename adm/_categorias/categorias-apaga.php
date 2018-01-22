@@ -22,7 +22,44 @@ if($cods != '')
         $qCategorias = mysql_query("SELECT * FROM categorias WHERE cod = '{$codCategoria}'");
         while($tpCategorias = mysql_fetch_assoc($qCategorias))
         {
-            
+
+            $qNoticiasCategoria = mysql_query("SELECT * FROM noticias WHERE codCategoria = '{$tpCategorias['cod']}'");
+            while($tpNoticiasCategoria = mysql_fetch_assoc($qNoticiasCategoria))
+            {
+                $qArquivosNoticiasCategoria = mysql_query("SELECT * FROM arquivos WHERE codReferencia = '{$tpNoticiasCategoria['cod']}' AND referencia = 'noticias'");
+                while($tpArquivosNoticiasCategoria = mysql_fetch_assoc($qArquivosNoticiasCategoria))
+                {
+                    //Exclui arquivos fisicos
+                    for($a=0;$a<5;$a++)
+                    {
+                        $unlink = @unlink(PROJECT_PATH."arquivos/noticias/".$tpArquivosNoticiasCategoria['arquivo']);
+                        if($unlink)
+                        {
+                            break;
+                        }
+                    }
+                    //excluir arquivos da tabela arquivos
+                    $sqlDelArquivosNoticiasCategoria = "DELETE FROM arquivos WHERE cod = '{$tpArquivosNoticiasCategoria['cod']}'";
+                    for($a=0;$a<5;$a++)
+                    {
+                        $qDelArquivosNoticiasCategoria = mysql_query($sqlDelArquivosNoticiasCategoria);
+                        if($qDelArquivosNoticiasCategoria)
+                        {
+                            break;
+                        }
+                    }
+                }
+                //exclui as noticias
+                $sqlDelNoticiasCategoria = "DELETE FROM noticias WHERE cod = '{$tpNoticiasCategoria['cod']}'";
+                for($a=0;$a<5;$a++)
+                {
+                    $qDelNoticiasCategoria = mysql_query($sqlDelNoticiasCategoria);
+                    if($qDelNoticiasCategoria)
+                    {
+                        break;
+                    }
+                }
+            }
             /** EXCLUIR CATEGORIA */
             $sqlDelCategoria = "DELETE FROM categorias WHERE cod = '{$tpCategorias['cod']}' LIMIT 1";
             for($a=0;$a<5;$a++)
@@ -39,7 +76,6 @@ if($cods != '')
             }
             /** FIM - EXCLUIR CATEGORIA */                    
         }
-            
     }
     if($erros > 0)
     {
