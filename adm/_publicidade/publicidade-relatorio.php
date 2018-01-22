@@ -9,7 +9,7 @@ if(!verifica_permissao($cod_user, $nivel, 'publicidade'))
 }
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
-// require_once ADMIN_URL."/_publicidade/inc/";
+require_once ADMIN_INC_PATH."modulos.php";
 require_once ADMIN_PATH."_publicidade/inc/topo-publicidade-lista.php";
 ?>
 <script>
@@ -95,11 +95,17 @@ $(document).ready(function()
 });
 </script>
 <div class="divTableLista clear">
-    Relatório
+    <br><br>
+    Página: 
+    <hr>
+    <br>
+    <?= $_POST['codPublicidade'];?>
 
+    <br><br>
+    Página: 
+    <hr>
 
 <!-- comentado até o final 
-
 
                     <div class="divTr head">
                     <div class="divTd">&nbsp;</div>

@@ -19,9 +19,17 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
     // CRIAR SELECT PRA PEGAR CÓDIGO DA PERGUNTA 
     $array = array();
     $query = $conn->query(
-        "SELECT *
-          FROM publicidades
-        WHERE cod = $cod"
+        // "SELECT *
+        //   FROM publicidades
+        // WHERE cod = $cod"
+        "SELECT 
+            publicidades.*,
+            publiTipos.tipo,
+            publiPaginas.pagina
+        FROM publicidades, publiTipos, publiPaginas
+        WHERE publicidades.cod = $cod
+        and publicidades.codTipo = publiTipos.cod
+        AND publicidades.codPagina = publiPaginas.cod"
     );
     $array = $query->fetchAll(\PDO::FETCH_ASSOC);
     
@@ -29,6 +37,8 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
     foreach($array as $info) {
         $empresa = $info['empresa'];
         $dataInicio = $info['dataInicio'];
+        $tipo = $info['tipo'];
+        $pagina = $info['pagina'];
         $dataFim = $info['dataFim'];
         $regiao = $info['regiao'];
         $codTipo = $info['codTipo'];
@@ -36,8 +46,8 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
         try{
             $stmt = $conn->prepare(
                 "INSERT INTO publicidadeStats 
-                (dataCadastro, codPublicidade, codTipo, ip, empresa, dataInicio, dataFim, regiao) VALUES 
-                ('$datacadastro', '$cod', '$codTipo', '$ip', '$empresa', '$dataInicio', '$dataFim', '$regiao')"
+                (dataCadastro, codPublicidade, codTipo, ip, empresa, tipo, pagina, dataInicio, dataFim, regiao) VALUES 
+                ('$datacadastro', '$cod', '$codTipo', '$ip', '$empresa', '$tipo', '$pagina', '$dataInicio', '$dataFim', '$regiao')"
             );
             $stmt->execute();
         }catch(PDOException $e) {
