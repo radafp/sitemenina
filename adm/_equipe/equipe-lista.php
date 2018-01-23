@@ -1,4 +1,5 @@
 <?php
+/*
 if(!verifica_permissao($cod_user, $nivel, 'jornalismo'))
 {
 	echo "<script>
@@ -7,6 +8,7 @@ if(!verifica_permissao($cod_user, $nivel, 'jornalismo'))
 	echo " </script>";
 	die();
 }
+*/
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
 ?>
@@ -25,7 +27,7 @@ $(document).ready(function()
         {
             type: "POST",
             async: false,
-            url: "http://"+ADMIN_URL+"/_noticias/ajax/ajaxMostrarLista.php", //URL de destino
+            url: "http://"+ADMIN_URL+"/_equipe/ajax/ajaxMostrarLista.php", //URL de destino
             data:
             {
                 cod: _cod,
@@ -65,7 +67,7 @@ $(document).ready(function()
         {
             type: "POST",
             async: false,
-            url: "http://"+ADMIN_URL+"/_noticias/ajax/ajaxDestaqueLista.php", //URL de destino
+            url: "http://"+ADMIN_URL+"/_equipe/ajax/ajaxDestaqueLista.php", //URL de destino
             data:
             {
                 cod: _cod,
@@ -134,11 +136,7 @@ $(document).ready(function()
 <div class="divTableLista clear">
     <div class="divTr head">
         <div class="divTd">&nbsp;</div>
-        <div class="divTd">Data</div>
-        <div class="divTd">Categoria</div>
         <div class="divTd">Título</div>
-        <div class="divTd">Fotos</div>
-        <div class="divTd">Destaque</div>
         <div class="divTd">Mostrar</div>
     </div>
     <?
@@ -156,9 +154,9 @@ $(document).ready(function()
     }    
 
     $limit_por_pag = 30;
-    $q = mysql_query("SELECT * FROM noticias WHERE regiao = '{$regiao}' ORDER BY data DESC LIMIT $pag, $limit_por_pag", $conexao);
+    $q = mysql_query("SELECT * FROM equipe WHERE regiao = '{$regiao}' ORDER BY tituloPt DESC LIMIT $pag, $limit_por_pag", $conexao);
     
-    $rows = mysql_query("SELECT * FROM noticias WHERE regiao = '{$regiao}' ", $conexao);
+    $rows = mysql_query("SELECT * FROM equipe WHERE regiao = '{$regiao}' ", $conexao);
 
     $count_registros = mysql_num_rows($rows);
     $paginas = ceil($count_registros / $limit_por_pag);
@@ -167,9 +165,7 @@ $(document).ready(function()
     {
     	while($tp = mysql_fetch_assoc($q))
     	{
-            $qCategoria = mysql_query("SELECT cod, categoriaPt FROM categorias WHERE cod = '{$tp['codCategoria']}' ORDER BY categoriaPt DESC", $conexao);
-            $tpCategoria = mysql_fetch_assoc($qCategoria);
-
+        
             $qFotos = mysql_query("SELECT cod FROM arquivos WHERE codReferencia = '{$tp['cod']}' AND tipo = '2' AND referencia = 'noticias'");
             $nFotos = mysql_num_rows($qFotos);
             ?>
@@ -179,35 +175,8 @@ $(document).ready(function()
                 </div>
                 <div class="divTd">
                     <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
-                        <?=dataBr($tp['data']);?>
-                    </a>
-                </div>
-                <div class="divTd">
-                    <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
-                        <?=$tpCategoria['categoriaPt'];?>
-                    </a>
-                </div>
-                <div class="divTd">
-                    <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
                         <?=$tp['tituloPt'];?>
                     </a>
-                </div>
-                <div class="divTd">
-                    <?
-                    if($nFotos > 0)
-                    {
-                    ?>
-                        <a class="link" href="<?=ssl().ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=6&cod=<?=$tp['cod'];?>">
-                            Ordenar
-                        </a>
-                    <?
-                    }
-                    else
-                        echo '-';
-                    ?>
-                </div>
-                <div class="divTd">
-                    <input type="checkbox" class="destaque" value="<?=$tp['cod'];?>" <?=$tp['destaque'] == 1 ? "checked='checked'" : "";?> />
                 </div>
                 <div class="divTd">
                     <input type="checkbox" class="mostrar" value="<?=$tp['cod'];?>" <?=$tp['mostrar'] == 1 ? "checked='checked'" : "";?> />
