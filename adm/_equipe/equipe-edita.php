@@ -69,8 +69,7 @@ if($submit != '')
                             $capa = 0;
                         }                    
                         $codigo = rand(1,999999).date('dmYHis');
-        				$fileM = insere_foto($foto, $foto_temp, $pasta,'640','480');
-                        $fileG = insere_foto($foto, $foto_temp, $pasta,'1024','768');
+        				$fileM = insere_foto($foto, $foto_temp, $pasta,'480','640');
         		
                         $sqlM = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, tipo, arquivo, legenda, codigo, capa)
                                 VALUES ('$data', 'equipe', '{$cod}', '2', '{$fileM}', '$legenda', '$codigo', '$capa')";
@@ -78,16 +77,6 @@ if($submit != '')
                         {
                             $qM = mysql_query($sqlM);
                             if($qM)
-                            {
-                                break;
-                            }
-                        }
-                        $sqlG = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, tipo, arquivo, legenda, codigo, capa)
-                                VALUES ('$data', 'equipe', '{$cod}', '3', '{$fileG}', '$legenda', '$codigo', '$capa')";
-    					for($b=0;$b<5;$b++)
-                        {
-                            $qG = mysql_query($sqlG);
-                            if($qG)
                             {
                                 break;
                             }
@@ -200,8 +189,7 @@ if($submit != '')
                             $capa = 0;
                         }              
                         $codigo = rand(1,999999).date('dmYHis');
-                        $fileM = insere_foto($foto, $foto_temp, $pasta,'640','480');
-                        $fileG = insere_foto($foto, $foto_temp, $pasta,'1024','768');
+                        $fileM = insere_foto($foto, $foto_temp, $pasta,'480','640');
         		
                         $sqlM = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, tipo, arquivo, legenda, codigo, capa)
                                 VALUES ('$data', 'equipe', '{$cod}', '2', '{$fileM}', '$legenda', '$codigo', '$capa')";
@@ -209,16 +197,6 @@ if($submit != '')
                         {
                             $qM = mysql_query($sqlM);
                             if($qM)
-                            {
-                                break;
-                            }
-                        }
-                        $sqlG = "INSERT INTO arquivos (dataCadastro, referencia, codReferencia, tipo, arquivo, legenda, codigo, capa)
-                                VALUES ('$data', 'equipe', '{$cod}', '3', '{$fileG}', '$legenda', '$codigo', '$capa')";
-    					for($b=0;$b<5;$b++)
-                        {
-                            $qG = mysql_query($sqlG);
-                            if($qG)
                             {
                                 break;
                             }
