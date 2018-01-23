@@ -451,9 +451,21 @@ class home extends CI_Controller {
 
     public function equipe() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+
+        $dados['equipe'] = $this->Novomenina->equipe($_SESSION['regiao']);
         $dados['viewName'] = 'quem_somos/equipe';
         $this->load->view('Template', $dados);
     }
+
+    public function descricao_equipe() {
+        $id = addslashes($_GET['id']);
+        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+
+        $dados['descricao_programacao'] = $this->Novomenina->descricao_equipe($id, $_SESSION['regiao']);
+        $dados['viewName'] = 'quem_somos/descricao_equipe';
+        $this->load->view('Template', $dados);
+    }
+
 
     public function midia() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
