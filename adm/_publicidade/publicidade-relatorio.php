@@ -20,80 +20,107 @@ if($cliente)
     $cod = $cliente;
     echo $cod;
 
-    $qRelatoriostipo1 = mysql_query(
+    $qRelatoriostipo = mysql_query(
 
-        "SELECT 
-            publicidades.cod,
-            clientes.razaoSocial,
-            publiTipos.tipo,
-            (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
-            nImpressoes
-        FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
-            WHERE clientes.cod = publicidades.codCliente
-            AND publicidades.codTipo = publiTipos.cod
-            AND clientes.cod = $cod
-            GROUP BY clientes.cod"
-    );
-    $nRelatoriostipo1 = mysql_num_rows($qRelatoriostipo1);
+        // "SELECT 
+        //     publicidades.cod,
+        //     clientes.razaoSocial,
+        //     publiTipos.tipo,
+        //     (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
+        //     nImpressoes
+        // FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
+        //     WHERE clientes.cod = publicidades.codCliente
+        //     AND publicidades.codTipo = publiTipos.cod
+        //     AND clientes.cod = $cod
+        //     GROUP BY clientes.cod"
 
-    $qRelatoriostipo2 = mysql_query(
-        "SELECT 
-        publicidades.cod,
-        clientes.razaoSocial,
-        publiTipos.tipo,
-        (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
-        nImpressoes
-    FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
-        WHERE clientes.cod = publicidades.codCliente
-        AND publicidades.codTipo = publiTipos.cod
-        AND clientes.cod = 1
-        AND publicidades.codTipo  = 2
-        GROUP BY clientes.cod"
+        "SELECT
+            publicidadeStats.tipo,
+            COUNT(publicidadeStats.codPublicidade) AS cliques,
+            publicidadeStats.pagina,	
+            publicidadeImpressoes.nImpressoes,
+            publicidadeStats.codCliente
+        FROM publicidadeStats, publicidadeImpressoes
+            WHERE publicidadeStats.codCliente = '$cod'
+            AND publicidadeStats.codPublicidade = publicidadeImpressoes.codPublicidade
+            GROUP BY publicidadeStats.tipo;"
     );
-    $nRelatoriostipo2 = mysql_num_rows($qRelatoriostipo2);
+    $nRelatoriostipo = mysql_num_rows($qRelatoriostipo);
 
-    $qRelatoriostipo3 = mysql_query(
-        "SELECT 
-        publicidades.cod,
-        clientes.razaoSocial,
-        publiTipos.tipo,
-        (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
-        nImpressoes
-    FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
-        WHERE clientes.cod = publicidades.codCliente
-        AND publicidades.codTipo = publiTipos.cod
-        AND clientes.cod = 1
-        AND publicidades.codTipo  = 3
-        GROUP BY clientes.cod"
-    );
-    $nRelatoriostipo3 = mysql_num_rows($qRelatoriostipo3);
+    // $qRelatoriosPagina = mysql_query(
+    //     "SELECT pagina 
+    //         FROM publicidadeStats, publicidadeImpressoes
+    //         WHERE publicidadeStats.codPublicidade =publicidadeImpressoes.codPublicidade
+    //         AND publicidadeStats.codCliente = '$cod';
+    //     "
+
+    // echo ($nRelatoriostipo1);
+    // $qRelatoriostipo2 = mysql_query(
+    //     "SELECT 
+    //     publicidades.cod,
+    //     clientes.razaoSocial,
+    //     publiTipos.tipo,
+    //     (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
+    //     nImpressoes
+    // FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
+    //     WHERE clientes.cod = publicidades.codCliente
+    //     AND publicidades.codTipo = publiTipos.cod
+    //     AND clientes.cod = 1
+    //     AND publicidades.codTipo  = 2
+    //     GROUP BY clientes.cod"
+    // );
+    // $nRelatoriostipo2 = mysql_num_rows($qRelatoriostipo2);
+
+    // $qRelatoriostipo3 = mysql_query(
+    //     "SELECT 
+    //     publicidades.cod,
+    //     clientes.razaoSocial,
+    //     publiTipos.tipo,
+    //     (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
+    //     nImpressoes
+    // FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
+    //     WHERE clientes.cod = publicidades.codCliente
+    //     AND publicidades.codTipo = publiTipos.cod
+    //     AND clientes.cod = 1
+    //     AND publicidades.codTipo  = 3
+    //     GROUP BY clientes.cod"
+    // );
+    // $nRelatoriostipo3 = mysql_num_rows($qRelatoriostipo3);
 
 ?>
 <div class="divTableLista clear">
     <br><br>
-    Página:<hr><br>
     <?php
-        $tpRelatoriostipo1 = mysql_fetch_assoc($qRelatoriostipo1);
-        echo $tpRelatoriostipo1['tipo']. ' --> ' . $tpRelatoriostipo1['nImpressoes'] . ' impressões e '. $tpRelatoriostipo1['cliques']. ' cliques';
-
+    
+        for($c = 0; $c < $nRelatoriostipo; $c++) {
+        $tpRelatoriostipo = mysql_fetch_assoc($qRelatoriostipo);
+        
+        Página: echo $tpRelatoriostipo['pagina'] . '<br>';
+       
+        echo $tpRelatoriostipo['tipo']. ' --> ' . $tpRelatoriostipo['nImpressoes'] . ' impressões e '. $tpRelatoriostipo['cliques']. ' cliques';
+        echo '<hr>';
+        
+        
+            // echo '<br><br><br>'.$tpRelatoriostipo1['tipo'];
+        }
     ?>
     <br><br>
-    Página:<hr><br>
+    <!-- Página:<hr><br> -->
     <?php 
 
-        $tpRelatoriostipo2 = mysql_fetch_assoc($qRelatoriostipo2);
-        echo $tpRelatoriostipo2['tipo']. ' --> ' . $tpRelatoriostipo2['nImpressoes'] . ' impressões e '. (($tpRelatoriostipo2['cliques'] > 1)? $tpRelatoriostipo2['cliques']. ' cliques': $tpRelatoriostipo2['cliques']. ' clique');
+        // $tpRelatoriostipo2 = mysql_fetch_assoc($qRelatoriostipo2);
+        // echo $tpRelatoriostipo2['tipo']. ' --> ' . $tpRelatoriostipo2['nImpressoes'] . ' impressões e '. (($tpRelatoriostipo2['cliques'] > 1)? $tpRelatoriostipo2['cliques']. ' cliques': $tpRelatoriostipo2['cliques']. ' clique');
 
     ?>
     <br>
     <?php 
 
-        $tpRelatoriostipo3 = mysql_fetch_assoc($qRelatoriostipo3);
-        echo $tpRelatoriostipo3['tipo']. ' --> ' . $tpRelatoriostipo3['nImpressoes'] . ' impressões e '. $tpRelatoriostipo3['cliques']. ' cliques';
+        // $tpRelatoriostipo3 = mysql_fetch_assoc($qRelatoriostipo3);
+        // echo $tpRelatoriostipo3['tipo']. ' --> ' . $tpRelatoriostipo3['nImpressoes'] . ' impressões e '. $tpRelatoriostipo3['cliques']. ' cliques';
 
 }
 
-    ?>
+    // ?>
     <!-- SELECT publiTipos.tipo,
 		COUNT(publicidadeStats.codPublicidade) as Clicks, 
 		publicidadeImpressoes.`nImpressoes` as Impressões
