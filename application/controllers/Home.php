@@ -150,8 +150,8 @@ class home extends CI_Controller {
     }
     
     public function noticia() {
-        $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
-
+        $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'todas';
+        echo $categoria;
         
         // --------------------- PAGINAÇÂO --------------------
         if(isset($_GET['p'])) {
@@ -160,12 +160,17 @@ class home extends CI_Controller {
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 10;
+        $p = ($pg - 1) * 15;
         if($p < 0) {
             $p = 0;
         }
 
+<<<<<<< HEAD
         if(isset($_GET['busca'])) {
+=======
+
+        if(isset($_GET['busca']) && !empty($_GET['busca'])) {
+>>>>>>> ce202027b1613612a77f2783ad988f4ee85cae85
             $busca = $_GET['busca'];
             $dados['pHome'] = $p;
             $dados['total_registros']   = 15;
@@ -173,10 +178,15 @@ class home extends CI_Controller {
             $dados['count']             = count($dados['jornalismo']);
             $dados['paginas']           = ceil($dados['count'] / 15); 
         }else{
+
+            
             $dados['pHome'] = $p;
             $dados['total_registros']   = 15;
+            
+            $dados['categoria'] = $categoria;
             $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao'], $p);
-            $dados['count']             = count($dados['jornalismo']);
+            $dados['count_noticias']    = $this->Novomenina->CountAll_noticias($_SESSION['regiao'], 'categoriaPt', $categoria);
+            $dados['count']             = count($dados['count_noticias']);
             $dados['paginas']           = ceil($dados['count'] / 15); 
         }
         
@@ -218,7 +228,7 @@ class home extends CI_Controller {
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 10;
+        $p = ($pg - 1) * 15;
         if($p < 0) {
             $p = 0;
         }
@@ -226,8 +236,8 @@ class home extends CI_Controller {
         
         $dados['pHome'] = $p;
         $dados['count']             = count($this->Novomenina-> CountAll('eventos', $_SESSION['regiao']));
-        $dados['total_registros']   = 10;
-        $dados['paginas']           = ceil($dados['count'] / 10);      
+        $dados['total_registros']   = 15;
+        $dados['paginas']           = ceil($dados['count'] / 15);      
         
         // --------------------- METODOS DO MODEL ------------------
         //|                                                         |
@@ -266,16 +276,16 @@ class home extends CI_Controller {
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 10;
+        $p = ($pg - 1) * 15;
         if($p < 0) {
             $p = 0;
         }
                 
         $dados['pHome'] = $p;
-        $dados['total_registros']   = 10;
+        $dados['total_registros']   = 15;
         $dados['videos_videos']     = $this->Novomenina-> videos($regiao, $p);
         $dados['count']             = count($this->Novomenina-> CountAll('videos', $_SESSION['regiao']));
-        $dados['paginas']           = ceil($dados['count'] / 10); 
+        $dados['paginas']           = ceil($dados['count'] / 15); 
 
         // --------------------- METODOS DO MODEL ------------------
         //|                                                         |
@@ -313,16 +323,16 @@ class home extends CI_Controller {
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 10;
+        $p = ($pg - 1) * 15;
         if($p < 0) {
             $p = 0;
         }
                 
         $dados['pHome'] = $p;
-        $dados['total_registros']       = 10;
+        $dados['total_registros']       = 15;
         $dados['promocoes_promocoes']   = $this->Novomenina->promocoes_promocoes($_SESSION['regiao'], $p);
         $dados['count']                 = count($this->Novomenina-> CountAll('promocoes', $_SESSION['regiao']));
-        $dados['paginas']               = ceil($dados['count'] / 10); 
+        $dados['paginas']               = ceil($dados['count'] / 15); 
         
         // --------------------- METODOS DO MODEL ------------------
         //|                                                         |
@@ -380,16 +390,16 @@ class home extends CI_Controller {
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 10;
+        $p = ($pg - 1) * 15;
         if($p < 0) {
             $p = 0;
         }
                 
         $dados['pHome'] = $p;
-        $dados['total_registros']       = 10;
+        $dados['total_registros']       = 15;
         $dados['empregos']              = $this->Novomenina->empregos($_SESSION['regiao'], $p);
         $dados['count']                 = count($this->Novomenina-> CountAll('empregos', $_SESSION['regiao']));
-        $dados['paginas']               = ceil($dados['count'] / 10); 
+        $dados['paginas']               = ceil($dados['count'] / 15); 
         
         // --------------------- METODOS DO MODEL ------------------
         //|                                                         |
@@ -414,16 +424,16 @@ class home extends CI_Controller {
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 10;
+        $p = ($pg - 1) * 15;
         if($p < 0) {
             $p = 0;
         }
                 
         $dados['pHome'] = $p;
-        $dados['total_registros']       = 10;
+        $dados['total_registros']       = 15;
         $dados['documentos_perdidos']   = $this->Novomenina->documentos_perdidos($_SESSION['regiao'], $p);
         $dados['count']                 = count($this->Novomenina-> CountAll('empregos', $_SESSION['regiao']));
-        $dados['paginas']               = ceil($dados['count'] / 10); 
+        $dados['paginas']               = ceil($dados['count'] / 15); 
         
 
         // --------------------- METODOS DO MODEL ------------------

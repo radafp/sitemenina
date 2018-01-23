@@ -73,28 +73,45 @@
                     if(isset($proxima) && $proxima >= $count){
                         $proxima = $count;
                     }
+<<<<<<< HEAD
                     echo $count.'<br>';
                     echo $total_registros;
                     if($count > $total_registros):
                         if($p > 1):
                         ?>
+=======
+                    ?>
+
+                    <?php 
+                    //  echo '<br>$$total_registros: '.$total_registros;
+
+                    // echo '<br>categoria: '. $categoria;
+                    // echo '<br>$pHome: '.$pHome;
+                    // echo '<br>$count: '.$count . '<br>';
+                    
+                    ?>
+
+                    <?php if($count > $total_registros):?>
+                        <?php if($p > 1):?>
+>>>>>>> ce202027b1613612a77f2783ad988f4ee85cae85
                         <div class='pagina paginahover'>
-                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$anterior);?>"><</a>
+                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$categoria.'&p=' .$anterior);?>"><</a>
                         </div>
                         <div class='pagina'>
-                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$anterior);?>"><?=$anterior;?></a>
+                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$categoria.'&p=' .$anterior);?>"><?=$anterior;?></a>
                         </div>    
                         <?php endif?>
+                        
                         <div class='pagina paginahover'>
-                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=') .$p;?>"><?=$p;?></a>
+                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$categoria.'&p=') .$p;?>"><?=$p;?></a>
                         </div>
                         
-                        <?php if($pHome+10 <= $count):?>
+                        <?php if($pHome+15 <= $count):?>
                             <div class='pagina'>
-                                <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$proxima);?>"><?=$proxima;?></a>
+                                <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$categoria.'&p=' .$proxima);?>"><?=$proxima;?></a>
                             </div>
                             <div class='pagina paginahover'>
-                                <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p=' .$proxima);?>">></a>
+                                <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$categoria.'&p=' .$proxima);?>">></a>
                             </div>
                         <?php endif?>
                     <?php endif;?>
