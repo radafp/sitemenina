@@ -230,56 +230,6 @@ class Novomenina_model extends CI_Model{
         //                                 ORDER BY DATA"
         // );
         // return $query->result_array();
-<<<<<<< HEAD
-        if($categoria == 'todas')
-        {
-            $query = $this->db->query(
-                "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
-                    (SELECT a.arquivo 
-                        FROM arquivos AS a 
-                            WHERE a.codReferencia = noticias.cod 
-                            AND a.referencia = 'noticias' 
-                            AND a.tipo = 2 
-                            AND a.capa = 1
-                        ORDER BY a.capa 
-                        DESC LIMIT 1) 
-                AS arquivo 
-                    FROM noticias
-                    INNER JOIN categorias
-                        WHERE noticias.codCategoria = categorias.cod
-                        AND noticias.regiao = '$regiao' 
-                        AND noticias.mostrar = 1 
-                    GROUP BY noticias.cod
-                    ORDER by DATA DESC
-                    LIMIT $limit, 15 
-            ");
-        }
-        else{
-            $query = $this->db->query(
-                "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
-                    (SELECT a.arquivo 
-                        FROM arquivos AS a 
-                            WHERE a.codReferencia = noticias.cod 
-                            AND a.referencia = 'noticias' 
-                            AND a.tipo = 2 
-                            AND a.capa = 1
-                        ORDER BY a.capa 
-                        DESC LIMIT 1) 
-                AS arquivo 
-                    FROM noticias
-                    INNER JOIN categorias
-                        WHERE noticias.codCategoria = categorias.cod
-                        AND noticias.regiao = '$regiao' 
-                        AND categoriaPt like '%$categoria%'
-                        AND noticias.mostrar = 1 
-                    GROUP BY noticias.cod
-                    ORDER by DATA DESC
-                    LIMIT $limit, 5
-            "); 
-        }
-  
-        
-=======
         if($categoria == 'todas') {
             $parametroCategoria = '';
         }else{
@@ -306,7 +256,6 @@ class Novomenina_model extends CI_Model{
                 ORDER by DATA DESC
                 LIMIT $limit, 15
         "); 
->>>>>>> ce202027b1613612a77f2783ad988f4ee85cae85
         return $query->result_array();
     }
 
