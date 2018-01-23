@@ -151,7 +151,7 @@ class home extends CI_Controller {
     
     public function noticia() {
         $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'todas';
-        echo $categoria;
+        //echo $categoria;
         
         // --------------------- PAGINAÇÂO --------------------
         if(isset($_GET['p'])) {
