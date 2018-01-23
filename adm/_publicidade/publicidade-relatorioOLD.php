@@ -18,25 +18,114 @@ require_once ADMIN_PATH."_publicidade/inc/topo-publicidade-lista.php";
 if($cliente) 
 {
     $cod = $cliente;
+    echo $cod;
 
-    $qPublicidadeStatsPaginas = mysql_query("SELECT * FROM publicidadeStats WHERE codCliente = '{$cliente}'");
-    $nPublicidadeStatsPaginas = mysql_num_rows($qPublicidadeStatsPaginas);
+    $qRelatoriostipo = mysql_query(
 
-    echo $nPublicidadeStatsPaginas;
+        // "SELECT 
+        //     publicidades.cod,
+        //     clientes.razaoSocial,
+        //     publiTipos.tipo,
+        //     (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
+        //     nImpressoes
+        // FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
+        //     WHERE clientes.cod = publicidades.codCliente
+        //     AND publicidades.codTipo = publiTipos.cod
+        //     AND clientes.cod = $cod
+        //     GROUP BY clientes.cod"
 
-    die();
+        "SELECT
+            publicidadeStats.tipo,
+            COUNT(publicidadeStats.codPublicidade) AS cliques,
+            publicidadeStats.pagina,	
+            publicidadeImpressoes.nImpressoes,
+            publicidadeStats.codCliente
+        FROM publicidadeStats, publicidadeImpressoes
+            WHERE publicidadeStats.codCliente = '$cod'
+            AND publicidadeStats.codPublicidade = publicidadeImpressoes.codPublicidade
+            GROUP BY publicidadeStats.tipo;"
+    );
+    $nRelatoriostipo = mysql_num_rows($qRelatoriostipo);
+
+
+
+    $tpRelatoriostipo = mysql_fetch_assoc($qRelatoriostipo);
+
+    $codPublicidade = $tpRelatoriostipo['codPublicidade'];
+    $qRelatoriosPagina = mysql_query(
+    "SELECT Distinct publicidadeStats.pagina
+    FROM publicidadeStats, publicidadeImpressoes
+        WHERE publicidadeStats.codPublicidade = $codPublicidade
+        GROUP BY publicidadeStats.pagina;"
+    );
+    $nRelatoriosPagina = mysql_num_rows($qRelatoriosPagina);
+
+    // $qRelatoriosPagina = mysql_query(
+    //     "SELECT pagina 
+    //         FROM publicidadeStats, publicidadeImpressoes
+    //         WHERE publicidadeStats.codPublicidade =publicidadeImpressoes.codPublicidade
+    //         AND publicidadeStats.codCliente = '$cod';
+    //     "
+
+    // echo ($nRelatoriostipo1);
+    // $qRelatoriostipo2 = mysql_query(
+    //     "SELECT 
+    //     publicidades.cod,
+    //     clientes.razaoSocial,
+    //     publiTipos.tipo,
+    //     (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
+    //     nImpressoes
+    // FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
+    //     WHERE clientes.cod = publicidades.codCliente
+    //     AND publicidades.codTipo = publiTipos.cod
+    //     AND clientes.cod = 1
+    //     AND publicidades.codTipo  = 2
+    //     GROUP BY clientes.cod"
+    // );
+    // $nRelatoriostipo2 = mysql_num_rows($qRelatoriostipo2);
+
+    // $qRelatoriostipo3 = mysql_query(
+    //     "SELECT 
+    //     publicidades.cod,
+    //     clientes.razaoSocial,
+    //     publiTipos.tipo,
+    //     (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
+    //     nImpressoes
+    // FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
+    //     WHERE clientes.cod = publicidades.codCliente
+    //     AND publicidades.codTipo = publiTipos.cod
+    //     AND clientes.cod = 1
+    //     AND publicidades.codTipo  = 3
+    //     GROUP BY clientes.cod"
+    // );
+    // $nRelatoriostipo3 = mysql_num_rows($qRelatoriostipo3);
+
 ?>
-
 <div class="divTableLista clear">
     <br><br>
     <?php
 
+      
+    // for($c1 = 0; $c1 < $nRelatoriosPagina; $c1++) {
+    //     // $tpRelatoriostipo1 = mysql_fetch_assoc($qRelatoriostipo);
+    //     $qRelatoriosPagina1 = mysql_fetch_assoc($qRelatoriosPagina);
+    //     Página: echo $qRelatoriosPagina1['pagina'] . '<br><hr>';
+
+        
+    // }
 
         for($c1 = 0; $c1 < $nRelatoriostipo; $c1++) {
             $tpRelatoriostipo1 = mysql_fetch_assoc($qRelatoriostipo);
             echo '<br>'.$tpRelatoriostipo1['tipo']. ' --> ' . $tpRelatoriostipo1['nImpressoes'] . ' impressões e '. $tpRelatoriostipo1['cliques']. ' cliques';
         }
-
+        // $array = array(10, 30, 10, 40, 40);
+        // $copia = array_unique($array);
+        // if(count($copia) != count($array)) {
+        //     echo "existem valores duplicados";
+        // } else {
+        //     echo "não existem valores duplicados";
+        // }
+        // var_dump($titulo);
         
     ?>
     <br><br>
