@@ -165,12 +165,8 @@ class home extends CI_Controller {
             $p = 0;
         }
 
-<<<<<<< HEAD
-        if(isset($_GET['busca'])) {
-=======
 
         if(isset($_GET['busca']) && !empty($_GET['busca'])) {
->>>>>>> ce202027b1613612a77f2783ad988f4ee85cae85
             $busca = $_GET['busca'];
             $dados['pHome'] = $p;
             $dados['total_registros']   = 15;
