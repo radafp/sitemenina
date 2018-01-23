@@ -73,6 +73,13 @@
                     if(isset($proxima) && $proxima >= $count){
                         $proxima = $count;
                     }
+<<<<<<< HEAD
+                    echo $count.'<br>';
+                    echo $total_registros;
+                    if($count > $total_registros):
+                        if($p > 1):
+                        ?>
+=======
                     ?>
 
                     <?php 
@@ -86,6 +93,7 @@
 
                     <?php if($count > $total_registros):?>
                         <?php if($p > 1):?>
+>>>>>>> ce202027b1613612a77f2783ad988f4ee85cae85
                         <div class='pagina paginahover'>
                             <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$categoria.'&p=' .$anterior);?>"><</a>
                         </div>

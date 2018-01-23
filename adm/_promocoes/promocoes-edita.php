@@ -11,6 +11,7 @@ require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
 require_once ADMIN_PATH."func/fotos.php";
 require_once ADMIN_PATH."func/imprimeTinymce.php";
+require_once ADMIN_PATH."_promocoes/func/funcoes.php";
 
 $submit = isset($_POST['submit']) ? $_POST['submit'] : '';
 
@@ -53,7 +54,6 @@ if($submit != '')
             if($q)
         	{
         		$cod = mysql_insert_id();
-
                 if($regulamento != '')
                 {
                     $ext = strtolower(strrev($_FILES['arquivo']['name']));
@@ -147,7 +147,9 @@ if($submit != '')
                             }
                         }
 					}
-        		}
+                }
+                reordenarPromocoes();
+
                 atualiza_usuarios_stats($_SESSION[ADMIN_SESSION_NAME.'_cod_user'], $_SESSION[ADMIN_SESSION_NAME.'_nome'], 'Promocoes', 'Inseriu', $_SESSION[ADMIN_SESSION_NAME.'_regiao']);
                 
                 echo "<script>

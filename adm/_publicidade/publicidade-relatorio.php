@@ -20,7 +20,11 @@ if($cliente)
     $cod = $cliente;
     echo $cod;
 
+<<<<<<< HEAD
     $qRelatoriostipo = mysql_query(
+=======
+    $qRelatoriostipo1 = mysql_query(
+>>>>>>> a6d521b22b76f6ff75b7a8f995243824a865522d
 
         // "SELECT 
         //     publicidades.cod,
@@ -37,7 +41,11 @@ if($cliente)
         "SELECT
             publicidadeStats.tipo,
             COUNT(publicidadeStats.codPublicidade) AS cliques,
+<<<<<<< HEAD
             publicidadeStats.pagina,	
+=======
+            DISTINCT publicidadeStats.pagina,	
+>>>>>>> a6d521b22b76f6ff75b7a8f995243824a865522d
             publicidadeImpressoes.nImpressoes,
             publicidadeStats.codCliente
         FROM publicidadeStats, publicidadeImpressoes
@@ -45,6 +53,7 @@ if($cliente)
             AND publicidadeStats.codPublicidade = publicidadeImpressoes.codPublicidade
             GROUP BY publicidadeStats.tipo;"
     );
+<<<<<<< HEAD
     $nRelatoriostipo = mysql_num_rows($qRelatoriostipo);
 
     // $qRelatoriosPagina = mysql_query(
@@ -55,6 +64,10 @@ if($cliente)
     //     "
 
     // echo ($nRelatoriostipo1);
+=======
+    $nRelatoriostipo1 = mysql_num_rows($qRelatoriostipo1);
+    echo ($nRelatoriostipo1);
+>>>>>>> a6d521b22b76f6ff75b7a8f995243824a865522d
     // $qRelatoriostipo2 = mysql_query(
     //     "SELECT 
     //     publicidades.cod,
@@ -92,12 +105,21 @@ if($cliente)
     <br><br>
     <?php
     
+<<<<<<< HEAD
         for($c = 0; $c < $nRelatoriostipo; $c++) {
         $tpRelatoriostipo = mysql_fetch_assoc($qRelatoriostipo);
         
         Página: echo $tpRelatoriostipo['pagina'] . '<br>';
        
         echo $tpRelatoriostipo['tipo']. ' --> ' . $tpRelatoriostipo['nImpressoes'] . ' impressões e '. $tpRelatoriostipo['cliques']. ' cliques';
+=======
+        for($c = 0; $c < $nRelatoriostipo1; $c++) {
+        $tpRelatoriostipo1 = mysql_fetch_assoc($qRelatoriostipo1);
+        
+        Página: echo $tpRelatoriostipo1['pagina'] . '<br>';
+       
+        echo $tpRelatoriostipo1['tipo']. ' --> ' . $tpRelatoriostipo1['nImpressoes'] . ' impressões e '. $tpRelatoriostipo1['cliques']. ' cliques';
+>>>>>>> a6d521b22b76f6ff75b7a8f995243824a865522d
         echo '<hr>';
         
         
