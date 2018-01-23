@@ -12,10 +12,10 @@
                     <?php foreach($top_10 as $info): ?>
                         <div class="top10">
                             <div class="esquerda">
-                                <?
+                                <?php 
                                 $codVideo = explode('=',$info['link']);
-                                if($codVideo[1] != '') 
-                                { 
+                                if($codVideo[1] != ''):
+                                 
                                     $imagemCapa = '';                
                                     $output = array();
                                     $url = $info['link'];
@@ -32,10 +32,8 @@
                                         </a>
                                     </div> 
                                     <h3><?php echo $info['titulo']?></h3>
-                                    <p><?//php echo $info['link']?></p>
-                                    <?php
-                                }
-                                ?>
+                                    <!-- <p><?//php echo $info['link']?></p> -->
+                                    <?php endif ?>
                             </div>
                             <div class="direita">
                                 <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="445">
