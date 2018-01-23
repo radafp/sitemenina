@@ -907,6 +907,49 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
+    public function equipe($regiao) {
+        $query = $this->db->query(
+            "SELECT equipe.*, 
+                (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                        WHERE a.codReferencia = equipe.cod 
+                        AND a.referencia = 'equipe' 
+                        AND a.tipo = 2 
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+            AS arquivo 
+                FROM equipe 
+                    WHERE equipe.regiao = '$regiao' 
+                    AND equipe.mostrar = 1 
+                GROUP BY equipe.cod
+                ORDER BY equipe.dataCadastro DESC
+        "); 
+        return $query->result_array();
+    }
+
+    public function descricao_equipe($id, $regiao) {
+        $query = $this->db->query(
+            "SELECT equipe.*, 
+                (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                        WHERE a.codReferencia = equipe.cod 
+                        AND a.referencia = 'equipe' 
+                        AND a.tipo = 2 
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+            AS arquivo 
+                FROM equipe 
+                    WHERE equipe.regiao = '$regiao' 
+                    AND equipe.mostrar = 1 
+                    AND equipe.cod = '$id'
+                GROUP BY equipe.cod
+                ORDER BY equipe.dataCadastro DESC
+        "); 
+        return $query->result_array();
+    }
+
+
+
     // metodo usado para acrescentar numero de visualizações dos banners
     public function update($tabela, $condicao, $valor, $campo, $id) {
         // $query =$this->db->query("UPDATE $tabela SET $condicao = $valor WHERE cod = $id");
