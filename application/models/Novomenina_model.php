@@ -231,31 +231,53 @@ class Novomenina_model extends CI_Model{
         // );
         // return $query->result_array();
         if($categoria == 'todas')
-            $parametroCategoria = '';
-        else
-            $parametroCategoria =  "AND categoriaPt like '%$categoria%'";
-
-        $query = $this->db->query(
-            "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
-                (SELECT a.arquivo 
-                    FROM arquivos AS a 
-                        WHERE a.codReferencia = noticias.cod 
-                        AND a.referencia = 'noticias' 
-                        AND a.tipo = 2 
-                        AND a.capa = 1
-                    ORDER BY a.capa 
-                    DESC LIMIT 1) 
-            AS arquivo 
-                FROM noticias
-                INNER JOIN categorias
-                    WHERE noticias.codCategoria = categorias.cod
-                    AND noticias.regiao = '$regiao' 
-                    ".$parametroCategoria."
-                    AND noticias.mostrar = 1 
-                GROUP BY noticias.cod
-                ORDER by DATA DESC
-                LIMIT $limit, 15
-        "); 
+        {
+            $query = $this->db->query(
+                "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
+                    (SELECT a.arquivo 
+                        FROM arquivos AS a 
+                            WHERE a.codReferencia = noticias.cod 
+                            AND a.referencia = 'noticias' 
+                            AND a.tipo = 2 
+                            AND a.capa = 1
+                        ORDER BY a.capa 
+                        DESC LIMIT 1) 
+                AS arquivo 
+                    FROM noticias
+                    INNER JOIN categorias
+                        WHERE noticias.codCategoria = categorias.cod
+                        AND noticias.regiao = '$regiao' 
+                        AND noticias.mostrar = 1 
+                    GROUP BY noticias.cod
+                    ORDER by DATA DESC
+                    LIMIT $limit, 15 
+            ");
+        }
+        else{
+            $query = $this->db->query(
+                "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
+                    (SELECT a.arquivo 
+                        FROM arquivos AS a 
+                            WHERE a.codReferencia = noticias.cod 
+                            AND a.referencia = 'noticias' 
+                            AND a.tipo = 2 
+                            AND a.capa = 1
+                        ORDER BY a.capa 
+                        DESC LIMIT 1) 
+                AS arquivo 
+                    FROM noticias
+                    INNER JOIN categorias
+                        WHERE noticias.codCategoria = categorias.cod
+                        AND noticias.regiao = '$regiao' 
+                        AND categoriaPt like '%$categoria%'
+                        AND noticias.mostrar = 1 
+                    GROUP BY noticias.cod
+                    ORDER by DATA DESC
+                    LIMIT $limit, 5
+            "); 
+        }
+  
+        
         return $query->result_array();
     }
 

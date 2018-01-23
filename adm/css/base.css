@@ -212,7 +212,7 @@ label
     font-size: 14px;
     color: #231F20;
     margin-top: 25px;
-    width: 100%
+    /*width: 100%*/
 }
 .pagina .boxAcoes .selecionarTodos
 {
@@ -300,7 +300,7 @@ label
     padding: 5px !important;
     height: 25px;
     line-height: 25px;
-    margin: 0px 5px 0 5px;
+    margin: 25px 5px 0 5px;
     text-align: center;
     float: right;
 }

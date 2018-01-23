@@ -165,7 +165,6 @@ class home extends CI_Controller {
             $p = 0;
         }
 
-
         if(isset($_GET['busca'])) {
             $busca = $_GET['busca'];
             $dados['pHome'] = $p;
