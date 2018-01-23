@@ -60,6 +60,8 @@ if($cliente)
     );
     $nRelatoriosPagina = mysql_num_rows($qRelatoriosPagina);
 
+
+    
     // $qRelatoriosPagina = mysql_query(
     //     "SELECT pagina 
     //         FROM publicidadeStats, publicidadeImpressoes
