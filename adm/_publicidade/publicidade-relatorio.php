@@ -20,11 +20,7 @@ if($cliente)
     $cod = $cliente;
     echo $cod;
 
-<<<<<<< HEAD
     $qRelatoriostipo = mysql_query(
-=======
-    $qRelatoriostipo1 = mysql_query(
->>>>>>> a6d521b22b76f6ff75b7a8f995243824a865522d
 
         // "SELECT 
         //     publicidades.cod,
@@ -41,11 +37,7 @@ if($cliente)
         "SELECT
             publicidadeStats.tipo,
             COUNT(publicidadeStats.codPublicidade) AS cliques,
-<<<<<<< HEAD
             publicidadeStats.pagina,	
-=======
-            DISTINCT publicidadeStats.pagina,	
->>>>>>> a6d521b22b76f6ff75b7a8f995243824a865522d
             publicidadeImpressoes.nImpressoes,
             publicidadeStats.codCliente
         FROM publicidadeStats, publicidadeImpressoes
@@ -53,8 +45,20 @@ if($cliente)
             AND publicidadeStats.codPublicidade = publicidadeImpressoes.codPublicidade
             GROUP BY publicidadeStats.tipo;"
     );
-<<<<<<< HEAD
     $nRelatoriostipo = mysql_num_rows($qRelatoriostipo);
+
+
+
+    $tpRelatoriostipo = mysql_fetch_assoc($qRelatoriostipo);
+
+    $codPublicidade = $tpRelatoriostipo['codPublicidade'];
+    $qRelatoriosPagina = mysql_query(
+    "SELECT Distinct publicidadeStats.pagina
+    FROM publicidadeStats, publicidadeImpressoes
+        WHERE publicidadeStats.codPublicidade = $codPublicidade
+        GROUP BY publicidadeStats.pagina;"
+    );
+    $nRelatoriosPagina = mysql_num_rows($qRelatoriosPagina);
 
     // $qRelatoriosPagina = mysql_query(
     //     "SELECT pagina 
@@ -64,10 +68,6 @@ if($cliente)
     //     "
 
     // echo ($nRelatoriostipo1);
-=======
-    $nRelatoriostipo1 = mysql_num_rows($qRelatoriostipo1);
-    echo ($nRelatoriostipo1);
->>>>>>> a6d521b22b76f6ff75b7a8f995243824a865522d
     // $qRelatoriostipo2 = mysql_query(
     //     "SELECT 
     //     publicidades.cod,
@@ -104,27 +104,29 @@ if($cliente)
 <div class="divTableLista clear">
     <br><br>
     <?php
-    
-<<<<<<< HEAD
-        for($c = 0; $c < $nRelatoriostipo; $c++) {
-        $tpRelatoriostipo = mysql_fetch_assoc($qRelatoriostipo);
+
+      
+    // for($c1 = 0; $c1 < $nRelatoriosPagina; $c1++) {
+    //     // $tpRelatoriostipo1 = mysql_fetch_assoc($qRelatoriostipo);
+    //     $qRelatoriosPagina1 = mysql_fetch_assoc($qRelatoriosPagina);
+    //     Página: echo $qRelatoriosPagina1['pagina'] . '<br><hr>';
+
         
-        Página: echo $tpRelatoriostipo['pagina'] . '<br>';
-       
-        echo $tpRelatoriostipo['tipo']. ' --> ' . $tpRelatoriostipo['nImpressoes'] . ' impressões e '. $tpRelatoriostipo['cliques']. ' cliques';
-=======
-        for($c = 0; $c < $nRelatoriostipo1; $c++) {
-        $tpRelatoriostipo1 = mysql_fetch_assoc($qRelatoriostipo1);
-        
-        Página: echo $tpRelatoriostipo1['pagina'] . '<br>';
-       
-        echo $tpRelatoriostipo1['tipo']. ' --> ' . $tpRelatoriostipo1['nImpressoes'] . ' impressões e '. $tpRelatoriostipo1['cliques']. ' cliques';
->>>>>>> a6d521b22b76f6ff75b7a8f995243824a865522d
-        echo '<hr>';
-        
-        
-            // echo '<br><br><br>'.$tpRelatoriostipo1['tipo'];
+    // }
+
+        for($c1 = 0; $c1 < $nRelatoriostipo; $c1++) {
+            $tpRelatoriostipo1 = mysql_fetch_assoc($qRelatoriostipo);
+            echo '<br>'.$tpRelatoriostipo1['tipo']. ' --> ' . $tpRelatoriostipo1['nImpressoes'] . ' impressões e '. $tpRelatoriostipo1['cliques']. ' cliques';
         }
+        // $array = array(10, 30, 10, 40, 40);
+        // $copia = array_unique($array);
+        // if(count($copia) != count($array)) {
+        //     echo "existem valores duplicados";
+        // } else {
+        //     echo "não existem valores duplicados";
+        // }
+        // var_dump($titulo);
+        
     ?>
     <br><br>
     <!-- Página:<hr><br> -->
