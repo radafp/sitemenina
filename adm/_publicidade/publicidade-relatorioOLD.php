@@ -18,7 +18,6 @@ require_once ADMIN_PATH."_publicidade/inc/topo-publicidade-lista.php";
 if($cliente) 
 {
     $cod = $cliente;
-<<<<<<< HEAD
     echo $cod;
 
     $qRelatoriostipo = mysql_query(
@@ -61,8 +60,6 @@ if($cliente)
     );
     $nRelatoriosPagina = mysql_num_rows($qRelatoriosPagina);
 
-
-    
     // $qRelatoriosPagina = mysql_query(
     //     "SELECT pagina 
     //         FROM publicidadeStats, publicidadeImpressoes
@@ -102,27 +99,33 @@ if($cliente)
     //     GROUP BY clientes.cod"
     // );
     // $nRelatoriostipo3 = mysql_num_rows($qRelatoriostipo3);
-=======
->>>>>>> cb56a44cf734d198978a1cc144bf4dfa134f2504
 
-    $qPublicidadeStatsPaginas = mysql_query("SELECT * FROM publicidadeStats WHERE codCliente = '{$cliente}'");
-    $nPublicidadeStatsPaginas = mysql_num_rows($qPublicidadeStatsPaginas);
-
-    echo $nPublicidadeStatsPaginas;
-
-    die();
 ?>
-
 <div class="divTableLista clear">
     <br><br>
     <?php
 
+      
+    // for($c1 = 0; $c1 < $nRelatoriosPagina; $c1++) {
+    //     // $tpRelatoriostipo1 = mysql_fetch_assoc($qRelatoriostipo);
+    //     $qRelatoriosPagina1 = mysql_fetch_assoc($qRelatoriosPagina);
+    //     Página: echo $qRelatoriosPagina1['pagina'] . '<br><hr>';
+
+        
+    // }
 
         for($c1 = 0; $c1 < $nRelatoriostipo; $c1++) {
             $tpRelatoriostipo1 = mysql_fetch_assoc($qRelatoriostipo);
             echo '<br>'.$tpRelatoriostipo1['tipo']. ' --> ' . $tpRelatoriostipo1['nImpressoes'] . ' impressões e '. $tpRelatoriostipo1['cliques']. ' cliques';
         }
-
+        // $array = array(10, 30, 10, 40, 40);
+        // $copia = array_unique($array);
+        // if(count($copia) != count($array)) {
+        //     echo "existem valores duplicados";
+        // } else {
+        //     echo "não existem valores duplicados";
+        // }
+        // var_dump($titulo);
         
     ?>
     <br><br>
