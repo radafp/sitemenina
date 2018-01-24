@@ -97,9 +97,13 @@
             <?php foreach($banner_tipo3 as $info):?>
                     <?php array_push($cod, $info['cod']); ?>
                     <div class="wrapBanner">
-                        <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
-                            <img src="<?=base_url('/assets/arquivos/publicidade/'.$info['arquivo']);?>" title="Publicidade">
-                        </a>
+                        <?php if($info['link'] != ''): ?>
+                            <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
+                        <?php endif; ?>
+                                <img src="<?=base_url('/assets/arquivos/publicidade/'.$info['arquivo']);?>" title="Publicidade">
+                        <?php if($info['link'] != ''): ?>
+                            </a>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach;
                     // var_dump($cod);
@@ -131,23 +135,30 @@
 </div> <!-- container --> 
 <div class="container">
     <div class="row publicidade">
-        <?php if(count($banner_tipo2)>0) :?>
-        <?PHP $cod = array();?>
-        <?php foreach($banner_tipo2 as $info):?>
-                <?php array_push($cod, $info['cod']); ?>
-                <div class="wrapBanner">
-                    <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
-                        <img src="<?=base_url('/assets/arquivos/publicidade/'.$info['arquivo']);?>" title="Publicidade">
-                    </a>
-                </div>
-            <?php endforeach;
-                // var_dump($cod);
-                if(count($cod) > 1) {
-                    $_SESSION['cod_banner_tipo2_1'] = $cod[0]; 
-                    $_SESSION['cod_banner_tipo2_2'] = $cod[1];
-                }else{
-                    $_SESSION['cod_banner_tipo2_1'] = $cod[0]; 
-                }
-            endif;?>
+    <?php if(count($banner_tipo2)>0) :?>
+    <?PHP $cod = array();?>
+    <?php foreach($banner_tipo2 as $info):?>
+            <?php array_push($cod, $info['cod']); ?>
+            <div class="wrapBanner">
+            <?php if($info['link'] != ''): ?>
+                <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
+            <?php endif; ?>
+                    <img src="<?=base_url('/assets/arquivos/publicidade/'.$info['arquivo']);?>" title="Publicidade">
+            <?php if($info['link'] != ''): ?>
+                </a>
+            <?php endif; ?>
+            </div>
+        <?php  endforeach;?> 
+        <?php 
+            // var_dump($cod);
+            if(count($cod) > 1) {
+                $_SESSION['cod_banner_tipo2_1'] = $cod[0]; 
+                $_SESSION['cod_banner_tipo2_2'] = $cod[1];
+            }else{
+                $_SESSION['cod_banner_tipo2_1'] = $cod[0]; 
+            }
+           
+        ?>
+    <?php endif; ?> 
     </div>
 </div> <!-- container -->
