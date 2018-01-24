@@ -91,69 +91,25 @@
 
             </div> <!-- contLeft -->
             <div class="col-xs-12 col-md-4 contRight">
-                
-                <?php
-                $nbanners = count($banner_tipo3);
-                if($nbanners>0)
-                {
-                    echo '<div class="publicidade">';
-                        $banners = array();
-                        foreach($banner_tipo3 as $info):
-                            $banners[] = array(
-                                "cod" => isset($info['cod']) ? $info['cod'] : '',
-                                "link" => isset($info['link']) ? $info['link'] : '',
-                                "arquivo" => isset($info['arquivo']) ? $info['arquivo'] : '',
-                                "linkTarget" => isset($info['linkTarget']) ? $info['linkTarget'] : '',
-                            );
-                        endforeach;
-                        
-                        // echo "<pre>";
-                        //     var_dump($banners);
-                        // echo "</pre>";
-                        
-                        if($nbanners<4){
-                            $numeroListagem = $nbanners;
+                <?php if(count($banner_tipo2)>0) :?>
+                <?php var_dump($banner_tipo2 )?>
+                <?PHP $cod = array();?>
+                <?php foreach($banner_tipo2 as $info):?>
+                        <?php array_push($cod, $info['cod']); ?>
+                        <div class="wrapBanner">
+                            <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
+                                <img src="<?=base_url('/assets/arquivos/publicidade/'.$info['arquivo']);?>" title="Publicidade">
+                            </a>
+                        </div>
+                    <?php endforeach;
+                        // var_dump($cod);
+                        if(count($cod) > 1) {
+                            $_SESSION['cod_banner_tipo2_1'] = $cod[0]; 
+                            $_SESSION['cod_banner_tipo2_2'] = $cod[1];
+                        }else{
+                            $_SESSION['cod_banner_tipo2_1'] = $cod[0]; 
                         }
-                        else{
-                            $numeroListagem = 4;
-                        }
-                        
-                        $rand_keys = array_rand($banners, $numeroListagem);
-
-                        for($i=0;$i<$numeroListagem;$i++)
-                        {
-                            if($numeroListagem == 1)
-                            {  
-                                $bannerPrincipalCod = $banners[$rand_keys]['cod'];
-                                $bannerPrincipalLink = $banners[$rand_keys]['link'];
-                                $bannerPrincipalArquivo = $banners[$rand_keys]['arquivo'];
-                                $bannerPrincipalTarget = $banners[$rand_keys]['linkTarget'];
-                            }else{
-                                $bannerPrincipalCod = $banners[$rand_keys[$i]]['cod'];
-                                $bannerPrincipalLink = $banners[$rand_keys[$i]]['link'];
-                                $bannerPrincipalArquivo = $banners[$rand_keys[$i]]['arquivo'];
-                                $bannerPrincipalTarget = $banners[$rand_keys[$i]]['linkTarget'];
-                            }
-                            
-                            $_SESSION['cod_banner'] = $bannerPrincipalCod;
-                            ?>
-                            <div class="wrapBanner">
-                                <a class='registra_click_publicidade' href="<?=($bannerPrincipalLink != '') ? $bannerPrincipalLink  : '';?>" target="<?=$bannerPrincipalTarget;?>" rel="<?=$bannerPrincipalCod;?>">
-                                    <img src=<?= base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo)?> title="Publicidade">
-                                </a>
-                            </div>
-                            <?php 
-                        }
-                    echo '</div>';
-                } 
-                ?>
-                <!--
-                <h1 class="tituloPadrao3">
-                    <span>Playlist Radio Menina</span>
-                    aqui
-                </h1>
-                -->
-                
+                    endif;?>
             </div> <!-- contRight -->
 
         
@@ -162,44 +118,36 @@
 </div> <!-- container --> 
 <div class="container">
     <div class="row publicidade">
-        
-        <?php
-        if(count($banner_tipo2)>0)
-        {
-            $banners = array();
-            foreach($banner_tipo2 as $info):
-                $banners[] = array(
-                    "cod" => isset($info['cod']) ? $info['cod'] : '',
-                    "link" => isset($info['link']) ? $info['link'] : '',
-                    "arquivo" => isset($info['arquivo']) ? $info['arquivo'] : '',
-                    "linkTarget" => isset($info['linkTarget']) ? $info['linkTarget'] : '',
-                );
-            endforeach;
-            /*
-            echo "<pre>";
-                var_dump($banners);
-            echo "</pre>";
-            */
-            $rand_keys = array_rand($banners, 2);
-            for($i=0;$i<2;$i++)
-            {
-                $bannerPrincipalCod = $banners[$rand_keys[$i]]['cod'];
-                $bannerPrincipalLink = $banners[$rand_keys[$i]]['link'];
-                $bannerPrincipalArquivo = $banners[$rand_keys[$i]]['arquivo'];
-                $bannerPrincipalTarget = $banners[$rand_keys[$i]]['linkTarget'];
-                $_SESSION['cod_banner'] = $bannerPrincipalCod;
-                ?>
-                <div class="col-xs-12 col-md-6">
-                    <div class="wrapBanner">
-                        <a class='registra_click_publicidade' href="<?=($bannerPrincipalLink != '') ? $bannerPrincipalLink  : '';?>" target="<?=$bannerPrincipalTarget;?>" rel="<?=$bannerPrincipalCod;?>">
-                            <img src=<?= base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo)?> title="Publicidade">
-                        </a>
-                    </div>
-                </div> 
-                <?php 
-            }
-        } 
-        ?>
-           
+        <?php if(count($banner_tipo3)>0) :?>
+        <?PHP $cod = array();?>
+        <?php foreach($banner_tipo3 as $info):?>
+                <?php array_push($cod, $info['cod']); ?>
+                <div class="wrapBanner">
+                    <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
+                        <img src="<?=base_url('/assets/arquivos/publicidade/'.$info['arquivo']);?>" title="Publicidade">
+                    </a>
+                </div>
+            <?php endforeach;
+                // var_dump($cod);
+                switch(count($cod)) {
+                    case 4:
+                        $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
+                        $_SESSION['cod_banner_tipo3_2'] = $cod[1];
+                        $_SESSION['cod_banner_tipo3_3'] = $cod[2]; 
+                        $_SESSION['cod_banner_tipo3_4'] = $cod[3];
+                        break;
+                    case 3:
+                        $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
+                        $_SESSION['cod_banner_tipo3_2'] = $cod[1];
+                        $_SESSION['cod_banner_tipo3_3'] = $cod[2]; 
+                        break;
+                    case 2:
+                        $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
+                        $_SESSION['cod_banner_tipo3_2'] = $cod[1];
+                        break;
+                    case 1:
+                        $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
+                        break;
+            }endif;?>
     </div>
 </div> <!-- container -->
