@@ -158,7 +158,7 @@
 
 <div class="container">
     <div class="row publicidade">
-        <?php if(count($banner_tipo2)>1) :?>
+        <?php if(count($banner_tipo2)>0) :?>
         <?php var_dump($banner_tipo2 )?>
         <?PHP $cod = array();?>
         <?php foreach($banner_tipo2 as $info):?>
@@ -171,8 +171,13 @@
             <?php  endforeach;?> 
             <?php 
                 // var_dump($cod);
-                $_SESSION['cod_banner_tipo2_1'] = $cod[0]; 
-                $_SESSION['cod_banner_tipo2_2'] = $cod[1];
+                if(count($cod) > 1) {
+                    $_SESSION['cod_banner_tipo2_1'] = $cod[0]; 
+                    $_SESSION['cod_banner_tipo2_2'] = $cod[1];
+                }else{
+                    $_SESSION['cod_banner_tipo2_1'] = $cod[0]; 
+                }
+               
             ?>
         <?php endif; ?>           
     </div>
