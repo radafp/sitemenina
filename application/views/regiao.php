@@ -63,9 +63,13 @@
         <?php foreach($banner_tipo1 as $info):?>
             <?php $_SESSION['cod_banner_tipo1'] = $info['cod']; ?>
             <div class="wrapBanner">
+            <?php if($info['link'] != ''): ?>
                 <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
+            <?php endif; ?>
                     <img src="<?=base_url('/assets/arquivos/publicidade/'.$info['arquivo']);?>" title="Publicidade">
+            <?php if($info['link'] != ''): ?>
                 </a>
+            <?php endif; ?>
             </div>
         <?php endforeach; endif; ?> 
     </div>
@@ -162,9 +166,13 @@
         <?php foreach($banner_tipo2 as $info):?>
                 <?php array_push($cod, $info['cod']); ?>
                 <div class="wrapBanner">
+                <?php if($info['link'] != ''): ?>
                     <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
+                <?php endif; ?>
                         <img src="<?=base_url('/assets/arquivos/publicidade/'.$info['arquivo']);?>" title="Publicidade">
+                <?php if($info['link'] != ''): ?>
                     </a>
+                <?php endif; ?>
                 </div>
             <?php  endforeach;?> 
             <?php 
