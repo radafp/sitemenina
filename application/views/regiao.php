@@ -353,14 +353,16 @@
                 { 
                     window.setTimeout( function(){
                         $('.respostas').fadeOut('fast', function(){
-                            $("#resposta").html("Obrigado por particilar!").fadeIn();
+                            $("#resposta").html("Obrigado por particilar! </br>_json").fadeIn();
                         });
                     },100);
+                    /*
                     window.setTimeout( function(){
                         $('#resposta').fadeOut('fast', function(){
                             $(".respostas").fadeIn();
                         });
                     },3500);
+                    */
                 });
             }
 
