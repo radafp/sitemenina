@@ -107,11 +107,10 @@
                             );
                         endforeach;
                         
-                        /*
-                        echo "<pre>";
-                            var_dump($banners);
-                        echo "</pre>";
-                        */
+                        // echo "<pre>";
+                        //     var_dump($banners);
+                        // echo "</pre>";
+                        
                         if($nbanners<4){
                             $numeroListagem = $nbanners;
                         }

@@ -119,7 +119,7 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
-        //echo $cod_banner;
+        // echo $cod_banner;
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -151,7 +151,7 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
-        //echo $cod_banner;
+        // echo $cod_banner;
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -213,7 +213,7 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
-        //echo $cod_banner;
+        // echo $cod_banner;
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -241,7 +241,7 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
-        //echo $cod_banner;
+        // echo $cod_banner;
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -292,7 +292,7 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
-        //echo $cod_banner;
+        // echo $cod_banner;
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -318,7 +318,7 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
-        //echo $cod_banner;
+        // echo $cod_banner;
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -368,7 +368,7 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
-        //echo $cod_banner;
+        // echo $cod_banner;
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -396,7 +396,7 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
-        //echo $cod_banner;
+        // echo $cod_banner;
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -443,7 +443,7 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
-        //echo $cod_banner;
+        // echo $cod_banner;
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -468,7 +468,11 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
+<<<<<<< HEAD
         //echo $cod_banner;
+=======
+        // echo $cod_banner;
+>>>>>>> 6e73cd39b354786d990fb8a3c098e6cf77c60390
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -493,7 +497,11 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
+<<<<<<< HEAD
         //echo $cod_banner;
+=======
+        // echo $cod_banner;
+>>>>>>> 6e73cd39b354786d990fb8a3c098e6cf77c60390
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -519,7 +527,11 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
+<<<<<<< HEAD
         //echo $cod_banner;
+=======
+        // echo $cod_banner;
+>>>>>>> 6e73cd39b354786d990fb8a3c098e6cf77c60390
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -567,7 +579,11 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
+<<<<<<< HEAD
         //echo $cod_banner;
+=======
+        // echo $cod_banner;
+>>>>>>> 6e73cd39b354786d990fb8a3c098e6cf77c60390
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -615,7 +631,11 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
+<<<<<<< HEAD
         //echo $cod_banner;
+=======
+        // echo $cod_banner;
+>>>>>>> 6e73cd39b354786d990fb8a3c098e6cf77c60390
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -642,7 +662,11 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
+<<<<<<< HEAD
         //echo $cod_banner;
+=======
+        // echo $cod_banner;
+>>>>>>> 6e73cd39b354786d990fb8a3c098e6cf77c60390
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -664,7 +688,11 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
+<<<<<<< HEAD
         //echo $cod_banner;
+=======
+        // echo $cod_banner;
+>>>>>>> 6e73cd39b354786d990fb8a3c098e6cf77c60390
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
@@ -687,7 +715,11 @@ class home extends CI_Controller {
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner = isset($_SESSION['cod_banner']) ? $_SESSION['cod_banner'] : '';
 
+<<<<<<< HEAD
         //echo $cod_banner;
+=======
+        // echo $cod_banner;
+>>>>>>> 6e73cd39b354786d990fb8a3c098e6cf77c60390
         if($cod_banner!='')
         {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner);
