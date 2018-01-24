@@ -104,45 +104,74 @@
                 <h1 class="tituloPadrao2">
                     <span>Promoções</span>
                 </h1>
-                <?php foreach($promocoes_home as $info): ?>
-                <div class='promocaoEvento'>
-                    <a class="link_descricao" href="<?=base_url('home/descricao_promocoes?id='.$info['cod']);?>">
-                        <? if($info['arquivo']!='') { ?>
-                            <div class="wrapFoto">
-                                <div class="foto">
-                                    <img src="<?=base_url('/assets/arquivos/promocoes/'.$info['arquivo']);?>" alt="">
+                <?php 
+                if(count($promocoes_home)>0)
+                {
+                    foreach($promocoes_home as $info): 
+                    ?>
+                    <div class='promocaoEvento'>
+                        <a class="link_descricao" href="<?=base_url('home/descricao_promocoes?id='.$info['cod']);?>">
+                            <? if($info['arquivo']!='') { ?>
+                                <div class="wrapFoto">
+                                    <div class="foto">
+                                        <img src="<?=base_url('/assets/arquivos/promocoes/'.$info['arquivo']);?>" alt="">
+                                    </div>
                                 </div>
-                            </div>
-                        <? } ?>    
-                        <h3><?=$info['tituloPt']?></h3>
-                        <?=isset($info['dataInicio']) ? '<p>Inicio: '. date('d/m/Y', strtotime($info['dataInicio'])).'</p>' : '';?>
-                        <?=isset($info['dataFim']) ? '<p>Fim: '. date('d/m/Y', strtotime($info['dataFim'])).'</p>' : '';?>
-                    </a>
-                </div>
-                <?php endforeach; ?>
-                <a href="/home/promocoes">Ver mais promoções</a>
+                            <? } ?>    
+                            <h3><?=$info['tituloPt']?></h3>
+                            <?=isset($info['dataInicio']) ? '<p>Inicio: '. date('d/m/Y', strtotime($info['dataInicio'])).'</p>' : '';?>
+                            <?=isset($info['dataFim']) ? '<p>Fim: '. date('d/m/Y', strtotime($info['dataFim'])).'</p>' : '';?>
+                        </a>
+                    </div>
+                    <?php 
+                    endforeach;
+                    ?>
+                    <a class="link_descricao" href="/home/promocoes">Ver mais promoções</a>
+                    <?php
+                }else{
+                    ?>
+                    <div class='promocaoEvento'>
+                        <p style="color:#ffffff">Em breve novas promoções.</p>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
             <div class="col-xs-12 col-md-6">
                 <h1 class="tituloPadrao2">
                     <span>Agenda</span>
                 </h1>
-                <?php foreach($eventos_home as $info): ?>
-                <div class='promocaoEvento'>
-                    <a class="link_descricao" href="<?=base_url('home/descricao_agenda?id='.$info['cod']);?>">
-                        <? if($info['arquivo']!=''){ ?>
-                            <div class="wrapFoto">
-                                <div class="foto">
-                                    <img src="<?=base_url('/assets/arquivos/eventos/'.$info['arquivo']);?>" alt="">
+                <?php 
+                if(count($eventos_home)>0)
+                {
+                    foreach($eventos_home as $info): ?> 
+                    <div class='promocaoEvento'>
+                        <a class="link_descricao" href="<?=base_url('home/descricao_agenda?id='.$info['cod']);?>">
+                            <? if($info['arquivo']!=''){ ?>
+                                <div class="wrapFoto">
+                                    <div class="foto">
+                                        <img src="<?=base_url('/assets/arquivos/eventos/'.$info['arquivo']);?>" alt="">
+                                    </div>
                                 </div>
-                            </div>
-                        <? } ?> 
-                        <h3><?=$info['tituloPt'];?></h3>
-                        <?=isset($info['dataInicio']) ? '<p>Inicio: '. date('d/m/Y', strtotime($info['dataInicio'])).'</p>' : '';?>
-                        <?=isset($info['dataFim']) ? '<p>Fim: '. date('d/m/Y', strtotime($info['dataFim'])).'</p>' : '';?>
-                    </a>
-                </div>
-                <?php endforeach; ?>
-                <a href="/home/agenda">Ver mais eventos</a>
+                            <? } ?> 
+                            <h3><?=$info['tituloPt'];?></h3>
+                            <?=isset($info['dataInicio']) ? '<p>Inicio: '. date('d/m/Y', strtotime($info['dataInicio'])).'</p>' : '';?>
+                            <?=isset($info['dataFim']) ? '<p>Fim: '. date('d/m/Y', strtotime($info['dataFim'])).'</p>' : '';?>
+                        </a>
+                    </div>
+                    <?php 
+                    endforeach;
+                    ?>
+                        <a class="link_descricao" href="/home/agenda">Ver mais eventos</a> 
+                    <?php
+                }else{    
+                    ?>
+                        <div class='promocaoEvento'>
+                            <p style="color:#ffffff">Em breve novos eventos.</p>
+                        </div>
+                    <?php
+                }
+                ?>
             </div>
 
         </div> <!-- row -->

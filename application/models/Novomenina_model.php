@@ -230,6 +230,11 @@ class Novomenina_model extends CI_Model{
         //                                 ORDER BY DATA"
         // );
         // return $query->result_array();
+        if($categoria == 'todas')
+            $parametroCategoria = '';
+        else
+            $parametroCategoria =  "AND categoriaPt like '%$categoria%'";
+
         $query = $this->db->query(
             "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
                 (SELECT a.arquivo 
@@ -245,7 +250,7 @@ class Novomenina_model extends CI_Model{
                 INNER JOIN categorias
                     WHERE noticias.codCategoria = categorias.cod
                     AND noticias.regiao = '$regiao' 
-                    AND categoriaPt like '%$categoria%'
+                    ".$parametroCategoria."
                     AND noticias.mostrar = 1 
                 GROUP BY noticias.cod
                 ORDER by DATA DESC
@@ -631,6 +636,7 @@ class Novomenina_model extends CI_Model{
                 FROM eventos 
                     WHERE eventos.regiao = '$regiao' 
                     AND eventos.mostrar = 1 
+                    AND eventos.dataInicio >= ".date('Ymd')."
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataInicio ASC
                 LIMIT 2

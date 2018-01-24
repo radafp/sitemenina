@@ -66,7 +66,7 @@ $(document).ready(function()
         });
         if(_gets.length > 0)
         {
-            _confirm = confirm('Todos os registros selecionados serão excluídos.\nTem certeza que deseja excluir os registros selecionados?');
+            _confirm = confirm('Atenção! Todas as notícias vinculadas a essa(s) categoria(s) também serão apagadas.\nTem certeza que deseja excluir o(s) registro(s) selecionado(s)?');
             if(_confirm)
             {
                 _url = _link+'&'+_gets.join('&');

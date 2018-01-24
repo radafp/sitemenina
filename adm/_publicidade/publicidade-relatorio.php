@@ -7,103 +7,129 @@ if(!verifica_permissao($cod_user, $nivel, 'publicidade'))
 	echo " </script>";
 	die();
 }
+
+$cliente = isset($_GET['cliente']) ? $_GET['cliente'] : '';
+
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
 require_once ADMIN_INC_PATH."modulos.php";
 require_once ADMIN_PATH."_publicidade/inc/topo-publicidade-lista.php";
-?>
-<script>
-    
-$(document).ready(function()
+
+if($cliente) 
 {
-    $(".mostrar").click(function()
-    {
-        _obj = $(this);
-        _mostrar = _obj.is(':checked') ? '1' : '0';
-        _cod = _obj.val();
-        _obj.hide();
-        _obj.parent().prepend("<img class='imgLoad' title='Carregando' src='http://"+ADMIN_URL+"/img/base/conteudo/load.gif' />");
-        
-        $.ajax(
-        {
-            type: "POST",
-            async: false,
-            url: "http://"+ADMIN_URL+"/_publicidade/ajax/ajaxMostrarLista.php", //URL de destino
-            data:
-            {
-                cod: _cod,
-                mostrar: _mostrar
-            },
-            dataType: "json"
-        })
-        .done(function(_json)
-        { //Se ocorrer tudo certo
-            
-            if(_json.erro != 0)
-            {
-                _valor = _mostrar == 1 ? 0 : 1;
-                if(_valor == 0)
-                {
-                    _obj.removeAttr("checked");
-                }
-                else
-                {
-                    _obj.attr("checked","true");
-                }
-            }
-            _obj.parent().find('.imgLoad').remove();
-            _obj.show();
-        });
-    }); 
-    
-    $('.apagarTodos > a').click(function()
-    {
-        _link = $(this).data('link');
-        _gets = new Array();
-        $('input.checks:checked').each(function()
-        {
-            _name = $(this).attr('name');
-            _value = $(this).val();
-            _gets.push(_name+'='+_value); 
-        });
-        if(_gets.length > 0)
-        {
-            _confirm = confirm('Tem certeza que deseja excluir o(s) registro(s) selecionado(s)?');
-            if(_confirm)
-            {
-                _url = _link+'&'+_gets.join('&');
-                document.location.replace(_url);
-            }
-        }
-        else
-        {
-            alert('Nenhum registro selecionado!');
-        }
-        return false;
-    });
-    $(".selecionarTodos > input[type='checkbox']").change(function()
-    {
-        if($(this).is(':checked'))
-        {
-            $('input.checks').attr('checked', 'true');
-        }
-        else
-        {
-            $('input.checks').removeAttr('checked');
-        }
-    })
-});
-</script>
+    $cod = $cliente;
+    echo $cod;
+
+    $qRelatoriostipo1 = mysql_query(
+
+        // "SELECT 
+        //     publicidades.cod,
+        //     clientes.razaoSocial,
+        //     publiTipos.tipo,
+        //     (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
+        //     nImpressoes
+        // FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
+        //     WHERE clientes.cod = publicidades.codCliente
+        //     AND publicidades.codTipo = publiTipos.cod
+        //     AND clientes.cod = $cod
+        //     GROUP BY clientes.cod"
+
+        "SELECT
+            publicidadeStats.tipo,
+            COUNT(publicidadeStats.codPublicidade) AS cliques,
+            publicidadeStats.pagina,	
+            publicidadeImpressoes.nImpressoes,
+            publicidadeStats.codCliente
+        FROM publicidadeStats, publicidadeImpressoes
+            WHERE publicidadeStats.codCliente = '$cod'
+            AND publicidadeStats.codPublicidade = publicidadeImpressoes.codPublicidade
+            GROUP BY publicidadeStats.tipo;"
+    );
+    $nRelatoriostipo1 = mysql_num_rows($qRelatoriostipo1);
+    echo ($nRelatoriostipo1);
+    // $qRelatoriostipo2 = mysql_query(
+    //     "SELECT 
+    //     publicidades.cod,
+    //     clientes.razaoSocial,
+    //     publiTipos.tipo,
+    //     (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
+    //     nImpressoes
+    // FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
+    //     WHERE clientes.cod = publicidades.codCliente
+    //     AND publicidades.codTipo = publiTipos.cod
+    //     AND clientes.cod = 1
+    //     AND publicidades.codTipo  = 2
+    //     GROUP BY clientes.cod"
+    // );
+    // $nRelatoriostipo2 = mysql_num_rows($qRelatoriostipo2);
+
+    // $qRelatoriostipo3 = mysql_query(
+    //     "SELECT 
+    //     publicidades.cod,
+    //     clientes.razaoSocial,
+    //     publiTipos.tipo,
+    //     (SELECT COUNT(publicidadeStats.codPublicidade) FROM publicidadeStats WHERE publicidadeStats.codPublicidade = publicidades.cod) as cliques,
+    //     nImpressoes
+    // FROM publicidades, clientes, publiTipos, publicidadeStats, publicidadeImpressoes
+    //     WHERE clientes.cod = publicidades.codCliente
+    //     AND publicidades.codTipo = publiTipos.cod
+    //     AND clientes.cod = 1
+    //     AND publicidades.codTipo  = 3
+    //     GROUP BY clientes.cod"
+    // );
+    // $nRelatoriostipo3 = mysql_num_rows($qRelatoriostipo3);
+
+?>
 <div class="divTableLista clear">
     <br><br>
-    Página: 
-    <hr>
-    <br>
-    <?= $_POST['codPublicidade'];?>
-
+    <?php
+    
+        for($c = 0; $c < $nRelatoriostipo1; $c++) {
+        $tpRelatoriostipo1 = mysql_fetch_assoc($qRelatoriostipo1);
+        
+        Página: echo $tpRelatoriostipo1['pagina'] . '<br>';
+       
+        echo $tpRelatoriostipo1['tipo']. ' --> ' . $tpRelatoriostipo1['nImpressoes'] . ' impressões e '. $tpRelatoriostipo1['cliques']. ' cliques';
+        echo '<hr>';
+        
+        
+            // echo '<br><br><br>'.$tpRelatoriostipo1['tipo'];
+        }
+    ?>
     <br><br>
-    Página: 
-    <hr>
+    <!-- Página:<hr><br> -->
+    <?php 
+
+        // $tpRelatoriostipo2 = mysql_fetch_assoc($qRelatoriostipo2);
+        // echo $tpRelatoriostipo2['tipo']. ' --> ' . $tpRelatoriostipo2['nImpressoes'] . ' impressões e '. (($tpRelatoriostipo2['cliques'] > 1)? $tpRelatoriostipo2['cliques']. ' cliques': $tpRelatoriostipo2['cliques']. ' clique');
+
+    ?>
+    <br>
+    <?php 
+
+        // $tpRelatoriostipo3 = mysql_fetch_assoc($qRelatoriostipo3);
+        // echo $tpRelatoriostipo3['tipo']. ' --> ' . $tpRelatoriostipo3['nImpressoes'] . ' impressões e '. $tpRelatoriostipo3['cliques']. ' cliques';
+
+}
+
+    // ?>
+    <!-- SELECT publiTipos.tipo,
+		COUNT(publicidadeStats.codPublicidade) as Clicks, 
+		publicidadeImpressoes.`nImpressoes` as Impressões
+	FROM publiTipos
+INNER JOIN publicidades
+	ON publicidades.codTipo = publiTipos.cod
+INNER JOIN publicidadeStats, publicidadeImpressoes
+	WHERE publicidadeStats.codPublicidade = 5
+	AND publicidadeImpressoes.codPublicidade = 5;
+ -->
+
+    <!-- SELECT (publicidadeStats.codPublicidade) as Clicks,
+	publiTipos.tipo,
+	publicidadeImpressoes.`nImpressoes` as Impressões
+FROM publicidadeStats, publiTipos, publicidadeImpressoes
+	WHERE publicidadeStats.codPublicidade = 5
+	GROUP BY publicidadeStats.codPublicidade -->
 
 <!-- comentado até o final 
 
