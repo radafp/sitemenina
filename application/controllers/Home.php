@@ -274,8 +274,8 @@ class home extends CI_Controller {
         // --------------------- METODOS DO MODEL ------------------
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas']        = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
-        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3');
-        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2'); 
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2); 
            
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
@@ -347,9 +347,9 @@ class home extends CI_Controller {
         $dados['descricao_noticia'] = $this->Novomenina->descricao_noticia($id, $_SESSION['regiao']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas'] = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
-        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_noticia', '3');
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_noticia', '2'); 
-        
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2);
+
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
         $cod_banner2_2 = isset($_SESSION['cod_banner_tipo2_2']) ? $_SESSION['cod_banner_tipo2_2'] : '';
 
@@ -442,8 +442,9 @@ class home extends CI_Controller {
         //|_________________________________________________________|
         $dados['eventos']           = $this->Novomenina->eventos($regiao, $p);
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '3');
-        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '2'); 
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2);
+
         
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
@@ -513,9 +514,9 @@ class home extends CI_Controller {
 
         $dados['top_10']   = $this->Novomenina->top_10($regiao);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'top_10', '3');
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'top_10', '2'); 
-        
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2);
+
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
         $cod_banner2_2 = isset($_SESSION['cod_banner_tipo2_2']) ? $_SESSION['cod_banner_tipo2_2'] : '';
@@ -608,9 +609,9 @@ class home extends CI_Controller {
         //|_________________________________________________________|
         $dados['videos']                = $this->Novomenina-> videos_home($regiao);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'videos_home', '3');
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'videos_home', '2'); 
-        
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2);
+
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
         $cod_banner2_2 = isset($_SESSION['cod_banner_tipo2_2']) ? $_SESSION['cod_banner_tipo2_2'] : '';
@@ -681,9 +682,9 @@ class home extends CI_Controller {
         $regiao = $_SESSION['regiao'];
         $dados['descricao_eventos']     = $this->Novomenina->descricao_eventos($id, $regiao);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_eventos', '3');
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_eventos', '2'); 
-        
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2);
+
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
         $cod_banner2_2 = isset($_SESSION['cod_banner_tipo2_2']) ? $_SESSION['cod_banner_tipo2_2'] : '';
@@ -773,9 +774,9 @@ class home extends CI_Controller {
         //|                                                         |
         //|_________________________________________________________|
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'promocoes', '3');
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'promocoes', '2'); 
-        
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2);
+
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
         $cod_banner2_2 = isset($_SESSION['cod_banner_tipo2_2']) ? $_SESSION['cod_banner_tipo2_2'] : '';
@@ -843,9 +844,9 @@ class home extends CI_Controller {
         $regiao = $_SESSION['regiao'];
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_promocoes', '3');
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_promocoes', '2'); 
-        
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2);
+
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
         $cod_banner2_2 = isset($_SESSION['cod_banner_tipo2_2']) ? $_SESSION['cod_banner_tipo2_2'] : '';
@@ -913,9 +914,9 @@ class home extends CI_Controller {
         $regiao = $_SESSION['regiao'];
         $dados['descricao_programacao'] = $this->Novomenina->descricao_programacao($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_programacao', '3');
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_programacao', '2'); 
-        
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2);
+
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
         $cod_banner2_2 = isset($_SESSION['cod_banner_tipo2_2']) ? $_SESSION['cod_banner_tipo2_2'] : '';
@@ -984,9 +985,9 @@ class home extends CI_Controller {
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['cidade']            = $this->Novomenina->cidade($_SESSION['regiao']);
-        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_utilidade', '3');
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'descricao_utilidade', '2'); 
-        
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2);
+
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
         $cod_banner2_2 = isset($_SESSION['cod_banner_tipo2_2']) ? $_SESSION['cod_banner_tipo2_2'] : '';
@@ -1076,9 +1077,8 @@ class home extends CI_Controller {
         //|                                                         |
         //|_________________________________________________________|
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'bolsa_de_empregos', '3');
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'bolsa_de_empregos', '2');
-
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2);
 
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
@@ -1170,9 +1170,9 @@ class home extends CI_Controller {
         //|                                                         |
         //|_________________________________________________________|
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '3');
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '2'); 
-        
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2);
+
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
         $cod_banner2_2 = isset($_SESSION['cod_banner_tipo2_2']) ? $_SESSION['cod_banner_tipo2_2'] : '';
@@ -1244,6 +1244,9 @@ class home extends CI_Controller {
     public function equipe() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['equipe'] = $this->Novomenina->equipe($_SESSION['regiao']);
+
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2);
         
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
@@ -1311,6 +1314,9 @@ class home extends CI_Controller {
         $id = addslashes($_GET['id']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['descricao_programacao'] = $this->Novomenina->descricao_equipe($id, $_SESSION['regiao']);
+
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2);
         
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
@@ -1377,8 +1383,8 @@ class home extends CI_Controller {
 
     public function midia() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '3');
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '2'); 
+        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '3', 4);
+        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticia', '2', 2);
         
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
