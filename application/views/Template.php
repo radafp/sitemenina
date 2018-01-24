@@ -146,7 +146,7 @@
                                     break;
                             }
                             ?>
-                        <div class="col-6 col-lg-6">
+                        <div class="col-12 col-lg-6">
                             <iframe class="playerRadio" name="playcolor" src="http://painelstream.com/mini-player/<?=$codRadio;?>" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
                         </div>
                         <div class="col-lg-6 tvMocinha">
