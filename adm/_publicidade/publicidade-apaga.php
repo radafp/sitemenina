@@ -55,6 +55,7 @@ if($cods != '')
             {
                 $erros++;
             }
+            /*
             $sqlDelPublicidadeImpressoes = "DELETE FROM publicidadeImpressoes WHERE codPublicidade = '{$tp['cod']}'";
             for($a=0;$a<5;$a++)
             {
@@ -73,6 +74,7 @@ if($cods != '')
                     break;
                 }
             }
+            */
         }
         /** FIM - EXCLUIR ARQUIVOS */
     }
