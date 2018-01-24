@@ -224,10 +224,6 @@
                                 break;
                             }            
                             ?>
-                            <!-- <form id='buscaNoticia' action="busca_noticia" method='POST'>
-                                <input type="text" name='busca'>
-                                <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>"><button id='button'>Buscar</button></a>
-                            </form> -->
                         </div>
 
                     </div>
@@ -296,6 +292,10 @@
                                         <a id='link_contato' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/contato')?>">Contato</a>
                                     </li>
                                 </ul>
+                                <form id='buscaNoticia' action="busca_noticia" method='POST'>
+                                    <input type="text" name='busca'>
+                                    <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>"><button id='button'>Buscar</button></a>
+                                </form>
                             </div>
                         </div>
                     </nav>
