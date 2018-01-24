@@ -9,6 +9,7 @@ if(!verifica_permissao($cod_user, $nivel, 'promocoes'))
 }
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
+require_once ADMIN_PATH."_promocoes/inc/topo-promocoes-lista.php";
 ?>
 <script>
 $(document).ready(function()
@@ -97,6 +98,7 @@ $(document).ready(function()
         <div class="divTd">Data Início</div>
         <div class="divTd">Data Fim</div>
         <div class="divTd">Título</div>
+        <div class="divTd">Ordem</div>
         <div class="divTd">Mostrar</div>
     </div>
     <?
@@ -118,7 +120,7 @@ $(document).ready(function()
     }    
 
     $limit_por_pag = 30;
-    $q = mysql_query("SELECT * FROM promocoes WHERE regiao = '{$regiao}' ORDER BY dataInicio DESC LIMIT $pag, $limit_por_pag", $conexao);
+    $q = mysql_query("SELECT * FROM promocoes WHERE regiao = '{$regiao}' ORDER BY ordem ASC LIMIT $pag, $limit_por_pag", $conexao);
     
     $rows = mysql_query("SELECT * FROM promocoes WHERE regiao = '{$regiao}'", $conexao);
 
@@ -150,6 +152,9 @@ $(document).ready(function()
                     <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
                         <?=$tp['tituloPt'];?>
                     </a>
+                </div>
+                <div class="divTd">
+                    <?=$tp['ordem'];?>
                 </div>
                 <div class="divTd">
                     <input type="checkbox" class="mostrar" value="<?=$tp['cod'];?>" <?=$tp['mostrar'] == 1 ? "checked='checked'" : "";?> />

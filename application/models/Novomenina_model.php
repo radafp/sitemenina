@@ -214,7 +214,7 @@ class Novomenina_model extends CI_Model{
     }
 
     // metodo sendo usado no metodo noticias do home controller
-    public function jornalismo_noticias($categoria, $regiao, $limit = null) {
+    public function jornalismo_noticias($categoria = null, $regiao, $limit = null) {
         // $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo
         //                                 FROM noticias 
         //                             INNER JOIN categorias, arquivos 
@@ -231,31 +231,53 @@ class Novomenina_model extends CI_Model{
         // );
         // return $query->result_array();
         if($categoria == 'todas')
-            $parametroCategoria = '';
-        else
-            $parametroCategoria =  "AND categoriaPt like '%$categoria%'";
-
-        $query = $this->db->query(
-            "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
-                (SELECT a.arquivo 
-                    FROM arquivos AS a 
-                        WHERE a.codReferencia = noticias.cod 
-                        AND a.referencia = 'noticias' 
-                        AND a.tipo = 2 
-                        AND a.capa = 1
-                    ORDER BY a.capa 
-                    DESC LIMIT 1) 
-            AS arquivo 
-                FROM noticias
-                INNER JOIN categorias
-                    WHERE noticias.codCategoria = categorias.cod
-                    AND noticias.regiao = '$regiao' 
-                    ".$parametroCategoria."
-                    AND noticias.mostrar = 1 
-                GROUP BY noticias.cod
-                ORDER by DATA DESC
-                LIMIT $limit, 15
-        "); 
+        {
+            $query = $this->db->query(
+                "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
+                    (SELECT a.arquivo 
+                        FROM arquivos AS a 
+                            WHERE a.codReferencia = noticias.cod 
+                            AND a.referencia = 'noticias' 
+                            AND a.tipo = 2 
+                            AND a.capa = 1
+                        ORDER BY a.capa 
+                        DESC LIMIT 1) 
+                AS arquivo 
+                    FROM noticias
+                    INNER JOIN categorias
+                        WHERE noticias.codCategoria = categorias.cod
+                        AND noticias.regiao = '$regiao' 
+                        AND noticias.mostrar = 1 
+                    GROUP BY noticias.cod
+                    ORDER by DATA DESC
+                    LIMIT $limit, 15 
+            ");
+        }
+        else{
+            $query = $this->db->query(
+                "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
+                    (SELECT a.arquivo 
+                        FROM arquivos AS a 
+                            WHERE a.codReferencia = noticias.cod 
+                            AND a.referencia = 'noticias' 
+                            AND a.tipo = 2 
+                            AND a.capa = 1
+                        ORDER BY a.capa 
+                        DESC LIMIT 1) 
+                AS arquivo 
+                    FROM noticias
+                    INNER JOIN categorias
+                        WHERE noticias.codCategoria = categorias.cod
+                        AND noticias.regiao = '$regiao' 
+                        AND categoriaPt like '%$categoria%'
+                        AND noticias.mostrar = 1 
+                    GROUP BY noticias.cod
+                    ORDER by DATA DESC
+                    LIMIT $limit, 5
+            "); 
+        }
+  
+        
         return $query->result_array();
     }
 
@@ -303,23 +325,6 @@ class Novomenina_model extends CI_Model{
         // return $query->result_array();
     }
 
-    // public function eventos($regiao)  {
-    //     $this->db->where('regiao', '$regiao');
-    //     $query = $this->db->get('eventos');
-    //     return $query->result_array();
-    // }
-
-    // TABELA programacao
-    // public function programacao($regiao) {
-    //     $this->db->where('regiao', '$regiao');
-    //     $query = $this->db->get('programacao');
-    //     return $query->result_array();
-    // }
-
-    // public function programacao2($regiao) {
-    //     $query = $this->db->query("SELECT programacao.*, arquivos.arquivo FROM programacao INNER JOIN arquivos WHERE arquivos.codReferencia = programacao.cod AND programacao.regiao = '$regiao'");
-    //     return $query->result_array();
-    // }
 
     // metodo sendo usado na action de descricao da noticia no home controller
     public function descricao_noticia($id, $regiao) {
@@ -447,7 +452,7 @@ class Novomenina_model extends CI_Model{
             "SELECT * FROM videos 
                 WHERE videos.regiao = '$regiao' 
                 AND videos.mostrar = 1
-                LIMIT $limit, 10"
+                LIMIT $limit, 15"
         );
         return $query->result_array();
     }
@@ -520,7 +525,7 @@ class Novomenina_model extends CI_Model{
                     AND promocoes.mostrar = 1 
                 GROUP BY promocoes.cod
                 ORDER BY promocoes.dataCadastro DESC
-                LIMIT $limit, 10
+                LIMIT $limit, 15
         "); 
         return $query->result_array();
     }
@@ -606,7 +611,7 @@ class Novomenina_model extends CI_Model{
                     AND eventos.dataInicio >= ".date('Ymd')."
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataInicio ASC 
-                LIMIT $limit, 10
+                LIMIT $limit, 15
         "); 
         return $query->result_array();
     }
@@ -730,7 +735,7 @@ class Novomenina_model extends CI_Model{
                     AND empregos.mostrar = 1 
                 GROUP BY empregos.cod
                 ORDER BY empregos.dataCadastro DESC
-                LIMIT $limit, 10
+                LIMIT $limit, 15
         "); 
         return $query->result_array();
     }
@@ -761,12 +766,12 @@ class Novomenina_model extends CI_Model{
                     AND achadoseperdidos.mostrar = 1 
                 GROUP BY achadoseperdidos.cod
                 ORDER BY achadoseperdidos.dataCadastro DESC
-                LIMIT $limit, 10
+                LIMIT $limit, 15
         "); 
         return $query->result_array();
     }
 
-     // public function GetAll_noticias($categoria, $regiao, $limit = null, $offset = null) {
+    //  public function GetAll_noticias($categoria, $regiao, $limit = null, $offset = null) {
     //     // $this->db->where('categoria', $categoria);
     //     // $this->db->where('regiao', $regiao);
     //     $this->db->order_by('data', 'desc');
@@ -785,6 +790,32 @@ class Novomenina_model extends CI_Model{
     //     }
     // }
 
+    public function CountAll_noticias($regiao, $condição = null, $valor = null){
+            if($valor == 'todas') {
+                $sql = "SELECT noticias.*,
+                        categorias.categoriaPt
+                        FROM noticias
+                    INNER JOIN categorias
+                        ON noticias.codCategoria = categorias.cod
+                        AND noticias.regiao = '$regiao' 
+                        AND noticias.mostrar = 1";
+            }else{
+                $sql = "SELECT noticias.*,
+                            categorias.categoriaPt
+                            FROM noticias
+                        INNER JOIN categorias
+                            ON noticias.codCategoria = categorias.cod
+                            AND noticias.regiao = '$regiao' 
+                            AND noticias.mostrar = 1 
+                            AND $condição = '$valor'";    
+            }
+            $query = $this->db->query($sql);
+            return $query->result_array();
+        
+  
+        
+        
+    }
    
     
     public function CountAll($tabela, $regiao, $condição = null, $valor = null){
@@ -826,7 +857,33 @@ class Novomenina_model extends CI_Model{
     }
 
     public function banners($regiao, $tituloPagina, $codTipo, $limit = null) {
-        if(isset($limit) && $limit != null) {
+        // if(isset($limit) && $limit != null) {
+        //     $sql = "SELECT 
+        //                 publicidades.cod,
+        //                 publicidades.tituloPagina,
+        //                 publicidades.codTipo,
+        //                 publicidades.link,
+        //                 publicidades.linkTarget,
+        //                 publicidades.pixel, 
+        //                 (SELECT a.arquivo 
+        //                 FROM arquivos AS a 
+        //                 WHERE a.codReferencia = publicidades.cod 
+        //                 AND a.referencia = 'publicidade' 
+        //                 AND a.tipo = 2 
+        //                 ORDER BY a.capa 
+        //                 DESC LIMIT 1) 
+        //                 AS arquivo 
+        //             FROM publicidades 
+        //             WHERE publicidades.regiao = '$regiao' 
+        //                 AND publicidades.mostrar = 1
+        //                 AND publicidades.tituloPagina = '$tituloPagina'
+        //                 AND publicidades.codTipo = $codTipo
+        //                 AND publicidades.dataInicio <= $hoje
+        //                 AND publicidades.dataFim >= $hoje
+        //             GROUP BY publicidades.cod
+        //             LIMIT $limit";
+        // }else{
+            $hoje = date('Y-m-d');
             $sql = "SELECT 
                         publicidades.cod,
                         publicidades.tituloPagina,
@@ -834,50 +891,71 @@ class Novomenina_model extends CI_Model{
                         publicidades.link,
                         publicidades.linkTarget,
                         publicidades.pixel, 
-                    (SELECT a.arquivo 
-                    FROM arquivos AS a 
-                    WHERE a.codReferencia = publicidades.cod 
-                    AND a.referencia = 'publicidade' 
-                    AND a.tipo = 2 
-                    ORDER BY a.capa 
-                    DESC LIMIT 1) 
-                    AS arquivo 
+                        (SELECT a.arquivo 
+                            FROM arquivos AS a 
+                            WHERE a.codReferencia = publicidades.cod 
+                                AND a.referencia = 'publicidade' 
+                                AND a.tipo = 2 
+                            ORDER BY a.capa 
+                            DESC LIMIT 1) 
+                        AS arquivo 
                     FROM publicidades 
                     WHERE publicidades.regiao = '$regiao' 
-                    AND publicidades.mostrar = 1
-                    AND publicidades.tituloPagina = '$tituloPagina'
-                    AND publicidades.codTipo = '$codTipo'
-                    GROUP BY publicidades.cod
+                        AND publicidades.mostrar = 1
+                        AND publicidades.tituloPagina = '$tituloPagina'
+                        AND publicidades.codTipo = $codTipo
+                        AND publicidades.dataInicio <= '$hoje'    
+                        AND publicidades.dataFim >= '$hoje'
+                    GROUP BY rand()
                     LIMIT $limit";
-        }else{
-            $sql = "SELECT 
-                        publicidades.cod,
-                        publicidades.tituloPagina,
-                        publicidades.codTipo,
-                        publicidades.link,
-                        publicidades.linkTarget,
-                        publicidades.pixel, 
-                    (SELECT a.arquivo 
-                    FROM arquivos AS a 
-                    WHERE a.codReferencia = publicidades.cod 
-                    AND a.referencia = 'publicidade' 
-                    AND a.tipo = 2 
-                    ORDER BY a.capa 
-                    DESC LIMIT 1) 
-                    AS arquivo 
-                    FROM publicidades 
-                    WHERE publicidades.regiao = '$regiao' 
-                    AND publicidades.mostrar = 1
-                    AND publicidades.tituloPagina = '$tituloPagina'
-                    AND publicidades.codTipo = '$codTipo'
-                    GROUP BY publicidades.cod";
-        }
+        
         $query = $this->db->query($sql); 
         return $query->result_array();
     }
 
+    public function equipe($regiao) {
+        $query = $this->db->query(
+            "SELECT equipe.*, 
+                (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                        WHERE a.codReferencia = equipe.cod 
+                        AND a.referencia = 'equipe' 
+                        AND a.tipo = 2 
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+            AS arquivo 
+                FROM equipe 
+                    WHERE equipe.regiao = '$regiao' 
+                    AND equipe.mostrar = 1 
+                GROUP BY equipe.cod
+                ORDER BY equipe.dataCadastro DESC
+        "); 
+        return $query->result_array();
+    }
+
+    public function descricao_equipe($id, $regiao) {
+        $query = $this->db->query(
+            "SELECT equipe.*, 
+                (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                        WHERE a.codReferencia = equipe.cod 
+                        AND a.referencia = 'equipe' 
+                        AND a.tipo = 2 
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+            AS arquivo 
+                FROM equipe 
+                    WHERE equipe.regiao = '$regiao' 
+                    AND equipe.mostrar = 1 
+                    AND equipe.cod = '$id'
+                GROUP BY equipe.cod
+                ORDER BY equipe.dataCadastro DESC
+        "); 
+        return $query->result_array();
+    }
+
     // metodo usado para acrescentar numero de visualizações dos banners
-    public function update($tabela, $condicao, $valor, $campo, $id) {
+    public function update($tabela, $condicao, $valor, $campo, $id) { 
         // $query =$this->db->query("UPDATE $tabela SET $condicao = $valor WHERE cod = $id");
         $query =$this->db->query("UPDATE $tabela set $condicao = $valor  WHERE $campo = $id");
     }

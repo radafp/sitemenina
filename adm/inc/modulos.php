@@ -1348,6 +1348,84 @@ $modulos = array
         ), #fim - subid
         
     ),#fim - id
+    50 => array #id
+    (
+        1 => array #subid
+        (
+            'include' => ADMIN_PATH."_equipe/equipe-lista.php",
+            'css' => array
+                    (
+                        ssl().ADMIN_URL.'/_equipe/css/equipe-lista.css',
+                    ),
+            'js' => array
+                    (
+                        //ssl().ADMIN_URL.'/_equipe/js/equipe-lista.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => '<span>Equipe</span>',
+                'tituloNovoConteudo' => 'Novo profissional',
+                'urlApagarConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=4",
+                'urlNovoConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=2",
+            ),
+            
+        ), #fim - subid
+        2 => array #subid
+        (
+            'include' => ADMIN_PATH."_equipe/equipe-novo.php",
+            'css' => array
+                    (
+                        ssl().ADMIN_URL.'/_equipe/css/equipe-novo-edita.css',
+                    ),
+            'js' => array
+                    (
+                        //ssl().ADMIN_URL.'/_equipe/js/equipe-novo-edita.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => 'Equipe > <span>Novo profissional</span> ',
+                'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
+            ),
+        ), #fim - subid
+        3 => array #subid
+        (
+            'include' => ADMIN_PATH."_equipe/equipe-edita.php",
+            'css' => array
+                    (
+                        ssl().ADMIN_URL.'/_equipe/css/equipe-novo-edita.css',
+                    ),
+            'js' => array
+                    (
+                        //ssl().ADMIN_URL.'/_equipe/js/equipe-novo-edita.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => 'Equipe > <span>Editando profissional</span> ',
+                'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
+            ),
+        ), #fim - subid
+        4 => array #subid
+        (
+            'include' => ADMIN_PATH."_equipe/equipe-apaga.php",
+        ), #fim - subid
+        6 => array #subid
+        (
+            'include' => ADMIN_PATH."_equipe/equipe-ordena-fotos.php",
+            'css' => array
+                    (
+                        ssl().ADMIN_URL.'/_equipe/css/equipe-ordena-fotos.css',
+                    ),
+            'js' => array
+                    (
+                        //ssl().ADMIN_URL.'/_equipe/js/equipe-ordena-fotos.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => 'Equipe > <span>ordenando fotos</span> ',
+                'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
+            ),
+        ), #fim - subid
+    ),#fim - id
     // mailing
     900 => array #id
     (

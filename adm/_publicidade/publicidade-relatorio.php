@@ -17,6 +17,7 @@ require_once ADMIN_PATH."_publicidade/inc/topo-publicidade-lista.php";
 
 if($cliente) 
 {
+<<<<<<< HEAD
     $cod = $cliente;
     echo $cod;
 
@@ -145,162 +146,49 @@ FROM publicidadeStats, publiTipos, publicidadeImpressoes
                 <?
 
                 $regiao = isset($_SESSION[ADMIN_SESSION_NAME.'_regiao']) ? $_SESSION[ADMIN_SESSION_NAME.'_regiao'] : '';
+=======
+>>>>>>> 5e86d70f138bc53556208f59743ac4bc638c5716
 
-                // $q = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p
-                //                 INNER JOIN publiTipos AS pt ON pt.cod = p.codTipo
-                //                 INNER JOIN publiPaginas AS pp ON pp.cod = p.codPagina
-                //                 WHERE p.regiao = '$regiao'
-                //                 ORDER BY p.codPagina, pt.cod");
-                // $n = mysql_num_rows($q);
+    $cod = $cliente;
 
-                // //echo mysql_error();
+    $qPublicidadeStatsPaginas = mysql_query("SELECT * FROM publicidadeStats WHERE codCliente = '{$cliente}'");
 
-                // if ($n>0)
+ 
+    $qPublicidadeStatsPaginas = mysql_query("SELECT codPagina,pagina FROM publicidadeStats WHERE codCliente = '{$cliente}' GROUP BY codPagina" );
 
-                if(isset($_GET['p'])) {
-                    $pg = $_GET['p'];
-                }else{
-                    $pg = 0;
-                }
+    $nPublicidadeStatsPaginas = mysql_num_rows($qPublicidadeStatsPaginas);
 
-                $pag = ($pg - 1) * 30;
-                if($pag < 0) {
-                    $pag = 0;
-                }    
-
-                $limit_por_pag = 30;
-                $q = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p
-                                INNER JOIN publiTipos AS pt ON pt.cod = p.codTipo
-                                INNER JOIN publiPaginas AS pp ON pp.cod = p.codPagina
-                                WHERE p.regiao = '$regiao'
-                                ORDER BY p.codPagina, pt.cod LIMIT $pag, $limit_por_pag", $conexao);
-                
-                $rows = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p
-                                INNER JOIN publiTipos AS pt ON pt.cod = p.codTipo
-                                INNER JOIN publiPaginas AS pp ON pp.cod = p.codPagina
-                                WHERE p.regiao = '$regiao'", $conexao);
-
-                $count_registros = mysql_num_rows($rows);
-                $paginas = ceil($count_registros / $limit_por_pag);
-
-                if ($count_registros>0)
-                {
-                    while($tp = mysql_fetch_assoc($q))
-                    {
-                        $qClientes = mysql_query("SELECT * FROM clientes WHERE cod = '{$tp['codCliente']}'");
-                        $nClientes = mysql_num_rows($qClientes);
-                        ?>
-                        <div class="divTr">
-                            <div class="divTd">
-                                <input class="checks" name="cod[]" value="<?=$tp['cod'];?>" type="checkbox" />
-                            </div>
-                            <div class="divTd">                
-                                <?
-                                if($nClientes>0) 
-                                {
-                                    $tpCliente = mysql_fetch_assoc($qClientes)
-                                    ?>
-                                    <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
-                                        <?
-                                        if($tpCliente['tipoPessoa'] == 'j'){
-                                            echo $tpCliente['razaoSocial'];
-                                        }elseif($tpCliente['tipoPessoa'] == 'f'){
-                                            echo $tpCliente['nome']." ".$tpCliente['sobrenome'];;
-                                        }
-                                        ?>
-                                    </a>
-                                    <?
-                                }
-                                ?>
-                            </div>
-                            <div class="divTd">
-                                <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
-                                    <?=$tp['pagina'];?>
-                                </a>
-                            </div>
-                            <div class="divTd">
-                                <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
-                                    <?=$tp['tipo'];?>
-                                </a>
-                            </div>
-                            <div class="divTd">
-                                <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
-                                    <?=dataBr($tp['dataInicio']);?>
-                                </a>
-                            </div>
-                            <div class="divTd">
-                                <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
-                                    <?=dataBr($tp['dataFim']);?>
-                                </a>
-                            </div>
-                            <div class="divTd">
-                                <input type="checkbox" class="mostrar" value="<?=$tp['cod'];?>" <?=$tp['mostrar'] == 1 ? "checked='checked'" : "";?> />
-                            </div>
-                        </div>
-                    <?
-                    }
-                }
-                else
-                {
-                ?>
-                </div>    
-                <div>
-                    Nenhum Registro Encontrado.
+    for($i = 0; $i < $nPublicidadeStatsPaginas; $i++) 
+    {
+        $tpPublicidadeStatsPaginas = mysql_fetch_assoc($qPublicidadeStatsPaginas);
+        ?>
+        
+        <div style="margin-top:25px;width: 100%">
+            
+            <div style="width:100%; float:left">
+                <?=$tpPublicidadeStatsPaginas['pagina'];?>
+            </div>
+            <div style="width:100%; float:left">
                 <?php
+                $qPublicidadeStatsPaginasDetalhe = mysql_query("SELECT * FROM publicidadeStats WHERE codCliente = '{$cliente}' AND codPagina = '{$tpPublicidadeStatsPaginas['codPagina']}' GROUP BY codPublicidade");
+                $nPublicidadeStatsPaginasDetalhe = mysql_num_rows($qPublicidadeStatsPaginasDetalhe);
+
+                for($j=0;$j<$nPublicidadeStatsPaginasDetalhe;$j++)
+                {
+                    $tpPublicidadeStatsPaginasDetalhe = mysql_fetch_assoc($qPublicidadeStatsPaginasDetalhe);
+
+                    $qNImpressoes = mysql_query("SELECT cod FROM publicidadeStats WHERE codPublicidade = '{$tpPublicidadeStatsPaginasDetalhe['cod']}'" );
+                    $nImpressoes = mysql_num_rows($qNImpressoes);
+                ?>
+                    <div style="width:100%; float:left">CodPublicidade: <?=$tpPublicidadeStatsPaginasDetalhe['codPublicidade'];?> - <?=$tpPublicidadeStatsPaginasDetalhe['tipo'];?> - <?=$nImpressoes;?> Impressões e <?=$nPublicidadeStatsPaginasDetalhe;?> cliques </div>
+                    <div style="width:50%; float:left"></div>
+                <?
                 }
                 ?>
             </div>
-
-            <div class="divTableLista clear">
-                <div class="divTr">
-                    <div class="divTd">
-
-                        <?php
-                        if(isset($_GET['p'])) {
-                                $p = $_GET['p'];
-                            }else{
-                                $p = 1;
-                            }
-
-                            if($p >= 1) {
-                                $anterior = $p - 1;
-                            }
-                            if($p <= $count_registros) {
-                                $proxima = $p + 1;
-                            }
-                            
-                            if($anterior <= 0) {
-                                $anterior = 0;
-                            }
-                            if(isset($proxima) && $proxima >= $count_registros){
-                                $proxima = $count_registros;
-                            }
-                            // echo '<br>cont de registros: '.$count_registros;
-                            // echo '<br>limit por paginas: '.$limit_por_pag;
-                            // echo '<br><br>';
-                            // echo '<br>p: '. $p;
-                            // echo '<br>$pag: '.$pag;
-                        ?><br><br>
-
-                            
-                        <?php if($count_registros > $limit_por_pag):?>
-                            <?php if($p > 1):?>
-                                <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$anterior;?>">Anterior</a>
-                                <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$anterior;?>"><?=$anterior;?></a>
-                            <?php endif?>
-                            
-                                <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$p;?>"><?=$p;?></a>
-
-                            <?php if($pag+10 <= $count_registros):?>
-                                <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$proxima;?>"><?=$proxima;?></a>
-                                <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$proxima;?>">Proximo</a>
-                            <?php endif?>
-                        <?php endif;?>              
-
-                        
-                        <?= '<br>Total de Páginas: '. $paginas?>
-                            
-                    </div>
-                </div>
-    -->
-</div>
+        
+        </div>
+        <?php
+    }
+}
+?>

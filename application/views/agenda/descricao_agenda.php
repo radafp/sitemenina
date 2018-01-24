@@ -59,6 +59,7 @@
                             $bannerPrincipalLink = $banners[$rand_keys[$i]]['link'];
                             $bannerPrincipalArquivo = $banners[$rand_keys[$i]]['arquivo'];
                             $bannerPrincipalTarget = $banners[$rand_keys[$i]]['linkTarget'];
+                            $_SESSION['cod_banner'] = $bannerPrincipalCod;
                             ?>
                             <div class="wrapBanner">
                                 <a class='registra_click_publicidade' href="<?=($bannerPrincipalLink != '') ? $bannerPrincipalLink  : '';?>" target="<?=$bannerPrincipalTarget;?>" rel="<?=$bannerPrincipalCod;?>">
@@ -110,6 +111,7 @@
                 $bannerPrincipalLink = $banners[$rand_keys[$i]]['link'];
                 $bannerPrincipalArquivo = $banners[$rand_keys[$i]]['arquivo'];
                 $bannerPrincipalTarget = $banners[$rand_keys[$i]]['linkTarget'];
+                $_SESSION['cod_banner'] = $bannerPrincipalCod;
                 ?>
                 <div class="col-xs-12 col-md-6">
                     <div class="wrapBanner">
