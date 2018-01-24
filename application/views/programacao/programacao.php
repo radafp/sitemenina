@@ -106,6 +106,7 @@
                                 "linkTarget" => isset($info['linkTarget']) ? $info['linkTarget'] : '',
                             );
                         endforeach;
+                        
                         /*
                         echo "<pre>";
                             var_dump($banners);
@@ -117,13 +118,24 @@
                         else{
                             $numeroListagem = 4;
                         }
+                        
                         $rand_keys = array_rand($banners, $numeroListagem);
-                        for($i=0;$i<2;$i++)
+
+                        for($i=0;$i<$numeroListagem;$i++)
                         {
-                            $bannerPrincipalCod = $banners[$rand_keys[$i]]['cod'];
-                            $bannerPrincipalLink = $banners[$rand_keys[$i]]['link'];
-                            $bannerPrincipalArquivo = $banners[$rand_keys[$i]]['arquivo'];
-                            $bannerPrincipalTarget = $banners[$rand_keys[$i]]['linkTarget'];
+                            if($numeroListagem == 1)
+                            {  
+                                $bannerPrincipalCod = $banners[$rand_keys]['cod'];
+                                $bannerPrincipalLink = $banners[$rand_keys]['link'];
+                                $bannerPrincipalArquivo = $banners[$rand_keys]['arquivo'];
+                                $bannerPrincipalTarget = $banners[$rand_keys]['linkTarget'];
+                            }else{
+                                $bannerPrincipalCod = $banners[$rand_keys[$i]]['cod'];
+                                $bannerPrincipalLink = $banners[$rand_keys[$i]]['link'];
+                                $bannerPrincipalArquivo = $banners[$rand_keys[$i]]['arquivo'];
+                                $bannerPrincipalTarget = $banners[$rand_keys[$i]]['linkTarget'];
+                            }
+                            
                             $_SESSION['cod_banner'] = $bannerPrincipalCod;
                             ?>
                             <div class="wrapBanner">
@@ -169,7 +181,6 @@
                 var_dump($banners);
             echo "</pre>";
             */
-
             $rand_keys = array_rand($banners, 2);
             for($i=0;$i<2;$i++)
             {

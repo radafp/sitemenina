@@ -59,6 +59,7 @@
 <div class="container">
     <div class="row publicidade">
         <?php 
+
         if(count($banner_tipo1)>0)
         {
             $banners = array();
@@ -73,9 +74,8 @@
             /*
             echo "<pre>";
                 var_dump($banners);
-            echo "</pre>";
+            echo "</pre>"; 
             */
-
             $rand_keys = array_rand($banners, 1);
             $bannerPrincipalCod = $banners[$rand_keys]['cod'];
             $bannerPrincipalLink = $banners[$rand_keys]['link'];
@@ -85,9 +85,23 @@
         
             ?>
             <div class="wrapBanner">
-                <a class='registra_click_publicidade' href="<?=($bannerPrincipalLink != '') ? $bannerPrincipalLink  : '';?>" target="<?=$bannerPrincipalTarget;?>" rel="<?=$bannerPrincipalCod;?>">
-                    <img src="<?=base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo);?>" title="Publicidade">
-                </a>
+                <?php
+                if($bannerPrincipalLink != '')
+                {
+                ?>
+                    <a class='registra_click_publicidade' href="<?=($bannerPrincipalLink != '') ? $bannerPrincipalLink  : '';?>" target="<?=$bannerPrincipalTarget;?>" rel="<?=$bannerPrincipalCod;?>">
+                <?php 
+                }
+                ?>
+                        <img src="<?=base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo);?>" title="Publicidade">
+                <?php
+                if($bannerPrincipalLink != '')
+                {
+                ?>
+                    </a>
+                <?php 
+                }
+                ?>
             </div>
         <?php 
         } 
@@ -183,6 +197,7 @@
     <div class="row publicidade">
         
         <?php
+        $nbanners = count($banner_tipo2);
         if(count($banner_tipo2)>0)
         {
             $banners = array();
@@ -200,20 +215,49 @@
             echo "</pre>";
             */
 
-            $rand_keys = array_rand($banners, 2);
-            for($i=0;$i<2;$i++)
+            if($nbanners<2){
+                $numeroListagem = $nbanners;
+            }
+            else{
+                $numeroListagem = 2;
+            }
+            
+            $rand_keys = array_rand($banners, $numeroListagem);
+            for($i=0;$i<$numeroListagem;$i++)
             {
-                $bannerPrincipalCod = $banners[$rand_keys[$i]]['cod'];
-                $bannerPrincipalLink = $banners[$rand_keys[$i]]['link'];
-                $bannerPrincipalArquivo = $banners[$rand_keys[$i]]['arquivo'];
-                $bannerPrincipalTarget = $banners[$rand_keys[$i]]['linkTarget'];
+                if($numeroListagem == 1)
+                {  
+                    $bannerPrincipalCod = $banners[$rand_keys]['cod'];
+                    $bannerPrincipalLink = $banners[$rand_keys]['link'];
+                    $bannerPrincipalArquivo = $banners[$rand_keys]['arquivo'];
+                    $bannerPrincipalTarget = $banners[$rand_keys]['linkTarget'];
+                }else{3
+                    $bannerPrincipalCod = $banners[$rand_keys[$i]]['cod'];
+                    $bannerPrincipalLink = $banners[$rand_keys[$i]]['link'];
+                    $bannerPrincipalArquivo = $banners[$rand_keys[$i]]['arquivo'];
+                    $bannerPrincipalTarget = $banners[$rand_keys[$i]]['linkTarget'];
+                }
                 $_SESSION['cod_banner'] = $bannerPrincipalCod;
                 ?>
                 <div class="col-xs-12 col-md-6">
                     <div class="wrapBanner">
+                    <?php
+                    if($bannerPrincipalLink != '')
+                    {
+                    ?>
                         <a class='registra_click_publicidade' href="<?=($bannerPrincipalLink != '') ? $bannerPrincipalLink  : '';?>" target="<?=$bannerPrincipalTarget;?>" rel="<?=$bannerPrincipalCod;?>">
-                            <img src=<?= base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo)?> title="Publicidade">
+                    <?php
+                    }
+                    ?>        
+                        <img src=<?= base_url('/assets/arquivos/publicidade/'.$bannerPrincipalArquivo)?> title="Publicidade">
+                    <?php
+                    if($bannerPrincipalLink != '')
+                    {
+                    ?>
                         </a>
+                    <?php
+                    }
+                    ?> 
                     </div>
                 </div> 
                 <?php 
