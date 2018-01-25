@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
+    <head> 
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -101,6 +101,16 @@
                     window.history.pushState(null, 'Home', $(this).attr('href'));
                     
                 })
+
+                /* CADASTRO NEWS */
+                jQuery("a.WhatsApp").unbind("click").bind("click", function()
+                {
+                    jQuery("div.whatsappBox").fadeIn();
+                });
+                $("div.btFechar").unbind("click").bind("click", function()
+                {
+                    jQuery("div.whatsappBox").fadeOut();
+                });
                 
                 /*var pr =  $('.playerRadio').contents();
                 pr.find('html').css('background', 'red') {
@@ -167,16 +177,16 @@
 
                     <div class="row lsbr">
 
-                        <div class="col-md-2 col-sm-4 btm-30 logo">
+                        <div class="col-xs-12 col-md-2 btm-30 logo">
                             <a id='logo' href="<?php echo base_url($_SESSION['city'])?>"> <img src="<?php echo base_url('/assets/img/logoMenina'.$_SESSION['regiao'].'.png');?>" title="Rádio Menina"></a>
                         </div>
-                        <div class="col-md-4 col-sm-4 btm-30 slogam">
+                        <div class="col-xs-12 col-md-4 btm-30 slogam">
                             <span><?=$_SESSION['slogam'];?></span>
                         </div>
-                        <div class="col-md-3 col-sm-4 btm-30 selRegiao">
+                        <div class="col-xs-12 col-md-3 btm-30 selRegiao">
                             <div class="wrapFormRegiao">
                                 <form action="" id="formRegiao" method='POST'>
-                                    <select name="selectRegiao" form="form" id='regiao'>
+                                    <select name="selectRegiao" id='regiao'>
                                         <option value="/balneario-camboriu" <?=$_SESSION['regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
                                         <option value="/blumenal" <?=$_SESSION['regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
                                         <option value="/lages" <?=$_SESSION['regiao'] == 'lg' ? 'selected' : '';?> >Lages</option>
@@ -184,46 +194,13 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-4 btm-30 topoRedes">
+                        <div class="col-xs-12 col-md-3 btm-30 topoRedes">
                             <ul class="list-inline social">
                                 <li><a class="face" href="<?=$_SESSION['socialFace'];?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank"><i class="fa fa-instagram"></i></a></li>
                                 <li><a class="youtube" href="<?=$_SESSION['socialYoutube'];?>" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                                <li><a class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
                             </ul>
-                            <?php
-                            switch($_SESSION['regiao']){
-                                case 'bc':  
-                                ?>
-                                    <div>
-                                        <a class="whatsapp">
-                                            <i class="fa fa-whatsapp"></i>
-                                            <span>(47) 99174.1005</span>
-                                        </a>
-                                    </div>
-                                <?php
-                                break;
-                                case 'bl':
-                                ?>
-                                    <div>
-                                        <a class="whatsapp">
-                                            <i class="fa fa-whatsapp"></i>
-                                            <span>(47) 99128.1070</span>
-                                        </a>
-                                    </div>
-                                <?php
-                                break;
-                                case 'lg':
-                                ?>
-                                    <div>
-                                        <a class="whatsapp">
-                                            <i class="fa fa-whatsapp"></i>
-                                            <span>(49) 99824.0492</span>
-                                        </a>
-                                    </div>
-                                <?php
-                                break;
-                            }            
-                            ?>
                         </div>
 
                     </div>
@@ -232,9 +209,19 @@
                     <!-- Navigation -->
                     <nav class="navbar navbar-expand-lg navbar-default">
                         <div class="container">
-                            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
+                            <div class="itensTougller">
+                                <button class="navbar-toggler navbar-light navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <form id='buscaNoticia' action="busca_noticia" method='POST'>
+                                    <input style="float: left;padding: 5px 5px 5px 15px;border-top-left-radius: 50px;border-bottom-left-radius: 50px;border: 1px solid #c2c2c2;" class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
+                                    <span class="input-group-btn">
+                                        <a style="margin: 0;padding: 0;border: 1px solid #c2c2c2;" class='busca btn' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
+                                            <button style="padding: 3px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;" class="btn btn-secondary" type="button">Buscar</button>
+                                        </a>
+                                    </span>
+                                </form>
+                            </div>
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul id="menu" class="navbar-nav">
                                     <li class="nav-item">
@@ -293,8 +280,12 @@
                                     </li>
                                 </ul>
                                 <form id='buscaNoticia' action="busca_noticia" method='POST'>
-                                    <input type="text" name='busca'>
-                                    <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>"><button id='button'>Buscar</button></a>
+                                    <input style="float: left;padding: 5px 5px 5px 15px;border-top-left-radius: 50px;border-bottom-left-radius: 50px;border: 1px solid #c2c2c2;" class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
+                                    <span class="input-group-btn">
+                                        <a style="margin: 0;padding: 0;border: 1px solid #c2c2c2;" class='busca btn' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
+                                            <button style="padding: 3px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;" class="btn btn-secondary" type="button">Buscar</button>
+                                        </a>
+                                    </span>
                                 </form>
                             </div>
                         </div>

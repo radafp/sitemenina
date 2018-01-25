@@ -448,7 +448,7 @@
     float: left;
     margin-right: 30px;
     min-width: 200px;
-    text-align: center;
+    text-align: center; 
  }
  .blocoNoticias .noticia .foto img{
     max-height: 150px;
@@ -901,4 +901,32 @@
 .mapaContato{
     margin-top: 50px;
     text-align: center
+}
+
+/* Responsivo */
+@media only screen and (max-width: 786px) {
+    .topo {
+        text-align: center;
+    }
+    .blocoMenu{
+        margin:20px 0;
+    }
+    .blocoMenu .logo {
+        text-align: center;
+        padding-top: 15px;
+    }
+    .blocoMenu .slogam span {
+        font-size: 1.1em;
+    }
+    .blocoMenu .selRegiao .wrapFormRegiao {
+        margin-top: 35px;
+        margin-right: auto;
+        margin-left: auto;
+        float: none !important;
+    }
+    .itensTougller{
+        display: block;
+        width: 100%;
+        position: relative;
+    }
 }
