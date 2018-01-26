@@ -792,6 +792,28 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
+    // metodo generico para descricao de views
+    public function descricao_view($tabela, $id, $regiao) {
+        $query = $this->db->query(
+            "SELECT $tabela.*, 
+                (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                        WHERE a.codReferencia = $tabela.cod 
+                        AND a.referencia = '$tabela' 
+                        AND a.tipo = 2 
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+            AS arquivo 
+                FROM $tabela 
+                    WHERE $tabela.regiao = '$regiao' 
+                    AND $tabela.mostrar = 1 
+                    AND $tabela.cod = '$id'
+                GROUP BY $tabela.cod
+                ORDER BY $tabela.dataCadastro DESC
+        "); 
+        return $query->result_array();
+    }
+
     //  public function GetAll_noticias($categoria, $regiao, $limit = null, $offset = null) {
     //     // $this->db->where('categoria', $categoria);
     //     // $this->db->where('regiao', $regiao);

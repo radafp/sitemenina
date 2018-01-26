@@ -212,14 +212,14 @@
                             <button style="border-color: #c2c2c2;" class="navbar-toggler navbar-light navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-                            <form class="formBusca-toggler" id='buscaNoticia' action="busca_noticia" method='POST'>
+                            <!-- <form class="formBusca-toggler" id='buscaNoticia' action="busca_noticia" method='POST'>
                                 <input class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
                                 <span class="input-group-btn">
                                     <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
                                         <button style="padding: 4px 5px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;height: 32px;" class="btn btn-secondary" type="button">Buscar</button>
                                     </a>
                                 </span>
-                            </form>
+                            </form> -->
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul id="menu" class="navbar-nav">
                                     <li class="nav-item">
