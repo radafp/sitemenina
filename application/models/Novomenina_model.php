@@ -771,26 +771,26 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
-    public function descricao_equipe_documentos_perdidos($id, $regiao) {
-        $query = $this->db->query(
-            "SELECT achadoseperdidos.*, 
-                (SELECT a.arquivo 
-                    FROM arquivos AS a 
-                        WHERE a.codReferencia = achadoseperdidos.cod 
-                        AND a.referencia = 'achadoseperdidos' 
-                        AND a.tipo = 2 
-                    ORDER BY a.capa 
-                    DESC LIMIT 1) 
-            AS arquivo 
-                FROM achadoseperdidos 
-                    WHERE achadoseperdidos.regiao = '$regiao' 
-                    AND achadoseperdidos.mostrar = 1 
-                    AND achadoseperdidos.cod = '$id'
-                GROUP BY achadoseperdidos.cod
-                ORDER BY achadoseperdidos.dataCadastro DESC
-        "); 
-        return $query->result_array();
-    }
+    // public function descricao_equipe_documentos_perdidos($id, $regiao) {
+    //     $query = $this->db->query(
+    //         "SELECT achadoseperdidos.*, 
+    //             (SELECT a.arquivo 
+    //                 FROM arquivos AS a 
+    //                     WHERE a.codReferencia = achadoseperdidos.cod 
+    //                     AND a.referencia = 'achadoseperdidos' 
+    //                     AND a.tipo = 2 
+    //                 ORDER BY a.capa 
+    //                 DESC LIMIT 1) 
+    //         AS arquivo 
+    //             FROM achadoseperdidos 
+    //                 WHERE achadoseperdidos.regiao = '$regiao' 
+    //                 AND achadoseperdidos.mostrar = 1 
+    //                 AND achadoseperdidos.cod = '$id'
+    //             GROUP BY achadoseperdidos.cod
+    //             ORDER BY achadoseperdidos.dataCadastro DESC
+    //     "); 
+    //     return $query->result_array();
+    // }
 
     // metodo generico para descricao de views
     public function descricao_view($tabela, $id, $regiao) {

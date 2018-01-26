@@ -3,7 +3,7 @@
 
 
         var content = $('#content');
-        $('.paginacao_empregos').click(function( e ){
+        $('.paginacao_empregos, .link_descricao').click(function( e ){
             e.preventDefault();
 
             var href = $( this ).attr('href');
@@ -40,11 +40,13 @@
 
                     <?php foreach($empregos as $info):?>
                         <div class='bolsaDeEmpregos'>
-                            <div class="foto">
-                                <img src="<?php echo base_url('/assets/arquivos/empregos/'.$info['arquivo'])?>" alt="">
-                            </div>
-                            <h3><?php echo $info['descricao']?></h3>
-                            <p><?php echo $info['telefone']?></p>
+                            <a class="link_descricao" href="<?php echo base_url('home/descricao_bolsa_de_empregos?id='.$info['cod']);?>">
+                                <div class="foto">
+                                    <img src="<?php echo base_url('/assets/arquivos/empregos/'.$info['arquivo'])?>" alt="">
+                                </div>
+                                <h3><?php echo $info['descricao']?></h3>
+                                <p><?php echo $info['telefone']?></p>
+                            </a>
                         </div>
                     <?php endforeach?>
 

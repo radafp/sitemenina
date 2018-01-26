@@ -16,6 +16,7 @@ class home extends CI_Controller {
     }
 
     public function regiao() {
+        session_unset($_SESSION);
         $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
         
         $regiao = isset($uri[0]) && !empty($uri[0]) ? $uri[0] : '';// regiao
@@ -155,6 +156,7 @@ class home extends CI_Controller {
     }
 
     public function programacao() {
+        session_unset($_SESSION);
         // link de progrmacao semanal/sabado/domingo
         $_SESSION['menuAtivoProgramacao'] = addslashes(isset($_GET['programacao']) ? $_GET['programacao'] : 'Semanal');
         
@@ -235,6 +237,7 @@ class home extends CI_Controller {
     }
     
     public function noticia() {
+        session_unset($_SESSION);
         $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'todas';
         //echo $categoria;
         
@@ -341,6 +344,7 @@ class home extends CI_Controller {
     }
 
     public function descricao_noticia() {
+        session_unset($_SESSION);
         $id = addslashes($_GET['id']);
         $categoria = addslashes($_GET['categoria']);
         $this->Novomenina->cliques($id, $_SESSION['regiao']);
@@ -413,6 +417,7 @@ class home extends CI_Controller {
     }
 
     public function agenda() {
+        session_unset($_SESSION);
         // $id = $_GET['id'];
         $regiao = addslashes($_SESSION['regiao']);
         
@@ -509,6 +514,7 @@ class home extends CI_Controller {
     }
 
     public function top_10() {
+        session_unset($_SESSION);
 
         $regiao = isset($_SESSION['regiao']) ? $_SESSION['regiao'] : '';
 
@@ -580,6 +586,7 @@ class home extends CI_Controller {
     }
 
     public function videos_home() {
+        session_unset($_SESSION);
         $regiao = $_SESSION['regiao'];
 
         // --------------------- PAGINAÇÂO --------------------
@@ -678,6 +685,7 @@ class home extends CI_Controller {
     
 
     public function descricao_agenda() {
+        session_unset($_SESSION);
         $id = addslashes($_GET['id']);
         $regiao = $_SESSION['regiao'];
         $dados['descricao_eventos']     = $this->Novomenina->descricao_eventos($id, $regiao);
@@ -748,6 +756,7 @@ class home extends CI_Controller {
     }
 
     public function promocoes() {
+        session_unset($_SESSION);
         // --------------------- PAGINAÇÂO --------------------
         //|                                                    |
         //|                                                    |
@@ -840,6 +849,7 @@ class home extends CI_Controller {
     }
 
     public function descricao_promocoes() {
+        session_unset($_SESSION);
         $id = addslashes($_GET['id']);
         $regiao = $_SESSION['regiao'];
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
@@ -910,6 +920,7 @@ class home extends CI_Controller {
     }
 
     public function descricao_programacao() {
+        session_unset($_SESSION);
         $id = addslashes($_GET['id']);
         $regiao = $_SESSION['regiao'];
         $dados['descricao_programacao'] = $this->Novomenina->descricao_programacao($id, $regiao);
@@ -980,6 +991,7 @@ class home extends CI_Controller {
     }
 
     public function descricao_utilidade() {
+        session_unset($_SESSION);
         $id = addslashes($_GET['id']);
         $regiao = $_GET['regiao'];
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
@@ -1051,6 +1063,7 @@ class home extends CI_Controller {
     }
 
     public function bolsa_de_empregos() {
+        session_unset($_SESSION);
         // --------------------- PAGINAÇÂO --------------------
         //|                                                    |
         //|                                                    |
@@ -1144,6 +1157,7 @@ class home extends CI_Controller {
     }
 
     public function descricao_bolsa_de_empregos() {
+        session_unset($_SESSION);
         $id = addslashes($_GET['id']);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['descricao_empregos']    = $this->Novomenina->descricao_view('empregos', $id, $_SESSION['regiao']);
@@ -1228,6 +1242,7 @@ class home extends CI_Controller {
     }
 
     public function documentos_perdidos() {
+        session_unset($_SESSION);
         // --------------------- PAGINAÇÂO --------------------
         //|                                                    |
         //|                                                    |
@@ -1321,9 +1336,10 @@ class home extends CI_Controller {
     }
 
     public function descricao_documentos_perdidos() {
+        session_unset($_SESSION);
         $id = addslashes($_GET['id']);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['descricao_documento']   = $this->Novomenina->descricao_equipe_documentos_perdidos($id, $_SESSION['regiao']);
+        $dados['descricao_documento']   = $this->Novomenina->descricao_view('achadoseperdidos', $id, $_SESSION['regiao']);
 
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '3', 4);
@@ -1406,12 +1422,14 @@ class home extends CI_Controller {
 
 
     public function historia() {
+        session_unset($_SESSION);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['viewName'] = 'quem_somos/historia';
         $this->load->view('Template', $dados);
     }
 
     public function equipe() {
+        session_unset($_SESSION);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['equipe'] = $this->Novomenina->equipe($_SESSION['regiao']);
 
@@ -1482,6 +1500,7 @@ class home extends CI_Controller {
     }
 
     public function descricao_equipe() {
+        session_unset($_SESSION);
         $id = addslashes($_GET['id']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['descricao_programacao'] = $this->Novomenina->descricao_equipe($id, $_SESSION['regiao']);
@@ -1554,6 +1573,7 @@ class home extends CI_Controller {
 
 
     public function midia() {
+        session_unset($_SESSION);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '3', 4);
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '2', 2); 
@@ -1621,6 +1641,7 @@ class home extends CI_Controller {
     }
 
     public function contato() {
+        session_unset($_SESSION);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['action'] = site_url('home/enviaEmail');
         // $this->load->library('email');

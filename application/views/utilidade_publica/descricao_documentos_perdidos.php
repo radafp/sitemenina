@@ -5,7 +5,7 @@
             <div class="col-xs-12 col-md-8 contLeft">
 
                 <h1 class="tituloPadrao1">
-                    <span>Programação</span>
+                    <span>Documentos Perdidos</span>
                 </h1>
                 <div class="blocoProgramacaoDescricao">
                     
@@ -14,8 +14,8 @@
                             <div class="foto">
                                 <img src="<?php echo base_url('assets/arquivos/achadoseperdidos/'.$info["arquivo"])?>" alt="">
                             </div>
-                            <h3><?php echo $info['tituloPt']?></h3>
-                            <p><?php echo $info['descricaoPt']?></p>
+                            <h3><?php echo $info['titulo']?></h3>
+                            <p><?php echo $info['texto']?></p>
                             <div class="infos">
                             </div>
                         </div>

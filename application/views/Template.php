@@ -276,14 +276,14 @@
                                     </li>
                                 </ul>
                             </div>
-                            <form class="formBusca" id='buscaNoticia' action="busca_noticia" method='POST'>
+                            <!-- <form class="formBusca" id='buscaNoticia' action="busca_noticia" method='POST'>
                                 <input class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
                                 <span class="input-group-btn">
                                     <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
                                         <button style="padding: 4px 5px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;height: 32px;" class="btn btn-secondary" type="button">Buscar</button>
                                     </a>
                                 </span>
-                            </form>
+                            </form> -->
                         </div>
                     </nav>
 
