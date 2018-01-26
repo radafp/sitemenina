@@ -55,6 +55,26 @@ if($cods != '')
             {
                 $erros++;
             }
+            /*
+            $sqlDelPublicidadeImpressoes = "DELETE FROM publicidadeImpressoes WHERE codPublicidade = '{$tp['cod']}'";
+            for($a=0;$a<5;$a++)
+            {
+                $qDel = mysql_query($sqlDelPublicidadeImpressoes);
+                if($qDel)
+                {
+                    break;
+                }
+            }
+            $sqlDelPublicidadeStats = "DELETE FROM publicidadeStats WHERE codPublicidade = '{$tp['cod']}'";
+            for($a=0;$a<5;$a++)
+            {
+                $qDel = mysql_query($sqlDelPublicidadeStats);
+                if($qDel)
+                {
+                    break;
+                }
+            }
+            */
         }
         /** FIM - EXCLUIR ARQUIVOS */
     }

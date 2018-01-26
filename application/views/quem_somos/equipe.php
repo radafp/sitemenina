@@ -40,16 +40,17 @@
             <div class="row">
                 <div class="fotoEquipe">
                     <img src="<?=base_url('/assets/img/equipe_'.$_SESSION['regiao'].'.png');?>" alt="">
-
-                    <?php foreach($equipe as $info):?>
-                        <div>
-                            <a class="link_descricao" href="<?php echo base_url('home/descricao_equipe?id='.$info['cod']);?>">
-                                <h3> <?= $info['tituloPt'];?></h3>
-                                <img src="<?php echo base_url('/assets/arquivos/equipe/'.$info['arquivo'])?>" alt="">
-                            </a>
-                        </div>
-                    <?php endforeach;?>
                 </div> 
+                <?php foreach($equipe as $info):?>
+                    <div class="col-md-3">
+                        <a class="link_descricao" href="<?php echo base_url('home/descricao_equipe?id='.$info['cod']);?>">
+                            <div style="text-align:center">
+                                <img style="max-width:80%; text-align:center" src="<?php echo base_url('/assets/arquivos/equipe/'.$info['arquivo'])?>" alt="">
+                            </div>
+                            <p style="margin-top:20px; text-align:center"><?= $info['tituloPt'];?></p>
+                        </a>
+                    </div>
+                <?php endforeach;?>
             </div>  <!-- row --> 
         </div>
     </div>

@@ -56,28 +56,28 @@
     margin-right: 10px;
 }
 .destaquePrincipal{
-    padding-left: 0px; 
+    height: 15rem;
+    border-radius: 3px;
+    margin-bottom: 20px;
 }
 .destaquePrincipal .noticiaPrincipal{
-    height: 35rem;
+    height: 15rem;
     border-radius: 3px;
 }
 .destaquePrincipal .noticiaPrincipal .infPrincipal{
-    margin-top: 45%;
+    margin-top: 17%;
     float: left;
     padding: 25px;
     color: #ffffff;
     font-size: 2rem;
 }
 .destaquePrincipal .noticiaPrincipal .infPrincipal h3{
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 .destaquePrincipal .noticiaPrincipal .infPrincipal p{
     font-size: 16px;
 }
-.destaque{
-    padding-right: 0px;
-}
+
 .destaque .noticia{
     height: 16.4rem;
     border-radius: 3px;
@@ -92,11 +92,7 @@
     font-size: 20px;
 }
 .destaque .noticia.ultima{
-    margin-top: 30px;
-}
-
-.outrasNoticias{
-    margin-bottom: 50px;
+    margin-top: 20px;
 }
 
 .outrasNoticias .noticia{
@@ -120,7 +116,7 @@
     color: #666666;
 } 
 .publicidade{
-    margin: 50px 0;
+    margin: 20px 0;
 }
 .publicidade img{
     max-width: 100%;
@@ -132,7 +128,7 @@
     margin-bottom: 20px;
 }
 .promocoesEventos{
-    padding:60px 0;
+    padding:30px 0;
 }
 .promocoesEventos a, .promocoesEventos a:hover{
     color: #ffffff;
@@ -148,26 +144,39 @@
 }
 .promocoesEventos.promocoesEventos_bc{
     background: url(../img/redes_bc.jpg);
+    background-size: 200%;
 }
 .promocoesEventos.promocoesEventos_bl{
     background: url(../img/redes_bl.jpg);
+    background-size: 200%;
 }
 .promocoesEventos.promocoesEventos_lg{
     background: url(../img/redes_lg.jpg);
+    background-size: 200%;
 }
 .promocoesEventos .wrapFoto{
     border: 1px solid #fff;
     padding: 7px;
-    margin-right: 15px;
     float: left;
+    margin-right: auto;
+    margin-left: auto;
+    width: 100%;
 }
 .promocoesEventos .wrapFoto .foto{
     overflow: hidden;
-    max-width: 240px;
     max-height: 180px;
 }
 .promocoesEventos .wrapFoto .foto img{
     max-width: 100%;
+}
+.promocoesEventos .link_descricao.mais{
+    text-align: center;
+    width: 100%;
+    display: block;
+    font-weight: bold;
+}
+.promocoesEventos .evento{
+    margin-top: 20px;
 }
 .progEnqMsg{
     margin-bottom: 50px
@@ -176,18 +185,23 @@
     font-size: 16px;
     margin: 15px 0;
 }
+.progEnqMsg .programa{
+    margin-bottom: 15px
+}
 .progEnqMsg .btVerMais{
     font-weight: bold;
     color: #a8a9aa;
     text-decoration: none;
     margin-top: 8px;
-    float: left;
+    text-align: center;
+    display: block;
 } 
 .progEnqMsg .wrapProgramacao{
     border: 1px solid #f3f3f3;
     position: relative;
     float: left;
     width: 100%;
+    margin-bottom: 15px;
 }
 .progEnqMsg .wrapProgramacao .programacao{
     border-bottom: 1px solid #f3f3f3;
@@ -228,7 +242,7 @@
 }
 .progEnqMsg .wrapEnquete .respostas .resposta{
     float: left;
-    margin-right: 15px;
+    margin-right: 20px;
 }
 .progEnqMsg a.btEnviarResposta, .progEnqMsg a.btEnviarResposta:hover{
     background-color: #2d82a5;
@@ -251,6 +265,9 @@
     font-size: 20px;
     padding-top: 50px;
     font-weight: bold;
+}
+.progEnqMsg .enquete{
+    margin-bottom: 20px
 }
 .progEnqMsg .wrapSemEnquete{
     position: relative;
@@ -448,7 +465,7 @@
     float: left;
     margin-right: 30px;
     min-width: 200px;
-    text-align: center;
+    text-align: center; 
  }
  .blocoNoticias .noticia .foto img{
     max-height: 150px;
@@ -901,4 +918,146 @@
 .mapaContato{
     margin-top: 50px;
     text-align: center
+}
+
+/* Responsivo */
+@media only screen and (max-width: 786px) {
+    .topo {
+        text-align: center;
+    }
+    .blocoMenu{
+        margin:20px 0;
+    }
+    .blocoMenu .logo {
+        text-align: center;
+        padding-top: 15px;
+    }
+    .blocoMenu .slogam span {
+        font-size: 1.1em;
+    }
+    .blocoMenu .selRegiao .wrapFormRegiao {
+        margin-top: 35px;
+        margin-right: auto;
+        margin-left: auto;
+        float: none !important;
+    }
+    .formBusca-toggler{
+        display:block;
+    }
+    .formBusca{
+        display:none;
+    }
+    .outrasNoticias{
+        margin: 0px;
+    }
+}
+/* Responsivo */
+@media only screen and (min-width: 980px) {
+    .formBusca-toggler{
+        display:none;
+    }
+    .formBusca{
+        display:block;
+    }
+
+    /*noticias destaque Home */
+    .destaquePrincipal{
+        padding-left: 0px;
+        margin-bottom: 0px; 
+    }
+    .destaquePrincipal .noticiaPrincipal{
+        height: 35rem;
+        border-radius: 3px;
+    }
+    .destaquePrincipal .noticiaPrincipal .infPrincipal{
+        margin-top: 45%;
+        float: left;
+        padding: 25px;
+        color: #ffffff;
+        font-size: 2rem;
+    }
+    .destaquePrincipal .noticiaPrincipal .infPrincipal h3{
+        font-size: 2rem;
+    }
+    .destaquePrincipal .noticiaPrincipal .infPrincipal p{
+        font-size: 16px;
+    }
+
+    .destaque{
+        padding-right: 0px;
+    }
+    .destaque .noticia{
+        height: 16.4rem;
+        border-radius: 3px;
+    }
+    .destaque .noticia .inf{
+        margin-top: 25%;
+        float: left;
+        padding: 10px;
+        color: #ffffff;
+    }
+    .destaque .noticia .inf h3{
+        font-size: 20px;
+    }
+    .destaque .noticia.ultima{
+        margin-top: 30px;
+    }
+    .publicidade{
+        margin: 50px 0;
+    }
+    .promocoesEventos.promocoesEventos_bc{
+        background-size: 200%;
+    }
+    .promocoesEventos.promocoesEventos_bl{
+        background-size: 200%;
+    }
+    .promocoesEventos.promocoesEventos_lg{
+        background-size: 200%;
+    }
+    .promocoesEventos{
+        padding:60px 0;
+    }
+
+    .promocoesEventos .wrapFoto{
+        border: 1px solid #fff;
+        padding: 7px;
+        margin-right: 15px;
+        float: left;
+        width: auto;
+    }
+    .promocoesEventos .wrapFoto .foto{
+        overflow: hidden;
+        max-width: 240px;
+        max-height: 180px;
+    }
+    .promocoesEventos .wrapFoto .foto img{
+        max-width: 100%;
+    }
+    .promocoesEventos .evento{
+        margin-top: 0px;
+    }
+    .promocoesEventos .link_descricao.mais {
+        text-align: left;
+    }
+    .progEnqMsg .btVerMais{
+        font-weight: bold;
+        color: #a8a9aa;
+        text-decoration: none;
+        margin-top: 8px;
+        float: left;
+    }
+
+
+
+    .redes{
+        padding: 60px 100px;
+    }
+
+    .redes .face{
+        margin-bottom: 10px;
+    }
+
+    
+    
+
 }

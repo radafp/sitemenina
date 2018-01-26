@@ -152,13 +152,13 @@ a, a:hover {
 .blocoMenu{
   background: rgba(255, 255, 255, 0.8);
   border-radius: 8px;
-  height: 280px;
+  /*height: 280px;*/
   margin: 50px -15px;
   text-align: center;
-  padding:40px 0; 
+  padding:20px 0; 
 }
 .lsbr{
-  height: 145px;  
+  /*height: 145px;*/  
 }
 .blocoMenu hr{
   width: 95%;
@@ -181,7 +181,7 @@ a, a:hover {
   width: 80%;
   border-radius: 80px;
   float: right;
-  border: 2px solid #e1e1e1;
+  border: 2px solid #c2c2c2;
 }
 .blocoMenu .selRegiao .wrapFormRegiao {
   margin-top: 35px;
@@ -218,11 +218,13 @@ a, a:hover {
   font-weight: bold;
   color: #5d5d5d
 }
+.navbar-toggler {
+  border: 1px solid #999999;
+}
 
 .blocoMenu .topoRedes a.whatsapp{
   border: 2px solid #67C15E;
   margin-right: 10px;
-  width: 60%;
 }
 .blocoMenu .topoRedes .whatsapp i{
   color: #67C15E;
@@ -233,13 +235,44 @@ a, a:hover {
   margin-left: 5px;
   color: #666666;
 }
-
+.formBusca-toggler{
+  display:none;
+}
+.formBusca-toggler .inputBusca{ 
+  float: left;width: 180px;
+  padding: 5px 5px 5px 15px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border: 1px solid #c2c2c2;
+}
+.formBusca-toggler a.btn{ 
+  margin: 0;
+  padding: 0;
+  border: 1px solid #c2c2c2;
+}
+.formBusca{
+  display:none;
+}
+.formBusca .inputBusca{ 
+  float: left;width: 180px;
+  padding: 5px 5px 5px 15px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border: 1px solid #c2c2c2;
+}
+.formBusca a.btn{ 
+  margin: 0;
+  padding: 0;
+  border: 1px solid #c2c2c2;
+}
 /*
 .nav-item{
   padding-right: 15%;
   padding-left: 15%;
 }
-*/
+*/.itensTougller{
+  display: none
+}
 
 .mainTopo .topo .tvMocinha{
   display:none;   
@@ -262,7 +295,7 @@ a, a:hover {
 
 /* --- Fotter  --- */
 .redes{
-  padding: 60px 100px;
+  padding: 10px 0px;
 }
 .redes.redes_bc{
   background: url(../img/redes_bc.jpg);
@@ -288,7 +321,7 @@ a, a:hover {
   margin-top: -5px;
 }
 .redes .face{
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 .redes .face img{
   max-width: 100%;
@@ -329,6 +362,10 @@ margin-right: 10px;
   background-color: #ffffff;
   padding: 45px 0;
 }
+.unidades .unidade{
+  text-align: center;
+  margin-bottom: 20px;
+}
 .unidades img{
   max-height: 72px; 
 }
@@ -336,7 +373,6 @@ margin-right: 10px;
   font-size: 16px;
   margin:20px 0;
 }
-
 .rodapeBg_bc{
   background-color: #42A3CD;
   height: 80px;
@@ -473,7 +509,7 @@ div.paginanavbloco a.irPagina{
   border: none;
   font-weight: bold;
   cursor: pointer;
-  padding: 10px 25px;
+  padding: 10px 25px; 
 }
 .btEnvieConteudo_bl{
   background-color: #eb8e31;
