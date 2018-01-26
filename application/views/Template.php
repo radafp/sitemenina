@@ -378,11 +378,11 @@
                                 Av. Luís de Camões, 1370<br>
                                 Coral - Lages/SC<br>
                                 CEP: 88523-000<br><br>
-                                (49) 3229.2363
+                                (49) 3229.2363 
                             </p>
                         </div>
                         
-                        <div class="col-xs-12 col-md-3 unidade">
+                        <div class="col-xs-12 col-md-3 v">
                             <img src="<?php echo base_url('assets/img/logoTVMocinha.png')?>" title="TV Mocinha">
                             <h3>TV Mocinha Balneário Camboriú</h3>
                             <p>

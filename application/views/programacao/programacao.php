@@ -60,7 +60,8 @@
                 <div class="blocoProgramacao">
                     <?php 
                     $i=0;
-                    foreach($programacao_impar as $info):
+                    $nProgramas = count($programacao_impar);
+                    foreach($programacao_impar as $key=>$info):
                         $classeAdicionalPrograma = (($i%2) == 0) ? '' : ' programaRight';
                         $classeAdicionalConexaoPrograma = (($i%2) == 0) ? '' : ' conexaoProgramaRight';
                         ?>
@@ -78,9 +79,11 @@
                                     </div>
                                 </a>
                             </div>
-                            <div class="conexaoPrograma<?=$classeAdicionalConexaoPrograma;?>">
-                                <img src="<?php echo base_url('assets/img/conexaoProgramas.png');?>" alt="">
-                            </div>
+                            <?php if($nProgramas!=$key): ?>
+                                <div class="conexaoPrograma<?=$classeAdicionalConexaoPrograma;?>">
+                                    <img src="<?php echo base_url('assets/img/conexaoProgramas.png');?>" alt="">
+                                </div>
+                            <?php endif; ?>
                         </div>
                         
                         <?php 

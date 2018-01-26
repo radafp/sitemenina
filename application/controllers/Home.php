@@ -529,7 +529,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-        if($cod_banner2_1!='') {
+        if($cod_banner2_1 != '') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -537,7 +537,7 @@ class home extends CI_Controller {
             endforeach;
         }
 
-        if($cod_banner2_2!='') {
+        if($cod_banner2_2 != '') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;

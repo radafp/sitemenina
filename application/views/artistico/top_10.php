@@ -48,10 +48,14 @@
 
             </div> <!-- contLeft -->
             <div class="col-xs-12 col-md-4 contRight">
-            <?php if(count($banner_tipo3)>0) :?>
-            <?PHP $cod = array();?>
-            <?php foreach($banner_tipo3 as $info):?>
-                    <?php array_push($cod, $info['cod']); ?>
+            <?php 
+                echo count($banner_tipo3);
+                if(count($banner_tipo3)>0) :
+                    $cod = array();
+                    
+                    foreach($banner_tipo3 as $info):
+                        array_push($cod, $info['cod']); 
+                    ?>
                     <div class="wrapBanner">
                         <?php if($info['link'] != ''): ?>
                             <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
@@ -61,28 +65,32 @@
                             </a>
                         <?php endif; ?>
                     </div>
-                <?php endforeach;
+                    <?php 
+                    endforeach;
+                    
                     // var_dump($cod);
-                switch(count($cod)) {
-                    case 4:
-                        $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
-                        $_SESSION['cod_banner_tipo3_2'] = $cod[1];
-                        $_SESSION['cod_banner_tipo3_3'] = $cod[2]; 
-                        $_SESSION['cod_banner_tipo3_4'] = $cod[3];
-                        break;
-                    case 3:
-                        $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
-                        $_SESSION['cod_banner_tipo3_2'] = $cod[1];
-                        $_SESSION['cod_banner_tipo3_3'] = $cod[2]; 
-                        break;
-                    case 2:
-                        $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
-                        $_SESSION['cod_banner_tipo3_2'] = $cod[1];
-                        break;
-                    case 1:
-                        $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
-                        break;
-                }endif;?>
+                    switch(count($cod)) {
+                        case 4:
+                            $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
+                            $_SESSION['cod_banner_tipo3_2'] = $cod[1];
+                            $_SESSION['cod_banner_tipo3_3'] = $cod[2]; 
+                            $_SESSION['cod_banner_tipo3_4'] = $cod[3];
+                            break;
+                        case 3:
+                            $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
+                            $_SESSION['cod_banner_tipo3_2'] = $cod[1];
+                            $_SESSION['cod_banner_tipo3_3'] = $cod[2]; 
+                            break;
+                        case 2:
+                            $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
+                            $_SESSION['cod_banner_tipo3_2'] = $cod[1];
+                            break;
+                        case 1:
+                            $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
+                            break;
+                    }
+                endif;
+            ?>
                 
             </div> <!-- contRight -->
 
