@@ -79,7 +79,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-12 col-md-6 promocao">
                 
                 <h1 class="tituloPadrao2">
                     <span>Promoções</span>
@@ -106,7 +106,7 @@
                     <?php 
                     endforeach;
                     ?>
-                    <a class="link_descricao" href="/home/promocoes">Ver mais promoções</a>
+                    <a class="link_descricao mais" href="/home/promocoes">Ver mais promoções</a>
                     <?php
                 }else{
                     ?>
@@ -117,7 +117,7 @@
                 }
                 ?>
             </div>
-            <div class="col-xs-12 col-md-6">
+            <div class="col-xs-12 col-md-6 evento">
                 <h1 class="tituloPadrao2">
                     <span>Agenda</span>
                 </h1>
@@ -142,7 +142,7 @@
                     <?php 
                     endforeach;
                     ?>
-                        <a class="link_descricao" href="/home/agenda">Ver mais eventos</a> 
+                        <a class="link_descricao mais" href="/home/agenda">Ver mais eventos</a> 
                     <?php
                 }else{    
                     ?>
@@ -189,9 +189,9 @@
     </div>
 </div> <!-- container -->
 
-<div class="container progEnqMsg">
+<div class="progEnqMsg container">
     <div class="row">
-            <div class='col-xs-12 col-md-4'>
+            <div class='col-xs-12 col-md-4 programa'>
                 <h1 class="tituloPadrao3">
                     <span>Programação</span>
                 </h1>
@@ -220,7 +220,7 @@
                 }
                 ?>
             </div>
-            <div class='col-xs-12 col-md-4'>
+            <div class='col-xs-12 col-md-4 enquete'>
                 <h1 class="tituloPadrao3">
                     <span>Enquete</span>
                 </h1>
@@ -258,7 +258,7 @@
                 }
                 ?>
             </div>
-            <div class='col-xs-12 col-md-4'>
+            <div class='col-xs-12 col-md-4 mensagem'>
                 <h1 class="tituloPadrao3">
                     <span>Mensagem do Dia</span>
                 </h1>

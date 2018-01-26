@@ -209,19 +209,17 @@
                     <!-- Navigation -->
                     <nav class="navbar navbar-expand-lg navbar-default">
                         <div class="container">
-                            <div class="itensTougller">
-                                <button class="navbar-toggler navbar-light navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <form id='buscaNoticia' action="busca_noticia" method='POST'>
-                                    <input style="float: left;padding: 5px 5px 5px 15px;border-top-left-radius: 50px;border-bottom-left-radius: 50px;border: 1px solid #c2c2c2;" class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
-                                    <span class="input-group-btn">
-                                        <a style="margin: 0;padding: 0;border: 1px solid #c2c2c2;" class='busca btn' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
-                                            <button style="padding: 3px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;" class="btn btn-secondary" type="button">Buscar</button>
-                                        </a>
-                                    </span>
-                                </form>
-                            </div>
+                            <button style="border-color: #c2c2c2;" class="navbar-toggler navbar-light navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <form class="formBusca-toggler" id='buscaNoticia' action="busca_noticia" method='POST'>
+                                <input class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
+                                <span class="input-group-btn">
+                                    <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
+                                        <button style="padding: 4px 5px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;height: 32px;" class="btn btn-secondary" type="button">Buscar</button>
+                                    </a>
+                                </span>
+                            </form>
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul id="menu" class="navbar-nav">
                                     <li class="nav-item">
@@ -238,7 +236,6 @@
                                             <?php endforeach?>
                                         </div>
                                     </li>
-                                    <li class="nav-item">
                                     <li class="nav-item dropdown">
                                         <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Artístico
@@ -247,7 +244,6 @@
                                             <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/top-10')?>">Top 10</a>
                                             <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/videos/?p='). 1?>">Vídeos</a>
                                         </div>
-                                    </li>
                                     </li>
                                     <li class="nav-item">
                                         <a id='link_promocoes' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/promocoes/?p='). 1?>">Promoções</a>
@@ -279,15 +275,15 @@
                                         <a id='link_contato' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/contato')?>">Contato</a>
                                     </li>
                                 </ul>
-                                <form id='buscaNoticia' action="busca_noticia" method='POST'>
-                                    <input style="float: left;padding: 5px 5px 5px 15px;border-top-left-radius: 50px;border-bottom-left-radius: 50px;border: 1px solid #c2c2c2;" class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
-                                    <span class="input-group-btn">
-                                        <a style="margin: 0;padding: 0;border: 1px solid #c2c2c2;" class='busca btn' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
-                                            <button style="padding: 3px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;" class="btn btn-secondary" type="button">Buscar</button>
-                                        </a>
-                                    </span>
-                                </form>
                             </div>
+                            <form class="formBusca" id='buscaNoticia' action="busca_noticia" method='POST'>
+                                <input class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
+                                <span class="input-group-btn">
+                                    <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
+                                        <button style="padding: 4px 5px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;height: 32px;" class="btn btn-secondary" type="button">Buscar</button>
+                                    </a>
+                                </span>
+                            </form>
                         </div>
                     </nav>
 
@@ -314,7 +310,7 @@
                         -->
                     <div class="row">
                         
-                        <div class="col-md-4">
+                        <div class="col-xs-12 col-md-4">
                             <div class='face'>
                                 <a  href="<?=$_SESSION['socialFace'];?>" target="_blank">
                                     <img src="<?php echo base_url('/assets/img/linkFaceRodape.png')?>" alt="Curta nossa Fanpage">
@@ -326,7 +322,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-8 insta">
+                        <div class="col-xs-12 col-md-8 insta">
                             <div class="wrapFotoTipo1">
                                 <img src="<?php echo base_url('/assets/img/temp/insta1_'.$_SESSION['regiao']).'.jpg';?>" alt="">
                             </div>
@@ -352,7 +348,7 @@
                 <div class="container">
                     <div class="row">
                         
-                        <div class="col-sm-3">
+                        <div class="col-xs-12 col-md-3 unidade">
                             <img src="<?php echo base_url('assets/img/logoMeninabc.png')?>" title="Balneário Camboriú">
                             <h3>Balneário Camboriú</h3>
                             <p> 
@@ -364,7 +360,7 @@
                             </p>
                         </div>
                         
-                        <div class="col-sm-3">
+                        <div class="col-xs-12 col-md-3 unidade">
                             <img src="<?php echo base_url('assets/img/logoMeninabl.png')?>" title="Blumenau">
                             <h3>Blumenau</h3>
                             <p>
@@ -375,7 +371,7 @@
                             </p>
                         </div>
                         
-                        <div class="col-sm-3">
+                        <div class="col-xs-12 col-md-3 unidade">
                             <img src="<?php echo base_url('assets/img/logoMeninalg.png')?>" title="Lages">
                             <h3>Lages</h3>
                             <p>
@@ -386,7 +382,7 @@
                             </p>
                         </div>
                         
-                        <div class="col-sm-3">
+                        <div class="col-xs-12 col-md-3 unidade">
                             <img src="<?php echo base_url('assets/img/logoTVMocinha.png')?>" title="TV Mocinha">
                             <h3>TV Mocinha Balneário Camboriú</h3>
                             <p>

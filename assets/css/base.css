@@ -235,7 +235,36 @@ a, a:hover {
   margin-left: 5px;
   color: #666666;
 }
-
+.formBusca-toggler{
+  display:none;
+}
+.formBusca-toggler .inputBusca{ 
+  float: left;width: 180px;
+  padding: 5px 5px 5px 15px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border: 1px solid #c2c2c2;
+}
+.formBusca-toggler a.btn{ 
+  margin: 0;
+  padding: 0;
+  border: 1px solid #c2c2c2;
+}
+.formBusca{
+  display:none;
+}
+.formBusca .inputBusca{ 
+  float: left;width: 180px;
+  padding: 5px 5px 5px 15px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  border: 1px solid #c2c2c2;
+}
+.formBusca a.btn{ 
+  margin: 0;
+  padding: 0;
+  border: 1px solid #c2c2c2;
+}
 /*
 .nav-item{
   padding-right: 15%;
@@ -266,7 +295,7 @@ a, a:hover {
 
 /* --- Fotter  --- */
 .redes{
-  padding: 60px 100px;
+  padding: 10px 0px;
 }
 .redes.redes_bc{
   background: url(../img/redes_bc.jpg);
@@ -292,7 +321,7 @@ a, a:hover {
   margin-top: -5px;
 }
 .redes .face{
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 .redes .face img{
   max-width: 100%;
@@ -333,6 +362,10 @@ margin-right: 10px;
   background-color: #ffffff;
   padding: 45px 0;
 }
+.unidades .unidade{
+  text-align: center;
+  margin-bottom: 20px;
+}
 .unidades img{
   max-height: 72px; 
 }
@@ -340,7 +373,6 @@ margin-right: 10px;
   font-size: 16px;
   margin:20px 0;
 }
-
 .rodapeBg_bc{
   background-color: #42A3CD;
   height: 80px;
