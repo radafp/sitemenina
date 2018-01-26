@@ -3,7 +3,7 @@
 
 
         var content = $('#content');
-        $('.paginacao_documentos').click(function( e ){
+        $('.paginacao_documentos, .link_descricao').click(function( e ){
             e.preventDefault();
 
             var href = $( this ).attr('href');
@@ -40,11 +40,13 @@
                     <?php foreach($documentos_perdidos as $info):?>
                     
                             <div class='documentosPerdidos'>
-                                <div class="foto">
-                                    <img src="<?php echo base_url('/assets/arquivos/achadoseperdidos/'.$info['arquivo'])?>" alt="">
-                                </div>
-                                <h3><?php echo $info['descricao']?></h3>
-                                <p><?php echo $info['telefone']?></p>
+                                <a class="link_descricao" href="<?php echo base_url('home/descricao_documentos_perdidos?id='.$info['cod']);?>">
+                                    <div class="foto">
+                                        <img src="<?php echo base_url('/assets/arquivos/achadoseperdidos/'.$info['arquivo'])?>" alt="">
+                                    </div>
+                                    <h3><?php echo $info['descricao']?></h3>
+                                    <p><?php echo $info['telefone']?></p>
+                                </a>
                             </div>
                     
                     <?php endforeach?>
