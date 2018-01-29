@@ -25,10 +25,6 @@
                         content.fadeOut('fast', function(){
                             content.html( data ).fadeIn();
                         });
-
-                        if(href != 'http://www.novomenina.web7097.uni5.net/balneario-camboriu'){
-                            $('html,body').animate({ scrollTop: $("#anc").offset().top },'slow');
-                        }
                     },100);
                 }
             });
@@ -64,11 +60,11 @@
                 <div class="blocoProgramacao">
                     <?php 
                     $i=0;
-                    $nProgramas = count($programacao_impar);
-                    foreach($programacao_impar as $key=>$info):
+                    foreach($programacao_impar as $info):
                         $classeAdicionalPrograma = (($i%2) == 0) ? '' : ' programaRight';
                         $classeAdicionalConexaoPrograma = (($i%2) == 0) ? '' : ' conexaoProgramaRight';
                         ?>
+                            
                         <div class="linhaPrograma">
                             <div class="programa<?=$classeAdicionalPrograma;?>">        
                                 <a class='link_programacao' href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">  
@@ -100,21 +96,21 @@
             </div> <!-- contLeft -->
             <div class="col-xs-12 col-md-4 contRight">
                 
-            <?php if(count($banner_tipo3)>0) :?>
-            <?PHP $cod = array();?>
-            <?php foreach($banner_tipo3 as $info):?>
-                    <?php array_push($cod, $info['cod']); ?>
-                    <div class="wrapBanner">
-                        <?php if($info['link'] != ''): ?>
-                            <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
-                        <?php endif; ?>
-                                <img src="<?=base_url('/assets/arquivos/publicidade/'.$info['arquivo']);?>" title="Publicidade">
-                        <?php if($info['link'] != ''): ?>
-                            </a>
-                        <?php endif; ?>
-                    </div>
-                <?php endforeach;
-                    // var_dump($cod);
+                <?php if(count($banner_tipo3)>0) :?>
+                <?PHP $cod = array();?>
+                <?php foreach($banner_tipo3 as $info):?>
+                        <?php array_push($cod, $info['cod']); ?>
+                        <div class="wrapBanner">
+                            <?php if($info['link'] != ''): ?>
+                                <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
+                            <?php endif; ?>
+                                    <img src="<?=base_url('/assets/arquivos/publicidade/'.$info['arquivo']);?>" title="Publicidade">
+                            <?php if($info['link'] != ''): ?>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    <?php endforeach;
+                        // var_dump($cod);
                     switch(count($cod)) {
                         case 4:
                             $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
@@ -138,6 +134,7 @@
                 ?>
             </div> <!-- contRight -->
 
+        
         </div>  <!-- row --> 
     </div> 
 </div> <!-- container --> 
