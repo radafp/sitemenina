@@ -124,7 +124,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_1: '.$cod_banner2_1;
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
-        /* if($cod_banner1!='') {
+        if($cod_banner1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -146,9 +146,7 @@ class home extends CI_Controller {
                 $valor = $info['nImpressoes'] + 1;
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
             endforeach;
-        } */
-
-
+        } 
 
         $dados['viewName'] = 'regiao';
         $this->load->view('Template', $dados);
@@ -183,7 +181,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-        /* if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -221,13 +219,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
 
         $dados['viewName'] = 'programacao/programacao';
         $this->load->view('Template', $dados);
@@ -289,7 +287,7 @@ class home extends CI_Controller {
         //echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-       /*  if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -327,13 +325,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         $dados['viewName']          = 'jornalismo/noticia';
         $this->load->view('Template', $dados);
@@ -362,7 +360,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-        /* if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -400,13 +398,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
 
         $dados['viewName'] = 'jornalismo/descricao_noticia';
         $this->load->view('Template', $dados);
@@ -458,7 +456,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-        /* if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -496,13 +494,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         $dados['viewName']          = 'agenda/agenda';
         $this->load->view('Template', $dados);
@@ -528,8 +526,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_1: '.$cod_banner2_1;
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
- 
-        /* if($cod_banner2_1 != '') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -537,7 +534,7 @@ class home extends CI_Controller {
             endforeach;
         }
 
-        if($cod_banner2_2 != '') {
+        if($cod_banner2_2!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -567,13 +564,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         $dados['viewName'] = 'artistico/top_10';
         $this->load->view('Template', $dados);
@@ -624,7 +621,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-        /* if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -662,13 +659,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         
         $dados['viewName'] = 'artistico/videos_home';
@@ -697,7 +694,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-        /* if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -735,13 +732,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         $dados['viewName'] = 'agenda/descricao_agenda';
         $this->load->view('Template', $dados);
@@ -790,7 +787,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-       /*  if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -828,13 +825,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         $dados['viewName'] = 'promocoes/promocoes';
         $this->load->view('Template', $dados);
@@ -860,7 +857,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-       /*  if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -898,13 +895,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         $dados['viewName'] = 'promocoes/descricao_promocoes';
         $this->load->view('Template', $dados);
@@ -930,7 +927,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-        /* if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -968,13 +965,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         $dados['viewName'] = 'programacao/descricao_programacao';
         $this->load->view('Template', $dados);
@@ -1002,7 +999,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-        /* if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -1040,13 +1037,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         $dados['viewName'] = 'promocoes/descricao_promocoes';
         $this->load->view('Template', $dados);
@@ -1095,7 +1092,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-        /* if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -1133,14 +1130,14 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
- */
+ 
         $dados['viewName']          = 'utilidade_publica/bolsa_de_empregos';
         $this->load->view('Template', $dados);
     }
@@ -1179,7 +1176,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-       /*  if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -1217,13 +1214,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         $dados['viewName'] = 'utilidade_publica/descricao_bolsa_de_empregos';
         $this->load->view('Template', $dados);
@@ -1271,8 +1268,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_1: '.$cod_banner2_1;
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
- 
-       /*  if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -1310,13 +1306,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         $dados['viewName']              = 'utilidade_publica/documentos_perdidos';
         $this->load->view('Template', $dados);
@@ -1356,7 +1352,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-        /* if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -1394,13 +1390,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         $dados['viewName'] = 'utilidade_publica/descricao_documentos_perdidos';
         $this->load->view('Template', $dados);
@@ -1433,7 +1429,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-        /* if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -1471,13 +1467,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         $dados['viewName'] = 'quem_somos/equipe';
         $this->load->view('Template', $dados);
@@ -1504,7 +1500,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-        /* if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -1542,13 +1538,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         $dados['viewName'] = 'quem_somos/descricao_equipe';
         $this->load->view('Template', $dados);
@@ -1572,7 +1568,7 @@ class home extends CI_Controller {
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
-       /*  if($cod_banner2_1!='') {
+        if($cod_banner2_1!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -1610,13 +1606,13 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        } */
+        }
         
         $dados['viewName'] = 'quem_somos/midia';
         $this->load->view('Template', $dados);
