@@ -25,6 +25,10 @@
                         content.fadeOut('fast', function(){
                             content.html( data ).fadeIn();
                         });
+
+                        if(href != 'http://www.novomenina.web7097.uni5.net/balneario-camboriu'){
+                            $('html,body').animate({ scrollTop: $("#anc").offset().top },'slow');
+                        }
                     },100);
                 }
             });
@@ -65,7 +69,6 @@
                         $classeAdicionalPrograma = (($i%2) == 0) ? '' : ' programaRight';
                         $classeAdicionalConexaoPrograma = (($i%2) == 0) ? '' : ' conexaoProgramaRight';
                         ?>
-                            
                         <div class="linhaPrograma">
                             <div class="programa<?=$classeAdicionalPrograma;?>">        
                                 <a class='link_programacao' href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">  
@@ -79,7 +82,9 @@
                                     </div>
                                 </a>
                             </div>
-                            <?php if($nProgramas!=$key): ?>
+                            <?php 
+                            if($nProgramas!=($key+1)): 
+                            ?>
                                 <div class="conexaoPrograma<?=$classeAdicionalConexaoPrograma;?>">
                                     <img src="<?php echo base_url('assets/img/conexaoProgramas.png');?>" alt="">
                                 </div>

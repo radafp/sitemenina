@@ -111,7 +111,7 @@ class home extends CI_Controller {
         $dados['videos_home']           = $this->Novomenina->videos_home($_SESSION['regiao']);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['promocoes_home']        = $this->Novomenina->promocoes_home($_SESSION['regiao']);
-        $dados['enquetes']              = $this->Novomenina->enquetes($_SESSION['regiao']);
+        $dados['enquetes']              = $this->Novomenina->enquetes($_SESSION['regiao']); 
         $dados['banner_tipo1']          = $this->Novomenina->banners($_SESSION['regiao'], 'regiao', '1', 1);
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'regiao', '2', 2);
 
@@ -285,8 +285,8 @@ class home extends CI_Controller {
         $cod_banner3_2 = isset($_SESSION['cod_banner_tipo3_2']) ? $_SESSION['cod_banner_tipo3_2'] : '';
         $cod_banner3_3 = isset($_SESSION['cod_banner_tipo3_3']) ? $_SESSION['cod_banner_tipo3_3'] : '';
         $cod_banner3_4 = isset($_SESSION['cod_banner_tipo3_4']) ? $_SESSION['cod_banner_tipo3_4'] : '';
-        echo '<br>cod_banner2_1: '.$cod_banner2_1;
-        echo '<br>cod_banner2_2: '.$cod_banner2_2;
+        //echo '<br>cod_banner2_1: '.$cod_banner2_1;
+        //echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
         if($cod_banner2_1!='') {

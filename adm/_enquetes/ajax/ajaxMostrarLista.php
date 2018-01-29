@@ -7,6 +7,10 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
     
     $cod = isset($_POST['cod']) ? $_POST['cod'] : '';
     $mostrar = isset($_POST['mostrar']) ? $_POST['mostrar'] : '';
+
+    $sqlDesmarcaTodas = "UPDATE enquetesPerguntas SET mostrar = 0";
+    $queryDescarcaTodas = mysql_query($sqlDesmarcaTodas);
+   
     $sql = "UPDATE enquetesPerguntas SET mostrar = '$mostrar' WHERE cod = '$cod'";
     $query = mysql_query($sql);
     if($query)

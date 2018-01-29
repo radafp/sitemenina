@@ -1,4 +1,3 @@
-
 <?php
 if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'))
 {
@@ -12,36 +11,60 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
         echo 'Erro ao conectar com o MySQL: ' . $e->getMessage();
     }
     
-    $cod = isset($_POST['cod']) ? $_POST['cod'] : '';
+    $codPergunta = isset($_POST['codPergunta']) ? $_POST['codPergunta'] : '';
+    $codResposta = isset($_POST['codResposta']) ? $_POST['codResposta'] : '';
     $datacadastro = date('Y-m-d');
     $ip = $_SERVER["REMOTE_ADDR"];
-
-    // CRIAR SELECT PRA PEGAR CÓDIGO DA PERGUNTA 
-    $array = array();
-    $query = $conn->query(
-        "SELECT enquetesPerguntas.cod as cod_perg 
-            FROM `enquetesPerguntas` 
-        INNER JOIN enquetesRespostas
-            WHERE enquetesRespostas.codPergunta = enquetesPerguntas.cod
-            AND enquetesRespostas.cod = $cod"
-    );
-    $array = $query->fetchAll(\PDO::FETCH_ASSOC);
     
+    try{
+        $stmt = $conn->prepare(
+            "INSERT INTO enquetesStatus 
+            (dataCadastro, ip, codPergunta, codResposta) VALUES 
+            ('$datacadastro', '$ip', '$codPergunta', '$codResposta')"
+        );
+        $stmt->execute();
 
-    foreach($array as $info) {
-        $cod_perg = $info['cod_perg'];
-        try{
-            $stmt = $conn->prepare(
-                "INSERT INTO enquetesStatus 
-                (dataCadastro, ip, codPergunta, codResposta) VALUES 
-                ('$datacadastro', '$ip', '$cod_perg', '$cod')"
+        // verifica quantas respostas no total teve a pergunta
+        $queryNEnqueteStats = $conn->query(
+            "SELECT * FROM `enquetesStatus`  
+            WHERE codPergunta = $codPergunta"
+        );
+        $resultadoNEnqueteStats = $queryNEnqueteStats->fetchAll(\PDO::FETCH_ASSOC);
+        $totalRespostasPergunta = count($resultadoNEnqueteStats);
+
+        // seleciona e lista as respostas para a pergunta
+        $queryEnqueteRespostas = $conn->query(
+            "SELECT * FROM `enquetesRespostas` 
+            WHERE codPergunta = $codPergunta"
+        );
+        $resultadoEnqueteRespostas = $queryEnqueteRespostas->fetchAll(\PDO::FETCH_ASSOC);
+
+        $retorno = "";
+        //$retorno .= "Total de respostas para a pergunta:". $totalRespostasPergunta."<br>";
+        
+        foreach($resultadoEnqueteRespostas as $respostas) {
+            
+            //seleciona pra pegar a quantidade de cliques por resposta
+            $queryEnqueteStats = $conn->query(
+                "SELECT * FROM `enquetesStatus` 
+                WHERE codResposta = '{$respostas['cod']}'"
             );
-            $stmt->execute();
-        }catch(PDOException $e) {
-            die($e->getMessage());
-        }
-    }
+            $resultadoEnqueteStats = $queryEnqueteStats->fetchAll(\PDO::FETCH_ASSOC);
+            
+            $nStatsPorResposta = count($resultadoEnqueteStats);
+            //$retorno .= "Votos por resposta:". $nStatsPorResposta."<br>";
 
-    die(json_encode($json));
+            if($totalRespostasPergunta>0){
+                $porcentagem = round(($nStatsPorResposta*100)/$totalRespostasPergunta);
+            }else{
+                $porcentagem = 0;
+            }
+            $retorno .= "<div>".$respostas['resposta'].": ".$porcentagem ." %</div>";
+        }
+
+    }catch(PDOException $e) {
+        die($e->getMessage());
+    }
+    die(json_encode($retorno));
 }
 ?>

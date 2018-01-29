@@ -9,47 +9,51 @@
                 </h1>
                 <div class="blocoTop10">
 
-                    <?php foreach($top_10 as $info): ?>
-                        <div class="top10">
-                            <div class="esquerda">
-                                <?php 
-                                $codVideo = explode('=',$info['link']);
-                                if($codVideo[1] != ''):
-                                 
-                                    $imagemCapa = '';                
-                                    $output = array();
-                                    $url = $info['link'];
-                                    preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $output);
-                                    $imagemCapa = 'https://img.youtube.com/vi/' . $output[0] . '/0.jpg';
-                                    ?>
+                    <?php 
+                    if(count($top_10)>0):
+                        foreach($top_10 as $info): ?>
+                            <div class="top10">
+                                <div class="esquerda">
+                                    <?php 
+                                    $codVideo = explode('=',$info['link']);
+                                    if($codVideo[1] != ''):
+                                    
+                                        $imagemCapa = '';                
+                                        $output = array();
+                                        $url = $info['link'];
+                                        preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $output);
+                                        $imagemCapa = 'https://img.youtube.com/vi/' . $output[0] . '/0.jpg';
+                                        ?>
 
-                                    <div class="foto">
+                                        <div class="foto">
+                                            <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="445">
+                                                <img src="<?=$imagemCapa;?>" style="max-width:100%">  
+                                                <div class="btPlayYoutube">
+                                                    <img src="<?php echo base_url('/assets/img/playYoutube.png');?>">
+                                                </div>
+                                            </a>
+                                        </div> 
                                         <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="445">
-                                            <img src="<?=$imagemCapa;?>" style="max-width:100%">  
-                                            <div class="btPlayYoutube">
-                                                <img src="<?php echo base_url('/assets/img/playYoutube.png');?>">
-                                            </div>
+                                            <h3><?php echo $info['titulo']?></h3>
                                         </a>
-                                    </div> 
-                                    <h3><?php echo $info['titulo']?></h3>
-                                    <!-- <p><?//php echo $info['link']?></p> -->
-                                    <?php endif ?>
+                                        <!-- <p><?//php echo $info['link']?></p> -->
+                                        <?php endif ?>
+                                </div>
+                                <div class="direita">
+                                    <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="445">
+                                        <img src="<?php echo base_url('/assets/img/play-top10.png')?>" title="">
+                                    </a>
+                                </div>
                             </div>
-                            <div class="direita">
-                                <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="445">
-                                    <img src="<?php echo base_url('/assets/img/play-top10.png')?>" title="">
-                                    <span style="display:block; float:left">Ouvir</span>
-                                </a>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                
+                            <?php 
+                        endforeach; 
+                    endif;
+                    ?>
                 </div>
 
             </div> <!-- contLeft -->
             <div class="col-xs-12 col-md-4 contRight">
             <?php 
-                echo count($banner_tipo3);
                 if(count($banner_tipo3)>0) :
                     $cod = array();
                     

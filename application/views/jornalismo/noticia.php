@@ -17,6 +17,7 @@
                         content.fadeOut('fast', function(){
                             content.html( data ).fadeIn();
                         });
+                        $('html,body').animate({ scrollTop: $("#anc").offset().top },'slow');
                     },100);
                 }
             });
@@ -28,7 +29,7 @@
 <div class="container">
     <div class="blocoConteudo">
         <div class="row">
-
+ 
             <div class="col-xs-12 col-md-8 contLeft">
 
                 <h1 class="tituloPadrao1">
@@ -42,7 +43,9 @@
                                 <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                             </div>
                             <h3><?php echo $info['tituloPt']?></h3>
-                            <span class="categoria" style="background-color:#<?=$info['cor'];?>; color:<?=(isset($info['corTexto']) != '') ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></span>
+                            <div class="wrapSpamCategoria">
+                                <span class="categoria" style="background-color:#<?=$info['cor'];?>; color:<?=(isset($info['corTexto']) != '') ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></span>
+                            </div>
                             <p><?=date('d/m/Y', strtotime($info['data']));?></p>
                         </a>
                     </div> 
@@ -114,7 +117,7 @@
                 
             <?php if(count($banner_tipo3)>0) :?>
             <?PHP $cod = array();?>
-            <?php foreach($banner_tipo3 as $info):?>
+            <?php foreach($banner_tipo3 as $key=>$info):?>
                     <?php array_push($cod, $info['cod']); ?>
                     <div class="wrapBanner">
                         <?php if($info['link'] != ''): ?>
@@ -125,8 +128,52 @@
                             </a>
                         <?php endif; ?>
                     </div>
+                    <?php 
+                        if(count($banner_tipo3) >= 2):
+                            if($key==1):
+                            ?>
+                                <div class="blocoMaisLidas">
+                                    <h1 class="tituloPadrao3">
+                                        <span>As mais lidas</span>
+                                    </h1>
+                                    <?php foreach($mais_lidas as $info):?>
+                                    <div class="noticia">
+                                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                                            <div class="foto">
+                                                <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
+                                            </div>
+                                            <span class="categoria" style="background-color:#<?=$info['cor'];?>; color:<?=(isset($info['corTexto']) != '') ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></span>
+                                            <h3><?php echo $info['tituloPt']?></h3>
+                                        </a> 
+                                    </div>
+                                    <?php endforeach?> 
+                                </div>
+                            <?php
+                            endif;
+                        endif;
+                    ?>
                 <?php endforeach;
-                    // var_dump($cod);
+                if(count($banner_tipo3)<2):
+                ?>
+                <div class="blocoMaisLidas">
+                    <h1 class="tituloPadrao3">
+                        <span>As mais lidas</span>
+                    </h1>
+                    <?php foreach($mais_lidas as $info):?>
+                    <div class="noticia">
+                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                            <div class="foto">
+                                <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
+                            </div>
+                            <span class="categoria" style="background-color:#<?=$info['cor'];?>; color:<?=(isset($info['corTexto']) != '') ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></span>
+                            <h3><?php echo $info['tituloPt']?></h3>
+                        </a> 
+                    </div>
+                    <?php endforeach?> 
+                </div>
+                <?php
+                endif;
+                // var_dump($cod);
                 switch(count($cod)) {
                     case 4:
                         $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
@@ -147,22 +194,6 @@
                         $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
                         break;
                 }endif;?>
-                <div class="blocoMaisLidas">
-                    <h1 class="tituloPadrao3">
-                        <span>As mais lidas</span>
-                    </h1>
-                    <?php foreach($mais_lidas as $info):?>
-                    <div class="noticia">
-                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
-                            <div class="foto">
-                                <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
-                            </div>
-                            <span class="categoria" style="background-color:#<?=$info['cor'];?>; color:<?=(isset($info['corTexto']) != '') ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></span>
-                            <h3><?php echo $info['tituloPt']?></h3>
-                        </a> 
-                    </div>
-                    <?php endforeach?> 
-                </div>
 
             </div> <!-- contRight -->
 

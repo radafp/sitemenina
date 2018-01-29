@@ -21,7 +21,7 @@ require_once ADMIN_PATH."_enquetes/inc/topo-enquetes-lista.php";
             _cod = _obj.val();
             _obj.hide();
             _obj.parent().append("<img class='imgLoad' title='Carregando' src='http://"+ADMIN_URL+"/img/base/conteudo/load.gif' />");
-            
+            $('input.mostrar').removeAttr('checked');
             $.ajax(
             {
                 type: "POST",
@@ -39,6 +39,7 @@ require_once ADMIN_PATH."_enquetes/inc/topo-enquetes-lista.php";
                 
                 if(_json.erro != 0)
                 {
+                    
                     _valor = _mostrar == 1 ? 0 : 1;
                     if(_valor == 0)
                     {
@@ -49,8 +50,10 @@ require_once ADMIN_PATH."_enquetes/inc/topo-enquetes-lista.php";
                         _obj.attr("checked","true");
                     }
                 }
+                //location.reload();
                 _obj.parent().find('.imgLoad').remove();
                 _obj.show();
+                _obj.attr("checked","true");
             });
         }); 
         

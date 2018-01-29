@@ -72,10 +72,21 @@
                                 content.fadeOut('fast', function(){
                                     content.html( data ).fadeIn();
                                 });
+                                console.log('ok');
+                                $(".navbar-toggler").addClass("collapsed");
+                                $('.navbar-toggler').attr({'aria-expanded': 'false'}); 
+                                $(".navbar-collapse").removeClass("show");
+
+                                if(href != 'http://www.novomenina.web7097.uni5.net/balneario-camboriu'){
+                                    $('html,body').animate({ scrollTop: $("#anc").offset().top },'slow');
+                                }
+                                //setAttribute("aria-expanded", "false")
                             },100);
+                            
+                            //$("p:first").addClass("intro");
                         }
                     });
-            
+                    
                     window.history.pushState(null, 'Home', $(this).attr('href'));
                 });
                 
@@ -178,7 +189,7 @@
                     <div class="row lsbr">
 
                         <div class="col-xs-12 col-md-2 btm-30 logo">
-                            <a id='logo' href="<?php echo base_url($_SESSION['city'])?>"> <img src="<?php echo base_url('/assets/img/logoMenina'.$_SESSION['regiao'].'.png');?>" title="Rádio Menina"></a>
+                            <a id='logo' href="<?php echo base_url($_SESSION['city']);?>"> <img src="<?php echo base_url('/assets/img/logoMenina'.$_SESSION['regiao'].'.png');?>" title="Rádio Menina"></a>
                         </div>
                         <div class="col-xs-12 col-md-4 btm-30 slogam">
                             <span><?=$_SESSION['slogam'];?></span>
@@ -209,17 +220,19 @@
                     <!-- Navigation -->
                     <nav class="navbar navbar-expand-lg navbar-default">
                         <div class="container">
-                            <button style="border-color: #c2c2c2;" class="navbar-toggler navbar-light navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <form class="formBusca-toggler" id='buscaNoticia' action="busca_noticia" method='POST'>
-                                <input class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
-                                <span class="input-group-btn">
-                                    <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
-                                        <button style="padding: 4px 5px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;height: 32px;" class="btn btn-secondary" type="button">Buscar</button>
-                                    </a>
-                                </span>
-                            </form>
+                            <div class="wrap-navBar-toggle">
+                                <button style="border-color: #c2c2c2;cursor: pointer;float: left;margin-right: 10px;" class="navbar-toggler navbar-light navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span class="navbar-toggler-icon"></span>
+                                </button>
+                                <form class="formBusca-toggler" id='buscaNoticia' action="busca_noticia" method='POST'>
+                                    <input class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
+                                    <span class="input-group-btn">
+                                        <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
+                                            <button style="padding: 4px 5px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;height: 32px;" class="btn btn-secondary" type="button">Buscar</button>
+                                        </a>
+                                    </span>
+                                </form>
+                            </div>
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul id="menu" class="navbar-nav">
                                     <li class="nav-item">
@@ -293,8 +306,9 @@
         </header>
 
         <main>
-
+            <div class="anc" id="anc">&nbsp;</div>
             <div id="content">
+                
                 <?php $this->load->view($viewName);?>
             </div>
             
@@ -382,7 +396,7 @@
                             </p>
                         </div>
                         
-                        <div class="col-xs-12 col-md-3 v">
+                        <div class="col-xs-12 col-md-3 unidade">
                             <img src="<?php echo base_url('assets/img/logoTVMocinha.png')?>" title="TV Mocinha">
                             <h3>TV Mocinha Balneário Camboriú</h3>
                             <p>

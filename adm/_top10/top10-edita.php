@@ -32,17 +32,10 @@ if($submit != '')
                             (dataCadastro, titulo, link, regiao, mostrar)
                             VALUES
                             ('{$data}', '{$titulo}', '{$link}', '{$regiao}', '{$mostrar}')");
+                            
         	
             if($q)
         	{
-
-                $cod = mysql_insert_id();
-
-                $cleanTitle = $cleanTitle.'-'.$cod;
-
-                $qClean = mysql_query("UPDATE top10 SET
-                                cleanTitle = '{$cleanTitle}'
-                                WHERE cod = {$cod}"); 
 
         	    reordenarTop10();
                 
@@ -69,10 +62,9 @@ if($submit != '')
                                 dataAlteracao = '{$data}',
                                 titulo = '{$titulo}',
                                 link = '{$link}',
-                                cleanTitle = '{$cleanTitle}',
                                 mostrar = '{$mostrar}'
                                 WHERE cod = {$cod}"); 
-                                        
+                                        echo mysql_error();
             if($q)
         	{
                 atualiza_usuarios_stats($_SESSION[ADMIN_SESSION_NAME.'_cod_user'], $_SESSION[ADMIN_SESSION_NAME.'_nome'], 'Top 10', 'Alterou', $_SESSION[ADMIN_SESSION_NAME.'_regiao']);

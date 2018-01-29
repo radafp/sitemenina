@@ -266,9 +266,7 @@
 .progEnqMsg .wrapEnquete .msgRetornoResposta{
     min-height: 260px;
     text-align: center;
-    font-size: 20px;
     padding-top: 50px;
-    font-weight: bold;
 }
 .progEnqMsg .enquete{
     margin-bottom: 20px
@@ -277,13 +275,11 @@
     position: relative;
     float: left;
     width: 100%;
-    min-height: 343px;
 }
 
 .progEnqMsg .wrapSemEnquete p{
     text-align: center;
     font-size: 16px;
-    padding-top: 50px;
 
 }
 .wrapMensagemDoDia a, .wrapMensagemDoDia a:hover{
@@ -305,13 +301,17 @@
 .blocoConteudo {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
-    margin: 50px 0;
+    margin: 0px;
     padding: 40px 0;
 }
 
 .blocoConteudo .contRight .wrapBanner{
     margin-bottom: 20px
 }
+.blocoConteudo .contRight .wrapBanner img{
+    max-width: 100%;
+}
+
 /* fim css global */
 
 /* css programação */
@@ -474,23 +474,26 @@
     float: left;
     margin-bottom: 30px;
 }
-.blocoNoticias .noticia .foto{
-    max-height: 150px;
-    max-width: 200px;
+ .blocoNoticias .noticia .foto {
+    max-height: 88px;
+    max-width: 110px;
     overflow: hidden;
     float: left;
-    margin-right: 30px;
-    min-width: 200px;
-    text-align: center; 
- }
- .blocoNoticias .noticia .foto img{
-    max-height: 150px;
+    margin-right: 14px;
+    min-width: 110px;
+    text-align: center;
 }
-.blocoNoticias .noticia  h3{
-    font-size: 18px;
-    margin-top: 15px
+.blocoNoticias .noticia .foto img {
+    max-height: 88px;
 }
-.blocoNoticias .noticia .categoria{
+.blocoNoticias .noticia h3 {
+    font-size: 15px;
+    margin-top: 0;
+}
+.bloconoticias .noticia .wrapSpamCategoria{
+    height: 30px;
+}
+.blocoNoticias .noticia .wrapSpamCategoria .categoria{
     padding: 5px 15px;
     border-radius: 3px;
     text-transform: uppercase;
@@ -502,6 +505,7 @@
 .blocoNoticias .noticia  p{
     color: #999999;
     font-weight: 500;
+    margin-bottom: 0
 }
 
 .blocoMaisLidas .noticia{
@@ -593,15 +597,17 @@
     width: 100%;
     float: left;
     margin-bottom: 20px;
+    border: 1px solid #cccccc;
 }
-.blocoTop10 .top10 .esquerda{
+
+.blocoTop10 .top10 .esquerda {
     float: left;
-    width: 65%;
+    width: 100%;
 }
 .blocoTop10 .top10 .direita{
-    width: 30%;
-    float: right;
+    display:none;
 }
+
 .blocoTop10 .top10 .esquerda .foto{
     max-height: 150px;
     max-width: 200px;
@@ -626,6 +632,7 @@
 }
 .blocoTop10 .top10 .esquerda h3{
     font-size: 16px;
+    margin-top: 20px;
 }
 .blocoTop10 .top10 .direita span{
     display: block;
@@ -1088,7 +1095,7 @@
     .blocoConteudo{
         background: rgba(255, 255, 255, 0.8);
         border-radius: 5px;
-        margin: 50px -15px;
+        margin: 0px -15px;
         padding: 40px 0;
     }
     .blocoConteudo .contLeft{
@@ -1106,29 +1113,26 @@
         margin-right: auto;
     }
     .blocoMenuProgramacao .menuProgramacao .semanal{
-        width: 128px;
         float: left;
         background: #F2B576;
         text-align: center;
-        padding: 15px 0;
+        padding: 15px 20px;
         border-top-left-radius: 80px;
         border-bottom-left-radius: 80px;
         display: inline;
     }
     .blocoMenuProgramacao .menuProgramacao .sabado{
-        width: 128px;
         float: left;
         background: #F2B576;
         text-align: center;
-        padding: 15px 0;
+        padding: 15px 20px;
         display: inline;
     }
     .blocoMenuProgramacao .menuProgramacao .domingo{
-        width: 128px;
         float: left;
         background: #F2B576;
         text-align: center;
-        padding: 15px 0;
+        padding: 15px 20px;
         border-top-right-radius: 80px;
         border-bottom-right-radius: 80px;
         display: inline;
@@ -1138,17 +1142,62 @@
         width: 46.58%;
     }
     .blocoProgramacao .linhaPrograma .conexaoPrograma{
-        width:100px;
+        width: 2.65%;
         float: left;
+        min-height: 260px;
+    }
+    .blocoProgramacao .linhaPrograma .conexaoPrograma img{
+        margin-top:0px
     }
     .blocoProgramacao .linhaPrograma .programaRight{
         width: 46.57%;
     }
     .blocoProgramacao .linhaPrograma .conexaoProgramaRight{
-        width:100px;
+        width: 2.65%;
         float: right;
+        min-height: 258px;
     }
-    
+    .blocoProgramacao .linhaPrograma .conexaoProgramaRight img{
+        margin-top:0px
+    }
+
+    .progEnqMsg .wrapSemEnquete{
+        min-height: 343px;
+    }
+    .blocoNoticias .noticia .foto{
+        max-height: 150px;
+        max-width: 200px;
+        overflow: hidden;
+        float: left;
+        margin-right: 30px;
+        min-width: 200px;
+        text-align: center; 
+     }
+     .blocoNoticias .noticia .foto img{
+        max-height: 150px;
+    }
+    .blocoNoticias .noticia  h3{
+        font-size: 18px;
+        margin-top: 15px
+    }
+    .bloconoticias .noticia .wrapSpamCategoria{
+        height: auto;
+    }
+    .blocoTop10 .top10 .esquerda{
+        float: left;
+        width: 70%;
+    }
+    .blocoTop10 .top10 .direita{
+        width: 30%;
+        float: right;
+        padding-top: 18px;
+        text-align: center;
+        display: block
+    }
+    .wrap-navBar-toggle{
+        display: none
+    }
+
 
 
     .redes{

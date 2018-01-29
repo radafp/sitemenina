@@ -608,7 +608,7 @@ class Novomenina_model extends CI_Model{
                 FROM eventos 
                     WHERE eventos.regiao = '$regiao' 
                     AND eventos.mostrar = 1 
-                    AND eventos.dataInicio >= ".date('Ymd')."
+                    AND eventos.dataFim >= ".date('Ymd')."
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataInicio ASC 
                 LIMIT $limit, 15
@@ -876,6 +876,7 @@ class Novomenina_model extends CI_Model{
 
     // metodo usado na pagina inicial
     public function enquetes($regiao) {
+        
         $query = $this->db->query(
             "SELECT 
             enquetesPerguntas.cod as cod_perg,
