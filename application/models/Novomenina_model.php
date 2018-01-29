@@ -452,7 +452,8 @@ class Novomenina_model extends CI_Model{
             "SELECT * FROM videos 
                 WHERE videos.regiao = '$regiao' 
                 AND videos.mostrar = 1
-                LIMIT $limit, 15"
+            ORDER BY cod DESC
+            LIMIT $limit, 16"
         );
         return $query->result_array();
     }

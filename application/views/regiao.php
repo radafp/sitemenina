@@ -58,7 +58,9 @@
 
 <div class="container">
     <div class="row publicidade">
-        <?php if(count($banner_tipo1)>0) :?>
+        <?php if(count($banner_tipo1)>0) :
+            $_SESSION['cod_banner_tipo1'] = '';
+            ?>
         <?php  $banners = array();?>
         <?php foreach($banner_tipo1 as $info):?>
             <?php $_SESSION['cod_banner_tipo1'] = $info['cod']; ?>
@@ -161,7 +163,10 @@
 
 <div class="container">
     <div class="row publicidade">
-        <?php if(count($banner_tipo2)>0) :?>
+        <?php if(count($banner_tipo2)>0) :
+            $_SESSION['cod_banner_tipo2_1'] = '';
+            $_SESSION['cod_banner_tipo2_2'] = '';
+            ?>
         <?PHP $cod = array();?>
         <?php foreach($banner_tipo2 as $info):?>
                 <?php array_push($cod, $info['cod']); ?>
@@ -264,6 +269,7 @@
                     <span>Mensagem do Dia</span>
                 </h1>
                 <div class="wrapMensagemDoDia">
+                <?php if(count($videos_home)>0):?>
                     <?php foreach($videos_home as $info):?>
                     <?php 
                         $codVideo = explode('=',$info['link']);
@@ -283,13 +289,10 @@
                         </a> 
                             <!-- <iframe style="width: 100%; max-height:250px" src="" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe> -->
                         <?php
-                        }else{
-                        ?>
-                            <p>Nenhuma mensagem cadastrada.</p>   
-                        <?php
                         }
                         ?>
                     <?php endforeach?>
+                    <?php endif;?>
                 </div>
             </div>
     </div> <!-- row -->

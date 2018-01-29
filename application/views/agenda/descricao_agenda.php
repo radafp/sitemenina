@@ -7,7 +7,7 @@
             <h1 class="tituloPadrao1">
                     <span>Agenda</span> 
                 </h1>
-                <div class="blocoDescricaoEventos">
+                <div class="blocoEventosDescricao">
                     <?php foreach($descricao_eventos as $info):?>
                         <div class="descricaoEvento">
                             <h3><?php echo $info['tituloPt'].'<br>'?></h3>

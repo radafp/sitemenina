@@ -114,7 +114,7 @@
                             <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$p;?>"><?=$p;?></a>
                         </div>
                         
-                        <?php if($pHome+10 <= $count):?>
+                        <?php if($pHome+16 <= $count):?>
                             <div class='pagina'>
                                 <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$proxima;?>"><?=$proxima;?></a>
                             </div>
