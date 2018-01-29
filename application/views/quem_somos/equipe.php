@@ -30,7 +30,7 @@
     <div class="blocoConteudo">
         <div class="row">
 
-            <div class="col-12 contLeft">
+            <div class="col-12 contLeftRight">
                 <h1 class="tituloPadrao1">
                     <span>Equipe</span>
                 </h1>
@@ -41,6 +41,11 @@
                 <div class="fotoEquipe">
                     <img src="<?=base_url('/assets/img/equipe_'.$_SESSION['regiao'].'.png');?>" alt="">
                 </div> 
+                <div class="col-12 contLeftRight">
+                    <h1 class="tituloPadrao1">
+                        <span>Locutores</span>
+                    </h1>
+                </div>
                 <?php foreach($equipe as $info):?>
                     <div class="col-md-3">
                         <a class="link_descricao" href="<?php echo base_url('home/descricao_equipe?id='.$info['cod']);?>">

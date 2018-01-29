@@ -899,11 +899,11 @@
     margin: 35px 0;
     float: left;
 }
-.blocoHistoria .linhaPrograma{
+.blocoHistoria .linhaHistoria{
     width: 100%;
     float: left;
 }
-.blocoHistoria .linhaPrograma .programa {
+.blocoHistoria .linhaHistoria .historia {
     float: left;
     width: 100%;
     border: 1px solid #F3F3F3;
@@ -913,36 +913,41 @@
     text-align: center;
     background: #ffffff;
 }
-.blocoHistoria .linhaPrograma .foto{
+.blocoHistoria .linhaHistoria .historia .ano {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.blocoHistoria .linhaHistoria .foto{
     max-height: 120px;
     max-width: 200px;
     overflow: hidden;
     margin-right: auto;
     margin-left: auto;
 }
-.blocoHistoria .linhaPrograma .foto img{
+.blocoHistoria .linhaHistoria .foto img{
     max-height: 120px;
 }
-.blocoHistoria .linhaPrograma h3{
+.blocoHistoria .linhaHistoria h3{
     font-size: 18px;
     margin-top: 15px
  }
- .blocoHistoria .linhaPrograma .infos{
+ .blocoHistoria .linhaHistoria .infos{
     clear: both;
     padding-top: 20px;
  }
- .blocoHistoria .linhaPrograma .infos p{
+ .blocoHistoria .linhaHistoria .infos p{
     color: #999999;
     font-weight: 500;
  }
-.blocoHistoria .linhaPrograma .programaRight{
+.blocoHistoria .linhaHistoria .historiaRight{
     float: right;
     width: 100%;
     margin-left: 15px;
     margin-right: 0;
 }
 
-.blocoHistoria .linhaPrograma .conexaoPrograma {
+.blocoHistoria .linhaHistoria .conexaoHistoria {
     float: left;
     width: 100%;
     text-align: center;
@@ -951,11 +956,14 @@
     overflow: hidden;
     
 }
-.blocoHistoria .linhaPrograma .conexaoPrograma img{
+.blocoHistoria .linhaHistoria .conexaoHistoria.ultima{
+    display: none;
+}
+.blocoHistoria .linhaHistoria .conexaoHistoria img{
     margin-top: -107px;
 }
 
-.blocoHistoria .linhaPrograma .conexaoProgramaRight{
+.blocoHistoria .linhaHistoria .conexaoHistoriaRight{
     float: left;
     width: 100%;
     text-align: center;
@@ -966,11 +974,14 @@
 
 
 .blocoEquipe{
-    margin: 0 35px;
+    /* margin: 0 35px; */
 }
 .blocoEquipe .fotoEquipe{
     margin-left: auto;
     margin-right: auto;
+}
+.blocoEquipe .fotoEquipe img{
+    max-width: 100%
 }
 .blocoContato .btContato_bc{
     background-color: #2d82a5;
@@ -1178,6 +1189,9 @@
     .blocoConteudo .contRight{
         padding-right: 50px;
     }
+    .blocoConteudo .contLeftRight{
+        padding: 0 50px;
+    }
 
     .blocoMenuProgramacao .menuProgramacao{
         position: relative;
@@ -1305,26 +1319,29 @@
     
     }
 
-    .blocoHistoria .linhaPrograma .programa{
+    .blocoHistoria .linhaHistoria .historia{
         width: 46.58%;
     }
-    .blocoHistoria .linhaPrograma .conexaoPrograma{
-        width: 2.65%;
+    .blocoHistoria .linhaHistoria .conexaoHistoria{
+        width: 4.1%;
         float: left;
         min-height: 260px;
     }
-    .blocoHistoria .linhaPrograma .conexaoPrograma img{
+    .blocoHistoria .linhaHistoria .conexaoHistoria.ultima{
+        display: block;
+    }
+    .blocoHistoria .linhaHistoria .conexaoHistoria img{
         margin-top:0px
     }
-    .blocoHistoria .linhaPrograma .programaRight{
+    .blocoHistoria .linhaHistoria .historiaRight{
         width: 46.57%;
     }
-    .blocoHistoria .linhaPrograma .conexaoProgramaRight{
-        width: 2.65%;
+    .blocoHistoria .linhaHistoria .conexaoHistoriaRight{
+        width: 4.1%;
         float: right;
         min-height: 258px;
     }
-    .blocoHistoria .linhaPrograma .conexaoProgramaRight img{
+    .blocoHistoria .linhaHistoria .conexaoHistoriaRight img{
         margin-top:0px
     }
 

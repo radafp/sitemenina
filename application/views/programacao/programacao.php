@@ -81,7 +81,7 @@
                                         <p><?php echo 'Apresentador: '. $info['apresentador'];?></p>
                                     </div>
                                 </a>
-                            </div>
+                            </div> 
                             <?php 
                             if($nProgramas!=($key+1)): 
                             ?>
@@ -135,10 +135,6 @@
                             $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
                             break;
                 }endif;
-                echo $_SESSION['cod_banner_tipo3_1']; 
-                echo $_SESSION['cod_banner_tipo3_2']; 
-                echo $_SESSION['cod_banner_tipo3_3']; 
-                echo $_SESSION['cod_banner_tipo3_4']; 
                 ?>
             </div> <!-- contRight -->
 
@@ -147,10 +143,7 @@
 </div> <!-- container --> 
 <div class="container">
     <div class="row publicidade">
-    <?php if(count($banner_tipo2)>0) :
-        $_SESSION['cod_banner_tipo2_1'] = '';
-        $_SESSION['cod_banner_tipo2_2'] = '';
-        ?>
+    <?php if(count($banner_tipo2)>0) :?>
     <?PHP $cod = array();?>
     <?php foreach($banner_tipo2 as $info):?>
             <?php array_push($cod, $info['cod']); ?>
