@@ -247,7 +247,7 @@ class home extends CI_Controller {
         if($p < 0) {
             $p = 0;
         }
-
+        echo $_GET['busca'];
 
         if(isset($_GET['busca']) && !empty($_GET['busca'])) {
             $busca = $_GET['busca'];
@@ -1552,7 +1552,7 @@ class home extends CI_Controller {
 
 
     public function midia() {
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '3', 4);
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '2', 2); 
         

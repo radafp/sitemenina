@@ -217,10 +217,11 @@
                     </div>
                     <!-- /.row -->
                     <hr>               
+                    
                     <!-- Navigation -->
                     <nav class="navbar navbar-expand-lg navbar-default">
                         <div class="container">
-                            <div class="wrap-navBar-toggle">
+                            <!-- <div class="wrap-navBar-toggle">
                                 <button style="border-color: #c2c2c2;cursor: pointer;float: left;margin-right: 10px;" class="navbar-toggler navbar-light navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
@@ -232,7 +233,7 @@
                                         </a>
                                     </span>
                                 </form>
-                            </div>
+                            </div> -->
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul id="menu" class="navbar-nav">
                                     <li class="nav-item">
