@@ -249,6 +249,7 @@ class home extends CI_Controller {
         }
 
         if(isset($_GET['busca']) && !empty($_GET['busca'])) {
+            echo $_GET['busca'];
             $busca = $_GET['busca'];
             $dados['pHome'] = $p;
             $dados['total_registros']   = 15;
@@ -282,8 +283,8 @@ class home extends CI_Controller {
         $cod_banner3_2 = isset($_SESSION['cod_banner_tipo3_2']) ? $_SESSION['cod_banner_tipo3_2'] : '';
         $cod_banner3_3 = isset($_SESSION['cod_banner_tipo3_3']) ? $_SESSION['cod_banner_tipo3_3'] : '';
         $cod_banner3_4 = isset($_SESSION['cod_banner_tipo3_4']) ? $_SESSION['cod_banner_tipo3_4'] : '';
-        echo '<br>cod_banner2_1: '.$cod_banner2_1;
-        echo '<br>cod_banner2_2: '.$cod_banner2_2;
+        // echo '<br>cod_banner2_1: '.$cod_banner2_1;
+        // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
         if($cod_banner2_1!='') {
