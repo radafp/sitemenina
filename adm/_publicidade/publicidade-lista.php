@@ -7,8 +7,12 @@ if(!verifica_permissao($cod_user, $nivel, 'publicidade'))
 	echo " </script>";
 	die();
 }
+
+$cliente = isset($_GET['cliente']) ? $_GET['cliente'] : '';
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
+require_once ADMIN_PATH."_publicidade/inc/topo-publicidade-lista.php";
+
 ?>
 <script>
     
@@ -127,6 +131,8 @@ $(document).ready(function()
     if($pag < 0) {
         $pag = 0;
     }    
+
+    echo $cliente;
 
     $limit_por_pag = 30;
     $q = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p

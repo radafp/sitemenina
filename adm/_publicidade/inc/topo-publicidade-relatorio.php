@@ -5,6 +5,8 @@
     <div class="divTableFiltro clear">
         <div class="divTr head">
             <div class="divTd">CLIENTE</div>
+            <div class="divTd">DATA INICIAL</div>
+            <div class="divTd">DATA FINAL</div>
             <div class="divTd">&nbsp;</div>
         </div>
         <div class="divTr">
@@ -25,7 +27,12 @@
                     <?php } ?>
                 </select>
             </div>
-            
+            <div class="divTd">
+                <input type="date" name='dataInicio'>
+            </div>
+            <div class="divTd">
+                <input type="date" name='dataFim'>
+            </div>
             <div class="divTd">
                 <input type="submit" value="Filtrar" class="salvar"/>
             </div>
