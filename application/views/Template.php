@@ -57,7 +57,7 @@
 
                 var content = $('#content');
                 var logo = document.querySelector('#logo');
-                $('#menu a, #logo, .busca').click(function( e ){
+                $('#menu a, #whats a, #logo, .busca').click(function( e ){
                     e.preventDefault();
 
                     var href = $( this ).attr('href');
@@ -121,15 +121,15 @@
                     window.history.pushState(null, 'Home', $(this).attr('href'));
                 })
 
-                /* CADASTRO NEWS */
-                jQuery("a.WhatsApp").unbind("click").bind("click", function()
+                /* Whatsapp */
+                /* jQuery("a.whatsapp").unbind("click").bind("click", function()
                 {
                     jQuery("div.whatsappBox").fadeIn();
                 });
                 $("div.btFechar").unbind("click").bind("click", function()
                 {
                     jQuery("div.whatsappBox").fadeOut();
-                });
+                }); */
                 
                 /*var pr =  $('.playerRadio').contents();
                 pr.find('html').css('background', 'red') {
@@ -179,7 +179,9 @@
                             <iframe class="playerRadio" name="playcolor" src="http://painelstream.com/mini-player/<?=$codRadio;?>" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
                         </div>
                         <div class="col-lg-6 tvMocinha">
-                            <a class="btTvMocinha" href="http://radiomeninabc.portalmenina.com.br/ao-vivo/tv-mocinha-balneario-camboriu" data-toggle="lightbox" data-width="695" data-height="445">Tv Mocinha</a>
+                            <?php if($_SESSION['regiao'] == 'bc'): ?>
+                                <a class="btTvMocinha" href="http://radiomeninabc.portalmenina.com.br/ao-vivo/tv-mocinha-balneario-camboriu" data-toggle="lightbox" data-width="695" data-height="445">Tv Mocinha</a>
+                            <?php endif; ?>
                         </div>
                     
                     </div>
@@ -214,12 +216,13 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-3 btm-30 topoRedes">
-                            <ul class="list-inline social">
+                            <ul id="whats" class="list-inline social">
                                 <li><a class="face" href="<?=$_SESSION['socialFace'];?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank"><i class="fa fa-instagram"></i></a></li>
                                 <li><a class="youtube" href="<?=$_SESSION['socialYoutube'];?>" target="_blank"><i class="fa fa-youtube"></i></a></li>
-                                <li><a class="whatsapp"><i class="fa fa-whatsapp"></i></a></li>
+                                <li ><a class="whatsapp" href="<?php echo base_url($_SESSION['city'].'/contato')?>"><i class="fa fa-whatsapp"></i></a></li>
                             </ul>
+                            
                         </div>
 
                     </div>
@@ -381,22 +384,27 @@
                         <div class="col-xs-12 col-md-3 unidade">
                             <img src="<?php echo base_url('assets/img/logoMeninabc.png')?>" title="Balneário Camboriú">
                             <h3>Balneário Camboriú</h3>
-                            <p> 
+                            <p class="pEndereco"> 
                                 Av. do Estado, 1555<br> 
                                 Camboriú Work Center<br>
                                 Pioneiros - Balneário Camboriú/SC<br>
-                                CEP: 88331-900<br><br>
+                                CEP: 88331-900
+                            </p>
+                            <p>
                                 (47) 2103.6000
                             </p>
+                            
                         </div>
                         
                         <div class="col-xs-12 col-md-3 unidade">
                             <img src="<?php echo base_url('assets/img/logoMeninabl.png')?>" title="Blumenau">
                             <h3>Blumenau</h3>
-                            <p>
+                            <p class="pEndereco">
                                 Rua 7 de Setembro, 473<br>
                                 Boa Vista - Blumenau/SC<br>
-                                CEP: 89010-002<br><br>
+                                CEP: 89010-002
+                            </p>
+                            <p>
                                 (47) 2102.6500
                             </p>
                         </div>
@@ -404,10 +412,12 @@
                         <div class="col-xs-12 col-md-3 unidade">
                             <img src="<?php echo base_url('assets/img/logoMeninalg.png')?>" title="Lages">
                             <h3>Lages</h3>
-                            <p>
+                            <p class="pEndereco">
                                 Av. Luís de Camões, 1370<br>
                                 Coral - Lages/SC<br>
-                                CEP: 88523-000<br><br>
+                                CEP: 88523-000
+                            </p>
+                            <p>
                                 (49) 3229.2363 
                             </p>
                         </div>
@@ -415,11 +425,13 @@
                         <div class="col-xs-12 col-md-3 unidade">
                             <img src="<?php echo base_url('assets/img/logoTVMocinha.png')?>" title="TV Mocinha">
                             <h3>TV Mocinha Balneário Camboriú</h3>
-                            <p>
+                            <p class="pEndereco">
                                 Av. do Estado, 1555<br> 
                                 Camboriú Work Center<br>
                                 Pioneiros - Balneário Camboriú/SC<br>
-                                CEP: 88331-900<br><br>
+                                CEP: 88331-900
+                            </p>
+                            <p>
                                 (47) 2103.6020
                             </p>
                         </div>

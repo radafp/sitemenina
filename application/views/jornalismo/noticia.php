@@ -28,7 +28,7 @@
 </script>
 <div class="container">
     <div class="blocoConteudo">
-        <div class="row">
+        <div class="row"> 
  
             <div class="col-xs-12 col-md-8 contLeft">
 

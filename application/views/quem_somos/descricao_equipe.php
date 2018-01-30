@@ -5,7 +5,7 @@
             <div class="col-xs-12 col-md-8 contLeft">
 
                 <h1 class="tituloPadrao1">
-                    <span>Programação</span>
+                    <span>Equipe</span>
                 </h1>
                 <div class="blocoProgramacaoDescricao">
                     

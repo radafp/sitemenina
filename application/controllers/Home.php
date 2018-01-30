@@ -146,7 +146,9 @@ class home extends CI_Controller {
                 $valor = $info['nImpressoes'] + 1;
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
             endforeach;
-        } 
+        }
+
+
 
         $dados['viewName'] = 'regiao';
         $this->load->view('Template', $dados);
@@ -330,7 +332,7 @@ class home extends CI_Controller {
                 $valor = $info['nImpressoes'] + 1;
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
-        }
+        } 
         
         $dados['viewName']          = 'jornalismo/noticia';
         $this->load->view('Template', $dados);

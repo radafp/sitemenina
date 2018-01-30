@@ -77,10 +77,14 @@
                                         <p><?php echo 'Apresentador: '. $info['apresentador'];?></p>
                                     </div>
                                 </a>
-                            </div>
-                            <div class="conexaoPrograma<?=$classeAdicionalConexaoPrograma;?>">
-                                <img src="<?php echo base_url('assets/img/conexaoProgramas.png');?>" alt="">
-                            </div>
+                            </div> 
+                            <?php 
+                            if($nProgramas!=($key+1)): 
+                            ?>
+                                <div class="conexaoPrograma<?=$classeAdicionalConexaoPrograma;?>">
+                                    <img src="<?php echo base_url('assets/img/conexaoProgramas.png');?>" alt="">
+                                </div>
+                            <?php endif; ?>
                         </div>
                         
                         <?php 
@@ -126,7 +130,8 @@
                         case 1:
                             $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
                             break;
-                    }endif;?>
+                }endif;
+                ?>
             </div> <!-- contRight -->
 
         
@@ -135,9 +140,9 @@
 </div> <!-- container --> 
 <div class="container">
     <div class="row publicidade">
-        <?php if(count($banner_tipo2)>0) :?>
-        <?PHP $cod = array();?>
-        <?php foreach($banner_tipo2 as $info):?>
+    <?php if(count($banner_tipo2)>0) :?>
+    <?PHP $cod = array();?>
+    <?php foreach($banner_tipo2 as $info):?>
             <?php array_push($cod, $info['cod']); ?>
             <div class="wrapBanner">
             <?php if($info['link'] != ''): ?>

@@ -973,7 +973,7 @@ class Novomenina_model extends CI_Model{
                     WHERE equipe.regiao = '$regiao' 
                     AND equipe.mostrar = 1 
                 GROUP BY equipe.cod
-                ORDER BY equipe.dataCadastro DESC
+                ORDER BY equipe.tituloPt ASC
         "); 
         return $query->result_array();
     }
