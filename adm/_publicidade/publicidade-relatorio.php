@@ -22,7 +22,6 @@ if($cliente)
 
     $qPublicidadeStatsPaginas = mysql_query("SELECT * FROM publicidadeStats WHERE codCliente = '{$cliente}'");
 
- 
     $qPublicidadeStatsPaginas = mysql_query("SELECT codPagina,pagina FROM publicidadeStats WHERE codCliente = '{$cliente}' GROUP BY codPagina" );
 
     $nPublicidadeStatsPaginas = mysql_num_rows($qPublicidadeStatsPaginas);

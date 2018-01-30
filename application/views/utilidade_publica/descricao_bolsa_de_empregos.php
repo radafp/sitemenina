@@ -1,3 +1,30 @@
+<script type="text/javascript">
+     $(document).ready(function(){
+
+        $(".registra_click_publicidade").click(function(e) {
+        
+            _obj = $(this);
+            _codPublicidade = _obj.attr('rel');
+            
+            $.ajax(
+            {
+                type: "POST",
+                async: false,
+                url: "<?=base_url('/assets/ajax/publicidade.php');?>",
+                data:
+                {
+                    cod: _codPublicidade
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { 
+                
+            });
+        });
+
+    });
+</script>
 <div class="container">
     <div class="blocoConteudo">
         <div class="row">
@@ -15,7 +42,7 @@
                                 <img src="<?php echo base_url('assets/arquivos/empregos/'.$info["arquivo"])?>" alt="">
                             </div>
                             <h3><?php echo $info['titulo']?></h3>
-                            <p><?php echo $info['texto']?></p>
+                            <p><?php echo $info['descricao']?></p>
                             <div class="infos">
                             </div>
                         </div>

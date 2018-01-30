@@ -735,7 +735,7 @@ class Novomenina_model extends CI_Model{
                     WHERE empregos.regiao = '$regiao' 
                     AND empregos.mostrar = 1 
                 GROUP BY empregos.cod
-                ORDER BY empregos.dataCadastro DESC
+                ORDER BY empregos.dataPublicacao DESC
                 LIMIT $limit, 15
         "); 
         return $query->result_array();
