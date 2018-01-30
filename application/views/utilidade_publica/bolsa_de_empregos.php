@@ -27,6 +27,27 @@
 
             window.history.pushState(null, 'Home', $(this).attr('href'));
         });
+        $(".registra_click_publicidade").click(function(e) {
+        
+            _obj = $(this);
+            _codPublicidade = _obj.attr('rel');
+            
+            $.ajax(
+            {
+                type: "POST",
+                async: false,
+                url: "<?=base_url('/assets/ajax/publicidade.php');?>",
+                data:
+                {
+                    cod: _codPublicidade
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { 
+                
+            });
+        });
     });
 </script>
 <div class="container">  
@@ -47,8 +68,8 @@
                                 <div class="foto">
                                     <img src="<?php echo base_url('/assets/arquivos/empregos/'.$info['arquivo'])?>" alt="">
                                 </div>
-                                <h3><?php echo $info['descricao']?></h3>
-                                <p><?php echo $info['telefone']?></p>
+                                <h3><?php echo $info['titulo']?></h3>
+                                <!-- <p><?php echo date_format($info['dataPublicacao'], 'd-m-Y')?></p> -->
                             </a>
                         </div>
                     <?php endforeach?>

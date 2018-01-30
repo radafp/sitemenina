@@ -1,3 +1,30 @@
+<script type="text/javascript">
+     $(document).ready(function(){
+
+        $(".registra_click_publicidade").click(function(e) {
+        
+            _obj = $(this);
+            _codPublicidade = _obj.attr('rel');
+            
+            $.ajax(
+            {
+                type: "POST",
+                async: false,
+                url: "<?=base_url('/assets/ajax/publicidade.php');?>",
+                data:
+                {
+                    cod: _codPublicidade
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { 
+                
+            });
+        });
+
+    });
+</script>
 <div class="container">  
     <div class="blocoConteudo"> 
         <div class="row">

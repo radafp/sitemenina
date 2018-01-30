@@ -29,6 +29,28 @@
                 }
             });
         });
+
+        $(".registra_click_publicidade").click(function(e) {
+            
+            _obj = $(this);
+            _codPublicidade = _obj.attr('rel');
+            
+            $.ajax(
+            {
+                type: "POST",
+                async: false,
+                url: "<?=base_url('/assets/ajax/publicidade.php');?>",
+                data:
+                {
+                    cod: _codPublicidade
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { 
+                
+            });
+        });
     });
 </script>
 <div class="container">
@@ -60,7 +82,8 @@
                 <div class="blocoProgramacao">
                     <?php 
                     $i=0;
-                    foreach($programacao_impar as $info):
+                    $nProgramas = count($programacao_impar);
+                    foreach($programacao_impar as $key=>$info):
                         $classeAdicionalPrograma = (($i%2) == 0) ? '' : ' programaRight';
                         $classeAdicionalConexaoPrograma = (($i%2) == 0) ? '' : ' conexaoProgramaRight';
                         ?>

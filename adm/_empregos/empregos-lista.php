@@ -95,7 +95,7 @@ $(document).ready(function()
     <div class="divTr head">
         <div class="divTd">&nbsp;</div>
         <div class="divTd">Data de publicação</div>
-        <div class="divTd">Texto</div>
+        <div class="divTd">Título</div>
         <div class="divTd">Mostrar</div>
     </div>
     <?
@@ -150,7 +150,7 @@ $(document).ready(function()
                 </div>
                 <div class="divTd">
                     <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
-                        <?=$tp['descricao'];?>
+                        <?=$tp['titulo'];?>
                     </a>
                 </div>
                 <div class="divTd">

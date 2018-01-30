@@ -3,7 +3,7 @@
 //$url = 'https://api.instagram.com/oauth/authorize/?client_id=528dd0ed99084c769c8b0e48456ff8af&redirect_uri=http://dev.web989.uni5.net&response_type=code';
 
 # STEP 2
-/*
+
 function simple_curl($url,$post=array(),$get=array())
 {
     $url = explode('?',$url,2);
@@ -27,15 +27,15 @@ $url = 'https://api.instagram.com/oauth/access_token/';
 
 $ar = array
 (
-    "client_id" => 'a079cd49a8ca4c1d942304562a33d0a4',
-    "client_secret" => '7a9ccab188d34f7b99feafdd41142709',
+    "client_id" => '6d7beb559b12427ebfe57f74bd7ff835',
+    "client_secret" => 'eaa6e6d23f574330900511810034ccf8',
     'grant_type' => 'authorization_code',
     'redirect_uri' => 'http://www.novomenina.web7097.uni5.net',
-    'code' => 'd6e34e2d0c404f68a33a4bedb30fbf83'
+    'code' => '7e5b8c2f91144a3984ec64e9acc9b4df'
 );
 $curl = simple_curl($url, $ar);
 echo $curl;
-*/
+/*
 
 
 #STEP 3

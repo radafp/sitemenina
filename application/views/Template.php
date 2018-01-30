@@ -120,6 +120,8 @@
         
                     window.history.pushState(null, 'Home', $(this).attr('href'));
                 })
+                
+
 
                 /* Whatsapp */
                 /* jQuery("a.whatsapp").unbind("click").bind("click", function()
