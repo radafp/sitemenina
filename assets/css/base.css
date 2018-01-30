@@ -378,6 +378,9 @@ margin-right: 10px;
   font-size: 16px;
   margin:20px 0;
 }
+.unidades .pEndereco{
+  min-height: 85px;
+}
 .rodapeBg_bc{
   background-color: #42A3CD;
   height: 80px;

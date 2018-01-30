@@ -17,12 +17,15 @@
                         content.fadeOut('fast', function(){
                             content.html( data ).fadeIn();
                         });
+                        if(href != 'http://www.novomenina.web7097.uni5.net/balneario-camboriu'){
+                            $('html,body').animate({ scrollTop: $("#anc").offset().top },'slow');
+                        }
                     },100);
                 }
             });
 
             window.history.pushState(null, 'Home', $(this).attr('href'));
-        });
+        }); 
     });
 </script>
 
