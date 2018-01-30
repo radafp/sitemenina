@@ -16,7 +16,7 @@ class home extends CI_Controller {
     }
 
     public function regiao() {
-        session_unset($_SESSION);
+
         $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
         
         $regiao = isset($uri[0]) && !empty($uri[0]) ? $uri[0] : '';// regiao
@@ -156,7 +156,6 @@ class home extends CI_Controller {
     }
 
     public function programacao() {
-        session_unset($_SESSION);
         // link de progrmacao semanal/sabado/domingo
         $_SESSION['menuAtivoProgramacao'] = addslashes(isset($_GET['programacao']) ? $_GET['programacao'] : 'Semanal');
         
@@ -183,9 +182,12 @@ class home extends CI_Controller {
         $cod_banner3_4 = isset($_SESSION['cod_banner_tipo3_4']) ? $_SESSION['cod_banner_tipo3_4'] : '';
         // echo '<br>cod_banner2_1: '.$cod_banner2_1;
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
-
+        // echo '<br>cod_banner3_1: '.$cod_banner3_1;
+        // echo '<br>cod_banner3_2: '.$cod_banner3_2;
+        // echo '<br>cod_banner3_3: '.$cod_banner3_3;
+        // echo '<br>cod_banner3_4: '.$cod_banner3_4;
  
-        if($cod_banner2_1!='') {
+        if($cod_banner2_1 != '') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -209,6 +211,7 @@ class home extends CI_Controller {
             $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_1);
         endforeach;
         }
+        
         if($cod_banner3_2!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_2);
             foreach($num_impresoes as $info):
@@ -216,6 +219,7 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_2);
             endforeach;
         }
+
         if($cod_banner3_3!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_3);
             foreach($num_impresoes as $info):
@@ -223,11 +227,12 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
 
@@ -237,7 +242,6 @@ class home extends CI_Controller {
     }
     
     public function noticia() {
-        session_unset($_SESSION);
         $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'todas';
         //echo $categoria;
         
@@ -288,8 +292,8 @@ class home extends CI_Controller {
         $cod_banner3_2 = isset($_SESSION['cod_banner_tipo3_2']) ? $_SESSION['cod_banner_tipo3_2'] : '';
         $cod_banner3_3 = isset($_SESSION['cod_banner_tipo3_3']) ? $_SESSION['cod_banner_tipo3_3'] : '';
         $cod_banner3_4 = isset($_SESSION['cod_banner_tipo3_4']) ? $_SESSION['cod_banner_tipo3_4'] : '';
-        echo '<br>cod_banner2_1: '.$cod_banner2_1;
-        echo '<br>cod_banner2_2: '.$cod_banner2_2;
+        // echo '<br>cod_banner2_1: '.$cod_banner2_1;
+        // echo '<br>cod_banner2_2: '.$cod_banner2_2;
 
  
         if($cod_banner2_1!='') {
@@ -311,10 +315,10 @@ class home extends CI_Controller {
 
         if($cod_banner3_1!='') {
         $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_1);
-        foreach($num_impresoes as $info):
-            $valor = $info['nImpressoes'] + 1;
-            $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_1);
-        endforeach;
+            foreach($num_impresoes as $info):
+                $valor = $info['nImpressoes'] + 1;
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_1);
+            endforeach;
         }
         if($cod_banner3_2!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_2);
@@ -330,11 +334,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -344,7 +348,12 @@ class home extends CI_Controller {
     }
 
     public function descricao_noticia() {
-        session_unset($_SESSION);
+        
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
+
+
         $id = addslashes($_GET['id']);
         $categoria = addslashes($_GET['categoria']);
         $this->Novomenina->cliques($id, $_SESSION['regiao']);
@@ -404,11 +413,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
 
@@ -417,7 +426,9 @@ class home extends CI_Controller {
     }
 
     public function agenda() {
-        session_unset($_SESSION);
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         // $id = $_GET['id'];
         $regiao = addslashes($_SESSION['regiao']);
         
@@ -501,11 +512,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -514,7 +525,9 @@ class home extends CI_Controller {
     }
 
     public function top_10() {
-        session_unset($_SESSION);
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
 
         $regiao = isset($_SESSION['regiao']) ? $_SESSION['regiao'] : '';
 
@@ -573,11 +586,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -586,7 +599,9 @@ class home extends CI_Controller {
     }
 
     public function videos_home() {
-        session_unset($_SESSION);
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         $regiao = $_SESSION['regiao'];
 
         // --------------------- PAGINAÇÂO --------------------
@@ -669,11 +684,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -685,7 +700,9 @@ class home extends CI_Controller {
     
 
     public function descricao_agenda() {
-        session_unset($_SESSION);
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         $id = addslashes($_GET['id']);
         $regiao = $_SESSION['regiao'];
         $dados['descricao_eventos']     = $this->Novomenina->descricao_eventos($id, $regiao);
@@ -743,11 +760,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -756,7 +773,9 @@ class home extends CI_Controller {
     }
 
     public function promocoes() {
-        session_unset($_SESSION);
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         // --------------------- PAGINAÇÂO --------------------
         //|                                                    |
         //|                                                    |
@@ -836,11 +855,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -849,7 +868,9 @@ class home extends CI_Controller {
     }
 
     public function descricao_promocoes() {
-        session_unset($_SESSION);
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         $id = addslashes($_GET['id']);
         $regiao = $_SESSION['regiao'];
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
@@ -907,11 +928,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -920,7 +941,10 @@ class home extends CI_Controller {
     }
 
     public function descricao_programacao() {
-        session_unset($_SESSION);
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
+
         $id = addslashes($_GET['id']);
         $regiao = $_SESSION['regiao'];
         $dados['descricao_programacao'] = $this->Novomenina->descricao_programacao($id, $regiao);
@@ -978,11 +1002,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -991,7 +1015,11 @@ class home extends CI_Controller {
     }
 
     public function descricao_utilidade() {
-        session_unset($_SESSION);
+
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
+
         $id = addslashes($_GET['id']);
         $regiao = $_GET['regiao'];
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
@@ -1050,11 +1078,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -1063,7 +1091,10 @@ class home extends CI_Controller {
     }
 
     public function bolsa_de_empregos() {
-        session_unset($_SESSION);
+
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         // --------------------- PAGINAÇÂO --------------------
         //|                                                    |
         //|                                                    |
@@ -1144,11 +1175,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
 
@@ -1157,7 +1188,10 @@ class home extends CI_Controller {
     }
 
     public function descricao_bolsa_de_empregos() {
-        session_unset($_SESSION);
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
+        
         $id = addslashes($_GET['id']);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['descricao_empregos']    = $this->Novomenina->descricao_view('empregos', $id, $_SESSION['regiao']);
@@ -1229,11 +1263,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -1242,7 +1276,9 @@ class home extends CI_Controller {
     }
 
     public function documentos_perdidos() {
-        session_unset($_SESSION);
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         // --------------------- PAGINAÇÂO --------------------
         //|                                                    |
         //|                                                    |
@@ -1323,11 +1359,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -1336,10 +1372,14 @@ class home extends CI_Controller {
     }
 
     public function descricao_documentos_perdidos() {
-        session_unset($_SESSION);
+        
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
+
         $id = addslashes($_GET['id']);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['descricao_documento']   = $this->Novomenina->descricao_view('achadoseperdidos', $id, $_SESSION['regiao']);
+        $dados['descricao_documento']   = $this->Novomenina->descricao_equipe_documentos_perdidos($id, $_SESSION['regiao']);
 
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '3', 4);
@@ -1408,11 +1448,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -1422,14 +1462,18 @@ class home extends CI_Controller {
 
 
     public function historia() {
-        session_unset($_SESSION);
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['viewName'] = 'quem_somos/historia';
         $this->load->view('Template', $dados);
     }
 
     public function equipe() {
-        session_unset($_SESSION);
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['equipe'] = $this->Novomenina->equipe($_SESSION['regiao']);
 
@@ -1487,11 +1531,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -1500,7 +1544,9 @@ class home extends CI_Controller {
     }
 
     public function descricao_equipe() {
-        session_unset($_SESSION);
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         $id = addslashes($_GET['id']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['descricao_programacao'] = $this->Novomenina->descricao_equipe($id, $_SESSION['regiao']);
@@ -1559,11 +1605,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -1573,7 +1619,9 @@ class home extends CI_Controller {
 
 
     public function midia() {
-        session_unset($_SESSION);
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '3', 4);
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '2', 2); 
@@ -1628,11 +1676,11 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
             endforeach;
         }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
             endforeach;
         }
         
@@ -1641,7 +1689,9 @@ class home extends CI_Controller {
     }
 
     public function contato() {
-        session_unset($_SESSION);
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['action'] = site_url('home/enviaEmail');
         // $this->load->library('email');
