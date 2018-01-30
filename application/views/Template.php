@@ -240,7 +240,7 @@
                                         </a>
                                     </span>
                                 </form> -->
-                                <form class="formBusca" id='buscaNoticia1' name='busca2' action="busca_noticia" method='POST'>
+                                <form class="formBusca-toggler" id='buscaNoticia1' name='busca1' action="busca_noticia" method='POST'>
                                 <input class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
                                 <span class="input-group-btn">
                                     <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
