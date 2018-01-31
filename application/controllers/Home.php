@@ -521,21 +521,10 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
-<<<<<<< HEAD
-    public function top_10() {
-        unset($_SESSION['cod_banner_tipo2_1']);
-        unset($_SESSION['cod_banner_tipo2_2']);
-        unset($_SESSION['cod_banner_tipo1']);
-
-        $regiao = isset($_SESSION['regiao']) ? $_SESSION['regiao'] : '';
-
-        $dados['top_10']   = $this->Novomenina->top_10($regiao);
-=======
     public function descricao_agenda() {
         $id = addslashes($_GET['id']);
         $regiao = $_SESSION['regiao'];
         $dados['descricao_eventos']     = $this->Novomenina->descricao_eventos($id, $regiao);
->>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '3', 4);
         $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'eventos', '2', 2); 
@@ -601,25 +590,7 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
-<<<<<<< HEAD
-    public function videos_home() {
-        unset($_SESSION['cod_banner_tipo2_1']);
-        unset($_SESSION['cod_banner_tipo2_2']);
-        unset($_SESSION['cod_banner_tipo1']);
-        $regiao = $_SESSION['regiao'];
-
-        // --------------------- PAGINAÇÂO --------------------
-        //|                                                    |
-        //|                                                    |
-        //|___________________________________________________ |
-         if(isset($_GET['p'])) {
-            $pg = $_GET['p'];
-        }else{
-            $pg = 0;
-        }
-=======
     public function top_10() {
->>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
 
         $regiao = isset($_SESSION['regiao']) ? $_SESSION['regiao'] : '';
 
@@ -689,17 +660,7 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
-<<<<<<< HEAD
-    
-
-    public function descricao_agenda() {
-        unset($_SESSION['cod_banner_tipo2_1']);
-        unset($_SESSION['cod_banner_tipo2_2']);
-        unset($_SESSION['cod_banner_tipo1']);
-        $id = addslashes($_GET['id']);
-=======
     public function videos_home() {
->>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
         $regiao = $_SESSION['regiao'];
 
         // --------------------- PAGINAÇÂO --------------------
@@ -796,13 +757,7 @@ class home extends CI_Controller {
     }
 
     public function promocoes() {
-<<<<<<< HEAD
-        unset($_SESSION['cod_banner_tipo2_1']);
-        unset($_SESSION['cod_banner_tipo2_2']);
-        unset($_SESSION['cod_banner_tipo1']);
-=======
         
->>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
         // --------------------- PAGINAÇÂO --------------------
         //|                                                    |
         //|                                                    |
@@ -1042,15 +997,7 @@ class home extends CI_Controller {
     }
 
     public function descricao_utilidade() {
-<<<<<<< HEAD
-
-        unset($_SESSION['cod_banner_tipo2_1']);
-        unset($_SESSION['cod_banner_tipo2_2']);
-        unset($_SESSION['cod_banner_tipo1']);
-
-=======
         
->>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
         $id = addslashes($_GET['id']);
         $regiao = $_GET['regiao'];
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
@@ -1649,14 +1596,7 @@ class home extends CI_Controller {
 
 
     public function midia() {
-<<<<<<< HEAD
-        unset($_SESSION['cod_banner_tipo2_1']);
-        unset($_SESSION['cod_banner_tipo2_2']);
-        unset($_SESSION['cod_banner_tipo1']);
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-=======
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
->>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '3', 4);
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '2', 2); 
         
