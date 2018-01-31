@@ -18,8 +18,9 @@ if($submit != '')
 {
     $data = date('Y-m-d');
     $dataPublicacao = isset($_POST['dataPublicacao']) ? dataEn($_POST['dataPublicacao']) : '';
+    $titulo = isset($_POST['titulo']) ? $_POST['titulo'] : '';
     $descricao = isset($_POST['descricao']) ? $_POST['descricao'] : '';
-    $telefone = isset($_POST['telefone']) ? $_POST['telefone'] : '';
+    //$telefone = isset($_POST['telefone']) ? $_POST['telefone'] : '';
     $regiao = isset($_SESSION[ADMIN_SESSION_NAME.'_regiao']) ? $_SESSION[ADMIN_SESSION_NAME.'_regiao'] : '';
     $mostrar = isset($_POST['mostrar']) ? 1 : 0;
     
@@ -33,9 +34,9 @@ if($submit != '')
         if($subid == 2) //insert
         {
         	$q = mysql_query("INSERT INTO empregos 
-                            (dataCadastro, dataPublicacao, descricao, telefone, regiao, mostrar)
+                            (dataCadastro, dataPublicacao, titulo, descricao, regiao, mostrar)
                             VALUES
-                            ('$data','$dataPublicacao','$descricao','$telefone','$regiao','$mostrar')");
+                            ('$data','$dataPublicacao','$titulo','$descricao','$regiao','$mostrar')");
         	
             //echo mysql_error();
             if($q)
@@ -79,8 +80,8 @@ if($submit != '')
             $q = mysql_query("UPDATE empregos SET 
                             dataAlteracao = '$data',
                             dataPublicacao = '$dataPublicacao',
+                            titulo = '$titulo',
                             descricao = '$descricao',
-                            telefone = '$telefone',
                             regiao = '$regiao',
                             mostrar = '$mostrar'
                             WHERE cod = {$cod}");
@@ -179,8 +180,8 @@ else
             
             $tp = mysql_fetch_assoc($q);
             $dataPublicacao = $tp['dataPublicacao'];
+            $titulo = $tp['titulo'];
             $descricao = $tp['descricao'];
-            $telefone = $tp['telefone'];
             $mostrar = $tp['mostrar'];
         }
         else
@@ -196,7 +197,7 @@ else
     {
         $dataPublicacao = '';
         $descricao = '';
-        $telefone = '';
+        $titulo = '';
         $mostrar = 0;
     }
 }
@@ -213,21 +214,21 @@ else
         </div> 
         <div class="divTr">
             <div class="divTd">
-                <label>Descrição:</label>
+                <label>Título:</label>
             </div>
             <div class="divTd">
-                <?
-                    //imprimeTinymce('descricao', html_entity_decode($descricao, ENT_QUOTES, 'UTF-8'), 610, 350, "Descrição");
-                ?>
-                <textarea id="descricao" name="descricao" title="Descrição"><?=str_replace("<br />", "\n", $descricao);?></textarea>
+                <input type="text" class="campoG" name="titulo" id="titulo" value="<?=$titulo;?>" title="Título"/>
             </div>
         </div>
         <div class="divTr">
             <div class="divTd">
-                <label>Telefone:</label>
+                <label>Descrição:</label>
             </div>
             <div class="divTd">
-                <input type="text" class="campoP" maxlength="15" name="telefone" id="telefone" value="<?=$telefone;?>" title="Telefone"/>
+                <?
+                    imprimeTinymce('descricao', html_entity_decode($descricao, ENT_QUOTES, 'UTF-8'), 610, 350, "Descrição");
+                ?>
+                <!-- <textarea id="descricao" name="descricao" title="Descrição"><?=str_replace("<br />", "\n", $descricao);?></textarea> -->
             </div>
         </div>
         <div class="divTr">

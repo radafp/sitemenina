@@ -18,11 +18,38 @@
                         content.fadeOut('fast', function(){
                             content.html( data ).fadeIn();
                         });
+
+                        if(href != 'http://www.novomenina.web7097.uni5.net/balneario-camboriu'){
+                            $('html,body').animate({ scrollTop: $("#anc").offset().top },'slow');
+                        }
+                        
                     },100);
                 }
             });
 
             window.history.pushState(null, 'Home', $(this).attr('href'));
+        });
+
+        $(".registra_click_publicidade").click(function(e) {
+            
+            _obj = $(this);
+            _codPublicidade = _obj.attr('rel');
+            
+            $.ajax(
+            {
+                type: "POST",
+                async: false,
+                url: "<?=base_url('/assets/ajax/publicidade.php');?>",
+                data:
+                {
+                    cod: _codPublicidade
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { 
+                
+            });
         });
     });
 </script>
@@ -51,7 +78,12 @@
                                     <img src="<?php echo base_url('/assets/arquivos/eventos/'.$info['arquivo'])?>" alt="">
                                 </div>  
                                 <h3><?php echo $info['tituloPt']?></h3>
-                                <span><?php echo 'Data: '.date('d/m/Y', strtotime($info['dataInicio']))?></span>
+                                <?php if($info['dataInicio']): ?>
+                                    <span><?php echo 'Início: '.date('d/m/Y', strtotime($info['dataInicio']));?></span>
+                                <?php endif; ?>
+                                <?php if($info['dataFim']): ?>
+                                    <span><?php echo 'Fim: '.date('d/m/Y', strtotime($info['dataFim']));?></span>
+                                <?php endif; ?>
                             </a>
                             <?php
                                 $proximo = 4;

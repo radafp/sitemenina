@@ -382,7 +382,11 @@ $config['encryption_key'] = '';
 */
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
+<<<<<<< HEAD
 // $config['sess_expiration'] = 0;
+=======
+// $config['sess_expiration'] = 7200;
+>>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
 // $config['sess_save_path'] = NULL;
 $config['sess_save_path'] = FCPATH . 'application/cache/';
 $config['sess_match_ip'] = FALSE;

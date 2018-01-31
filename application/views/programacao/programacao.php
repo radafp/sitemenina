@@ -28,6 +28,29 @@
                     },100);
                 }
             });
+            window.history.pushState(null, 'Home', $(this).attr('href'));
+        });
+
+        $(".registra_click_publicidade").click(function(e) {
+            
+            _obj = $(this);
+            _codPublicidade = _obj.attr('rel');
+            
+            $.ajax(
+            {
+                type: "POST",
+                async: false,
+                url: "<?=base_url('/assets/ajax/publicidade.php');?>",
+                data:
+                {
+                    cod: _codPublicidade
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { 
+                
+            });
         });
     });
 </script>
@@ -60,7 +83,8 @@
                 <div class="blocoProgramacao">
                     <?php 
                     $i=0;
-                    foreach($programacao_impar as $info):
+                    $nProgramas = count($programacao_impar);
+                    foreach($programacao_impar as $key=>$info):
                         $classeAdicionalPrograma = (($i%2) == 0) ? '' : ' programaRight';
                         $classeAdicionalConexaoPrograma = (($i%2) == 0) ? '' : ' conexaoProgramaRight';
                         ?>
@@ -77,10 +101,14 @@
                                         <p><?php echo 'Apresentador: '. $info['apresentador'];?></p>
                                     </div>
                                 </a>
-                            </div>
-                            <div class="conexaoPrograma<?=$classeAdicionalConexaoPrograma;?>">
-                                <img src="<?php echo base_url('assets/img/conexaoProgramas.png');?>" alt="">
-                            </div>
+                            </div> 
+                            <?php 
+                            if($nProgramas!=($key+1)): 
+                            ?>
+                                <div class="conexaoPrograma<?=$classeAdicionalConexaoPrograma;?>">
+                                    <img src="<?php echo base_url('assets/img/conexaoProgramas.png');?>" alt="">
+                                </div>
+                            <?php endif; ?>
                         </div>
                         
                         <?php 
@@ -92,21 +120,21 @@
             </div> <!-- contLeft -->
             <div class="col-xs-12 col-md-4 contRight">
                 
-            <?php if(count($banner_tipo3)>0) :?>
-            <?PHP $cod = array();?>
-            <?php foreach($banner_tipo3 as $info):?>
-                    <?php array_push($cod, $info['cod']); ?>
-                    <div class="wrapBanner">
-                        <?php if($info['link'] != ''): ?>
-                            <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
-                        <?php endif; ?>
-                                <img src="<?=base_url('/assets/arquivos/publicidade/'.$info['arquivo']);?>" title="Publicidade">
-                        <?php if($info['link'] != ''): ?>
-                            </a>
-                        <?php endif; ?>
-                    </div>
-                <?php endforeach;
-                    // var_dump($cod);
+                <?php if(count($banner_tipo3)>0) :?>
+                <?PHP $cod = array();?>
+                <?php foreach($banner_tipo3 as $info):?>
+                        <?php array_push($cod, $info['cod']); ?>
+                        <div class="wrapBanner">
+                            <?php if($info['link'] != ''): ?>
+                                <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
+                            <?php endif; ?>
+                                    <img src="<?=base_url('/assets/arquivos/publicidade/'.$info['arquivo']);?>" title="Publicidade">
+                            <?php if($info['link'] != ''): ?>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    <?php endforeach;
+                        // var_dump($cod);
                     switch(count($cod)) {
                         case 4:
                             $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
@@ -126,9 +154,11 @@
                         case 1:
                             $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
                             break;
-                }endif;?>
+                }endif;
+                ?>
             </div> <!-- contRight -->
 
+        
         </div>  <!-- row --> 
     </div> 
 </div> <!-- container --> 

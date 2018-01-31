@@ -1,3 +1,30 @@
+<script type="text/javascript">
+     $(document).ready(function(){
+
+        $(".registra_click_publicidade").click(function(e) {
+        
+            _obj = $(this);
+            _codPublicidade = _obj.attr('rel');
+            
+            $.ajax(
+            {
+                type: "POST",
+                async: false,
+                url: "<?=base_url('/assets/ajax/publicidade.php');?>",
+                data:
+                {
+                    cod: _codPublicidade
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { 
+                
+            });
+        });
+
+    });
+</script>
 <div class="container">
     <div class="blocoConteudo">
         <div class="row">
@@ -5,7 +32,7 @@
             <div class="col-xs-12 col-md-8 contLeft">
 
                 <h1 class="tituloPadrao1">
-                    <span>Programação</span>
+                    <span>Equipe</span>
                 </h1>
                 <div class="blocoProgramacaoDescricao">
                     

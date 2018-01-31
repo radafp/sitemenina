@@ -74,7 +74,7 @@
         ?>
             <li class="<?=$id == 30 ? "menuAtivo" : "";?>" >
                 <a href="<?=ssl().ADMIN_URL."/principal.php?id=30&subid=1";?>">
-                    <span>Eventos</span>
+                    <span>Agenda</span>
                 </a>
             </li>
         <?

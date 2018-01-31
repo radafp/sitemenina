@@ -235,6 +235,11 @@ a, a:hover {
   margin-left: 5px;
   color: #666666;
 }
+.wrap-navBar-toggle{
+  margin-bottom:15px;
+  width: 100%;
+  float: left;
+}
 .formBusca-toggler{
   display:none;
 }
@@ -373,6 +378,9 @@ margin-right: 10px;
   font-size: 16px;
   margin:20px 0;
 }
+.unidades .pEndereco{
+  min-height: 85px;
+}
 .rodapeBg_bc{
   background-color: #42A3CD;
   height: 80px;
@@ -410,7 +418,7 @@ div.paginacao{
   float:left;
   text-align:center;
   width:100%;
-  margin-top: 50px;
+  margin: 30px 0;
 }
 div.pagina{
   display:inline-block;

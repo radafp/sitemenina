@@ -30,6 +30,27 @@
                 }
             });
         });
+        $(".registra_click_publicidade").click(function(e) {
+        
+            _obj = $(this);
+            _codPublicidade = _obj.attr('rel');
+            
+            $.ajax(
+            {
+                type: "POST",
+                async: false,
+                url: "<?=base_url('/assets/ajax/publicidade.php');?>",
+                data:
+                {
+                    cod: _codPublicidade
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { 
+                
+            });
+        });
     });
 </script>
 <div class="container">
@@ -42,7 +63,7 @@
                     <span>Notícias</span>
                 </h1>
 
-                <div class='blocoNoticiaDescricao'>
+                <div class='blocoNoticiaDescricao'> 
                     
                     <?php foreach($descricao_noticia as $info):?>
         
@@ -78,10 +99,10 @@
                 
             </div> <!-- contLeft -->
             <div class="col-xs-12 col-md-4 contRight">
-                
-            <?php if(count($banner_tipo3)>0) :?>
+            <?php $nbanner_tipo3 = count($banner_tipo3); ?>   
+            <?php if($nbanner_tipo3 >0) :?>
             <?PHP $cod = array();?>
-            <?php foreach($banner_tipo3 as $info):?>
+            <?php foreach($banner_tipo3 as $key=>$info):?>
                     <?php array_push($cod, $info['cod']); ?>
                     <div class="wrapBanner">
                         <?php if($info['link'] != ''): ?>
@@ -92,8 +113,52 @@
                             </a>
                         <?php endif; ?>
                     </div>
+                    <?php 
+                        if($nbanner_tipo3  >= 2):
+                            if($key==1):
+                            ?>
+                                <div class="blocoMaisLidas">
+                                    <h1 class="tituloPadrao3">
+                                        <span>As mais lidas</span>
+                                    </h1>
+                                    <?php foreach($mais_lidas as $info):?>
+                                    <div class="noticia">
+                                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                                            <div class="foto">
+                                                <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
+                                            </div>
+                                            <span class="categoria" style="background-color:#<?=$info['cor'];?>; color:<?=(isset($info['corTexto']) != '') ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></span>
+                                            <h3><?php echo $info['tituloPt']?></h3>
+                                        </a> 
+                                    </div>
+                                    <?php endforeach?> 
+                                </div>
+                            <?php
+                            endif;
+                        endif;
+                    ?>
                 <?php endforeach;
-                    // var_dump($cod);
+                //echo count($banner_tipo3);
+                if($nbanner_tipo3 <2):
+                ?>
+                <div class="blocoMaisLidas">
+                    <h1 class="tituloPadrao3">
+                        <span>As mais lidas</span>
+                    </h1>
+                    <?php foreach($mais_lidas as $info):?>
+                    <div class="noticia">
+                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                            <div class="foto">
+                                <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
+                            </div>
+                            <span class="categoria" style="background-color:#<?=$info['cor'];?>; color:<?=(isset($info['corTexto']) != '') ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></span>
+                            <h3><?php echo $info['tituloPt']?></h3>
+                        </a> 
+                    </div>
+                    <?php endforeach?> 
+                </div>
+                <?php
+                endif;
                 switch(count($cod)) {
                     case 4:
                         $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
@@ -114,23 +179,6 @@
                         $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
                         break;
                 }endif;?>
-                <div class="blocoMaisLidas">
-                    <h1 class="tituloPadrao3">
-                        <span>As mais lidas</span>
-                    </h1>
-                    <?php foreach($mais_lidas as $info):?>
-                    <div class="noticia">
-                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
-                            <div class="foto">
-                                <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
-                            </div>
-                            <span class="categoria" style="background-color:#<?=$info['cor'];?>; color:<?=(isset($info['corTexto']) != '') ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></span>
-                            <h3><?php echo $info['tituloPt']?></h3>
-                        </a> 
-                    </div>
-                    <?php endforeach?> 
-                </div>
-
             </div> <!-- contRight -->
 
         </div>  <!-- row --> 

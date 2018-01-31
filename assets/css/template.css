@@ -1,11 +1,13 @@
 /*-- conteúdos --*/
 
 /*-- região --*/
-.tituloPadrao1{
+
+.tituloPadrao1 {
     width: 100%;
     border-bottom: 1px solid #cccccc;
     padding-bottom: 22px;
     margin-bottom: 30px;
+    text-align: center;
 }
 .tituloPadrao1 span{
     border-bottom: 3px solid #6BBA4F;
@@ -19,6 +21,7 @@
     padding-bottom: 22px;
     color: #ffffff;
     margin-bottom: 30px;
+    text-align: center;  
 }
 .tituloPadrao2 span{
     border-bottom: 3px solid #6BBA4F;
@@ -31,6 +34,7 @@
     border-bottom: 1px solid #cccccc;
     padding-bottom: 22px;
     margin-bottom: 30px;
+    text-align: center;
 }
 .tituloPadrao3 span{
     border-bottom: 3px solid #6BBA4F;
@@ -262,9 +266,7 @@
 .progEnqMsg .wrapEnquete .msgRetornoResposta{
     min-height: 260px;
     text-align: center;
-    font-size: 20px;
     padding-top: 50px;
-    font-weight: bold;
 }
 .progEnqMsg .enquete{
     margin-bottom: 20px
@@ -273,13 +275,11 @@
     position: relative;
     float: left;
     width: 100%;
-    min-height: 343px;
 }
 
 .progEnqMsg .wrapSemEnquete p{
     text-align: center;
     font-size: 16px;
-    padding-top: 50px;
 
 }
 .wrapMensagemDoDia a, .wrapMensagemDoDia a:hover{
@@ -297,18 +297,21 @@
 /*----------  CSS páginas internas ---------------------------*/ 
 
 /* css global */
-.blocoConteudo{
+
+.blocoConteudo {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
-    margin: 50px -15px;
+    margin: 0px;
     padding: 40px 0;
 }
-.blocoConteudo .contLeft{
-    padding-left:50px;
+
+.blocoConteudo .contRight .wrapBanner{
+    margin-bottom: 20px
 }
-.blocoConteudo .contRight{
-    padding-right: 50px;
+.blocoConteudo .contRight .wrapBanner img{
+    max-width: 100%;
 }
+
 /* fim css global */
 
 /* css programação */
@@ -320,7 +323,6 @@
 }
 .blocoMenuProgramacao .menuProgramacao{
     position: relative;
-    width: 60%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -334,29 +336,26 @@
     font-weight: bold;
 }
 .blocoMenuProgramacao .menuProgramacao .semanal{
-    width: 128px;
     float: left;
     background: #F2B576;
     text-align: center;
-    padding: 15px 0;
-    border-top-left-radius: 80px;
+    padding: 15px;
+    border-top-left-radius:80px;
     border-bottom-left-radius: 80px;
     display: inline;
 }
 .blocoMenuProgramacao .menuProgramacao .sabado{
-    width: 128px;
     float: left;
     background: #F2B576;
     text-align: center;
-    padding: 15px 0;
+    padding: 15px;
     display: inline;
 }
 .blocoMenuProgramacao .menuProgramacao .domingo{
-    width: 128px;
     float: left;
     background: #F2B576;
     text-align: center;
-    padding: 15px 0;
+    padding: 15px;
     border-top-right-radius: 80px;
     border-bottom-right-radius: 80px;
     display: inline;
@@ -370,14 +369,15 @@
     width: 100%;
     float: left;
 }
-.blocoProgramacao .linhaPrograma .programa{
+.blocoProgramacao .linhaPrograma .programa {
     float: left;
-    width: 46.58%;
+    width: 100%;
     border: 1px solid #F3F3F3;
     padding: 15px;
     min-height: 260px;
     margin-right: 15px;
     text-align: center;
+    background: #ffffff;
 }
 .blocoProgramacao .linhaPrograma .foto{
     max-height: 120px;
@@ -403,17 +403,33 @@
  }
 .blocoProgramacao .linhaPrograma .programaRight{
     float: right;
-    
-    width: 46.57%;
+    width: 100%;
     margin-left: 15px;
     margin-right: 0;
 }
-.blocoProgramacao .linhaPrograma .conexaoPrograma{
+
+.blocoProgramacao .linhaPrograma .conexaoPrograma {
     float: left;
+    width: 100%;
+    text-align: center;
+    height: 45px;
+    z-index: 0;
+    overflow: hidden;
+    
 }
+.blocoProgramacao .linhaPrograma .conexaoPrograma img{
+    margin-top: -107px;
+}
+
 .blocoProgramacao .linhaPrograma .conexaoProgramaRight{
-    float: right;
+    float: left;
+    width: 100%;
+    text-align: center;
+    height: 45px;
+    z-index: 0;
+    overflow: hidden;
 }
+
 
 .blocoProgramacaoDescricao{
     width: 100%;
@@ -458,23 +474,26 @@
     float: left;
     margin-bottom: 30px;
 }
-.blocoNoticias .noticia .foto{
-    max-height: 150px;
-    max-width: 200px;
+ .blocoNoticias .noticia .foto {
+    max-height: 88px;
+    max-width: 110px;
     overflow: hidden;
     float: left;
-    margin-right: 30px;
-    min-width: 200px;
-    text-align: center; 
- }
- .blocoNoticias .noticia .foto img{
-    max-height: 150px;
+    margin-right: 14px;
+    min-width: 110px;
+    text-align: center;
 }
-.blocoNoticias .noticia  h3{
-    font-size: 18px;
-    margin-top: 15px
+.blocoNoticias .noticia .foto img {
+    max-height: 88px;
 }
-.blocoNoticias .noticia .categoria{
+.blocoNoticias .noticia h3 {
+    font-size: 15px;
+    margin-top: 0;
+}
+.bloconoticias .noticia .wrapSpamCategoria{
+    height: 30px;
+}
+.blocoNoticias .noticia .wrapSpamCategoria .categoria{
     padding: 5px 15px;
     border-radius: 3px;
     text-transform: uppercase;
@@ -486,6 +505,7 @@
 .blocoNoticias .noticia  p{
     color: #999999;
     font-weight: 500;
+    margin-bottom: 0
 }
 
 .blocoMaisLidas .noticia{
@@ -577,15 +597,17 @@
     width: 100%;
     float: left;
     margin-bottom: 20px;
+    border: 1px solid #cccccc;
 }
-.blocoTop10 .top10 .esquerda{
+
+.blocoTop10 .top10 .esquerda {
     float: left;
-    width: 65%;
+    width: 100%;
 }
 .blocoTop10 .top10 .direita{
-    width: 30%;
-    float: right;
+    display:none;
 }
+
 .blocoTop10 .top10 .esquerda .foto{
     max-height: 150px;
     max-width: 200px;
@@ -610,6 +632,7 @@
 }
 .blocoTop10 .top10 .esquerda h3{
     font-size: 16px;
+    margin-top: 20px;
 }
 .blocoTop10 .top10 .direita span{
     display: block;
@@ -632,7 +655,7 @@
     float: left;
     margin-right: 20px;
     margin-bottom: 20px;
-    max-width: 45%;
+    max-width: 100%;
     min-height: 450px;
     min-height: 315px;
 
@@ -666,10 +689,9 @@
     float: left;
     margin-right: 20px;
     margin-bottom: 20px;
-    max-width: 45%;
+    max-width: 100%;
     min-height: 450px;
     min-height: 315px;
-
 }
 .blocoPromocoes .promocao .foto{
     overflow: hidden;
@@ -724,15 +746,15 @@
     width: 100%;
 
 }
-.blocoEventos .evento{
+
+.blocoEventos .evento {
     float: left;
     margin-right: 20px;
     margin-bottom: 20px;
-    max-width: 45%;
+    max-width: 100%;
     min-width: 45%;
     min-height: 450px;
     min-height: 315px;
-
 }
 .blocoEventos .evento .foto{
     overflow: hidden;
@@ -795,15 +817,17 @@
 .blocoBolsaDeEmpregos .bolsaDeEmpregos.ultimo{
     margin-right: 0;
 }
-.blocoBolsaDeEmpregos .bolsaDeEmpregos .foto{
-    max-height: 150px;
-    max-width: 200px;
+ .blocoBolsaDeEmpregos .bolsaDeEmpregos .foto {
+    max-height: 88px;
+    max-width: 110px;
     overflow: hidden;
     float: left;
-    margin-right: 30px;
- }
+    margin-right: 14px;
+    min-width: 110px;
+    text-align: center;
+}
  .blocoBolsaDeEmpregos .bolsaDeEmpregos .foto img{
-    max-height: 150px;
+    max-height: 88px;
 
 }
 .blocoBolsaDeEmpregos .bolsaDeEmpregos p{
@@ -829,15 +853,17 @@
 .blocoDocumentosPerdidos .documentosPerdidos.ultimo{
     margin-right: 0;
 }
-.blocoDocumentosPerdidos .documentosPerdidos .foto{
-    max-height: 150px;
-    max-width: 200px;
+.blocoDocumentosPerdidos .documentosPerdidos .foto {
+    max-height: 88px;
+    max-width: 110px;
     overflow: hidden;
     float: left;
-    margin-right: 30px;
- }
- .blocoDocumentosPerdidos .documentosPerdidos .foto img{
-    max-height: 150px;
+    margin-right: 14px;
+    min-width: 110px;
+    text-align: center;
+}
+.blocoDocumentosPerdidos .documentosPerdidos  .foto img{
+    max-height: 88px;
 
 }
 .blocoDocumentosPerdidos .documentosPerdidos p{
@@ -851,7 +877,7 @@
 
 
 
-.blocoHistoria{
+/* .blocoHistoria{
     margin: 0 35px;
 }
 .blocoHistoria .ano{
@@ -866,15 +892,96 @@
 }
 .blocoHistoria p{
 
+} */
+
+.blocoHistoria{
+    width: 100%;
+    margin: 35px 0;
+    float: left;
+}
+.blocoHistoria .linhaHistoria{
+    width: 100%;
+    float: left;
+}
+.blocoHistoria .linhaHistoria .historia {
+    float: left;
+    width: 100%;
+    border: 1px solid #F3F3F3;
+    padding: 15px;
+    min-height: 260px;
+    margin-right: 15px;
+    text-align: center;
+    background: #ffffff;
+}
+.blocoHistoria .linhaHistoria .historia .ano {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.blocoHistoria .linhaHistoria .foto{
+    max-height: 120px;
+    max-width: 200px;
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: auto;
+}
+.blocoHistoria .linhaHistoria .foto img{
+    max-height: 120px;
+}
+.blocoHistoria .linhaHistoria h3{
+    font-size: 18px;
+    margin-top: 15px
+ }
+ .blocoHistoria .linhaHistoria .infos{
+    clear: both;
+    padding-top: 20px;
+ }
+ .blocoHistoria .linhaHistoria .infos p{
+    color: #999999;
+    font-weight: 500;
+ }
+.blocoHistoria .linhaHistoria .historiaRight{
+    float: right;
+    width: 100%;
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+.blocoHistoria .linhaHistoria .conexaoHistoria {
+    float: left;
+    width: 100%;
+    text-align: center;
+    height: 45px;
+    z-index: 0;
+    overflow: hidden;
+    
+}
+.blocoHistoria .linhaHistoria .conexaoHistoria.ultima{
+    display: none;
+}
+.blocoHistoria .linhaHistoria .conexaoHistoria img{
+    margin-top: -107px;
+}
+
+.blocoHistoria .linhaHistoria .conexaoHistoriaRight{
+    float: left;
+    width: 100%;
+    text-align: center;
+    height: 45px;
+    z-index: 0;
+    overflow: hidden;
 }
 
 
 .blocoEquipe{
-    margin: 0 35px;
+    /* margin: 0 35px; */
 }
 .blocoEquipe .fotoEquipe{
     margin-left: auto;
     margin-right: auto;
+}
+.blocoEquipe .fotoEquipe img{
+    max-width: 100%
 }
 .blocoContato .btContato_bc{
     background-color: #2d82a5;
@@ -953,6 +1060,29 @@
 }
 /* Responsivo */
 @media only screen and (min-width: 980px) {
+    .tituloPadrao1{
+        width: 100%;
+        border-bottom: 1px solid #cccccc;
+        padding-bottom: 22px;
+        margin-bottom: 30px;
+        text-align: left
+    }
+    .tituloPadrao2{
+        width: 100%;
+        border-bottom: 1px solid #cccccc;
+        padding-bottom: 22px;
+        color: #ffffff;
+        margin-bottom: 30px; 
+        text-align: left
+    }
+    
+    .tituloPadrao3{
+        width: 100%;
+        border-bottom: 1px solid #cccccc;
+        padding-bottom: 22px;
+        margin-bottom: 30px;
+        text-align: left;
+    }
     .formBusca-toggler{
         display:none;
     }
@@ -1046,6 +1176,174 @@
         margin-top: 8px;
         float: left;
     }
+    .blocoConteudo{
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 5px;
+        margin: 0px -15px;
+        padding: 40px 0;
+    }
+    .blocoConteudo .contLeft{
+        padding-left:50px;
+    }
+
+    .blocoConteudo .contRight{
+        padding-right: 50px;
+    }
+    .blocoConteudo .contLeftRight{
+        padding: 0 50px;
+    }
+
+    .blocoMenuProgramacao .menuProgramacao{
+        position: relative;
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .blocoMenuProgramacao .menuProgramacao .semanal{
+        float: left;
+        background: #F2B576;
+        text-align: center;
+        padding: 15px 20px;
+        border-top-left-radius: 80px;
+        border-bottom-left-radius: 80px;
+        display: inline;
+    }
+    .blocoMenuProgramacao .menuProgramacao .sabado{
+        float: left;
+        background: #F2B576;
+        text-align: center;
+        padding: 15px 20px;
+        display: inline;
+    }
+    .blocoMenuProgramacao .menuProgramacao .domingo{
+        float: left;
+        background: #F2B576;
+        text-align: center;
+        padding: 15px 20px;
+        border-top-right-radius: 80px;
+        border-bottom-right-radius: 80px;
+        display: inline;
+    }
+
+    .blocoProgramacao .linhaPrograma .programa{
+        width: 46.58%;
+    }
+    .blocoProgramacao .linhaPrograma .conexaoPrograma{
+        width: 2.65%;
+        float: left;
+        min-height: 260px;
+    }
+    .blocoProgramacao .linhaPrograma .conexaoPrograma img{
+        margin-top:0px
+    }
+    .blocoProgramacao .linhaPrograma .programaRight{
+        width: 46.57%;
+    }
+    .blocoProgramacao .linhaPrograma .conexaoProgramaRight{
+        width: 2.65%;
+        float: right;
+        min-height: 258px;
+    }
+    .blocoProgramacao .linhaPrograma .conexaoProgramaRight img{
+        margin-top:0px
+    }
+
+    
+
+    .progEnqMsg .wrapSemEnquete{
+        min-height: 343px;
+    }
+    .blocoNoticias .noticia .foto{
+        max-height: 150px;
+        max-width: 200px;
+        overflow: hidden;
+        float: left;
+        margin-right: 30px;
+        min-width: 200px;
+        text-align: center; 
+     }
+     .blocoNoticias .noticia .foto img{
+        max-height: 150px;
+    }
+    .blocoNoticias .noticia  h3{
+        font-size: 18px;
+        margin-top: 15px
+    }
+    .bloconoticias .noticia .wrapSpamCategoria{
+        height: auto;
+    }
+    .blocoTop10 .top10 .esquerda{
+        float: left;
+        width: 70%;
+    }
+    .blocoTop10 .top10 .direita{
+        width: 30%;
+        float: right;
+        padding-top: 18px;
+        text-align: center;
+        display: block
+    }
+    .wrap-navBar-toggle{
+        display: none
+    }
+    .blocoEventos .evento{
+        max-width: 45%;
+    }
+
+    .blocoVideos .video {
+        max-width: 45%;
+    }
+    .blocoPromocoes .promocao{
+        max-width: 45%;
+    }
+    .blocoBolsaDeEmpregos .bolsaDeEmpregos .foto{
+        max-height: 150px;
+        max-width: 200px;
+        overflow: hidden;
+        float: left;
+        margin-right: 30px;
+     }
+     .blocoBolsaDeEmpregos .bolsaDeEmpregos .foto img{
+        max-height: 150px;
+    
+    }
+    .blocoDocumentosPerdidos .documentosPerdidos .foto{
+        max-height: 150px;
+        max-width: 200px;
+        overflow: hidden;
+        float: left;
+        margin-right: 30px;
+     }
+     .blocoDocumentosPerdidos .documentosPerdidos .foto img{
+        max-height: 150px;
+    
+    }
+
+    .blocoHistoria .linhaHistoria .historia{
+        width: 46.58%;
+    }
+    .blocoHistoria .linhaHistoria .conexaoHistoria{
+        width: 4.1%;
+        float: left;
+        min-height: 260px;
+    }
+    .blocoHistoria .linhaHistoria .conexaoHistoria.ultima{
+        display: block;
+    }
+    .blocoHistoria .linhaHistoria .conexaoHistoria img{
+        margin-top:0px
+    }
+    .blocoHistoria .linhaHistoria .historiaRight{
+        width: 46.57%;
+    }
+    .blocoHistoria .linhaHistoria .conexaoHistoriaRight{
+        width: 4.1%;
+        float: right;
+        min-height: 258px;
+    }
+    .blocoHistoria .linhaHistoria .conexaoHistoriaRight img{
+        margin-top:0px
+    }
 
 
 
@@ -1056,6 +1354,10 @@
     .redes .face{
         margin-bottom: 10px;
     }
+    .unidades .unidade{
+        text-align: left;
+
+      }
 
     
     

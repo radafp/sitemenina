@@ -21,6 +21,27 @@
                 }
             });
         });
+        $(".registra_click_publicidade").click(function(e) {
+        
+            _obj = $(this);
+            _codPublicidade = _obj.attr('rel');
+            
+            $.ajax(
+            {
+                type: "POST",
+                async: false,
+                url: "<?=base_url('/assets/ajax/publicidade.php');?>",
+                data:
+                {
+                    cod: _codPublicidade
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { 
+                
+            });
+        });
     });
 </script>
 <div class="container">
@@ -38,7 +59,11 @@
                     89% da população brasileira é ouvinte de rádio, tornando este veículo de indiscutível relevância, grande geradora de negócios.
                     </p>
                     <p>
-                    Anuncie na rádio. Clique <a class='link_contato' href="<?php echo base_url($_SESSION['city'].'/contato')?>">aqui</a> e solicite mais informações.
+                    Anuncie na rádio. <br><br>
+                    <span style="font-weight:bold">Mídia Kit</span><br><br>
+                    <a href="<?=base_url('/assets/arquivos/midia-kit/midia-kit-'.$_SESSION['regiao'].'.pdf');?>" target="_blank">
+                        <img src="<?=base_url('/assets/img/icoPDF.png');?>" title="Midia Kit">  Clique para fazer download.
+                    </a>
                     </p>
                 </div> 
 

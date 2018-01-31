@@ -23,6 +23,28 @@
 
             window.history.pushState(null, 'Home', $(this).attr('href'));
         });
+
+        $(".registra_click_publicidade").click(function(e) {
+        
+            _obj = $(this);
+            _codPublicidade = _obj.attr('rel');
+            
+            $.ajax(
+            {
+                type: "POST",
+                async: false,
+                url: "<?=base_url('/assets/ajax/publicidade.php');?>",
+                data:
+                {
+                    cod: _codPublicidade
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { 
+                
+            });
+        });
     });
 </script>
 <div class="container">
@@ -114,7 +136,7 @@
                             <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$p;?>"><?=$p;?></a>
                         </div>
                         
-                        <?php if($pHome+10 <= $count):?>
+                        <?php if($pHome+16 <= $count):?>
                             <div class='pagina'>
                                 <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$proxima;?>"><?=$proxima;?></a>
                             </div>

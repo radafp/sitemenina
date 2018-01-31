@@ -23,6 +23,12 @@ if($cods != '')
 
         while($tp = mysql_fetch_assoc($q))
         {
+            /** EXCLUIR Enquete stats */
+            $sqlDelStatus = "DELETE FROM enquetesStatus WHERE codPergunta = '{$tp['cod']}'";
+            $qDelStatus = mysql_query($sqlDelStatus);
+               
+            /** FIM - EXCLUIR enquete stats */ 
+
             $qRespostas = mysql_query("SELECT * FROM enquetesRespostas WHERE codPergunta = '{$tp['cod']}'");
             $nDelRespostas = mysql_num_rows($qRespostas);
             if($nDelRespostas>0)
@@ -41,7 +47,7 @@ if($cods != '')
                 }
             }
              
-            /** EXCLUIR CATEGORIA */
+            /** EXCLUIR Enquete pergunta */
             $sqlDel = "DELETE FROM enquetesPerguntas WHERE cod = '{$tp['cod']}'";
             for($a=0;$a<5;$a++)
             {
@@ -55,7 +61,7 @@ if($cods != '')
             {
                 $erros++;
             }
-            /** FIM - EXCLUIR CATEGORIA */                    
+            /** FIM - EXCLUIR enquete pergunta */                  
         }
             
     }

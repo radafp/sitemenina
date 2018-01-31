@@ -1,3 +1,30 @@
+<script type="text/javascript">
+     $(document).ready(function(){
+
+        $(".registra_click_publicidade").click(function(e) {
+        
+            _obj = $(this);
+            _codPublicidade = _obj.attr('rel');
+            
+            $.ajax(
+            {
+                type: "POST",
+                async: false,
+                url: "<?=base_url('/assets/ajax/publicidade.php');?>",
+                data:
+                {
+                    cod: _codPublicidade
+                },
+                dataType: "json"
+            })
+            .done(function(_json)
+            { 
+                
+            });
+        });
+
+    });
+</script>
 <div class="container">  
     <div class="blocoConteudo"> 
         <div class="row">
@@ -9,49 +36,57 @@
                 </h1>
                 <div class="blocoTop10">
 
-                    <?php foreach($top_10 as $info): ?>
-                        <div class="top10">
-                            <div class="esquerda">
-                                <?php 
-                                $codVideo = explode('=',$info['link']);
-                                if($codVideo[1] != ''):
-                                 
-                                    $imagemCapa = '';                
-                                    $output = array();
-                                    $url = $info['link'];
-                                    preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $output);
-                                    $imagemCapa = 'https://img.youtube.com/vi/' . $output[0] . '/0.jpg';
-                                    ?>
+                    <?php 
+                    if(count($top_10)>0):
+                        foreach($top_10 as $info): ?>
+                            <div class="top10">
+                                <div class="esquerda">
+                                    <?php 
+                                    $codVideo = explode('=',$info['link']);
+                                    if($codVideo[1] != ''):
+                                    
+                                        $imagemCapa = '';                
+                                        $output = array();
+                                        $url = $info['link'];
+                                        preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $output);
+                                        $imagemCapa = 'https://img.youtube.com/vi/' . $output[0] . '/0.jpg';
+                                        ?>
 
-                                    <div class="foto">
+                                        <div class="foto">
+                                            <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="445">
+                                                <img src="<?=$imagemCapa;?>" style="max-width:100%">  
+                                                <div class="btPlayYoutube">
+                                                    <img src="<?php echo base_url('/assets/img/playYoutube.png');?>">
+                                                </div>
+                                            </a>
+                                        </div> 
                                         <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="445">
-                                            <img src="<?=$imagemCapa;?>" style="max-width:100%">  
-                                            <div class="btPlayYoutube">
-                                                <img src="<?php echo base_url('/assets/img/playYoutube.png');?>">
-                                            </div>
+                                            <h3><?php echo $info['titulo']?></h3>
                                         </a>
-                                    </div> 
-                                    <h3><?php echo $info['titulo']?></h3>
-                                    <!-- <p><?//php echo $info['link']?></p> -->
-                                    <?php endif ?>
+                                        <!-- <p><?//php echo $info['link']?></p> -->
+                                        <?php endif ?>
+                                </div>
+                                <div class="direita">
+                                    <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="445">
+                                        <img src="<?php echo base_url('/assets/img/play-top10.png')?>" title="">
+                                    </a>
+                                </div>
                             </div>
-                            <div class="direita">
-                                <a href="https://www.youtube.com/embed/<?=$codVideo[1];?>" data-toggle="lightbox" data-width="695" data-height="445">
-                                    <img src="<?php echo base_url('/assets/img/play-top10.png')?>" title="">
-                                    <span style="display:block; float:left">Ouvir</span>
-                                </a>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                
+                            <?php 
+                        endforeach; 
+                    endif;
+                    ?>
                 </div>
 
             </div> <!-- contLeft -->
             <div class="col-xs-12 col-md-4 contRight">
-            <?php if(count($banner_tipo3)>0) :?>
-            <?PHP $cod = array();?>
-            <?php foreach($banner_tipo3 as $info):?>
-                    <?php array_push($cod, $info['cod']); ?>
+            <?php 
+                if(count($banner_tipo3)>0) :
+                    $cod = array();
+                    
+                    foreach($banner_tipo3 as $info):
+                        array_push($cod, $info['cod']); 
+                    ?>
                     <div class="wrapBanner">
                         <?php if($info['link'] != ''): ?>
                             <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
@@ -61,28 +96,32 @@
                             </a>
                         <?php endif; ?>
                     </div>
-                <?php endforeach;
+                    <?php 
+                    endforeach;
+                    
                     // var_dump($cod);
-                switch(count($cod)) {
-                    case 4:
-                        $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
-                        $_SESSION['cod_banner_tipo3_2'] = $cod[1];
-                        $_SESSION['cod_banner_tipo3_3'] = $cod[2]; 
-                        $_SESSION['cod_banner_tipo3_4'] = $cod[3];
-                        break;
-                    case 3:
-                        $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
-                        $_SESSION['cod_banner_tipo3_2'] = $cod[1];
-                        $_SESSION['cod_banner_tipo3_3'] = $cod[2]; 
-                        break;
-                    case 2:
-                        $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
-                        $_SESSION['cod_banner_tipo3_2'] = $cod[1];
-                        break;
-                    case 1:
-                        $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
-                        break;
-                }endif;?>
+                    switch(count($cod)) {
+                        case 4:
+                            $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
+                            $_SESSION['cod_banner_tipo3_2'] = $cod[1];
+                            $_SESSION['cod_banner_tipo3_3'] = $cod[2]; 
+                            $_SESSION['cod_banner_tipo3_4'] = $cod[3];
+                            break;
+                        case 3:
+                            $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
+                            $_SESSION['cod_banner_tipo3_2'] = $cod[1];
+                            $_SESSION['cod_banner_tipo3_3'] = $cod[2]; 
+                            break;
+                        case 2:
+                            $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
+                            $_SESSION['cod_banner_tipo3_2'] = $cod[1];
+                            break;
+                        case 1:
+                            $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
+                            break;
+                    }
+                endif;
+            ?>
                 
             </div> <!-- contRight -->
 

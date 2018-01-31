@@ -452,7 +452,8 @@ class Novomenina_model extends CI_Model{
             "SELECT * FROM videos 
                 WHERE videos.regiao = '$regiao' 
                 AND videos.mostrar = 1
-                LIMIT $limit, 15"
+            ORDER BY cod DESC
+            LIMIT $limit, 16"
         );
         return $query->result_array();
     }
@@ -608,7 +609,7 @@ class Novomenina_model extends CI_Model{
                 FROM eventos 
                     WHERE eventos.regiao = '$regiao' 
                     AND eventos.mostrar = 1 
-                    AND eventos.dataInicio >= ".date('Ymd')."
+                    AND eventos.dataFim >= ".date('Ymd')."
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataInicio ASC 
                 LIMIT $limit, 15
@@ -734,7 +735,7 @@ class Novomenina_model extends CI_Model{
                     WHERE empregos.regiao = '$regiao' 
                     AND empregos.mostrar = 1 
                 GROUP BY empregos.cod
-                ORDER BY empregos.dataCadastro DESC
+                ORDER BY empregos.dataPublicacao DESC
                 LIMIT $limit, 15
         "); 
         return $query->result_array();
@@ -876,6 +877,7 @@ class Novomenina_model extends CI_Model{
 
     // metodo usado na pagina inicial
     public function enquetes($regiao) {
+        
         $query = $this->db->query(
             "SELECT 
             enquetesPerguntas.cod as cod_perg,
@@ -971,7 +973,7 @@ class Novomenina_model extends CI_Model{
                     WHERE equipe.regiao = '$regiao' 
                     AND equipe.mostrar = 1 
                 GROUP BY equipe.cod
-                ORDER BY equipe.dataCadastro DESC
+                ORDER BY equipe.tituloPt ASC
         "); 
         return $query->result_array();
     }

@@ -58,7 +58,9 @@
 
 <div class="container">
     <div class="row publicidade">
-        <?php if(count($banner_tipo1)>0) :?>
+        <?php if(count($banner_tipo1)>0) :
+            $_SESSION['cod_banner_tipo1'] = '';
+            ?>
         <?php  $banners = array();?>
         <?php foreach($banner_tipo1 as $info):?>
             <?php $_SESSION['cod_banner_tipo1'] = $info['cod']; ?>
@@ -161,7 +163,10 @@
 
 <div class="container">
     <div class="row publicidade">
-        <?php if(count($banner_tipo2)>0) :?>
+        <?php if(count($banner_tipo2)>0) :
+            $_SESSION['cod_banner_tipo2_1'] = '';
+            $_SESSION['cod_banner_tipo2_2'] = '';
+            ?>
         <?PHP $cod = array();?>
         <?php foreach($banner_tipo2 as $info):?>
                 <?php array_push($cod, $info['cod']); ?>
@@ -229,6 +234,7 @@
                 $nEnquetes = count($enquetes);
                 foreach($enquetes as $info):
                     $pergunta = $info['pergunta'];
+                    $codPergunta = $info['cod_perg'];
                 endforeach; 
                 
                 if($nEnquetes>0)
@@ -237,7 +243,7 @@
                     <h3><?= $pergunta?></h3>
                     <form class='form_enquete' role='form' action="<?php base_url();?>/home/enquete_dados" method='POST'>
                         <div class="wrapEnquete">
-                        
+                            <input type="hidden" name="codPergunta" value="<?=$codPergunta;?>">
                             <?php foreach($enquetes as $info):?>
                                 <div class="respostas">
                                     <input class='resposta' type="radio" name="resposta" value="<?= $info['cod_resp']?>"><p><?= $info['resposta']?></p>    
@@ -263,6 +269,7 @@
                     <span>Mensagem do Dia</span>
                 </h1>
                 <div class="wrapMensagemDoDia">
+                <?php if(count($videos_home)>0):?>
                     <?php foreach($videos_home as $info):?>
                     <?php 
                         $codVideo = explode('=',$info['link']);
@@ -282,13 +289,10 @@
                         </a> 
                             <!-- <iframe style="width: 100%; max-height:250px" src="" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe> -->
                         <?php
-                        }else{
-                        ?>
-                            <p>Nenhuma mensagem cadastrada.</p>   
-                        <?php
                         }
                         ?>
                     <?php endforeach?>
+                    <?php endif;?>
                 </div>
             </div>
     </div> <!-- row -->
@@ -323,6 +327,8 @@
                         content.fadeOut('fast', function(){
                             content.html( data ).fadeIn();
                         });
+                        $('html,body').animate({ scrollTop: $("#anc").offset().top },'slow');
+
                     },100);
                 }
             });
@@ -331,6 +337,9 @@
         $("#enviar_resp").click(function(e) {
             _obj = $(this);
             _codResposta = $("input[name='resposta']:checked").val();
+            console.log(_codResposta);
+            _codPergunta = $("input[name='codPergunta']").val();
+            console.log(_codPergunta);
             var booleanVlaueIsChecked = false;
             if (!_codResposta) {
                 booleanVlaueIsChecked = true;
@@ -341,29 +350,25 @@
                 $.ajax(
                 {
                     type: "POST",
-                    async: false,
+                    async: true,
                     url: "<?= base_url('/assets/ajax/enquete.php');?>",
                     data:
                     {
-                        cod: _codResposta,
+                        codResposta: _codResposta,
+                        codPergunta: _codPergunta
                     },
-                    dataType: "json"
+                    dataType: "json",
+                    success: function( response ){
+                        window.setTimeout( function(){
+                            $('.respostas').fadeOut('fast', function(){
+                                $("#resposta").html("<b>Obrigado por particilar!</b> </br></br>Confira o resultado:<br><br>"+response).fadeIn();
+                            });
+                        },100);
+                    },
+                    error: function (result) {
+                        console.log(result);
+                    }
                 })
-                .done(function(_json)
-                { 
-                    window.setTimeout( function(){
-                        $('.respostas').fadeOut('fast', function(){
-                            $("#resposta").html("Obrigado por particilar! </br>_json").fadeIn();
-                        });
-                    },100);
-                    /*
-                    window.setTimeout( function(){
-                        $('#resposta').fadeOut('fast', function(){
-                            $(".respostas").fadeIn();
-                        });
-                    },3500);
-                    */
-                });
             }
 
         }); 
