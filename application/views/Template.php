@@ -77,7 +77,7 @@
                                 $('.navbar-toggler').attr({'aria-expanded': 'false'}); 
                                 $(".navbar-collapse").removeClass("show");
 
-                                if(href != 'http://www.novomenina.web7097.uni5.net/balneario-camboriu'){
+                                if(href != 'http://www.portalmenina.com.br/balneario-camboriu'){
                                     $('html,body').animate({ scrollTop: $("#anc").offset().top },'slow');
                                 }
                                 //setAttribute("aria-expanded", "false")
@@ -120,8 +120,6 @@
         
                     window.history.pushState(null, 'Home', $(this).attr('href'));
                 })
-                
-
 
                 /* Whatsapp */
                 /* jQuery("a.whatsapp").unbind("click").bind("click", function()
@@ -211,7 +209,7 @@
                                 <form action="" id="formRegiao" method='POST'>
                                     <select name="selectRegiao" id='regiao'>
                                         <option value="/balneario-camboriu" <?=$_SESSION['regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
-                                        <option value="/blumenal" <?=$_SESSION['regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
+                                        <option value="/blumenau" <?=$_SESSION['regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
                                         <option value="/lages" <?=$_SESSION['regiao'] == 'lg' ? 'selected' : '';?> >Lages</option>
                                     </select>
                                 </form>
@@ -372,6 +370,45 @@
                             <div class="wrapFotoTipo1">
                                 <img src="<?php echo base_url('/assets/img/temp/insta4_'.$_SESSION['regiao']).'.jpg';?>" alt="">
                             </div>
+                            <?php 
+                            /* switch(isset($_SESSION['regiao'])){
+                                case 'bc':
+                                    $userid = "1261127122";
+                                    $accessToken = "1261127122.6d7beb5.c32b85c115d240eeb11e6ed048e9c61f";
+                                    $url = "https://api.instagram.com/v1/users/{$userid}/media/recent/?access_token={$accessToken}";
+                                    $result = file_get_contents($url);
+                                    $result = json_decode($result);
+                                    break;
+                            }
+                            for($i=0;$i<4;$i++)
+                            {
+                                $foto = $result->data[$i];
+                            ?>
+                                <?php if($i==0): ?>
+                                <div class="wrapFotoTipo1">
+                                    <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                </div>
+                                <?php endif; ?>
+                                <div class="wrapFotoTipo2">
+                                    <?php if($i==1): ?>
+                                    <div class="fotoTipo2">
+                                    <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                    </div>
+                                    <?php 
+                                        endif; 
+                                        if($i==2):
+                                    ?>
+                                    <div class="fotoTipo2">
+                                    <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
+                                <?php if($i==3): ?>
+                                <div class="wrapFotoTipo1">
+                                <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                </div>
+                                <?php endif; ?>
+                            <?php }  */?> 
                         </div>
 
                     </div> <!-- row -->

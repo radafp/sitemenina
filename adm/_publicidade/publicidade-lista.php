@@ -7,8 +7,12 @@ if(!verifica_permissao($cod_user, $nivel, 'publicidade'))
 	echo " </script>";
 	die();
 }
+
+$cliente = isset($_GET['cliente']) ? $_GET['cliente'] : '';
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
+require_once ADMIN_PATH."_publicidade/inc/topo-publicidade-lista.php";
+
 ?>
 <script>
     
@@ -128,6 +132,25 @@ $(document).ready(function()
         $pag = 0;
     }    
 
+    if(isset($_GET['banner'])) {
+        $codBanner = $_GET['banner'];
+        $q = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p
+                     INNER JOIN publiTipos AS pt ON pt.cod = p.codTipo
+                     INNER JOIN publiPaginas AS pp ON pp.cod = p.codPagina
+                     WHERE p.regiao = '$regiao'
+                     AND p.codCliente = $codBanner
+                     ORDER BY p.codPagina", $conexao);
+
+        $rows = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p
+                INNER JOIN publiTipos AS pt ON pt.cod = p.codTipo
+                INNER JOIN publiPaginas AS pp ON pp.cod = p.codPagina
+                WHERE p.regiao = '$regiao'", $conexao);
+
+        $count_registros = mysql_num_rows($rows);
+
+    }else{
+
+
     $limit_por_pag = 30;
     $q = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p
                      INNER JOIN publiTipos AS pt ON pt.cod = p.codTipo
@@ -143,6 +166,8 @@ $(document).ready(function()
     $count_registros = mysql_num_rows($rows);
     $paginas = ceil($count_registros / $limit_por_pag);
 
+    }
+    
     if ($count_registros>0)
     {
     	while($tp = mysql_fetch_assoc($q))
@@ -243,8 +268,8 @@ $(document).ready(function()
                 // echo '<br>$pag: '.$pag;
             ?><br><br>
 
-                
-            <?php if($count_registros > $limit_por_pag):?>
+            
+            <?php if(isset($limit_por_pag) && $count_registros > $limit_por_pag):?>
                 <?php if($p > 1):?>
                     <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$anterior;?>">Anterior</a>
                     <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$anterior;?>"><?=$anterior;?></a>
@@ -256,10 +281,11 @@ $(document).ready(function()
                     <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$proxima;?>"><?=$proxima;?></a>
                     <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$proxima;?>">Proximo</a>
                 <?php endif?>
+                <?= '<br>Total de Páginas: '. $paginas?>
             <?php endif;?>              
 
             
-            <?= '<br>Total de Páginas: '. $paginas?>
+            
                 
         </div>
     </div>

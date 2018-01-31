@@ -15,7 +15,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && ($_SERVER['HTTP_X_REQUESTED_WITH
     $cod = isset($_POST['cod']) ? $_POST['cod'] : '';
     $datacadastro = date('Y-m-d');
     $ip = $_SERVER["REMOTE_ADDR"];
-    
+    echo "<script>console.log( 'Debug Objects: " . $cod . "' );</script>";
     // CRIAR SELECT PRA PEGAR CÓDIGO DA PERGUNTA 
     $array = array();
     $query = $conn->query(

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="author" content="Agência Set - Criação de Sites - Santa Catarina - Balneário Camboriú - Agência Digital">
-        <title>Radio Menina FM - Gostosa de ouvir - Balneário camboriú, Blumenal e Lages</title>
+        <title>Radio Menina FM - Gostosa de ouvir - Balneário Camboriú, Blumenau e Lages</title>
             
         <link rel="stylesheet" type="text/css" href="<?php echo base_url('/assets/css/webfontkit/stylesheet.css')?>">
 
@@ -57,7 +57,7 @@
                             <img src="<?php echo base_url('/assets/img/logoMeninabl.png')?>" title="Radio Menina Blumenau">
                         </div>
                         <p>Blumenau</p>
-                        <a href="blumenal">Acessar</a>
+                        <a href="blumenau">Acessar</a>
                     </div>
                 </div>
                 <div class="col-lg-4 mb-4">

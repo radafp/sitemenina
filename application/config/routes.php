@@ -72,55 +72,55 @@ elseif($nParametros==2)
 };
 
 $route['balneario-camboriu'] = 'home/regiao/?regiao=bc';
-$route['blumenal'] = 'home/regiao/?regiao=bl';
+$route['blumenau'] = 'home/regiao/?regiao=bl';
 $route['lages'] = 'home/regiao/?regiao=lg';
 
 $route['balneario-camboriu/programacao'] = 'home/programacao';
-$route['blumenal/programacao'] = 'home/programacao';
+$route['blumenau/programacao'] = 'home/programacao';
 $route['lages/programacao'] = 'home/programacao';
 
 $route['balneario-camboriu/noticias'] = 'home/noticia';
-$route['blumenal/noticias'] = 'home/noticia';
+$route['blumenau/noticias'] = 'home/noticia';
 $route['lages/noticias'] = 'home/noticia';
 
 $route['balneario-camboriu/top-10'] = 'home/top_10';
-$route['blumenal/top-10'] = 'home/top_10';
+$route['blumenau/top-10'] = 'home/top_10';
 $route['lages/top-10'] = 'home/top_10';
 
 $route['balneario-camboriu/videos'] = 'home/videos_home';
-$route['blumenal/videos'] = 'home/videos_home';
+$route['blumenau/videos'] = 'home/videos_home';
 $route['lages/videos'] = 'home/videos_home';
 
 $route['balneario-camboriu/promocoes'] = 'home/promocoes';
-$route['blumenal/promocoes'] = 'home/promocoes';
+$route['blumenau/promocoes'] = 'home/promocoes';
 $route['lages/promocoes'] = 'home/promocoes';
 
 $route['balneario-camboriu/agenda'] = 'home/agenda';
-$route['blumenal/agenda'] = 'home/agenda';
+$route['blumenau/agenda'] = 'home/agenda';
 $route['lages/agenda'] = 'home/agenda';
 
 $route['balneario-camboriu/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
-$route['blumenal/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
+$route['blumenau/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
 $route['lages/bolsa-de-empregos'] = 'home/bolsa_de_empregos';
 
 $route['balneario-camboriu/documentos-perdidos'] = 'home/documentos_perdidos';
-$route['blumenal/documentos-perdidos'] = 'home/documentos_perdidos';
+$route['blumenau/documentos-perdidos'] = 'home/documentos_perdidos';
 $route['lages/documentos-perdidos'] = 'home/documentos_perdidos';
 
 $route['balneario-camboriu/historia'] = 'home/historia';
-$route['blumenal/historia'] = 'home/historia';
+$route['blumenau/historia'] = 'home/historia';
 $route['lages/historia'] = 'home/historia';
 
 $route['balneario-camboriu/equipe'] = 'home/equipe';
-$route['blumenal/equipe'] = 'home/equipe';
+$route['blumenau/equipe'] = 'home/equipe';
 $route['lages/equipe'] = 'home/equipe';
 
 $route['balneario-camboriu/midia'] = 'home/midia';
-$route['blumenal/midia'] = 'home/midia';
+$route['blumenau/midia'] = 'home/midia';
 $route['lages/midia'] = 'home/midia';
 
 $route['balneario-camboriu/contato'] = 'home/contato';
-$route['blumenal/contato'] = 'home/contato';
+$route['blumenau/contato'] = 'home/contato';
 $route['lages/contato'] = 'home/contato';
 
 $route['404_override'] = '';
