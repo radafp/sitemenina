@@ -28,6 +28,7 @@
                     },100);
                 }
             });
+            window.history.pushState(null, 'Home', $(this).attr('href'));
         });
 
         $(".registra_click_publicidade").click(function(e) {

@@ -231,6 +231,12 @@
                     <!-- Navigation -->
                     <nav class="navbar navbar-expand-lg navbar-default">
                         <div class="container">
+<<<<<<< HEAD
+                            <button style="border-color: #c2c2c2;" class="navbar-toggler navbar-light navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <!-- <form class="formBusca-toggler" id='buscaNoticia' action="busca_noticia" method='POST'>
+=======
                             <div class="wrap-navBar-toggle">
                                 <button style="border-color: #c2c2c2;cursor: pointer;float: left;margin-right: 10px;" class="navbar-toggler navbar-light navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
@@ -243,15 +249,20 @@
                                         </a>
                                     </span>
                                 </form> -->
-                                <form class="formBusca" id='buscaNoticia1' name='busca2' action="busca_noticia" method='POST'>
+                                <form class="formBusca-toggler" id='buscaNoticia1' name='busca1' action="busca_noticia" method='POST'>
+>>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
                                 <input class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
                                 <span class="input-group-btn">
                                     <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
                                         <button style="padding: 4px 5px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;height: 32px;" class="btn btn-secondary" type="button">Buscar</button>
                                     </a>
                                 </span>
+<<<<<<< HEAD
+                            </form> -->
+=======
                             </form>
                             </div>
+>>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul id="menu" class="navbar-nav">
                                     <li class="nav-item">
@@ -308,14 +319,18 @@
                                     </li>
                                 </ul>
                             </div>
+<<<<<<< HEAD
+                            <!-- <form class="formBusca" id='buscaNoticia' action="busca_noticia" method='POST'>
+=======
                             <form class="formBusca" id='buscaNoticia2' name='busca2' action="busca_noticia" method='POST'>
+>>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
                                 <input class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
                                 <span class="input-group-btn">
                                     <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
                                         <button style="padding: 4px 5px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;height: 32px;" class="btn btn-secondary" type="button">Buscar</button>
                                     </a>
                                 </span>
-                            </form>
+                            </form> -->
                         </div>
                     </nav>
 

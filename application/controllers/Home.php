@@ -16,6 +16,7 @@ class home extends CI_Controller {
     }
 
     public function regiao() {
+
         $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
         
         $regiao = isset($uri[0]) && !empty($uri[0]) ? $uri[0] : '';// regiao
@@ -181,9 +182,12 @@ class home extends CI_Controller {
         $cod_banner3_4 = isset($_SESSION['cod_banner_tipo3_4']) ? $_SESSION['cod_banner_tipo3_4'] : '';
         // echo '<br>cod_banner2_1: '.$cod_banner2_1;
         // echo '<br>cod_banner2_2: '.$cod_banner2_2;
-
+        // echo '<br>cod_banner3_1: '.$cod_banner3_1;
+        // echo '<br>cod_banner3_2: '.$cod_banner3_2;
+        // echo '<br>cod_banner3_3: '.$cod_banner3_3;
+        // echo '<br>cod_banner3_4: '.$cod_banner3_4;
  
-        if($cod_banner2_1!='') {
+        if($cod_banner2_1 != '') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
             foreach($num_impresoes as $info):
                 $valor = $info['nImpressoes'] + 1;
@@ -207,6 +211,7 @@ class home extends CI_Controller {
             $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_1);
         endforeach;
         }
+        
         if($cod_banner3_2!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_2);
             foreach($num_impresoes as $info):
@@ -214,6 +219,7 @@ class home extends CI_Controller {
                 $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_2);
             endforeach;
         }
+
         if($cod_banner3_3!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_3);
             foreach($num_impresoes as $info):
@@ -251,7 +257,6 @@ class home extends CI_Controller {
         }
 
         if(isset($_GET['busca']) && !empty($_GET['busca'])) {
-            echo $_GET['busca'];
             $busca = $_GET['busca'];
             $dados['pHome'] = $p;
             $dados['total_registros']   = 15;
@@ -308,10 +313,10 @@ class home extends CI_Controller {
 
         if($cod_banner3_1!='') {
         $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_1);
-        foreach($num_impresoes as $info):
-            $valor = $info['nImpressoes'] + 1;
-            $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_1);
-        endforeach;
+            foreach($num_impresoes as $info):
+                $valor = $info['nImpressoes'] + 1;
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_1);
+            endforeach;
         }
         if($cod_banner3_2!='') {
             $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_2);
@@ -341,6 +346,12 @@ class home extends CI_Controller {
     }
 
     public function descricao_noticia() {
+        
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
+
+
         $id = addslashes($_GET['id']);
         $categoria = addslashes($_GET['categoria']);
         $this->Novomenina->cliques($id, $_SESSION['regiao']);
@@ -412,6 +423,9 @@ class home extends CI_Controller {
     }
 
     public function agenda() {
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         // $id = $_GET['id'];
         $regiao = addslashes($_SESSION['regiao']);
         
@@ -836,6 +850,9 @@ class home extends CI_Controller {
     }
 
     public function descricao_promocoes() {
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         $id = addslashes($_GET['id']);
         $regiao = $_SESSION['regiao'];
         $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
@@ -906,6 +923,10 @@ class home extends CI_Controller {
     }
 
     public function descricao_programacao() {
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
+
         $id = addslashes($_GET['id']);
         $regiao = $_SESSION['regiao'];
         $dados['descricao_programacao'] = $this->Novomenina->descricao_programacao($id, $regiao);
@@ -1048,6 +1069,10 @@ class home extends CI_Controller {
     }
 
     public function bolsa_de_empregos() {
+
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         // --------------------- PAGINAÇÂO --------------------
         //|                                                    |
         //|                                                    |
@@ -1141,6 +1166,10 @@ class home extends CI_Controller {
     }
 
     public function descricao_bolsa_de_empregos() {
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
+        
         $id = addslashes($_GET['id']);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['descricao_empregos']    = $this->Novomenina->descricao_view('empregos', $id, $_SESSION['regiao']);
@@ -1225,6 +1254,9 @@ class home extends CI_Controller {
     }
 
     public function documentos_perdidos() {
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         // --------------------- PAGINAÇÂO --------------------
         //|                                                    |
         //|                                                    |
@@ -1317,9 +1349,14 @@ class home extends CI_Controller {
     }
 
     public function descricao_documentos_perdidos() {
+        
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
+
         $id = addslashes($_GET['id']);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['descricao_documento']   = $this->Novomenina->descricao_view('achadoseperdidos', $id, $_SESSION['regiao']);
+        $dados['descricao_documento']   = $this->Novomenina->descricao_equipe_documentos_perdidos($id, $_SESSION['regiao']);
 
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'documentos_perdidos', '3', 4);
@@ -1402,12 +1439,18 @@ class home extends CI_Controller {
 
 
     public function historia() {
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['viewName'] = 'quem_somos/historia';
         $this->load->view('Template', $dados);
     }
 
     public function equipe() {
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['equipe'] = $this->Novomenina->equipe($_SESSION['regiao']);
 
@@ -1478,6 +1521,9 @@ class home extends CI_Controller {
     }
 
     public function descricao_equipe() {
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         $id = addslashes($_GET['id']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['descricao_programacao'] = $this->Novomenina->descricao_equipe($id, $_SESSION['regiao']);
@@ -1617,6 +1663,9 @@ class home extends CI_Controller {
     }
 
     public function contato() {
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['action'] = site_url('home/enviaEmail');
         // $this->load->library('email');

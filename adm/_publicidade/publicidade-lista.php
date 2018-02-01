@@ -135,6 +135,7 @@ $(document).ready(function()
     if(isset($_GET['banner'])) {
         $codBanner = $_GET['banner'];
         $q = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p
+<<<<<<< HEAD
                      INNER JOIN publiTipos AS pt ON pt.cod = p.codTipo
                      INNER JOIN publiPaginas AS pp ON pp.cod = p.codPagina
                      WHERE p.regiao = '$regiao'
@@ -153,19 +154,42 @@ $(document).ready(function()
 
     $limit_por_pag = 30;
     $q = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p
+=======
+>>>>>>> 772edf64c293185450ed63cac6a5e70d34788ffa
                      INNER JOIN publiTipos AS pt ON pt.cod = p.codTipo
                      INNER JOIN publiPaginas AS pp ON pp.cod = p.codPagina
                      WHERE p.regiao = '$regiao'
-                     ORDER BY p.codPagina, pt.cod LIMIT $pag, $limit_por_pag", $conexao);
-    
-    $rows = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p
-                    INNER JOIN publiTipos AS pt ON pt.cod = p.codTipo
-                    INNER JOIN publiPaginas AS pp ON pp.cod = p.codPagina
-                    WHERE p.regiao = '$regiao'", $conexao);
+                     AND p.codCliente = $codBanner
+                     ORDER BY p.codPagina", $conexao);
 
-    $count_registros = mysql_num_rows($rows);
-    $paginas = ceil($count_registros / $limit_por_pag);
+        $rows = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p
+                INNER JOIN publiTipos AS pt ON pt.cod = p.codTipo
+                INNER JOIN publiPaginas AS pp ON pp.cod = p.codPagina
+                WHERE p.regiao = '$regiao'", $conexao);
 
+        $count_registros = mysql_num_rows($rows);
+
+<<<<<<< HEAD
+=======
+    }else{
+
+
+        $limit_por_pag = 30;
+        $q = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p
+                        INNER JOIN publiTipos AS pt ON pt.cod = p.codTipo
+                        INNER JOIN publiPaginas AS pp ON pp.cod = p.codPagina
+                        WHERE p.regiao = '$regiao'
+                        ORDER BY p.codPagina, pt.cod LIMIT $pag, $limit_por_pag", $conexao);
+        
+        $rows = mysql_query("SELECT p.*, pt.tipo, pp.pagina FROM publicidades AS p
+                        INNER JOIN publiTipos AS pt ON pt.cod = p.codTipo
+                        INNER JOIN publiPaginas AS pp ON pp.cod = p.codPagina
+                        WHERE p.regiao = '$regiao'", $conexao);
+
+        $count_registros = mysql_num_rows($rows);
+        $paginas = ceil($count_registros / $limit_por_pag);
+
+>>>>>>> 772edf64c293185450ed63cac6a5e70d34788ffa
     }
     
     if ($count_registros>0)

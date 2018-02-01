@@ -20,6 +20,7 @@ if($cliente)
     $cod = $cliente;
     echo $cod;
 
+<<<<<<< HEAD
     $qRelatoriostipo = mysql_query(
         "SELECT
             publicidadeStats.tipo,
@@ -49,10 +50,30 @@ if($cliente)
         $tpRelatorioPagianas = mysql_fetch_assoc($qRelatoriosPagina);
     }
     
+=======
+    $conn = new PDO('mysql:host=mysql03-farm70.uni5.net;dbname=novomenina', 'novomenina', 'agEncia445');
+    
+    $data = $conn->query(
+        "SELECT DISTINCT publicidadeStats.pagina, 
+				publicidadeStats.tipo, 
+				publicidadeImpressoes.nImpressoes,
+				publicidadeImpressoes.codPublicidade,
+                (SELECT COUNT(publicidadeStats.codPublicidade) AS cliques
+				FROM publicidadeStats
+                        where publicidadeStats.codPublicidade = publicidadeImpressoes.codPublicidade) as Cliques
+            FROM publicidadeStats
+        inner join publicidadeImpressoes
+            on publicidadeImpressoes.codPublicidade = publicidadeStats.codPublicidade
+            and publicidadeStats.codCliente = $cod"
+    );
+    $countData = count($data);
+    echo $countData;
+>>>>>>> 772edf64c293185450ed63cac6a5e70d34788ffa
 }
 ?>
 <div class="divTableLista clear">
     <br><br>
+<<<<<<< HEAD
     
     <?php
         for($c1 = 0; $c1 < $nRelatoriostipo; $c1++) {
@@ -77,3 +98,28 @@ if($cliente)
     ?>
 
     <br><br>
+=======
+    <?php
+        if(isset($data)) {
+            $pagina = array();
+            foreach($data as $info) {
+
+                if(!in_array(utf8_encode($info['pagina']), $pagina)) {
+                    array_push($pagina, utf8_encode($info['pagina']));
+                    echo '<br> Pagina: '. utf8_encode($info['pagina']) . '<hr>';
+                }               
+                echo '<br>'.utf8_encode($info['tipo']). ' --> ' . utf8_encode($info['nImpressoes']) . ' impressões e '. utf8_encode($info['Cliques']). ' cliques<br>';
+            }
+        }
+
+        
+
+            
+        
+        
+
+
+    ?>
+
+<br><br>
+>>>>>>> 772edf64c293185450ed63cac6a5e70d34788ffa
