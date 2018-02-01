@@ -12,10 +12,10 @@ setlocale(LC_NUMERIC, 'en_US'); // setting the numeric locale to
 setlocale(LC_MONETARY, 'en_US'); // setting the monetary locale to
 
 
-define('HOST', 'mysql03-farm70.uni5.net');
-define('USER', 'novomenina');
-define('PASS', 'agEncia445');
-define('BD', 'novomenina');
+define('HOST', 'mysql.portalmenina.com.br');
+define('USER', 'portalmenina01');
+define('PASS', 'u9d4s2'); 
+define('BD', 'portalmenina01');
 
 define('HOSTMG', 'mysql.agenciaset.com.br');
 define('USERMG', 'agenciaset03');

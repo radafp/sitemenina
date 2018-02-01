@@ -57,7 +57,7 @@
 
                 var content = $('#content');
                 var logo = document.querySelector('#logo');
-                $('#menu a, #whats a, #logo, .busca').click(function( e ){
+                $('#menu a,  #logo, .busca').click(function( e ){
                     e.preventDefault();
 
                     var href = $( this ).attr('href');
@@ -77,7 +77,7 @@
                                 $('.navbar-toggler').attr({'aria-expanded': 'false'}); 
                                 $(".navbar-collapse").removeClass("show");
 
-                                if(href != 'http://www.novomenina.web7097.uni5.net/balneario-camboriu'){
+                                if(href != 'http://www.portalmenina.com.br/balneario-camboriu'){
                                     $('html,body').animate({ scrollTop: $("#anc").offset().top },'slow');
                                 }
                                 //setAttribute("aria-expanded", "false")
@@ -120,8 +120,6 @@
         
                     window.history.pushState(null, 'Home', $(this).attr('href'));
                 })
-                
-
 
                 /* Whatsapp */
                 /* jQuery("a.whatsapp").unbind("click").bind("click", function()
@@ -181,7 +179,7 @@
                             <iframe class="playerRadio" name="playcolor" src="http://painelstream.com/mini-player/<?=$codRadio;?>" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
                         </div>
                         <div class="col-lg-6 tvMocinha">
-                            <?php if($_SESSION['regiao'] == 'bc'): ?>
+                            <?php if($_SESSION['regiao'] == ''): ?>
                                 <a class="btTvMocinha" href="http://radiomeninabc.portalmenina.com.br/ao-vivo/tv-mocinha-balneario-camboriu" data-toggle="lightbox" data-width="695" data-height="445">Tv Mocinha</a>
                             <?php endif; ?>
                         </div>
@@ -211,14 +209,14 @@
                                 <form action="" id="formRegiao" method='POST'>
                                     <select name="selectRegiao" id='regiao'>
                                         <option value="/balneario-camboriu" <?=$_SESSION['regiao'] == 'bc' ? 'selected' : '';?> >Balneário Camboriú</option>
-                                        <option value="/blumenal" <?=$_SESSION['regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
+                                        <option value="/blumenau" <?=$_SESSION['regiao'] == 'bl' ? 'selected' : '';?> >Blumenau</option>
                                         <option value="/lages" <?=$_SESSION['regiao'] == 'lg' ? 'selected' : '';?> >Lages</option>
                                     </select>
                                 </form>
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-3 btm-30 topoRedes">
-                            <ul id="whats" class="list-inline social">
+                            <ul class="list-inline social">
                                 <li><a class="face" href="<?=$_SESSION['socialFace'];?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank"><i class="fa fa-instagram"></i></a></li>
                                 <li><a class="youtube" href="<?=$_SESSION['socialYoutube'];?>" target="_blank"><i class="fa fa-youtube"></i></a></li>
@@ -233,12 +231,6 @@
                     <!-- Navigation -->
                     <nav class="navbar navbar-expand-lg navbar-default">
                         <div class="container">
-<<<<<<< HEAD
-                            <button style="border-color: #c2c2c2;" class="navbar-toggler navbar-light navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <!-- <form class="formBusca-toggler" id='buscaNoticia' action="busca_noticia" method='POST'>
-=======
                             <div class="wrap-navBar-toggle">
                                 <button style="border-color: #c2c2c2;cursor: pointer;float: left;margin-right: 10px;" class="navbar-toggler navbar-light navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
@@ -252,19 +244,14 @@
                                     </span>
                                 </form> -->
                                 <form class="formBusca-toggler" id='buscaNoticia1' name='busca1' action="busca_noticia" method='POST'>
->>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
                                 <input class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
                                 <span class="input-group-btn">
                                     <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
                                         <button style="padding: 4px 5px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;height: 32px;" class="btn btn-secondary" type="button">Buscar</button>
                                     </a>
                                 </span>
-<<<<<<< HEAD
-                            </form> -->
-=======
                             </form>
                             </div>
->>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul id="menu" class="navbar-nav">
                                     <li class="nav-item">
@@ -321,18 +308,14 @@
                                     </li>
                                 </ul>
                             </div>
-<<<<<<< HEAD
-                            <!-- <form class="formBusca" id='buscaNoticia' action="busca_noticia" method='POST'>
-=======
                             <form class="formBusca" id='buscaNoticia2' name='busca2' action="busca_noticia" method='POST'>
->>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
                                 <input class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
                                 <span class="input-group-btn">
                                     <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
                                         <button style="padding: 4px 5px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;height: 32px;" class="btn btn-secondary" type="button">Buscar</button>
                                     </a>
                                 </span>
-                            </form> -->
+                            </form>
                         </div>
                     </nav>
 
@@ -387,6 +370,45 @@
                             <div class="wrapFotoTipo1">
                                 <img src="<?php echo base_url('/assets/img/temp/insta4_'.$_SESSION['regiao']).'.jpg';?>" alt="">
                             </div>
+                            <?php 
+                            /* switch(isset($_SESSION['regiao'])){
+                                case 'bc':
+                                    $userid = "1261127122";
+                                    $accessToken = "1261127122.6d7beb5.c32b85c115d240eeb11e6ed048e9c61f";
+                                    $url = "https://api.instagram.com/v1/users/{$userid}/media/recent/?access_token={$accessToken}";
+                                    $result = file_get_contents($url);
+                                    $result = json_decode($result);
+                                    break;
+                            }
+                            for($i=0;$i<4;$i++)
+                            {
+                                $foto = $result->data[$i];
+                            ?>
+                                <?php if($i==0): ?>
+                                <div class="wrapFotoTipo1">
+                                    <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                </div>
+                                <?php endif; ?>
+                                <div class="wrapFotoTipo2">
+                                    <?php if($i==1): ?>
+                                    <div class="fotoTipo2">
+                                    <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                    </div>
+                                    <?php 
+                                        endif; 
+                                        if($i==2):
+                                    ?>
+                                    <div class="fotoTipo2">
+                                    <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
+                                <?php if($i==3): ?>
+                                <div class="wrapFotoTipo1">
+                                <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                </div>
+                                <?php endif; ?>
+                            <?php }  */?> 
                         </div>
 
                     </div> <!-- row -->

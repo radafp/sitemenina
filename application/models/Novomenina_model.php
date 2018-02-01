@@ -167,7 +167,7 @@ class Novomenina_model extends CI_Model{
                     AND noticias.mostrar = 1 
                     AND noticias.destaque = 1 
                 GROUP BY noticias.cod
-                ORDER by DATA DESC
+                ORDER by data DESC, noticias.cod DESC 
                 LIMIT 3
         "); 
         return $query->result_array();
@@ -207,7 +207,7 @@ class Novomenina_model extends CI_Model{
                     AND noticias.mostrar = 1
                     AND noticias.destaque = 0 
                 GROUP BY noticias.cod
-                ORDER by DATA DESC
+                ORDER by DATA DESC, noticias.cod DESC
                 LIMIT 3
         "); 
         return $query->result_array();
@@ -249,7 +249,7 @@ class Novomenina_model extends CI_Model{
                         AND noticias.regiao = '$regiao' 
                         AND noticias.mostrar = 1 
                     GROUP BY noticias.cod
-                    ORDER by DATA DESC
+                    ORDER by DATA DESC, noticias.cod DESC
                     LIMIT $limit, 15 
             ");
         }
@@ -272,7 +272,7 @@ class Novomenina_model extends CI_Model{
                         AND categoriaPt like '%$categoria%'
                         AND noticias.mostrar = 1 
                     GROUP BY noticias.cod
-                    ORDER by DATA DESC
+                    ORDER by DATA DESC, noticias.cod DESC
                     LIMIT $limit, 5
             "); 
         }
@@ -304,7 +304,7 @@ class Novomenina_model extends CI_Model{
                     AND noticias.regiao = '$regiao'
                     AND noticias.mostrar = 1
                 GROUP BY noticias.cod
-                ORDER by DATA DESC
+                ORDER by DATA DESC, noticias.cod DESC
                 LIMIT $limit, 15
         "); 
         return $query->result_array();

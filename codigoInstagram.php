@@ -4,7 +4,7 @@
 
 # STEP 2
 
-function simple_curl($url,$post=array(),$get=array())
+/* function simple_curl($url,$post=array(),$get=array())
 {
     $url = explode('?',$url,2);
     if(count($url)===2)
@@ -30,17 +30,17 @@ $ar = array
     "client_id" => '6d7beb559b12427ebfe57f74bd7ff835',
     "client_secret" => 'eaa6e6d23f574330900511810034ccf8',
     'grant_type' => 'authorization_code',
-    'redirect_uri' => 'http://www.novomenina.web7097.uni5.net',
-    'code' => '7e5b8c2f91144a3984ec64e9acc9b4df'
+    'redirect_uri' => 'http://www.portalmenina.com',
+    'code' => '6eec855cfa0e4b4eaa9ab1495b84605f'
 );
 $curl = simple_curl($url, $ar);
-echo $curl;
-/*
+echo $curl; */
+
 
 
 #STEP 3
-$userid = "3288624807";
-$accessToken = "3288624807.a079cd4.51b29d589d674a88b42c9c73a38e8011";
+$userid = "1261127122";
+$accessToken = "1261127122.6d7beb5.c32b85c115d240eeb11e6ed048e9c61f";
 $url = "https://api.instagram.com/v1/users/{$userid}/media/recent/?access_token={$accessToken}";
 $result = file_get_contents($url);
 $result = json_decode($result);

@@ -23,9 +23,9 @@ class home extends CI_Controller {
         if($regiao == 'balneario-camboriu') {
             $_SESSION['regiao'] =  'bc';
             $_SESSION['city']   = 'balneario-camboriu';
-        }if($regiao == 'blumenal') {
+        }if($regiao == 'blumenau') {
             $_SESSION['regiao'] =  'bl';
-            $_SESSION['city']   = 'blumenal';
+            $_SESSION['city']   = 'blumenau';
         }if($regiao == 'lages') {
             $_SESSION['regiao'] = 'lg';
             $_SESSION['city']   = 'lages';
@@ -35,9 +35,9 @@ class home extends CI_Controller {
             if($regiao == 'balneario-camboriu') {
                 $_SESSION['regiao'] =  'bc';
                 $_SESSION['city']   = 'balneario-camboriu';
-            }if($regiao == 'blumenal') {
+            }if($regiao == 'blumenau') {
                 $_SESSION['regiao'] =  'bl';
-                $_SESSION['city']   = 'blumenal';
+                $_SESSION['city']   = 'blumenau';
             }if($regiao == 'lages') {
                 $_SESSION['regiao'] = 'lg';
                 $_SESSION['city']   = 'lages';
