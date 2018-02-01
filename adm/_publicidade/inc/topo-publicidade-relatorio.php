@@ -5,13 +5,13 @@
     <div class="divTableFiltro clear">
         <div class="divTr head">
             <div class="divTd">CLIENTE</div>
-            <div class="divTd">DATA INICIAL</div>
-            <div class="divTd">DATA FINAL</div>
+            <!-- <div class="divTd">DATA INICIAL</div>
+            <div class="divTd">DATA FINAL</div> -->
             <div class="divTd">&nbsp;</div>
         </div>
         <div class="divTr">
             <div class="divTd">
-                <select id="cliente" name="cliente" class="campoM" title="Cliente">
+                <select id="cliente" name="cliente" class="campoM" title="Cliente" required>
                     <option value="">Selecione</option>
                     <?php 
                     $qCliente = mysql_query(
@@ -27,12 +27,12 @@
                     <?php } ?>
                 </select>
             </div>
-            <div class="divTd">
+            <!-- <div class="divTd">
                 <input type="date" name='dataInicio'>
             </div>
             <div class="divTd">
                 <input type="date" name='dataFim'>
-            </div>
+            </div> -->
             <div class="divTd">
                 <input type="submit" value="Filtrar" class="salvar"/>
             </div>
