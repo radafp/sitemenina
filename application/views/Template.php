@@ -57,7 +57,7 @@
 
                 var content = $('#content');
                 var logo = document.querySelector('#logo');
-                $('#menu a, #whats a, #logo, .busca').click(function( e ){
+                $('#menu a,  #logo, .busca').click(function( e ){
                     e.preventDefault();
 
                     var href = $( this ).attr('href');
@@ -179,7 +179,7 @@
                             <iframe class="playerRadio" name="playcolor" src="http://painelstream.com/mini-player/<?=$codRadio;?>" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
                         </div>
                         <div class="col-lg-6 tvMocinha">
-                            <?php if($_SESSION['regiao'] == 'bc'): ?>
+                            <?php if($_SESSION['regiao'] == ''): ?>
                                 <a class="btTvMocinha" href="http://radiomeninabc.portalmenina.com.br/ao-vivo/tv-mocinha-balneario-camboriu" data-toggle="lightbox" data-width="695" data-height="445">Tv Mocinha</a>
                             <?php endif; ?>
                         </div>
@@ -216,7 +216,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-3 btm-30 topoRedes">
-                            <ul id="whats" class="list-inline social">
+                            <ul class="list-inline social">
                                 <li><a class="face" href="<?=$_SESSION['socialFace'];?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank"><i class="fa fa-instagram"></i></a></li>
                                 <li><a class="youtube" href="<?=$_SESSION['socialYoutube'];?>" target="_blank"><i class="fa fa-youtube"></i></a></li>
@@ -231,12 +231,6 @@
                     <!-- Navigation -->
                     <nav class="navbar navbar-expand-lg navbar-default">
                         <div class="container">
-<<<<<<< HEAD
-                            <button style="border-color: #c2c2c2;" class="navbar-toggler navbar-light navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <!-- <form class="formBusca-toggler" id='buscaNoticia' action="busca_noticia" method='POST'>
-=======
                             <div class="wrap-navBar-toggle">
                                 <button style="border-color: #c2c2c2;cursor: pointer;float: left;margin-right: 10px;" class="navbar-toggler navbar-light navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
@@ -250,19 +244,14 @@
                                     </span>
                                 </form> -->
                                 <form class="formBusca-toggler" id='buscaNoticia1' name='busca1' action="busca_noticia" method='POST'>
->>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
                                 <input class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
                                 <span class="input-group-btn">
                                     <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
                                         <button style="padding: 4px 5px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;height: 32px;" class="btn btn-secondary" type="button">Buscar</button>
                                     </a>
                                 </span>
-<<<<<<< HEAD
-                            </form> -->
-=======
                             </form>
                             </div>
->>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul id="menu" class="navbar-nav">
                                     <li class="nav-item">
@@ -319,18 +308,14 @@
                                     </li>
                                 </ul>
                             </div>
-<<<<<<< HEAD
-                            <!-- <form class="formBusca" id='buscaNoticia' action="busca_noticia" method='POST'>
-=======
                             <form class="formBusca" id='buscaNoticia2' name='busca2' action="busca_noticia" method='POST'>
->>>>>>> 5e56bfe4db87acc3df48e4330d6e51c0a0432876
                                 <input class="inputBusca" placeholder="Buscar por ... " type="text" name='busca'>
                                 <span class="input-group-btn">
                                     <a class='busca' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=&p='. 1)?>">
                                         <button style="padding: 4px 5px;border-top-left-radius: 0;border-bottom-left-radius: 0;margin-left: -1px;cursor: pointer;height: 32px;" class="btn btn-secondary" type="button">Buscar</button>
                                     </a>
                                 </span>
-                            </form> -->
+                            </form>
                         </div>
                     </nav>
 

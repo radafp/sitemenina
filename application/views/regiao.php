@@ -211,7 +211,7 @@
                                     <img src="<?=base_url('/assets/arquivos/programacao/'.$info['arquivo']);?>" alt="">
                                 </div>    
                                 <h3><?=$info['titulo'];?></h3>
-                                <p>Das <?=$info['inicio'];?> às <?=$info['fim'];?></p>
+                                <p>Das <?=date('H:i', strtotime($info['inicio']));?> às <?=date('H:i', strtotime($info['fim']));?></p>
                             </div>
                         </a>
                     <?php endforeach;?> 

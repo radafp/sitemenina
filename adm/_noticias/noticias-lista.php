@@ -156,7 +156,7 @@ $(document).ready(function()
     }    
 
     $limit_por_pag = 30;
-    $q = mysql_query("SELECT * FROM noticias WHERE regiao = '{$regiao}' ORDER BY data DESC LIMIT $pag, $limit_por_pag", $conexao);
+    $q = mysql_query("SELECT * FROM noticias WHERE regiao = '{$regiao}' ORDER BY data DESC, cod DESC LIMIT $pag, $limit_por_pag", $conexao);
     
     $rows = mysql_query("SELECT * FROM noticias WHERE regiao = '{$regiao}' ", $conexao);
 
