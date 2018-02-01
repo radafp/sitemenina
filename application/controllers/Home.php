@@ -1710,10 +1710,10 @@ class home extends CI_Controller {
         $email = $this->input->post('email', TRUE);
         $nome = $this->input->post('nome', TRUE);
         $telefone = $this->input->post('telefone', TRUE);
-        $cidade = $this->input->post('cidade', TRUE);
-        $estado = $this->input->post('estado', TRUE);
         $mensagem = $this->input->post('mensagem', TRUE);
         $assunto = $this->input->post('assunto', TRUE);
+
+        echo $email;    
 
         $config['protocol'] = 'smtp';
         $config['smtp_host'] = 'smtp.agenciaset.com.br';
@@ -1737,8 +1737,6 @@ class home extends CI_Controller {
             Nome:       ' . $nome . ' <br />
             E-mail:     ' . $email . ' <br />
             Telefone:   ' . $telefone . ' <br />
-            Cidade:     ' . $cidade . ' <br />
-            Estado:     ' . $estado . ' <br />
             Assunto:    ' . $assunto . ' <br />
             Mensagem:   ' . $mensagem . ' <br />
             </body></html>');

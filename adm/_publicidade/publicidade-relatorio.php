@@ -52,14 +52,6 @@ if($cliente)
                 echo '<br>'.utf8_encode($info['tipo']). ' --> ' . utf8_encode($info['nImpressoes']) . ' impressões e '. utf8_encode($info['Cliques']). ' cliques<br>';
             }
         }
-
-        
-
-            
-        
-        
-
-
     ?>
 
 <br><br>
