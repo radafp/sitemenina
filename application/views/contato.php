@@ -32,7 +32,7 @@
 
             <div class="col-xs-12 col-md-6 contLeft">
                 <h1 class="tituloPadrao1">
-                    <span>Contato</span>
+                    <span>Contato</span> 
                 </h1>
                     
                 <div class="blocoContato">
@@ -150,8 +150,8 @@
                     <p>
                         <b>Endereco:</b><br>
                         Rua 7 de Setembro nº 473<br>
-                        Boa Vista - Blumenau/SC<br>
-                        CEP: 89010-002  
+                        Centro - Blumenau/SC<br>
+                        CEP: 89010-201  
                     </p>
                 <?php
                 } 

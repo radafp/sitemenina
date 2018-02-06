@@ -59,7 +59,7 @@
                 <div class="blocoNoticias">
                     <?php foreach($jornalismo as $info):?>
                     <div class="noticia">
-                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia/'.$info['cod'].'/'.strtolower($info['categoriaPt']))?>">
                             <div class="foto">
                                 <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                             </div>
@@ -75,8 +75,8 @@
                 <div class="paginacao">
                     <?php
                     
-                    if(isset($_GET['p'])) {
-                        $p = $_GET['p'];
+                    if(isset($pagina)) {
+                        $p = $pagina;
                     }else{
                         $p = 0;
                     }
@@ -111,23 +111,23 @@
                     <?php if($count > $total_registros):?>
                         <?php if($p > 1):?>
                         <div class='pagina paginahover'>
-                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$categoria.'&p=' .$anterior);?>"><</a>
+                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias/'.$categoria.'/' .$anterior);?>"><</a>
                         </div>
                         <div class='pagina'>
-                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$categoria.'&p=' .$anterior);?>"><?=$anterior;?></a>
+                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias/'.$categoria.'/' .$anterior);?>"><?=$anterior;?></a>
                         </div>    
                         <?php endif?>
                         
                         <div class='pagina paginahover'>
-                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$categoria.'&p=') .$p;?>"><?=$p;?></a>
+                            <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias/'.$categoria.'/') .$p;?>"><?=$p;?></a>
                         </div>
                         
                         <?php if($pHome+15 <= $count):?>
                             <div class='pagina'>
-                                <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$categoria.'&p=' .$proxima);?>"><?=$proxima;?></a>
+                                <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias/'.$categoria.'/' .$proxima);?>"><?=$proxima;?></a>
                             </div>
                             <div class='pagina paginahover'>
-                                <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$categoria.'&p=' .$proxima);?>">></a>
+                                <a class='paginacao_noticias' href="<?php echo base_url($_SESSION['city'].'/noticias/'.$categoria.'/' .$proxima);?>">></a>
                             </div>
                         <?php endif?>
                     <?php endif;?>
