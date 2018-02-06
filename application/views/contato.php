@@ -32,7 +32,7 @@
 
             <div class="col-xs-12 col-md-6 contLeft">
                 <h1 class="tituloPadrao1">
-                    <span>Contato</span>
+                    <span>Contato</span> 
                 </h1>
                     
                 <div class="blocoContato">
@@ -41,31 +41,31 @@
                         <div id="mensagem_enviada"><?php echo $email_enviado ?></div>
                     <?php } ?>
 
-                    <form name="from_contato" id="contactForm" action="<?php echo $action ?>">
+                    <form name="from_contato" id="contactForm" method='post' action="<?php echo $action ?>">
                         <div class="control-group form-group">
                             <div class="controls">
                                 <label>Nome:</label>
-                                <input type="text" class="form-control" id="name" required data-validation-required-message="Por favor, digite seu nome.">
+                                <input name='nome' type="text" class="form-control" id="nome" required data-validation-required-message="Por favor, digite seu nome.">
                                 <p class="help-block"></p>
-                            </div>
+                            </div>  
                         </div>
                         <div class="control-group form-group">
                             <div class="controls">
                                 <label>E-mail:</label>
-                                <input type="email" class="form-control" id="email" required data-validation-required-message="Por favor, digite seu e-mail.">
+                                <input name='emailContato' type="text" class="form-control" id="email" required data-validation-required-message="Por favor, digite seu email.">
                                 <p class="help-block"></p>
-                            </div>
+                            </div>  
                         </div>
                         <div class="control-group form-group">
                             <div class="controls">
                                 <label>Telefone:</label>
-                                <input type="tel" class="form-control" id="telefone" required data-validation-required-message="Por favor, digite seu telefone.">
+                                <input name='telefone' type="tel" class="form-control" id="telefone" required data-validation-required-message="Por favor, digite seu telefone.">
                             </div>
                         </div>
                         <div class="control-group form-group">
                             <div class="controls">
                                 <label>Setor:</label>
-                                <select name="setor" class="form-control" id="email" required data-validation-required-message="Por favor, selecione o setor para o qual deseja enviar a mensagem.">
+                                <select name='setor' class="form-control" id="setor" required data-validation-required-message="Por favor, selecione o setor para o qual deseja enviar a mensagem.">
                                     <option value="comercial">Comercial</option>
                                     <option value="jornalismo">Jornalismo</option>
                                 </select>
@@ -75,7 +75,7 @@
                         <div class="control-group form-group">
                             <div class="controls">
                                 <label>Mensagem:</label>
-                                <textarea rows="7" cols="100" class="form-control" id="mensagem" required data-validation-required-message="Por favor, digite sua mensagem." maxlength="999" style="resize:none"></textarea>
+                                <textarea name='mensagem' rows="7" cols="100" class="form-control" id="mensagem" required data-validation-required-message="Por favor, digite sua mensagem." maxlength="999" style="resize:none"></textarea>
                             </div>
                         </div>
                         <div id="success"></div>
@@ -150,8 +150,8 @@
                     <p>
                         <b>Endereco:</b><br>
                         Rua 7 de Setembro nº 473<br>
-                        Boa Vista - Blumenau/SC<br>
-                        CEP: 89010-002  
+                        Centro - Blumenau/SC<br>
+                        CEP: 89010-201  
                     </p>
                 <?php
                 } 

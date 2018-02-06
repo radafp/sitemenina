@@ -47,7 +47,7 @@ if($submit != '')
         	$q = mysql_query("INSERT INTO noticias 
                             (codCategoria, dataCadastro, data, tituloPt, subtitulo, cleanTitlePt, descricaoPt, fonte, destaque, regiao, mostrar)
                             VALUES
-                            ('$codCategoria','$data', '$dataPost', '$tituloPt', '$subtitulo', '$cleanTitlePt', '$descricaoPt','$fonte','$destaque','$regiao', '$mostrar')");
+                            ('$codCategoria','$data', '$dataPost', '$tituloPt', '$subtitulo', '$cleanTitlePt', '{$descricaoPt}','$fonte','$destaque','$regiao', '$mostrar')");
 
                             echo mysql_error();
         	
@@ -362,7 +362,7 @@ else
             </div>
             <div class="divTd">
                 <?
-                    imprimeTinymce('descricaoPt', html_entity_decode($descricaoPt, ENT_QUOTES, 'UTF-8'), 610, 500, "Descrição");
+                    imprimeTinymce('descricaoPt', $descricaoPt, 610, 500, "Descrição");
                 ?>
                 <!--<textarea id="descricaoPt" name="descricaoPt" class="campoG" title="Descrição"><?=str_replace("<br />", "\n", $descricaoPt);?></textarea>-->
 

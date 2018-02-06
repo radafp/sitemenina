@@ -23,9 +23,9 @@ class home extends CI_Controller {
         if($regiao == 'balneario-camboriu') {
             $_SESSION['regiao'] =  'bc';
             $_SESSION['city']   = 'balneario-camboriu';
-        }if($regiao == 'blumenau') {
+        }if($regiao == 'blumenal') {
             $_SESSION['regiao'] =  'bl';
-            $_SESSION['city']   = 'blumenau';
+            $_SESSION['city']   = 'blumenal';
         }if($regiao == 'lages') {
             $_SESSION['regiao'] = 'lg';
             $_SESSION['city']   = 'lages';
@@ -35,9 +35,9 @@ class home extends CI_Controller {
             if($regiao == 'balneario-camboriu') {
                 $_SESSION['regiao'] =  'bc';
                 $_SESSION['city']   = 'balneario-camboriu';
-            }if($regiao == 'blumenau') {
+            }if($regiao == 'blumenal') {
                 $_SESSION['regiao'] =  'bl';
-                $_SESSION['city']   = 'blumenau';
+                $_SESSION['city']   = 'blumenal';
             }if($regiao == 'lages') {
                 $_SESSION['regiao'] = 'lg';
                 $_SESSION['city']   = 'lages';
@@ -1715,13 +1715,16 @@ class home extends CI_Controller {
         $this->load->library('email');
         $this->email->set_newline("\r\n");
 
-        $email = $this->input->post('email', TRUE);
-        $nome = $this->input->post('nome', TRUE);
-        $telefone = $this->input->post('telefone', TRUE);
-        $cidade = $this->input->post('cidade', TRUE);
-        $estado = $this->input->post('estado', TRUE);
-        $mensagem = $this->input->post('mensagem', TRUE);
-        $assunto = $this->input->post('assunto', TRUE);
+        
+        $nome           = $this->input->post('nome', TRUE);
+        $emailContato   = $this->input->post('emailContato', TRUE);
+        $telefone       = $this->input->post('telefone', TRUE);
+        $mensagem       = $this->input->post('mensagem', TRUE);
+        $setor          = $this->input->post('setor', TRUE);
+        $assunto        = 'assunto';
+        
+
+        echo '<br>'.$nome;   echo '<br>'.$emailContato; echo '<br>'.$telefone; echo '<br>'.$mensagem; echo '<br>'.$assunto;  
 
         $config['protocol'] = 'smtp';
         $config['smtp_host'] = 'smtp.agenciaset.com.br';
@@ -1736,19 +1739,18 @@ class home extends CI_Controller {
 
         $this->email->initialize($config);
 
-        $this->email->from($email, $nome);
+        $this->email->from($emailContato, $nome);
         $this->email->to('atendimentoset@gmail.com');
-        //$this->email->cc('dionathan_bass@hotmail.com');
+        $this->email->cc('dionathan_bass@hotmail.com');
 
         $this->email->subject($assunto);
         $this->email->message('<html><head></head><body>
             Nome:       ' . $nome . ' <br />
-            E-mail:     ' . $email . ' <br />
+            E-mail:     ' . $emailContato . ' <br />
             Telefone:   ' . $telefone . ' <br />
-            Cidade:     ' . $cidade . ' <br />
-            Estado:     ' . $estado . ' <br />
             Assunto:    ' . $assunto . ' <br />
             Mensagem:   ' . $mensagem . ' <br />
+            Setor:      ' . $setor . ' <br />
             </body></html>');
 
         $em = $this->email->send();
@@ -1757,7 +1759,7 @@ class home extends CI_Controller {
         } else {
             $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
         }
-        $dados['action'] = site_url('contato/enviaEmail');
+        $dados['action'] = site_url('home/enviaEmail');
 
         $dados['viewName'] = 'contato';
         $this->load->view('Template', $dados);

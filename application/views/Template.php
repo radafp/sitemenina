@@ -35,7 +35,7 @@
 
         <!-- for Facebook -->          
         <meta property="og:url" content="<?php echo base_url();?>" />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="website" /> 
         <meta property="og:title" content="<?=isset($title) ? $title : '';?>" />
         <meta property="og:description" content="<?=isset($description) ? $description : '';?>" />
         <meta property="og:image" content="<?=isset($imagemFb) ? $imagemFb : base_url('/assets/img/logo-jm-fb.png');?>" />
@@ -83,7 +83,7 @@
                                 //setAttribute("aria-expanded", "false")
                             },100);
                             
-                            //$("p:first").addClass("intro");
+                            //$("p:first").addClass("intro"); 
                         }
                     });
                     
@@ -440,8 +440,8 @@
                             <h3>Blumenau</h3>
                             <p class="pEndereco">
                                 Rua 7 de Setembro, 473<br>
-                                Boa Vista - Blumenau/SC<br>
-                                CEP: 89010-002
+                                Centro - Blumenau/SC<br>
+                                CEP: 89010-201
                             </p>
                             <p>
                                 (47) 2102.6500

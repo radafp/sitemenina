@@ -332,6 +332,7 @@
                     },100);
                 }
             });
+            window.history.pushState(null, 'Home', $(this).attr('href'));
         });
 
         $("#enviar_resp").click(function(e) {
@@ -355,7 +356,7 @@
                     data:
                     {
                         codResposta: _codResposta,
-                        codPergunta: _codPergunta
+                        codPergunta: _codPergunta 
                     },
                     dataType: "json",
                     success: function( response ){
