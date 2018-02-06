@@ -83,7 +83,7 @@
                                 //setAttribute("aria-expanded", "false")
                             },100);
                             
-                            //$("p:first").addClass("intro");
+                            //$("p:first").addClass("intro"); 
                         }
                     });
                     
