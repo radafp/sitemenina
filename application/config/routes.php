@@ -52,8 +52,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'home';
 
 $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
-
+// echo $uri[2];
 $nParametros = count($uri);
+
+
 
 if($nParametros==1)
 {
@@ -79,9 +81,18 @@ $route['balneario-camboriu/programacao'] = 'home/programacao';
 $route['blumenau/programacao'] = 'home/programacao';
 $route['lages/programacao'] = 'home/programacao';
 
-$route['balneario-camboriu/noticias'] = 'home/noticia';
-$route['blumenau/noticias'] = 'home/noticia';
-$route['lages/noticias'] = 'home/noticia';
+if($uri[1] == 'noticias' && isset($uri[2]) && isset($uri[3])) {
+    $route['balneario-camboriu/noticias/'.$uri[2]. '/' . $uri[3]] = 'home/noticia';
+    $route['blumenau/noticias/'.$uri[2]. '/' . $uri[3]] = 'home/noticia';
+    $route['lages/noticias/'.$uri[2]. '/' . $uri[3]] = 'home/noticia';
+}
+
+if($uri[1] == 'descricao_noticia' && isset($uri[2]) && isset($uri[3])) {
+    $route['balneario-camboriu/descricao_noticia/'.$uri[2]. '/' . $uri[3]] = 'home/descricao_noticia';
+    $route['blumenau/descricao_noticia/'.$uri[2]. '/' . $uri[3]] = 'home/descricao_noticia';
+    $route['lages/descricao_noticia/'.$uri[2]. '/' . $uri[3]] = 'home/descricao_noticia';
+}
+
 
 $route['balneario-camboriu/top-10'] = 'home/top_10';
 $route['blumenau/top-10'] = 'home/top_10';

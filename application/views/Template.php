@@ -262,9 +262,9 @@
                                         Jornalismo
                                         </div>
                                         <div id='link_jornalismo' class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                                            <a class="dropdown-item" style="border-bottom:1px #cccccc dashed;" href="<?php echo base_url($_SESSION['city'].'/noticias?categoria=todas&p='. 1)?>">Ver todas</a>
+                                            <a class="dropdown-item" style="border-bottom:1px #cccccc dashed;" href="<?php echo base_url($_SESSION['city'].'/noticias/todas/'. 1)?>">Ver todas</a>
                                             <?php foreach($titulo_jornalismo as $info):?>
-                                                <a class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/noticias?categoria='.$info['categoriaPt'].'&p='. 1)?>"><?php echo $info['categoriaPt']?></a>
+                                                <a class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/noticias/'.$info['categoriaPt'].'/'. 1)?>"><?php echo $info['categoriaPt']?></a>
                                             <?php endforeach?>
                                         </div>
                                     </li>

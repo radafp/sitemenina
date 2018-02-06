@@ -241,36 +241,41 @@ class home extends CI_Controller {
     }
     
     public function noticia() {
-        $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'todas';
+        $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
+        // $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'todas';
+        $categoria = $uri[2];
+
+        $pagina = $uri[3];
+        $dados['pagina'] = $pagina;
         //echo $categoria;
         
         // --------------------- PAGINAÇÂO --------------------
-        if(isset($_GET['p'])) {
-            $pg = $_GET['p'];
+        if(isset($uri[3])) {
+            $pg = $uri[3];
         }else{
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 15;
-        if($p < 0) {
-            $p = 0;
+        $pagina= ($pg - 1) * 15;
+        if( $pagina < 0) {
+            $pagina = 0;
         }
 
         if(isset($_GET['busca']) && !empty($_GET['busca'])) {
             $busca = $_GET['busca'];
-            $dados['pHome'] = $p;
+            $dados['pHome'] =  $pagina;
             $dados['total_registros']   = 15;
-            $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias_busca($busca, $_SESSION['regiao'], $p);
+            $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias_busca($busca, $_SESSION['regiao'],  $pagina);
             $dados['count']             = count($dados['jornalismo']);
             $dados['paginas']           = ceil($dados['count'] / 15); 
         }else{
 
             
-            $dados['pHome'] = $p;
+            $dados['pHome'] =  $pagina;
             $dados['total_registros']   = 15;
             
             $dados['categoria'] = $categoria;
-            $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao'], $p);
+            $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias($categoria, $_SESSION['regiao'],  $pagina);
             $dados['count_noticias']    = $this->Novomenina->CountAll_noticias($_SESSION['regiao'], 'categoriaPt', $categoria);
             $dados['count']             = count($dados['count_noticias']);
             $dados['paginas']           = ceil($dados['count'] / 15); 
@@ -346,14 +351,17 @@ class home extends CI_Controller {
     }
 
     public function descricao_noticia() {
-        
+        $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
         unset($_SESSION['cod_banner_tipo2_1']);
         unset($_SESSION['cod_banner_tipo2_2']);
         unset($_SESSION['cod_banner_tipo1']);
 
 
-        $id = addslashes($_GET['id']);
+        // $id = addslashes($_GET['id']);
         $categoria = addslashes($_GET['categoria']);
+
+        $id = $uri[2];
+        $categoria = $uri[3];
         $this->Novomenina->cliques($id, $_SESSION['regiao']);
         $dados['descricao_noticia']     = $this->Novomenina->descricao_noticia($id, $_SESSION['regiao']);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
