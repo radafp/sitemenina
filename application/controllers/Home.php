@@ -243,7 +243,8 @@ class home extends CI_Controller {
     public function noticia() {
         $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
         // $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'todas';
-        $categoria = $uri[2];
+        $categoria = utf8_encode($uri[2]);
+        echo $categoria;
 
         $pagina = $uri[3];
         $dados['pagina'] = $pagina;

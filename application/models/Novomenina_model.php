@@ -44,6 +44,7 @@ class Novomenina_model extends CI_Model{
 					AND programacao.inicio >= '$hora_atua' 
                     AND programacao.fim <= '$hora_add' 			
                 GROUP BY programacao.cod
+                ORDER BY programacao.inicio ASC
                 LIMIT 3
         "); 
         return $query->result_array();
@@ -125,7 +126,7 @@ class Novomenina_model extends CI_Model{
 
     // tabela categorias para mostrar as noticias existentes no menu de noticias
     public function titulo_jornalismo($regiao)  {
-        $query = $this->db->query("SELECT DISTINCT categorias.categoriaPt, noticias.codCategoria from categorias inner join noticias WHERE categorias.cod = noticias.codCategoria and noticias.regiao = '$regiao' ");
+        $query = $this->db->query("SELECT DISTINCT categorias.categoriaPt, categorias.cleanTitlePt, noticias.codCategoria from categorias inner join noticias WHERE categorias.cod = noticias.codCategoria and noticias.regiao = '$regiao' ");
         return $query->result_array();
     }
 
@@ -381,7 +382,7 @@ class Novomenina_model extends CI_Model{
     }
 
 
-    public function mais_lidas($categoria, $regiao) {
+    public function mais_lidas($cleanTitlePt, $regiao) {
         // $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo 
         //                                 FROM noticias 
         //                             INNER JOIN categorias, arquivos 
@@ -410,8 +411,9 @@ class Novomenina_model extends CI_Model{
                 FROM noticias
                 INNER JOIN categorias
                     WHERE noticias.codCategoria = categorias.cod
-                    AND noticias.regiao = '$regiao' 
-                    AND noticias.mostrar = 1  
+                    AND noticias.cleanTitlePt = '$cleanTitlePt'
+                    AND noticias.regiao = '$regiao'
+                    AND noticias.mostrar = 1 
                 GROUP BY noticias.cod
                 ORDER BY cliques desc
                 LIMIT 4
