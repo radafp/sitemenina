@@ -59,7 +59,7 @@
                 <div class="blocoNoticias">
                     <?php foreach($jornalismo as $info):?>
                     <div class="noticia">
-                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia/'.$info['cod'].'/'.strtolower($info['categoriaPt']))?>">
+                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoriaPt'].'/'.$info['cleanTitlePt'])?>">
                             <div class="foto">
                                 <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                             </div>

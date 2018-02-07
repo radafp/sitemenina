@@ -358,16 +358,18 @@ class home extends CI_Controller {
 
 
         // $id = addslashes($_GET['id']);
-        $categoria = addslashes($_GET['categoria']);
+        // $categoria = addslashes($_GET['categoria']);
 
-        $id = $uri[2];
-        $categoria = $uri[3];
-        $this->Novomenina->cliques($id, $_SESSION['regiao']);
-        $dados['descricao_noticia']     = $this->Novomenina->descricao_noticia($id, $_SESSION['regiao']);
+        $cleanTitlePt = $uri[3];
+
+        // echo $cleanTitlePt;
+        $categoria = $uri[2];
+        $this->Novomenina->cliques($cleanTitlePt, $_SESSION['regiao']);
+        $dados['descricao_noticia']     = $this->Novomenina->descricao_noticia($cleanTitlePt, $_SESSION['regiao']);
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas']            = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
-        $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticias', '3', 4);
-        $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticias', '2', 2); 
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'noticias', '3', 4);
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'noticias', '2', 2); 
            
         // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
         $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';

@@ -81,16 +81,18 @@ $route['balneario-camboriu/programacao'] = 'home/programacao';
 $route['blumenau/programacao'] = 'home/programacao';
 $route['lages/programacao'] = 'home/programacao';
 
-if($uri[1] == 'noticias' && isset($uri[2]) && isset($uri[3])) {
-    $route['balneario-camboriu/noticias/'.$uri[2]. '/' . $uri[3]] = 'home/noticia';
-    $route['blumenau/noticias/'.$uri[2]. '/' . $uri[3]] = 'home/noticia';
-    $route['lages/noticias/'.$uri[2]. '/' . $uri[3]] = 'home/noticia';
-}
+if(isset($uri[1])) {
+    if($uri[1] == 'noticias' && isset($uri[2]) && isset($uri[3])) {
+        $route['balneario-camboriu/noticias/'.$uri[2]. '/' . $uri[3]] = 'home/noticia';
+        $route['blumenau/noticias/'.$uri[2]. '/' . $uri[3]] = 'home/noticia';
+        $route['lages/noticias/'.$uri[2]. '/' . $uri[3]] = 'home/noticia';
+    }
 
-if($uri[1] == 'descricao_noticia' && isset($uri[2]) && isset($uri[3])) {
-    $route['balneario-camboriu/descricao_noticia/'.$uri[2]. '/' . $uri[3]] = 'home/descricao_noticia';
-    $route['blumenau/descricao_noticia/'.$uri[2]. '/' . $uri[3]] = 'home/descricao_noticia';
-    $route['lages/descricao_noticia/'.$uri[2]. '/' . $uri[3]] = 'home/descricao_noticia';
+    if($uri[1] == 'descricao_noticia' && isset($uri[2]) && isset($uri[3])) {
+        $route['balneario-camboriu/descricao_noticia/'.$uri[2]. '/' . $uri[3]] = 'home/descricao_noticia';
+        $route['blumenau/descricao_noticia/'.$uri[2]. '/' . $uri[3]] = 'home/descricao_noticia';
+        $route['lages/descricao_noticia/'.$uri[2]. '/' . $uri[3]] = 'home/descricao_noticia';
+    }
 }
 
 

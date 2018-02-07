@@ -327,7 +327,7 @@ class Novomenina_model extends CI_Model{
 
 
     // metodo sendo usado na action de descricao da noticia no home controller
-    public function descricao_noticia($id, $regiao) {
+    public function descricao_noticia($cleanTitlePt, $regiao) {
         // $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo 
         //                                 FROM noticias 
         //                             INNER JOIN categorias, arquivos 
@@ -370,7 +370,7 @@ class Novomenina_model extends CI_Model{
                 FROM noticias
                 INNER JOIN categorias
                     WHERE noticias.codCategoria = categorias.cod
-                    AND noticias.cod = $id
+                    AND noticias.cleanTitlePt = '$cleanTitlePt'
                     AND noticias.regiao = '$regiao'
                     AND noticias.mostrar = 1 
                 GROUP BY noticias.cod
@@ -420,8 +420,8 @@ class Novomenina_model extends CI_Model{
     }
 
     // metodo almenta lidas += 1 na tabela de noticias ao clicar em alguma noticia
-    public function cliques($id, $regiao) {
-        $query = $this->db->query("UPDATE noticias SET cliques = cliques + 1 WHERE cod = $id  and noticias.regiao= '$regiao'");
+    public function cliques($cleanTitlePt, $regiao) {
+        $query = $this->db->query("UPDATE noticias SET cliques = cliques + 1 WHERE cleanTitlePt = '$cleanTitlePt' and noticias.regiao= '$regiao'");
     }
     // ================================ PAGINAS DE ARTISTICO ================================
     // |                                                                                    |
