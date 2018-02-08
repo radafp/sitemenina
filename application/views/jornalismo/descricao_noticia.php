@@ -14,7 +14,7 @@
         $('.link_descricao').click(function( e ){
             e.preventDefault();
 
-            var href = $( this ).attr('href');
+            // var href = $( this ).attr('href');
             $.ajax({
                 url: href,
                 success: function( response ){
@@ -123,7 +123,7 @@
                                     </h1>
                                     <?php foreach($mais_lidas as $info):?>
                                     <div class="noticia">
-                                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoriaPt'].'/'.$info['cleanTitlePt'])?>">
+                                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoria'].'/'.$info['cleanTitlePt'])?>">
                                             <div class="foto">
                                                 <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                                             </div>
@@ -147,7 +147,7 @@
                     </h1>
                     <?php foreach($mais_lidas as $info):?>
                     <div class="noticia">
-                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoria'].'/'.$info['cleanTitlePt'])?>">
                             <div class="foto">
                                 <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                             </div>

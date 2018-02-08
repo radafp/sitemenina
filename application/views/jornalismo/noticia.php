@@ -54,12 +54,12 @@
             <div class="col-xs-12 col-md-8 contLeft">
 
                 <h1 class="tituloPadrao1">
-                    <span>Notícias</span>
+                    <span><?php echo $cat; ?> <br> Notícias</span>
                 </h1>
                 <div class="blocoNoticias">
                     <?php foreach($jornalismo as $info):?>
                     <div class="noticia">
-                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoriaPt'].'/'.$info['cleanTitlePt'])?>">
+                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoria'].'/'.$info['cleanTitlePt'])?>">
                             <div class="foto">
                                 <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                             </div>
@@ -159,7 +159,7 @@
                                     </h1>
                                     <?php foreach($mais_lidas as $info):?>
                                     <div class="noticia">
-                                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoriaPt'].'/'.$info['cleanTitlePt'])?>">
+                                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoria'].'/'.$info['cleanTitlePt'])?>">
                                             <div class="foto">
                                                 <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                                             </div>
@@ -182,7 +182,7 @@
                     </h1>
                     <?php foreach($mais_lidas as $info):?>
                     <div class="noticia">
-                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoriaPt'].'/'.$info['cleanTitlePt'])?>">
+                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoria'].'/'.$info['cleanTitlePt'])?>">
                             <div class="foto">
                                 <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                             </div>
