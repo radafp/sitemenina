@@ -93,7 +93,7 @@
                     }
                     ?>
 
-                    <div class="fb-comments" data-href="<?=$linkPluginFace;?>" data-numposts="4"  data-width="100%"></div>
+                    <!-- <div class="fb-comments" data-href="<?=$linkPluginFace;?>" data-numposts="4"  data-width="100%"></div> -->
 
                 </div>
                 
@@ -113,7 +113,8 @@
                             </a>
                         <?php endif; ?>
                     </div>
-                    <?php 
+                    <?php
+                    /* 
                         if($nbanner_tipo3  >= 2):
                             if($key==1):
                             ?>
@@ -136,10 +137,11 @@
                             <?php
                             endif;
                         endif;
+                        */
                     ?>
                 <?php endforeach;
                 //echo count($banner_tipo3);
-                if($nbanner_tipo3 <2):
+                /*if($nbanner_tipo3 <2):
                 ?>
                 <div class="blocoMaisLidas">
                     <h1 class="tituloPadrao3">
@@ -159,6 +161,7 @@
                 </div>
                 <?php
                 endif;
+                */
                 switch(count($cod)) {
                     case 4:
                         $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 
