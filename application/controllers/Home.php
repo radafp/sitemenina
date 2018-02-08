@@ -8,41 +8,102 @@ class home extends CI_Controller {
         $this->load->model('Novomenina_model', 'Novomenina');
         $this->load->helper('url');
         $this->load->library('email');
+
+
+        $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
+
+        $_SESSION['slogam'] = "";
+        $_SESSION['socialFace'] = "";
+        $_SESSION['socialInsta'] = "";
+        $_SESSION['socialYoutube'] = "";
+
+        if($uri[0] == 'balneario-camboriu') {
+            $_SESSION['regiao'] = 'bc';
+            $_SESSION['city'] = 'balneario-camboriu';
+            $_SESSION['slogam'] = "+ DE UM MILHÃO DE AMIGOS";
+            $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninabc";
+            $_SESSION['socialInsta'] = "https://www.instagram.com/meninafm/";
+            $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
+        }elseif($uri[0] == 'blumenau') {
+            $_SESSION['regiao'] = 'bl';
+            $_SESSION['city'] = 'blumenau';
+            $_SESSION['slogam'] = "A NÚMERO UM DE BLUMENAU E REGIÃO";
+            $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninablu";
+            $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmblu/";
+            $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
+        }elseif($uri[0] == 'lages') {
+            $_SESSION['regiao'] = 'lg';
+            $_SESSION['city'] = 'lages';
+            $_SESSION['slogam'] = "A PRIMEIRA DA FM";
+            $_SESSION['socialFace'] = "https://www.facebook.com/meninafmlages";
+            $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmlages/";
+            $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
+        }
     }
 
     public function index() {
         $this->load->view('home');
+
+        
 
     }
 
     public function regiao() {
 
         $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
+
+        // $_SESSION['slogam'] = "";
+        // $_SESSION['socialFace'] = "";
+        // $_SESSION['socialInsta'] = "";
+        // $_SESSION['socialYoutube'] = "";
+
+        // if($uri[0] == 'balneario-camboriu') {
+        //     $_SESSION['regiao'] = 'bc';
+        //     $_SESSION['city'] = 'balneario-camboriu';
+        //     $_SESSION['slogam'] = "+ DE UM MILHÃO DE AMIGOS";
+        //     $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninabc";
+        //     $_SESSION['socialInsta'] = "https://www.instagram.com/meninafm/";
+        //     $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
+        // }elseif($uri[0] == 'blumenau') {
+        //     $_SESSION['regiao'] = 'bl';
+        //     $_SESSION['city'] = 'blumenau';
+        //     $_SESSION['slogam'] = "A NÚMERO UM DE BLUMENAU E REGIÃO";
+        //     $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninablu";
+        //     $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmblu/";
+        //     $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
+        // }elseif($uri[0] == 'lages') {
+        //     $_SESSION['regiao'] = 'lg';
+        //     $_SESSION['city'] = 'lages';
+        //     $_SESSION['slogam'] = "A PRIMEIRA DA FM";
+        //     $_SESSION['socialFace'] = "https://www.facebook.com/meninafmlages";
+        //     $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmlages/";
+        //     $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
+        // }
         
         $regiao = isset($uri[0]) && !empty($uri[0]) ? $uri[0] : '';// regiao
-        if($regiao == 'balneario-camboriu') {
-            $_SESSION['regiao'] =  'bc';
-            $_SESSION['city']   = 'balneario-camboriu';
-        }if($regiao == 'blumenal') {
-            $_SESSION['regiao'] =  'bl';
-            $_SESSION['city']   = 'blumenal';
-        }if($regiao == 'lages') {
-            $_SESSION['regiao'] = 'lg';
-            $_SESSION['city']   = 'lages';
-        };
+        // if($regiao == 'balneario-camboriu') {
+        //     $_SESSION['regiao'] =  'bc';
+        //     $_SESSION['city']   = 'balneario-camboriu';
+        // }if($regiao == 'blumenal') {
+        //     $_SESSION['regiao'] =  'bl';
+        //     $_SESSION['city']   = 'blumenal';
+        // }if($regiao == 'lages') {
+        //     $_SESSION['regiao'] = 'lg';
+        //     $_SESSION['city']   = 'lages';
+        // };
 
-        if(empty($_SESSION['regiao'])) {
-            if($regiao == 'balneario-camboriu') {
-                $_SESSION['regiao'] =  'bc';
-                $_SESSION['city']   = 'balneario-camboriu';
-            }if($regiao == 'blumenal') {
-                $_SESSION['regiao'] =  'bl';
-                $_SESSION['city']   = 'blumenal';
-            }if($regiao == 'lages') {
-                $_SESSION['regiao'] = 'lg';
-                $_SESSION['city']   = 'lages';
-            };
-        }
+        // if(empty($_SESSION['regiao'])) {
+        //     if($regiao == 'balneario-camboriu') {
+        //         $_SESSION['regiao'] =  'bc';
+        //         $_SESSION['city']   = 'balneario-camboriu';
+        //     }if($regiao == 'blumenal') {
+        //         $_SESSION['regiao'] =  'bl';
+        //         $_SESSION['city']   = 'blumenal';
+        //     }if($regiao == 'lages') {
+        //         $_SESSION['regiao'] = 'lg';
+        //         $_SESSION['city']   = 'lages';
+        //     };
+        // }
 
         $data = date('d');
         
@@ -71,32 +132,32 @@ class home extends CI_Controller {
 
         $dados['cidade'] = $_SESSION['city'];
 
-        switch($_SESSION['regiao']){
-            case 'bc':
-                $_SESSION['slogam'] = "+ DE UM MILHÃO DE AMIGOS";
-                $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninabc";
-                $_SESSION['socialInsta'] = "https://www.instagram.com/meninafm/";
-                $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
-                break;
-            case 'bl': 
-                $_SESSION['slogam'] = "A NÚMERO UM DE BLUMENAU E REGIÃO";
-                $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninablu";
-                $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmblu/";
-                $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
-                break;
-            case 'lg':
-                $_SESSION['slogam'] = "A PRIMEIRA DA FM";
-                $_SESSION['socialFace'] = "https://www.facebook.com/meninafmlages";
-                $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmlages/";
-                $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
-                break;
-            default:
-                $_SESSION['slogam'] = "";
-                $_SESSION['socialFace'] = "";
-                $_SESSION['socialInsta'] = "";
-                $_SESSION['socialYoutube'] = "";
-                break;
-        }
+        // switch($_SESSION['regiao']){
+        //     case 'bc':
+        //         $_SESSION['slogam'] = "+ DE UM MILHÃO DE AMIGOS";
+        //         $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninabc";
+        //         $_SESSION['socialInsta'] = "https://www.instagram.com/meninafm/";
+        //         $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
+        //         break;
+        //     case 'bl': 
+        //         $_SESSION['slogam'] = "A NÚMERO UM DE BLUMENAU E REGIÃO";
+        //         $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninablu";
+        //         $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmblu/";
+        //         $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
+        //         break;
+        //     case 'lg':
+        //         $_SESSION['slogam'] = "A PRIMEIRA DA FM";
+        //         $_SESSION['socialFace'] = "https://www.facebook.com/meninafmlages";
+        //         $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmlages/";
+        //         $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
+        //         break;
+        //     default:
+        //         $_SESSION['slogam'] = "";
+        //         $_SESSION['socialFace'] = "";
+        //         $_SESSION['socialInsta'] = "";
+        //         $_SESSION['socialYoutube'] = "";
+        //         break;
+        // }
         
 
         $hora = date('H');
@@ -242,9 +303,22 @@ class home extends CI_Controller {
     
     public function noticia() {
         $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
+
+        // setando a session para nao retornar para o HOME quando for mandado o link direto
+        // if($uri[0] == 'balneario-camboriu') {
+        //     $_SESSION['regiao'] = 'bc';
+        //     $_SESSION['city'] = 'balneario-camboriu';
+        // }elseif($uri[0] == 'blumenau') {
+        //     $_SESSION['regiao'] = 'bl';
+        //     $_SESSION['city'] = 'blumenau';
+        // }elseif($uri[0] == 'lages') {
+        //     $_SESSION['regiao'] = 'lg';
+        //     $_SESSION['city'] = 'lages';
+        // }
+
         // $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'todas';
-        $categoria = utf8_encode($uri[2]);
-        echo $categoria;
+        $categoria = $uri[2];
+        $dados['cat'] = $categoria;
 
         $pagina = $uri[3];
         $dados['pagina'] = $pagina;
@@ -285,6 +359,7 @@ class home extends CI_Controller {
         // --------------------- METODOS DO MODEL ------------------
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['mais_lidas']        = $this->Novomenina->mais_lidas($categoria, $_SESSION['regiao']);
+
         $dados['banner_tipo3']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticias', '3', 4);
         $dados['banner_tipo2']      = $this->Novomenina->banners($_SESSION['regiao'], 'noticias', '2', 2); 
            

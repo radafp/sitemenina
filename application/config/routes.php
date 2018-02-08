@@ -56,6 +56,14 @@ $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $
 $nParametros = count($uri);
 
 
+if($uri[0] == 'balneario-camboriu') {
+    $_SESSION['regiao'] = 'bc';
+}elseif($uri[0] == 'blumenau') {
+    $_SESSION['regiao'] = 'bl';
+}elseif($uri[0] == 'lages') {
+    $_SESSION['regiao'] = 'lg';
+}
+
 
 if($nParametros==1)
 {
