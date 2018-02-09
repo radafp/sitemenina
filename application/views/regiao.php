@@ -41,7 +41,7 @@
         <?php foreach($ultimas_noticias as $info):?>
 
             <div class='col-xs-12 col-md-4 noticia'>
-                <a class="link_descricao" href="<?=base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoriaPt'].'/'.$info['cleanTitlePt']);?>">
+                <a class="link_descricao" href="<?=base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoria'].'/'.$info['cleanTitlePt']);?>">
                     <div class="wrapCategoria">
                         <span class="categoria" style="background-color:#<?=$info['cor'];?>; color:<?=isset($info['corTexto']) != '' ? $info['corTexto'] : '#ffffff';?>"><?=$info['categoriaPt'];?></span>
                     </div>
@@ -205,7 +205,7 @@
                     $nProgramacao = count($programacao_home);
                     foreach($programacao_home as $info):
                     ?>
-                        <a class='link_descricao' href="<?=base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']));?>">
+                        <a class='link_descricao' href="<?=base_url($_SESSION['city'].'/descricao_programacao/'.$info['cleanTitle']);?>">
                             <div class='programacao'>
                                 <div class="foto">
                                     <img src="<?=base_url('/assets/arquivos/programacao/'.$info['arquivo']);?>" alt="">

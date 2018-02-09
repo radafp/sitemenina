@@ -14,7 +14,7 @@
         $('.link_descricao').click(function( e ){
             e.preventDefault();
 
-            // var href = $( this ).attr('href');
+            var href = $( this ).attr('href');
             $.ajax({
                 url: href,
                 success: function( response ){
@@ -26,10 +26,14 @@
                         content.fadeOut('fast', function(){
                             content.html( data ).fadeIn();
                         });
+                        $('html,body').animate({ scrollTop: $("#anc").offset().top },'slow');
                     },100);
                 }
             });
+            window.history.pushState(null, 'Home', $(this).attr('href'));
         });
+
+
         $(".registra_click_publicidade").click(function(e) {
         
             _obj = $(this);
@@ -93,7 +97,7 @@
                     }
                     ?>
 
-                    <!-- <div class="fb-comments" data-href="<?=$linkPluginFace;?>" data-numposts="4"  data-width="100%"></div> -->
+                    <div class="fb-comments" data-href="<?=$linkPluginFace;?>" data-numposts="4"  data-width="100%"></div>
 
                 </div>
                 
@@ -113,8 +117,7 @@
                             </a>
                         <?php endif; ?>
                     </div>
-                    <?php
-                    /* 
+                    <?php 
                         if($nbanner_tipo3  >= 2):
                             if($key==1):
                             ?>
@@ -137,17 +140,16 @@
                             <?php
                             endif;
                         endif;
-                        */
                     ?>
                 <?php endforeach;
                 //echo count($banner_tipo3);
-                /*if($nbanner_tipo3 <2):
+                if($nbanner_tipo3 <2):
                 ?>
                 <div class="blocoMaisLidas">
                     <h1 class="tituloPadrao3">
                         <span>As mais lidas</span>
                     </h1>
-                    <?php foreach($mais_lidas as $info):?>
+                     <?php foreach($mais_lidas as $info):?>
                     <div class="noticia">
                         <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoria'].'/'.$info['cleanTitlePt'])?>">
                             <div class="foto">
@@ -161,7 +163,6 @@
                 </div>
                 <?php
                 endif;
-                */
                 switch(count($cod)) {
                     case 4:
                         $_SESSION['cod_banner_tipo3_1'] = $cod[0]; 

@@ -52,59 +52,9 @@ class home extends CI_Controller {
 
         $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
 
-        // $_SESSION['slogam'] = "";
-        // $_SESSION['socialFace'] = "";
-        // $_SESSION['socialInsta'] = "";
-        // $_SESSION['socialYoutube'] = "";
-
-        // if($uri[0] == 'balneario-camboriu') {
-        //     $_SESSION['regiao'] = 'bc';
-        //     $_SESSION['city'] = 'balneario-camboriu';
-        //     $_SESSION['slogam'] = "+ DE UM MILHÃO DE AMIGOS";
-        //     $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninabc";
-        //     $_SESSION['socialInsta'] = "https://www.instagram.com/meninafm/";
-        //     $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
-        // }elseif($uri[0] == 'blumenau') {
-        //     $_SESSION['regiao'] = 'bl';
-        //     $_SESSION['city'] = 'blumenau';
-        //     $_SESSION['slogam'] = "A NÚMERO UM DE BLUMENAU E REGIÃO";
-        //     $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninablu";
-        //     $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmblu/";
-        //     $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
-        // }elseif($uri[0] == 'lages') {
-        //     $_SESSION['regiao'] = 'lg';
-        //     $_SESSION['city'] = 'lages';
-        //     $_SESSION['slogam'] = "A PRIMEIRA DA FM";
-        //     $_SESSION['socialFace'] = "https://www.facebook.com/meninafmlages";
-        //     $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmlages/";
-        //     $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
-        // }
         
         $regiao = isset($uri[0]) && !empty($uri[0]) ? $uri[0] : '';// regiao
-        // if($regiao == 'balneario-camboriu') {
-        //     $_SESSION['regiao'] =  'bc';
-        //     $_SESSION['city']   = 'balneario-camboriu';
-        // }if($regiao == 'blumenal') {
-        //     $_SESSION['regiao'] =  'bl';
-        //     $_SESSION['city']   = 'blumenal';
-        // }if($regiao == 'lages') {
-        //     $_SESSION['regiao'] = 'lg';
-        //     $_SESSION['city']   = 'lages';
-        // };
-
-        // if(empty($_SESSION['regiao'])) {
-        //     if($regiao == 'balneario-camboriu') {
-        //         $_SESSION['regiao'] =  'bc';
-        //         $_SESSION['city']   = 'balneario-camboriu';
-        //     }if($regiao == 'blumenal') {
-        //         $_SESSION['regiao'] =  'bl';
-        //         $_SESSION['city']   = 'blumenal';
-        //     }if($regiao == 'lages') {
-        //         $_SESSION['regiao'] = 'lg';
-        //         $_SESSION['city']   = 'lages';
-        //     };
-        // }
-
+       
         $data = date('d');
         
         $dia =  substr("$data", 8, 9);
@@ -131,34 +81,7 @@ class home extends CI_Controller {
         $codigoConteudo = addslashes(isset($uri[2]) && !empty($uri[2]) ? $uri[2] : ''); //codigo
 
         $dados['cidade'] = $_SESSION['city'];
-
-        // switch($_SESSION['regiao']){
-        //     case 'bc':
-        //         $_SESSION['slogam'] = "+ DE UM MILHÃO DE AMIGOS";
-        //         $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninabc";
-        //         $_SESSION['socialInsta'] = "https://www.instagram.com/meninafm/";
-        //         $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
-        //         break;
-        //     case 'bl': 
-        //         $_SESSION['slogam'] = "A NÚMERO UM DE BLUMENAU E REGIÃO";
-        //         $_SESSION['socialFace'] = "https://www.facebook.com/radiomeninablu";
-        //         $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmblu/";
-        //         $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
-        //         break;
-        //     case 'lg':
-        //         $_SESSION['slogam'] = "A PRIMEIRA DA FM";
-        //         $_SESSION['socialFace'] = "https://www.facebook.com/meninafmlages";
-        //         $_SESSION['socialInsta'] = "https://www.instagram.com/meninafmlages/";
-        //         $_SESSION['socialYoutube'] = "https://www.youtube.com/channel/UCCuiZ1TmPD2gnl_ASpg99xg";
-        //         break;
-        //     default:
-        //         $_SESSION['slogam'] = "";
-        //         $_SESSION['socialFace'] = "";
-        //         $_SESSION['socialInsta'] = "";
-        //         $_SESSION['socialYoutube'] = "";
-        //         break;
-        // }
-        
+      
 
         $hora = date('H');
         $hora_atual = $hora.':00:00';
@@ -217,12 +140,14 @@ class home extends CI_Controller {
     }
 
     public function programacao() {
+        $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
         // link de progrmacao semanal/sabado/domingo
-        $_SESSION['menuAtivoProgramacao'] = addslashes(isset($_GET['programacao']) ? $_GET['programacao'] : 'Semanal');
+        $_SESSION['menuAtivoProgramacao'] = addslashes(isset($uri[2]) ? $uri[2] : 'Semanal');
+
         
-        if(isset($_GET['programacao'])) {
-            $_SESSION['menuAtivoProgramacao'] = addslashes(isset($_GET['programacao']) ? $_GET['programacao'] : 'Semanal');
-            $programacao = addslashes($_GET['programacao']);
+        if(isset($uri[2])) {
+            $programacao = $uri[2];
+            $_SESSION['menuAtivoProgramacao'] = (isset($uri[2]) ? $uri[2] : 'Semanal');
             $dados['programacao_impar'] = $this->Novomenina->programacao_programacao($_SESSION['regiao'], $programacao);
         }else{
             $dados['programacao_impar'] = $this->Novomenina->programacao_programacao($_SESSION['regiao'], 'Semanal');
@@ -299,6 +224,83 @@ class home extends CI_Controller {
         $dados['viewName'] = 'programacao/programacao';
         $this->load->view('Template', $dados);
 
+    }
+
+    public function descricao_programacao() {
+        unset($_SESSION['cod_banner_tipo2_1']);
+        unset($_SESSION['cod_banner_tipo2_2']);
+        unset($_SESSION['cod_banner_tipo1']);
+
+        $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
+
+
+        $cleanTitle = $uri[2];
+        $regiao = $_SESSION['regiao'];
+        $dados['descricao_programacao'] = $this->Novomenina->descricao_programacao($cleanTitle, $regiao);
+        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'programacao', '3', 4);
+        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'programacao', '2' , 2);        
+
+        // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
+        $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
+        $cod_banner2_2 = isset($_SESSION['cod_banner_tipo2_2']) ? $_SESSION['cod_banner_tipo2_2'] : '';
+
+        $cod_banner3_1 = isset($_SESSION['cod_banner_tipo3_1']) ? $_SESSION['cod_banner_tipo3_1'] : '';
+        $cod_banner3_2 = isset($_SESSION['cod_banner_tipo3_2']) ? $_SESSION['cod_banner_tipo3_2'] : '';
+        $cod_banner3_3 = isset($_SESSION['cod_banner_tipo3_3']) ? $_SESSION['cod_banner_tipo3_3'] : '';
+        $cod_banner3_4 = isset($_SESSION['cod_banner_tipo3_4']) ? $_SESSION['cod_banner_tipo3_4'] : '';
+        // echo '<br>cod_banner2_1: '.$cod_banner2_1;
+        // echo '<br>cod_banner2_2: '.$cod_banner2_2;
+
+ 
+        if($cod_banner2_1!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
+            foreach($num_impresoes as $info):
+                $valor = $info['nImpressoes'] + 1;
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_1);
+            endforeach;
+        }
+
+        if($cod_banner2_2!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
+            foreach($num_impresoes as $info):
+                $valor = $info['nImpressoes'] + 1;
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
+            endforeach;
+        }
+
+
+        if($cod_banner3_1!='') {
+        $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_1);
+        foreach($num_impresoes as $info):
+            $valor = $info['nImpressoes'] + 1;
+            $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_1);
+        endforeach;
+        }
+        if($cod_banner3_2!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_2);
+            foreach($num_impresoes as $info):
+                $valor = $info['nImpressoes'] + 1;
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_2);
+            endforeach;
+        }
+        if($cod_banner3_3!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_3);
+            foreach($num_impresoes as $info):
+                $valor = $info['nImpressoes'] + 1;
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
+            endforeach;
+        }
+        if($cod_banner3_4!='') {
+            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
+            foreach($num_impresoes as $info):
+                $valor = $info['nImpressoes'] + 1;
+                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
+            endforeach;
+        }
+        
+        $dados['viewName'] = 'programacao/descricao_programacao';
+        $this->load->view('Template', $dados);
     }
     
     public function noticia() {
@@ -1008,79 +1010,7 @@ class home extends CI_Controller {
         $this->load->view('Template', $dados);
     }
 
-    public function descricao_programacao() {
-        unset($_SESSION['cod_banner_tipo2_1']);
-        unset($_SESSION['cod_banner_tipo2_2']);
-        unset($_SESSION['cod_banner_tipo1']);
-
-        $id = addslashes($_GET['id']);
-        $regiao = $_SESSION['regiao'];
-        $dados['descricao_programacao'] = $this->Novomenina->descricao_programacao($id, $regiao);
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'programacao', '3', 4);
-        $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'programacao', '2' , 2);        
-
-        // SELECT numero de impessoes da publicidade, pegao codigo da publicidade vista por session e altera o numero de vizualizações + 1
-        $cod_banner2_1 = isset($_SESSION['cod_banner_tipo2_1']) ? $_SESSION['cod_banner_tipo2_1'] : '';
-        $cod_banner2_2 = isset($_SESSION['cod_banner_tipo2_2']) ? $_SESSION['cod_banner_tipo2_2'] : '';
-
-        $cod_banner3_1 = isset($_SESSION['cod_banner_tipo3_1']) ? $_SESSION['cod_banner_tipo3_1'] : '';
-        $cod_banner3_2 = isset($_SESSION['cod_banner_tipo3_2']) ? $_SESSION['cod_banner_tipo3_2'] : '';
-        $cod_banner3_3 = isset($_SESSION['cod_banner_tipo3_3']) ? $_SESSION['cod_banner_tipo3_3'] : '';
-        $cod_banner3_4 = isset($_SESSION['cod_banner_tipo3_4']) ? $_SESSION['cod_banner_tipo3_4'] : '';
-        // echo '<br>cod_banner2_1: '.$cod_banner2_1;
-        // echo '<br>cod_banner2_2: '.$cod_banner2_2;
-
- 
-        if($cod_banner2_1!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_1);
-            foreach($num_impresoes as $info):
-                $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_1);
-            endforeach;
-        }
-
-        if($cod_banner2_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner2_2);
-            foreach($num_impresoes as $info):
-                $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner2_2);
-            endforeach;
-        }
-
-
-        if($cod_banner3_1!='') {
-        $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_1);
-        foreach($num_impresoes as $info):
-            $valor = $info['nImpressoes'] + 1;
-            $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_1);
-        endforeach;
-        }
-        if($cod_banner3_2!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_2);
-            foreach($num_impresoes as $info):
-                $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_2);
-            endforeach;
-        }
-        if($cod_banner3_3!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_3);
-            foreach($num_impresoes as $info):
-                $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_3);
-            endforeach;
-        }
-        if($cod_banner3_4!='') {
-            $num_impresoes = $this->Novomenina->select('publicidadeImpressoes', 'nImpressoes', 'publicidadeImpressoes.codPublicidade', $cod_banner3_4);
-            foreach($num_impresoes as $info):
-                $valor = $info['nImpressoes'] + 1;
-                $this->Novomenina->update('publicidadeImpressoes', 'nImpressoes', $valor, 'codPublicidade', $cod_banner3_4);
-            endforeach;
-        }
-        
-        $dados['viewName'] = 'programacao/descricao_programacao';
-        $this->load->view('Template', $dados);
-    }
+    
 
     public function descricao_utilidade() {
         

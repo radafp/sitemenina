@@ -70,13 +70,13 @@
                 <div class="blocoMenuProgramacao">
                     <ul class="menuProgramacao">
                         <li class="semanal<?=($menuAtivoProgramacao == 'Semanal') ? ' ativo' : '';?>">
-                            <a class='link_programacao' href="<?php echo base_url('home/programacao?programacao=Semanal')?>">SEMANAL</a>
+                            <a class='link_programacao' href="<?php echo base_url($_SESSION['city'].'/programacao/Semanal')?>">SEMANAL</a>
                         </li>
                         <li class="sabado<?=($menuAtivoProgramacao == 'Sabado') ? ' ativo' : '';?>">
-                            <a class='link_programacao' href="<?php echo base_url('home/programacao?programacao=Sabado')?>">SÁBADO</a>
+                            <a class='link_programacao' href="<?php echo base_url($_SESSION['city'].'/programacao/Sabado')?>">SÁBADO</a>
                         </li>
                         <li class="domingo<?=($menuAtivoProgramacao == 'Domingo') ? ' ativo' : '';?>">
-                            <a class='link_programacao' href="<?php echo base_url('home/programacao?programacao=Domingo')?>">DOMINGO</a>
+                            <a class='link_programacao' href="<?php echo base_url($_SESSION['city'].'/programacao/Domingo')?>">DOMINGO</a>
                         </li>
                     </ul>
                 </div>
@@ -91,7 +91,7 @@
                             
                         <div class="linhaPrograma">
                             <div class="programa<?=$classeAdicionalPrograma;?>">        
-                                <a class='link_programacao' href="<?php echo base_url('home/descricao_programacao?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">  
+                                <a class='link_programacao' href="<?php echo base_url($_SESSION['city'].'/descricao_programacao/'.$info['cleanTitle'])?>">  
                                     <div class="foto">
                                         <img src="<?php echo base_url('assets/arquivos/programacao/'.$info["arquivo"])?>" alt="">
                                     </div>

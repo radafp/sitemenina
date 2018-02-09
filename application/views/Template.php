@@ -87,7 +87,8 @@
                         }
                     });
                     
-                    // window.history.pushState(null, 'Home', $(this).attr('href'));
+                    
+                    window.history.pushState(null, 'Home', $(this).attr('href'));
                 });
                 
                 $(document).on('click', '[data-toggle="lightbox"]', function(event) {

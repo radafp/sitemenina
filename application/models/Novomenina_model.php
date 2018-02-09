@@ -98,16 +98,17 @@ class Novomenina_model extends CI_Model{
     }
 
 
-    public function descricao_programacao($id, $regiao, $limit = null) {
+    public function descricao_programacao($cleanTitle, $regiao, $limit = null) {
         $query = $this->db->query("SELECT programacao.*, arquivos.arquivo
                                         FROM programacao
                                     INNER JOIN arquivos 
                                         ON programacao.cod = arquivos.codReferencia 
                                         AND arquivos.referencia = 'programacao'
                                         AND programacao.regiao = '$regiao'
-                                        AND programacao.cod = $id
+                                        AND programacao.cleanTitle = '$cleanTitle'
                                         GROUP BY programacao.cod
-                                        ORDER BY programacao.dataCadastro DESC"
+                                        ORDER BY programacao.dataCadastro DESC
+                                        LIMIT 1"
         );
         return $query->result_array();
     }
@@ -411,7 +412,7 @@ class Novomenina_model extends CI_Model{
                 FROM noticias
                 INNER JOIN categorias
                     WHERE noticias.codCategoria = categorias.cod
-                    AND categorias.cleanTitlePt= '$cleanTitlePt'
+                    -- AND categorias.cleanTitlePt= '$cleanTitlePt'
                     AND noticias.regiao = '$regiao'
                     AND noticias.mostrar = 1 
                 GROUP BY noticias.cod

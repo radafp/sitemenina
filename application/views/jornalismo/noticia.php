@@ -21,7 +21,6 @@
                     },100);
                 }
             });
-
             window.history.pushState(null, 'Home', $(this).attr('href'));
         });
         $(".registra_click_publicidade").click(function(e) {
@@ -54,7 +53,7 @@
             <div class="col-xs-12 col-md-8 contLeft">
 
                 <h1 class="tituloPadrao1">
-                    <span><?php echo $cat; ?> <br> Notícias</span>
+                    <span>Notícias</span>
                 </h1>
                 <div class="blocoNoticias">
                     <?php foreach($jornalismo as $info):?>

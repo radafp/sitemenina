@@ -90,6 +90,21 @@ $route['blumenau/programacao'] = 'home/programacao';
 $route['lages/programacao'] = 'home/programacao';
 
 if(isset($uri[1])) {
+
+    // ROUTE DA PAGINA PROGRAMACAO
+    if($uri[1] == 'programacao' && isset($uri[2])) {
+        $route['balneario-camboriu/programacao/'.$uri[2]] = 'home/programacao/'.$uri[2];
+        $route['blumenau/programacao/'.$uri[2]] = 'home/programacao/'.$uri[2];
+        $route['lages/programacao/'.$uri[2]] = 'home/programacao/'.$uri[2];
+        
+    }elseif($uri[1] == 'descricao_programacao' && isset($uri[2])) {
+        $route['balneario-camboriu/descricao_programacao/'.$uri[2]] = 'home/descricao_programacao/'.$uri[2];
+        $route['blumenau/descricao_programacao/'.$uri[2]] = 'home/descricao_programacao/'.$uri[2];
+        $route['lages/descricao_programacao/'.$uri[2]] = 'home/descricao_programacao/'.$uri[2];
+    }
+
+    
+
     if($uri[1] == 'noticias' && isset($uri[2]) && isset($uri[3])) {
         $route['balneario-camboriu/noticias/'.$uri[2]. '/' . $uri[3]] = 'home/noticia';
         $route['blumenau/noticias/'.$uri[2]. '/' . $uri[3]] = 'home/noticia';
