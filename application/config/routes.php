@@ -102,7 +102,6 @@ if(isset($uri[1])) {
         $route['blumenau/descricao_programacao/'.$uri[2]] = 'home/descricao_programacao/'.$uri[2];
         $route['lages/descricao_programacao/'.$uri[2]] = 'home/descricao_programacao/'.$uri[2];
     }
-
     
 
     if($uri[1] == 'noticias' && isset($uri[2]) && isset($uri[3])) {
@@ -115,6 +114,13 @@ if(isset($uri[1])) {
         $route['balneario-camboriu/descricao_noticia/'.$uri[2]. '/' . $uri[3]] = 'home/descricao_noticia';
         $route['blumenau/descricao_noticia/'.$uri[2]. '/' . $uri[3]] = 'home/descricao_noticia';
         $route['lages/descricao_noticia/'.$uri[2]. '/' . $uri[3]] = 'home/descricao_noticia';
+    }
+
+    if($uri[1] == 'videos' && isset($uri[2])) {
+        $route['balneario-camboriu/videos/'.$uri[2]] = 'home/videos_home/'.$uri[2];
+        $route['blumenau/videos/'.$uri[2]] = 'home/videos_home/'.$uri[2];
+        $route['lages/videos/'.$uri[2]] = 'home/videos_home/'.$uri[2];
+        
     }
 }
 

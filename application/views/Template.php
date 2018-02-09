@@ -275,7 +275,7 @@
                                         </div>
                                         <div id='link_artistico' class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                             <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/top-10')?>">Top 10</a>
-                                            <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/videos/?p='). 1?>">Vídeos</a>
+                                            <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/videos/'). 1?>">Vídeos</a>
                                         </div>
                                     </li>
                                     <li class="nav-item">

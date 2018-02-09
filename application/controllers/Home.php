@@ -750,25 +750,30 @@ class home extends CI_Controller {
 
     public function videos_home() {
         $regiao = $_SESSION['regiao'];
+        $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
 
+        
         // --------------------- PAGINAÇÂO --------------------
         //|                                                    |
         //|                                                    |
         //|___________________________________________________ |
-         if(isset($_GET['p'])) {
-            $pg = $_GET['p'];
+
+        $pagina = $uri[2];
+        $dados['pagina'] = $pagina;
+        if(isset($uri[2])) {
+            $pg = $uri[2];
         }else{
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 16;
-        if($p < 0) {
-            $p = 0;
+        $pagina= ($pg - 1) * 15;
+        if( $pagina < 0) {
+            $pagina = 0;
         }
                 
-        $dados['pHome'] = $p;
+        $dados['pHome'] = $pagina;
         $dados['total_registros']   = 16;
-        $dados['videos_videos']     = $this->Novomenina-> videos($regiao, $p);
+        $dados['videos_videos']     = $this->Novomenina-> videos($regiao, $pagina);
         $dados['count']             = count($this->Novomenina-> CountAll('videos', $_SESSION['regiao']));
         $dados['paginas']           = ceil($dados['count'] / 16); 
 
