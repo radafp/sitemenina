@@ -599,6 +599,8 @@ class Novomenina_model extends CI_Model{
         //                             ORDER BY eventos.dataCadastro"
         // );
         // return $query->result_array();
+        $date = date('Y-m-d');
+
         $query = $this->db->query(
             "SELECT eventos.*, 
                 (SELECT a.arquivo 
@@ -612,7 +614,7 @@ class Novomenina_model extends CI_Model{
                 FROM eventos 
                     WHERE eventos.regiao = '$regiao' 
                     AND eventos.mostrar = 1 
-                    AND eventos.dataFim >= ".date('Ymd')."
+                    AND eventos.dataFim >= '2018-02-10'
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataInicio ASC 
                 LIMIT $limit, 15
@@ -653,7 +655,7 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
-    public function descricao_eventos($id, $regiao) {
+    public function descricao_eventos($cleanTitlePt, $regiao) {
         // $query = $this->db->query("SELECT * FROM eventos WHERE cod = $id and eventos.regiao = '$regiao'");
         // return $query->result_array();
 
@@ -670,7 +672,7 @@ class Novomenina_model extends CI_Model{
                 FROM eventos 
                     WHERE eventos.regiao = '$regiao' 
                     AND eventos.mostrar = 1 
-                    AND eventos.cod = '$id'
+                    AND eventos.cleanTitlePt = '$cleanTitlePt'
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataCadastro DESC
                 LIMIT 1
@@ -857,11 +859,29 @@ class Novomenina_model extends CI_Model{
                             AND $condição = '$valor'";    
             }
             $query = $this->db->query($sql);
-            return $query->result_array();
+            return $query->result_array();       
+    }
+
+    public function CountAll_eventos($regiao, $condição = null, $valor = null){
+        $date = date('Y-m-d');
+        $sql = "SELECT eventos.*, 
+            (SELECT a.arquivo 
+                FROM arquivos AS a 
+                    WHERE a.codReferencia = eventos.cod 
+                    AND a.referencia = 'eventos' 
+                    AND a.tipo = 2 
+                ORDER BY a.capa 
+                DESC LIMIT 1) 
+        AS arquivo 
+            FROM eventos 
+                WHERE eventos.regiao = '$regiao' 
+                AND eventos.mostrar = 1 
+                AND eventos.dataFim >= '$date'
+            GROUP BY eventos.cod
+            ORDER BY eventos.dataInicio ASC";
         
-  
-        
-        
+        $query = $this->db->query($sql);
+        return $query->result_array();       
     }
    
     

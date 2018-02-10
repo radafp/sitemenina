@@ -282,7 +282,7 @@
                                         <a id='link_promocoes' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/promocoes/1')?>">Promoções</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a id='link_eventos' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/agenda/?p='). 1?>">Agenda</a>
+                                        <a id='link_eventos' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/agenda/1')?>">Agenda</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

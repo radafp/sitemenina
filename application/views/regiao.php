@@ -128,7 +128,7 @@
                 {
                     foreach($eventos_home as $info): ?> 
                     <div class='promocaoEvento'>
-                        <a class="link_descricao" href="<?=base_url('home/descricao_agenda?id='.$info['cod']);?>">
+                        <a class="link_descricao" href="<?=base_url('home/descricao_agenda/'.$info['cleanTitlePt']);?>">
                             <? if($info['arquivo']!=''){ ?>
                                 <div class="wrapFoto">
                                     <div class="foto">

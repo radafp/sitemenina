@@ -122,7 +122,7 @@ if(isset($uri[1])) {
         
     }
 
-    // ROUTE DA PAGINA VIDEOS
+    // ROUTE DA PAGINA promocoes
     if($uri[1] == 'promocoes' && isset($uri[2])) {
         $route['balneario-camboriu/promocoes/'.$uri[2]] = 'home/promocoes/'.$uri[2];
         $route['blumenau/promocoes/'.$uri[2]] = 'home/promocoes/'.$uri[2];
@@ -132,6 +132,17 @@ if(isset($uri[1])) {
         $route['blumenau/descricao_promocoes/'.$uri[2]] = 'home/descricao_promocoes';
         $route['lages/descricao_promocoes/'.$uri[2]] = 'home/descricao_promocoes';
     }
+
+    // ROUTE DA PAGINA AGENDA
+    if($uri[1] == 'agenda' && isset($uri[2])) {
+        $route['balneario-camboriu/agenda/'.$uri[2]] = 'home/agenda/'.$uri[2];
+        $route['blumenau/agenda/'.$uri[2]] = 'home/agenda/'.$uri[2];
+        $route['lages/agenda/'.$uri[2]] = 'home/agenda/'.$uri[2];
+    }elseif($uri[1] == 'descricao_agenda' && isset($uri[2])) {
+        $route['balneario-camboriu/descricao_agenda/'.$uri[2]] = 'home/descricao_agenda';
+        $route['blumenau/descricao_agenda/'.$uri[2]] = 'home/descricao_agenda';
+        $route['lages/descricao_agenda/'.$uri[2]] = 'home/descricao_agenda';
+    }
 }
 
 
@@ -139,9 +150,9 @@ $route['balneario-camboriu/top-10'] = 'home/top_10';
 $route['blumenau/top-10'] = 'home/top_10';
 $route['lages/top-10'] = 'home/top_10';
 
-$route['balneario-camboriu/videos'] = 'home/videos_home';
-$route['blumenau/videos'] = 'home/videos_home';
-$route['lages/videos'] = 'home/videos_home';
+// $route['balneario-camboriu/videos'] = 'home/videos_home';
+// $route['blumenau/videos'] = 'home/videos_home';
+// $route['lages/videos'] = 'home/videos_home';
 
 // $route['balneario-camboriu/promocoes'] = 'home/promocoes';
 // $route['blumenau/promocoes'] = 'home/promocoes';
