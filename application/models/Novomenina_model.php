@@ -614,7 +614,7 @@ class Novomenina_model extends CI_Model{
                 FROM eventos 
                     WHERE eventos.regiao = '$regiao' 
                     AND eventos.mostrar = 1 
-                    AND eventos.dataFim >= '2018-02-10'
+                    AND eventos.dataFim >= '$date'
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataInicio ASC 
                 LIMIT $limit, 15
@@ -634,6 +634,7 @@ class Novomenina_model extends CI_Model{
         //                             LIMIT 2"
         // );
         // return $query->result_array();
+        $date = date('Y-m-d');
         $query = $this->db->query(
             "SELECT eventos.*, 
                 (SELECT a.arquivo 
@@ -647,7 +648,7 @@ class Novomenina_model extends CI_Model{
                 FROM eventos 
                     WHERE eventos.regiao = '$regiao' 
                     AND eventos.mostrar = 1 
-                    AND eventos.dataInicio >= ".date('Ymd')."
+                    AND eventos.dataInicio >= '$date'
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataInicio ASC
                 LIMIT 2
