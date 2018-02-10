@@ -92,7 +92,7 @@
                     foreach($promocoes_home as $info): 
                     ?>
                     <div class='promocaoEvento'>
-                        <a class="link_descricao" href="<?=base_url('home/descricao_promocoes?id='.$info['cod']);?>">
+                        <a class="link_descricao" href="<?=base_url($_SESSION['city'].'/descricao_promocoes/'.$info['cleanTitlePt']);?>">
                             <? if($info['arquivo']!='') { ?>
                                 <div class="wrapFoto">
                                     <div class="foto">

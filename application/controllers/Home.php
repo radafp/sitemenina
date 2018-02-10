@@ -850,25 +850,29 @@ class home extends CI_Controller {
     }
 
     public function promocoes() {
+        $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
+
+        $categoria = $uri[2];
+        $dados['cat'] = $categoria;
+
+        $pagina = $uri[2];
+        $dados['pagina'] = $pagina;
         
         // --------------------- PAGINAÇÂO --------------------
-        //|                                                    |
-        //|                                                    |
-        //|___________________________________________________ |
-        if(isset($_GET['p'])) {
-            $pg = $_GET['p'];
+        if(isset($uri[2])) {
+            $pg = $uri[2];
         }else{
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 15;
-        if($p < 0) {
-            $p = 0;
+        $pagina= ($pg - 1) * 15;
+        if( $pagina < 0) {
+            $pagina = 0;
         }
                 
-        $dados['pHome'] = $p;
+        $dados['pHome'] = $pagina;
         $dados['total_registros']       = 15;
-        $dados['promocoes_promocoes']   = $this->Novomenina->promocoes_promocoes($_SESSION['regiao'], $p);
+        $dados['promocoes_promocoes']   = $this->Novomenina->promocoes_promocoes($_SESSION['regiao'], $pagina);
         $dados['count']                 = count($this->Novomenina-> CountAll('promocoes', $_SESSION['regiao']));
         $dados['paginas']               = ceil($dados['count'] / 15); 
         
@@ -943,13 +947,13 @@ class home extends CI_Controller {
     }
 
     public function descricao_promocoes() {
-        unset($_SESSION['cod_banner_tipo2_1']);
-        unset($_SESSION['cod_banner_tipo2_2']);
-        unset($_SESSION['cod_banner_tipo1']);
-        $id = addslashes($_GET['id']);
+
+        $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
+
+        $cleanTitle = $uri[2];
         $regiao = $_SESSION['regiao'];
-        $dados['descricao_promocoes'] = $this->Novomenina->descricao_promocoes($id, $regiao);
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $dados['descricao_promocoes']   = $this->Novomenina->descricao_promocoes($cleanTitle, $regiao);
+        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'promocoes', '3', 4);
         $dados['banner_tipo2']          = $this->Novomenina->banners($_SESSION['regiao'], 'promocoes', '2', 2); 
         

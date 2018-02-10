@@ -67,7 +67,7 @@
                             $classeAdicional = ' ultimo';
                         ?>
                             <div class="promocao <?=$classeAdicional;?>">
-                                <a class='link_descricao' href="<?php echo base_url('home/descricao_promocoes?id='.$info['cod'].'&regiao='.strtolower($info['regiao']))?>">
+                                <a class='link_descricao' href="<?php echo base_url($_SESSION['city'].'/descricao_promocoes/'.$info['cleanTitlePt'])?>">
                                     <div class="foto">
                                         <img src="<?php echo base_url('assets/arquivos/promocoes/'.$info["arquivo"])?>" alt="" width='680px'>
                                     </div>

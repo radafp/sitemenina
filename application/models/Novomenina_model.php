@@ -535,7 +535,7 @@ class Novomenina_model extends CI_Model{
     }
 
 
-    public function descricao_promocoes($id, $regiao) {
+    public function descricao_promocoes($cleanTitlePt, $regiao) {
         // $query = $this->db->query("SELECT * FROM promocoes WHERE cod = $id and promocoes.regiao = '$regiao'");
         // return $query->result_array();
         $query = $this->db->query(
@@ -551,7 +551,7 @@ class Novomenina_model extends CI_Model{
                 FROM promocoes 
                     WHERE promocoes.regiao = '$regiao' 
                     AND promocoes.mostrar = 1 
-                    AND promocoes.cod = '$id'
+                    AND promocoes.cleanTitlePt = '$cleanTitlePt'
                 GROUP BY promocoes.cod
                 ORDER BY promocoes.dataCadastro DESC
                 LIMIT 1
