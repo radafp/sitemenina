@@ -153,6 +153,16 @@ if(isset($uri[1])) {
         $route['blumenau/descricao-bolsa-de-empregos/'.$uri[2]] = 'home/descricao_bolsa_de_empregos';
         $route['lages/descricao-bolsa-de-empregos/'.$uri[2]] = 'home/descricao_bolsa_de_empregos';
     }
+
+    if($uri[1] == 'documentos-perdidos' && isset($uri[2])) {
+        $route['balneario-camboriu/documentos-perdidos/'.$uri[2]] = 'home/documentos_perdidos';
+        $route['blumenau/documentos-perdidos/'.$uri[2]] = 'home/documentos_perdidos';
+        $route['lages/documentos-perdidos/'.$uri[2]] = 'home/documentos_perdidos';
+    }elseif($uri[1] == 'documento-perdido' && isset($uri[2])) {
+        $route['balneario-camboriu/documento-perdido/'.$uri[2]] = 'home/descricao_documentos_perdidos';
+        $route['blumenau/documento-perdido/'.$uri[2]] = 'home/descricao_documentos_perdidos';
+        $route['lages/documento-perdido/'.$uri[2]] = 'home/descricao_documentos_perdidos';
+    }
 }
 
 
@@ -174,9 +184,6 @@ $route['lages/top-10'] = 'home/top_10';
 
 
 
-$route['balneario-camboriu/documentos-perdidos'] = 'home/documentos_perdidos';
-$route['blumenau/documentos-perdidos'] = 'home/documentos_perdidos';
-$route['lages/documentos-perdidos'] = 'home/documentos_perdidos';
 
 $route['balneario-camboriu/historia'] = 'home/historia';
 $route['blumenau/historia'] = 'home/historia';

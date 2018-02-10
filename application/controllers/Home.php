@@ -1282,27 +1282,26 @@ class home extends CI_Controller {
     }
 
     public function documentos_perdidos() {
-        unset($_SESSION['cod_banner_tipo2_1']);
-        unset($_SESSION['cod_banner_tipo2_2']);
-        unset($_SESSION['cod_banner_tipo1']);
-        // --------------------- PAGINAÇÂO --------------------
-        //|                                                    |
-        //|                                                    |
-        //|___________________________________________________ |
-        if(isset($_GET['p'])) {
-            $pg = $_GET['p'];
+        $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
+
+        $pagina = $uri[2];
+        $regiao = addslashes($_SESSION['regiao']);
+        
+       // --------------------- PAGINAÇÂO --------------------
+        if(isset($uri[2])) {
+            $pg = $uri[2];
         }else{
             $pg = 0;
         }
 
-        $p = ($pg - 1) * 15;
-        if($p < 0) {
-            $p = 0;
+        $pagina= ($pg - 1) * 15;
+        if( $pagina < 0) {
+            $pagina = 0;
         }
-                
-        $dados['pHome'] = $p;
+        
+        $dados['pHome'] = $pagina;
         $dados['total_registros']       = 15;
-        $dados['documentos_perdidos']   = $this->Novomenina->documentos_perdidos($_SESSION['regiao'], $p);
+        $dados['documentos_perdidos']   = $this->Novomenina->documentos_perdidos($_SESSION['regiao'], $pagina);
         $dados['count']                 = count($this->Novomenina-> CountAll('empregos', $_SESSION['regiao']));
         $dados['paginas']               = ceil($dados['count'] / 15); 
         
@@ -1377,12 +1376,9 @@ class home extends CI_Controller {
     }
 
     public function descricao_documentos_perdidos() {
-        
-        unset($_SESSION['cod_banner_tipo2_1']);
-        unset($_SESSION['cod_banner_tipo2_2']);
-        unset($_SESSION['cod_banner_tipo1']);
+        $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
 
-        $id = addslashes($_GET['id']);
+        $id = $uri[2];
         $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['descricao_documento']   = $this->Novomenina->descricao_equipe_documentos_perdidos($id, $_SESSION['regiao']);
 
