@@ -84,8 +84,8 @@
                 <div class="paginacao">
                     <?php
                     
-                    if(isset($_GET['p'])) {
-                        $p = $_GET['p'];
+                    if(isset($pagina)) {
+                        $p = $pagina;
                     }else{
                         $p = 0;
                     }
@@ -108,25 +108,26 @@
                     }
                     ?>
 
+
                     <?php if($count > $total_registros):?>
                         <?php if($p > 1):?>
                         <div class='pagina paginahover'>
-                            <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/?p=') .$anterior;?>"><</a>
+                            <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/') .$anterior;?>"><</a>
                         </div>
                         <div class='pagina'>
-                            <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/?p=') .$anterior;?>"><?=$anterior;?></a>
+                            <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/') .$anterior;?>"><?=$anterior;?></a>
                         </div>    
                         <?php endif?>
                         <div class='pagina paginahover'>
-                            <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/?p=') .$p;?>"><?=$p;?></a>
+                            <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/') .$p;?>"><?=$p;?></a>
                         </div>
                         
                         <?php if($pHome+10 <= $count):?>
                             <div class='pagina'>
-                                <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/?p=') .$proxima;?>"><?=$proxima;?></a>
+                                <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/') .$proxima;?>"><?=$proxima;?></a>
                             </div>
                             <div class='pagina paginahover'>
-                                <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/?p=') .$proxima;?>">></a>
+                                <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/') .$proxima;?>">></a>
                             </div>
                         <?php endif?>
                     <?php endif;?>
