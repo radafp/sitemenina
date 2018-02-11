@@ -51,7 +51,7 @@
                 </div>
                 <?php foreach($equipe as $info):?>
                     <div class="col-md-3">
-                        <a class="link_descricao" href="<?php echo base_url('home/descricao_equipe?id='.$info['cod']);?>">
+                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/equipe/'.$info['cod']);?>">
                             <div style="text-align:center">
                                 <img style="max-width:80%; text-align:center" src="<?php echo base_url('/assets/arquivos/equipe/'.$info['arquivo'])?>" alt="">
                             </div>

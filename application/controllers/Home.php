@@ -1545,11 +1545,10 @@ class home extends CI_Controller {
     }
 
     public function descricao_equipe() {
-        unset($_SESSION['cod_banner_tipo2_1']);
-        unset($_SESSION['cod_banner_tipo2_2']);
-        unset($_SESSION['cod_banner_tipo1']);
-        $id = addslashes($_GET['id']);
-        $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
+        $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
+
+        $id = $uri[2];
+        $dados['titulo_jornalismo']     = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['descricao_programacao'] = $this->Novomenina->descricao_equipe($id, $_SESSION['regiao']);
 
         $dados['banner_tipo3']          = $this->Novomenina->banners($_SESSION['regiao'], 'equipe', '3', 4);
@@ -1687,9 +1686,6 @@ class home extends CI_Controller {
     }
 
     public function contato() {
-        unset($_SESSION['cod_banner_tipo2_1']);
-        unset($_SESSION['cod_banner_tipo2_2']);
-        unset($_SESSION['cod_banner_tipo1']);
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['action'] = site_url('home/enviaEmail');
         // $this->load->library('email');
@@ -1739,9 +1735,6 @@ class home extends CI_Controller {
         $setor          = $this->input->post('setor', TRUE);
         $assunto        = 'assunto';
         
-
-        echo '<br>'.$nome;   echo '<br>'.$emailContato; echo '<br>'.$telefone; echo '<br>'.$mensagem; echo '<br>'.$assunto;  
-
         $config['protocol'] = 'smtp';
         $config['smtp_host'] = 'smtp.agenciaset.com.br';
         $config['smtp_port'] = '587';

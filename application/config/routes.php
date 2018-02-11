@@ -163,27 +163,18 @@ if(isset($uri[1])) {
         $route['blumenau/documento-perdido/'.$uri[2]] = 'home/descricao_documentos_perdidos';
         $route['lages/documento-perdido/'.$uri[2]] = 'home/descricao_documentos_perdidos';
     }
+
+    if($uri[1] == 'equipe' && isset($uri[2])) {
+        $route['balneario-camboriu/equipe/'.$uri[2]] = 'home/descricao_equipe';
+        $route['blumenau/equipe/'.$uri[2]] = 'home/descricao_equipe';
+        $route['lages/equipe/'.$uri[2]] = 'home/descricao_equipe';
+    }
 }
 
 
 $route['balneario-camboriu/top-10'] = 'home/top_10';
 $route['blumenau/top-10'] = 'home/top_10';
 $route['lages/top-10'] = 'home/top_10';
-
-// $route['balneario-camboriu/videos'] = 'home/videos_home';
-// $route['blumenau/videos'] = 'home/videos_home';
-// $route['lages/videos'] = 'home/videos_home';
-
-// $route['balneario-camboriu/promocoes'] = 'home/promocoes';
-// $route['blumenau/promocoes'] = 'home/promocoes';
-// $route['lages/promocoes'] = 'home/promocoes';
-
-// $route['balneario-camboriu/agenda'] = 'home/agenda';
-// $route['blumenau/agenda'] = 'home/agenda';
-// $route['lages/agenda'] = 'home/agenda';
-
-
-
 
 $route['balneario-camboriu/historia'] = 'home/historia';
 $route['blumenau/historia'] = 'home/historia';
