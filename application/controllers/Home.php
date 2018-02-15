@@ -1738,7 +1738,8 @@ class home extends CI_Controller {
             $bodyalt = null;
             $destino =  'dionathan_bass@hotmail.com';
             $destino_nome = 'teste';
-            $cc= array('atendimentoset@gmail.com');
+            // $cc= array('atendimentoset@gmail.com');
+            $cc = null;
             $anexo = null;
             $body = '<html><head></head><body>
                  Nome:       ' . $nome . ' <br />
@@ -1750,14 +1751,16 @@ class home extends CI_Controller {
                  </body></html>';
 
             $retorno = send($subject, $body, $bodyalt, $destino, $destino_nome, $cc, $anexo);
-            $dados['email_enviado'] = $retorno;
-            // var_dump($retorno);
+            // $dados['email_enviado'] = var_dump($retorno);
 
-            // if ($retorno) {
-                // $dados['email_enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
-            // } else {
-                // $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
-            // };
+            // echo $retorno['message'];
+            // // var_dump($retorno);
+
+            if ($retorno['message'] == 'Mensagem enviada com sucesso!') {
+                $dados['email_enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
+            } else {
+                $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
+            };
 
 
             // $mail = new My_PHPMailer();

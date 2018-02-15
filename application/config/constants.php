@@ -39,25 +39,25 @@ defined('DIR_WRITE_MODE')  OR define('DIR_WRITE_MODE', 0755);
 |--------------------------------------------------------------------------
 | Essas constantes servem para envio de email
 */
-define('SMTPAuth_email', true);
-define('SMTPSecure_email', 'ssl');
-define('Host_email', 'smtp.gmail.com');
-define('Port_email', '465');
-define('username_email', 'defaltern@gmail.com');
-define('password_email', '');
-define('setFrom_email', 'defaltern@gmail.com');
-define('setFromNome_email', 'Nome');
-define('codificacao_email', 'UTF-8');
+// define('SMTPAuth_email', true);
+// define('SMTPSecure_email', 'ssl');
+// define('Host_email', 'smtp.gmail.com');
+// define('Port_email', '465');
+// define('username_email', 'defaltern');
+// define('password_email', '');
+// define('setFrom_email', 'defaltern@gmail.com');
+// define('setFromNome_email', 'Contato Menina');
+// define('codificacao_email', 'UTF-8');
 
 
 define('SMTPAuth_email', true);
 define('SMTPSecure_email', 'ssl');
 define('Host_email', 'smtp.agenciaset.com.br');
-define('Port_email', '587');
+define('Port_email', 587);
 define('username_email', 'webmaster@agenciaset.com.br');
 define('password_email', 'agEncia445');
 define('setFrom_email', 'webmaster@agenciaset.com.br');
-define('setFromNome_email', 'Nome');
+define('setFromNome_email', 'Agenciaset');
 define('codificacao_email', 'UTF-8');
 
 
