@@ -141,7 +141,7 @@
                 */
             });
         </script>
-        
+
     </head>
     <body class="backgroundBody_<?=$_SESSION['regiao'];?>">
 
@@ -357,7 +357,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-8 insta">
-                            <div class="wrapFotoTipo1">
+                            <!-- <div class="wrapFotoTipo1">
                                 <img src="<?php echo base_url('/assets/img/temp/insta1_'.$_SESSION['regiao']).'.jpg';?>" alt="">
                             </div>
                             <div class="wrapFotoTipo2">
@@ -370,12 +370,29 @@
                             </div>
                             <div class="wrapFotoTipo1">
                                 <img src="<?php echo base_url('/assets/img/temp/insta4_'.$_SESSION['regiao']).'.jpg';?>" alt="">
-                            </div>
+                            </div> -->
                             <?php 
-                            /* switch(isset($_SESSION['regiao'])){
+                            switch($_SESSION['regiao']){
                                 case 'bc':
+                                    //echo 'bc';
                                     $userid = "1261127122";
-                                    $accessToken = "1261127122.6d7beb5.c32b85c115d240eeb11e6ed048e9c61f";
+                                    $accessToken = "1261127122.6d7beb5.7ca0e32270444670a075b73f2e68113e";
+                                    $url = "https://api.instagram.com/v1/users/{$userid}/media/recent/?access_token={$accessToken}";
+                                    $result = file_get_contents($url);
+                                    $result = json_decode($result);
+                                    break;
+                                case 'bl':
+                                    //echo 'bl';
+                                    $userid = "1297410873";
+                                    $accessToken = "1297410873.3fa9399.cbd4c8f386404fc1bcc82a3d8eec5925";
+                                    $url = "https://api.instagram.com/v1/users/{$userid}/media/recent/?access_token={$accessToken}";
+                                    $result = file_get_contents($url);
+                                    $result = json_decode($result);
+                                    break;
+                                case 'lg':
+                                    //echo 'lg';
+                                    $userid = "3251484169";
+                                    $accessToken = "3251484169.1297509.29deb66c688a4996b9ce379e1f294b1f";
                                     $url = "https://api.instagram.com/v1/users/{$userid}/media/recent/?access_token={$accessToken}";
                                     $result = file_get_contents($url);
                                     $result = json_decode($result);
@@ -386,30 +403,34 @@
                                 $foto = $result->data[$i];
                             ?>
                                 <?php if($i==0): ?>
-                                <div class="wrapFotoTipo1">
-                                    <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
-                                </div>
+                                    <div class="wrapFotoTipo1">
+                                        <a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank">
+                                            <img src="<?php echo $foto->images->low_resolution->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                        </a>
+                                    </div>
                                 <?php endif; ?>
-                                <div class="wrapFotoTipo2">
-                                    <?php if($i==1): ?>
-                                    <div class="fotoTipo2">
-                                    <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
-                                    </div>
-                                    <?php 
-                                        endif; 
-                                        if($i==2):
-                                    ?>
-                                    <div class="fotoTipo2">
-                                    <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
-                                    </div>
+                                
+                                <?php if($i==1): ?>
+                                    <div class="wrapFotoTipo2">
+                                <?php endif; ?>
+
+                                    <?php if($i==1 || $i==2): ?>
+                                        <div class="fotoTipo2">
+                                            <a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank">
+                                                <img src="<?php echo $foto->images->low_resolution->url ?>" alt="<?php echo $foto->caption->text ?>" /> 
+                                            </a> 
+                                        </div>
                                     <?php endif; ?>
-                                </div>
+
                                 <?php if($i==3): ?>
+                                </div>
                                 <div class="wrapFotoTipo1">
-                                <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                    <a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank">
+                                        <img src="<?php echo $foto->images->low_resolution->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                    </a>
                                 </div>
                                 <?php endif; ?>
-                            <?php }  */?> 
+                            <?php }  ?> 
                         </div>
 
                     </div> <!-- row -->
