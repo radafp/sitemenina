@@ -337,7 +337,9 @@ a, a:hover {
 .redes .youtube img{
   max-width: 100%;
 }
-
+.redes .insta{
+  padding-top: 11px;
+}
 .redes .insta .wrapFotoTipo1{
   float: left;
   width: 36.5%;

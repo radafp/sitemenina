@@ -1687,7 +1687,7 @@ class home extends CI_Controller {
 
     public function contato() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
-        $dados['action'] = site_url('home/enviaEmail2');
+        $dados['action'] = site_url('home/enviaEmail');
         // $this->load->library('email');
 
         // $this->email->set_newline("\r\n");
@@ -1724,27 +1724,71 @@ class home extends CI_Controller {
     }
 
     public function enviaEmail() {
-        $this->load->library('email');
-        $this->email->set_newline("\r\n");
+        $this->load->library('My_PHPMailer');
 
-        $JSON = array();
-        // filtros para obter dados do ajax
-        $getPost = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-        var_dump($getPost);
-        extract($getPost);
-        
-        echo '<br>Nome: '. $nome;
-        echo '<br>Email: '. $email;
-        echo '<br>Telefone: '. $telefone;
-        echo '<br>Setor: '. $setor;
-        echo '<br>Mensagem: '. $mensagem;
+        if(count($_POST) > 0) {
+            $nome           = $_POST['nome'];
+            $emailContato   = $_POST['emailContato'];
+            $telefone       = $_POST['telefone'];
+            $mensagem       = $_POST['mensagem'];
+            $setor          = $_POST['setor'];
+            $assunto        = "TESTE";
 
-        $emailContato = $email;
-        // echo json_encode($JSON);
+            $subject = 'Teste de Email';
+            $bodyalt = null;
+            $destino =  'dionathan_bass@hotmail.com';
+            $destino_nome = 'teste';
+            $cc= array('atendimentoset@gmail.com');
+            $anexo = null;
+            $body = '<html><head></head><body>
+                 Nome:       ' . $nome . ' <br />
+                 E-mail:     ' . $emailContato . ' <br />
+                 Telefone:   ' . $telefone . ' <br />
+                 Assunto:    ' . $assunto . ' <br />
+                 Mensagem:   ' . $mensagem . ' <br />
+                 Setor:      ' . $setor . ' <br />
+                 </body></html>';
 
-        // foreach($getPost as $info) {
-        //     echo 'nome: '. $info["nome"];
-        // }
+            $retorno = send($subject, $body, $bodyalt, $destino, $destino_nome, $cc, $anexo);
+            $dados['email_enviado'] = $retorno;
+            // var_dump($retorno);
+
+            // if ($retorno) {
+                // $dados['email_enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
+            // } else {
+                // $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
+            // };
+
+
+            // $mail = new My_PHPMailer();
+            // $mail->IsSMTP();
+            // $mail->Host = "smtp.agenciaset.com.br";
+
+            // $mail->From = 'dionathan_bass@hotmail.com';
+            // $mail->FromName = 'Dionathan';
+            // $mail->AddAddress("dionathan_bass@hotmail.com");
+
+            // $mail->Subject = 'Teste de Email';
+            // $mail->Body = "
+            //     Nome: {$_POST['nome']} <br>
+            //     Telefone : {$_POST['nome']} <br>
+            //     Email : {$_POST['email']} <br>
+            //     Setor : {$_POST['setor']} <br>
+            //     Mensagem : {$_POST['mensagem']} <br>
+            // ";
+
+            // $mail->wordwrap = 100;
+
+            
+    
+            $dados['viewName'] = 'contato';
+            $this->load->view('Template', $dados);
+        }
+
+
+
+        // $this->load->library('email');
+        // $this->email->set_newline("\r\n");
 
         
         // $nome           = $this->input->post('nome', TRUE);
@@ -1752,121 +1796,44 @@ class home extends CI_Controller {
         // $telefone       = $this->input->post('telefone', TRUE);
         // $mensagem       = $this->input->post('mensagem', TRUE);
         // $setor          = $this->input->post('setor', TRUE);
-        $assunto        = 'assunto';
+        // $assunto        = 'assunto';
         
-        $config['protocol'] = 'smtp';
-        $config['smtp_host'] = 'smtp.agenciaset.com.br';
-        $config['smtp_port'] = '587';
-        $config['charset'] = 'utf8';
-        $config['smtp_user'] = 'webmaster@agenciaset.com.br';
-        $config['smtp_from_name'] = 'Radio Menina';
-        $config['smtp_pass'] = 'agEncia445';
-        $config['wordwrap'] = TRUE;
-        $config['newline'] = "\r\n";
-        $config['mailtype'] = 'html'; 
+        // $config['protocol'] = 'smtp';
+        // $config['smtp_host'] = 'smtp.agenciaset.com.br';
+        // $config['smtp_port'] = '587';
+        // $config['charset'] = 'utf8';
+        // $config['smtp_user'] = 'webmaster@agenciaset.com.br';
+        // $config['smtp_from_name'] = 'Radio Menina';
+        // $config['smtp_pass'] = 'agEncia445';
+        // $config['wordwrap'] = TRUE;
+        // $config['newline'] = "\r\n";
+        // $config['mailtype'] = 'html'; 
 
-        $this->email->initialize($config);
+        // $this->email->initialize($config);
 
-        $this->email->from($emailContato, $nome);
-        $this->email->to('atendimentoset@gmail.com');
-        $this->email->cc('dionathan_bass@hotmail.com');
+        // $this->email->from($emailContato, $nome);
+        // $this->email->to('atendimentoset@gmail.com');
+        // $this->email->cc('dionathan_bass@hotmail.com');
 
-        $this->email->subject($assunto);
-        $this->email->message('<html><head></head><body>
-            Nome:       ' . $nome . ' <br />
-            E-mail:     ' . $email. ' <br />
-            Telefone:   ' . $telefone . ' <br />
-            Assunto:    ' . $assunto . ' <br />
-            Mensagem:   ' . $mensagem . ' <br />
-            Setor:      ' . $setor . ' <br />
-            </body></html>');
+        // $this->email->subject($assunto);
+        // $this->email->message('<html><head></head><body>
+        //     Nome:       ' . $nome . ' <br />
+        //     E-mail:     ' . $emailContato . ' <br />
+        //     Telefone:   ' . $telefone . ' <br />
+        //     Assunto:    ' . $assunto . ' <br />
+        //     Mensagem:   ' . $mensagem . ' <br />
+        //     Setor:      ' . $setor . ' <br />
+        //     </body></html>');
 
-        $em = $this->email->send();
-        if ($em) {
-            $dados['email_enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
-        } else {
-            $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
-        }
-        $dados['action'] = site_url('home/enviaEmail');
+        // $em = $this->email->send();
+        // if ($em) {
+        //     $dados['email_enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
+        // } else {
+        //     $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
+        // }
+        // $dados['action'] = site_url('home/enviaEmail');
 
-        $dados['viewName'] = 'contato';
-        $this->load->view('Template', $dados);
+        // $dados['viewName'] = 'contato';
+        // $this->load->view('Template', $dados);
     }
-
-//     public function enviaEmail1() {
-//         $config['smtp_host'] = 'ssl://smtp.googlemail.com';
-//         $config['smtp_port'] = '465';
-//         $config['charset'] = 'utf8';
-// -       $config['smtp_user'] = 'defaltern@gmail.com';
-//         $config['smtp_from_name'] = 'FROM NAME';
-// -       $config['smtp_pass'] = 'fodassegmail';
-//         $config['wordwrap'] = TRUE;
-//         $config['newline'] = "\r\n";
-//         $config['mailtype'] = 'html'; 
- 
-//         $this->load->library('email', $config);
-//         $this->email->set_newline('\r\n');
-
-//         $this->email->from('defaltern@gmail.com');
-//         $this->email->to('defaltern@gmail.com');
-//         $this->email->cc('dionathan_bass@hotmail.com');
-//         $this->email->subject('Testando');
-//         $this->email->message('Testando envio de email');
-
-//         if($this->email->send()) {
-//             $dados['email_enviado'] = 'foi';
-//         } else {
-//             $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
-//             show_error($this->email->print_debugger());
-//         }
-
-//         $dados['viewName'] = 'contato';
-//         $this->load->view('Template', $dados);
-//     }
-
-    // public function enviaEmail2() {
-    //     $this->load->library('email');
-    //     $this->email->set_newline("\r\n");
-              
-    //    // $data['action'] = site_url('contato/enviaEmail');	
-    //     $email = $this->input->post('email', TRUE);	
-    //     $nome = $this->input->post('name', TRUE);
-    //     $telefone = $this->input->post('telefone', TRUE);
-    //     $cidade = $this->input->post('cidade', TRUE);	       
-    //     $estado = $this->input->post('estado', TRUE);	     
-    //     $mensagem = $this->input->post('mensagem', TRUE);
-    //     $assunto = $this->input->post('assunto', TRUE);
-        
-    //     $config['protocol'] = 'smtp';
-    //     $config['smtp_host'] = 'ssl://smtp.googlemail.com';
-    //     $config['smtp_port'] = '465';
-    //     $config['charset'] = 'utf8';
-    //     $config['smtp_user'] = 'defaltern@gmail.com';
-    //     $config['smtp_from_name'] = 'FROM NAME';
-    //     $config['smtp_pass'] = 'fodassegmail@';
-    //     $config['wordwrap'] = TRUE;
-    //     $config['newline'] = "\r\n";
-    //     $config['mailtype'] = 'html'; 
-        
-    //     $this->email->initialize($config);
-
-    //     $this->email->from($email, $nome);     
-    //     $this->email->to('defaltern@gmail.com');
-    //     $this->email->cc('dionathan_bass@hotmail.com');
-        
-    //     $this->email->subject($assunto);
-    //     $this->email->message('<html><head></head><body'); 
-
-    //     if($this->email->send()) {
-    //         $dados['email_enviado'] = 'foi';
-    //     } else {
-    //         $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
-    //         show_error($this->email->print_debugger());
-    //     }
-
-    //     $dados['viewName'] = 'contato';
-    //     $this->load->view('Template', $dados);
-
-    // }
-   
  }
