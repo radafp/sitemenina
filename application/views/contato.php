@@ -52,7 +52,7 @@
                         <div class="control-group form-group">
                             <div class="controls">
                                 <label>E-mail:</label>
-                                <input name="emailContato" type="email" class="form-control" id="email" required data-validation-required-message="Por favor, digite seu email.">
+                                <input name="email" type="email" class="form-control" id="email" required data-validation-required-message="Por favor, digite seu email.">
                                 <p class="help-block"></p>
                             </div>  
                         </div>
