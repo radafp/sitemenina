@@ -337,6 +337,7 @@ class home extends CI_Controller {
         if( $pagina < 0) {
             $pagina = 0;
         }
+        echo "página: ". $pagina;
 
         if(isset($_GET['busca']) && !empty($_GET['busca'])) {
             $busca = $_GET['busca'];

@@ -378,9 +378,9 @@ label
 .divTableFiltro
 {
     display: table;
-    float: left;
-    width: 940px;
-    margin-top: 25px;
+    float: right;
+    /*width: 940px;
+    margin-top: 25px;*/
 }
 
 .divTableFiltro .divTr.head 
