@@ -36,30 +36,30 @@ class Sendmail {
         $mail->CharSet = 'utf-8'; // Charset da mensagem (opcional)
         
         // DEFINIÇÃO DA MENSAGEM
-        if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['telefone']) && isset($_POST['mensagem'])) {
-            $mail->Subject  = "Formulário de Contato"; // Assunto da mensagem
-            $mail->Body .= " Nome: ".$_POST['nome']."<br>"; // Texto da mensagem
-            $mail->Body .= " E-mail: ".$_POST['email']."<br>"; // Texto da mensagem
-            $mail->Body .= " Telefone: ".$_POST['telefone']."<br>"; // Texto da mensagem
-            $mail->Body .= " Assunto: ". 'Teste de Email'."<br>"; // Texto da mensagem
-            $mail->Body .= " Mensagem: ".nl2br($_POST['mensagem'])."<br>"; // Texto da mensagem
-        
+        // if(isset($_POST['nome']) && isset($_POST['email']) && isset($_POST['telefone']) && isset($_POST['mensagem'])) {
+        $mail->Subject  = "Formulário de Contato"; // Assunto da mensagem
+        $mail->Body .= " Nome: ".$_POST['nome']."<br>"; // Texto da mensagem
+        $mail->Body .= " E-mail: ".$_POST['email']."<br>"; // Texto da mensagem
+        $mail->Body .= " Telefone: ".$_POST['telefone']."<br>"; // Texto da mensagem
+        $mail->Body .= " Assunto: ". 'Teste de Email'."<br>"; // Texto da mensagem
+        $mail->Body .= " Mensagem: ". $_POST['mensagem']."<br>"; // Texto da mensagem
+    
         
         // ENVIO DO EMAIL
-            $enviado = $mail->Send();
+        $enviado = $mail->Send();
         // Limpa os destinatários e os anexos
             
-            $mail->ClearAllRecipients();
-            
-            // Exibe uma mensagem de resultado do envio (sucesso/erro)
-            if ($enviado) {
-                $_SESSION['enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
-                $dados['email_enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
-            } else {
-                $_SESSION['enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
-                $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
-            // echo "<b>Detalhes do erro:</b> " . $mail->ErrorInfo;
-            }
+        $mail->ClearAllRecipients();
+        
+        // Exibe uma mensagem de resultado do envio (sucesso/erro)
+        if ($enviado) {
+            $_SESSION['enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
+            $dados['email_enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
+        } else {
+            $_SESSION['enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
+            $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
+        // echo "<b>Detalhes do erro:</b> " . $mail->ErrorInfo;
         }
+        // }
     }
 }
