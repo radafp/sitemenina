@@ -192,5 +192,9 @@ $route['balneario-camboriu/contato'] = 'home/contato';
 $route['blumenau/contato'] = 'home/contato';
 $route['lages/contato'] = 'home/contato';
 
+$route['balneario-camboriu/enviaEmail'] = 'home/enviaEmail';
+$route['blumenau/enviaEmail'] = 'home/enviaEmail';
+$route['lages/enviaEmail'] = 'home/enviaEmail';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

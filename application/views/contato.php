@@ -41,7 +41,7 @@
                         <div id="mensagem_enviada"><?php echo $email_enviado ?></div>
                     <?php } ?>
 
-                    <form name="from_contato" id="contactForm" method='post' action="<?php echo base_url('home/enviaEmail') ?>">
+                    <form name="from_contato" id="contactForm" method='post' action="<?php echo base_url($_SESSION['city'].'/enviaEmail') ?>">
                         <div class="control-group form-group">
                             <div class="controls">
                                 <label>Nome:</label>
@@ -52,7 +52,7 @@
                         <div class="control-group form-group">
                             <div class="controls">
                                 <label>E-mail:</label>
-                                <input name="emailContato" type="email" class="form-control" id="email" required data-validation-required-message="Por favor, digite seu email.">
+                                <input name="email" type="email" class="form-control" id="email" required data-validation-required-message="Por favor, digite seu email.">
                                 <p class="help-block"></p>
                             </div>  
                         </div>

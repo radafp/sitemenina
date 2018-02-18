@@ -7,7 +7,7 @@ class home extends CI_Controller {
         parent::__construct();
         $this->load->model('Novomenina_model', 'Novomenina');
         $this->load->helper('url');
-        $this->load->library('email');
+        // $this->load->library('sendmail');
 
 
         $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
@@ -1724,44 +1724,45 @@ class home extends CI_Controller {
     }
 
     public function enviaEmail() {
-        
-        $this->load->library('My_PHPMailer');
+        $this->load->library('Sendmail');
 
-        if(count($_POST) > 0) {
-            $nome           = $_POST['nome'];
-            $emailContato   = $_POST['emailContato'];
-            $telefone       = $_POST['telefone'];
-            $mensagem       = $_POST['mensagem'];
-            $setor          = $_POST['setor'];
-            $assunto        = "TESTE";
+        // if(count($_POST) > 0) {
+        //     $nome           = $_POST['nome'];
+        //     $emailContato   = $_POST['emailContato'];
+        //     $telefone       = $_POST['telefone'];
+        //     $mensagem       = $_POST['mensagem'];
+        //     $setor          = $_POST['setor'];
+        //     $assunto        = "TESTE";
 
-            $subject = 'Teste de Email';
-            $bodyalt = null;
-            $destino =  'dionathan_bass@hotmail.com';
-            $destino_nome = 'teste';
-            // $cc= array('atendimentoset@gmail.com');
-            $cc = null;
-            $anexo = null;
-            $body = '<html><head></head><body>
-                 Nome:       ' . $nome . ' <br />
-                 E-mail:     ' . $emailContato . ' <br />
-                 Telefone:   ' . $telefone . ' <br />
-                 Assunto:    ' . $assunto . ' <br />
-                 Mensagem:   ' . $mensagem . ' <br />
-                 Setor:      ' . $setor . ' <br />
-                 </body></html>';
+        //     $subject = 'Teste de Email';
+        //     $bodyalt = null;
+        //     $destino =  'dionathan_bass@hotmail.com';
+        //     $destino_nome = 'teste';
+        //     // $cc= array('atendimentoset@gmail.com');
+        //     $cc = null;
+        //     $anexo = null;
+        //     $body = '<html><head></head><body>
+        //          Nome:       ' . $nome . ' <br />
+        //          E-mail:     ' . $emailContato . ' <br />
+        //          Telefone:   ' . $telefone . ' <br />
+        //          Assunto:    ' . $assunto . ' <br />
+        //          Mensagem:   ' . $mensagem . ' <br />
+        //          Setor:      ' . $setor . ' <br />
+        //          </body></html>';
 
-            $retorno = send($subject, $body, $bodyalt, $destino, $destino_nome, $cc, $anexo);
+            // $retorno = send($subject, $body, $bodyalt, $destino, $destino_nome, $cc, $anexo);
             // $dados['email_enviado'] = var_dump($retorno);
 
             // echo $retorno['message'];
             // // var_dump($retorno);
 
-            if ($retorno['message'] == 'Mensagem enviada com sucesso!') {
-                $dados['email_enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
-            } else {
-                $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
-            };
+
+            // if ($enviado) {
+                $dados['email_enviado'] = $_SESSION['enviado'];
+            // } else {
+            //     $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
+            // // echo "<b>Detalhes do erro:</b> " . $mail->ErrorInfo;
+            // }
 
 
             // $mail = new My_PHPMailer();
@@ -1787,7 +1788,7 @@ class home extends CI_Controller {
     
             $dados['viewName'] = 'contato';
             $this->load->view('Template', $dados);
-        }
+        // }
 
 
 
@@ -1840,4 +1841,4 @@ class home extends CI_Controller {
         // $dados['viewName'] = 'contato';
         // $this->load->view('Template', $dados);
     }
- }
+}
