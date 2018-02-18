@@ -1724,6 +1724,7 @@ class home extends CI_Controller {
     }
 
     public function enviaEmail() {
+        
         $this->load->library('My_PHPMailer');
 
         if(count($_POST) > 0) {
