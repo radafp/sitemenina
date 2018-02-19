@@ -56,8 +56,11 @@
                     <span>Notícias</span>
                 </h1>
                 <div class="blocoNoticias">
+                <p><?php if($retorno_noticias != '') { echo $retorno_noticias;};?></p>
                     <?php foreach($jornalismo as $info):?>
                     <div class="noticia">
+                        
+                        
                         <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoria'].'/'.$info['cleanTitlePt'])?>">
                             <div class="foto">
                                 <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
