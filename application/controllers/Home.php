@@ -347,7 +347,7 @@ class home extends CI_Controller {
             $dados['paginas']           = ceil($dados['count'] / 15);
 
             if(count($dados['jornalismo']) ==  0) {
-                $dados['retorno_noticias'] = "Nenhuma ocorrência encontrada para a palavra xxxxx";
+                $dados['retorno_noticias'] = "Nenhuma ocorrência encontrada para a palavra $busca!";
             }else{
                 $dados['retorno_noticias'] = '';
             }
