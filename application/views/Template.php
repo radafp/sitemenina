@@ -335,13 +335,16 @@
            <div class="redes redes_<?=$_SESSION['regiao'];?>">
 
                 <div class="container">
-                    <!-- 
+                    <?php 
+                    $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
+                    if(isset($uri[2]) == 'noticias'):
+                    ?>
                         <div class="row envieNoticia">
-                        <h2>Envie sua notícia</h2>
-                        <a id='link_contato' class="btEnvieConteudo" href="<?php echo base_url($_SESSION['city'].'/contato')?>">Quero participar</a>
-                        <hr style="width: 100%;padding: 20px 0;">
-                    </div>
-                        -->
+                            <h2>Envie sua notícia</h2>
+                            <a id='link_contato' class="btEnvieConteudo" href="<?php echo base_url($_SESSION['city'].'/contato')?>">Quero participar</a>
+                            <hr style="width: 100%;padding: 20px 0;">
+                        </div>
+                    <?php endif; ?>
                     <div class="row">
                         
                         <div class="col-xs-12 col-md-4">
