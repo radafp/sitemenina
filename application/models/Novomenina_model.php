@@ -275,7 +275,7 @@ class Novomenina_model extends CI_Model{
                         AND noticias.mostrar = 1 
                     GROUP BY noticias.cod
                     ORDER by DATA DESC, noticias.cod DESC
-                    LIMIT $limit, 5
+                    LIMIT $limit, 15
             "); 
         }
   
@@ -294,7 +294,7 @@ class Novomenina_model extends CI_Model{
                         AND a.capa = 1
                     ORDER BY a.capa 
                     DESC LIMIT 1) 
-            AS arquivo 
+            AS arquivo  
                 FROM noticias
                 INNER JOIN categorias
                     WHERE noticias.codCategoria = categorias.cod

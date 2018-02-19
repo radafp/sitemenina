@@ -337,6 +337,7 @@ class home extends CI_Controller {
         if( $pagina < 0) {
             $pagina = 0;
         }
+        echo "página: ". $pagina;
 
         if($uri[1] == 'busca-noticias') {
             $busca = $uri[2];
