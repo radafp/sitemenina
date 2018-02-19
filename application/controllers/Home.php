@@ -338,8 +338,8 @@ class home extends CI_Controller {
             $pagina = 0;
         }
 
-        if(isset($_GET['busca']) && !empty($_GET['busca'])) {
-            $busca = $_GET['busca'];
+        if($uri[1] == 'busca-noticias') {
+            $busca = $uri[2];
             $dados['pHome'] =  $pagina;
             $dados['total_registros']   = 15;
             $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias_busca($busca, $_SESSION['regiao'],  $pagina);
@@ -1688,107 +1688,17 @@ class home extends CI_Controller {
     public function contato() {
         $dados['titulo_jornalismo']= $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
         $dados['action'] = site_url('home/enviaEmail');
-        // $this->load->library('email');
-
-        // $this->email->set_newline("\r\n");
-    
-        // $config['protocol'] = 'smtp';
-        // $config['smtp_host'] = 'ssl://smtp.googlemail.com';
-        // $config['smtp_port'] = '465';
-        // $config['smtp_user'] = 'defaltern@gmail.com';
-        // $config['smtp_from_name'] = 'FROM NAME';
-        // $config['smtp_pass'] = 'fodassegmail';
-        // $config['wordwrap'] = TRUE;
-        // $config['newline'] = "\r\n";
-        // $config['mailtype'] = 'html';                       
-    
-        // $this->email->initialize($config);
-    
-        // $this->email->from($config['smtp_user'], $config['smtp_from_name']);
-        // $this->email->to('defaltern@gmail.com');
-        // $this->email->cc('dionathan_bass@hotmail.com');
-        // $this->email->subject('teste');
-    
-        // $this->email->message('message');
-    
-        // $em = $this->email->send();
-        // if ($em) {
-        //     $dados['email_enviado'] = 'E-mail enviado com sucesso. Aguarde contato.';
-        // } else {
-        //     // $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
-        //     $dados['email_enviado'] = $this->email->print_debugger();
-        // }
-            
+                    
         $dados['viewName'] = 'contato';
         $this->load->view('Template', $dados);
     }
 
     public function enviaEmail() {
         $this->load->library('Sendmail');
-
-        // if(count($_POST) > 0) {
-        //     $nome           = $_POST['nome'];
-        //     $emailContato   = $_POST['emailContato'];
-        //     $telefone       = $_POST['telefone'];
-        //     $mensagem       = $_POST['mensagem'];
-        //     $setor          = $_POST['setor'];
-        //     $assunto        = "TESTE";
-
-        //     $subject = 'Teste de Email';
-        //     $bodyalt = null;
-        //     $destino =  'dionathan_bass@hotmail.com';
-        //     $destino_nome = 'teste';
-        //     // $cc= array('atendimentoset@gmail.com');
-        //     $cc = null;
-        //     $anexo = null;
-        //     $body = '<html><head></head><body>
-        //          Nome:       ' . $nome . ' <br />
-        //          E-mail:     ' . $emailContato . ' <br />
-        //          Telefone:   ' . $telefone . ' <br />
-        //          Assunto:    ' . $assunto . ' <br />
-        //          Mensagem:   ' . $mensagem . ' <br />
-        //          Setor:      ' . $setor . ' <br />
-        //          </body></html>';
-
-            // $retorno = send($subject, $body, $bodyalt, $destino, $destino_nome, $cc, $anexo);
-            // $dados['email_enviado'] = var_dump($retorno);
-
-            // echo $retorno['message'];
-            // // var_dump($retorno);
-
-
-            // if ($enviado) {
-                $dados['email_enviado'] = $_SESSION['enviado'];
-            // } else {
-            //     $dados['email_enviado'] = 'Erro ao enviar o email. Favor enviar um e-mail para xxx@xxx.com.br';
-            // // echo "<b>Detalhes do erro:</b> " . $mail->ErrorInfo;
-            // }
-
-
-            // $mail = new My_PHPMailer();
-            // $mail->IsSMTP();
-            // $mail->Host = "smtp.agenciaset.com.br";
-
-            // $mail->From = 'dionathan_bass@hotmail.com';
-            // $mail->FromName = 'Dionathan';
-            // $mail->AddAddress("dionathan_bass@hotmail.com");
-
-            // $mail->Subject = 'Teste de Email';
-            // $mail->Body = "
-            //     Nome: {$_POST['nome']} <br>
-            //     Telefone : {$_POST['nome']} <br>
-            //     Email : {$_POST['email']} <br>
-            //     Setor : {$_POST['setor']} <br>
-            //     Mensagem : {$_POST['mensagem']} <br>
-            // ";
-
-            // $mail->wordwrap = 100;
-
-            
+        $dados['email_enviado'] = $_SESSION['enviado'];
     
-            $dados['viewName'] = 'contato';
-            $this->load->view('Template', $dados);
-        // }
+        $dados['viewName'] = 'contato';
+        $this->load->view('Template', $dados);
 
 
 

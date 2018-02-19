@@ -107,7 +107,7 @@
                     // alert(palabra_busca.value);
                     // var link = document.querySelector('.busca').href += palabra_busca.value+'&p=1';
 
-                    var link = document.querySelector('#buscaNoticia1 .busca').href = '/balneario-camboriu/noticias?busca='+palabra_busca1.value+'&p=1';
+                    var link = document.querySelector('#buscaNoticia1 .busca').href = '/balneario-camboriu/busca-noticias/'+palabra_busca1.value+'/1';
                     // alert(link);
                     //window.location = "/balneario-camboriu/noticias?categoria=Busca&p=1";
                     window.history.pushState(null, 'Home', $(this).attr('href'));
@@ -117,7 +117,7 @@
                 buscaNoticia2.addEventListener('click', function() {
                     var palabra_busca2 = document.querySelector('#buscaNoticia2 .inputBusca');
 
-                    var link = document.querySelector('#buscaNoticia2 .busca').href = '/balneario-camboriu/noticias?busca='+palabra_busca2.value+'&p=1';
+                    var link = document.querySelector('#buscaNoticia2 .busca').href = '/balneario-camboriu/busca-noticias/'+palabra_busca2.value+'/1';
         
                     window.history.pushState(null, 'Home', $(this).attr('href'));
                 })
