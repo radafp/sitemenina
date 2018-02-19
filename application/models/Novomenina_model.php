@@ -285,7 +285,7 @@ class Novomenina_model extends CI_Model{
 
     public function jornalismo_noticias_busca($busca, $regiao, $limit = null) {
         $query = $this->db->query(
-            "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
+            "SELECT noticias.*, categorias.categoriaPt, categorias.cleanTitlePt as categoria,categorias.cor, categorias.corTexto,
                 (SELECT a.arquivo 
                     FROM arquivos AS a 
                         WHERE a.codReferencia = noticias.cod 
