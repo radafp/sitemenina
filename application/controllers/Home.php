@@ -340,7 +340,8 @@ class home extends CI_Controller {
         echo "página: ". $pagina;
 
         if($uri[1] == 'busca-noticias') {
-            $busca = $uri[2];
+            $busca = utf8_decode($uri[2]);
+            echo $busca;
             $dados['pHome'] =  $pagina;
             $dados['total_registros']   = 15;
             $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias_busca($busca, $_SESSION['regiao'],  $pagina);
