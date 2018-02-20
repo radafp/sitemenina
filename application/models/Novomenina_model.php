@@ -300,7 +300,7 @@ class Novomenina_model extends CI_Model{
                     WHERE noticias.codCategoria = categorias.cod
                     AND noticias.regiao = '$regiao' 
                     AND noticias.mostrar = 1
-                    AND tituloPt like '%$busca%'
+                    AND tituloPt like _utf8  '%$busca%'  COLLATE utf8_unicode_ci
                     OR noticias.codCategoria = categorias.cod
                     AND  descricaoPt like '%$busca%'
                     AND noticias.regiao = '$regiao'

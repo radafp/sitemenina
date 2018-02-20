@@ -1,3 +1,8 @@
+<head> 
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        </head>
+
 <script type="text/javascript">
      $(document).ready(function(){
 
@@ -44,6 +49,7 @@
                 
             });
         });
+
     });
 </script>
 <div class="container">
