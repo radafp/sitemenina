@@ -1,7 +1,13 @@
+<?php
+ ini_set('default_charset','UTF-8');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head> 
         <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
