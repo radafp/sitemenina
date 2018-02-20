@@ -337,7 +337,6 @@ class home extends CI_Controller {
         if( $pagina < 0) {
             $pagina = 0;
         }
-        echo "página: ". $pagina;
 
         if($uri[1] == 'busca-noticias') {
             $busca = utf8_decode($uri[2]);
@@ -346,7 +345,14 @@ class home extends CI_Controller {
             $dados['total_registros']   = 15;
             $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias_busca($busca, $_SESSION['regiao'],  $pagina);
             $dados['count']             = count($dados['jornalismo']);
-            $dados['paginas']           = ceil($dados['count'] / 15); 
+            $dados['paginas']           = ceil($dados['count'] / 15);
+
+            if(count($dados['jornalismo']) ==  0) {
+                $dados['retorno_noticias'] = "Nenhuma ocorrência encontrada para a palavra $busca!";
+            }else{
+                $dados['retorno_noticias'] = '';
+            }
+
         }else{
 
             
@@ -359,6 +365,9 @@ class home extends CI_Controller {
             $dados['count']             = count($dados['count_noticias']);
             $dados['paginas']           = ceil($dados['count'] / 15); 
         }
+
+
+        
         
         // --------------------- METODOS DO MODEL ------------------
         $dados['titulo_jornalismo'] = $this->Novomenina->titulo_jornalismo($_SESSION['regiao']);
@@ -425,7 +434,7 @@ class home extends CI_Controller {
             endforeach;
         } 
         
-        $dados['viewName']          = 'jornalismo/noticia';
+        $dados['viewName']  = 'jornalismo/noticia';
         $this->load->view('Template', $dados);
         
     }
