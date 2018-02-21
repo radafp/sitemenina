@@ -338,9 +338,11 @@ class home extends CI_Controller {
             $pagina = 0;
         }
 
+        $dados['retorno_noticias'] = '';
         if($uri[1] == 'busca-noticias') {
 
-            $busca = $uri[2];            
+            $busca = urldecode($uri[2]);
+            
             $dados['pHome'] =  $pagina;
             $dados['total_registros']   = 15;
             $dados['jornalismo']        = $this->Novomenina->jornalismo_noticias_busca($busca, $_SESSION['regiao'],  $pagina);
@@ -349,8 +351,6 @@ class home extends CI_Controller {
 
             if(count($dados['jornalismo']) ==  0) {
                 $dados['retorno_noticias'] = "Nenhuma ocorrência encontrada para a palavra $busca!";
-            }else{
-                $dados['retorno_noticias'] = '';
             }
 
         }else{
