@@ -40,7 +40,7 @@ $modulos = array
                 'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
             ),
         ), #fim - subid
-        3 => array #subid
+        3 => array #subid 
         (
             'include' => ADMIN_PATH."_usuarios/usuarios-edita.php",
             'css' => array

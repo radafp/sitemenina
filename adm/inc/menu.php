@@ -1,10 +1,10 @@
 <div class="menu">
-    <ul class="centro">
+    <ul class="centro"> 
         <?
         if(verifica_permissao($cod_user, $nivel, 'usuarios'))
         {
         ?>
-             <li class="<?=$id == 1 ? "menuAtivo" : "";?> usuarios" >
+             <li class="<?=$id == 1 ? "menuAtivo" : "";?> cadastros" >
                 <a style="cursor: pointer;">
                     <span>Cadastros</span>
                 </a>

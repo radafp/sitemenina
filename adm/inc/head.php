@@ -202,6 +202,30 @@
         })
         /* final tratamento submenu */
 
+        /* Tratamento submenu Cadastros*/
+        if($("li.cadastros").children("ul").hasClass("submenu"))
+        {
+            $("li.cadastros").mouseover(function(){
+                
+                var tamanhoViewport = $(window).width();
+                if (tamanhoViewport > 768) 
+                {
+                    $(this).find("ul.submenu").show();
+                    
+                    $(this).mouseout(function(){
+                        $(this).find("ul.submenu").hide();
+                    })
+                }
+            })
+        }
+        $("ul.submenu").mouseover(function(){
+            $(this).show();
+            $(this).mouseout(function(){
+                $(this).hide();
+            })
+        })
+        /* final tratamento submenu */
+
 
         $('#formRegiao').change(function(){
             var parametro = $(this).find(':selected').val();
