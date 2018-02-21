@@ -338,6 +338,7 @@ class home extends CI_Controller {
             $pagina = 0;
         }
 
+        $dados['retorno_noticias'] = '';
         if($uri[1] == 'busca-noticias') {
 
             $busca = urldecode($uri[2]);
@@ -350,8 +351,6 @@ class home extends CI_Controller {
 
             if(count($dados['jornalismo']) ==  0) {
                 $dados['retorno_noticias'] = "Nenhuma ocorrência encontrada para a palavra $busca!";
-            }else{
-                $dados['retorno_noticias'] = '';
             }
 
         }else{

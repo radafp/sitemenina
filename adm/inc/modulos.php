@@ -61,6 +61,23 @@ $modulos = array
         (
             'include' => ADMIN_PATH."_usuarios/usuarios-apaga.php",
         ), #fim - subid
+        6 => array #subid
+        (
+            'include' => ADMIN_PATH."_usuarios/usuarios-relatorio.php",
+            'css' => array
+                    (
+                        ssl().ADMIN_URL.'/_usuarios/css/usuarios-relatorio.css',
+                    ),
+            'js' => array
+                    (
+                        ssl().ADMIN_URL.'/_usuarios/js/usuarios-relatorio.js',
+                    ),
+            'configLayout' => array
+            (
+                'bread' => 'Usuários > <span>Relatorios</span> ',
+                'urlListaConteudo' => ssl().ADMIN_URL."/principal.php?id=$id&subid=1",
+            ),
+        ), #fim - subid
         100 => array #subid
         (
             'include' => ADMIN_PATH."_usuarios/usuarios-permissoes.php",

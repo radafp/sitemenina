@@ -4,6 +4,16 @@
         if(verifica_permissao($cod_user, $nivel, 'usuarios'))
         {
         ?>
+             <li class="<?=$id == 1 ? "menuAtivo" : "";?> usuarios" >
+                <a style="cursor: pointer;">
+                    <span>Cadastros</span>
+                </a>
+                <ul class="submenu">
+                    <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=1&subid=1";?>">Usuários</a></li>
+                    <li><a href="<?=ssl().ADMIN_URL."/principal.php?id=1&subid=6";?>">Relatórios</a></li>
+                </ul>  
+            </li>
+
             <li class="<?=$id == 1 ? "menuAtivo" : "";?>" >
                 <a href="<?=ssl().ADMIN_URL."/principal.php?id=1&subid=1";?>">
                     <span>Usuários</span>
