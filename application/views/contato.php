@@ -24,6 +24,57 @@
                 }
             });
         });
+
+        // $('#enviar').click(function(e) {
+        //     var unindexed_array = $('#contactForm').serializeArray();
+        //     var indexed_array = {};
+
+        //     $.map(unindexed_array, function (n, i) {
+        //         indexed_array[n['name']] = n['value'];
+        //     });
+
+        //     var dados = JSON.stringify(indexed_array);
+
+        //     $.ajax({
+        //         url: <?php echo base_url('home/enviaEmail') ?>,
+        //         data: {
+        //             dados: dados,
+        //         },
+        //         dataType: "json",
+        //         type: "POST"
+        //     }).done(function (data) {
+        //         if (data.pls) {
+        //             alert('foi');
+        //         } else {
+        //             $('.alerts').empty();
+        //             $('.alerts').append(
+        //                 '<div class="alert alert-danger" role="alert">' +
+        //                 data.message +
+        //                 '</div>');
+        //         }
+        //     });
+        //     alert('teste');
+        // });
+
+        $('#enviar').click(function(e) {
+            var form = $('#contactForm').serialize();
+
+            $.ajax({
+                url : '/home/enviaEmail',
+                method: 'POST',
+                dataType: 'json',
+                data : form,
+                beforeSend: function() {
+                    var msg = $('#mensagem_envio').html('Email Enviado com sucesso!<br>');
+                    var nome = $('#nome').val('');
+                    var telefone = $('#telefone').val('');
+                    var mensagem = $('#mensagem').val('');
+                    var email = $('#email').val('');
+                },
+            })
+        });
+
+
     });
 </script>
 <div class="container">
@@ -40,6 +91,7 @@
                     <?php if(isset($email_enviado)) { ?>
                         <div id="mensagem_enviada"><?php echo $email_enviado ?></div>
                     <?php } ?>
+                    <div id="mensagem_envio"></div><br><br>
 
                     <form name="from_contato" id="contactForm" method='post' action="<?php echo base_url('home/enviaEmail') ?>">
                         <div class="control-group form-group">
@@ -79,7 +131,7 @@
                         </div>
                         <div id="success"></div>
                         <!-- For success/fail messages -->
-                        <button type="submit" class="btn btn-primary btContato_<?=$_SESSION['regiao'];?>" id="enviar">Enviar</button>
+                        <button type="button" class="btn btn-primary btContato_<?=$_SESSION['regiao'];?>" id="enviar">Enviar</button>
                     </form>
 
                 </div>
