@@ -57,21 +57,31 @@
         // });
 
         $('#enviar').click(function(e) {
+            
             var form = $('#contactForm').serialize();
 
-            $.ajax({
-                url : '/home/enviaEmail',
-                method: 'POST',
-                dataType: 'json',
-                data : form,
-                beforeSend: function() {
-                    var msg = $('#mensagem_envio').html('Email Enviado com sucesso!<br>');
-                    var nome = $('#nome').val('');
-                    var telefone = $('#telefone').val('');
-                    var mensagem = $('#mensagem').val('');
-                    var email = $('#email').val('');
-                },
-            })
+            $('#contactForm').fadeOut();//apenas atrasando a troca, para mostrarmos o loading
+
+            window.setTimeout( function(){
+                
+
+                $.ajax({
+                    url : '/home/enviaEmail',
+                    method: 'POST',
+                    dataType: 'json',
+                    data : form,
+                    beforeSend: function() {
+                        var msg = $('#mensagem_envio').html('Email enviado com sucesso!<br><br>Obrigado por entrar contato.');
+                        var nome = $('#nome').val('');
+                        var telefone = $('#telefone').val('');
+                        var mensagem = $('#mensagem').val('');
+                        var email = $('#email').val('');
+                    },
+                })
+
+            },100);
+
+            
         });
 
 
@@ -91,7 +101,7 @@
                     <?php if(isset($email_enviado)) { ?>
                         <div id="mensagem_enviada"><?php echo $email_enviado ?></div>
                     <?php } ?>
-                    <div id="mensagem_envio"></div><br><br>
+                    <div id="mensagem_envio"></div>
 
                     <form name="from_contato" id="contactForm" method='post' action="<?php echo base_url('home/enviaEmail') ?>">
                         <div class="control-group form-group">

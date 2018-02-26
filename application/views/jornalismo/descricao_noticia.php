@@ -19,6 +19,17 @@
                         });
                         $('html,body').animate({ scrollTop: $("#anc").offset().top },'slow');
                     },100);
+
+                    /*
+                    if (xmlhttp.readyState==4){			
+                        // coloca o valor no objeto requisitado			
+                        texto=unescape(xmlhttp.responseText.replace(/\+/g," "));			
+                        document.getElementById(destino).innerHTML=texto;			
+                        // executa scripts			
+                        extraiScript(texto);
+                    }
+                    */
+
                 }
             });
             window.history.pushState(null, 'Home', $(this).attr('href'));
@@ -47,21 +58,8 @@
             });
         });
     });
-</script>
 
-<div id="fb-root"></div>
-<script>
 
-    $(window).load(function(){
-    //$(document).ready(function(){
-        (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.12&appId=150046108508885&autoLogAppEvents=1';
-        fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    });
 </script>
 <div class="container">
     <div class="blocoConteudo"> 
@@ -106,9 +104,9 @@
                     <div class="wrapBanner">
                         <?php if($info['link'] != ''): ?>
                             <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
-                        <?php endif; ?>
+                            <?php endif; ?>
                                 <img src="<?=base_url('/assets/arquivos/publicidade/'.$info['arquivo']);?>" title="Publicidade">
-                        <?php if($info['link'] != ''): ?>
+                            <?php if($info['link'] != ''): ?>
                             </a>
                         <?php endif; ?>
                     </div>

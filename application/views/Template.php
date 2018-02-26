@@ -88,6 +88,7 @@
                                 }
                                 //setAttribute("aria-expanded", "false")
                             },100);
+
                             
                             //$("p:first").addClass("intro"); 
                         }
@@ -146,10 +147,13 @@
                 var x = $(".playerRadio").css("color", 'blue');
                 */
             });
+ 
         </script>
 
     </head>
     <body class="backgroundBody_<?=$_SESSION['regiao'];?>">
+
+        <div id="fb-root"></div>
 
         <header>
         
