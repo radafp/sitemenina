@@ -42,7 +42,7 @@
                                 <img src="<?php echo base_url('assets/arquivos/achadoseperdidos/'.$info["arquivo"])?>" alt="">
                             </div>
                             <h3><?php echo $info['titulo']?></h3>
-                            <p><?php echo $info['texto']?></p>
+                            <p><?php echo $info['descricao']?></p>
                             <div class="infos">
                             </div>
                         </div>

@@ -100,8 +100,8 @@
                 <div class="paginacao">
                     <?php
                     
-                    if(isset($_GET['p'])) {
-                        $p = $_GET['p'];
+                    if(isset($pagina)) {
+                        $p = $pagina;
                     }else{
                         $p = 0;
                     }
@@ -126,22 +126,22 @@
                     <?php if($count > $total_registros):?>
                         <?php if($p > 1):?>
                         <div class='pagina paginahover'>
-                            <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$anterior;?>"><</a>
+                            <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/') .$anterior;?>"><</a>
                         </div>
                         <div class='pagina'>
-                            <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$anterior;?>"><?=$anterior;?></a>
+                            <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/') .$anterior;?>"><?=$anterior;?></a>
                         </div>    
                         <?php endif?>
                         <div class='pagina paginahover'>
-                            <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$p;?>"><?=$p;?></a>
+                            <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/') .$p;?>"><?=$p;?></a>
                         </div>
                         
                         <?php if($pHome+16 <= $count):?>
                             <div class='pagina'>
-                                <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$proxima;?>"><?=$proxima;?></a>
+                                <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/') .$proxima;?>"><?=$proxima;?></a>
                             </div>
                             <div class='pagina paginahover'>
-                                <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/?p=') .$proxima;?>">></a>
+                                <a class='paginacao_videos' href="<?php echo base_url($_SESSION['city'].'/videos/') .$proxima;?>">></a>
                             </div>
                         <?php endif?>
                     <?php endif;?>

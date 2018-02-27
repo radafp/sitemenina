@@ -1,12 +1,3 @@
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.11';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
 <script type="text/javascript">
     $(document).ready(function(){
 
@@ -26,10 +17,14 @@
                         content.fadeOut('fast', function(){
                             content.html( data ).fadeIn();
                         });
+                        $('html,body').animate({ scrollTop: $("#anc").offset().top },'slow');
                     },100);
                 }
             });
+            window.history.pushState(null, 'Home', $(this).attr('href'));
         });
+
+
         $(".registra_click_publicidade").click(function(e) {
         
             _obj = $(this);
@@ -51,6 +46,21 @@
                 
             });
         });
+    });
+</script>
+
+<div id="fb-root"></div>
+<script>
+
+    $(window).load(function(){
+    //$(document).ready(function(){
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.12&appId=150046108508885&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     });
 </script>
 <div class="container">
@@ -78,22 +88,11 @@
                         <p><?php echo $info['descricaoPt']?></p>
 
                     <?php endforeach?>
-
                     <?php
-                    switch($_SESSION['regiao']){
-                        case 'bc':
-                            $linkPluginFace = 'https://www.facebook.com/radiomeninabc';
-                            break;
-                        case 'bl':
-                            $linkPluginFace = 'https://www.facebook.com/radiomeninablu';
-                            break;
-                        case 'lg':
-                            $linkPluginFace = 'https://www.facebook.com/meninafmlages'; 
-                            break;
-                    }
+                    $urlAtual = "http://www.portalmenina.com.br".$_SERVER["REQUEST_URI"];
+                    //echo $urlAtual;
                     ?>
-
-                    <div class="fb-comments" data-href="<?=$linkPluginFace;?>" data-numposts="4"  data-width="100%"></div>
+                    <div class="fb-comments" data-href="<?=$urlAtual;?>" data-numposts="5" data-width="100%"></div>
 
                 </div>
                 
@@ -123,7 +122,7 @@
                                     </h1>
                                     <?php foreach($mais_lidas as $info):?>
                                     <div class="noticia">
-                                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoria'].'/'.$info['cleanTitlePt'])?>">
                                             <div class="foto">
                                                 <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                                             </div>
@@ -145,9 +144,9 @@
                     <h1 class="tituloPadrao3">
                         <span>As mais lidas</span>
                     </h1>
-                    <?php foreach($mais_lidas as $info):?>
+                     <?php foreach($mais_lidas as $info):?>
                     <div class="noticia">
-                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoria'].'/'.$info['cleanTitlePt'])?>">
                             <div class="foto">
                                 <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                             </div>

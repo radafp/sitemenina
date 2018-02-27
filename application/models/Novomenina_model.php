@@ -44,6 +44,7 @@ class Novomenina_model extends CI_Model{
 					AND programacao.inicio >= '$hora_atua' 
                     AND programacao.fim <= '$hora_add' 			
                 GROUP BY programacao.cod
+                ORDER BY programacao.inicio ASC
                 LIMIT 3
         "); 
         return $query->result_array();
@@ -97,16 +98,17 @@ class Novomenina_model extends CI_Model{
     }
 
 
-    public function descricao_programacao($id, $regiao, $limit = null) {
+    public function descricao_programacao($cleanTitle, $regiao, $limit = null) {
         $query = $this->db->query("SELECT programacao.*, arquivos.arquivo
                                         FROM programacao
                                     INNER JOIN arquivos 
                                         ON programacao.cod = arquivos.codReferencia 
                                         AND arquivos.referencia = 'programacao'
                                         AND programacao.regiao = '$regiao'
-                                        AND programacao.cod = $id
+                                        AND programacao.cleanTitle = '$cleanTitle'
                                         GROUP BY programacao.cod
-                                        ORDER BY programacao.dataCadastro DESC"
+                                        ORDER BY programacao.dataCadastro DESC
+                                        LIMIT 1"
         );
         return $query->result_array();
     }
@@ -125,7 +127,7 @@ class Novomenina_model extends CI_Model{
 
     // tabela categorias para mostrar as noticias existentes no menu de noticias
     public function titulo_jornalismo($regiao)  {
-        $query = $this->db->query("SELECT DISTINCT categorias.categoriaPt, noticias.codCategoria from categorias inner join noticias WHERE categorias.cod = noticias.codCategoria and noticias.regiao = '$regiao' ");
+        $query = $this->db->query("SELECT DISTINCT categorias.categoriaPt, categorias.cleanTitlePt, noticias.codCategoria from categorias inner join noticias WHERE categorias.cod = noticias.codCategoria and noticias.regiao = '$regiao' ");
         return $query->result_array();
     }
 
@@ -190,7 +192,7 @@ class Novomenina_model extends CI_Model{
         // return $query->result_array();
 
         $query = $this->db->query(
-            "SELECT noticias.*, categorias.categoriaPt, categorias.cor, categorias.corTexto,
+            "SELECT noticias.*, categorias.categoriaPt, categorias.cleanTitlePt as categoria, categorias.cor, categorias.corTexto,
                 (SELECT a.arquivo 
                     FROM arquivos AS a 
                         WHERE a.codReferencia = noticias.cod 
@@ -233,7 +235,7 @@ class Novomenina_model extends CI_Model{
         if($categoria == 'todas')
         {
             $query = $this->db->query(
-                "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
+                "SELECT noticias.*, categorias.categoriaPt, categorias.cleanTitlePt as categoria, categorias.cor, categorias.corTexto,
                     (SELECT a.arquivo 
                         FROM arquivos AS a 
                             WHERE a.codReferencia = noticias.cod 
@@ -255,7 +257,7 @@ class Novomenina_model extends CI_Model{
         }
         else{
             $query = $this->db->query(
-                "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
+                "SELECT noticias.*, categorias.categoriaPt, categorias.cleanTitlePt as categoria, categorias.cor, categorias.corTexto,
                     (SELECT a.arquivo 
                         FROM arquivos AS a 
                             WHERE a.codReferencia = noticias.cod 
@@ -273,7 +275,7 @@ class Novomenina_model extends CI_Model{
                         AND noticias.mostrar = 1 
                     GROUP BY noticias.cod
                     ORDER by DATA DESC, noticias.cod DESC
-                    LIMIT $limit, 5
+                    LIMIT $limit, 15
             "); 
         }
   
@@ -283,7 +285,7 @@ class Novomenina_model extends CI_Model{
 
     public function jornalismo_noticias_busca($busca, $regiao, $limit = null) {
         $query = $this->db->query(
-            "SELECT noticias.*, categorias.categoriaPt,categorias.cor, categorias.corTexto,
+            "SELECT noticias.*, categorias.categoriaPt, categorias.cleanTitlePt as categoria,categorias.cor, categorias.corTexto,
                 (SELECT a.arquivo 
                     FROM arquivos AS a 
                         WHERE a.codReferencia = noticias.cod 
@@ -292,13 +294,13 @@ class Novomenina_model extends CI_Model{
                         AND a.capa = 1
                     ORDER BY a.capa 
                     DESC LIMIT 1) 
-            AS arquivo 
+            AS arquivo  
                 FROM noticias
                 INNER JOIN categorias
                     WHERE noticias.codCategoria = categorias.cod
                     AND noticias.regiao = '$regiao' 
                     AND noticias.mostrar = 1
-                    AND tituloPt like '%$busca%'
+                    AND tituloPt like _utf8  '%$busca%'  COLLATE utf8_unicode_ci
                     OR noticias.codCategoria = categorias.cod
                     AND  descricaoPt like '%$busca%'
                     AND noticias.regiao = '$regiao'
@@ -327,7 +329,7 @@ class Novomenina_model extends CI_Model{
 
 
     // metodo sendo usado na action de descricao da noticia no home controller
-    public function descricao_noticia($id, $regiao) {
+    public function descricao_noticia($cleanTitlePt, $regiao) {
         // $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo 
         //                                 FROM noticias 
         //                             INNER JOIN categorias, arquivos 
@@ -370,7 +372,7 @@ class Novomenina_model extends CI_Model{
                 FROM noticias
                 INNER JOIN categorias
                     WHERE noticias.codCategoria = categorias.cod
-                    AND noticias.cod = $id
+                    AND noticias.cleanTitlePt = '$cleanTitlePt'
                     AND noticias.regiao = '$regiao'
                     AND noticias.mostrar = 1 
                 GROUP BY noticias.cod
@@ -381,7 +383,7 @@ class Novomenina_model extends CI_Model{
     }
 
 
-    public function mais_lidas($categoria, $regiao) {
+    public function mais_lidas($cleanTitlePt, $regiao) {
         // $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo 
         //                                 FROM noticias 
         //                             INNER JOIN categorias, arquivos 
@@ -397,7 +399,7 @@ class Novomenina_model extends CI_Model{
         // return $query->result_array();
 
         $query = $this->db->query(
-            "SELECT noticias.*, categorias.categoriaPt, categorias.cor, categorias.corTexto,
+            "SELECT noticias.*, categorias.categoriaPt, categorias.cleanTitlePt as categoria, categorias.cor, categorias.corTexto,
                 (SELECT a.arquivo 
                     FROM arquivos AS a 
                         WHERE a.codReferencia = noticias.cod 
@@ -410,8 +412,9 @@ class Novomenina_model extends CI_Model{
                 FROM noticias
                 INNER JOIN categorias
                     WHERE noticias.codCategoria = categorias.cod
-                    AND noticias.regiao = '$regiao' 
-                    AND noticias.mostrar = 1  
+                    -- AND categorias.cleanTitlePt= '$cleanTitlePt'
+                    AND noticias.regiao = '$regiao'
+                    AND noticias.mostrar = 1 
                 GROUP BY noticias.cod
                 ORDER BY cliques desc
                 LIMIT 4
@@ -420,8 +423,8 @@ class Novomenina_model extends CI_Model{
     }
 
     // metodo almenta lidas += 1 na tabela de noticias ao clicar em alguma noticia
-    public function cliques($id, $regiao) {
-        $query = $this->db->query("UPDATE noticias SET cliques = cliques + 1 WHERE cod = $id  and noticias.regiao= '$regiao'");
+    public function cliques($cleanTitlePt, $regiao) {
+        $query = $this->db->query("UPDATE noticias SET cliques = cliques + 1 WHERE cleanTitlePt = '$cleanTitlePt' and noticias.regiao= '$regiao'");
     }
     // ================================ PAGINAS DE ARTISTICO ================================
     // |                                                                                    |
@@ -532,7 +535,7 @@ class Novomenina_model extends CI_Model{
     }
 
 
-    public function descricao_promocoes($id, $regiao) {
+    public function descricao_promocoes($cleanTitlePt, $regiao) {
         // $query = $this->db->query("SELECT * FROM promocoes WHERE cod = $id and promocoes.regiao = '$regiao'");
         // return $query->result_array();
         $query = $this->db->query(
@@ -548,7 +551,7 @@ class Novomenina_model extends CI_Model{
                 FROM promocoes 
                     WHERE promocoes.regiao = '$regiao' 
                     AND promocoes.mostrar = 1 
-                    AND promocoes.cod = '$id'
+                    AND promocoes.cleanTitlePt = '$cleanTitlePt'
                 GROUP BY promocoes.cod
                 ORDER BY promocoes.dataCadastro DESC
                 LIMIT 1
@@ -596,6 +599,8 @@ class Novomenina_model extends CI_Model{
         //                             ORDER BY eventos.dataCadastro"
         // );
         // return $query->result_array();
+        $date = date('Y-m-d');
+
         $query = $this->db->query(
             "SELECT eventos.*, 
                 (SELECT a.arquivo 
@@ -609,7 +614,7 @@ class Novomenina_model extends CI_Model{
                 FROM eventos 
                     WHERE eventos.regiao = '$regiao' 
                     AND eventos.mostrar = 1 
-                    AND eventos.dataFim >= ".date('Ymd')."
+                    AND eventos.dataFim >= '$date'
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataInicio ASC 
                 LIMIT $limit, 15
@@ -629,6 +634,7 @@ class Novomenina_model extends CI_Model{
         //                             LIMIT 2"
         // );
         // return $query->result_array();
+        $date = date('Y-m-d');
         $query = $this->db->query(
             "SELECT eventos.*, 
                 (SELECT a.arquivo 
@@ -642,7 +648,7 @@ class Novomenina_model extends CI_Model{
                 FROM eventos 
                     WHERE eventos.regiao = '$regiao' 
                     AND eventos.mostrar = 1 
-                    AND eventos.dataInicio >= ".date('Ymd')."
+                    AND eventos.dataInicio >= '$date'
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataInicio ASC
                 LIMIT 2
@@ -650,7 +656,7 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
-    public function descricao_eventos($id, $regiao) {
+    public function descricao_eventos($cleanTitlePt, $regiao) {
         // $query = $this->db->query("SELECT * FROM eventos WHERE cod = $id and eventos.regiao = '$regiao'");
         // return $query->result_array();
 
@@ -667,7 +673,7 @@ class Novomenina_model extends CI_Model{
                 FROM eventos 
                     WHERE eventos.regiao = '$regiao' 
                     AND eventos.mostrar = 1 
-                    AND eventos.cod = '$id'
+                    AND eventos.cleanTitlePt = '$cleanTitlePt'
                 GROUP BY eventos.cod
                 ORDER BY eventos.dataCadastro DESC
                 LIMIT 1
@@ -772,26 +778,26 @@ class Novomenina_model extends CI_Model{
         return $query->result_array();
     }
 
-    // public function descricao_equipe_documentos_perdidos($id, $regiao) {
-    //     $query = $this->db->query(
-    //         "SELECT achadoseperdidos.*, 
-    //             (SELECT a.arquivo 
-    //                 FROM arquivos AS a 
-    //                     WHERE a.codReferencia = achadoseperdidos.cod 
-    //                     AND a.referencia = 'achadoseperdidos' 
-    //                     AND a.tipo = 2 
-    //                 ORDER BY a.capa 
-    //                 DESC LIMIT 1) 
-    //         AS arquivo 
-    //             FROM achadoseperdidos 
-    //                 WHERE achadoseperdidos.regiao = '$regiao' 
-    //                 AND achadoseperdidos.mostrar = 1 
-    //                 AND achadoseperdidos.cod = '$id'
-    //             GROUP BY achadoseperdidos.cod
-    //             ORDER BY achadoseperdidos.dataCadastro DESC
-    //     "); 
-    //     return $query->result_array();
-    // }
+    public function descricao_equipe_documentos_perdidos($id, $regiao) {
+        $query = $this->db->query(
+            "SELECT achadoseperdidos.*, 
+                (SELECT a.arquivo 
+                    FROM arquivos AS a 
+                        WHERE a.codReferencia = achadoseperdidos.cod 
+                        AND a.referencia = 'achadoseperdidos' 
+                        AND a.tipo = 2 
+                    ORDER BY a.capa 
+                    DESC LIMIT 1) 
+            AS arquivo 
+                FROM achadoseperdidos 
+                    WHERE achadoseperdidos.regiao = '$regiao' 
+                    AND achadoseperdidos.mostrar = 1 
+                    AND achadoseperdidos.cod = '$id'
+                GROUP BY achadoseperdidos.cod
+                ORDER BY achadoseperdidos.dataCadastro DESC
+        "); 
+        return $query->result_array();
+    }
 
     // metodo generico para descricao de views
     public function descricao_view($tabela, $id, $regiao) {
@@ -854,11 +860,29 @@ class Novomenina_model extends CI_Model{
                             AND $condição = '$valor'";    
             }
             $query = $this->db->query($sql);
-            return $query->result_array();
+            return $query->result_array();       
+    }
+
+    public function CountAll_eventos($regiao, $condição = null, $valor = null){
+        $date = date('Y-m-d');
+        $sql = "SELECT eventos.*, 
+            (SELECT a.arquivo 
+                FROM arquivos AS a 
+                    WHERE a.codReferencia = eventos.cod 
+                    AND a.referencia = 'eventos' 
+                    AND a.tipo = 2 
+                ORDER BY a.capa 
+                DESC LIMIT 1) 
+        AS arquivo 
+            FROM eventos 
+                WHERE eventos.regiao = '$regiao' 
+                AND eventos.mostrar = 1 
+                AND eventos.dataFim >= '$date'
+            GROUP BY eventos.cod
+            ORDER BY eventos.dataInicio ASC";
         
-  
-        
-        
+        $query = $this->db->query($sql);
+        return $query->result_array();       
     }
    
     

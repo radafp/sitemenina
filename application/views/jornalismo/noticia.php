@@ -1,3 +1,8 @@
+<head> 
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        </head>
+
 <script type="text/javascript">
      $(document).ready(function(){
 
@@ -21,7 +26,6 @@
                     },100);
                 }
             });
-
             window.history.pushState(null, 'Home', $(this).attr('href'));
         });
         $(".registra_click_publicidade").click(function(e) {
@@ -45,6 +49,8 @@
                 
             });
         });
+
+        
     });
 </script>
 <div class="container">
@@ -57,9 +63,12 @@
                     <span>Notícias</span>
                 </h1>
                 <div class="blocoNoticias">
+                <p><?php if($retorno_noticias != '') { echo $retorno_noticias;};?></p>
                     <?php foreach($jornalismo as $info):?>
                     <div class="noticia">
-                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia/'.$info['cod'].'/'.strtolower($info['categoriaPt']))?>">
+                        
+                        
+                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoria'].'/'.$info['cleanTitlePt'])?>">
                             <div class="foto">
                                 <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                             </div>
@@ -159,7 +168,7 @@
                                     </h1>
                                     <?php foreach($mais_lidas as $info):?>
                                     <div class="noticia">
-                                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoria'].'/'.$info['cleanTitlePt'])?>">
                                             <div class="foto">
                                                 <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                                             </div>
@@ -182,7 +191,7 @@
                     </h1>
                     <?php foreach($mais_lidas as $info):?>
                     <div class="noticia">
-                        <a class="link_descricao" href="<?php echo base_url('home/descricao_noticia?id='.$info['cod'].'&categoria='.strtolower($info['categoriaPt']))?>">
+                        <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao_noticia/'.$info['categoria'].'/'.$info['cleanTitlePt'])?>">
                             <div class="foto">
                                 <img src="<?php echo base_url('/assets/arquivos/noticias/'.$info['arquivo'])?>" alt="">
                             </div>

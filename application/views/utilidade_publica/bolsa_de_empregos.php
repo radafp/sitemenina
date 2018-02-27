@@ -64,7 +64,7 @@
 
                     <?php foreach($empregos as $info):?>
                         <div class='bolsaDeEmpregos'>
-                            <a class="link_descricao" href="<?php echo base_url('home/descricao_bolsa_de_empregos?id='.$info['cod']);?>">
+                            <a class="link_descricao" href="<?php echo base_url($_SESSION['city'].'/descricao-bolsa-de-empregos/'.$info['cod']);?>">
                                 <div class="foto">
                                     <img src="<?php echo base_url('/assets/arquivos/empregos/'.$info['arquivo'])?>" alt="">
                                 </div>
@@ -78,8 +78,8 @@
                 <div class="paginacao">
                     <?php
                     
-                    if(isset($_GET['p'])) {
-                        $p = $_GET['p'];
+                    if(isset($paginas)) {
+                        $p = $paginas;
                     }else{
                         $p = 0;
                     }
@@ -104,22 +104,22 @@
                     <?php if($count > $total_registros):?>
                         <?php if($p > 1):?>
                         <div class='pagina paginahover'>
-                            <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p=') .$anterior;?>"><</a>
+                            <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/') .$anterior;?>"><</a>
                         </div>
                         <div class='pagina'>
-                            <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p=') .$anterior;?>"><?=$anterior;?></a>
+                            <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/') .$anterior;?>"><?=$anterior;?></a>
                         </div>    
                         <?php endif?>
                         <div class='pagina paginahover'>
-                            <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p=') .$p;?>"><?=$p;?></a>
+                            <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/') .$p;?>"><?=$p;?></a>
                         </div>
                         
                         <?php if($pHome+10 <= $count):?>
                             <div class='pagina'>
-                                <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p=') .$proxima;?>"><?=$proxima;?></a>
+                                <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/') .$proxima;?>"><?=$proxima;?></a>
                             </div>
                             <div class='pagina paginahover'>
-                                <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p=') .$proxima;?>">></a>
+                                <a class='paginacao_empregos' href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/') .$proxima;?>">></a>
                             </div>
                         <?php endif?>
                     <?php endif;?>

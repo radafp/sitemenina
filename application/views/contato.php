@@ -24,6 +24,57 @@
                 }
             });
         });
+
+        // $('#enviar').click(function(e) {
+        //     var unindexed_array = $('#contactForm').serializeArray();
+        //     var indexed_array = {};
+
+        //     $.map(unindexed_array, function (n, i) {
+        //         indexed_array[n['name']] = n['value'];
+        //     });
+
+        //     var dados = JSON.stringify(indexed_array);
+
+        //     $.ajax({
+        //         url: <?php echo base_url('home/enviaEmail') ?>,
+        //         data: {
+        //             dados: dados,
+        //         },
+        //         dataType: "json",
+        //         type: "POST"
+        //     }).done(function (data) {
+        //         if (data.pls) {
+        //             alert('foi');
+        //         } else {
+        //             $('.alerts').empty();
+        //             $('.alerts').append(
+        //                 '<div class="alert alert-danger" role="alert">' +
+        //                 data.message +
+        //                 '</div>');
+        //         }
+        //     });
+        //     alert('teste');
+        // });
+
+        $('#enviar').click(function(e) {
+            var form = $('#contactForm').serialize();
+
+            $.ajax({
+                url : '/home/enviaEmail',
+                method: 'POST',
+                dataType: 'json',
+                data : form,
+                beforeSend: function() {
+                    var msg = $('#mensagem_envio').html('Email Enviado com sucesso!<br>');
+                    var nome = $('#nome').val('');
+                    var telefone = $('#telefone').val('');
+                    var mensagem = $('#mensagem').val('');
+                    var email = $('#email').val('');
+                },
+            })
+        });
+
+
     });
 </script>
 <div class="container">
@@ -40,8 +91,9 @@
                     <?php if(isset($email_enviado)) { ?>
                         <div id="mensagem_enviada"><?php echo $email_enviado ?></div>
                     <?php } ?>
+                    <div id="mensagem_envio"></div>
 
-                    <form name="from_contato" id="contactForm" method='post' action="<?php echo $action ?>">
+                    <form name="from_contato" id="contactForm" method='post' action="<?php echo base_url('home/enviaEmail') ?>">
                         <div class="control-group form-group">
                             <div class="controls">
                                 <label>Nome:</label>
@@ -52,7 +104,7 @@
                         <div class="control-group form-group">
                             <div class="controls">
                                 <label>E-mail:</label>
-                                <input name='emailContato' type="text" class="form-control" id="email" required data-validation-required-message="Por favor, digite seu email.">
+                                <input name="email" type="email" class="form-control" id="email" required data-validation-required-message="Por favor, digite seu email.">
                                 <p class="help-block"></p>
                             </div>  
                         </div>
@@ -69,7 +121,6 @@
                                     <option value="comercial">Comercial</option>
                                     <option value="jornalismo">Jornalismo</option>
                                 </select>
-                                <!-- <input type="email" class="form-control" id="email" required data-validation-required-message="Por favor, selecione o setor para o qual deseja enviar a mensagem."> -->
                             </div>
                         </div>
                         <div class="control-group form-group">
@@ -80,7 +131,7 @@
                         </div>
                         <div id="success"></div>
                         <!-- For success/fail messages -->
-                        <button type="submit" class="btn btn-primary btContato_<?=$_SESSION['regiao'];?>" id="enviar">Enviar</button>
+                        <button type="button" class="btn btn-primary btContato_<?=$_SESSION['regiao'];?>" id="enviar">Enviar</button>
                     </form>
 
                 </div>
@@ -124,7 +175,7 @@
                         Pioneiros - Balneário Camboriú/SC<br>
                         CEP: 88331-900 
                     </p>
-                <?
+                <?php
                 } if($_SESSION['regiao'] == 'bl'){ ?>
 
                     <p>
@@ -180,7 +231,7 @@
                         Coral - Lages/SC<br>
                         CEP: 88523-000  
                     </p>
-                <?
+                <?php
                 }    
                 ?>
             </div>
@@ -199,7 +250,7 @@
                 if($_SESSION['regiao'] == 'lg'){ 
                 ?>     
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2967.8313857094868!2d-50.30712573044196!3d-27.79849676965969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94e0192af2b9834d%3A0xf89fed5d2ae08eb1!2sAv.+Lu%C3%ADs+de+Cam%C3%B5es%2C+1370+-+Conta+Dinheiro%2C+Lages+-+SC!5e0!3m2!1spt-BR!2sbr!4v1515415451042" width="95%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-                <?
+                <?php
                 }    
                 ?>
             </div>

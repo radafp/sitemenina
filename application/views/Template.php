@@ -1,7 +1,13 @@
+<?php
+ ini_set('default_charset','UTF-8');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head> 
         <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
@@ -87,6 +93,7 @@
                         }
                     });
                     
+                    
                     window.history.pushState(null, 'Home', $(this).attr('href'));
                 });
                 
@@ -106,7 +113,7 @@
                     // alert(palabra_busca.value);
                     // var link = document.querySelector('.busca').href += palabra_busca.value+'&p=1';
 
-                    var link = document.querySelector('#buscaNoticia1 .busca').href = '/balneario-camboriu/noticias?busca='+palabra_busca1.value+'&p=1';
+                    var link = document.querySelector('#buscaNoticia1 .busca').href = '/balneario-camboriu/busca-noticias/'+palabra_busca1.value+'/1';
                     // alert(link);
                     //window.location = "/balneario-camboriu/noticias?categoria=Busca&p=1";
                     window.history.pushState(null, 'Home', $(this).attr('href'));
@@ -116,7 +123,7 @@
                 buscaNoticia2.addEventListener('click', function() {
                     var palabra_busca2 = document.querySelector('#buscaNoticia2 .inputBusca');
 
-                    var link = document.querySelector('#buscaNoticia2 .busca').href = '/balneario-camboriu/noticias?busca='+palabra_busca2.value+'&p=1';
+                    var link = document.querySelector('#buscaNoticia2 .busca').href = '/balneario-camboriu/busca-noticias/'+palabra_busca2.value+'/1';
         
                     window.history.pushState(null, 'Home', $(this).attr('href'));
                 })
@@ -140,7 +147,7 @@
                 */
             });
         </script>
-        
+
     </head>
     <body class="backgroundBody_<?=$_SESSION['regiao'];?>">
 
@@ -264,7 +271,7 @@
                                         <div id='link_jornalismo' class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                             <a class="dropdown-item" style="border-bottom:1px #cccccc dashed;" href="<?php echo base_url($_SESSION['city'].'/noticias/todas/'. 1)?>">Ver todas</a>
                                             <?php foreach($titulo_jornalismo as $info):?>
-                                                <a class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/noticias/'.$info['categoriaPt'].'/'. 1)?>"><?php echo $info['categoriaPt']?></a>
+                                                <a class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/noticias/'.$info['cleanTitlePt'].'/'. 1)?>"><?php echo $info['categoriaPt']?></a>
                                             <?php endforeach?>
                                         </div>
                                     </li>
@@ -274,22 +281,22 @@
                                         </div>
                                         <div id='link_artistico' class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
                                             <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/top-10')?>">Top 10</a>
-                                            <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/videos/?p='). 1?>">Vídeos</a>
+                                            <a  class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/videos/'). 1?>">Vídeos</a>
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <a id='link_promocoes' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/promocoes/?p='). 1?>">Promoções</a>
+                                        <a id='link_promocoes' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/promocoes/1')?>">Promoções</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a id='link_eventos' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/agenda/?p='). 1?>">Agenda</a>
+                                        <a id='link_eventos' class="nav-link" href="<?php echo base_url($_SESSION['city'].'/agenda/1')?>">Agenda</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <div class="nav-link dropdown-toggle" style="cursor:pointer" href="#" id="navbarDropdownBlog" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Utilidade pública
                                         </div>
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                                            <a id='link_bolsa_de_emprego' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/?p='). 1?>">Bolsa de empregos</a>
-                                            <a id='link_documentos_perdidos' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/documentos-perdidos/?p='). 1?>">Documentos Perdidos</a>
+                                            <a id='link_bolsa_de_emprego' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/bolsa-de-empregos/1')?>">Bolsa de empregos</a>
+                                            <a id='link_documentos_perdidos' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/documentos-perdidos/1')?>">Documentos Perdidos</a>
                                             <!-- <a id='link_campanhas' class="dropdown-item" href="<?php echo base_url($_SESSION['city'].'/campanhas')?>">Campanhas</a> -->
                                         </div>
                                     </li>
@@ -334,13 +341,16 @@
            <div class="redes redes_<?=$_SESSION['regiao'];?>">
 
                 <div class="container">
-                    <!-- 
+                    <?php 
+                    $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
+                    if(isset($uri[2]) == 'noticias'):
+                    ?>
                         <div class="row envieNoticia">
-                        <h2>Envie sua notícia</h2>
-                        <a id='link_contato' class="btEnvieConteudo" href="<?php echo base_url($_SESSION['city'].'/contato')?>">Quero participar</a>
-                        <hr style="width: 100%;padding: 20px 0;">
-                    </div>
-                        -->
+                            <h2>Envie sua notícia</h2>
+                            <a id='link_contato' class="btEnvieConteudo" href="<?php echo base_url($_SESSION['city'].'/contato')?>">Quero participar</a>
+                            <hr style="width: 100%;padding: 20px 0;">
+                        </div>
+                    <?php endif; ?>
                     <div class="row">
                         
                         <div class="col-xs-12 col-md-4">
@@ -356,7 +366,7 @@
                             </div>
                         </div>
                         <div class="col-xs-12 col-md-8 insta">
-                            <div class="wrapFotoTipo1">
+                            <!-- <div class="wrapFotoTipo1">
                                 <img src="<?php echo base_url('/assets/img/temp/insta1_'.$_SESSION['regiao']).'.jpg';?>" alt="">
                             </div>
                             <div class="wrapFotoTipo2">
@@ -369,12 +379,29 @@
                             </div>
                             <div class="wrapFotoTipo1">
                                 <img src="<?php echo base_url('/assets/img/temp/insta4_'.$_SESSION['regiao']).'.jpg';?>" alt="">
-                            </div>
+                            </div> -->
                             <?php 
-                            /* switch(isset($_SESSION['regiao'])){
+                            switch($_SESSION['regiao']){
                                 case 'bc':
+                                    //echo 'bc';
                                     $userid = "1261127122";
-                                    $accessToken = "1261127122.6d7beb5.c32b85c115d240eeb11e6ed048e9c61f";
+                                    $accessToken = "1261127122.6d7beb5.7ca0e32270444670a075b73f2e68113e";
+                                    $url = "https://api.instagram.com/v1/users/{$userid}/media/recent/?access_token={$accessToken}";
+                                    $result = file_get_contents($url);
+                                    $result = json_decode($result);
+                                    break;
+                                case 'bl':
+                                    //echo 'bl';
+                                    $userid = "1297410873";
+                                    $accessToken = "1297410873.3fa9399.cbd4c8f386404fc1bcc82a3d8eec5925";
+                                    $url = "https://api.instagram.com/v1/users/{$userid}/media/recent/?access_token={$accessToken}";
+                                    $result = file_get_contents($url);
+                                    $result = json_decode($result);
+                                    break;
+                                case 'lg':
+                                    //echo 'lg';
+                                    $userid = "3251484169";
+                                    $accessToken = "3251484169.1297509.29deb66c688a4996b9ce379e1f294b1f";
                                     $url = "https://api.instagram.com/v1/users/{$userid}/media/recent/?access_token={$accessToken}";
                                     $result = file_get_contents($url);
                                     $result = json_decode($result);
@@ -385,30 +412,34 @@
                                 $foto = $result->data[$i];
                             ?>
                                 <?php if($i==0): ?>
-                                <div class="wrapFotoTipo1">
-                                    <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
-                                </div>
+                                    <div class="wrapFotoTipo1">
+                                        <a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank">
+                                            <img src="<?php echo $foto->images->low_resolution->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                        </a>
+                                    </div>
                                 <?php endif; ?>
-                                <div class="wrapFotoTipo2">
-                                    <?php if($i==1): ?>
-                                    <div class="fotoTipo2">
-                                    <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
-                                    </div>
-                                    <?php 
-                                        endif; 
-                                        if($i==2):
-                                    ?>
-                                    <div class="fotoTipo2">
-                                    <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
-                                    </div>
+                                
+                                <?php if($i==1): ?>
+                                    <div class="wrapFotoTipo2">
+                                <?php endif; ?>
+
+                                    <?php if($i==1 || $i==2): ?>
+                                        <div class="fotoTipo2">
+                                            <a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank">
+                                                <img src="<?php echo $foto->images->low_resolution->url ?>" alt="<?php echo $foto->caption->text ?>" /> 
+                                            </a> 
+                                        </div>
                                     <?php endif; ?>
-                                </div>
+
                                 <?php if($i==3): ?>
+                                </div>
                                 <div class="wrapFotoTipo1">
-                                <img src="<?php echo $foto->images->thumbnail->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                    <a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank">
+                                        <img src="<?php echo $foto->images->low_resolution->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                    </a>
                                 </div>
                                 <?php endif; ?>
-                            <?php }  */?> 
+                            <?php }  ?> 
                         </div>
 
                     </div> <!-- row -->
