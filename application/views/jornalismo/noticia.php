@@ -50,36 +50,7 @@
             });
         });
 
-        var responder = function () {
-
-            var unindexed_array = $('#responder').serializeArray();
-            var indexed_array = {};
-
-            $.map(unindexed_array, function (n, i) {
-                indexed_array[n['name']] = n['value'];
-            });
-
-            var dados = JSON.stringify(indexed_array);
-
-            $.ajax({
-                url: 'tickets/responder',
-                data: {
-                    dados: dados,
-                },
-                dataType: "json",
-                type: "POST"
-            }).done(function (data) {
-                if (data.pls) {
-                    update_respostas(data.ticket);
-                } else {
-                    $('.alerts').empty();
-                    $('.alerts').append(
-                        '<div class="alert alert-danger" role="alert">' +
-                        data.message +
-                        '</div>');
-                }
-            });
-        };
+        
     });
 </script>
 <div class="container">
