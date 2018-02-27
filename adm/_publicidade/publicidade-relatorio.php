@@ -22,84 +22,20 @@ if($cliente)
     $cod = $cliente;
 
     $conn = new PDO('mysql:host=mysql03-farm70.uni5.net;dbname=novomenina', 'novomenina', 'agEncia445');
-    
-    // if(isset($dataInicio) && $dataInicio != '') {
-    //     $dataInicio = "AND publicidadeStats.dataInicio >= $dataInicio";
-    // }
-    // if(isset($dataFim) && $dataFim != '') {
-    //     $dataFim =  "AND publicidadeStats.dataFim <= $dataFim";
-    // }
-
-    // if(isset($dataInicio) && $dataInicio != '') {
-    //     $data = $conn->query(
-    //         "SELECT DISTINCT publicidadeStats.pagina, 
-    //                 publicidadeStats.tipo,
-    //                 publicidadeStats.dataInicio,
-    //                 publicidadeStats.dataFim,
-    //                 publicidadeImpressoes.nImpressoes,
-    //                 publicidadeImpressoes.codPublicidade,
-    //                 (SELECT COUNT(publicidadeStats.codPublicidade) AS cliques
-    //                 FROM publicidadeStats
-    //                         where publicidadeStats.codPublicidade = publicidadeImpressoes.codPublicidade) as Cliques
-    //             FROM publicidadeStats
-    //         inner join publicidadeImpressoes
-    //             on publicidadeImpressoes.codPublicidade = publicidadeStats.codPublicidade
-    //             and publicidadeStats.codCliente = $cod
-    //             AND publicidadeStats.dataInicio >= '$dataInicio'"
-    //     );
-    //     if(isset($dataFim) && $dataFim != '') {
-    //         $data = $conn->query(
-    //             "SELECT DISTINCT publicidadeStats.pagina, 
-    //                     publicidadeStats.tipo, 
-    //                     publicidadeStats.dataInicio,
-    //                     publicidadeStats.dataFim,   
-    //                     publicidadeImpressoes.nImpressoes,
-    //                     publicidadeImpressoes.codPublicidade,
-    //                     (SELECT COUNT(publicidadeStats.codPublicidade) AS cliques
-    //                     FROM publicidadeStats
-    //                             where publicidadeStats.codPublicidade = publicidadeImpressoes.codPublicidade) as Cliques
-    //                 FROM publicidadeStats
-    //             inner join publicidadeImpressoes
-    //                 on publicidadeImpressoes.codPublicidade = publicidadeStats.codPublicidade
-    //                 and publicidadeStats.codCliente = $cod
-    //                 AND publicidadeStats.dataInicio >= '$dataInicio'
-    //                 AND publicidadeStats.dataFim <= '$dataFim'"
-    //         );
-    //     }
-
-    // }elseif(isset($dataFim) && $dataFim != '') {
-    //     $data = $conn->query(
-    //         "SELECT DISTINCT publicidadeStats.pagina, 
-    //                 publicidadeStats.tipo, 
-    //                 publicidadeStats.dataInicio,
-    //                 publicidadeStats.dataFim,
-    //                 publicidadeImpressoes.nImpressoes,
-    //                 publicidadeImpressoes.codPublicidade,
-    //                 (SELECT COUNT(publicidadeStats.codPublicidade) AS cliques
-    //                 FROM publicidadeStats
-    //                         where publicidadeStats.codPublicidade = publicidadeImpressoes.codPublicidade) as Cliques
-    //             FROM publicidadeStats
-    //         inner join publicidadeImpressoes
-    //             on publicidadeImpressoes.codPublicidade = publicidadeStats.codPublicidade
-    //             and publicidadeStats.codCliente = $cod
-    //             AND publicidadeStats.dataFim <= '$dataFim'"
-    //     );
-    
-    // }else{
-        $data = $conn->query(
-            "SELECT DISTINCT publicidadeStats.pagina, 
-                    publicidadeStats.tipo, 
-                    publicidadeImpressoes.nImpressoes,
-                    publicidadeImpressoes.codPublicidade,
-                    (SELECT COUNT(publicidadeStats.codPublicidade) AS cliques
-                    FROM publicidadeStats
-                            where publicidadeStats.codPublicidade = publicidadeImpressoes.codPublicidade) as Cliques
+  
+    $data = $conn->query(
+        "SELECT DISTINCT publicidadeStats.pagina, 
+                publicidadeStats.tipo, 
+                publicidadeImpressoes.nImpressoes,
+                publicidadeImpressoes.codPublicidade,
+                (SELECT COUNT(publicidadeStats.codPublicidade) AS cliques
                 FROM publicidadeStats
-            inner join publicidadeImpressoes
-                on publicidadeImpressoes.codPublicidade = publicidadeStats.codPublicidade
-                and publicidadeStats.codCliente = $cod"
-        );
-    // }
+                        where publicidadeStats.codPublicidade = publicidadeImpressoes.codPublicidade) as Cliques
+            FROM publicidadeStats
+        inner join publicidadeImpressoes
+            on publicidadeImpressoes.codPublicidade = publicidadeStats.codPublicidade
+            and publicidadeStats.codCliente = $cod"
+    );
 }
 ?>
 <div class="divTableLista clear">
