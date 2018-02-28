@@ -27,12 +27,12 @@
                     <?php } ?>
                 </select>
             </div>
-            <!-- <div class="divTd">
-                <input type="date" name='dataInicio'>
+            <div class="divTd">
+                <input type="datetime-local" name="dataInicio" value="2018-01-01T08:30">
             </div>
             <div class="divTd">
-                <input type="date" name='dataFim'>
-            </div> -->
+                <input type="datetime-local" name='dataFim' value="2018-01-01T08:30">
+            </div>
             <div class="divTd">
                 <input type="submit" value="Filtrar" class="salvar"/>
             </div>
