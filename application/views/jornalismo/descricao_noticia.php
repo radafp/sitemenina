@@ -20,6 +20,12 @@
                         $('html,body').animate({ scrollTop: $("#anc").offset().top },'slow');
                     },100);
 
+                    //var url_atual = window.location.href;
+                    //alert(url_atual);
+                     
+                    //$(".fb-comments").attr('data-href', url_atual);
+                    //FB.XFBML.parse();
+
                     /*
                     if (xmlhttp.readyState==4){			
                         // coloca o valor no objeto requisitado			
@@ -32,6 +38,7 @@
 
                 }
             });
+            FB.XFBML.parse();
             window.history.pushState(null, 'Home', $(this).attr('href'));
         });
 
