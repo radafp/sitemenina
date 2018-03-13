@@ -13,7 +13,7 @@
         
         <meta name="author" content="Agência Set - Criação de Sites - Santa Catarina - Balneário Camboriú - Agência Digital">
         
-        <title>Radio Menina FM - A mais gosotosa de ouvir</title>
+        <title>Radio Menina FM - A mais gostosa de ouvir</title>
 
         <?
             if(!isset($_SESSION['regiao'])){
