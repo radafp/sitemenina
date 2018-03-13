@@ -28,10 +28,10 @@
                 </select>
             </div>
             <div class="divTd">
-                <input type="datetime-local" name="dataInicio" value="2018-01-01T08:30">
+                <input type="date" name="dataInicio">
             </div>
             <div class="divTd">
-                <input type="datetime-local" name='dataFim' value="2018-01-01T08:30">
+                <input type="date" name='dataFim'>
             </div>
             <div class="divTd">
                 <input type="submit" value="Filtrar" class="salvar"/>
