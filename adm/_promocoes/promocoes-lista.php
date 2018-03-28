@@ -140,12 +140,12 @@ $(document).ready(function()
                 </div>
                 <div class="divTd">
                     <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
-                        <?=dataBr($tp['dataInicio']);?>
+                        <?=$tp['dataInicio'] != "0000-00-00" ? dataBr($tp['dataInicio']) :  "-";?>
                     </a>
                 </div>
                 <div class="divTd">
                     <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=3&cod=<?=$tp['cod'];?>">
-                        <?=dataBr($tp['dataFim']);?>
+                        <?=$tp['dataFim'] != "0000-00-00" ? dataBr($tp['dataFim']) : "-";?>
                     </a>
                 </div>
                 <div class="divTd">

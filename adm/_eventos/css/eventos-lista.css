@@ -6,15 +6,15 @@
 }
 .divTableLista .divTd:nth-child(2)
 {
-    text-align: left;
+    text-align: center;
     padding-left: 7px;
-    width: 80px;
+    width: 100px;
 }
 .divTableLista .divTd:nth-child(3)
 {
-    text-align: left;
+    text-align: center;
     padding-left: 7px;
-    width: 80px;
+    width: 100px;
 }
 .divTableLista .divTd:nth-child(4)
 {
@@ -27,12 +27,6 @@
     padding-left: 10px;
     text-align: center;
     width: 50px;
-}
-.divTableLista .divTd:nth-child(6)
-{
-    padding-left: 10px;
-    text-align: center;
-    width: 25px;
 }
 
 /* FIM - CELULAS DA LISTAGEM */

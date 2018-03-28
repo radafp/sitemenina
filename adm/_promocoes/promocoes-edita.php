@@ -439,7 +439,7 @@ else
                 <label>Data Início:</label>
             </div>
             <div class="divTd">
-                <input type="text" class="campoP" name="dataInicio" id="dataInicio" value="<?=$dataInicio != '' ? dataBr($dataInicio) : '';?>" title="Data início"/>        
+                <input type="text" class="campoP" name="dataInicio" id="dataInicio" value="<?=$dataInicio != '0000-00-00' ? dataBr($dataInicio) : '';?>" title="Data início"/>        
             </div>
         </div> 
         <div class="divTr">
@@ -447,7 +447,7 @@ else
                 <label>Data Fim:</label>
             </div>
             <div class="divTd">
-                <input type="text" class="campoP" name="dataFim" id="dataFim" value="<?=$dataFim != '' ? dataBr($dataFim) : '';?>" title="Data fim"/>        
+                <input type="text" class="campoP" name="dataFim" id="dataFim" value="<?=$dataFim != '0000-00-00' ? dataBr($dataFim) : '';?>" title="Data fim"/>        
             </div>
         </div> 
         <div class="divTr">

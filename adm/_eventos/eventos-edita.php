@@ -309,7 +309,7 @@ else
                 <label>Data Inicio:</label>
             </div>
             <div class="divTd">
-                <input type="text" class="campoP" name="dataInicio" id="dataInicio" value="<?=$dataInicio != '' ? dataBr($dataInicio) : '';?>" title="Data início"/>        
+                <input type="text" class="campoP" name="dataInicio" id="dataInicio" value="<?=$dataInicio != '0000-00-00' ? dataBr($dataInicio) : '';?>" title="Data início"/>        
             </div>
         </div>  
         <div class="divTr">
@@ -325,7 +325,7 @@ else
                 <label>Data Fim:</label>
             </div>
             <div class="divTd">
-                <input type="text" class="campoP" name="dataFim" id="dataFim" value="<?=$dataFim != '' ? dataBr($dataFim) : '';?>" title="Data Fim"/>        
+                <input type="text" class="campoP" name="dataFim" id="dataFim" value="<?=$dataFim != '0000-00-00' ? dataBr($dataFim) : '';?>" title="Data Fim"/>        
             </div>
         </div> 
         <div class="divTr">
@@ -338,7 +338,7 @@ else
         </div> 
         <div class="divTr">
             <div class="divTd">
-                <label>Título:</label>
+                <label>Título*:</label>
             </div>
             <div class="divTd">
                 <input type="text" class="campoG" name="tituloPt" id="tituloPt" value="<?=$tituloPt;?>" title="Título"/>
@@ -501,8 +501,8 @@ else
         });
         $('#dataInicio').mask('99/99/9999');
         $('#dataFim').mask('99/99/9999');
-        objValidadorCadastro . adicionar('#dataInicio');
-        objValidadorCadastro . adicionar('#dataFim');
+        //objValidadorCadastro . adicionar('#dataInicio');
+        //objValidadorCadastro . adicionar('#dataFim');
         objValidadorCadastro . adicionar('#tituloPt');
         //objValidadorCadastro . adicionar('#descricaoEn');
         
