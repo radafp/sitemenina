@@ -720,7 +720,6 @@ class home extends CI_Controller {
         $dados['count']                 = count($this->Novomenina-> CountAll('promocoes', $_SESSION['regiao']));
         $dados['paginas']               = ceil($dados['count'] / 15); 
         
-        echo "count dados promocoes: " . count($dados['promocoes_promocoes']);
         // --------------------- METODOS DO MODEL ------------------
         //|                                                         |
         //|                                                         |

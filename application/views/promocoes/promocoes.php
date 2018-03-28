@@ -60,7 +60,6 @@
                     <?php 
                     $nPromos = count($promocoes_promocoes);
                     $i=0;
-                    echo '<pre>count : '. count($promocoes_promocoes);echo '</pre>';
                     foreach($promocoes_promocoes as $info):
                         if($i%2 == 0)
                             $classeAdicional = '';
