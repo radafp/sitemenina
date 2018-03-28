@@ -1,5 +1,5 @@
 <?php
-if(!verifica_permissao($cod_user, $nivel, 'promocoes'))
+if(!verifica_permissao($cod_user, $nivel, 'eventos'))
 {
 	echo "<script>
 	       alert('Você não tem permissão para acessar esta página!\\nEntre em contato com o administrador.')
@@ -27,7 +27,7 @@ $(document).ready(function()
         {
             type: "POST",
             async: false,
-            url: "http://"+ADMIN_URL+"/_promocoes/ajax/ajaxOrdena.php", //URL de destino
+            url: "http://"+ADMIN_URL+"/_eventos/ajax/ajaxOrdena.php", //URL de destino
             data:
             {
                 ordem : ordem
@@ -57,15 +57,15 @@ $(document).ready(function()
 <div class="divTableLista clear">
     <div class="divTr head">
         <div class="divTd">&nbsp;</div>
-        <div class="divTd">Promoção</div>
-        <div class="divTd">Data início</div>
+        <div class="divTd">Evento</div>
+        <div class="divTd">Data Início</div>
         <div class="divTd">Ordem</div>
     </div>
 </div>
 <div class="divTableLista clear drag" style="margin-top: 0;">
     <?
 
-    $q = mysql_query("SELECT * FROM promocoes WHERE regiao = '{$regiao}' ORDER BY ordem", $conexao);
+    $q = mysql_query("SELECT * FROM eventos WHERE regiao = '{$regiao}' ORDER BY ordem", $conexao);
     //echo mysql_error();
     $n = mysql_num_rows($q);
     if($n>0)
@@ -78,7 +78,7 @@ $(document).ready(function()
                     <img src="<?=ssl().ADMIN_URL;?>/img/base/conteudo/ico-ordenacao.png" />
                 </div>
                 <div class="divTd">
-                    <b>Promocao: </b> <?=$tp['tituloPt'];?>
+                    <b>Evento: </b> <?=$tp['tituloPt'];?>
                 </div>
                 <div class="divTd">
                     <?=$tp['dataInicio'] != "0000-00-00" ? dataBr($tp['dataInicio']) : " - ";?>

@@ -147,6 +147,14 @@
                 var x = $(".playerRadio").css("color", 'blue');
                 */
             });
+
+            function newPopup(url){
+                newwindow = window.open(url,'name','height=460,width=710,resizable=none,maximize=no,scrollbars=0');
+                if (window.focus) {
+                    newwindow.focus()
+                }
+                return false;    
+            }
  
         </script>
 
@@ -171,7 +179,7 @@
                 <div class="container">
 
                     <!-- Topo -->
-                    <div class="row topo">
+                    <div class="row topo"> 
 
                         <!--<div class="col-6 col-lg-4">
                             
@@ -198,9 +206,10 @@
                             <iframe class="playerRadio" name="playcolor" src="http://painelstream.com/mini-player/<?=$codRadio;?>" frameborder="0" width="300" height="60" scrolling="no" noresize></iframe>
                         </div>
                         <div class="col-lg-6 tvMocinha">
-                            <?php if($_SESSION['regiao'] == ''): ?>
-                                <a class="btTvMocinha" href="http://radiomeninabc.portalmenina.com.br/ao-vivo/tv-mocinha-balneario-camboriu" data-toggle="lightbox" data-width="695" data-height="445">Tv Mocinha</a>
-                            <?php endif; ?>
+                            <?php //if($_SESSION['regiao'] == ''): ?>
+                                <a class="btTvMocinha"  href="#" title="" onclick="newPopup('tv.php')">Tv Mocinha</a>
+                                <!-- <a class="btTvMocinha" href="http://radiomeninabc.portalmenina.com.br/ao-vivo/tv-mocinha-balneario-camboriu" data-toggle="lightbox" data-width="695" data-height="445">Tv Mocinha</a> -->
+                            <?php //endif; ?>
                         </div>
                     
                     </div>
@@ -426,7 +435,7 @@
                                 <?php if($i==0): ?>
                                     <div class="wrapFotoTipo1">
                                         <a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank">
-                                            <img src="<?php echo $foto->images->low_resolution->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                            <img src="<?php echo $foto->images->low_resolution->url ?>" alt="" />
                                         </a>
                                     </div>
                                 <?php endif; ?>
@@ -438,7 +447,7 @@
                                     <?php if($i==1 || $i==2): ?>
                                         <div class="fotoTipo2">
                                             <a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank">
-                                                <img src="<?php echo $foto->images->low_resolution->url ?>" alt="<?php echo $foto->caption->text ?>" /> 
+                                                <img src="<?php echo $foto->images->low_resolution->url ?>" alt="" /> 
                                             </a> 
                                         </div>
                                     <?php endif; ?>
@@ -447,7 +456,7 @@
                                 </div>
                                 <div class="wrapFotoTipo1">
                                     <a class="insta" href="<?=$_SESSION['socialInsta'];?>" target="_blank">
-                                        <img src="<?php echo $foto->images->low_resolution->url ?>" alt="<?php echo $foto->caption->text ?>" />
+                                        <img src="<?php echo $foto->images->low_resolution->url ?>" alt="" />
                                     </a>
                                 </div>
                                 <?php endif; ?>
@@ -500,7 +509,7 @@
                                 CEP: 88523-000
                             </p>
                             <p>
-                                (49) 3229.2363 
+                                (49) 3224.5574 
                             </p>
                         </div>
                         

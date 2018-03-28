@@ -80,7 +80,7 @@
                 })
 
             },100);
-
+ 
             
         });
 
@@ -233,7 +233,7 @@
                     </p>
                     <p>
                         <b>Telefone:</b><br>
-                        <i class="fa fa-phone" aria-hidden="true"></i> (49) 3229.2363
+                        <i class="fa fa-phone" aria-hidden="true"></i> (49) 3224.5574
                     </p>
                     <p>
                         <b>Endereco:</b><br>
