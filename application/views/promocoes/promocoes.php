@@ -74,11 +74,13 @@
                                     </div>
                                     <h3><?php echo $info['tituloPt']?></h3>
                                     <span><?php 
-                                            if(isset($info['dataInicio']) && isset($info['dataFim'])) {
+                                            if(isset($info['dataInicio']) && isset($info['dataFim']) && $info['dataInicio'] != $info['dataFim']) {
                                                 echo 'De: '.date('d/m/Y', strtotime($info['dataInicio'])). " à ". date('d/m/Y', strtotime($info['dataFim']));
-                                            }elseif(isset($info['dataInicio']) && !isset($info['dataFim'])) {
+                                            }elseif($info['dataFim'] == $info['dataInicio']) {
                                                 echo 'Data: '.date('d/m/Y', strtotime($info['dataInicio']));
                                             }
+
+                                            
                                         ?>
                                     </span>
                                     <!--<button>Participar</button>-->

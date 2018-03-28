@@ -75,29 +75,29 @@ $query_builder = TRUE;
 
 
 
-$db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'mysql.portalmenina.com.br',
-	'username' => 'portalmenina01',
-	'password' => 'u9d4s2',
-	'database' => 'portalmenina01',
-	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
+// $db['default'] = array(
+// 	'dsn'	=> '',
+// 	'hostname' => 'mysql.portalmenina.com.br',
+// 	'username' => 'portalmenina01',
+// 	'password' => 'u9d4s2',
+// 	'database' => 'portalmenina01',
+// 	'dbdriver' => 'mysqli',
+// 	'dbprefix' => '',
+// 	'pconnect' => FALSE,
+// 	'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );
 
-/* $db['default'] = array(
+$db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'mysql03-farm70.uni5.net',
 	'username' => 'novomenina',
@@ -117,4 +117,4 @@ $db['default'] = array(
 	'stricton' => FALSE,
 	'failover' => array(),
 	'save_queries' => TRUE
-); */
+);

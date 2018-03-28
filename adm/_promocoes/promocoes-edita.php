@@ -21,7 +21,12 @@ if($submit != '')
     $dataInicio = isset($_POST['dataInicio']) ? dataEn($_POST['dataInicio']) : '';
     $horaInicio = isset($_POST['horaInicio']) ? dataEn($_POST['horaInicio']) : '';
     
-    $dataFim = isset($_POST['dataFim']) ? dataEn($_POST['dataFim']) : '';
+    if($_POST['dataFim'] == '') {
+        $dataFim = $dataInicio;
+    }else{
+        $dataFim = dataEn($_POST['dataFim']);
+    }
+    // $dataFim = isset($_POST['dataFim']) ? dataEn($_POST['dataFim']) : '';
     $horaFim = isset($_POST['horaFim']) ? dataEn($_POST['horaFim']) : '';
     
     $tituloPt = isset($_POST['tituloPt']) ? $_POST['tituloPt'] : '';

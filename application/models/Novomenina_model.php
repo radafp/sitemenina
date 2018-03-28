@@ -528,6 +528,7 @@ class Novomenina_model extends CI_Model{
                 FROM promocoes 
                     WHERE promocoes.regiao = '$regiao' 
                     AND promocoes.mostrar = 1
+                    AND promocoes.dataFim >= '$date'
                 GROUP BY promocoes.cod
                 ORDER BY promocoes.dataCadastro DESC
                 LIMIT $limit, 15
