@@ -66,6 +66,7 @@
                     <?php 
                     $nEventos = count($eventos);
                     $i=0;
+                    echo '<pre>count : '. count($eventos) . '<br>';echo '</pre>';
                     foreach($eventos as $info):
                         if($i%2 == 0)
                             $classeAdicional = '';
@@ -121,6 +122,7 @@
                     if(isset($proxima) && $proxima >= $count){
                         $proxima = $count;
                     }
+
                     ?>
 
                     <?php if($count > $total_registros):?>
@@ -136,7 +138,7 @@
                             <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/agenda/') .$p;?>"><?=$p;?></a>
                         </div>
                         
-                        <?php if($pHome+10 <= $count):?>
+                        <?php if($pHome+15 <= $count):?>
                             <div class='pagina'>
                                 <a class='paginacao_eventos' href="<?php echo base_url($_SESSION['city'].'/agenda/') .$proxima;?>"><?=$proxima;?></a>
                             </div>

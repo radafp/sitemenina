@@ -700,6 +700,7 @@ class home extends CI_Controller {
 
         $pagina = $uri[2];
         $dados['pagina'] = $pagina;
+
         
         // --------------------- PAGINAÇÂO --------------------
         if(isset($uri[2])) {
@@ -871,7 +872,10 @@ class home extends CI_Controller {
         $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
 
         $pagina = $uri[2];
+        $dados['pagina'] = $pagina;
         $regiao = addslashes($_SESSION['regiao']);
+
+        echo '<br> $pagina agenda: ' . $pagina;
         
        // --------------------- PAGINAÇÂO --------------------
         if(isset($uri[2])) {
@@ -1115,6 +1119,7 @@ class home extends CI_Controller {
         $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
 
         $pagina = $uri[2];
+        $dados['pagina'] = $pagina;
         $regiao = addslashes($_SESSION['regiao']);
         
        // --------------------- PAGINAÇÂO --------------------
@@ -1296,6 +1301,7 @@ class home extends CI_Controller {
         $uri = explode('/', isset($_SERVER['REQUEST_URI']) ? preg_replace('/^\//', '', $_SERVER['REQUEST_URI'], 1) : '');
 
         $pagina = $uri[2];
+        $dados['pagina'] = $pagina;
         $regiao = addslashes($_SESSION['regiao']);
         
        // --------------------- PAGINAÇÂO --------------------
