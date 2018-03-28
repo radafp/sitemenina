@@ -16,7 +16,7 @@ $submit = isset($_POST['submit']) ? $_POST['submit'] : '';
 
 if($submit != '')
 {
-    $data = date('Y-m-d');
+    $data = date('Y-m-d'); 
     $dataPublicacao = isset($_POST['dataPublicacao']) ? dataEn($_POST['dataPublicacao']) : '';
     $titulo = isset($_POST['titulo']) ? $_POST['titulo'] : '';
     $descricao = isset($_POST['descricao']) ? $_POST['descricao'] : '';

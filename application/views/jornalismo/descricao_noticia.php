@@ -19,8 +19,29 @@
                         });
                         $('html,body').animate({ scrollTop: $("#anc").offset().top },'slow');
                     },100);
+
+                    //var url_atual = window.location.href;
+                    //alert(url_atual);
+                     
+                    //$(".fb-comments").attr('data-href', url_atual);
+                    //FB.XFBML.parse();
+
+                    /*
+                    if (xmlhttp.readyState==4){			
+                        // coloca o valor no objeto requisitado			
+                        texto=unescape(xmlhttp.responseText.replace(/\+/g," "));			
+                        document.getElementById(destino).innerHTML=texto;			
+                        // executa scripts			
+                        extraiScript(texto);
+                    }
+                    */
+
                 }
             });
+<<<<<<< HEAD
+=======
+            FB.XFBML.parse();
+>>>>>>> 23890a1a6a75460b2be75e0ff0a36ce3b8c19cb4
             window.history.pushState(null, 'Home', $(this).attr('href'));
         });
 
@@ -47,6 +68,8 @@
             });
         });
     });
+
+
 </script>
 
 <div id="fb-root"></div>
@@ -106,9 +129,9 @@
                     <div class="wrapBanner">
                         <?php if($info['link'] != ''): ?>
                             <a class='registra_click_publicidade' href="<?=($info['link'] != '') ? $info['link']  : '';?>" target="<?=$info['linkTarget'];?>" rel="<?=$info['cod'];?>">
-                        <?php endif; ?>
+                            <?php endif; ?>
                                 <img src="<?=base_url('/assets/arquivos/publicidade/'.$info['arquivo']);?>" title="Publicidade">
-                        <?php if($info['link'] != ''): ?>
+                            <?php if($info['link'] != ''): ?>
                             </a>
                         <?php endif; ?>
                     </div>

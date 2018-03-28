@@ -51,6 +51,9 @@
     width: 100%;
     height: 100%;
     border-radius: 3px;
+    background-image: -webkit-gradient(linear,left top,left bottom,from(transparent),color-stop(90%,rgba(34,34,34,.85)));
+    background-image: -webkit-linear-gradient(top,transparent 0,rgba(34,34,34,.85) 90%);
+    background-image: linear-gradient(to bottom,transparent 0,rgba(34,34,34,.85) 90%);
 }
 .destaques h1.categoria{
     float: left;
@@ -148,15 +151,12 @@
 }
 .promocoesEventos.promocoesEventos_bc{
     background: url(../img/redes_bc.jpg);
-    background-size: 200%;
 }
 .promocoesEventos.promocoesEventos_bl{
     background: url(../img/redes_bl.jpg);
-    background-size: 200%;
 }
 .promocoesEventos.promocoesEventos_lg{
     background: url(../img/redes_lg.jpg);
-    background-size: 200%;
 }
 .promocoesEventos .wrapFoto{
     border: 1px solid #fff;
@@ -1136,13 +1136,13 @@
         margin: 50px 0;
     }
     .promocoesEventos.promocoesEventos_bc{
-        background-size: 200%;
+        background-size: auto;
     }
     .promocoesEventos.promocoesEventos_bl{
-        background-size: 200%;
+        background-size: auto;
     }
     .promocoesEventos.promocoesEventos_lg{
-        background-size: 200%;
+        background-size: auto;
     }
     .promocoesEventos{
         padding:60px 0;

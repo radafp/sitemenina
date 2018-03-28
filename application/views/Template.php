@@ -13,7 +13,7 @@
         
         <meta name="author" content="Agência Set - Criação de Sites - Santa Catarina - Balneário Camboriú - Agência Digital">
         
-        <title>Radio Menina FM - A mais gosotosa de ouvir</title>
+        <title>Radio Menina FM - A mais gostosa de ouvir</title>
 
         <?
             if(!isset($_SESSION['regiao'])){
@@ -88,6 +88,7 @@
                                 }
                                 //setAttribute("aria-expanded", "false")
                             },100);
+
                             
                             //$("p:first").addClass("intro"); 
                         }
@@ -146,10 +147,21 @@
                 var x = $(".playerRadio").css("color", 'blue');
                 */
             });
+ 
         </script>
 
     </head>
     <body class="backgroundBody_<?=$_SESSION['regiao'];?>">
+
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.12&appId=150046108508885&autoLogAppEvents=1';
+            fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
 
         <header>
         

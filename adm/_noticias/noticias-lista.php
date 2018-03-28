@@ -7,8 +7,11 @@ if(!verifica_permissao($cod_user, $nivel, 'jornalismo'))
 	echo " </script>";
 	die();
 }
+
+$categoria = isset($_GET['categoria']) ? $_GET['categoria'] : '';
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
+require_once ADMIN_PATH."_noticias/inc/topo-noticias-lista.php";
 ?>
 <script>
 $(document).ready(function()
@@ -156,10 +159,17 @@ $(document).ready(function()
     }    
 
     $limit_por_pag = 30;
-    $q = mysql_query("SELECT * FROM noticias WHERE regiao = '{$regiao}' ORDER BY data DESC, cod DESC LIMIT $pag, $limit_por_pag", $conexao);
-    
-    $rows = mysql_query("SELECT * FROM noticias WHERE regiao = '{$regiao}' ", $conexao);
 
+    if($categoria != ''):
+        $parametro = " AND codCategoria = '{$categoria}' ";
+    else:
+        $parametro = "";
+    endif;
+
+    $q = mysql_query("SELECT * FROM noticias WHERE regiao = '{$regiao}' ".$parametro."  ORDER BY data DESC, cod DESC LIMIT $pag, $limit_por_pag", $conexao);
+    
+    $rows = mysql_query("SELECT * FROM noticias WHERE regiao = '{$regiao}' ".$parametro." ", $conexao);
+    //echo mysql_error();
     $count_registros = mysql_num_rows($rows);
     $paginas = ceil($count_registros / $limit_por_pag);
 
@@ -228,55 +238,54 @@ $(document).ready(function()
 </div>
 
 <div class="divTableLista clear">
+    <?php
+    if(isset($_GET['p'])) {
+            $p = $_GET['p'];
+        }else{
+            $p = 1;
+        }
+
+        if($p >= 1) {
+            $anterior = $p - 1;
+        }
+        if($p <= $count_registros) {
+            $proxima = $p + 1;
+        }
+        
+        if($anterior <= 0) {
+            $anterior = 0;
+        }
+        if(isset($proxima) && $proxima >= $count_registros){
+            $proxima = $count_registros;
+        }
+    ?>
+    <?php if($count_registros > $limit_por_pag):?>
+        <div class="divTr">
+            <div class="divTd">
+                
+                    <?php if($p > 1):?>
+                        <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$anterior;?>">Anterior</a>
+                        <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$anterior;?>"><?=$anterior;?></a>
+                    <?php endif?>
+                    
+                        <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$p;?>"><?=$p;?></a>
+
+                    <?php if($pag+10 <= $count_registros):?>
+                        <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$proxima;?>"><?=$proxima;?></a>
+                        <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$proxima;?>">Proximo</a>
+                    <?php endif?>
+                            
+            </div>
+        </div>
+    <?php endif;?> 
     <div class="divTr">
         <div class="divTd">
-            <!-- <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$p;?>">Anterior</a> -->
-
-            <?php
-            if(isset($_GET['p'])) {
-                    $p = $_GET['p'];
-                }else{
-                    $p = 1;
-                }
-
-                if($p >= 1) {
-                    $anterior = $p - 1;
-                }
-                if($p <= $count_registros) {
-                    $proxima = $p + 1;
-                }
-                
-                if($anterior <= 0) {
-                    $anterior = 0;
-                }
-                if(isset($proxima) && $proxima >= $count_registros){
-                    $proxima = $count_registros;
-                }
-                // echo '<br>cont de registros: '.$count_registros;
-                // echo '<br>limit por paginas: '.$limit_por_pag;
-                // echo '<br><br>';
-                // echo '<br>p: '. $p;
-                // echo '<br>$pag: '.$pag;
-            ?><br><br>
-
-                
-            <?php if($count_registros > $limit_por_pag):?>
-                <?php if($p > 1):?>
-                    <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$anterior;?>">Anterior</a>
-                    <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$anterior;?>"><?=$anterior;?></a>
-                <?php endif?>
-                
-                    <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$p;?>"><?=$p;?></a>
-
-                <?php if($pag+10 <= $count_registros):?>
-                    <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$proxima;?>"><?=$proxima;?></a>
-                    <a href="http://<?=ADMIN_URL;?>/principal.php?id=<?=$id;?>&subid=1&p=<?=$proxima;?>">Proximo</a>
-                <?php endif?>
-            <?php endif;?>              
-
-            
-            <?= '<br>Total de Páginas: '. $paginas?>
-                
+            Total de Páginas: <?=$paginas;?>
+        </div>
+    </div>
+    <div class="divTr">
+        <div class="divTd">
+            Número de registros: <?=$count_registros;?>
         </div>
     </div>
 </div>
