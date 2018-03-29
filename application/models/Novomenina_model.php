@@ -127,29 +127,12 @@ class Novomenina_model extends CI_Model{
 
     // tabela categorias para mostrar as noticias existentes no menu de noticias
     public function titulo_jornalismo($regiao)  {
-        $query = $this->db->query("SELECT DISTINCT categorias.categoriaPt, categorias.cleanTitlePt, noticias.codCategoria from categorias inner join noticias WHERE categorias.cod = noticias.codCategoria and noticias.regiao = '$regiao' ");
+        $query = $this->db->query("SELECT DISTINCT categorias.categoriaPt, categorias.cleanTitlePt, noticias.codCategoria from categorias inner join noticias WHERE categorias.cod = noticias.codCategoria and noticias.regiao = '$regiao' ORDER BY categorias.cleanTitlePt asc");
         return $query->result_array();
     }
 
      // tabela noticias
      public function noticias_em_destaque($regiao) {
-        // $query = $this->db->query("SELECT noticias.*, categorias.categoriaPt, arquivos.arquivo
-        //                                 FROM noticias
-        //                             INNER JOIN categorias, arquivos
-        //                                 WHERE noticias.codCategoria = categorias.cod
-        //                                 AND arquivos.codReferencia = noticias.cod
-        //                                 AND noticias.regiao = '$regiao'
-        //                                 AND noticias.destaque = 1 
-        //                                 AND noticias.mostrar = 1
-        //                                 AND arquivos.tipo = 2
-        //                                 AND arquivos.capa = 1
-        //                                 AND arquivos.referencia = 'noticias'
-        //                                 GROUP by noticias.cod
-        //                                 ORDER by DATA DESC
-        //                                 LIMIT 3"
-        // );
-
-        // return $query->result_array();
 
         $query = $this->db->query(
             "SELECT noticias.*, categorias.categoriaPt, categorias.cor, categorias.corTexto,
@@ -248,7 +231,8 @@ class Novomenina_model extends CI_Model{
                     FROM noticias
                     INNER JOIN categorias
                         WHERE noticias.codCategoria = categorias.cod
-                        AND noticias.regiao = '$regiao' 
+                        AND noticias.regiao = '$regiao'
+                        AND noticias.codCategoria != 10
                         AND noticias.mostrar = 1 
                     GROUP BY noticias.cod
                     ORDER by DATA DESC, noticias.cod DESC
