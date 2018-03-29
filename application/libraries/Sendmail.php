@@ -25,6 +25,7 @@ class Sendmail {
         $mail->From = "webmaster@agenciaset.com.br"; // Sua conta de email que será remetente da mensagem
         $mail->FromName = "Contato Menina"; // Nome da conta de email
         
+
         // DADOS DO DESTINATÁRIO
         $mail->AddAddress('dionathan_bass@hotmail.com', 'Nome - Recebe1'); // Define qual conta de email receberá a mensagem
         //$mail->AddAddress('recebe2@dominio.com.br'); // Define qual conta de email receberá a mensagem
