@@ -27,12 +27,21 @@
                     <?php } ?>
                 </select>
             </div>
+<<<<<<< HEAD
+            <!-- <div class="divTd">
+                <input type="date" name='dataInicio'>
+            </div>
+            <div class="divTd">
+                <input type="date" name='dataFim'>
+            </div> -->
+=======
             <div class="divTd">
                 <input type="date" name="dataInicio">
             </div>
             <div class="divTd">
                 <input type="date" name='dataFim'>
             </div>
+>>>>>>> 23890a1a6a75460b2be75e0ff0a36ce3b8c19cb4
             <div class="divTd">
                 <input type="submit" value="Filtrar" class="salvar"/>
             </div>

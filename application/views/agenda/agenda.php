@@ -78,12 +78,15 @@
                                     <img src="<?php echo base_url('/assets/arquivos/eventos/'.$info['arquivo'])?>" alt="">
                                 </div>  
                                 <h3><?php echo $info['tituloPt']?></h3>
-                                <?php if($info['dataInicio']): ?>
-                                    <span><?php echo 'Início: '.date('d/m/Y', strtotime($info['dataInicio']));?></span>
-                                <?php endif; ?>
-                                <?php if($info['dataFim']): ?>
-                                    <span><?php echo 'Fim: '.date('d/m/Y', strtotime($info['dataFim']));?></span>
-                                <?php endif; ?>
+                                <span>
+                                    <?php 
+                                        if(isset($info['dataInicio']) && isset($info['dataFim']) && $info['dataInicio'] != $info['dataFim']) {
+                                            echo 'De: '.date('d/m/Y', strtotime($info['dataInicio'])). " à ". date('d/m/Y', strtotime($info['dataFim']));
+                                        }elseif($info['dataFim'] == $info['dataInicio']) {
+                                            echo 'Data: '.date('d/m/Y', strtotime($info['dataInicio']));
+                                        }
+                                    ?>
+                                </span>
                             </a>
                             <?php
                                 $proximo = 4;
@@ -121,6 +124,7 @@
                     if(isset($proxima) && $proxima >= $count){
                         $proxima = $count;
                     }
+
                     ?>
 
                     <?php if($count > $total_registros):?>

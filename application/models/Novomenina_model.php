@@ -514,6 +514,7 @@ class Novomenina_model extends CI_Model{
         //                                 LIMIT 2"
         // );
         // return $query->result_array();
+        $date = date('Y-m-d');
         $query = $this->db->query(
             "SELECT promocoes.*, 
                 (SELECT a.arquivo 
@@ -526,7 +527,8 @@ class Novomenina_model extends CI_Model{
             AS arquivo 
                 FROM promocoes 
                     WHERE promocoes.regiao = '$regiao' 
-                    AND promocoes.mostrar = 1 
+                    AND promocoes.mostrar = 1
+                    AND promocoes.dataFim >= '$date'
                 GROUP BY promocoes.cod
                 ORDER BY promocoes.dataCadastro DESC
                 LIMIT $limit, 15

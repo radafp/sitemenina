@@ -19,7 +19,14 @@ if($submit != '')
     $data = date('Y-m-d');
     $dataInicio = isset($_POST['dataInicio']) ? dataEn($_POST['dataInicio']) : '';
     $horarioInicio = isset($_POST['horarioInicio']) ? $_POST['horarioInicio'] : '';
-    $dataFim = isset($_POST['dataFim']) ? dataEn($_POST['dataFim']) : '';
+
+    if($_POST['dataFim'] == '') {
+        $dataFim = $dataInicio;
+    }else{
+        $dataFim = dataEn($_POST['dataFim']);
+    }
+
+    // $dataFim = isset($_POST['dataFim'])!= '' ? dataEn($_POST['dataFim']) : $dataInicio;
     $horarioFim = isset($_POST['horarioFim']) ? $_POST['horarioFim'] : '';
     $tituloPt = isset($_POST['tituloPt']) ? $_POST['tituloPt'] : '';
     //$tituloEn = isset($_POST['nomeEn']) ? $_POST['nomeEn'] : '';
@@ -36,12 +43,14 @@ if($submit != '')
     
     $msg = array();
     $erro = 0;
-    
+    echo '<br> $dataInicio: ' . $dataInicio;
+    echo '<br> $dataFim: ' . $dataFim;
     if($erro == 0)
     {
         $pasta = PROJECT_PATH."assets/arquivos/eventos";
         if($subid == 2) //insert
         {
+            
         	$q = mysql_query("INSERT INTO eventos 
                             ( dataCadastro, dataInicio, horarioInicio, dataFim, horarioFim, tituloPt, cleanTitlePt, descricaoPt, mapa, regiao, mostrar)
                             VALUES

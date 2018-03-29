@@ -72,7 +72,16 @@
                                         <img src="<?php echo base_url('assets/arquivos/promocoes/'.$info["arquivo"])?>" alt="" width='680px'>
                                     </div>
                                     <h3><?php echo $info['tituloPt']?></h3>
-                                    <span><?php echo 'Início: '.date('d/m/Y', strtotime($info['dataInicio'])). "<br>Fim: ". date('d/m/Y', strtotime($info['dataFim']))?></span>
+                                    <span><?php 
+                                            if(isset($info['dataInicio']) && isset($info['dataFim']) && $info['dataInicio'] != $info['dataFim']) {
+                                                echo 'De: '.date('d/m/Y', strtotime($info['dataInicio'])). " à ". date('d/m/Y', strtotime($info['dataFim']));
+                                            }elseif($info['dataFim'] == $info['dataInicio']) {
+                                                echo 'Data: '.date('d/m/Y', strtotime($info['dataInicio']));
+                                            }
+
+                                            
+                                        ?>
+                                    </span>
                                     <!--<button>Participar</button>-->
                                 </a>
                             </div>
@@ -80,6 +89,7 @@
                     $i++;
                     endforeach; 
                     ?>
+                    
                 </div>
                 <div class="paginacao">
                     <?php
@@ -122,7 +132,7 @@
                             <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/') .$p;?>"><?=$p;?></a>
                         </div>
                         
-                        <?php if($pHome+10 <= $count):?>
+                        <?php if($pHome+15 <= $count):?>
                             <div class='pagina'>
                                 <a class='paginacao_promocoes' href="<?php echo base_url($_SESSION['city'].'/promocoes/') .$proxima;?>"><?=$proxima;?></a>
                             </div>

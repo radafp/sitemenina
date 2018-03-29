@@ -9,6 +9,8 @@ if(!verifica_permissao($cod_user, $nivel, 'publicidade'))
 }
 
 $usuario = isset($_GET['usuario']) ? $_GET['usuario'] : '';
+<<<<<<< HEAD
+=======
 $dataInicio = isset($_GET['dataInicio']) ? $_GET['dataInicio'] : '';
 $dataFim = isset($_GET['dataFim']) ? $_GET['dataFim'] : '';
 
@@ -22,6 +24,7 @@ $dataFim = isset($_GET['dataFim']) ? $_GET['dataFim'] : '';
 // $dataFim = $dF1 . ' ' . $dF2 . ':00';
 
 
+>>>>>>> 23890a1a6a75460b2be75e0ff0a36ce3b8c19cb4
 
 require_once ADMIN_INC_PATH."bread.php";
 require_once ADMIN_INC_PATH."topoModulo.php";
@@ -31,6 +34,25 @@ require_once ADMIN_PATH."_usuarios/inc/topo-usuarios-relatorio.php";
 
 if($usuario) 
 {
+<<<<<<< HEAD
+	echo 'sim';
+    $cod = $usuario;
+
+    $conn = new PDO('mysql:host=mysql03-farm70.uni5.net;dbname=novomenina', 'novomenina', 'agEncia445');
+  
+    $data = $conn->query(
+        "SELECT usuariosStats.dataCadastro, 
+				usuariosStats.acao,
+				usuariosStats.nomeMenu,
+				(SELECT COUNT(usuariosStats.acao) AS countAcao
+				FROM usuariosStats
+						where usuariosStats.codUsuario = usuarios.cod) as countAcao
+			FROM usuariosStats
+		inner join usuarios
+			on usuarios.cod = usuariosStats.codUsuario
+			and usuariosStats.codUsuario = $cod"
+    );
+=======
     $cod = $usuario;
 
 	$conn = new PDO('mysql:host=mysql03-farm70.uni5.net;dbname=novomenina', 'novomenina', 'agEncia445');
@@ -110,6 +132,7 @@ if($usuario)
 		);
 	}
 	
+>>>>>>> 23890a1a6a75460b2be75e0ff0a36ce3b8c19cb4
 }
 ?>
 <div class="divTableLista clear">

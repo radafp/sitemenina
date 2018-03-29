@@ -38,7 +38,10 @@
 
                 }
             });
+<<<<<<< HEAD
+=======
             FB.XFBML.parse();
+>>>>>>> 23890a1a6a75460b2be75e0ff0a36ce3b8c19cb4
             window.history.pushState(null, 'Home', $(this).attr('href'));
         });
 
@@ -67,6 +70,21 @@
     });
 
 
+</script>
+
+<div id="fb-root"></div>
+<script>
+
+    $(window).load(function(){
+    //$(document).ready(function(){
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.12&appId=150046108508885&autoLogAppEvents=1';
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    });
 </script>
 <div class="container">
     <div class="blocoConteudo"> 
