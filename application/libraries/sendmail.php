@@ -25,8 +25,18 @@ class Sendmail {
         $mail->From = "webmaster@agenciaset.com.br"; // Sua conta de email que será remetente da mensagem
         $mail->FromName = "Contato Menina"; // Nome da conta de email
         
+
+        if($_POST['setor'] = 'comercial') {
+            $email_destino = 'comercial@radiomenina.com.br';
+        }elseif($_POST['setor'] = 'jornalismo') {
+            $email_destino = 'jornalismo@radiomenina.com.br';
+        }elseif($_POST['setor'] = 'utilidade_publica') {
+            $email_destino = 'recepcao@sistemamenina.com.br';
+        }
+
+
         // DADOS DO DESTINATÁRIO
-        $mail->AddAddress('dionathan_bass@hotmail.com', 'Nome - Recebe1'); // Define qual conta de email receberá a mensagem
+        $mail->AddAddress($email_destino, 'Nome - Recebe'); // Define qual conta de email receberá a mensagem
         //$mail->AddAddress('recebe2@dominio.com.br'); // Define qual conta de email receberá a mensagem
         $mail->AddCC('atendimentoset@gmail.com'); // Define qual conta de email receberá uma cópia
         //$mail->AddBCC('copiaoculta@dominio.info'); // Define qual conta de email receberá uma cópia oculta
@@ -41,7 +51,7 @@ class Sendmail {
         $mail->Body .= " Nome: ".$_POST['nome']."<br>"; // Texto da mensagem
         $mail->Body .= " E-mail: ".$_POST['email']."<br>"; // Texto da mensagem
         $mail->Body .= " Telefone: ".$_POST['telefone']."<br>"; // Texto da mensagem
-        $mail->Body .= " Assunto: ". 'Teste de Email'."<br>"; // Texto da mensagem
+        $mail->Body .= " Assunto: Contato do site  - Radio Menina <br>"; // Texto da mensagem
         $mail->Body .= " Mensagem: ". $_POST['mensagem']."<br>"; // Texto da mensagem
     
         

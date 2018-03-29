@@ -387,9 +387,16 @@
                             <div class="controls">
                                 <label>Setor:</label>
                                 <select name='setor' class="form-control" id="setor" required data-validation-required-message="Por favor, selecione o setor para o qual deseja enviar a mensagem.">
-                                    <option value="comercial">Comercial</option>
+                                    <option value="comercial">Comerciall</option>
                                     <option value="jornalismo">Jornalismo</option>
+                                    <option value="utilidade_publica">Utilidade pública</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="control-group form-group">
+                            <div class="controls">
+                                <label>Assunto:</label>
+                                <input name='assunto' type="text" class="form-control" id='assunto'>
                             </div>
                         </div>
                         <div class="control-group form-group">
@@ -659,6 +666,7 @@
                                 <select name='setor' class="form-control" id="setor" required data-validation-required-message="Por favor, selecione o setor para o qual deseja enviar a mensagem.">
                                     <option value="comercial">Comercial</option>
                                     <option value="jornalismo">Jornalismo</option>
+                                    <option value="utilidade_publica">Utilidade pública</option>
                                 </select>
                             </div>
                         </div>
@@ -795,5 +803,4 @@
             </div>
         </div>
     </div>
->>>>>>> cf8873996d2df24cf0f71464fff40eb29db92039
-</div> <!-- container --> 
+</div>
